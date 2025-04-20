@@ -1,36 +1,29 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { PaiProdStyled, PpesoStyled, PoffStyled } from './ComponentsStyled';
 //img produto
-import { DivOfertaStyled, PaiImgOfertaStyled, ImgOfertaStyed, DivPesoStyled, DivOffStyled} from './ComponentsStyled';
+import {DivOfertaStyled, PaiImgOfertaStyled, ImgOfertaStyed, DivPesoStyled, DivOffStyled} from './ComponentsStyled';
 //botao de preco e botao de quantidade
 import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, DivMaisStyled } from './ComponentsStyled';
 import { DivQuantStyled, BotoesStyled, PQuantStyled } from './ComponentsStyled';
 //nome do produto
 import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentsStyled';
+import {products} from '../../../data/data';
 
-
-const PaiProdStyled = styled.div`
-    display: flex;
-    width: 100%;
-    margin: auto;
-    min-width: 290px;
-    max-width: 315px;
-    height: 155px;
-    background-color: white;
-    border-radius: 6px;
-    border: 1px solid rgb(190, 190, 190);
-    box-shadow: 0px 0px 3px rgb(171, 171, 171);
-`;
-
-const Oferta = ()=>{(
+const Oferta = ({products})=>(
   <DivOfertaStyled>
       <PaiImgOfertaStyled>
-        <DivPesoStyled></DivPesoStyled>
-        <ImgOfertaStyed></ImgOfertaStyed>
-        <DivOffStyled></DivOffStyled>
+        <DivOffStyled>
+          <PoffStyled> -{products.discount}%</PoffStyled>
+        </DivOffStyled>
+
+        <ImgOfertaStyed src={products.url}></ImgOfertaStyed>
+
+        <DivPesoStyled>
+          <PpesoStyled>{products.weight}</PpesoStyled>
+        </DivPesoStyled>
       </PaiImgOfertaStyled>
   </DivOfertaStyled>
-)}
+)
 
 const Botoes = ({ quantity, onMore, onFewer }) => {
   return (
@@ -42,7 +35,7 @@ const Botoes = ({ quantity, onMore, onFewer }) => {
   );
 }
 
-const Preco = () => {
+const Preco = ({price}) => {
   const [mostrarBotoes, setMostrarBotoes] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
@@ -68,32 +61,34 @@ const Preco = () => {
       ) : (
         <PaiPrecoStyled>
           <DivPrecoStyled>
-            <PprecoStyled></PprecoStyled>
-            <DivMaisStyled onClick={() => { 
+            <PprecoStyled>R$ {price}</PprecoStyled>
+          </DivPrecoStyled>
+          <DivMaisStyled onClick={() => { 
               setMostrarBotoes(true); 
               setQuantity(1); 
-            }}></DivMaisStyled>
-          </DivPrecoStyled>
+          }}><p>+</p></DivMaisStyled>
         </PaiPrecoStyled>
       )}
     </>
   );
 }
 
-const DescOferta = ()=>{
+const DescOferta = ({products})=>{
+  return (
   <DescOfertaStyled>
     <DivNomeStyled>
-      <PnomeStyled></PnomeStyled>
+      <PnomeStyled>{products.name}</PnomeStyled>
     </DivNomeStyled>
-    <Preco></Preco>
+    <Preco price={products.price}></Preco>
   </DescOfertaStyled>
+  )
 }
 
-function ProductItem({ product }) {
+function ProductItem({products}) {
   return (
     <PaiProdStyled>
-      <Oferta></Oferta>
-      <DescOferta></DescOferta>
+      <Oferta products={products}></Oferta>
+      <DescOferta products={products}></DescOferta>
     </PaiProdStyled>
   );
 }

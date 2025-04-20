@@ -1,44 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
+import { products } from '../../../data/data';
 
 const DivStyled = styled.div`
     width: 100%;
     height: 100%;
     padding-bottom: 12px;
-    padding-left: 15px;
+    padding-left: 5px;
+    padding-top: 5px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 12px;
     box-sizing: border-box;
+    @media screen and (min-width: 993px){
+      gap: 15px;
+    }
 `;
 
-
 function ProductList() {
-  const products = [
-    {
-      id: 1,
-      discount: 28,
-      image: 'Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg',
-      weight: '125 g',
-      name: 'BISCOITO RECHEADO Bauduco SABOR CHOCOLATE COM BAUNILHA',
-      price: '2,99'
-    },
-    {
-      id: 2,
-      discount: 28,
-      image: 'Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg',
-      weight: '',
-      name: 'BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA',
-      price: '2,99'
-    }
-  ];
-
   return (
     <DivStyled>
-       {products.map((product) => (
-        <ProductItem key={product.id} product={product} />
+       {products.map((products) => (
+        <ProductItem key={products.id} products={products}/>
       ))}
     </DivStyled>
   );

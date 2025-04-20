@@ -5,7 +5,7 @@ const DivPai= styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 `;
 const Div = styled.div`
     display: none;
@@ -43,8 +43,8 @@ const UserEnotif= () => {
     return (
     <DivPai>
         <Div>
-            <span className="material-symbols-rounded" style={iconStyle}>contract_edit</span>
-            <p style={pstyle}>colar Lista</p>
+            <span className="material-symbols-rounded" style={iconStyle}>shopping_cart</span>
+            <p style={pstyle}>Meu Carrinho</p>
         </Div>
         <Div>
             <span className="material-symbols-rounded" style={iconStyle}>menu</span>

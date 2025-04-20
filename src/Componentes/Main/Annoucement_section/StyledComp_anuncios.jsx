@@ -5,7 +5,7 @@ export const Div = styled.div`
   position: relative;
   overflow-x: hidden;
   margin: auto;
-  padding-bottom: 60px;
+  padding-bottom: 44px;
   touch-action: pan-x;
   border-radius: 5px;
 
@@ -34,8 +34,9 @@ export const Div = styled.div`
 `;
 
 export const P = styled.p`
-   width: 100%;
+    width: 100%;
     text-align: center;
+    margin-top: 18px;
     margin-bottom: 22px;
     font-size: 1.15em;
     letter-spacing: 1.75px;

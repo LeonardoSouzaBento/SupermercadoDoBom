@@ -7,7 +7,7 @@ export const Div = styled.div`
     touch-action: pan-x;
     position: relative;
 
-  @media screen and (min-width: 993px){
+  @media screen and (max-width: 993px){
    margin-left: 0px;
    margin: auto;
   }
@@ -24,7 +24,7 @@ export const Divf = styled.div`
     display: flex;
     justify-content: space-between;
     flex-flow: row nowrap;
-    padding: 8px;
+    padding: 5px;
     padding-bottom: 18px;
     position: relative;
     gap: 10px;
@@ -61,7 +61,7 @@ export const Span = styled.span`
 export const DivCat = styled.div`
     min-width: 101px;
     max-width: 101px;
-    height: 115px;
+    height: 110px;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -69,13 +69,13 @@ export const DivCat = styled.div`
     gap: 10px;
     flex: auto;
     border-radius: 5px;
-    padding-top: 8px;
+    padding-top: 7px;
     //esses estilos abaixo
     ${props => props.$selected && 
     `background-color: rgb(255, 255, 255);
     border-radius: 6px;
-    border: 1px solid rgb(200, 200, 200);
-    box-shadow: 0px 0px 4px rgb(156, 156, 156);}
+    border-bottom: 1px solid rgb(177, 177, 177);
+    box-shadow: 0px 0px 2px rgb(124, 124, 124);}
     `}
 `;
 

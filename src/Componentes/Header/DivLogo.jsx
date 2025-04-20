@@ -17,30 +17,21 @@ const Img = styled.img`
 `;
 
 const P = styled.p`
-@media (min-width: 320px) and (max-width: 520px){
-    font-size: 0.75em;
-    letter-spacing: 0.5px;
-    font-weight: 300;
     font-family: "Fira Sans", serif;
-    line-height: 15px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
     padding: 5px;
+@media (min-width: 320px) and (max-width: 520px){
+    font-size: 0.9em;
+    line-height: 17px;
 }
 @media (min-width: 521px) and (max-width: 576px){
-    font-size: 0.9em;
-    letter-spacing: 0.5px;
-    font-weight: 300;
-    font-family: "Fira Sans", serif;
-    line-height: 17px;
-    padding: 5px;
+    font-size: 0.95em;
+    line-height: 19px;
 }
 @media (min-width: 577px){
-    font-size: 0.9em;
-    letter-spacing: 0.5px;
-    font-weight: 300;
-    font-family: "Fira Sans", serif;
+    font-size: 1em;
     line-height: 20px;
-    text-align: justify;
-    padding: 5px;
 }
 `;
 
