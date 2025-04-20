@@ -1,10 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import ProductItem from './ProductItem';
 
 const DivStyled = styled.div`
     width: 100%;
     height: 100%;
-    margin-top: 15px;
+    padding-bottom: 12px;
+    padding-left: 15px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -20,7 +22,7 @@ function ProductList() {
       discount: 28,
       image: 'Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg',
       weight: '125 g',
-      name: 'BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA',
+      name: 'BISCOITO RECHEADO Bauduco SABOR CHOCOLATE COM BAUNILHA',
       price: '2,99'
     },
     {
