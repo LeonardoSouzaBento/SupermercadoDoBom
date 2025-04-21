@@ -5,6 +5,7 @@ import ProductList from './Produto/ProductList';
 const PaiAllProductsStyled = styled.div`
    overflow-x: hidden;
    margin-left: 10px;
+   padding-bottom: 5px;
    @media screen and (min-width: 320px) and (max-width: 375px){
     width: calc(100% - 7px);
     margin-left: 7px;

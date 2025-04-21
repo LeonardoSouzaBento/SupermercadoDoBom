@@ -38,8 +38,8 @@ export const DivOfertaStyled = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        top: 7px;
-        left: 7px;
+        top: 6px;
+        left: 8px;
         height: 20px;
         background-color: #CDD4AE;
         border-radius: 6px 3px 10px 0px;
@@ -126,21 +126,26 @@ export const PaiPrecoStyled = styled.div`
 
     export const PprecoStyled = styled.p`
         width: 100%;
-        text-align: center;
-        text-indent: -5px;
         font-family: "Open Sans",Arial,sans-serif;
         font-weight: 500;
     `;
 
     export const DivMaisStyled = styled.div`
-        width: 40px;
-        height: 40px;
+        width: 37px;
+        height: 37px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: red;
+        background-color: #af4747;;
         color: white;
-        border-radius: 20px 20px 20px 20px;
+        border-radius: 20px;
+    `;
+
+    export const PmaisStyled= styled.p`
+      font-size: 1.55em;
+      font-family: "Poppins" ,Arial, Helvetica, sans-serif;
+      font-weight: 300;
+      color: white;
     `;
 
 //Selecionar a quantidade, + 1 e -
@@ -149,10 +154,9 @@ export const DivQuantStyled = styled.div`
     height: 40px;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(215, 69, 69);
-    border-radius: 7px;
+    background-color:rgb(197, 75, 75);
+    border-radius: 18px;
     color: white;
-    display: none;
 `;
     export const BotoesStyled = styled.div`
         height: 100%;
@@ -160,9 +164,16 @@ export const DivQuantStyled = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        font-family: "Open Sans";
     `;
     export const PQuantStyled = styled.p`
-    text-transform: uppercase;
-    font-weight: bold;
+        font-size: 1.5em;
+        font-family: "Open Sans";
+        font-weight: 500;
+    `;
+    export const QuantStyled = styled.p`
+        font-size: 1.2em;
+        font-family: "Open Sans";
+        font-weight: 500;
     `;
 

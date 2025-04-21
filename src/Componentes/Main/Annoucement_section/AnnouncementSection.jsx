@@ -9,12 +9,12 @@ import { Pagination } from './StyledComp_anuncios';
 
 
 let imageUrls = [
-  "https://i.pinimg.com/736x/07/e7/fa/07e7fa050221671f1ca5fb8efbbc836b.jpg",
   "https://i.pinimg.com/736x/26/7e/6b/267e6b57f769a42dbf2b61681364ca1c.jpg",
   "https://i.pinimg.com/736x/a0/96/75/a09675ab98661f098006f3ca31c8d90b.jpg",
   "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg",
   "https://i.pinimg.com/736x/5e/52/e5/5e52e58e04d7b121674d314b54fc715e.jpg",
-  "https://i.pinimg.com/736x/c6/9d/59/c69d59f77cea3f83235e432e8d311520.jpg"
+  "https://i.pinimg.com/736x/c6/9d/59/c69d59f77cea3f83235e432e8d311520.jpg",
+  "https://i.pinimg.com/736x/07/e7/fa/07e7fa050221671f1ca5fb8efbbc836b.jpg"
 ];
 
 function AnnouncementSection() {

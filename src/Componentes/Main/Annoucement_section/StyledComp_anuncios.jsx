@@ -45,19 +45,22 @@ export const P = styled.p`
     color: #892c2f;
 
  //celulares
-  @media screen and (min-width: 320px) and (max-width:576px){
-    font-size: 1.18em;
+  @media screen and (min-width: 320px) and (max-width:374px){
+    font-size: 1.12em;
+  }
+  @media screen and (min-width: 375px) and (max-width:576px){
+    font-size: 1.2em;
   }
   @media screen and (min-width: 577px) and (max-width:768px){
     font-size: 1.24em;
   }
   //tablets
   @media screen and (min-width: 769px) and (max-width:992px){
-    font-size: 1.25em;
+    font-size: 1.26em;
   }
   //notebooks
   @media screen and (min-width: 993px) and (max-width:1200px){
-    font-size: 1.27em;
+    font-size: 1.28em;
   }
   @media screen and (min-width: 1201px){
     font-size: 1.3em;
@@ -128,11 +131,11 @@ export const Span = styled.span.attrs(() => ({
   width: 12px;
   background-color: rgb(159, 159, 159);
   border-radius: 50%;
-
+  border: 1px solid rgb(136, 136, 136);
   ${props => props.$atual && `
     transform: scale(1.1);
     background-color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 5px rgb(164, 164, 164);
-    border: 1px solid rgb(164, 164, 164);
+    box-shadow: 0px 0px 2px rgb(164, 164, 164);
+    border: 1px solid rgb(173, 173, 173);
   `}
 `;

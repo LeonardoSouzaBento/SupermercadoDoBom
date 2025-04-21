@@ -3,8 +3,8 @@ import { PaiProdStyled, PpesoStyled, PoffStyled } from './ComponentsStyled';
 //img produto
 import {DivOfertaStyled, PaiImgOfertaStyled, ImgOfertaStyed, DivPesoStyled, DivOffStyled} from './ComponentsStyled';
 //botao de preco e botao de quantidade
-import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, DivMaisStyled } from './ComponentsStyled';
-import { DivQuantStyled, BotoesStyled, PQuantStyled } from './ComponentsStyled';
+import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, DivMaisStyled, PmaisStyled} from './ComponentsStyled';
+import { DivQuantStyled, BotoesStyled, PQuantStyled, QuantStyled} from './ComponentsStyled';
 //nome do produto
 import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentsStyled';
 import {products} from '../../../data/data';
@@ -28,9 +28,9 @@ const Oferta = ({products})=>(
 const Botoes = ({ quantity, onMore, onFewer }) => {
   return (
     <DivQuantStyled>
-      <BotoesStyled onClick={onFewer}>-</BotoesStyled>
-      <BotoesStyled><PQuantStyled>{quantity}</PQuantStyled></BotoesStyled>
-      <BotoesStyled onClick={onMore}>+</BotoesStyled>
+      <BotoesStyled onClick={onFewer}><PQuantStyled>-</PQuantStyled></BotoesStyled>
+      <BotoesStyled><QuantStyled>{quantity}</QuantStyled></BotoesStyled>
+      <BotoesStyled onClick={onMore}><PQuantStyled>+</PQuantStyled></BotoesStyled>
     </DivQuantStyled>
   );
 }
@@ -53,6 +53,7 @@ const Preco = ({price}) => {
   return (
     <>
       {mostrarBotoes ? (
+        //componente burro
         <Botoes 
           quantity={quantity} 
           onMore={handleMore} 
@@ -66,7 +67,9 @@ const Preco = ({price}) => {
           <DivMaisStyled onClick={() => { 
               setMostrarBotoes(true); 
               setQuantity(1); 
-          }}><p>+</p></DivMaisStyled>
+            }}>
+            <PmaisStyled>+</PmaisStyled>
+          </DivMaisStyled>
         </PaiPrecoStyled>
       )}
     </>
