@@ -9,7 +9,7 @@ import { DivQuantStyled, BotoesStyled, PQuantStyled, QuantStyled} from './Compon
 import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentsStyled';
 import {products} from '../../../data/data';
 
-const Oferta = ({products})=>(
+const Oferta = ({ products, setMostrarBotoes, mostrarBotoes,onQuantityChange })=>(
   <DivOfertaStyled>
       <PaiImgOfertaStyled>
         <DivOffStyled>
@@ -21,6 +21,15 @@ const Oferta = ({products})=>(
         <DivPesoStyled>
           <PpesoStyled>{products.weight}</PpesoStyled>
         </DivPesoStyled>
+
+        {!mostrarBotoes && 
+          <DivMaisStyled onClick={() => { 
+              setMostrarBotoes(true); 
+              onQuantityChange(1);}}>
+          <PmaisStyled>+</PmaisStyled>
+          </DivMaisStyled>
+        }
+        
       </PaiImgOfertaStyled>
   </DivOfertaStyled>
 )
@@ -35,9 +44,7 @@ const Botoes = ({ quantity, onMore, onFewer }) => {
   );
 }
 
-const Preco = ({ price, quantity, onQuantityChange }) => {
-  const [mostrarBotoes, setMostrarBotoes] = React.useState(false);
-
+const Preco = ({ price, quantity, onQuantityChange, mostrarBotoes, setMostrarBotoes}) => {
   const handleMore = () => onQuantityChange(quantity + 1);
 
   const handleFewer = () => {
@@ -62,12 +69,6 @@ const Preco = ({ price, quantity, onQuantityChange }) => {
           <DivPrecoStyled>
             <PprecoStyled>R$ {price}</PprecoStyled>
           </DivPrecoStyled>
-          <DivMaisStyled onClick={() => { 
-              setMostrarBotoes(true); 
-              onQuantityChange(1);
-            }}>
-            <PmaisStyled>+</PmaisStyled>
-          </DivMaisStyled>
         </PaiPrecoStyled>
       )}
     </>
@@ -75,23 +76,44 @@ const Preco = ({ price, quantity, onQuantityChange }) => {
 }
 
 
-const DescOferta = ({ products, quantity, onQuantityChange }) => {
+const DescOferta = ({ products, quantity, onQuantityChange, mostrarBotoes, setMostrarBotoes }) => {
   return (
     <DescOfertaStyled>
       <DivNomeStyled>
         <PnomeStyled>{products.name}</PnomeStyled>
       </DivNomeStyled>
-      <Preco price={products.price} quantity={quantity} onQuantityChange={onQuantityChange}></Preco>
+      <Preco 
+      price={products.price} 
+      quantity={quantity} 
+      onQuantityChange={onQuantityChange}
+      mostrarBotoes={mostrarBotoes}
+      setMostrarBotoes={setMostrarBotoes}>
+      </Preco>
     </DescOfertaStyled>
   );
 }
 
 
 function ProductItem({ products, quantity, onQuantityChange }) {
+
+  const [mostrarBotoes, setMostrarBotoes] = React.useState(false);
+
   return (
     <PaiProdStyled>
-      <Oferta products={products}></Oferta>
-      <DescOferta products={products} quantity={quantity} onQuantityChange={onQuantityChange}></DescOferta>
+      <DescOferta 
+      products={products} 
+      quantity={quantity} 
+      onQuantityChange={onQuantityChange} 
+      mostrarBotoes={mostrarBotoes}
+      setMostrarBotoes={setMostrarBotoes}>
+      </DescOferta>
+
+      <Oferta products={products} 
+      setMostrarBotoes={setMostrarBotoes} 
+      mostrarBotoes={mostrarBotoes}
+      onQuantityChange={onQuantityChange}
+      >
+      </Oferta>
     </PaiProdStyled>
   );
 }

@@ -7,7 +7,7 @@ import { CartContext } from '../../CartContext';
 
 const DivStyled = styled.div`
     width: 100%;
-    height: 534px;
+    height: 520px;
     padding: 5px;
     padding-bottom: 12px;
     display: flex;
@@ -18,15 +18,6 @@ const DivStyled = styled.div`
 
     @media screen and (min-width: 320px) and (max-width: 375px){
       gap: 8px;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px){
-      gap: 14px;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px){
-      gap: 17px;
-    }
-    @media screen and (min-width: 769px){
-      gap: 18px;
     }
     @media screen and (min-width: 993px){
       padding-bottom: 5px;
