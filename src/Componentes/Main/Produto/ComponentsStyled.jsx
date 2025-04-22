@@ -4,14 +4,28 @@ import styled from "styled-components";
 export const PaiProdStyled = styled.div`
     display: flex;
     width: 100%;
-    margin: auto;
     min-width: 290px;
-    max-width: 330px;
+    max-width: 325px;
     height: 160px;
     background-color: white;
     border-radius: 6px;
     border: 1px solid rgb(179, 179, 179);
     box-shadow: 0px 0px 3px rgb(201, 201, 201);
+    cursor: default;
+    user-select: none;
+
+    @media screen and (min-width: 320px) and (max-width: 375px){
+       max-width: 290px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px){
+       max-width: 310px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px){
+       max-width: 320px;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px){
+       max-width: 325px;
+    }
 `;
 
 export const DivOfertaStyled = styled.div`
@@ -28,9 +42,12 @@ export const DivOfertaStyled = styled.div`
         border-radius: 4px;
     `;
     export const ImgOfertaStyed = styled.img`
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        padding: 10px;
+        padding-right: 5px;
+        box-sizing: border-box;
     `;
 
     export const DivOffStyled = styled.div`
@@ -91,7 +108,6 @@ export const DescOfertaStyled = styled.div`
         width: 100%;
         overflow: hidden;
         box-sizing: border-box;
-        font-family: "Roboto Flex",Arial,sans-serif;
     `;
     export const PnomeStyled = styled.p`
         text-transform: uppercase;
@@ -99,13 +115,21 @@ export const DescOfertaStyled = styled.div`
         letter-spacing: 1.1px;
         font-weight: 500;
         line-height: 18px;
+        font-family: "Poppins", Arial, sans-serif;
 
         @media screen and (min-width: 320px) and (max-width: 375px){
             font-size: 0.8em;
             letter-spacing: 1px;
             font-weight: 500;
         }
-        
+        @media screen and (min-width: 375px) and (max-width: 576px){
+            font-size: 0.85em;
+            line-height: 18.5px;
+        }
+        @media screen and (min-width: 577px){
+            font-size: 0.9em;
+            line-height: 20px;
+        }
     `;
 
 // Preco com botão +
@@ -126,26 +150,46 @@ export const PaiPrecoStyled = styled.div`
 
     export const PprecoStyled = styled.p`
         width: 100%;
-        font-family: "Open Sans",Arial,sans-serif;
-        font-weight: 500;
+        font-family: "Roboto Flex",Arial,sans-serif;
+        font-weight: 600;
+
+        @media screen and (min-width: 320px) and (max-width: 375px){
+            font-size: 0.96em;
+            letter-spacing: 1px;
+        }
+        @media screen and (min-width: 375px) and (max-width: 576px){
+            font-size: 1.03em;
+            line-height: 18.5px;
+        }
+        @media screen and (min-width: 577px){
+            font-size: 1.035em;
+            line-height: 20px;
+        }
     `;
 
     export const DivMaisStyled = styled.div`
-        width: 37px;
+        width: 35px;
         height: 37px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #af4747;;
+        /* background-color: #C54B4B; */
+        background-color:rgb(255, 255, 255);
         color: white;
+        /* border-radius: 20px 20px 7px 20px; */
         border-radius: 20px;
+        border: 1px solid rgb(117, 117, 117);
+        cursor: pointer;
     `;
 
     export const PmaisStyled= styled.p`
       font-size: 1.55em;
       font-family: "Poppins" ,Arial, Helvetica, sans-serif;
-      font-weight: 300;
+      font-weight: 500;
       color: white;
+      cursor: pointer;
+      user-select: none;
+      color:rgb(212, 40, 40);
     `;
 
 //Selecionar a quantidade, + 1 e -
@@ -157,6 +201,8 @@ export const DivQuantStyled = styled.div`
     background-color:rgb(197, 75, 75);
     border-radius: 18px;
     color: white;
+    cursor: default;
+    user-select: none;
 `;
     export const BotoesStyled = styled.div`
         height: 100%;

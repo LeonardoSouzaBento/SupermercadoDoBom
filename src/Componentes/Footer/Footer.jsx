@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useContext } from 'react';
+import { CartContext } from '../CartContext';
 
 const FooterStyled = styled.footer`
     display: flex;
@@ -64,6 +66,9 @@ const DivClassStyled = styled.div`
 `;
 
 function Footer() {
+
+  const { totalQuantity } = useContext(CartContext);
+
   return (
     <FooterStyled>
       <DivDoFooter>
@@ -77,18 +82,18 @@ function Footer() {
       <DivDoFooter>
         <DivPStyed>
           <SpanStyled className="material-symbols-rounded"> shopping_cart</SpanStyled>
-          <Pfooter>Carrinho</Pfooter>
+          <Pfooter>Carrinho{totalQuantity}</Pfooter>
         </DivPStyed>
         <DivClassStyled></DivClassStyled>
       </DivDoFooter>
 
-      <DivDoFooter>
+      {/* <DivDoFooter>
         <DivPStyed>
           <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
           <Pfooter>Mais</Pfooter>
         </DivPStyed>
         <DivClassStyled></DivClassStyled>
-      </DivDoFooter>
+      </DivDoFooter> */}
     </FooterStyled>
   );
 }

@@ -35,17 +35,16 @@ const Botoes = ({ quantity, onMore, onFewer }) => {
   );
 }
 
-const Preco = ({price}) => {
-  const [mostrarBotoes, setMostrarBotoes] = useState(false);
-  const [quantity, setQuantity] = useState(1);
+const Preco = ({ price, quantity, onQuantityChange }) => {
+  const [mostrarBotoes, setMostrarBotoes] = React.useState(false);
 
-  const handleMore = () => setQuantity(quantity + 1);
+  const handleMore = () => onQuantityChange(quantity + 1);
 
   const handleFewer = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1);
+      onQuantityChange(quantity - 1);
     } else {
-      setQuantity(0);
+      onQuantityChange(0);
       setMostrarBotoes(false);
     }
   };
@@ -53,11 +52,10 @@ const Preco = ({price}) => {
   return (
     <>
       {mostrarBotoes ? (
-        //componente burro
         <Botoes 
-          quantity={quantity} 
-          onMore={handleMore} 
-          onFewer={handleFewer} 
+          quantity={quantity}
+          onMore={handleMore}
+          onFewer={handleFewer}
         />
       ) : (
         <PaiPrecoStyled>
@@ -66,7 +64,7 @@ const Preco = ({price}) => {
           </DivPrecoStyled>
           <DivMaisStyled onClick={() => { 
               setMostrarBotoes(true); 
-              setQuantity(1); 
+              onQuantityChange(1);
             }}>
             <PmaisStyled>+</PmaisStyled>
           </DivMaisStyled>
@@ -76,24 +74,27 @@ const Preco = ({price}) => {
   );
 }
 
-const DescOferta = ({products})=>{
+
+const DescOferta = ({ products, quantity, onQuantityChange }) => {
   return (
-  <DescOfertaStyled>
-    <DivNomeStyled>
-      <PnomeStyled>{products.name}</PnomeStyled>
-    </DivNomeStyled>
-    <Preco price={products.price}></Preco>
-  </DescOfertaStyled>
-  )
+    <DescOfertaStyled>
+      <DivNomeStyled>
+        <PnomeStyled>{products.name}</PnomeStyled>
+      </DivNomeStyled>
+      <Preco price={products.price} quantity={quantity} onQuantityChange={onQuantityChange}></Preco>
+    </DescOfertaStyled>
+  );
 }
 
-function ProductItem({products}) {
+
+function ProductItem({ products, quantity, onQuantityChange }) {
   return (
     <PaiProdStyled>
       <Oferta products={products}></Oferta>
-      <DescOferta products={products}></DescOferta>
+      <DescOferta products={products} quantity={quantity} onQuantityChange={onQuantityChange}></DescOferta>
     </PaiProdStyled>
   );
 }
+
 
 export default ProductItem;

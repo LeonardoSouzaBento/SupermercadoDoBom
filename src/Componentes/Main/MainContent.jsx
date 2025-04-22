@@ -8,6 +8,7 @@ import CategorySection from './Categorias/CategorySection';
 import PromoSection from './PromoSection';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components';
+import { CartProvider } from '../CartContext';
 
 const Main = styled.main`
   max-width: 1390px;
@@ -41,9 +42,10 @@ function MainContent() {
           <SearchBar />
           <AnnouncementSection />
           <CategorySection />
-          <PromoSection />
-          <Footer />
-
+          <CartProvider>
+            <PromoSection />
+            <Footer />
+          </CartProvider>
         </>
       )}
     </Main>
