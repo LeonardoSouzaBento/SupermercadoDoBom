@@ -12,9 +12,6 @@ import {products} from '../../../data/data';
 const Oferta = ({ products, setMostrarBotoes, mostrarBotoes,onQuantityChange })=>(
   <DivOfertaStyled>
       <PaiImgOfertaStyled>
-        <DivOffStyled>
-          <PoffStyled> -{products.discount}%</PoffStyled>
-        </DivOffStyled>
 
         <ImgOfertaStyed src={products.url}></ImgOfertaStyed>
 
@@ -44,7 +41,7 @@ const Botoes = ({ quantity, onMore, onFewer }) => {
   );
 }
 
-const Preco = ({ price, quantity, onQuantityChange, mostrarBotoes, setMostrarBotoes}) => {
+const Preco = ({ price, discount, quantity, onQuantityChange, mostrarBotoes, setMostrarBotoes}) => {
   const handleMore = () => onQuantityChange(quantity + 1);
 
   const handleFewer = () => {
@@ -67,7 +64,13 @@ const Preco = ({ price, quantity, onQuantityChange, mostrarBotoes, setMostrarBot
       ) : (
         <PaiPrecoStyled>
           <DivPrecoStyled>
+
+            <DivOffStyled>
+               <PoffStyled>-{discount}%</PoffStyled>
+            </DivOffStyled>
+
             <PprecoStyled>R$ {price}</PprecoStyled>
+
           </DivPrecoStyled>
         </PaiPrecoStyled>
       )}
@@ -83,6 +86,7 @@ const DescOferta = ({ products, quantity, onQuantityChange, mostrarBotoes, setMo
         <PnomeStyled>{products.name}</PnomeStyled>
       </DivNomeStyled>
       <Preco 
+      discount={products.discount}
       price={products.price} 
       quantity={quantity} 
       onQuantityChange={onQuantityChange}

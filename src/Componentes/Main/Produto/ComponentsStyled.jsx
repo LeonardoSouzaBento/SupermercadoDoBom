@@ -44,50 +44,68 @@ export const DivOfertaStyled = styled.div`
         height: 100%;
         width: 100%;
         object-fit: contain;
-        padding: 10px;
-        padding-left: 0px;
+        padding: 8px;
         box-sizing: border-box;
     `;
 
-    export const DivOffStyled = styled.div`
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: 7px;
-        left: 10px;
-        height: 20px;
-        background-color: #CDD4AE;
-        border-radius: 10px;
-        font-family: "Poppins",Arial,sans-serif;
-        font-weight: 500;
-    `;
-    export const PoffStyled = styled.p`
-        padding: 0px 10px;
-        font-size: 0.84em;
-        color: #13450a;
-        font-family: "Poppins",Arial,sans-serif;
-        font-weight: 500;
-    `;
-
-    export const DivPesoStyled = styled.div`
+    export const DivMaisStyled = styled.div`
+    width: 37px;
+    height: 37px;
     position: absolute;
+    bottom: 5px;
+    right: 5px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    bottom: 7px;
-    left: 7px;
-    background-color: rgb(229, 229, 229);
-    border-radius: 10px;
-    `;
-    export const PpesoStyled= styled.p`
-    font-size: 0.845em;
-    padding: 1px 11px;
-    letter-spacing: 0.5px;
-    font-family: "Poppins",Arial,sans-serif;
+    justify-content: center;
+    background-color: #C54B4B;
+    border-radius: 20px;
+    cursor: pointer;
+
     `;
 
-//Descrição da Oferta, nome apenas
+    export const PmaisStyled= styled.p`
+    font-size: 1.55em;
+    font-family: "Poppins" ,Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    /* color:rgb(146, 24, 24); */
+    color: white;
+    `;
+
+    //Selecionar a quantidade, + 1 e -
+    export const DivQuantStyled = styled.div`
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    background-color:rgb(197, 75, 75);
+    border-radius: 18px;
+    color: white;
+    cursor: default;
+    user-select: none;
+    `;
+    export const BotoesStyled = styled.div`
+    height: 100%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Open Sans";
+    `;
+    export const PQuantStyled = styled.p`
+    font-size: 1.5em;
+    font-family: "Open Sans";
+    font-weight: 500;
+    `;
+    export const QuantStyled = styled.p`
+    font-size: 1.2em;
+    font-family: "Open Sans";
+    font-weight: 500;
+    `;
+
+//Descrição da Oferta, nome, desconto e peso
 export const DescOfertaStyled = styled.div`
     display: flex;
     flex-direction: column;
@@ -97,6 +115,7 @@ export const DescOfertaStyled = styled.div`
     padding: 7px;
     padding-left: 14px;
     padding-top: 12px;
+    padding-right: 0px;
     box-sizing: border-box;
     gap: 5px;
 `;
@@ -132,7 +151,43 @@ export const DescOfertaStyled = styled.div`
         }
     `;
 
-// Preco com botão +
+    export const DivOffStyled = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    min-width: 50px;
+    background-color: #CDD4AE;
+    border-radius: 10px;
+    font-family: "Poppins",Arial,sans-serif;
+    font-weight: 500;
+    `;
+
+    export const PoffStyled = styled.p`
+    font-size: 0.84em;
+    color: #13450a;
+    font-family: "Poppins",Arial,sans-serif;
+    font-weight: 500;
+    `;
+
+    export const DivPesoStyled = styled.div`
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 7px;
+    left: 7px;
+    background-color: rgb(229, 229, 229);
+    border-radius: 10px;
+    `;
+    export const PpesoStyled= styled.p`
+    font-size: 0.845em;
+    padding: 1px 11px;
+    letter-spacing: 0.5px;
+    font-family: "Poppins",Arial,sans-serif;
+    `;
+
+// Preco
 export const PaiPrecoStyled = styled.div`
     display: flex;
     justify-content: space-between;
@@ -142,7 +197,7 @@ export const PaiPrecoStyled = styled.div`
 `;
 
     export const DivPrecoStyled = styled.div`
-        width: calc(100% - 40px);
+        width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
@@ -167,61 +222,3 @@ export const PaiPrecoStyled = styled.div`
             line-height: 20px;
         }
     `;
-
-    export const DivMaisStyled = styled.div`
-        width: 37px;
-        height: 37px;
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #C54B4B;
-        border-radius: 20px;
-        cursor: pointer;
-        
-    `;
-
-    export const PmaisStyled= styled.p`
-      font-size: 1.55em;
-      font-family: "Poppins" ,Arial, Helvetica, sans-serif;
-      font-weight: 500;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      /* color:rgb(146, 24, 24); */
-      color: white;
-    `;
-
-//Selecionar a quantidade, + 1 e -
-export const DivQuantStyled = styled.div`
-    width: 100%;
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    background-color:rgb(197, 75, 75);
-    border-radius: 18px;
-    color: white;
-    cursor: default;
-    user-select: none;
-`;
-    export const BotoesStyled = styled.div`
-        height: 100%;
-        width: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: "Open Sans";
-    `;
-    export const PQuantStyled = styled.p`
-        font-size: 1.5em;
-        font-family: "Open Sans";
-        font-weight: 500;
-    `;
-    export const QuantStyled = styled.p`
-        font-size: 1.2em;
-        font-family: "Open Sans";
-        font-weight: 500;
-    `;
-
