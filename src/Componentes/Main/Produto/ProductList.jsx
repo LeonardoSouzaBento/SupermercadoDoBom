@@ -7,7 +7,7 @@ import { CartContext } from '../../CartContext';
 
 const DivStyled = styled.div`
     width: 100%;
-    height: 520px;
+    height: 534px;
     padding: 5px;
     padding-bottom: 12px;
     display: flex;
@@ -18,6 +18,16 @@ const DivStyled = styled.div`
 
     @media screen and (min-width: 320px) and (max-width: 375px){
       gap: 8px;
+      height: 596px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px){
+      height: 596px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px){
+       height: 570px;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px){
+       height: 570px;
     }
     @media screen and (min-width: 993px){
       padding-bottom: 5px;
@@ -31,21 +41,6 @@ function ProductList() {
   useEffect(() => {
     setQuantities(products.map(() => 0));
   }, [setQuantities]);
-
-  //solução com subida de props
-  // const [quantities, setQuantities] = React.useState(
-  //   products.map(() => 0)  // começa tudo em 0
-  // );
-
-  // const handleQuantityChange = (index, newQuantity) => {
-  //   setQuantities(prev => {
-  //     const updated = [...prev];
-  //     updated[index] = newQuantity;
-  //     return updated;
-  //   });
-  // };
-
-  // const totalQuantity = quantities.reduce((sum, q) => sum + q, 0);
 
   return (
     <DivStyled>

@@ -24,14 +24,6 @@ export const products = [
       price: '17,00'
     },
     {
-      id: 8,
-      discount: 5,
-      url: 'https://i.pinimg.com/736x/ee/39/1f/ee391f9fb205796c42d0b3c3f73dd449.jpg',
-      weight: '500 g',
-      name: 'Cevada Torrada Moída Kodilar',
-      price: '5,00'
-    },
-    {
       id: 3,
       discount: 10,
       url: 'https://i.pinimg.com/736x/6b/09/35/6b09351ec3178f69e2663b6569a4b69d.jpg',

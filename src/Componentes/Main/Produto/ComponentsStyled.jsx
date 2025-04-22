@@ -5,25 +5,30 @@ export const PaiProdStyled = styled.div`
     display: flex;
     width: 100%;
     min-width: 290px;
-    max-width: 325px;
-    height: 160px;
+    max-width: 330px;
+    height: 165px;
     background-color: white;
     border-radius: 6px;
     border: 1px solid rgb(179, 179, 179);
     cursor: default;
     user-select: none;
+    position: relative;
 
     @media screen and (min-width: 320px) and (max-width: 375px){
        max-width: 290px;
+       height: 180px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
        max-width: 310px;
+       height: 185px;
     }
     @media screen and (min-width: 577px) and (max-width: 768px){
        max-width: 320px;
+       height: 170px;
     }
     @media screen and (min-width: 769px) and (max-width: 992px){
        max-width: 325px;
+       height: 170px;
     }
 `;
 
@@ -48,6 +53,26 @@ export const DivOfertaStyled = styled.div`
         box-sizing: border-box;
     `;
 
+    export const DivResizeStyled = styled.div`
+      height: 35px;
+      width: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F0F0F0;
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      border-radius: 6px 5px 6px 9px;
+      /* border-radius: 6px; */
+    `;
+
+    export const SpanResizeStyled = styled.span`
+        font-weight: 300;
+        font-size: 1.5em;
+        color:rgb(133, 133, 133);
+    `;
+
     export const DivMaisStyled = styled.div`
     width: 37px;
     height: 37px;
@@ -60,7 +85,6 @@ export const DivOfertaStyled = styled.div`
     background-color: #C54B4B;
     border-radius: 20px;
     cursor: pointer;
-
     `;
 
     export const PmaisStyled= styled.p`
@@ -76,16 +100,20 @@ export const DivOfertaStyled = styled.div`
 
     //Selecionar a quantidade, + 1 e -
     export const DivQuantStyled = styled.div`
-    width: 100%;
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    background-color:rgb(197, 75, 75);
-    border-radius: 18px;
-    color: white;
-    cursor: default;
-    user-select: none;
+        width: 145px;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        background-color:rgb(197, 75, 75);
+        border-radius: 18px;
+        color: white;
+        cursor: default;
+        user-select: none;
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
     `;
+
     export const BotoesStyled = styled.div`
     height: 100%;
     width: 40px;
@@ -121,7 +149,7 @@ export const DescOfertaStyled = styled.div`
 `;
 
     export const DivNomeStyled = styled.div`
-        height: calc(100% - 40px);
+        height: calc(100% - 60px);
         display: flex;
         align-items: flex-start;
         width: 100%;
@@ -152,39 +180,37 @@ export const DescOfertaStyled = styled.div`
     `;
 
     export const DivOffStyled = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20px;
-    min-width: 50px;
-    background-color: #CDD4AE;
-    border-radius: 10px;
-    font-family: "Poppins",Arial,sans-serif;
-    font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20px;
+        min-width: 50px;
+        background-color: #CDD4AE;
+        border-radius: 10px;
+        font-family: "Poppins",Arial,sans-serif;
+        font-weight: 500;
     `;
 
     export const PoffStyled = styled.p`
-    font-size: 0.84em;
-    color: #13450a;
-    font-family: "Poppins",Arial,sans-serif;
-    font-weight: 500;
+        font-size: 0.84em;
+        color: #13450a;
+        font-family: "Poppins",Arial,sans-serif;
+        font-weight: 500;
     `;
-
+    //peso
     export const DivPesoStyled = styled.div`
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 7px;
-    left: 7px;
-    background-color: rgb(229, 229, 229);
-    border-radius: 10px;
+        width: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(229, 229, 229);
+        border-radius: 10px;
     `;
     export const PpesoStyled= styled.p`
-    font-size: 0.845em;
-    padding: 1px 11px;
-    letter-spacing: 0.5px;
-    font-family: "Poppins",Arial,sans-serif;
+        font-size: 0.845em;
+        padding: 1px 11px;
+        letter-spacing: 0.5px;
+        font-family: "Poppins",Arial,sans-serif;
     `;
 
 // Preco
@@ -208,7 +234,6 @@ export const PaiPrecoStyled = styled.div`
         font-family: "Roboto Flex",Arial,sans-serif;
         font-weight: 600;
         text-align: right;
-        padding-right: 10px;
         @media screen and (min-width: 320px) and (max-width: 375px){
             font-size: 0.96em;
             letter-spacing: 1px;
