@@ -42,7 +42,7 @@ function MainContent() {
           <SearchBar />
           <AnnouncementSection />
           <CategorySection />
-          <CartProvider>
+          <CartProvider id='cart'>
             <PromoSection />
             <Footer />
           </CartProvider>

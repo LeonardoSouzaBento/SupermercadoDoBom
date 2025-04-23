@@ -47,9 +47,12 @@ function ProductList() {
       {products.map((product, index) => (
         <ProductItem 
           key={product.id} 
+          id={product.id}
+          $price={product.price}
           products={product}
           quantity={quantities[index] || 0}
-          onQuantityChange={(newQuantity) => handleQuantityChange(index, newQuantity)}
+          onQuantityChange={(newQuantity, id, price, isAdding) =>
+            handleQuantityChange(index, newQuantity, id, price, isAdding)}
         />
       ))}
     </DivStyled>

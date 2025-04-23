@@ -10,13 +10,13 @@ import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentsStyled
 import {products} from '../../../data/data';
 
 const Oferta = ({ products, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange })=>{
-  const handleMore = () => onQuantityChange(quantity + 1);
+  const handleMore = () => onQuantityChange(quantity + 1, true);
 
   const handleFewer = () => {
     if (quantity > 1) {
-      onQuantityChange(quantity - 1);
+      onQuantityChange(quantity - 1, false);
     } else {
-      onQuantityChange(0);
+      onQuantityChange(0, false);
       setMostrarBotoes(false);
     }
   };
@@ -29,7 +29,7 @@ const Oferta = ({ products, quantity, setMostrarBotoes, mostrarBotoes, onQuantit
           {!mostrarBotoes && 
             <DivMaisStyled onClick={() => { 
                 setMostrarBotoes(true); 
-                onQuantityChange(1);}}>
+                onQuantityChange(1, true);}}>
             <PMaisStyled>+</PMaisStyled>
             </DivMaisStyled>
           }  
@@ -89,6 +89,10 @@ function ProductItem({ products, quantity, onQuantityChange }) {
 
   const [mostrarBotoes, setMostrarBotoes] = React.useState(false);
 
+  const handleQuantityChange = (newQuantity, isAdding) => {
+    onQuantityChange(newQuantity, products.id, products.price, isAdding);
+  };
+
   return (
     <PaiProdStyled>
       <DescOferta products={products}></DescOferta>
@@ -97,7 +101,8 @@ function ProductItem({ products, quantity, onQuantityChange }) {
       quantity={quantity}
       setMostrarBotoes={setMostrarBotoes} 
       mostrarBotoes={mostrarBotoes}
-      onQuantityChange={onQuantityChange}
+      onQuantityChange={handleQuantityChange}
+
       >
       </Oferta>
 
