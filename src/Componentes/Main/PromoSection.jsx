@@ -10,8 +10,8 @@ const PaiAllProductsStyled = styled.div`
     margin-left: 7px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px){
-    width: calc(100% - 12px);
-    margin-left: 12px;
+    width: calc(100% - 13px);
+    margin-left: 13px;
   }
   @media screen and (min-width: 577px) and (max-width: 1200px){
     width: calc(100% - 20px);

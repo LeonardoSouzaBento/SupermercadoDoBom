@@ -28,7 +28,6 @@ export const Divf = styled.div`
     position: relative;
     gap: 10px;
     box-sizing: border-box;
-    touch-action: pan-x;
 
     Divf:active {
     cursor: grabbing; 

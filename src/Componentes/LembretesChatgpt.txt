@@ -1,0 +1,39 @@
+2. Envolva seu App com esse provider (index.js ou App.js)
+jsx
+Copiar
+Editar
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { SharedStateProvider } from './SharedStateContext';
+
+ReactDOM.render(
+  <SharedStateProvider>
+    <App />
+  </SharedStateProvider>,
+  document.getElementById('root')
+);
+
+3. Use as variáveis nos seus componentes
+jsx
+Copiar
+Editar
+import React, { useContext } from 'react';
+import { SharedStateContext } from './SharedStateContext';
+
+const MeuComponente = () => {
+  const {
+    initialY,
+    speed,
+    arrastando2
+  } = useContext(SharedStateContext);
+
+  const handleSomething = () => {
+    initialY.current = 100;
+    arrastando2.current = true;
+    speed.current = 1.2;
+    console.log('initialY:', initialY.current);
+  };
+
+  return <button onClick={handleSomething}>Clique</button>;
+};

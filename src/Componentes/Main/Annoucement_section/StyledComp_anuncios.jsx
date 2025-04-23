@@ -74,7 +74,6 @@ export const Advertisements= styled.div`
     display: flex;
     flex-flow: row nowrap;
     gap: 12px;
-    touch-action: pan-x;
     /* transform: translateX(-363.5px); */
     transform: translateX(${props=>props.$center}px);
 

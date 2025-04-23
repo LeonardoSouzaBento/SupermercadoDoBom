@@ -49,13 +49,13 @@ export const DivOfertaStyled = styled.div`
         height: 100%;
         width: 100%;
         object-fit: contain;
-        padding: 8px;
+        padding: 5px;
         box-sizing: border-box;
     `;
 
     export const DivResizeStyled = styled.div`
-      height: 35px;
-      width: 35px;
+      height: 30px;
+      width: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -63,13 +63,13 @@ export const DivOfertaStyled = styled.div`
       position: absolute;
       top: 1px;
       right: 1px;
-      border-radius: 6px 5px 6px 9px;
+      border-radius: 6px;
       /* border-radius: 6px; */
     `;
 
     export const SpanResizeStyled = styled.span`
         font-weight: 300;
-        font-size: 1.5em;
+        font-size: 1.4em;
         color:rgb(133, 133, 133);
     `;
 
@@ -187,24 +187,36 @@ export const DescOfertaStyled = styled.div`
             line-height: 20px;
         }
     `;
-
+    //desconto
     export const DivOffStyled = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
         height: 20px;
-        min-width: 50px;
-        background-color: #CDD4AE;
-        border-radius: 5px;
+        min-width: 60px;
+        /* background-color: #CDD4AE; */
+        background-color:rgb(93, 119, 93);
+        border-radius: 10px;
         font-family: "Poppins",Arial,sans-serif;
         font-weight: 500;
     `;
 
     export const PoffStyled = styled.p`
-        font-size: 0.84em;
-        color: #13450a;
+        /* color: #13450a; */
+        color: white;
         font-family: "Poppins",Arial,sans-serif;
-        font-weight: 500;
+        /* font-weight: 500; */
+        font-weight: 400;
+
+        @media screen and (min-width: 320px) and (max-width: 375px){
+          font-size: 0.87em;
+        }
+        @media screen and (min-width: 375px) and (max-width: 576px){
+           font-size: 0.94em;
+        }
+        @media screen and (min-width: 577px){
+            font-size: 0.96em;
+        }
     `;
     //peso
     export const DivPesoStyled = styled.div`
@@ -212,14 +224,24 @@ export const DescOfertaStyled = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgb(229, 229, 229);
+        background-color: rgb(232, 232, 232);
         border-radius: 9px;
-        min-width: 72px;
+        min-width: 52px;
     `;
     export const PpesoStyled= styled.p`
         font-size: 0.845em;
         letter-spacing: 0.5px;
         font-family: "Poppins",Arial,sans-serif;
+        
+        @media screen and (min-width: 320px) and (max-width: 375px){
+          font-size: 0.87em;
+        }
+        @media screen and (min-width: 375px) and (max-width: 576px){
+           font-size: 0.94em;
+        }
+        @media screen and (min-width: 577px){
+            font-size: 0.96em;
+        }
     `;
 
 // Preco

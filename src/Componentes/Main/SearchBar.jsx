@@ -10,9 +10,8 @@ const Container = styled.div`
 
 const Div = styled.div`
   width: 100%;
-  background-color: #d3482c;
-  background-image: linear-gradient(to right,#e34343,#C7381A);
-
+  mix-blend-mode: multiply;
+  /* background-image: linear-gradient(to right,#e34343,#C7381A); */
 `;
 
 const Form = styled.form`
@@ -27,6 +26,7 @@ const Form = styled.form`
   position: sticky;
   top: 0;
   z-index: 3;
+  
 `;
 
 const Input = styled.input`
@@ -38,7 +38,8 @@ const Input = styled.input`
   font-size: 0.85em;
   text-indent: 20px;
   font-size: 0.97em;
-
+  box-shadow: 0px 0px 10px rgb(208, 208, 208);
+  border: 1px solid rgb(192, 192, 192);
   &:focus{
     outline: 1px solid black;
   }
@@ -60,13 +61,13 @@ const DivSpan = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 37px;
+  height: 30px;
+  width:25px;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  width: 50px;
   position: absolute;
-  top: 12px;
-  right: 0;
+  top: 17px;
+  right: 14px;
 `;
 
 const SombraStyled = styled.div`
@@ -85,7 +86,7 @@ function SearchBar() {
         <DivSpan><span className="material-symbols-rounded" style={{color: "rgb(111, 111, 111"}}>search</span></DivSpan>
       </Form>
     </Div>
-    <SombraStyled/>
+    {/* <SombraStyled></SombraStyled> */}
     </Container>
   );
 }

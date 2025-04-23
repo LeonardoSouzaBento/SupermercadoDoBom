@@ -19,6 +19,7 @@ const Main = styled.main`
   padding: 0px;
 `;
 
+
 function MainContent() {
   const [loading, setLoading] = useState(true);
   const [apagar, setApagar] = useState(false);
@@ -46,6 +47,7 @@ function MainContent() {
             <PromoSection />
             <Footer />
           </CartProvider>
+          
         </>
       )}
     </Main>

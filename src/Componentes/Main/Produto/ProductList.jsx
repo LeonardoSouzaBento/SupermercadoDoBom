@@ -7,7 +7,6 @@ import { CartContext } from '../../CartContext';
 
 const DivStyled = styled.div`
     width: 100%;
-    height: 534px;
     padding: 0px;
     padding-bottom: 12px;
     display: flex;
@@ -21,16 +20,18 @@ const DivStyled = styled.div`
       height: 570px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-      height: 610px;
+      height: 593px;
     }
     @media screen and (min-width: 577px) and (max-width: 768px){
-       height: 570px;
+       height: 552px;
     }
     @media screen and (min-width: 769px) and (max-width: 992px){
-       height: 570px;
+       height: 555px;
     }
     @media screen and (min-width: 993px){
       padding-bottom: 5px;
+      height: 540px;
+      gap: 11px;
     }
 `;
 
