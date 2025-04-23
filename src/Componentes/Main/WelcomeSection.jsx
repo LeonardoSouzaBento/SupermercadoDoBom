@@ -66,10 +66,10 @@ function WelcomeSection() {
   return (
     <Div>
       <Divf>
-        <Img src='src/assets/WelcomeSection/logoGenerico_compressed.jpg' alt="logo do mercado em tela cheia: Supermercado União" />
+        <Img src="/logoGenerico_compressed.jpg" alt="logo do mercado em tela cheia: Supermercado União" />
         <P>Seja bem-vindo</P>
         <DivLoading>
-          <Img2 src='src/assets/WelcomeSection/progress_activity_30.svg'/>
+          <Img2 src="/progress_activity_30.svg"/>
         </DivLoading>
       </Divf>
     </Div>
