@@ -23,14 +23,15 @@ const FooterStyled = styled.footer`
     }
 `;
 
-const DivDoFooter = styled.div`
+const DivInicioStyled = styled.div`
     display: flex;
     flex-flow: column nowrap;
     height: 40px;
-    width: 28.5%;
+    min-width: 130px;
+    max-width: 330px;
     justify-content: center;
     align-items: center;
- 
+    flex: 1 0;
 `;
 
 const DivPStyed = styled.div`
@@ -43,7 +44,7 @@ const DivPStyed = styled.div`
     gap: 3px;
 `;
 
-const Pfooter = styled.p`
+const PFooterStyled = styled.p`
     font-family: "Fira Sans", serif;
     font-weight: 400;
     width: max-content;
@@ -55,14 +56,16 @@ const SpanStyled = styled.span`
   font-size: 1.3em;
 `;
 
-const DivClassStyled = styled.div`
-    width: 100%;
-    height: 4px;
-    border-radius: 2px;
-    background-color: white;
-
-    ${props => props.$selected && 
-    `background-color: red;`}
+const CartDescStyled = styled(DivInicioStyled)`
+  background-color: #C54B4B;
+  color: white;
+  border-radius: 7px;
+`;
+const PCartStyled = styled.p`
+ font-family: "Open Sans", Arial, Helvetica, sans-serif;
+`;
+const SpanCartStyled = styled.span`
+  
 `;
 
 function Footer() {
@@ -71,29 +74,27 @@ function Footer() {
 
   return (
     <FooterStyled>
-      <DivDoFooter>
-        <DivPStyed>
+      <DivInicioStyled>
+       <DivPStyed>
           <SpanStyled className="material-symbols-rounded">home</SpanStyled>
-          <Pfooter>Inicio</Pfooter>
+          <PFooterStyled>Inicio</PFooterStyled>
         </DivPStyed>
-        <DivClassStyled $selected={true}></DivClassStyled>
-      </DivDoFooter>
+     </DivInicioStyled>
 
-      <DivDoFooter>
+      {totalQuantity == 0 && 
         <DivPStyed>
           <SpanStyled className="material-symbols-rounded"> shopping_cart</SpanStyled>
-          <Pfooter>Carrinho{totalQuantity}</Pfooter>
+          <PFooterStyled>Meus Pedidos</PFooterStyled>
         </DivPStyed>
-        <DivClassStyled></DivClassStyled>
-      </DivDoFooter>
+      }
 
-      {/* <DivDoFooter>
-        <DivPStyed>
-          <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
-          <Pfooter>Mais</Pfooter>
-        </DivPStyed>
-        <DivClassStyled></DivClassStyled>
-      </DivDoFooter> */}
+      {totalQuantity > 0 && 
+        <CartDescStyled>
+          <SpanCartStyled></SpanCartStyled>
+          <PCartStyled></PCartStyled>
+          <PCartStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PCartStyled>
+        </CartDescStyled>
+      }
     </FooterStyled>
   );
 }

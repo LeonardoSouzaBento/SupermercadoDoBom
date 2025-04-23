@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Div = styled.div`
-  width:calc(100% - 30px);
+  width:100%;
   position: relative;
   overflow-x: hidden;
   margin: auto;
   padding-bottom: 44px;
-  touch-action: pan-x;
   border-radius: 5px;
 
   //celulares
@@ -76,6 +75,8 @@ export const Advertisements= styled.div`
     flex-flow: row nowrap;
     gap: 12px;
     touch-action: pan-x;
+    /* transform: translateX(-363.5px); */
+    transform: translateX(${props=>props.$center}px);
 
     @media screen and (min-width: 577px) and (max-width:768px){
     gap: 15px;
@@ -88,8 +89,15 @@ export const Advertisements= styled.div`
 export const Fundo = styled.div`
     position: relative;
     height: 170px;
-    min-width: 340px;
+    min-width: 330px;
 
+    @media screen and (min-width: 320px) and (max-width: 374px){
+      min-width: 265px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px){
+      min-width: 320px;
+    }
+    
     &::before {
     content: '';
     position: absolute;

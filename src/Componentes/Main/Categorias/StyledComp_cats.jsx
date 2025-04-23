@@ -4,7 +4,6 @@ export const Div = styled.div`
     width: calc(100% - 20px);
     overflow-x: hidden;
     margin-left: 20px;
-    touch-action: pan-x;
     position: relative;
 
   @media screen and (max-width: 993px){

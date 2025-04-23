@@ -15,7 +15,7 @@ export const PaiProdStyled = styled.div`
     position: relative;
 
     @media screen and (min-width: 320px) and (max-width: 375px){
-       max-width: 290px;
+       max-width: 270px;
        height: 180px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
@@ -83,31 +83,39 @@ export const DivOfertaStyled = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #C54B4B;
-    border-radius: 20px;
+    border-radius: 19px;
     cursor: pointer;
+
+    @media screen and (min-width: 769px) and (max-width: 992px){
+     right: 2px;
+    }
+    @media screen and (min-width: 993px){
+     right: 1px;
+     bottom: 6px;
+    }
     `;
 
-    export const PmaisStyled= styled.p`
-    font-size: 1.55em;
-    font-family: "Poppins" ,Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    color: white;
-    cursor: pointer;
-    user-select: none;
-    /* color:rgb(146, 24, 24); */
-    color: white;
+    export const PMaisStyled= styled.p`
+        font-size: 1.5em;
+        font-family: "Open Sans" ,Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        color: white;
+        cursor: pointer;
+        user-select: none;
+        color: white;
+        padding-bottom: 2px;
     `;
 
     //Selecionar a quantidade, + 1 e -
     export const DivQuantStyled = styled.div`
         width: 145px;
-        height: 40px;
+        height: 37px;
         display: flex;
         justify-content: space-between;
         background-color:rgb(197, 75, 75);
-        border-radius: 18px;
+        border-radius: 19px;
         color: white;
-        cursor: default;
+        cursor: pointer;
         user-select: none;
         position: absolute;
         bottom: 5px;
@@ -115,22 +123,23 @@ export const DivOfertaStyled = styled.div`
     `;
 
     export const BotoesStyled = styled.div`
-    height: 100%;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Open Sans";
+        height: 100%;
+        width: 37px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    `;
+    export const PMenosStyled = styled(PMaisStyled)`
+       padding-bottom: 7px;
+       font-size: 1.8em;
+       font-weight: 400;
     `;
     export const PQuantStyled = styled.p`
-    font-size: 1.5em;
-    font-family: "Open Sans";
-    font-weight: 500;
-    `;
-    export const QuantStyled = styled.p`
-    font-size: 1.2em;
-    font-family: "Open Sans";
-    font-weight: 500;
+        font-size: 1.2em;
+        font-family: "Open Sans", Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        padding-bottom: 2px;
     `;
 
 //Descrição da Oferta, nome, desconto e peso
@@ -151,7 +160,7 @@ export const DescOfertaStyled = styled.div`
     export const DivNomeStyled = styled.div`
         height: calc(100% - 60px);
         display: flex;
-        align-items: flex-start;
+        flex-direction: column;
         width: 100%;
         overflow: hidden;
         box-sizing: border-box;
@@ -163,7 +172,7 @@ export const DescOfertaStyled = styled.div`
         font-weight: 500;
         line-height: 18px;
         font-family: "Poppins", Arial, sans-serif;
-
+        margin: auto;
         @media screen and (min-width: 320px) and (max-width: 375px){
             font-size: 0.8em;
             letter-spacing: 1px;
@@ -186,7 +195,7 @@ export const DescOfertaStyled = styled.div`
         height: 20px;
         min-width: 50px;
         background-color: #CDD4AE;
-        border-radius: 10px;
+        border-radius: 5px;
         font-family: "Poppins",Arial,sans-serif;
         font-weight: 500;
     `;
@@ -204,11 +213,11 @@ export const DescOfertaStyled = styled.div`
         justify-content: center;
         align-items: center;
         background-color: rgb(229, 229, 229);
-        border-radius: 10px;
+        border-radius: 9px;
+        min-width: 72px;
     `;
     export const PpesoStyled= styled.p`
         font-size: 0.845em;
-        padding: 1px 11px;
         letter-spacing: 0.5px;
         font-family: "Poppins",Arial,sans-serif;
     `;

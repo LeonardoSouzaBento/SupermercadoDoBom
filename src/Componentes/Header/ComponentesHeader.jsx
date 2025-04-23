@@ -39,7 +39,7 @@ const PLogoStyled = styled.p`
 export const Divlogo = () => {
     return (
     <Div0Styled>
-        <ImgLogoStyled src="src/assets/WelcomeSection/logoGenerico_compressed.jpg" alt=""></ImgLogoStyled>
+        <ImgLogoStyled src="/logoGenerico_compressed.jpg" alt=""></ImgLogoStyled>
         <div>
             <PLogoStyled><strong>SUPERMERCADO UNIÃO</strong><br></br>
                 Seja bem vindo.
@@ -109,7 +109,7 @@ export const UserEnotif= () => {
             <span className="material-symbols-rounded" style={iconStyle}>menu</span>
             <p style={pstyle}>Mais opções</p>
         </DivStyled>
-        <ImgPersonStyled src='src/assets/person.png'></ImgPersonStyled>
+        <ImgPersonStyled src='/person.png'></ImgPersonStyled>
     </UserMaisStyled>
     )
 }
