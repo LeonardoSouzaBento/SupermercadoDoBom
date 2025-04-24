@@ -3,6 +3,7 @@ import styled from "styled-components";
 //Container da imagem e div pequenas
 export const PaiProdStyled = styled.div`
     display: flex;
+    justify-content: center;
     width: 100%;
     min-width: 290px;
     max-width: 330px;
@@ -14,7 +15,8 @@ export const PaiProdStyled = styled.div`
     cursor: default;
     user-select: none;
     position: relative;
-
+    box-sizing: border-box;
+    padding-right: 5px;
     @media screen and (min-width: 320px) and (max-width: 375px){
        max-width: 270px;
        height: 180px;
@@ -36,7 +38,7 @@ export const PaiProdStyled = styled.div`
 export const DivOfertaStyled = styled.div`
     height: 100%;
     width: 150px;
-    padding: 5px;
+    padding: 4px;
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
@@ -79,20 +81,13 @@ export const DivOfertaStyled = styled.div`
         height: 32px;
         position: absolute;
         bottom: 5px;
-        right: 5px;
+        right: 0px;
         display: flex;
         align-items: center;
         justify-content: center;
         border: 4px solid #C54B4B;
         border-radius: 50%;
         cursor: pointer;
-        @media screen and (min-width: 769px) and (max-width: 992px){
-        right: 2px;
-        }
-        @media screen and (min-width: 993px){
-        right: 1px;
-        bottom: 6px;
-        }
     `;
 
     export const PMaisStyled= styled.p`
@@ -106,11 +101,15 @@ export const DivOfertaStyled = styled.div`
         padding-bottom: 3px;
     `;
 
+    export const PMais2Styled = styled(PMaisStyled)`
+       color: #C54B4B;
+    `;
+
     //Selecionar a quantidade, + 1 e -
     export const DivQuantStyled = styled.div`
-        width: 130px;
+        width: 128px;
         height: 32px;
-        border: 4px solid #C54B4B;
+        border: 4px solid #C54B4B;;
         display: flex;
         justify-content: space-between;
         border-radius: 20px;
@@ -118,8 +117,8 @@ export const DivOfertaStyled = styled.div`
         user-select: none;
         position: absolute;
         bottom: 5px;
-        right: 5px;
-        background-color: rgb(255, 255, 255);
+        right: 0px;
+        background-color: rgba(255, 255, 255, 0.9);
     `;
 
     export const BotoesStyled = styled.div`
@@ -130,14 +129,14 @@ export const DivOfertaStyled = styled.div`
         justify-content: center;
         font-family: "Open Sans", Arial, Helvetica, sans-serif;
     `;
-    export const PMenosStyled = styled(PMaisStyled)`
+    export const PMenosStyled = styled(PMais2Styled)`
        padding-bottom: 7px;
        font-size: 1.9em;
        font-weight: 500;
     `;
     export const PQuantStyled = styled.p`
-        font-size: 1.2em;
-        font-family: "Open Sans", Arial, Helvetica, sans-serif;
+        font-size: 1.25em;
+        font-family: "Lato", Arial, Helvetica, sans-serif;
         font-weight: 700;
         padding-bottom: 2px;
         color: #C54B4B;
@@ -149,7 +148,7 @@ export const DescOfertaStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    width: calc(100% - 150px);
+    width: 52%;
     padding: 2px;
     padding-left: 14px;
     padding-right: 0px;
@@ -170,7 +169,7 @@ export const DescOfertaStyled = styled.div`
         letter-spacing: 1.1px;
         font-weight: 500;
         line-height: 18px;
-        font-family: "Poppins", Arial, sans-serif;
+        font-family: "Open Sans", Arial, sans-serif;
         margin: auto;
         @media screen and (min-width: 320px) and (max-width: 375px){
             font-size: 0.8em;
@@ -198,13 +197,13 @@ export const DescOfertaStyled = styled.div`
         padding: 0px 6px;
         background-color: #CDD4AE;
         /* background-color:rgb(93, 119, 93); */
-        border-radius: 7px;
+        border-radius: 10px 10px 0px 10px;
     `;
 
     export const PoffStyled = styled.p`
         color: #13450a;
         /* color: white; */
-        font-family: "Poppins",Arial,sans-serif;
+        font-family: "Lato",Arial,sans-serif;
         font-weight: 500;
         /* font-weight: 400; */
 
@@ -230,7 +229,7 @@ export const DescOfertaStyled = styled.div`
     export const PpesoStyled= styled.p`
         font-size: 0.845em;
         letter-spacing: 0.5px;
-        font-family: "Poppins",Arial,sans-serif;
+        font-family: "Roboto Flex", Arial,sans-serif;
         background-color: rgb(232, 232, 232);
         padding: 0px 15px;
         border-radius: 9px;

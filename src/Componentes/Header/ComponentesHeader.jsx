@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Div0Styled = styled.div`
+const DivLogoStyled = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
@@ -81,29 +81,24 @@ const PBemVindoStyled = styled(PNomeSupStyled)`
 
 export const Divlogo = () => {
     return (
-    <Div0Styled>
+    <DivLogoStyled>
         <ImgLogoStyled src="/logoGenerico_compressed.jpg" alt=""></ImgLogoStyled>
         <DivPsStyled>
             <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
             <PBemVindoStyled> Seja bem vindo.</PBemVindoStyled>
         </DivPsStyled>
-    </Div0Styled>
+    </DivLogoStyled>
     )
 }
 
-const UserMaisStyled= styled.div`
-    height: 100%;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-`;
 const DivMoreOptionsStyled = styled.div`
-    background-color: #d25252;
-    box-shadow: 0px 0px 4px rgb(159, 62, 62);
-    color: white;
+    width: max-content;
+    height: 40px;
     display: flex;
     align-items: center;
-    height: 40px;
+    background-color: #d25252;
+    box-shadow: 0px 0px 5px rgb(128, 128, 128);
+    color: white;
     @media (max-width: 992px){
         width: 40px;
         display: flex;
@@ -116,16 +111,10 @@ const DivMoreOptionsStyled = styled.div`
     }
     @media (min-width: 993px){
         gap: 8px;
-        border-radius: 6px;
+        border-radius: 9px;
         padding: 7px 15px;
         box-sizing: border-box;
         transition: all 100ms ease;
-    }
-`;
-
-const DivMyCartStyled = styled(DivMoreOptionsStyled)`
-     @media (max-width: 992px){
-       display: none;
     }
 `;
 
@@ -144,18 +133,11 @@ const SpanStyled = styled.span`
 `;
 
 //div das opcoes
-export const UserEnotif= () => {
+export const MoreOptions= () => {
     return (
-    <UserMaisStyled>
         <DivMoreOptionsStyled>
             <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
             <PStyled>Mais opções</PStyled>
         </DivMoreOptionsStyled>
-
-        <DivMyCartStyled>
-            <SpanStyled className="material-symbols-rounded">shopping_cart</SpanStyled>
-            <PStyled>Meu carrinho</PStyled>
-        </DivMyCartStyled>
-    </UserMaisStyled>
     )
 }

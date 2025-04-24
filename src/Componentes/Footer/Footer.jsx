@@ -6,38 +6,37 @@ import styled from "styled-components";
 const FooterStyled = styled.footer`
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    background-color:rgb(255, 255, 255);
-    height: 60px;
-    width: calc(100% - 20px);
+    height: 48px;
+    width: 100%;
+    background-color: transparent;
     margin: auto;
     position: sticky;
     bottom: 12px;
     z-index: 4;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.41);
-    box-sizing: border-box;
     border-radius: 5px;
-    @media screen and (min-width: 993px){
-     display: none;
-    }
 `;
 
 const CartDescStyled = styled.div`
   display: flex;
-  width: 100%;
+  width: 250px;
+  max-width: 340px;
   height: 100%;
   justify-content: center;
   align-items: center;
   flex: 1 0;
-  background-color:rgb(228, 228, 228);
-  border-radius: 7px;
+  /* background-color:rgba(120, 46, 46, 0.91); */
+  background-color:rgb(177, 28, 28); 
+  border-radius: 24px 0px 0px 24px;
   justify-content: space-between;
   padding-right: 12px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.41);
 `;
 const PCartStyled = styled.p`
- font-family: "Open Sans", Arial, Helvetica, sans-serif;
+ font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
  padding-bottom: 3px;
+ color: white;
 `;
 
 const DivSpanCartStyled = styled.div`
@@ -50,6 +49,7 @@ const DivSpanCartStyled = styled.div`
 `;
 
 const SpanCartStyled = styled.span`
+   color: white;
    font-variation-settings:
     'FILL' 0,
     'wght' 400,
@@ -68,7 +68,10 @@ function Footer() {
     {totalQuantity > 0 && 
       <CartDescStyled>
         <DivSpanCartStyled>
-          <SpanCartStyled className='material-symbols-rounded'>shopping_basket</SpanCartStyled>
+          <SpanCartStyled className='material-symbols-rounded'>cancel</SpanCartStyled>
+        </DivSpanCartStyled>
+        <DivSpanCartStyled>
+          <SpanCartStyled className='material-symbols-rounded'>shopping_cart</SpanCartStyled>
         </DivSpanCartStyled>
         <PCartStyled>R$ {totalValueFormatted}</PCartStyled>
         <PCartStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PCartStyled>

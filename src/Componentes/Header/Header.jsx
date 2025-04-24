@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Divlogo, UserEnotif } from './ComponentesHeader';
+import { Divlogo, MoreOptions} from './ComponentesHeader';
 
-export const Sheader = styled.header `
+export const HeaderStyled = styled.header `
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,15 +12,12 @@ export const Sheader = styled.header `
     box-sizing: border-box;
     margin: auto;
     height: 120px;
-    /* background-color: #d3482c; */
-    /* background-image: linear-gradient(to right, #e34343, #C7381A); */
 `;
-const Cabecalho= styled.div`
+const NomeELogoStyled= styled.div`
     width: 90%;
-    max-width: 1000px;
+    max-width: 1150px;
     margin-top: 0px;
-    padding: 5px 0px;
-    height: 60px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,12 +26,12 @@ const Cabecalho= styled.div`
 `;
 const Header = () => {
   return (
-    <Sheader>
-        <Cabecalho>
-            <Divlogo></Divlogo>
-            <UserEnotif></UserEnotif>
-        </Cabecalho>
-    </Sheader>
+    <HeaderStyled>
+        <NomeELogoStyled>
+          <Divlogo></Divlogo>
+          <MoreOptions></MoreOptions>
+        </NomeELogoStyled>
+    </HeaderStyled>
   )
 }
 

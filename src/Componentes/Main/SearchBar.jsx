@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const ContainerStyled = styled.div`
   width: 100%;
   position: sticky;
   top: 0;
@@ -11,31 +11,20 @@ const Container = styled.div`
   }
 `;
 
-const Div = styled.div`
-  width: 100%;
-  max-width: 1000px;
-  margin: auto;
-  mix-blend-mode: multiply;
-  /* background-image: linear-gradient(to right,#e34343,#C7381A); */
-`;
-
-const Form = styled.form`
+const FormStyled = styled.form`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   width: 90%;
+  max-width: 1180px;
   margin: auto;
   height: 40px;
   padding-bottom: 14px;
   padding-top: 12px;
   position: relative;
-
-  @media screen and (min-width: 993px){
-   width: 100%;
-  }
 `;
 
-const Input = styled.input`
+const InputStyled = styled.input`
   height: 100%;
   width: 100%;
   border-radius: 20px;
@@ -63,7 +52,7 @@ const Input = styled.input`
   }
 `;
 
-const DivSpan = styled.div`
+const DivSpanStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,15 +74,12 @@ const SombraStyled = styled.div`
 
 function SearchBar() {
   return (
-    <Container>
-    <Div id="div_search">
-      <Form action="/search" method="post" id="for_search">
-        <Input type="search" id="search" name="query" placeholder="O que você quer? Digite aqui"></Input>
-        <DivSpan><span className="material-symbols-rounded" style={{color: "rgb(111, 111, 111"}}>search</span></DivSpan>
-      </Form>
-    </Div>
-    {/* <SombraStyled></SombraStyled> */}
-    </Container>
+    <ContainerStyled>
+        <FormStyled action="/search" method="post" id="for_search">
+          <InputStyled type="search" id="search" name="query" placeholder="O que você quer? Digite aqui"></InputStyled>
+          <DivSpanStyled><span className="material-symbols-rounded" style={{color: "rgb(111, 111, 111"}}>search</span></DivSpanStyled>
+        </FormStyled>
+    </ContainerStyled>
   );
 }
 

@@ -4,7 +4,7 @@ import { PaiProdStyled, PpesoStyled, PoffStyled } from './ComponentesProdutos';
 import {DivOfertaStyled, PaiImgOfertaStyled, ImgOfertaStyed, DivPesoStyled, DivOffStyled, DivResizeStyled, SpanResizeStyled} from './ComponentesProdutos';
 //botao de preco e botao de quantidade
 import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, DivMaisStyled} from './ComponentesProdutos';
-import { DivQuantStyled,BotoesStyled, PQuantStyled, PMenosStyled, PMaisStyled} from './ComponentesProdutos';
+import { DivQuantStyled,BotoesStyled, PQuantStyled, PMenosStyled, PMaisStyled, PMais2Styled} from './ComponentesProdutos';
 //nome do produto
 import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentesProdutos';
 import {products} from '../../../data/data';
@@ -51,7 +51,7 @@ const Botoes = ({ quantity, onMore, onFewer }) => {
     <DivQuantStyled>
       <BotoesStyled onClick={onFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
       <BotoesStyled><PQuantStyled>{quantity}</PQuantStyled></BotoesStyled>
-      <BotoesStyled onClick={onMore}><PMaisStyled>+</PMaisStyled></BotoesStyled>
+      <BotoesStyled onClick={onMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
     </DivQuantStyled>
   );
 }
