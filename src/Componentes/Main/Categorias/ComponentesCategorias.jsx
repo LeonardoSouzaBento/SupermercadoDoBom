@@ -35,7 +35,7 @@ export const Divf = styled.div`
     justify-content: space-between;
     flex-flow: row nowrap;
     padding: 5px;
-    padding-bottom: 20px;
+    
     position: relative;
     gap: 10px;
     box-sizing: border-box;
@@ -45,16 +45,17 @@ export const Divf = styled.div`
     }
 
     @media screen and (min-width: 320px) and (max-width: 375px){
-     gap: 14px;
+     gap: 15px;
+     padding-bottom: 20px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-      
+      padding-bottom: 24px;
     }
     @media screen and (min-width: 577px) and (max-width: 768px){
-     
+      padding-bottom: 25px;
     }
     @media screen and (min-width: 768px){
-     
+     padding-bottom: 26px;
     }
 `;
 
@@ -109,15 +110,17 @@ export const ImgStyled = styled.img`
   filter: brightness(0.84) contrast(2) brightness(2) saturate(0.8);
   transition: all 0.32s ease;
   padding: 4px;
-  box-shadow: 0px 0px 3px rgb(112, 112, 112);
+  box-shadow: 0px 0px 2px rgb(91, 91, 91);
 
   @media screen and (min-width: 320px) and (max-width: 375px){
-    width: 40px;
-    height: 40px;
+    width: 39px;
+    height: 39px;
+    padding: 3px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px){
     width: 41px;
     height: 41px;
+    padding: 3px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px){
     width: 42px;
@@ -136,9 +139,10 @@ export const DivNameSection = styled.div`
 `;
 
 export const PStyled = styled.p`
-  font-family: "Poppins",Arial,sans-serif;
+  font-family: "Quicksand",Arial,sans-serif;
+  font-weight: 500;
   text-align: center;
-  font-size: 0.85em;
+  font-size: 0.92em;
   letter-spacing: 0.5px;
   margin: 0;
 `;

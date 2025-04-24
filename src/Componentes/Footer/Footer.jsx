@@ -26,12 +26,11 @@ const CartDescStyled = styled.div`
   justify-content: center;
   align-items: center;
   flex: 1 0;
-  /* background-color:rgba(120, 46, 46, 0.91); */
-  background-color:rgb(177, 28, 28); 
+  background-color:rgb(227, 65, 70);
   border-radius: 24px 0px 0px 24px;
   justify-content: space-between;
   padding-right: 12px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.41);
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.24);
 `;
 const PCartStyled = styled.p`
  font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
@@ -39,7 +38,7 @@ const PCartStyled = styled.p`
  color: white;
 `;
 
-const DivSpanCartStyled = styled.div`
+const DivSpanStyled = styled.div`
   border-radius: 50%;
   height: 45px;
   width: 45px;
@@ -48,13 +47,27 @@ const DivSpanCartStyled = styled.div`
   justify-content: center;
 `;
 
+const DivSpan1Styled= styled(DivSpanStyled)`
+  height: 42px;
+  width: 42px;
+  border: 2px solid red;
+  /* background-color: rgb(181, 52, 56); */
+  background-color: rgb(255, 255, 255);
+  margin-left: 2px;
+`;
+
 const SpanCartStyled = styled.span`
    color: white;
-   font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
+`;
+
+const SpanCart1Styled = styled(SpanCartStyled)`
+  color: rgb(189, 56, 61);
+  font-size: 1.9em;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
 `;
 
 function Footer() {
@@ -67,14 +80,17 @@ function Footer() {
   <FooterStyled>
     {totalQuantity > 0 && 
       <CartDescStyled>
-        <DivSpanCartStyled>
-          <SpanCartStyled className='material-symbols-rounded'>cancel</SpanCartStyled>
-        </DivSpanCartStyled>
-        <DivSpanCartStyled>
+        <DivSpan1Styled> {/*Essa div tem de ter a função*/}
+          <SpanCart1Styled className='material-symbols-rounded'>cancel</SpanCart1Styled>
+        </DivSpan1Styled>
+
+        <DivSpanStyled>
           <SpanCartStyled className='material-symbols-rounded'>shopping_cart</SpanCartStyled>
-        </DivSpanCartStyled>
+        </DivSpanStyled>
+
         <PCartStyled>R$ {totalValueFormatted}</PCartStyled>
         <PCartStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PCartStyled>
+
       </CartDescStyled>
     }
   </FooterStyled>

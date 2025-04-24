@@ -1,24 +1,173 @@
 import styled from "styled-components";
+
+//Descrição da Oferta, nome, desconto e peso
+export const DescOfertaStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 52%;
+    padding: 2px;
+    padding-left: 14px;
+    padding-right: 0px;
+    box-sizing: border-box;
+`;
+
+    export const DivNomeStyled = styled.div`
+        height: calc(100% - 80px);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+    `;
+    export const PnomeStyled = styled.p`
+        text-transform: uppercase;
+        font-family: "Lato", Arial, sans-serif;
+        margin: auto;
+        padding-bottom: 5px;
+
+        @media screen and (min-width: 320px) and (max-width: 375px){
+            font-size: 0.83em;
+            line-height: 18px;
+            letter-spacing: 1.01px;
+            font-weight: 500;
+        }
+        @media screen and (min-width: 375px) and (max-width: 576px){
+            font-size: 0.88em;
+            line-height: 19px;
+            letter-spacing: 1.05px;
+        }
+        @media screen and (min-width: 577px) and (max-width: 768px){
+            font-size: 0.89em;
+            line-height: 20.4px;
+            letter-spacing: 1.06px;
+        }
+        @media screen and (min-width: 769px) and (max-width: 992px){
+            font-size: 0.91em;
+            line-height: 20.4px;
+            letter-spacing: 1.06px;
+        }
+        @media screen and (min-width: 993px) {
+            font-size: 0.92em;
+            line-height: 20.4px;
+            letter-spacing: 1.06px;
+        }
+    `;
+    //desconto
+    export const DivOffStyled = styled.div`
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20px;
+        padding: 0px 6px;
+        background-color: #CDD4AE;
+        /* background-color:rgb(93, 119, 93); */
+        border-radius: 10px 10px 0px 10px;
+    `;
+
+    export const PoffStyled = styled.p`
+        color: #13450a;
+        /* color: white; */
+        font-family: "Lato",Arial,sans-serif;
+        font-weight: 500;
+        /* font-weight: 400; */
+
+        @media screen and (min-width: 320px) and (max-width: 375px){
+          font-size: 0.87em;
+        }
+        @media screen and (min-width: 375px) and (max-width: 576px){
+           font-size: 0.94em;
+        }
+        @media screen and (min-width: 577px){
+            font-size: 0.96em;
+        }
+    `;
+    //peso
+    export const DivPesoStyled = styled.div`
+        height: 38px;
+        width: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 52px;
+    `;
+    export const PpesoStyled= styled.p`
+        font-size: 0.845em;
+        letter-spacing: 0.5px;
+        font-family: "Roboto Flex", Arial,sans-serif;
+        background-color: rgb(232, 232, 232);
+        padding: 3px 15px;
+        padding-bottom: 4px;
+        border-radius: 9px;
+        @media screen and (min-width: 320px) and (max-width: 375px){
+          font-size: 0.87em;
+        }
+        @media screen and (min-width: 375px) and (max-width: 576px){
+           font-size: 0.94em;
+        }
+        @media screen and (min-width: 577px){
+            font-size: 0.96em;
+        }
+    `;
+
+    // Preco
+    export const PaiPrecoStyled = styled.div`
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        min-height: 40px;
+    `;
+
+    export const DivPrecoStyled = styled.div`
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    `;
+
+    export const PprecoStyled = styled.p`
+        width: 100%;
+        font-family: "Roboto Flex",Arial,sans-serif;
+        font-weight: 600;
+        text-indent: 4px;
+        @media screen and (min-width: 320px) and (max-width: 375px){
+            font-size: 0.96em;
+            letter-spacing: 1px;
+        }
+        @media screen and (min-width: 375px) and (max-width: 576px){
+            font-size: 1.03em;
+            line-height: 18.5px;
+        }
+        @media screen and (min-width: 577px){
+            font-size: 1.035em;
+            line-height: 20px;
+        }
+    `;
+
 // Oferta
 //Container da imagem e div pequenas
 export const PaiProdStyled = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-    min-width: 290px;
+    min-width: 265px;
     max-width: 330px;
     height: 165px;
     background-color: white;
     border-radius: 6px;
     border: 1px solid rgb(145, 145, 145);
-    /* border: 1px solid rgb(176, 103, 85); */
     cursor: default;
     user-select: none;
     position: relative;
     box-sizing: border-box;
     padding-right: 5px;
     @media screen and (min-width: 320px) and (max-width: 375px){
-       max-width: 270px;
+       max-width: 265px;
        height: 180px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
@@ -85,19 +234,20 @@ export const DivOfertaStyled = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 4px solid #C54B4B;
+        /* border: 4px solid #C54B4B; */
+        border: 4px solid rgb(182, 112, 112);
         border-radius: 50%;
         cursor: pointer;
     `;
 
     export const PMaisStyled= styled.p`
         font-size: 1.6em;
-        font-family: "Open Sans" ,Arial, Helvetica, sans-serif;
+        font-family: "Quicksand" ,Arial, Helvetica, sans-serif;
         font-weight: 700;
         color: white;
         cursor: pointer;
         user-select: none;
-        color: #C54B4B;
+        color:rgb(182, 68, 68);
         padding-bottom: 3px;
     `;
 
@@ -140,141 +290,4 @@ export const DivOfertaStyled = styled.div`
         font-weight: 700;
         padding-bottom: 2px;
         color: #C54B4B;
-    `;
-
-//Descrição da Oferta, nome, desconto e peso
-export const DescOfertaStyled = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    width: 52%;
-    padding: 2px;
-    padding-left: 14px;
-    padding-right: 0px;
-    box-sizing: border-box;
-`;
-
-    export const DivNomeStyled = styled.div`
-        height: calc(100% - 80px);
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        overflow: hidden;
-        box-sizing: border-box;
-    `;
-    export const PnomeStyled = styled.p`
-        text-transform: uppercase;
-        font-size: 0.8em;
-        letter-spacing: 1.1px;
-        font-weight: 500;
-        line-height: 18px;
-        font-family: "Open Sans", Arial, sans-serif;
-        margin: auto;
-        @media screen and (min-width: 320px) and (max-width: 375px){
-            font-size: 0.8em;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-        @media screen and (min-width: 375px) and (max-width: 576px){
-            font-size: 0.85em;
-            line-height: 18.5px;
-        }
-        @media screen and (min-width: 577px){
-            font-size: 0.9em;
-            line-height: 20px;
-        }
-    `;
-    //desconto
-    export const DivOffStyled = styled.div`
-        position: absolute;
-        top: 5px;
-        right: 0px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 20px;
-        padding: 0px 6px;
-        background-color: #CDD4AE;
-        /* background-color:rgb(93, 119, 93); */
-        border-radius: 10px 10px 0px 10px;
-    `;
-
-    export const PoffStyled = styled.p`
-        color: #13450a;
-        /* color: white; */
-        font-family: "Lato",Arial,sans-serif;
-        font-weight: 500;
-        /* font-weight: 400; */
-
-        @media screen and (min-width: 320px) and (max-width: 375px){
-          font-size: 0.87em;
-        }
-        @media screen and (min-width: 375px) and (max-width: 576px){
-           font-size: 0.94em;
-        }
-        @media screen and (min-width: 577px){
-            font-size: 0.96em;
-        }
-    `;
-    //peso
-    export const DivPesoStyled = styled.div`
-        height: 38px;
-        width: max-content;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 52px;
-    `;
-    export const PpesoStyled= styled.p`
-        font-size: 0.845em;
-        letter-spacing: 0.5px;
-        font-family: "Roboto Flex", Arial,sans-serif;
-        background-color: rgb(232, 232, 232);
-        padding: 0px 15px;
-        border-radius: 9px;
-        @media screen and (min-width: 320px) and (max-width: 375px){
-          font-size: 0.87em;
-        }
-        @media screen and (min-width: 375px) and (max-width: 576px){
-           font-size: 0.94em;
-        }
-        @media screen and (min-width: 577px){
-            font-size: 0.96em;
-        }
-    `;
-
-// Preco
-export const PaiPrecoStyled = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-height: 40px;
-`;
-
-    export const DivPrecoStyled = styled.div`
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-    `;
-
-    export const PprecoStyled = styled.p`
-        width: 100%;
-        font-family: "Roboto Flex",Arial,sans-serif;
-        font-weight: 600;
-        text-indent: 4px;
-        @media screen and (min-width: 320px) and (max-width: 375px){
-            font-size: 0.96em;
-            letter-spacing: 1px;
-        }
-        @media screen and (min-width: 375px) and (max-width: 576px){
-            font-size: 1.03em;
-            line-height: 18.5px;
-        }
-        @media screen and (min-width: 577px){
-            font-size: 1.035em;
-            line-height: 20px;
-        }
     `;

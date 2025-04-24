@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from '../Header/Header';
-import WelcomeSection from './WelcomeSection';
 import HelpSection from './HelpSection';
 import SearchBar from './SearchBar';
 import AnnouncementSection from './Annoucement_section/AnnouncementSection';
@@ -22,23 +21,20 @@ const Main = styled.main`
 
 
 function MainContent() {
-  const [loading, setLoading] = useState(true);
-  const [apagar, setApagar] = useState(false);
+  // const [loading, setLoading] = useState(true);
+  // const [apagar, setApagar] = useState(false);
 
-  useEffect(() => {
-    setApagar(true);
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+  // useEffect(() => {
+  //   setApagar(true);
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <Main>
-     {loading && <WelcomeSection data-apagar={apagar} />} {}
-      {!loading && (
-        <>
           <HelpSection />
           <Header />
           <SearchBar />
@@ -48,9 +44,6 @@ function MainContent() {
             <PromoSection />
             <Footer />
           </CartProvider>
-          
-        </>
-      )}
     </Main>
   );
 }

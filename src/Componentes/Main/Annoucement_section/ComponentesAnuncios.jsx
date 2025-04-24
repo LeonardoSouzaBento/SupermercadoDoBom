@@ -36,9 +36,9 @@ export const P = styled.p`
     width: 100%;
     text-align: center;
     margin-top: 18px;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
     font-size: 1.15em;
-    letter-spacing: 1.75px;
+    letter-spacing: 0.76px;
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 500;
     color: #892c2f;
@@ -67,7 +67,7 @@ export const P = styled.p`
 `;
 
 export const Advertisements= styled.div`
-    height: 170px;
+    height: 174px;
     width:100%;
     margin: auto;
     padding-bottom: 30px;
