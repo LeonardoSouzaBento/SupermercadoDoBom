@@ -1,11 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { Div } from './StyledComp_anuncios';
-import { P } from './StyledComp_anuncios';
-import { Img } from './StyledComp_anuncios';
-import { Advertisements } from './StyledComp_anuncios';
-import { Span } from './StyledComp_anuncios';
-import { Fundo } from './StyledComp_anuncios';
-import { Pagination } from './StyledComp_anuncios';
+import { Div, P, Img,Advertisements, Span, Fundo, Pagination} from './ComponentesAnuncios';
 
 
 let imageUrls = [

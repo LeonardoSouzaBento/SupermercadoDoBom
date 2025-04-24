@@ -8,6 +8,7 @@ export const Sheader = styled.header `
     justify-content: center;
     max-width: 1390px;
     padding: 8px 0px;
+    padding-top: 15px;
     box-sizing: border-box;
     margin: auto;
     height: 120px;
@@ -16,6 +17,7 @@ export const Sheader = styled.header `
 `;
 const Cabecalho= styled.div`
     width: 90%;
+    max-width: 1000px;
     margin-top: 0px;
     padding: 5px 0px;
     height: 60px;

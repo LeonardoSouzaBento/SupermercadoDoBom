@@ -17,6 +17,7 @@ const Main = styled.main`
   background-color: rgb(240, 240, 240);
   position: relative;
   padding: 0px;
+  box-shadow: inset 0px -3px 7px rgb(112, 112, 112);
 `;
 
 

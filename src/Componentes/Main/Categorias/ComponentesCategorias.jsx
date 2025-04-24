@@ -6,11 +6,22 @@ export const Div = styled.div`
     margin-left: 20px;
     position: relative;
 
-  @media screen and (max-width: 993px){
-   margin-left: 0px;
-   margin: auto;
-  }
-
+    @media screen and (min-width: 320px) and (max-width: 375px){
+      width: calc(100% - 7px);
+      margin-left: 2px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px){
+      width: calc(100% - 13px);
+      margin-left: 8px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 1200px){
+      width: calc(100% - 20px);
+      margin-left: 15px;
+    }
+    @media screen and (min-width: 1201px){
+      width: calc(100% - 42px);
+      margin: auto;
+    }
 `;
 
 export const Divf = styled.div`
@@ -24,14 +35,27 @@ export const Divf = styled.div`
     justify-content: space-between;
     flex-flow: row nowrap;
     padding: 5px;
-    padding-bottom: 18px;
+    padding-bottom: 20px;
     position: relative;
     gap: 10px;
     box-sizing: border-box;
 
     Divf:active {
     cursor: grabbing; 
-}
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 375px){
+     gap: 14px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px){
+      
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px){
+     
+    }
+    @media screen and (min-width: 768px){
+     
+    }
 `;
 
 export const Span = styled.span`
@@ -72,18 +96,37 @@ export const DivCat = styled.div`
     ${props => props.$selected && 
     `background-color: rgb(255, 255, 255);
     border-radius: 6px;
-    border-bottom: 1px solid rgb(177, 177, 177);
-    box-shadow: 0px 0px 2px rgb(124, 124, 124);}
+    border: 1px solid rgb(138, 138, 138);
+    box-shadow: 0px 0px 2px rgb(186, 186, 186);}
     `}
 `;
 
 export const ImgStyled = styled.img`
-  height: 49px;
-  width: 49px;
-  background-color: white;
-  border-radius: 42%;
+  height: 40px;
+  width: 40px;
+  background-color: #DA1B21;
+  border-radius: 50%;
   filter: brightness(0.84) contrast(2) brightness(2) saturate(0.8);
   transition: all 0.32s ease;
+  padding: 4px;
+  box-shadow: 0px 0px 3px rgb(112, 112, 112);
+
+  @media screen and (min-width: 320px) and (max-width: 375px){
+    width: 40px;
+    height: 40px;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px){
+    width: 41px;
+    height: 41px;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px){
+    width: 42px;
+    height: 42px;
+  }
+  @media screen and (min-width: 768px){
+    width: 43px;
+    height: 43px;
+  }
 `;
 
 export const DivNameSection = styled.div`

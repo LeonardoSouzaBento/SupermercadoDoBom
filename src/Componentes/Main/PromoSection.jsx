@@ -20,7 +20,6 @@ const PaiAllProductsStyled = styled.div`
   @media screen and (min-width: 1201px){
     width: calc(100% - 52px);
     margin: auto;
-    border-right: 1px solid grey;
   }
 `;
 

@@ -9,7 +9,6 @@ const FooterStyled = styled.footer`
     justify-content: space-between;
     align-items: center;
     background-color:rgb(255, 255, 255);
-    /* background-color:rgba(0, 0, 0, 0.64); */
     height: 60px;
     width: calc(100% - 20px);
     margin: auto;
@@ -42,7 +41,6 @@ const PCartStyled = styled.p`
 `;
 
 const DivSpanCartStyled = styled.div`
-  background-color: grey;
   border-radius: 50%;
   height: 45px;
   width: 45px;
@@ -53,7 +51,7 @@ const DivSpanCartStyled = styled.div`
 
 const SpanCartStyled = styled.span`
    font-variation-settings:
-    'FILL' 1,
+    'FILL' 0,
     'wght' 400,
     'GRAD' 0,
     'opsz' 24;

@@ -9,7 +9,8 @@ export const PaiProdStyled = styled.div`
     height: 165px;
     background-color: white;
     border-radius: 6px;
-    border: 1px solid rgb(179, 179, 179);
+    border: 1px solid rgb(145, 145, 145);
+    /* border: 1px solid rgb(176, 103, 85); */
     cursor: default;
     user-select: none;
     position: relative;
@@ -34,7 +35,7 @@ export const PaiProdStyled = styled.div`
 
 export const DivOfertaStyled = styled.div`
     height: 100%;
-    width: 160px;
+    width: 150px;
     padding: 5px;
     box-sizing: border-box;
     overflow: hidden;
@@ -74,52 +75,51 @@ export const DivOfertaStyled = styled.div`
     `;
 
     export const DivMaisStyled = styled.div`
-    width: 37px;
-    height: 37px;
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #C54B4B;
-    border-radius: 19px;
-    cursor: pointer;
-
-    @media screen and (min-width: 769px) and (max-width: 992px){
-     right: 2px;
-    }
-    @media screen and (min-width: 993px){
-     right: 1px;
-     bottom: 6px;
-    }
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 4px solid #C54B4B;
+        border-radius: 50%;
+        cursor: pointer;
+        @media screen and (min-width: 769px) and (max-width: 992px){
+        right: 2px;
+        }
+        @media screen and (min-width: 993px){
+        right: 1px;
+        bottom: 6px;
+        }
     `;
 
     export const PMaisStyled= styled.p`
-        font-size: 1.5em;
+        font-size: 1.6em;
         font-family: "Open Sans" ,Arial, Helvetica, sans-serif;
-        font-weight: 500;
+        font-weight: 700;
         color: white;
         cursor: pointer;
         user-select: none;
-        color: white;
-        padding-bottom: 2px;
+        color: #C54B4B;
+        padding-bottom: 3px;
     `;
 
     //Selecionar a quantidade, + 1 e -
     export const DivQuantStyled = styled.div`
-        width: 145px;
-        height: 37px;
+        width: 130px;
+        height: 32px;
+        border: 4px solid #C54B4B;
         display: flex;
         justify-content: space-between;
-        background-color:rgb(197, 75, 75);
-        border-radius: 19px;
-        color: white;
+        border-radius: 20px;
         cursor: pointer;
         user-select: none;
         position: absolute;
         bottom: 5px;
         right: 5px;
+        background-color: rgb(255, 255, 255);
     `;
 
     export const BotoesStyled = styled.div`
@@ -132,14 +132,15 @@ export const DivOfertaStyled = styled.div`
     `;
     export const PMenosStyled = styled(PMaisStyled)`
        padding-bottom: 7px;
-       font-size: 1.8em;
-       font-weight: 400;
+       font-size: 1.9em;
+       font-weight: 500;
     `;
     export const PQuantStyled = styled.p`
         font-size: 1.2em;
         font-family: "Open Sans", Arial, Helvetica, sans-serif;
-        font-weight: 500;
+        font-weight: 700;
         padding-bottom: 2px;
+        color: #C54B4B;
     `;
 
 //Descrição da Oferta, nome, desconto e peso
@@ -148,17 +149,15 @@ export const DescOfertaStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    width: 50%;
-    padding: 7px;
+    width: calc(100% - 150px);
+    padding: 2px;
     padding-left: 14px;
-    padding-top: 12px;
     padding-right: 0px;
     box-sizing: border-box;
-    gap: 5px;
 `;
 
     export const DivNomeStyled = styled.div`
-        height: calc(100% - 60px);
+        height: calc(100% - 80px);
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -189,24 +188,25 @@ export const DescOfertaStyled = styled.div`
     `;
     //desconto
     export const DivOffStyled = styled.div`
+        position: absolute;
+        top: 5px;
+        right: 0px;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 20px;
-        min-width: 60px;
-        /* background-color: #CDD4AE; */
-        background-color:rgb(93, 119, 93);
-        border-radius: 10px;
-        font-family: "Poppins",Arial,sans-serif;
-        font-weight: 500;
+        padding: 0px 6px;
+        background-color: #CDD4AE;
+        /* background-color:rgb(93, 119, 93); */
+        border-radius: 7px;
     `;
 
     export const PoffStyled = styled.p`
-        /* color: #13450a; */
-        color: white;
+        color: #13450a;
+        /* color: white; */
         font-family: "Poppins",Arial,sans-serif;
-        /* font-weight: 500; */
-        font-weight: 400;
+        font-weight: 500;
+        /* font-weight: 400; */
 
         @media screen and (min-width: 320px) and (max-width: 375px){
           font-size: 0.87em;
@@ -220,19 +220,20 @@ export const DescOfertaStyled = styled.div`
     `;
     //peso
     export const DivPesoStyled = styled.div`
+        height: 38px;
         width: max-content;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgb(232, 232, 232);
-        border-radius: 9px;
         min-width: 52px;
     `;
     export const PpesoStyled= styled.p`
         font-size: 0.845em;
         letter-spacing: 0.5px;
         font-family: "Poppins",Arial,sans-serif;
-        
+        background-color: rgb(232, 232, 232);
+        padding: 0px 15px;
+        border-radius: 9px;
         @media screen and (min-width: 320px) and (max-width: 375px){
           font-size: 0.87em;
         }
@@ -250,7 +251,7 @@ export const PaiPrecoStyled = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 40px;
+    min-height: 40px;
 `;
 
     export const DivPrecoStyled = styled.div`
@@ -264,7 +265,7 @@ export const PaiPrecoStyled = styled.div`
         width: 100%;
         font-family: "Roboto Flex",Arial,sans-serif;
         font-weight: 600;
-        text-align: right;
+        text-indent: 4px;
         @media screen and (min-width: 320px) and (max-width: 375px){
             font-size: 0.96em;
             letter-spacing: 1px;

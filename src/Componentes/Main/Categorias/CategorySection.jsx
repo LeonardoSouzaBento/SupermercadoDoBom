@@ -1,17 +1,11 @@
 import React from 'react';
-import { Div } from './StyledComp_cats';
-import { Divf } from './StyledComp_cats';
-import { DivCat } from './StyledComp_cats';
-import { Span } from './StyledComp_cats';
-import { ImgStyled } from './StyledComp_cats';
-import { DivNameSection } from './StyledComp_cats';
-import { PStyled } from './StyledComp_cats';
-
+import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled } from './ComponentesCategorias';
 
 function CategoryItem({ category }) {
 
   return (
-        <DivCat $selected={category.id === 'promo'}>
+        <DivCat>
+          {/*$selected={category.id === 'promo'}*/}
           <ImgStyled src={category.icon} alt={category.label} />
           <DivNameSection className="divNameSection">
             <PStyled>{category.label}</PStyled>

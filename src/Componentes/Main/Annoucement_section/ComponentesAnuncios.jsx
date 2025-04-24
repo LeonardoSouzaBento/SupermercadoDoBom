@@ -5,7 +5,7 @@ export const Div = styled.div`
   position: relative;
   overflow-x: hidden;
   margin: auto;
-  padding-bottom: 44px;
+  padding-bottom: 48px;
   border-radius: 5px;
 
   //celulares
@@ -73,12 +73,15 @@ export const Advertisements= styled.div`
     padding-bottom: 30px;
     display: flex;
     flex-flow: row nowrap;
-    gap: 12px;
+    gap: 16px;
     /* transform: translateX(-363.5px); */
     transform: translateX(${props=>props.$center}px);
 
-    @media screen and (min-width: 577px) and (max-width:768px){
+    @media screen and (min-width: 375px) and (max-width:576px){
     gap: 15px;
+    }
+    @media screen and (min-width: 577px) and (max-width:768px){
+    gap: 18px;
     }
     @media screen and (min-width: 769px){
     gap: 17px;
@@ -88,12 +91,15 @@ export const Advertisements= styled.div`
 export const Fundo = styled.div`
     position: relative;
     height: 170px;
-    min-width: 330px;
-
+    min-width: 254px;
+    border-radius: 12px;
     @media screen and (min-width: 320px) and (max-width: 374px){
-      min-width: 265px;
+      width: 256px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
+      min-width: 320px;
+    }
+    @media screen and (min-width: 576px){
       min-width: 320px;
     }
     
@@ -122,7 +128,7 @@ export const Img = styled.img`
 `;
 
 export const Pagination = styled.div`
-      height: 12px;
+      height: 9px;
       width: 50%;
       margin: auto;
       display: flex;
@@ -135,14 +141,14 @@ export const Span = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
   height: 100%;
-  width: 12px;
-  background-color: rgb(159, 159, 159);
+  width: 9px;
+  background-color: rgb(129, 129, 129);
   border-radius: 50%;
   border: 1px solid rgb(136, 136, 136);
   ${props => props.$atual && `
     transform: scale(1.1);
     background-color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 2px rgb(164, 164, 164);
-    border: 1px solid rgb(173, 173, 173);
+    padding: 1px;
+    border: 1px solid grey;
   `}
 `;

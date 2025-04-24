@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { PaiProdStyled, PpesoStyled, PoffStyled } from './ComponentsStyled';
+import { PaiProdStyled, PpesoStyled, PoffStyled } from './ComponentesProdutos';
 //img produto
-import {DivOfertaStyled, PaiImgOfertaStyled, ImgOfertaStyed, DivPesoStyled, DivOffStyled, DivResizeStyled, SpanResizeStyled} from './ComponentsStyled';
+import {DivOfertaStyled, PaiImgOfertaStyled, ImgOfertaStyed, DivPesoStyled, DivOffStyled, DivResizeStyled, SpanResizeStyled} from './ComponentesProdutos';
 //botao de preco e botao de quantidade
-import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, DivMaisStyled} from './ComponentsStyled';
-import { DivQuantStyled,BotoesStyled, PQuantStyled, PMenosStyled, PMaisStyled} from './ComponentsStyled';
+import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, DivMaisStyled} from './ComponentesProdutos';
+import { DivQuantStyled,BotoesStyled, PQuantStyled, PMenosStyled, PMaisStyled} from './ComponentesProdutos';
 //nome do produto
-import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentsStyled';
+import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentesProdutos';
 import {products} from '../../../data/data';
 
-const Oferta = ({ products, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange })=>{
+const Oferta = ({ products, discount, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange })=>{
   const handleMore = () => onQuantityChange(quantity + 1, true);
 
   const handleFewer = () => {
@@ -24,13 +24,16 @@ const Oferta = ({ products, quantity, setMostrarBotoes, mostrarBotoes, onQuantit
   return(
   <DivOfertaStyled>
       <PaiImgOfertaStyled>
+          <DivOffStyled>
+              <PoffStyled>-{discount}%</PoffStyled>
+          </DivOffStyled>
           <ImgOfertaStyed src={products.url}></ImgOfertaStyed>
 
           {!mostrarBotoes && 
             <DivMaisStyled onClick={() => { 
                 setMostrarBotoes(true); 
                 onQuantityChange(1, true);}}>
-            <PMaisStyled>+</PMaisStyled>
+              <PMaisStyled>+</PMaisStyled>
             </DivMaisStyled>
           }  
           {mostrarBotoes &&
@@ -58,9 +61,6 @@ const Preco = ({ price, discount}) => {
         <PaiPrecoStyled>
           <DivPrecoStyled>
 
-            <DivOffStyled>
-               <PoffStyled>-{discount}%</PoffStyled>
-            </DivOffStyled>
             <PprecoStyled>R$ {price}</PprecoStyled>
             
           </DivPrecoStyled>
@@ -70,16 +70,16 @@ const Preco = ({ price, discount}) => {
 const DescOferta = ({ products}) => {
   return (
     <DescOfertaStyled>
+      <Preco 
+      discount={products.discount}
+      price={products.price}>
+      </Preco>
       <DivNomeStyled>
         <PnomeStyled>{products.name}</PnomeStyled>
       </DivNomeStyled>
       <DivPesoStyled>
           <PpesoStyled>{products.weight}</PpesoStyled>
       </DivPesoStyled>
-      <Preco 
-      discount={products.discount}
-      price={products.price}>
-      </Preco>
     </DescOfertaStyled>
   );
 }
@@ -102,15 +102,9 @@ function ProductItem({ products, quantity, onQuantityChange }) {
       setMostrarBotoes={setMostrarBotoes} 
       mostrarBotoes={mostrarBotoes}
       onQuantityChange={handleQuantityChange}
-
+      discount={products.discount}
       >
       </Oferta>
-
-      <DivResizeStyled>
-        <SpanResizeStyled className='material-symbols-outlined'>
-          expand_content
-        </SpanResizeStyled>
-      </DivResizeStyled>
     </PaiProdStyled>
   );
 }

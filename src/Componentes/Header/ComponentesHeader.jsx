@@ -11,28 +11,71 @@ const Div0Styled = styled.div`
 `;
 
 const ImgLogoStyled = styled.img`
-    height: 64px;
-    width: 64px;
+    height: 54px;
+    width: 54px;
     border-radius: 50%;
-    box-shadow: 0px 0px 4px rgb(159, 62, 62);
-`;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0px 0px 3px rgb(53, 53, 53);
 
-const PLogoStyled = styled.p`
-    font-family: "Fira Sans", serif;
-    font-weight: 300;
-    letter-spacing: 0.5px;
-    padding: 5px;
-    @media (min-width: 320px) and (max-width: 520px){
-        font-size: 0.9em;
-        line-height: 17px;
+    @media (min-width: 320px) and (max-width: 374px){
+      height: 54px;
+      width: 54px;
     }
-    @media (min-width: 521px) and (max-width: 576px){
-        font-size: 0.95em;
-        line-height: 19px;
+    @media (min-width: 375px) and (max-width: 576px){
+        height: 64px;
+        width: 64px;
     }
     @media (min-width: 577px){
-        font-size: 1em;
-        line-height: 20px;
+        height: 70px;
+        width: 70px;
+    }
+`;
+
+const DivPsStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+const PNomeSupStyled = styled.p`
+    font-family: "Roboto Condensed", serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color:rgb(185, 40, 21);
+    @media (min-width: 320px) and (max-width: 374px){
+        font-size: 0.93em;
+    }
+    @media (min-width: 375px) and (max-width: 576px){
+        font-size: 0.98em;
+    }
+    @media (min-width: 577px) and (max-width: 768px){
+        font-size: 1.06em;
+    }
+    @media (min-width: 769px) and (max-width: 992px){
+        font-size: 1.15em;
+    }
+    @media (min-width: 993px){
+        font-size: 1.2em;
+    }
+`;
+
+const PBemVindoStyled = styled(PNomeSupStyled)`
+    font-family: "Fira Sans", serif;
+    font-weight: 400;
+    @media (min-width: 320px) and (max-width: 374px){
+        font-size: 0.93em;
+    }
+    @media (min-width: 375px) and (max-width: 576px){
+        font-size: 0.98em;
+    }
+    @media (min-width: 577px) and (max-width: 768px){
+        font-size: 1.06em;
+    }
+    @media (min-width: 769px) and (max-width: 992px){
+        font-size: 1.05em;
+    }
+    @media (min-width: 993px){
+        font-size: 1.1em;
     }
 `;
 
@@ -40,11 +83,10 @@ export const Divlogo = () => {
     return (
     <Div0Styled>
         <ImgLogoStyled src="/logoGenerico_compressed.jpg" alt=""></ImgLogoStyled>
-        <div>
-            <PLogoStyled><strong>SUPERMERCADO UNIÃO</strong><br></br>
-                Seja bem vindo.
-            </PLogoStyled>
-        </div>
+        <DivPsStyled>
+            <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
+            <PBemVindoStyled> Seja bem vindo.</PBemVindoStyled>
+        </DivPsStyled>
     </Div0Styled>
     )
 }

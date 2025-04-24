@@ -2,14 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  position: relative;
+  width: 100%;
   position: sticky;
   top: 0;
   z-index: 3;
+  @media screen and (min-width: 993px){
+    position: relative;
+  }
 `;
 
 const Div = styled.div`
   width: 100%;
+  max-width: 1000px;
+  margin: auto;
   mix-blend-mode: multiply;
   /* background-image: linear-gradient(to right,#e34343,#C7381A); */
 `;
@@ -23,10 +28,11 @@ const Form = styled.form`
   height: 40px;
   padding-bottom: 14px;
   padding-top: 12px;
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  
+  position: relative;
+
+  @media screen and (min-width: 993px){
+   width: 100%;
+  }
 `;
 
 const Input = styled.input`
@@ -38,8 +44,8 @@ const Input = styled.input`
   font-size: 0.85em;
   text-indent: 20px;
   font-size: 0.97em;
-  box-shadow: 0px 0px 10px rgb(208, 208, 208);
-  border: 1px solid rgb(192, 192, 192);
+  box-shadow: 0px 0px 4px rgb(207, 207, 207);
+  border: 1px solid rgb(178, 178, 178);
   &:focus{
     outline: 1px solid black;
   }
