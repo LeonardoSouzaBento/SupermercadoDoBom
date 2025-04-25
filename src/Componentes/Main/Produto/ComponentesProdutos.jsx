@@ -253,15 +253,13 @@ export const DivOfertaStyled = styled.div`
         padding-left: 0px;
     `;
 
-    export const PMais2Styled = styled(PMaisStyled)`
-       color:rgb(173, 61, 61);
-    `;
 
     //Selecionar a quantidade, + 1 e -
     export const DivQuantStyled = styled.div`
         width: 128px;
         height: 32px;
-        border: 4px solid rgb(197, 75, 75);;
+        /* border: 4px solid rgb(203, 104, 104); */
+        border: 4px solid rgb(227, 97, 68);
         display: flex;
         justify-content: space-between;
         border-radius: 20px;
@@ -271,6 +269,11 @@ export const DivOfertaStyled = styled.div`
         bottom: 5px;
         right: 0px;
         background-color: rgba(255, 255, 255, 0.9);
+        `;
+
+    export const PMais2Styled = styled(PMaisStyled)`
+        /* color:rgb(189, 86, 84); */
+        color: rgb(213, 94, 64);
     `;
 
     export const BotoesStyled = styled.div`
@@ -281,6 +284,7 @@ export const DivOfertaStyled = styled.div`
         justify-content: center;
         font-family: "Open Sans", Arial, Helvetica, sans-serif;
     `;
+
     export const PMenosStyled = styled(PMais2Styled)`
        padding-bottom: 5px;
        font-size: 1.9em;
@@ -290,5 +294,6 @@ export const DivOfertaStyled = styled.div`
         font-family: "Lato", Arial, Helvetica, sans-serif;
         font-weight: 700;
         padding-bottom: 2px;
-        color:rgb(173, 61, 61);
+        /* color:rgb(189, 86, 84); */
+        color: rgb(213, 94, 64);
     `;
