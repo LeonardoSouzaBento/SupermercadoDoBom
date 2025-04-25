@@ -8,7 +8,7 @@ export const PaiProdStyled = styled.div`
     max-width: 330px;
     height: 165px;
     background-color: white;
-    border-radius: 6px;
+    border-radius: 7px;
     border: 1px solid rgb(145, 145, 145);
     cursor: default;
     user-select: none;
@@ -247,7 +247,8 @@ export const DivOfertaStyled = styled.div`
         cursor: pointer;
         user-select: none;
         color:rgb(173, 61, 61);
-        padding-bottom: 1.5px;
+        padding-bottom: 3px;
+        padding-left: 0px;
     `;
 
     export const PMais2Styled = styled(PMaisStyled)`

@@ -107,7 +107,7 @@ export const ImgStyled = styled.img`
   width: 40px;
   background-color:rgb(255, 83, 83);
   border-radius: 50%;
-  filter: brightness(0.84) contrast(2) brightness(2) saturate(0.8);
+  filter: contrast(1.7) brightness(1.5) saturate(1.8);
   transition: all 0.32s ease;
   padding: 4px;
   box-shadow: 0px 0px 2px rgb(91, 91, 91);

@@ -6,6 +6,9 @@ const ContainerStyled = styled.div`
   position: sticky;
   top: 0px;
   z-index: 3;
+  padding: 14px 0px;
+  padding-bottom: 16px;
+  background-color: #f0f0f0;
   @media screen and (min-width: 993px){
     position: relative;
   }
@@ -19,8 +22,6 @@ const FormStyled = styled.form`
   max-width: 1180px;
   margin: auto;
   height: 40px;
-  padding: 8px 9px;
-  padding-bottom: 12px;
   position: relative;
   background-color:rgb(240, 240, 240);
   border-radius: 33px;
@@ -35,8 +36,8 @@ const InputStyled = styled.input`
   font-size: 0.85em;
   text-indent: 20px;
   font-size: 0.97em;
-  box-shadow: 0px 0px 4px rgb(207, 207, 207);
-  border: 1px solid rgb(145, 145, 145);
+  box-shadow: 0px 0px 3px rgb(160, 160, 160);
+  border: 1px solid rgb(123, 123, 123);
 
   color: rgb(75, 75, 75);
   
@@ -66,8 +67,8 @@ const DivSpanStyled = styled.div`
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
   position: absolute;
-  top: 17px;
-  right: 24px;
+  top: 5px;
+  right: 15px;
 `;
 
 const SombraStyled = styled.div`

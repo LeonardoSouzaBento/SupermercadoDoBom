@@ -14,9 +14,11 @@ const ImgLogoStyled = styled.img`
     height: 65px;
     width: 65px;
     border-radius: 50%;
-    border: 1px solid rgb(143, 143, 143);
-    box-shadow: 0px 0px 3px rgb(141, 141, 141);
+    border: 1px solid rgb(116, 116, 116);
+    box-shadow: 0px 0px 3px rgb(113, 113, 113);
     box-sizing: border-box;
+    transform: scaleX(-1);
+    filter: grayscale(0.2);
     @media (min-width: 320px) and (max-width: 374px){
         height: 54px;
         width: 54px;

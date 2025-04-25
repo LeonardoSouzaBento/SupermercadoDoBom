@@ -28,16 +28,12 @@ const CartDescStyled = styled.div`
   /* #FC6B4C, fc8a4c */
   border-radius: 24px 0px 0px 24px;
   justify-content: space-between;
+  align-items: center;
   padding-right: 12px;
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.44);
 `;
-const PCartStyled = styled.p`
- font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
- padding-bottom: 3px;
- color: white;
-`;
 
-const DivSpan2Styled = styled.div`
+const DivSpanCartStyled = styled.div`
   border-radius: 50%;
   height: 45px;
   width: 45px;
@@ -46,7 +42,7 @@ const DivSpan2Styled = styled.div`
   justify-content: center;
 `;
 
-const DivSpan1Styled= styled(DivSpan2Styled)`
+const DivSpanCloseStyled= styled(DivSpanCartStyled)`
   height: 42px;
   width: 42px;
   border: 2px solid red;
@@ -56,17 +52,28 @@ const DivSpan1Styled= styled(DivSpan2Styled)`
 
 const SpanCartStyled = styled.span`
    color: white;
-   font-weight: 200;
-   font-size: 2.1em;
+   font-weight: 300;
+   font-size: 1.9em;
    /* font-variation-settings:
    'FILL' 1; */
    justify-self: flex-start;
 `;
 
-const SpanCart1Styled = styled(SpanCartStyled)`
+const SpanCloseStyled = styled(SpanCartStyled)`
   color: rgb(189, 56, 61);
-  font-size: 1.7em;
-  font-weight: 300;
+  font-size: 1.6em;
+  font-weight: 500;
+`;
+
+const PPrecoStyled = styled.p`
+ font-family: "Montserrat", Arial, Helvetica, sans-serif;
+ padding-bottom: 3px;
+ color: white;
+ font-size: 1.11em;
+`;
+
+const PItensStyled = styled(PPrecoStyled)`
+  
 `;
 
 function Footer() {
@@ -79,16 +86,16 @@ function Footer() {
   <FooterStyled>
     {totalQuantity > 0 && 
       <CartDescStyled>
-        <DivSpan1Styled> {/*Essa div tem de ter a função*/}
-          <SpanCart1Styled className='material-symbols-rounded'>close</SpanCart1Styled>
-        </DivSpan1Styled>
+        <DivSpanCloseStyled> {/*Essa div tem de ter a função*/}
+          <SpanCloseStyled className='material-symbols-rounded'>close</SpanCloseStyled>
+        </DivSpanCloseStyled>
 
-        <DivSpan2Styled>
+        <DivSpanCartStyled>
           <SpanCartStyled className='material-symbols-rounded'>shopping_cart_checkout</SpanCartStyled>
-        </DivSpan2Styled>
+        </DivSpanCartStyled>
 
-        <PCartStyled>R$ {totalValueFormatted}</PCartStyled>
-        <PCartStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PCartStyled>
+        <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>
+        <PItensStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PItensStyled>
 
       </CartDescStyled>
     }

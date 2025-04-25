@@ -91,7 +91,7 @@ export const Fundo = styled.div`
     position: relative;
     height: 170px;
     min-width: 254px;
-    border-radius: 12px;
+    border-radius: 7px;
     @media screen and (min-width: 320px) and (max-width: 374px){
       width: 256px;
     }
