@@ -8,7 +8,7 @@ export const PaiProdStyled = styled.div`
     max-width: 330px;
     height: 165px;
     background-color: white;
-    border-radius: 8px 8px 14px 8px;
+    border-radius: 9px 9px 14px 9px;
     border: 1px solid rgb(150, 150, 150);
     cursor: default;
     user-select: none;
@@ -22,7 +22,7 @@ export const PaiProdStyled = styled.div`
        height: 180px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-       max-width: 307px;
+       max-width: 300px;
        height: 185px;
     }
     @media screen and (min-width: 577px) and (max-width: 768px){
@@ -58,34 +58,30 @@ export const DescOfertaStyled = styled.div`
     `;
     export const PnomeStyled = styled.p`
         text-transform: uppercase;
-        font-family: "Lato", Arial, sans-serif;
+        font-family: "Quicksand", Arial, sans-serif;
         margin: auto;
-        padding-bottom: 5px;
+        padding-bottom: 7px;
+        font-weight: 600;
 
         @media screen and (min-width: 320px) and (max-width: 375px){
-            font-size: 0.87em;
+            font-size: 0.86em;
             line-height: 18px;
             letter-spacing: 1.01px;
-            font-weight: 500;
+            
         }
         @media screen and (min-width: 375px) and (max-width: 576px){
-            font-size: 0.88em;
-            line-height: 19px;
+            font-size: 0.89em;
+            line-height: 18px;
             letter-spacing: 1.05px;
         }
         @media screen and (min-width: 577px) and (max-width: 768px){
-            font-size: 0.89em;
-            line-height: 20.4px;
+            font-size: 0.9em;
+            line-height: 19px;
             letter-spacing: 1.06px;
         }
-        @media screen and (min-width: 769px) and (max-width: 992px){
+        @media screen and (min-width: 769px){
             font-size: 0.91em;
-            line-height: 20.4px;
-            letter-spacing: 1.06px;
-        }
-        @media screen and (min-width: 993px) {
-            font-size: 0.92em;
-            line-height: 20.4px;
+            line-height: 20px;
             letter-spacing: 1.06px;
         }
     `;

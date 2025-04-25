@@ -46,16 +46,16 @@ export const Divf = styled.div`
 
     @media screen and (min-width: 320px) and (max-width: 375px){
      gap: 15px;
-     padding-bottom: 20px;
+     padding-bottom: 17px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-      padding-bottom: 24px;
+      padding-bottom: 22px;
     }
     @media screen and (min-width: 577px) and (max-width: 768px){
-      padding-bottom: 25px;
+      padding-bottom: 26px;
     }
     @media screen and (min-width: 768px){
-     padding-bottom: 26px;
+     padding-bottom: 30px;
     }
 `;
 
@@ -108,6 +108,7 @@ export const ImgStyled = styled.img`
   background-color:rgb(255, 83, 83);
   border-radius: 50%;
   filter: contrast(1.7) saturate(1.8);
+  /* filter: contrast(3) saturate(1) grayscale(0.9); */
   transition: all 0.32s ease;
   padding: 4px;
   box-shadow: 0px 0px 2px rgb(91, 91, 91);
