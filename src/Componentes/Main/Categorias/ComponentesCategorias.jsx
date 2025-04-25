@@ -105,7 +105,7 @@ export const DivCat = styled.div`
 export const ImgStyled = styled.img`
   height: 40px;
   width: 40px;
-  background-color: #DA1B21;
+  background-color:rgb(255, 83, 83);
   border-radius: 50%;
   filter: brightness(0.84) contrast(2) brightness(2) saturate(0.8);
   transition: all 0.32s ease;

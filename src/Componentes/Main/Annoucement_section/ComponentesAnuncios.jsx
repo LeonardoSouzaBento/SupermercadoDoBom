@@ -27,8 +27,7 @@ export const Div = styled.div`
   }
   @media screen and (min-width: 1201px){
     width: calc(100% - 50px);
-    margin-bottom: 70px;
-    padding-bottom: 0px;
+
   }
 `;
 

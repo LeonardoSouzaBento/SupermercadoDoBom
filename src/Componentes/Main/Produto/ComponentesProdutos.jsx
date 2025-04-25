@@ -1,6 +1,39 @@
 import styled from "styled-components";
 
-//Descrição da Oferta, nome, desconto e peso
+export const PaiProdStyled = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 265px;
+    max-width: 330px;
+    height: 165px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid rgb(145, 145, 145);
+    cursor: default;
+    user-select: none;
+    position: relative;
+    box-sizing: border-box;
+    padding-right: 5px;
+    @media screen and (min-width: 320px) and (max-width: 375px){
+       max-width: 265px;
+       height: 180px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px){
+       max-width: 310px;
+       height: 185px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px){
+       max-width: 320px;
+       height: 170px;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px){
+       max-width: 325px;
+       height: 170px;
+    }
+`;
+
+//Descrição da Oferta: nome, desconto e peso
 export const DescOfertaStyled = styled.div`
     display: flex;
     flex-direction: column;
@@ -150,40 +183,6 @@ export const DescOfertaStyled = styled.div`
     `;
 
 // Oferta
-//Container da imagem e div pequenas
-export const PaiProdStyled = styled.div`
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: 265px;
-    max-width: 330px;
-    height: 165px;
-    background-color: white;
-    border-radius: 6px;
-    border: 1px solid rgb(145, 145, 145);
-    cursor: default;
-    user-select: none;
-    position: relative;
-    box-sizing: border-box;
-    padding-right: 5px;
-    @media screen and (min-width: 320px) and (max-width: 375px){
-       max-width: 265px;
-       height: 180px;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px){
-       max-width: 310px;
-       height: 185px;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px){
-       max-width: 320px;
-       height: 170px;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px){
-       max-width: 325px;
-       height: 170px;
-    }
-`;
-
 export const DivOfertaStyled = styled.div`
     height: 100%;
     width: 150px;
@@ -241,18 +240,18 @@ export const DivOfertaStyled = styled.div`
     `;
 
     export const PMaisStyled= styled.p`
-        font-size: 1.6em;
+        font-size: 1.65em;
         font-family: "Quicksand" ,Arial, Helvetica, sans-serif;
-        font-weight: 700;
+        font-weight: 600;
         color: white;
         cursor: pointer;
         user-select: none;
-        color:rgb(182, 68, 68);
-        padding-bottom: 3px;
+        color:rgb(173, 61, 61);
+        padding-bottom: 1.5px;
     `;
 
     export const PMais2Styled = styled(PMaisStyled)`
-       color: #C54B4B;
+       color:rgb(173, 61, 61);
     `;
 
     //Selecionar a quantidade, + 1 e -
@@ -280,14 +279,13 @@ export const DivOfertaStyled = styled.div`
         font-family: "Open Sans", Arial, Helvetica, sans-serif;
     `;
     export const PMenosStyled = styled(PMais2Styled)`
-       padding-bottom: 7px;
+       padding-bottom: 5px;
        font-size: 1.9em;
-       font-weight: 500;
     `;
     export const PQuantStyled = styled.p`
         font-size: 1.25em;
         font-family: "Lato", Arial, Helvetica, sans-serif;
         font-weight: 700;
         padding-bottom: 2px;
-        color: #C54B4B;
+        color:rgb(173, 61, 61);
     `;

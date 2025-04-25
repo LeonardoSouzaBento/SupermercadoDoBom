@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const ContainerStyled = styled.div`
   width: 100%;
   position: sticky;
-  top: 0;
+  top: 0px;
   z-index: 3;
   @media screen and (min-width: 993px){
     position: relative;
@@ -19,9 +19,11 @@ const FormStyled = styled.form`
   max-width: 1180px;
   margin: auto;
   height: 40px;
-  padding-bottom: 14px;
-  padding-top: 12px;
+  padding: 8px 9px;
+  padding-bottom: 12px;
   position: relative;
+  background-color:rgb(240, 240, 240);
+  border-radius: 33px;
 `;
 
 const InputStyled = styled.input`
@@ -34,7 +36,10 @@ const InputStyled = styled.input`
   text-indent: 20px;
   font-size: 0.97em;
   box-shadow: 0px 0px 4px rgb(207, 207, 207);
-  border: 1px solid rgb(178, 178, 178);
+  border: 1px solid rgb(145, 145, 145);
+
+  color: rgb(75, 75, 75);
+  
   &:focus{
     outline: 1px solid black;
   }
@@ -62,13 +67,13 @@ const DivSpanStyled = styled.div`
   border-radius: 50%;
   position: absolute;
   top: 17px;
-  right: 14px;
+  right: 24px;
 `;
 
 const SombraStyled = styled.div`
-  height: 4px;
+  height: 5px;
   width: 100%;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.09), rgba(240, 240, 240, 0));
   background-size: 100% 100%;
 `;
 

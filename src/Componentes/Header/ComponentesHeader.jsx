@@ -17,7 +17,6 @@ const ImgLogoStyled = styled.img`
     border: 1px solid rgb(143, 143, 143);
     box-shadow: 0px 0px 3px rgb(141, 141, 141);
     box-sizing: border-box;
-    
     @media (min-width: 320px) and (max-width: 374px){
         height: 54px;
         width: 54px;
@@ -91,7 +90,7 @@ const PBemVindoStyled = styled(PNomeSupStyled)`
 export const Divlogo = () => {
     return (
     <DivLogoStyled>
-        <ImgLogoStyled src="/logoGenerico_compressed.jpg" alt=""></ImgLogoStyled>
+        <ImgLogoStyled src="/logo_supermercado.png" alt=""></ImgLogoStyled>
         <DivPsStyled>
             <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
             <PBemVindoStyled> Seja bem vindo!</PBemVindoStyled>
@@ -105,7 +104,7 @@ const DivMoreOptionsStyled = styled.div`
     height: 40px;
     display: flex;
     align-items: center;
-    background-color: #d25252;
+    background-color:rgb(215, 69, 69);
     box-shadow: 0px 0px 5px rgb(128, 128, 128);
     color: white;
     @media (max-width: 992px){
