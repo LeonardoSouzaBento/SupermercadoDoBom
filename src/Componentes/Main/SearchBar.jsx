@@ -4,12 +4,12 @@ import styled from 'styled-components';
 const ContainerForShadow = styled.div`
   height: auto;
   width: 100%;
-  position: sticky;
+  /* position: sticky;
   top: 0px;
   z-index: 3;
   @media screen and (min-width: 993px){
     position: relative;
-  }
+  } */
 `;
 
 const ContainerForFormStyled = styled.div`
@@ -41,7 +41,8 @@ const InputStyled = styled.input`
   font-size: 0.85em;
   text-indent: 20px;
   font-size: 0.97em;
-  border: 2px solid  #F4684A;
+  /* border: 1px solid rgb(84, 84, 84); */
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.49);
   &:focus{
     outline: 1px solid black;
   }

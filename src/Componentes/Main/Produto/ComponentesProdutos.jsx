@@ -63,7 +63,7 @@ export const DescOfertaStyled = styled.div`
         padding-bottom: 5px;
 
         @media screen and (min-width: 320px) and (max-width: 375px){
-            font-size: 0.83em;
+            font-size: 0.87em;
             line-height: 18px;
             letter-spacing: 1.01px;
             font-weight: 500;
@@ -240,7 +240,7 @@ export const DivOfertaStyled = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 4px solid rgb(234, 88, 88);
+        border: 4px solid rgb(227, 97, 68);
         border-radius: 50%;
         cursor: pointer;
     `;
@@ -252,7 +252,7 @@ export const DivOfertaStyled = styled.div`
         color: white;
         cursor: pointer;
         user-select: none;
-        color:rgb(173, 61, 61);
+        color:rgb(227, 97, 68);
         padding-bottom: 4px;
         padding-left: 0px;
     `;
@@ -265,7 +265,7 @@ export const DivOfertaStyled = styled.div`
     export const DivQuantStyled = styled.div`
         width: 128px;
         height: 32px;
-        border: 4px solid #C54B4B;;
+        border: 4px solid rgb(197, 75, 75);;
         display: flex;
         justify-content: space-between;
         border-radius: 20px;

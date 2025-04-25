@@ -41,7 +41,7 @@ const DivLogo = styled.div`
     align-items: center;
     background-color: white;
     border-radius: 50%;
-    box-shadow: 0px 0px 3px rgba(255, 88, 88, 0.49);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.67);
     transform: scaleX(-1);
 
     @media (min-width: 320px) and (max-width: 374px){
@@ -63,7 +63,7 @@ const DivLogo = styled.div`
 `;
 
 const SpanLogo = styled.span`
-  color:rgb(209, 13, 19);
+  color:rgb(241, 16, 24);
   font-size: 2.06em;
   font-weight: 500;
 `;
@@ -141,7 +141,7 @@ const DivMoreOptionsStyled = styled.div`
 
     color: white;
     @media (max-width: 992px){
-        width: 41px;
+        width: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -170,8 +170,8 @@ const PStyled = styled.p`
 `;
 
 const SpanStyled = styled.span`
-    font-size: 1.65em;
-    font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 28;
+    font-size: 1.34em;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 28;
 `;
 
 //div das opcoes
