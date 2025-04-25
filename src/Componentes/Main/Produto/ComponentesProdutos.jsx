@@ -8,19 +8,21 @@ export const PaiProdStyled = styled.div`
     max-width: 330px;
     height: 165px;
     background-color: white;
-    border-radius: 7px;
-    border: 1px solid rgb(145, 145, 145);
+    border-radius: 8px 8px 14px 8px;
+    border: 1px solid rgb(150, 150, 150);
     cursor: default;
     user-select: none;
     position: relative;
     box-sizing: border-box;
     padding-right: 5px;
+    /* box-shadow: 0px 0px 2px rgb(182, 182, 182); */
+    
     @media screen and (min-width: 320px) and (max-width: 375px){
        max-width: 265px;
        height: 180px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-       max-width: 310px;
+       max-width: 307px;
        height: 185px;
     }
     @media screen and (min-width: 577px) and (max-width: 768px){
@@ -96,10 +98,10 @@ export const DescOfertaStyled = styled.div`
         justify-content: center;
         align-items: center;
         height: 20px;
-        padding: 0px 6px;
+        padding: 0px 8px;
         background-color: #CDD4AE;
         /* background-color:rgb(93, 119, 93); */
-        border-radius: 10px 10px 0px 10px;
+        border-radius: 5px;
     `;
 
     export const PoffStyled = styled.p`
@@ -160,12 +162,13 @@ export const DescOfertaStyled = styled.div`
         width: 100%;
         height: 100%;
         display: flex;
+        gap: 1px;
         align-items: center;
     `;
 
     export const PprecoStyled = styled.p`
-        width: 100%;
-        font-family: "Roboto Flex",Arial,sans-serif;
+        width: max-content;
+        font-family: "Lato",Arial,sans-serif;
         font-weight: 600;
         text-indent: 4px;
         @media screen and (min-width: 320px) and (max-width: 375px){
@@ -180,6 +183,10 @@ export const DescOfertaStyled = styled.div`
             font-size: 1.035em;
             line-height: 20px;
         }
+    `;
+
+    export const PSifraStyled = styled(PprecoStyled)`
+      width: max-content;
     `;
 
 // Oferta
@@ -228,26 +235,25 @@ export const DivOfertaStyled = styled.div`
         width: 32px;
         height: 32px;
         position: absolute;
-        bottom: 5px;
+        bottom: 6px;
         right: 0px;
         display: flex;
         align-items: center;
         justify-content: center;
-        /* border: 4px solid #C54B4B; */
-        border: 4px solid rgb(182, 112, 112);
+        border: 4px solid rgb(234, 88, 88);
         border-radius: 50%;
         cursor: pointer;
     `;
 
     export const PMaisStyled= styled.p`
         font-size: 1.65em;
-        font-family: "Quicksand" ,Arial, Helvetica, sans-serif;
+        font-family: "Lato" ,Arial, Helvetica, sans-serif;
         font-weight: 600;
         color: white;
         cursor: pointer;
         user-select: none;
         color:rgb(173, 61, 61);
-        padding-bottom: 3px;
+        padding-bottom: 4px;
         padding-left: 0px;
     `;
 

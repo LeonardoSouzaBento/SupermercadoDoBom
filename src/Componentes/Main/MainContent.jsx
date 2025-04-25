@@ -16,9 +16,22 @@ const Main = styled.main`
   background-color: rgb(240, 240, 240);
   position: relative;
   padding: 0px;
-  box-shadow: inset 0px -3px 6px rgb(192, 192, 192);
+  box-shadow: inset 0px -3px 6px rgb(198, 198, 198);
+  position: relative;
 `;
 
+const ShadowBottomStyled = styled.div`
+  display: block;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  height: 10px;
+  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.14), rgba(240, 240, 240, 0));
+  background-size: 100% 100%;
+  @media screen and (min-width: 993px){
+    display: none;
+  }
+`;
 
 function MainContent() {
   // const [loading, setLoading] = useState(true);
@@ -40,10 +53,13 @@ function MainContent() {
           <SearchBar />
           <AnnouncementSection />
           <CategorySection />
+          
           <CartProvider id='cart'>
             <PromoSection />
             <Footer />
           </CartProvider>
+
+          <ShadowBottomStyled></ShadowBottomStyled>
     </Main>
   );
 }

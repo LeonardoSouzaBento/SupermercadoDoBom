@@ -60,7 +60,7 @@ export const Divf = styled.div`
 `;
 
 export const Span = styled.span`
-     position: absolute;
+    position: absolute;
     top: 20%;
     right: 20px;
     z-index: 2;
@@ -107,7 +107,7 @@ export const ImgStyled = styled.img`
   width: 40px;
   background-color:rgb(255, 83, 83);
   border-radius: 50%;
-  filter: contrast(1.7) brightness(1.5) saturate(1.8);
+  filter: contrast(1.7) saturate(1.8);
   transition: all 0.32s ease;
   padding: 4px;
   box-shadow: 0px 0px 2px rgb(91, 91, 91);

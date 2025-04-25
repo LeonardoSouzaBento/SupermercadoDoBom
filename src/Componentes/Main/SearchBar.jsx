@@ -1,17 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ContainerStyled = styled.div`
+const ContainerForShadow = styled.div`
+  height: auto;
   width: 100%;
   position: sticky;
   top: 0px;
   z-index: 3;
-  padding: 14px 0px;
-  padding-bottom: 16px;
-  background-color: #f0f0f0;
   @media screen and (min-width: 993px){
     position: relative;
   }
+`;
+
+const ContainerForFormStyled = styled.div`
+  width: 100%;
+  padding: 14px 0px;
+  padding-bottom: 13px;
+  background-color: #f0f0f0;
 `;
 
 const FormStyled = styled.form`
@@ -25,7 +30,7 @@ const FormStyled = styled.form`
   position: relative;
   background-color:rgb(240, 240, 240);
   border-radius: 33px;
-`;
+  `;
 
 const InputStyled = styled.input`
   height: 100%;
@@ -36,11 +41,7 @@ const InputStyled = styled.input`
   font-size: 0.85em;
   text-indent: 20px;
   font-size: 0.97em;
-  box-shadow: 0px 0px 3px rgb(160, 160, 160);
-  border: 1px solid rgb(123, 123, 123);
-
-  color: rgb(75, 75, 75);
-  
+  border: 2px solid  #F4684A;
   &:focus{
     outline: 1px solid black;
   }
@@ -56,7 +57,7 @@ const InputStyled = styled.input`
   @media screen and (min-width: 769px){
     font-size: 1.02em;
   }
-`;
+  `;
 
 const DivSpanStyled = styled.div`
   display: flex;
@@ -71,21 +72,30 @@ const DivSpanStyled = styled.div`
   right: 15px;
 `;
 
-const SombraStyled = styled.div`
-  height: 5px;
-  width: 100%;
-  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.09), rgba(240, 240, 240, 0));
+const ShadowStyled = styled.div`
+  display: block;
+  height: 4px;
+  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.16), rgba(240, 240, 240, 0));
   background-size: 100% 100%;
+
+  @media screen and (min-width: 993px){
+    display: none;
+  }
 `;
 
 function SearchBar() {
   return (
-    <ContainerStyled>
-        <FormStyled action="/search" method="post" id="for_search">
-          <InputStyled type="search" id="search" name="query" placeholder="O que você quer? Digite aqui"></InputStyled>
-          <DivSpanStyled><span className="material-symbols-rounded" style={{color: "rgb(111, 111, 111"}}>search</span></DivSpanStyled>
-        </FormStyled>
-    </ContainerStyled>
+    <ContainerForShadow>
+      <ContainerForFormStyled>
+          <FormStyled action="/search" method="post" id="for_search">
+            <InputStyled type="search" id="search" name="query" placeholder="O que você quer? Digite aqui"></InputStyled>
+            <DivSpanStyled><span className="material-symbols-rounded" style={{color: "red"}}>search</span></DivSpanStyled>
+          </FormStyled>
+      </ContainerForFormStyled>
+
+      {/* <ShadowStyled></ShadowStyled> */}
+    </ContainerForShadow>
+    
   );
 }
 

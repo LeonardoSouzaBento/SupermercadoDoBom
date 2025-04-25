@@ -11,6 +11,7 @@ export const Div = styled.div`
   //celulares
   @media screen and (min-width: 320px) and (max-width:576px){
     width: 100%;
+    padding-bottom: 41px;
   }
   @media screen and (min-width: 577px) and (max-width:768px){
     width: calc(100% - 15px);
@@ -34,23 +35,24 @@ export const Div = styled.div`
 export const P = styled.p`
     width: 100%;
     text-align: center;
-    margin-top: 18px;
-    margin-bottom: 24px;
+    margin-top: 10px;
+    margin-bottom: 28px;
     font-size: 1.15em;
-    letter-spacing: 0.76px;
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 500;
-    color: #892c2f;
+    color:rgb(153, 71, 74);
 
  //celulares
   @media screen and (min-width: 320px) and (max-width:374px){
     font-size: 1.12em;
+    margin-bottom: 29px;
   }
   @media screen and (min-width: 375px) and (max-width:576px){
     font-size: 1.2em;
   }
   @media screen and (min-width: 577px) and (max-width:768px){
     font-size: 1.24em;
+    margin-bottom: 29px;
   }
   //tablets
   @media screen and (min-width: 769px) and (max-width:992px){
@@ -59,6 +61,7 @@ export const P = styled.p`
   //notebooks
   @media screen and (min-width: 993px) and (max-width:1200px){
     font-size: 1.28em;
+    margin-top: 9px;
   }
   @media screen and (min-width: 1201px){
     font-size: 1.3em;
@@ -127,7 +130,7 @@ export const Img = styled.img`
 `;
 
 export const Pagination = styled.div`
-      height: 9px;
+      height: max-content;
       width: 50%;
       margin: auto;
       display: flex;
@@ -139,9 +142,7 @@ export const Pagination = styled.div`
 export const Span = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
-  height: 100%;
-  width: 9px;
-  background-color: rgb(129, 129, 129);
+  background-color: rgb(125, 125, 125);
   border-radius: 50%;
   border: 1px solid rgb(136, 136, 136);
   ${props => props.$atual && `
@@ -150,4 +151,13 @@ export const Span = styled.span.attrs(() => ({
     padding: 1px;
     border: 1px solid grey;
   `}
+
+  @media screen and (min-width: 320px) and (max-width: 374px){
+    height: 7px;
+    width: 7px;
+  }
+  @media screen and (min-width: 375px){
+    height: 8px;
+    width: 8px;
+  }
 `;

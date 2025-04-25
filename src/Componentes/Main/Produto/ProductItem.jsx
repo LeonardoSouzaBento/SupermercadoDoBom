@@ -3,7 +3,7 @@ import { PaiProdStyled, PpesoStyled, PoffStyled } from './ComponentesProdutos';
 //img produto
 import {DivOfertaStyled, PaiImgOfertaStyled, ImgOfertaStyed, DivPesoStyled, DivOffStyled, DivResizeStyled, SpanResizeStyled} from './ComponentesProdutos';
 //botao de preco e botao de quantidade
-import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, DivMaisStyled} from './ComponentesProdutos';
+import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, PSifraStyled, DivMaisStyled} from './ComponentesProdutos';
 import { DivQuantStyled,BotoesStyled, PQuantStyled, PMenosStyled, PMaisStyled, PMais2Styled} from './ComponentesProdutos';
 //nome do produto
 import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentesProdutos';
@@ -59,11 +59,12 @@ const Botoes = ({ quantity, onMore, onFewer }) => {
 const Preco = ({ price, discount}) => {
   return (
         <PaiPrecoStyled>
-          <DivPrecoStyled>
 
-            <PprecoStyled>R$ {price}</PprecoStyled>
-            
+          <DivPrecoStyled>
+            <PSifraStyled>R$</PSifraStyled>
+            <PprecoStyled>{price}</PprecoStyled>
           </DivPrecoStyled>
+
         </PaiPrecoStyled>
 )};
 

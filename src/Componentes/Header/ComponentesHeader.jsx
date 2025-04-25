@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const DivLogoStyled = styled.div`
+const DivLogoENomeStyled = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
@@ -11,14 +11,12 @@ const DivLogoStyled = styled.div`
 `;
 
 const ImgLogoStyled = styled.img`
-    height: 65px;
-    width: 65px;
     border-radius: 50%;
     border: 1px solid rgb(116, 116, 116);
     box-shadow: 0px 0px 3px rgb(113, 113, 113);
     box-sizing: border-box;
     transform: scaleX(-1);
-    filter: grayscale(0.2);
+    filter: grayscale(0.2) saturate(1.2);
     @media (min-width: 320px) and (max-width: 374px){
         height: 54px;
         width: 54px;
@@ -37,6 +35,39 @@ const ImgLogoStyled = styled.img`
     }
 `;
 
+const DivLogo = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px rgba(255, 88, 88, 0.49);
+    transform: scaleX(-1);
+
+    @media (min-width: 320px) and (max-width: 374px){
+        height: 54px;
+        width: 54px;
+    }
+    @media (min-width: 375px) and (max-width: 576px){
+        height: 60px;
+        width: 60px;
+    }
+    @media (min-width: 577px) and (max-width: 768px){
+        height: 63px;
+        width: 63px;
+    }
+    @media (min-width: 768px){
+        height: 65px;
+        width: 65px;
+    }
+`;
+
+const SpanLogo = styled.span`
+  color:rgb(209, 13, 19);
+  font-size: 2.06em;
+  font-weight: 500;
+`;
+
 const DivPsStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -46,8 +77,8 @@ const DivPsStyled = styled.div`
 const PNomeSupStyled = styled.p`
     font-family: "Montserrat", serif;
     font-weight: 600;
-
-    color:rgb(185, 40, 21);
+    color:rgb(209, 13, 19);
+    
     @media (min-width: 320px) and (max-width: 374px){
         font-size: 0.93em;
     }
@@ -73,16 +104,16 @@ const PBemVindoStyled = styled(PNomeSupStyled)`
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-weight: 400;
     @media (min-width: 320px) and (max-width: 374px){
-        font-size: 0.89em;
+        font-size: 1.03em;
     }
     @media (min-width: 375px) and (max-width: 576px){
-        font-size: 1em;
+        font-size: 1.08em;
     }
     @media (min-width: 577px) and (max-width: 768px){
-        font-size: 1.12em;
+        font-size: 1.17em;
     }
     @media (min-width: 769px) and (max-width: 992px){
-        font-size: 1.2em;
+        font-size: 1.22em;
     }
     @media (min-width: 993px){
         font-size: 1.25em;
@@ -91,13 +122,13 @@ const PBemVindoStyled = styled(PNomeSupStyled)`
 
 export const Divlogo = () => {
     return (
-    <DivLogoStyled>
-        <ImgLogoStyled src="/logo_supermercado.png" alt=""></ImgLogoStyled>
+    <DivLogoENomeStyled>
+        <DivLogo><SpanLogo className='material-symbols-rounded'>handshake</SpanLogo></DivLogo>
         <DivPsStyled>
             <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
             <PBemVindoStyled> Seja bem vindo!</PBemVindoStyled>
         </DivPsStyled>
-    </DivLogoStyled>
+    </DivLogoENomeStyled>
     )
 }
 
@@ -107,17 +138,17 @@ const DivMoreOptionsStyled = styled.div`
     display: flex;
     align-items: center;
     background-color:rgb(215, 69, 69);
-    box-shadow: 0px 0px 5px rgb(128, 128, 128);
+
     color: white;
     @media (max-width: 992px){
-        width: 40px;
+        width: 41px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
         box-sizing: border-box;
         transition: all 100ms ease;
-        box-shadow: 0px 0px 5px rgb(128, 128, 128);
+        box-shadow: 0px 0px 2px rgba(255, 88, 88, 0.5);
     }
     @media (min-width: 993px){
         gap: 8px;
