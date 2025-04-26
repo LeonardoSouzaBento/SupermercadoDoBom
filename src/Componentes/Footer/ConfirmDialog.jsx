@@ -3,23 +3,22 @@ import { useContext } from "react";
 import { CartContext } from "../CartContext";
 import { products } from "../../data/data";
 
-const  DivConfirmStyled= styled.div`
+const  DivStyled= styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 42px;
-    background-color: rgb(255, 255, 255);
     border-radius: 24px 0px 0px 24px;
 `;
 
-const DivPStyled = styled.div`
+const DivCancelStyled = styled.div`
   display: flex;
   width: auto;
   height: max-content;
 `;
 
-const DivP2Styled = styled(DivPStyled)`
+const DivSimNaoStyled = styled.p`
   gap: 6px;
   overflow: hidden;
 `;
@@ -28,7 +27,7 @@ const PStyled = styled.p`
   font-family: "Lato", Arial, Helvetica, sans-serif;
   font-weight: 500;
   border-radius: 8px;
-  color: black;
+  color: white;
 
   @media screen and (min-width: 320px) and (max-width: 375px){
       font-size: 0.8em;
@@ -69,15 +68,26 @@ export default function ConfirmDialog(){
     };
 
     return(
-      <DivConfirmStyled>
-          <DivPStyled>
+      <DivStyled>
+          <DivCancelStyled>
               <PStyled>Cancelar a compra?</PStyled>
-          </DivPStyled>
+          </DivCancelStyled>
 
-          <DivP2Styled>
-              <PSimStyled onClick={handleConfirmCancel}>Sim</PSimStyled>
-              <PNaoStyled onClick={()=>setViewConfirm(false)}>Não</PNaoStyled>
-          </DivP2Styled>
-      </DivConfirmStyled>
+          <DivSimNaoStyled>
+              <PSimStyled 
+                onClick={handleConfirmCancel}
+                onPointerDown={(e) => e.stopPropagation()}
+                onPointerUp={(e) => {
+                e.stopPropagation();
+              }}>Sim</PSimStyled>
+
+              <PNaoStyled onClick={()=>setViewConfirm(false)} 
+              onPointerDown={(e) => e.stopPropagation()}
+              onPointerUp={(e) => {
+              e.stopPropagation();
+              }}>Não</PNaoStyled>
+              
+          </DivSimNaoStyled>
+      </DivStyled>
     )
 }

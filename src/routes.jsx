@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import MainContent from "./Componentes/Main/MainContent"
+import Cart from "./pages/Carrinho/Cart";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<MainContent />}/>
-      {/* <Route path="/tema" element={<Tema />} /> */}
+      <Route path="/Cart" element={<Cart />} />
     </Routes>
   );
 };

@@ -40,7 +40,12 @@ function ProductList() {
   const { quantities, setQuantities, handleQuantityChange } = useContext(CartContext);
 
   useEffect(() => {
-    setQuantities(products.map(() => 0));
+    setQuantities((prevQuantities) => {
+      if (prevQuantities.length === 0) {
+        return products.map(() => 0);
+      }
+      return prevQuantities; // Se já tem, mantém como está
+    });
   }, [setQuantities]);
 
   return (

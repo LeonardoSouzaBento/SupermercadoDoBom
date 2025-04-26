@@ -4,6 +4,7 @@ import { CartContext } from '../CartContext';
 import { products } from '../../data/data';
 import ConfirmDialog from './ConfirmDialog';
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
 
 const FooterStyled = styled.footer`
     display: flex;
@@ -15,9 +16,13 @@ const FooterStyled = styled.footer`
     background-color: transparent;
     margin: auto;
     position: sticky;
-    bottom: 12px;
+    bottom: 7px;
     z-index: 4;
     border-radius: 5px;
+
+    @media screen and (min-width: 993px){
+      bottom: 9px;
+    }
 `;
 
 const CartDescStyled = styled.div`
@@ -26,87 +31,125 @@ const CartDescStyled = styled.div`
   max-width: 400px;
   height: 42px;
   background-color:rgb(230, 104, 76);
-  border-radius: 27px 0px 0px 27px;
+  border-radius: 9px 0px 0px 9px;
   justify-content: space-between;
   align-items: center;
   box-shadow: -2px 1px 5px rgba(0, 0, 0, 0.34);
   border: 3px solid #D25F45;
-
-  
-  @media screen and (min-width: 320px) and (max-width: 375px){
-    min-width: 95%;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px){
-    
-  }
-  @media screen and (min-width: 577px){
-    
-  }
+  cursor: pointer;
+  user-select: none;
 `;
 
-const DivSpanCartStyled = styled.div`
+const DivCancelECart = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 100%;
+  gap: 10px;
+`;
+
+const DivCartStyled = styled.div`
   border-radius: 50%;
-  height: 45px;
+  height: 100%;
   width:38px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-const DivSpanCloseStyled= styled(DivSpanCartStyled)`
-  height: 42px;
+const DivCancelStyled= styled(DivCartStyled)`
+  height: 95%;
   width: 42px;
+  border-radius: 50%;
   background-color: rgb(255, 255, 255);
   box-shadow: 8px 0px 20px rgba(0, 0, 0, 0.15);
+  display: none;
 `;
 
-const DivSetaStyled = styled(DivSpanCartStyled)`
-  width: fit-content;
-  margin-left: -4px;
-`;
-
-const SpanCartStyled = styled.span`
-   color: white;
-   font-size: 1.75em;
-   font-weight: 300;
-   font-variation-settings:
-    'FILL' 1;
-`;
-
-const SpanCloseStyled = styled(SpanCartStyled)`
+const SpanCancelStyled = styled.div`
+  font-variation-settings:
+  'FILL' 1;
   color: #fc6b4c;
   font-size: 1.45em;
   font-weight: 600;
 `;
 
+const DivSetaStyled = styled(DivCartStyled)`
+  width: fit-content;
+  margin-left: -4px;
+`;
+
+const DivCartSetaStyled = styled.div`
+  width: max-content;
+  height: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  gap: 0px;
+`;
+
+const SpanCartStyled = styled.span`
+   color: white;
+   font-size: 1.74em;
+   font-weight: 300;
+   font-variation-settings:
+    'FILL' 1;
+
+  @media screen and (min-width: 320px) and (max-width: 375px){
+    font-size: 1.6em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px){
+    font-size: 1.7em;
+  }
+`;
+
 const SpanSetaStyled = styled(SpanCartStyled)`
-  font-size: 1.5em;
+  @media screen and (min-width: 320px) and (max-width: 375px){
+    font-size: 1.5em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px){
+    font-size: 1.6em;
+  }
+  @media screen and (min-width: 577px){
+    font-size: 1.7em;
+  }
+`;
+
+//Divs dos ps
+const DivPStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 30px;
 `;
 
 const PPrecoStyled = styled.p`
- font-family: "Montserrat", Arial, Helvetica, sans-serif;
+ font-family: "Poppins", Arial, Helvetica, sans-serif;
  font-weight: 300;
- padding-bottom: 3px;
  color: white;
- font-size: 1.1em;
+ letter-spacing: 0.71px;
+
+ @media screen and (min-width: 320px) and (max-width: 375px){
+    font-size: 1.06em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px){
+    font-size: 1.12em;
+
+  }
+  @media screen and (min-width: 577px){
+    font-size: 1.14em;
+  }
 `;
 
 const PItensStyled = styled(PPrecoStyled)`
 `;
 
-const ContainerStyled = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-`;
-
-const Container2 = styled(ContainerStyled)`
-  gap: 0px;
-`;
-
 function Footer() {
   const { totalQuantity, totalValueFormatted, setViewConfirm, viewConfirm, setClickHistory, setQuantities} = useContext(CartContext);
+  const navigate = useNavigate();
 
   if (totalQuantity <= 0) return null;
 
@@ -121,28 +164,32 @@ function Footer() {
   return(
   <FooterStyled>
     {totalQuantity > 0 && 
-      <CartDescStyled>
-        <ContainerStyled>
-          {!viewConfirm && (<>
-          <DivSpanCloseStyled onClick={callCalcel}>
-            <SpanCloseStyled className='material-symbols-rounded'>close</SpanCloseStyled>
-          </DivSpanCloseStyled>
-
-          <Container2>
-            <DivSpanCartStyled>
-              <SpanCartStyled className='material-symbols-rounded'>shopping_cart</SpanCartStyled>
-            </DivSpanCartStyled>
-
-            <DivSetaStyled>
-              <SpanSetaStyled className='material-symbols-rounded'>chevron_right</SpanSetaStyled>
-            </DivSetaStyled>
-          </Container2>
+      <CartDescStyled  
+        onPointerDown={() => {
+        window.startClickTime = Date.now();
+        }}
+        onPointerUp={(e) => {
+        const duration = Date.now() - window.startClickTime;
+        if (duration < 300) {
+          navigate('/Cart');
+        }
+        }}>
         
-          <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>
-          <PItensStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PItensStyled>
-          </>)}
-          {viewConfirm && <ConfirmDialog></ConfirmDialog>}
-        </ContainerStyled>
+          <DivCancelECart>
+            <DivCartSetaStyled>
+              <DivCartStyled>
+                <SpanCartStyled className='material-symbols-rounded'>shopping_cart</SpanCartStyled>
+              </DivCartStyled>
+              <DivSetaStyled>
+                <SpanSetaStyled className='material-symbols-rounded'>chevron_right</SpanSetaStyled>
+              </DivSetaStyled>
+            </DivCartSetaStyled>
+          </DivCancelECart>
+
+          <DivPStyled>
+            <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>
+            <PItensStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PItensStyled>
+          </DivPStyled>
       </CartDescStyled>
     }
   </FooterStyled>
