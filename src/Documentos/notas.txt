@@ -1,36 +1,25 @@
-1. O array de dependencias:
+setClickHistory(prev => {
+      const updatedHistory = [...prev, { id, price, add: isAdding, quant: 1}];
+      
+      if (isAdding && updatedHistory.length > 1) {
+        for (let i = updatedHistory.length - 2; i >= 0; i--) {
+          if (updatedHistory[i].id === id) {
+            updatedHistory[i].quant += 1;
+            updatedHistory.pop();
+            break;
+          }
+        }
+      }
 
-  useEffect(() => {
-    setFadeOut(true); //depois de carregar
-    const timer = setTimeout(() => {
-      setShow(false);
-    }, 1200);
+      if (!isAdding) {
+        updatedHistory.pop();
+        for (let i = updatedHistory.length - 1; i >= 0; i--) {
+          if (updatedHistory[i].id === id) {
+            updatedHistory.splice(i, 1);
+            break;
+          }
+        }
+      }
 
-    return () => clearTimeout(timer);
-  }, [] /*[] é para execução uma unica vez*/);
-  Se você incluir variáveis no array de dependências, o efeito será executado novamente sempre que uma dessas variáveis mudar.
-  
- 2. return () => clearTimeout(timer);
- 
-Função de "limpeza"
-O useEffect pode retornar uma função, chamada de função de "limpeza".
-Essa função é executada quando o componente é desmontado (removido da tela) ou antes do useEffect ser executado novamente (se houver dependências que mudaram).
-Por que usar clearTimeout(timer)?
-No seu código, você está usando setTimeout para agendar a execução de setShow(false) após 1,2 segundos.
-Se o componente WelcomeSection for desmontado antes desses 1,2 segundos, o setTimeout ainda será executado, o que pode causar erros.
-clearTimeout(timer) cancela o setTimeout, garantindo que ele não seja executado se o componente for desmontado antes do tempo limite.
-Isso evita "vazamentos de memória" e outros problemas.
- 
-  const [show, setShow] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
-
-  useEffect(() => {
-    setFadeOut(true); //depois de carregar
-    const timer = setTimeout(() => {
-      setShow(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [] /*[] é para execução uma unica vez*/);
-
-  if (!show) return null; //remover componente
+      return updatedHistory;
+});

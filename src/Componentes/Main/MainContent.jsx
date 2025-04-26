@@ -6,6 +6,7 @@ import AnnouncementSection from './Annoucement_section/AnnouncementSection';
 import CategorySection from './Categorias/CategorySection';
 import PromoSection from './PromoSection';
 import Footer from '../Footer/Footer';
+
 import styled from 'styled-components';
 import { CartProvider } from '../CartContext';
 
@@ -13,7 +14,7 @@ const Main = styled.main`
   max-width: 1390px;
   height: 100%;
   margin: auto;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(237, 237, 237);
   position: relative;
   padding: 0px;
   box-shadow: inset 0px -3px 6px rgb(198, 198, 198);
@@ -54,9 +55,9 @@ function MainContent() {
           <AnnouncementSection />
           <CategorySection />
           
-          <CartProvider id='cart'>
+          <CartProvider>
             <PromoSection />
-            <Footer />
+            <Footer/>
           </CartProvider>
 
           <ShadowBottomStyled></ShadowBottomStyled>

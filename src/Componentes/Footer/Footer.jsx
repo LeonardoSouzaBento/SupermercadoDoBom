@@ -1,6 +1,8 @@
 import React from 'react';
-import { useContext } from 'react';
+import { useContext} from 'react';
 import { CartContext } from '../CartContext';
+import { products } from '../../data/data';
+import ConfirmDialog from './ConfirmDialog';
 import styled from "styled-components";
 
 const FooterStyled = styled.footer`
@@ -20,15 +22,26 @@ const FooterStyled = styled.footer`
 
 const CartDescStyled = styled.div`
   display: flex;
-  width: 80%;
+  width: 90%;
   max-width: 400px;
-  height: 46px;
+  height: 42px;
   background-color:rgb(230, 104, 76);
-  border-radius: 24px 0px 0px 24px;
+  border-radius: 27px 0px 0px 27px;
   justify-content: space-between;
   align-items: center;
-  padding-right: 30px;
-  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.27);
+  box-shadow: -2px 1px 5px rgba(0, 0, 0, 0.34);
+  border: 3px solid #D25F45;
+
+  
+  @media screen and (min-width: 320px) and (max-width: 375px){
+    min-width: 95%;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px){
+    
+  }
+  @media screen and (min-width: 577px){
+    
+  }
 `;
 
 const DivSpanCartStyled = styled.div`
@@ -41,11 +54,9 @@ const DivSpanCartStyled = styled.div`
 `;
 
 const DivSpanCloseStyled= styled(DivSpanCartStyled)`
-  height: 40px;
-  width: 40px;
-  border: 2px solid rgb(213, 97, 77);
+  height: 42px;
+  width: 42px;
   background-color: rgb(255, 255, 255);
-  margin-left: 2px;
   box-shadow: 8px 0px 20px rgba(0, 0, 0, 0.15);
 `;
 
@@ -84,7 +95,7 @@ const PItensStyled = styled(PPrecoStyled)`
 `;
 
 const ContainerStyled = styled.div`
-  width: max-content;
+  width: 100%;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -95,37 +106,43 @@ const Container2 = styled(ContainerStyled)`
 `;
 
 function Footer() {
-  const { totalQuantity } = useContext(CartContext);
-  const {totalValueFormatted} = useContext(CartContext);
-  
+  const { totalQuantity, totalValueFormatted, setViewConfirm, viewConfirm, setClickHistory, setQuantities} = useContext(CartContext);
+
   if (totalQuantity <= 0) return null;
+
+  function callCalcel() {
+    if (totalQuantity==1){
+      setQuantities(products.map(() => 0));
+      setClickHistory([]);
+      setViewConfirm(false)
+    }else{setViewConfirm(true);}
+  }
 
   return(
   <FooterStyled>
     {totalQuantity > 0 && 
       <CartDescStyled>
+        <ContainerStyled>
+          {!viewConfirm && (<>
+          <DivSpanCloseStyled onClick={callCalcel}>
+            <SpanCloseStyled className='material-symbols-rounded'>close</SpanCloseStyled>
+          </DivSpanCloseStyled>
 
-      <ContainerStyled>
-        <DivSpanCloseStyled> {/*Essa div tem de ter a função*/}
-          <SpanCloseStyled className='material-symbols-rounded'>close</SpanCloseStyled>
-        </DivSpanCloseStyled>
+          <Container2>
+            <DivSpanCartStyled>
+              <SpanCartStyled className='material-symbols-rounded'>shopping_cart</SpanCartStyled>
+            </DivSpanCartStyled>
 
-        <Container2>
-          <DivSpanCartStyled>
-            <SpanCartStyled className='material-symbols-rounded'>shopping_cart</SpanCartStyled>
-          </DivSpanCartStyled>
-
-          <DivSetaStyled>
-            <SpanSetaStyled className='material-symbols-rounded'>chevron_right</SpanSetaStyled>
-          </DivSetaStyled>
-        </Container2>
-       
-      </ContainerStyled>
+            <DivSetaStyled>
+              <SpanSetaStyled className='material-symbols-rounded'>chevron_right</SpanSetaStyled>
+            </DivSetaStyled>
+          </Container2>
         
-
-        <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>
-        <PItensStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PItensStyled>
-
+          <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>
+          <PItensStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PItensStyled>
+          </>)}
+          {viewConfirm && <ConfirmDialog></ConfirmDialog>}
+        </ContainerStyled>
       </CartDescStyled>
     }
   </FooterStyled>

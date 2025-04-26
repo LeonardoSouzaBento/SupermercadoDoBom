@@ -16,7 +16,7 @@ const ContainerForFormStyled = styled.div`
   width: 100%;
   padding: 14px 0px;
   padding-bottom: 13px;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
 `;
 
 const FormStyled = styled.form`

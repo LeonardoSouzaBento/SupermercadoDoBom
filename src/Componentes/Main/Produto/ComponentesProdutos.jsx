@@ -258,7 +258,6 @@ export const DivOfertaStyled = styled.div`
     export const DivQuantStyled = styled.div`
         width: 128px;
         height: 32px;
-        /* border: 4px solid rgb(203, 104, 104); */
         border: 4px solid rgb(227, 97, 68);
         display: flex;
         justify-content: space-between;
@@ -294,6 +293,5 @@ export const DivOfertaStyled = styled.div`
         font-family: "Lato", Arial, Helvetica, sans-serif;
         font-weight: 700;
         padding-bottom: 2px;
-        /* color:rgb(189, 86, 84); */
         color: rgb(213, 94, 64);
     `;

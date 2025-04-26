@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PaiProdStyled, PpesoStyled, PoffStyled } from './ComponentesProdutos';
 //img produto
 import {DivOfertaStyled, PaiImgOfertaStyled, ImgOfertaStyed, DivPesoStyled, DivOffStyled, DivResizeStyled, SpanResizeStyled} from './ComponentesProdutos';
@@ -10,6 +10,32 @@ import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentesProdu
 import {products} from '../../../data/data';
 
 const Oferta = ({ products, discount, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange })=>{
+  return(
+    <DivOfertaStyled>
+      <PaiImgOfertaStyled>
+        <DivOffStyled>
+          <PoffStyled>-{discount}%</PoffStyled>
+        </DivOffStyled>
+        <ImgOfertaStyed src={products.url}></ImgOfertaStyed>
+
+        {!mostrarBotoes &&
+          <DivMaisStyled onClick={() => {
+            setMostrarBotoes(true);
+            onQuantityChange(1, true);}}>
+            <PMaisStyled>+</PMaisStyled>
+          </DivMaisStyled>
+        }
+        {mostrarBotoes &&
+        <Botoes
+          quantity={quantity}
+          onQuantityChange={onQuantityChange}
+          setMostrarBotoes={setMostrarBotoes}
+        />}
+      </PaiImgOfertaStyled>
+    </DivOfertaStyled>
+)}
+
+const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes }) => {
   const handleMore = () => onQuantityChange(quantity + 1, true);
 
   const handleFewer = () => {
@@ -21,37 +47,11 @@ const Oferta = ({ products, discount, quantity, setMostrarBotoes, mostrarBotoes,
     }
   };
 
-  return(
-  <DivOfertaStyled>
-      <PaiImgOfertaStyled>
-          <DivOffStyled>
-              <PoffStyled>-{discount}%</PoffStyled>
-          </DivOffStyled>
-          <ImgOfertaStyed src={products.url}></ImgOfertaStyed>
-
-          {!mostrarBotoes && 
-            <DivMaisStyled onClick={() => { 
-                setMostrarBotoes(true); 
-                onQuantityChange(1, true);}}>
-              <PMaisStyled>+</PMaisStyled>
-            </DivMaisStyled>
-          }  
-          {mostrarBotoes &&
-          <Botoes 
-            quantity={quantity}
-            onMore={handleMore}
-            onFewer={handleFewer}
-        />}
-      </PaiImgOfertaStyled>
-  </DivOfertaStyled>
-)}
-
-const Botoes = ({ quantity, onMore, onFewer }) => {
   return (
     <DivQuantStyled>
-      <BotoesStyled onClick={onFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
+      <BotoesStyled onClick={handleFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
       <BotoesStyled><PQuantStyled>{quantity}</PQuantStyled></BotoesStyled>
-      <BotoesStyled onClick={onMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
+      <BotoesStyled onClick={handleMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
     </DivQuantStyled>
   );
 }
@@ -71,7 +71,7 @@ const Preco = ({ price, discount}) => {
 const DescOferta = ({ products}) => {
   return (
     <DescOfertaStyled>
-      <Preco 
+      <Preco
       discount={products.discount}
       price={products.price}>
       </Preco>
@@ -88,11 +88,19 @@ const DescOferta = ({ products}) => {
 
 function ProductItem({ products, quantity, onQuantityChange }) {
 
-  const [mostrarBotoes, setMostrarBotoes] = React.useState(false);
+  const [mostrarBotoes, setMostrarBotoes] = useState(false);
 
   const handleQuantityChange = (newQuantity, isAdding) => {
     onQuantityChange(newQuantity, products.id, products.price, isAdding);
   };
+
+  useEffect(() => {
+    if (quantity === 0) {
+      setMostrarBotoes(false);
+    } else if (quantity > 0 && !mostrarBotoes) {
+      setMostrarBotoes(true);
+    }
+  }, [quantity, setMostrarBotoes]);
 
   return (
     <PaiProdStyled>
@@ -100,7 +108,7 @@ function ProductItem({ products, quantity, onQuantityChange }) {
 
       <Oferta products={products}
       quantity={quantity}
-      setMostrarBotoes={setMostrarBotoes} 
+      setMostrarBotoes={setMostrarBotoes}
       mostrarBotoes={mostrarBotoes}
       onQuantityChange={handleQuantityChange}
       discount={products.discount}
