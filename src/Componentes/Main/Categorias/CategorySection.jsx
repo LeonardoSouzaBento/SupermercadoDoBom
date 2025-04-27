@@ -16,10 +16,10 @@ function CategoryItem({ category }) {
 
 function CategorySection() {
   const category = [
-    { id: 0, icon: 'icons/iconePromo.png', label: 'Promoções' }, //renderiza com a const products
-    { id: 1, icon: 'icons/cafe.png', label: 'Mercearia' }, //renderiza com a const productsCatId1
-    { id: 2, icon: 'icons/choco.png', label: 'Doces e Biscoitos' }, //renderiza com a const productsCatId2
-    { id: 3, icon: 'icons/maca.png', label: 'Hortifruit' }, //renderiza com a const productsCatId3
+    { id: 0, icon: 'icons/iconePromo.png', label: 'Promoções' }, // os dados estão em products
+    { id: 1, icon: 'icons/cafe.png', label: 'Mercearia' }, //os dados estão com a const productsCatId1
+    { id: 2, icon: 'icons/choco.png', label: 'Doces e Biscoitos' }, // com a const productsCatId2
+    { id: 3, icon: 'icons/maca.png', label: 'Hortifruit' }, //com a const productsCatId3
     { id: 4, icon: 'icons/croisant.png', label: 'Padaria' },
     { id: 5, icon: 'icons/frangoc.png', label: 'Açougue' },
     { id: 6, icon: 'icons/queijo.png', label: 'Frios e Congelados' },
