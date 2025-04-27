@@ -38,29 +38,31 @@ export function CartProvider({ children }) {
       next[categoryKey] = updatedCategory;
       return next;
     });
-  
-    setClickHistory(prev => {
-      const updatedHistory = [...prev, { id, price, add: isAdding, quant: 1}];
-      
-      if (isAdding && updatedHistory.length > 1) {
-        for (let i = updatedHistory.length - 2; i >= 0; i--) {
-          if (updatedHistory[i].id === id) {
-            updatedHistory[i].quant += 1;
-            updatedHistory.pop();
-            break;
-          }
-        }
-      }
 
-      if (!isAdding) {
-        updatedHistory.pop();
-        for (let i = updatedHistory.length - 1; i >= 0; i--) {
-          if (updatedHistory[i].id === id) {
-            updatedHistory.splice(i, 1);
-            break;
+    setClickHistory(prev => {
+      const existingIndex = prev.findIndex(item => item.id === id);
+      const updatedHistory = [...prev];
+  
+      if (isAdding) {
+        if (existingIndex !== -1) {
+          // Atualiza quantidade se já existir
+          updatedHistory[existingIndex].quant += 1;
+        } else {
+          // Adiciona novo item se não existir
+          updatedHistory.push({ id, price, add: true, quant: 1 });
+        }
+      } else {
+        if (existingIndex !== -1) {
+          if (updatedHistory[existingIndex].quant > 1) {
+            // Diminui quantidade se maior que 1
+            updatedHistory[existingIndex].quant -= 1;
+          } else {
+            // Remove item se quantidade chegar a 0
+            updatedHistory.splice(existingIndex, 1);
           }
         }
       }
+      
       return updatedHistory;
     });
   };
