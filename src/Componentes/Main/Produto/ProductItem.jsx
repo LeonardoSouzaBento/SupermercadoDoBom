@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { PaiProdStyled, PpesoStyled, PoffStyled } from './ComponentesProdutos';
-//img produto
-import {DivOfertaStyled, PaiImgOfertaStyled, ImgOfertaStyed, DivPesoStyled, DivOffStyled, DivResizeStyled, SpanResizeStyled} from './ComponentesProdutos';
-//botao de preco e botao de quantidade
-import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, PSifraStyled, DivMaisStyled} from './ComponentesProdutos';
-import { DivQuantStyled,BotoesStyled, PQuantStyled, PMenosStyled, PMaisStyled, PMais2Styled} from './ComponentesProdutos';
-//nome do produto
-import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentesProdutos';
+import {
+  PaiProdStyled,
+  PpesoStyled,
+  PoffStyled,
+  DivOfertaStyled,
+  PaiImgOfertaStyled,
+  ImgOfertaStyed,
+  DivPesoStyled,
+  DivOffStyled,
+  PaiPrecoStyled,
+  DivPrecoStyled,
+  PprecoStyled,
+  PSifraStyled,
+  DivMaisStyled,
+  DivQuantStyled,
+  BotoesStyled,
+  PQuantStyled,
+  PMenosStyled,
+  PMaisStyled,
+  PMais2Styled,
+  DescOfertaStyled,
+  DivNomeStyled,
+  PnomeStyled
+} from './ComponentesProdutos';
 
 const Oferta = ({ products, discount, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange })=>{
   return(

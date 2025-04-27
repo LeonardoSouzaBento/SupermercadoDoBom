@@ -65,7 +65,7 @@ export function CartProvider({ children }) {
     });
   };
 
-  const totalQuantity = clickHistory.reduce((sum, item) => sum + item.quant, 0);
+  const totalQuantity = clickHistory.reduce((acc, item) => acc + item.quant, 0);
 
   const totalAddedValue = clickHistory.reduce((acumulador, objeto) => {
     const price = parseFloat(objeto.price.replace(',', '.'));
