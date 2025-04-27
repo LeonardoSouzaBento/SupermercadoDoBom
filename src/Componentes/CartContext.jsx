@@ -4,6 +4,18 @@ export const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [quantities, setQuantities] = useState([]);
+  const [quantities1, setQuantities1] = useState([]);
+  const [quantities2, setQuantities2] = useState([]);
+  const [quantities3, setQuantities3] = useState([]);
+  const [quantities4, setQuantities4] = useState([]);
+  const [quantities5, setQuantities5] = useState([]);
+  const [quantities6, setQuantities6] = useState([]);
+  const [quantities7, setQuantities7] = useState([]);
+  const [quantities8, setQuantities8] = useState([]);
+  const [quantities9, setQuantities9] = useState([]);
+  const [quantities10, setQuantities10] = useState([]);
+  const [quantities11, setQuantities11] = useState([]);
+
   const [clickHistory, setClickHistory] = useState([]);
   const [viewConfirm, setViewConfirm] = useState(false);
   const [cancelCart, SetCancelCart] = useState(false);
