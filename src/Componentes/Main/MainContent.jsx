@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useState } from 'react';
 import Header from '../Header/Header';
 import HelpSection from './HelpSection';
 import SearchBar from './SearchBar';
@@ -7,7 +8,7 @@ import CategorySection from './Categorias/CategorySection';
 import PromoSection from './PromoSection';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components';
-
+import { CartContext } from '../CartContext';
 
 const Main = styled.main`
   max-width: 1390px;
@@ -34,17 +35,7 @@ const ShadowBottomStyled = styled.div`
 `;
 
 function MainContent() {
-  // const [loading, setLoading] = useState(true);
-  // const [apagar, setApagar] = useState(false);
-
-  // useEffect(() => {
-  //   setApagar(true);
-  //   const timer = setTimeout(() => {
-  //     setLoading(false);
-  //   }, 2000);
-
-  //   return () => clearTimeout(timer);
-  // }, []);
+  const {currentCategory, setCurrentCategory} = useContext(CartContext)
 
   return (
     <Main>
@@ -52,8 +43,8 @@ function MainContent() {
           <Header />
           <SearchBar />
           <AnnouncementSection />
-          <CategorySection />
-          <PromoSection variant={'home'}/>
+          <CategorySection setCurrentCategory={setCurrentCategory} />
+          <PromoSection categoryKey={currentCategory} variant={'home'}/>
           <Footer/>
           <ShadowBottomStyled></ShadowBottomStyled>
     </Main>

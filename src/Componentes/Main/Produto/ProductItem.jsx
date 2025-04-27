@@ -7,7 +7,6 @@ import { PaiPrecoStyled, DivPrecoStyled, PprecoStyled, PSifraStyled, DivMaisStyl
 import { DivQuantStyled,BotoesStyled, PQuantStyled, PMenosStyled, PMaisStyled, PMais2Styled} from './ComponentesProdutos';
 //nome do produto
 import { DescOfertaStyled, DivNomeStyled, PnomeStyled } from './ComponentesProdutos';
-import {products} from '../../../data/data';
 
 const Oferta = ({ products, discount, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange })=>{
   return(
@@ -94,13 +93,14 @@ function ProductItem({ products, quantity, onQuantityChange, variant}) {
     onQuantityChange(newQuantity, products.id, products.price, isAdding);
   };
 
+  // toda vez que quantity mudar, ajusta a visibilidade dos botões
   useEffect(() => {
-    if (quantity === 0) {
-      setMostrarBotoes(false);
-    } else if (quantity > 0 && !mostrarBotoes) {
+    if (quantity > 0) {
       setMostrarBotoes(true);
+    } else {
+      setMostrarBotoes(false);
     }
-  }, [quantity, setMostrarBotoes]);
+  }, [quantity]);
 
   return (
     <PaiProdStyled $variant={variant}>

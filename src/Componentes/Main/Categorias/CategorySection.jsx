@@ -1,10 +1,10 @@
 import React from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled } from './ComponentesCategorias';
 
-function CategoryItem({ category }) {
+function CategoryItem({ category, onClick}) {
 
   return (
-        <DivCat>
+        <DivCat onClick={onClick}>
           {/*$selected={category.id === 'promo'}*/}
           <ImgStyled src={category.icon} alt={category.label} />
           <DivNameSection className="divNameSection">
@@ -14,7 +14,8 @@ function CategoryItem({ category }) {
   );
 }
 
-function CategorySection() {
+function CategorySection({setCurrentCategory}) {
+
   const category = [
     { id: 0, icon: 'icons/iconePromo.png', label: 'Promoções' }, // os dados estão em products
     { id: 1, icon: 'icons/cafe.png', label: 'Mercearia' }, //os dados estão com a const productsCatId1
@@ -34,8 +35,8 @@ function CategorySection() {
     <Div>
       <Span className="material-symbols-outlined">swipe_left</Span>
       <Divf>
-        {category.map((category) => (
-          <CategoryItem key={category.id} category={category} />
+        {category.map((category, id) => (
+          <CategoryItem category={category}  key={category.id} onClick={()=>setCurrentCategory(id)}/>
         ))}
       </Divf>
     </Div>

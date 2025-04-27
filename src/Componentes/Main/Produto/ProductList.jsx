@@ -2,7 +2,6 @@ import React from 'react';
 import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
-import { products } from '../../../data/data';
 import { CartContext } from '../../CartContext';
 
 const DivStyled = styled.div`
@@ -35,18 +34,21 @@ const DivStyled = styled.div`
     }
 `;
 
-function ProductList({variant}) {
-  //solucao com context api
-  const { quantities, setQuantities, handleQuantityChange } = useContext(CartContext);
+function ProductList({variant, categoryKey}) {
+  const { allQuantities, allProductsInCat, setAllQuantities, handleQuantityChange} = useContext(CartContext);
+
+  const products = allProductsInCat[categoryKey];
+  const quantities = allQuantities[categoryKey];
 
   useEffect(() => {
-    setQuantities((prevQuantities) => {
-      if (prevQuantities.length === 0) {
-        return products.map(() => 0);
+    setAllQuantities(prev => {
+      const next = [...prev];
+      if (!next[categoryKey] || next[categoryKey].length !== products.length) {
+        next[categoryKey] = products.map(() => 0);
       }
-      return prevQuantities; // Se já tem, mantém como está
+      return next;
     });
-  }, [setQuantities]);
+  }, [categoryKey, products, setAllQuantities]);
 
   return (
     <DivStyled $variant={variant}>
@@ -59,7 +61,7 @@ function ProductList({variant}) {
           products={product}
           quantity={quantities[index] || 0}
           onQuantityChange={(newQuantity, id, price, isAdding) =>
-            handleQuantityChange(index, newQuantity, id, price, isAdding)}
+            handleQuantityChange(categoryKey, index, newQuantity, id, price, isAdding)}
         />
       ))}
     </DivStyled>

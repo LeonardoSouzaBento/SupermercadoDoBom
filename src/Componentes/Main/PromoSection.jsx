@@ -23,10 +23,10 @@ const PaiAllProductsStyled = styled.div`
   }
 `;
 
-function PromoSection({variant, products}) {
+function PromoSection({variant, categoryKey}) {
   return (
     <PaiAllProductsStyled>
-      <ProductList products={products} variant={variant}></ProductList>
+      <ProductList categoryKey={categoryKey}  variant={variant}></ProductList>
     </PaiAllProductsStyled>
   );
 }

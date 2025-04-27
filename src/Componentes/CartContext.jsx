@@ -1,32 +1,44 @@
 import React, { createContext, useState} from 'react';
+import { productsCatId1, productsCatId2, productsCatId3} from '../data/data2';
+import { products } from '../data/data';
+
 
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [quantities, setQuantities] = useState([]);
-  const [quantities1, setQuantities1] = useState([]);
-  const [quantities2, setQuantities2] = useState([]);
-  const [quantities3, setQuantities3] = useState([]);
-  const [quantities4, setQuantities4] = useState([]);
-  const [quantities5, setQuantities5] = useState([]);
-  const [quantities6, setQuantities6] = useState([]);
-  const [quantities7, setQuantities7] = useState([]);
-  const [quantities8, setQuantities8] = useState([]);
-  const [quantities9, setQuantities9] = useState([]);
-  const [quantities10, setQuantities10] = useState([]);
-  const [quantities11, setQuantities11] = useState([]);
+
+  const [currentCategory, setCurrentCategory] = useState(0);
+
+  const allProductsInCat = [products, productsCatId1, productsCatId2, productsCatId3,[],
+  [],[],[],[],[],[],[]]
+
+  //array para lembrar as quantidades de product itens alteradas
+  const [allQuantities, setAllQuantities] = useState([
+    products.map(() => 0),
+    productsCatId1.map(() => 0),
+    productsCatId2.map(() => 0),
+    productsCatId3.map(() => 0),
+    [],[],[],[],[],[],[],[]
+  ]);
 
   const [clickHistory, setClickHistory] = useState([]);
   const [viewConfirm, setViewConfirm] = useState(false);
   const [cancelCart, SetCancelCart] = useState(false);
 
-  const handleQuantityChange = (index, newQuantity, id, price, isAdding) => {
-    setQuantities(prev => {
-      const updated = [...prev];
-      updated[index] = newQuantity;
-      return updated;
-    });
+  const handleQuantityChange = (categoryKey, index, newQuantity, id, price, isAdding) => {
     
+    setAllQuantities(prev => {
+      // clona o array completo de categorias
+      const next = [...prev];
+      // clona a sub-lista da categoria que mudou (ou cria uma vazia)
+      const updatedCategory = [...(next[categoryKey] || [])];
+      // atualiza só o índice que mudou
+      updatedCategory[index] = newQuantity;
+      // coloca a lista atualizada de volta no lugar correto
+      next[categoryKey] = updatedCategory;
+      return next;
+    });
+  
     setClickHistory(prev => {
       const updatedHistory = [...prev, { id, price, add: isAdding, quant: 1}];
       
@@ -53,7 +65,7 @@ export function CartProvider({ children }) {
     });
   };
 
-  const totalQuantity = quantities.reduce((sum, q) => sum + q, 0);
+  const totalQuantity = clickHistory.reduce((sum, item) => sum + item.quant, 0);
 
   const totalAddedValue = clickHistory.reduce((acumulador, objeto) => {
     const price = parseFloat(objeto.price.replace(',', '.'));
@@ -64,8 +76,9 @@ export function CartProvider({ children }) {
   const totalValueFormatted = totalAddedValue.toFixed(2).replace('.', ',');
 
   return (
-    <CartContext.Provider value={{ quantities, setQuantities, handleQuantityChange, totalQuantity, 
-    clickHistory, setClickHistory, totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm}}>
+    <CartContext.Provider value={{ allQuantities,
+    setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
+    clickHistory, setClickHistory, totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat}}>
       {children}
     </CartContext.Provider>
   );
