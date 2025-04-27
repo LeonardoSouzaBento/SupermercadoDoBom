@@ -53,7 +53,7 @@ function MainContent() {
           <SearchBar />
           <AnnouncementSection />
           <CategorySection />
-          <PromoSection />
+          <PromoSection variant={'home'}/>
           <Footer/>
           <ShadowBottomStyled></ShadowBottomStyled>
     </Main>

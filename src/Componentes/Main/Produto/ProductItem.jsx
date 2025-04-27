@@ -86,7 +86,7 @@ const DescOferta = ({ products}) => {
 }
 
 
-function ProductItem({ products, quantity, onQuantityChange }) {
+function ProductItem({ products, quantity, onQuantityChange, variant}) {
 
   const [mostrarBotoes, setMostrarBotoes] = useState(false);
 
@@ -103,7 +103,7 @@ function ProductItem({ products, quantity, onQuantityChange }) {
   }, [quantity, setMostrarBotoes]);
 
   return (
-    <PaiProdStyled>
+    <PaiProdStyled $variant={variant}>
       <DescOferta products={products}></DescOferta>
 
       <Oferta products={products}

@@ -35,7 +35,7 @@ const DivStyled = styled.div`
     }
 `;
 
-function ProductList() {
+function ProductList({variant}) {
   //solucao com context api
   const { quantities, setQuantities, handleQuantityChange } = useContext(CartContext);
 
@@ -49,9 +49,10 @@ function ProductList() {
   }, [setQuantities]);
 
   return (
-    <DivStyled>
+    <DivStyled $variant={variant}>
       {products.map((product, index) => (
         <ProductItem 
+          variant={variant}
           key={product.id} 
           id={product.id}
           $price={product.price}
