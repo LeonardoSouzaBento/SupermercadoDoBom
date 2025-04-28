@@ -1,13 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled } from './ComponentesCategorias';
 
-function CategoryItem({ category, onClick}) {
+function CategoryItem({ category, onClick, isSelected}) {
 
   return (
-        <DivCat onClick={onClick}>
-          {/*$selected={category.id === 'promo'}*/}
-          <ImgStyled src={category.icon} alt={category.label} />
-          <DivNameSection className="divNameSection">
+        <DivCat onClick={onClick}  $selected={isSelected}>
+          <ImgStyled src={category.icon} alt={category.label}/>
+          <DivNameSection>
             <PStyled>{category.label}</PStyled>
           </DivNameSection>
         </DivCat>
@@ -15,6 +15,8 @@ function CategoryItem({ category, onClick}) {
 }
 
 function CategorySection({setCurrentCategory}) {
+
+  const [selectedCategoryId, setSelectedCategoryId] = useState(0);
 
   const category = [
     { id: 0, icon: 'icons/iconePromo.png', label: 'Promoções' }, // os dados estão em products
@@ -31,12 +33,18 @@ function CategorySection({setCurrentCategory}) {
     { id: 11, icon: 'icons/pata.png', label: 'PetShop' }
   ];
 
+  const handleCategoryClick = (categoryId) => {
+    setCurrentCategory(categoryId);
+    setSelectedCategoryId(categoryId);
+  };
+
   return (
     <Div>
       <Span className="material-symbols-outlined">swipe_left</Span>
       <Divf>
-        {category.map((category, id) => (
-          <CategoryItem category={category}  key={category.id} onClick={()=>setCurrentCategory(id)}/>
+        {category.map((cat) => (
+          <CategoryItem category={cat}  key={cat.id} onClick={() => handleCategoryClick(cat.id)}
+            isSelected={cat.id === selectedCategoryId}/>
         ))}
       </Divf>
     </Div>

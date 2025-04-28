@@ -7,19 +7,19 @@ export const Div = styled.div`
     position: relative;
 
     @media screen and (min-width: 320px) and (max-width: 375px){
-      width: calc(100% - 7px);
-      margin-left: 2px;
+      width: calc(100% - 15px);
+      margin-left: 15px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-      width: calc(100% - 13px);
-      margin-left: 8px;
+      width: calc(100% - 20px);
+      margin-left: 20px;
     }
     @media screen and (min-width: 577px) and (max-width: 1200px){
       width: calc(100% - 20px);
-      margin-left: 15px;
+      margin-left: 20px;
     }
     @media screen and (min-width: 1201px){
-      width: calc(100% - 42px);
+      width: calc(100% - 52px);
       margin: auto;
     }
 `;
@@ -35,7 +35,7 @@ export const Divf = styled.div`
     justify-content: space-between;
     flex-flow: row nowrap;
     padding: 5px;
-    
+    padding-left: 0px;
     position: relative;
     gap: 10px;
     box-sizing: border-box;
@@ -96,8 +96,9 @@ export const DivCat = styled.div`
     //esses estilos abaixo
     ${props => props.$selected && 
     `background-color: rgb(255, 255, 255);
-    border-radius: 6px;
-    border: 1px solid rgb(138, 138, 138);
+     border-radius: 8px;
+     border: 1px solid rgb(151, 151, 151);
+    // border: 1px solid rgb(138, 138, 138);
     box-shadow: 0px 0px 2px rgb(186, 186, 186);}
     `}
 `;
@@ -108,7 +109,6 @@ export const ImgStyled = styled.img`
   background-color:rgb(255, 83, 83);
   border-radius: 50%;
   filter: contrast(1.7) saturate(1.8);
-  /* filter: contrast(3) saturate(1) grayscale(0.9); */
   transition: all 0.32s ease;
   padding: 4px;
   box-shadow: 0px 0px 2px rgb(91, 91, 91);
