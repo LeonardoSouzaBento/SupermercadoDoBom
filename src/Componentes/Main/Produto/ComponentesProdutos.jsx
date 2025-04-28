@@ -15,7 +15,6 @@ export const PaiProdStyled = styled.div`
     position: relative;
     box-sizing: border-box;
     padding-right: 5px;
-    /* box-shadow: 0px 0px 2px rgb(182, 182, 182); */
     
     @media screen and (min-width: 320px) and (max-width: 375px){
        max-width: 265px;

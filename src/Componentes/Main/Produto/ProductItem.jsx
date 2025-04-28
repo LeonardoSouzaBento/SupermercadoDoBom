@@ -35,8 +35,9 @@ const Oferta = ({ products, discount, quantity, setMostrarBotoes, mostrarBotoes,
 
         {!mostrarBotoes &&
           <DivMaisStyled onClick={() => {
-            setMostrarBotoes(true);
-            onQuantityChange(1, true);}}>
+              setMostrarBotoes(true);
+              onQuantityChange(1, true);
+            }}>
             <PMaisStyled>+</PMaisStyled>
           </DivMaisStyled>
         }
@@ -51,7 +52,9 @@ const Oferta = ({ products, discount, quantity, setMostrarBotoes, mostrarBotoes,
 )}
 
 const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes }) => {
-  const handleMore = () => onQuantityChange(quantity + 1, true);
+
+  const handleMore = () =>
+    onQuantityChange(quantity + 1, true );
 
   const handleFewer = () => {
     if (quantity > 1) {
@@ -83,31 +86,27 @@ const Preco = ({ price, discount}) => {
         </PaiPrecoStyled>
 )};
 
-const DescOferta = ({ products}) => {
+const DescOferta = ({ product}) => {
   return (
     <DescOfertaStyled>
       <Preco
-      discount={products.discount}
-      price={products.price}>
+      discount={product.discount}
+      price={product.price}>
       </Preco>
       <DivNomeStyled>
-        <PnomeStyled>{products.name}</PnomeStyled>
+        <PnomeStyled>{product.name}</PnomeStyled>
       </DivNomeStyled>
       <DivPesoStyled>
-          <PpesoStyled>{products.weight}</PpesoStyled>
+          <PpesoStyled>{product.weight}</PpesoStyled>
       </DivPesoStyled>
     </DescOfertaStyled>
   );
 }
 
 
-function ProductItem({ products, quantity, onQuantityChange, variant}) {
+function ProductItem({ product, quantity, onQuantityChange, variant}) {
 
   const [mostrarBotoes, setMostrarBotoes] = useState(false);
-
-  const handleQuantityChange = (newQuantity, isAdding) => {
-    onQuantityChange(newQuantity, products.id, products.price, isAdding);
-  };
 
   // toda vez que quantity mudar, ajusta a visibilidade dos botões
   useEffect(() => {
@@ -120,14 +119,14 @@ function ProductItem({ products, quantity, onQuantityChange, variant}) {
 
   return (
     <PaiProdStyled $variant={variant}>
-      <DescOferta products={products}></DescOferta>
+      <DescOferta product={product}></DescOferta>
 
-      <Oferta products={products}
+      <Oferta products={product}
       quantity={quantity}
       setMostrarBotoes={setMostrarBotoes}
       mostrarBotoes={mostrarBotoes}
-      onQuantityChange={handleQuantityChange}
-      discount={products.discount}
+      onQuantityChange={onQuantityChange}
+      discount={product.discount}
       >
       </Oferta>
     </PaiProdStyled>

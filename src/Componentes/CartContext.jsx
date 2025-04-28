@@ -2,7 +2,6 @@ import React, { createContext, useState} from 'react';
 import { productsCatId1, productsCatId2, productsCatId3} from '../data/data2';
 import { products } from '../data/data';
 
-
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
@@ -25,22 +24,18 @@ export function CartProvider({ children }) {
   const [viewConfirm, setViewConfirm] = useState(false);
   const [cancelCart, SetCancelCart] = useState(false);
 
-  const handleQuantityChange = (categoryKey, index, newQuantity, id, price, isAdding) => {
+  const handleQuantityChange = (categoryKey, index, newQuantity, product, isAdding) => {
     
-    setAllQuantities(prev => {
-      // clona o array completo de categorias
-      const next = [...prev];
-      // clona a sub-lista da categoria que mudou (ou cria uma vazia)
-      const updatedCategory = [...(next[categoryKey] || [])];
-      // atualiza só o índice que mudou
-      updatedCategory[index] = newQuantity;
-      // coloca a lista atualizada de volta no lugar correto
-      next[categoryKey] = updatedCategory;
-      return next;
+    setAllQuantities(prev => { 
+      const next = [...prev]; //copia allQuantities
+      const updatedCategory = [...(next[categoryKey] || [])]; // copia a categoria específica
+      updatedCategory[index] = newQuantity; // altera a quantidade do item desejado
+      next[categoryKey] = updatedCategory; // atualiza o array da categoria no array geral
+      return next; // devolve o novo estado completo
     });
 
     setClickHistory(prev => {
-      const existingIndex = prev.findIndex(item => item.id === id);
+      const existingIndex = prev.findIndex(item => product.id === item.id);
       const updatedHistory = [...prev];
   
       if (isAdding) {
@@ -49,7 +44,7 @@ export function CartProvider({ children }) {
           updatedHistory[existingIndex].quant += 1;
         } else {
           // Adiciona novo item se não existir
-          updatedHistory.push({ id, price, add: true, quant: 1 });
+          updatedHistory.push({ ...product, quant: 1 });
         }
       } else {
         if (existingIndex !== -1) {
@@ -80,7 +75,7 @@ export function CartProvider({ children }) {
   return (
     <CartContext.Provider value={{ allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    clickHistory, setClickHistory, totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat}}>
+    clickHistory, setClickHistory, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat}}>
       {children}
     </CartContext.Provider>
   );

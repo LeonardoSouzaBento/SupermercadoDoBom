@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProductList from './Produto/ProductList';
+import ProductListHome from './Produto/ProductListHome';
 
 const PaiAllProductsStyled = styled.div`
    overflow-x: hidden;
@@ -26,7 +26,7 @@ const PaiAllProductsStyled = styled.div`
 function PromoSection({variant, categoryKey}) {
   return (
     <PaiAllProductsStyled>
-      <ProductList categoryKey={categoryKey}  variant={variant}></ProductList>
+      <ProductListHome categoryKey={categoryKey}  variant={variant}></ProductListHome>
     </PaiAllProductsStyled>
   );
 }

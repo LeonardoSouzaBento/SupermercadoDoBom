@@ -57,8 +57,8 @@ const PNoneStyled = styled.p`
   padding-left: 15px;
 `;
 
-function ProductList({variant, categoryKey}) {
-  const { allQuantities, allProductsInCat, setAllQuantities, handleQuantityChange} = useContext(CartContext);
+function ProductListHome({variant, categoryKey}) {
+  const { allQuantities, allProductsInCat, handleQuantityChange} = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
   const quantities = allQuantities[categoryKey];
@@ -67,22 +67,22 @@ function ProductList({variant, categoryKey}) {
     <DivStyled $variant={variant}>
       {products.length === 0 ? (
         <NoProcutsStyed>
-          <span class="material-symbols-outlined">
+          <span className="material-symbols-outlined">
           search_off
           </span>
           <PNoneStyled>Nenhum produto nesta categoria ainda</PNoneStyled>
         </NoProcutsStyed>
       ) : (
-      products.map((product, index) => (
+      products.map((product, idx) => (
         <ProductItem 
           variant={variant}
           key={product.id} 
           id={product.id}
           $price={product.price}
-          products={product}
-          quantity={quantities[index] || 0}
-          onQuantityChange={(newQuantity, id, price, isAdding) =>
-            handleQuantityChange(categoryKey, index, newQuantity, id, price, isAdding)}
+          product={product}
+          quantity={quantities[idx] || 0}
+          onQuantityChange={(newQuantity, isAdding) =>
+            handleQuantityChange(categoryKey, idx, newQuantity, product, isAdding)}
         />
       )))}
     </DivStyled>
@@ -90,4 +90,4 @@ function ProductList({variant, categoryKey}) {
 }
 
 
-export default ProductList;
+export default ProductListHome;
