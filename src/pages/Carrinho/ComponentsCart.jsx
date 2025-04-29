@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useContext } from "react";
 
 export const BodyStyled = styled.div`
     background-color: rgb(240, 240, 240);
@@ -14,6 +15,7 @@ export const MainStyled = styled.main`
     }
     @media screen and (min-width: 769px){
         width: calc(100% - 30px);
+        display: block;
     }
 `;
 
@@ -36,14 +38,15 @@ export const CartSectionStyed = styled.div`
         margin-bottom: 17px;
     }
     @media screen and (min-width: 769px){
-        min-width: 100%;
+        width: calc(100% - 255px);
+        max-width: none;
+        margin: 0px;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: flex-start;
         gap: 15px;
         margin-bottom: 20px;
-        padding: 24px;
         padding-top: 7px;
         box-shadow: 0px 0px 2px rgb(189, 189, 189);
     }
@@ -76,6 +79,13 @@ export const PHeadStyled = styled.p`
     }
 `;
 
+export const ProductListStyled= styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 export const DivSeeAllStyled = styled.div`
     height: 40px;
     width: 100%;
@@ -84,8 +94,8 @@ export const DivSeeAllStyled = styled.div`
     align-items: center;
     justify-content: center;
     gap: 5px;
-    border: 1px solid rgb(91, 91, 91);
     border-radius: 6px;
+    background-color: rgb(243, 243, 243);
     @media screen and(min-width: 768px){
         width: 50%;
     }
@@ -122,6 +132,10 @@ export const DivAddStyled = styled.div`
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(123, 123, 123);
+
+    @media screen and (min-width: 769px){
+       display: none;
+    }
 `;
 
 export const PAddStyled = styled.p`
@@ -138,7 +152,7 @@ export const PAddStyled = styled.p`
     }
 `;
 
-/*-----------------Finalizar------------------*/
+/*seção Finalizar*/
 
 export const DivAdd2Styled = styled(DivAddStyled)`
   min-width: 100%;
@@ -162,14 +176,18 @@ export const FinishSectionStyled = styled.div`
     padding-top: 12px;
 
     @media screen and (min-width: 769px){
+        width: 240px;
+        height: max-content;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         background-color: transparent;
-        margin-bottom: 20px;
         background-color: rgb(255, 255, 255);
         border: 1px solid rgb(149, 149, 149);
-        box-shadow: 0px 0px 3px rgb(173, 173, 173);
+        position: fixed;
+        top: 0;
+        right: 0px;
+        /* transform: translateY(-50%); */
     }
 
 `;
@@ -186,6 +204,10 @@ export const ContainerStyled = styled.div`
     border-radius: 7px;
     padding: 0px 10px;
     box-sizing: border-box;
+
+    @media screen and (min-width: 769px){
+       margin: 0px;
+    }
 `;
 
 export const DivAvisoStyled = styled.div`
@@ -194,8 +216,7 @@ export const DivAvisoStyled = styled.div`
     margin: auto;
     display: flex;
     align-items: center;
-    border: 1px solid rgb(0, 0, 0);
-    /* border-radius: 7px; */
+    border-radius: 4px;
     padding: 12px 15px;
     box-sizing: border-box;
     background-color: rgb(255, 236, 202);
@@ -225,6 +246,12 @@ export const DivValueStyled = styled.div`
     display: flex;
     flex-flow: row wrap;
     box-sizing: border-box;
+
+    @media screen and (min-width: 769px){
+       padding-left: 5px;
+       gap: 15px;
+       margin-bottom: 20px;
+    }
 `;
 
 export const DivStyled = styled.div`
@@ -233,6 +260,12 @@ export const DivStyled = styled.div`
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
+
+    
+    @media screen and (min-width: 769px){
+        flex-direction: column;
+        gap: 5px;
+    }
 `;
 
 export const PValueStyled = styled.p`

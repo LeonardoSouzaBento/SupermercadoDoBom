@@ -21,7 +21,6 @@ import {
   PContinueStyled
 } from './ComponentsCart.jsx';
 
-
 //padding: ${(props) => props.$variant === "cart" ? "8px" : "0px"};
 // background-color: ${({ $variant }) => $variant === 'promo' ? 'lightblue' : 'white'};
 
@@ -29,6 +28,7 @@ import {
 const Cart = () => {
   const{shoppingCart} = useContext(CartContext);
 
+  /*Variaveis do total*/
   const {totalAddedValue} = useContext(CartContext);
   const totalValue = totalAddedValue.toLocaleString('pt-BR', {
     minimumFractionDigits: 2,
@@ -76,12 +76,12 @@ const Cart = () => {
 
             <DivValueStyled>
               <DivStyled>
-                <PValueStyled>Valor da compra</PValueStyled>
+                <PValueStyled>Valor da compra:</PValueStyled>
                 <PValueStyled>R$ {totalValue}</PValueStyled>
-            </DivStyled>
+              </DivStyled>
 
               <DivStyled>
-                <PValueStyled><strong>Total (com entrega)</strong></PValueStyled>
+                <PValueStyled><strong>Total (com entrega):</strong></PValueStyled>
                 <PValueStyled><strong>{totalNumerico>0? 'R$ '+ totalFormatted:'+ 4,00'}</strong></PValueStyled>
               </DivStyled>
             </DivValueStyled>
