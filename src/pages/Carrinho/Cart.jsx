@@ -8,17 +8,12 @@ import {
   PHeadStyled,
   DivSeeAllStyled,
   PSeeAll,
-  SpanSeeAllStyled,
   DivAddStyled,
-  DivAdd2Styled,
   PAddStyled,
   FinishSectionStyled,
   ContainerStyled,
   DivAvisoStyled,
   PAvisoStyled,
-  DivCupomStyled,
-  PCupomStyled,
-  InputCupomStyled,
   DivValueStyled,
   DivStyled,
   PValueStyled,
@@ -32,16 +27,19 @@ import {
 
 
 const Cart = () => {
-
-  // const{totalQuantity} = useContext(CartContext);
-  const{clickHistory} = useContext(CartContext);
+  const{shoppingCart} = useContext(CartContext);
 
   const {totalAddedValue} = useContext(CartContext);
   const totalValue = totalAddedValue.toLocaleString('pt-BR', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
-  const falta = 40 - totalAddedValue;
+
+  const falta = 40 - totalAddedValue>0? 40 - totalAddedValue: 0;
+  const faltaFormatada = falta.toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });;
 
   const totalNumerico = falta > 0 ? 0 : totalAddedValue + 4;
   const totalFormatted = totalNumerico.toLocaleString('pt-BR', {
@@ -58,11 +56,8 @@ const Cart = () => {
           </DivHeadStyled>
 
 
-
-
           <DivSeeAllStyled>
             <PSeeAll>Ver Todos</PSeeAll>
-            <SpanSeeAllStyled className="material-symbols-rounded">keyboard_arrow_down</SpanSeeAllStyled>
           </DivSeeAllStyled>
         </CartSectionStyed>
 
@@ -72,32 +67,26 @@ const Cart = () => {
 
         <FinishSectionStyled>
           <ContainerStyled>
-            {falta>0 &&  
-            <DivAvisoStyled>
-              <PAvisoStyled>Faltam {falta} para o valor minimo de R$ 40,00</PAvisoStyled>
-            </DivAvisoStyled>
-            }
-           
-            <DivCupomStyled>
-              <PCupomStyled>Insira um cupom</PCupomStyled>
-              <InputCupomStyled></InputCupomStyled>
-            </DivCupomStyled>
-          </ContainerStyled>
 
-          <ContainerStyled>
+            {falta>0 &&  
+              <DivAvisoStyled>
+                <PAvisoStyled>Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00</PAvisoStyled>
+              </DivAvisoStyled>
+            }
+
             <DivValueStyled>
               <DivStyled>
                 <PValueStyled>Valor da compra</PValueStyled>
                 <PValueStyled>R$ {totalValue}</PValueStyled>
-              </DivStyled>
+            </DivStyled>
 
               <DivStyled>
                 <PValueStyled><strong>Total (com entrega)</strong></PValueStyled>
-                <PValueStyled><strong>R$ {totalFormatted}</strong></PValueStyled>
+                <PValueStyled><strong>{totalNumerico>0? 'R$ '+ totalFormatted:'+ 4,00'}</strong></PValueStyled>
               </DivStyled>
             </DivValueStyled>
-            <DivAdd2Styled><PAddStyled>Adicionar mais produtos</PAddStyled></DivAdd2Styled>
-            <DivContinueStyled>
+            
+            <DivContinueStyled  $nocontinue={falta>0}>
               <PContinueStyled>Continuar</PContinueStyled>
             </DivContinueStyled>
 

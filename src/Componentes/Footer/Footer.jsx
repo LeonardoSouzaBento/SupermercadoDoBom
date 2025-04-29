@@ -29,13 +29,11 @@ const CartDescStyled = styled.div`
   display: flex;
   width: 90%;
   max-width: 400px;
-  height: 42px;
+  height: 45px;
   background-color:rgb(230, 104, 76);
-  border-radius: 9px 0px 0px 9px;
+  border-radius: 14px 0px 0px 14px;
   justify-content: space-between;
   align-items: center;
-  box-shadow: -2px 1px 5px rgba(0, 0, 0, 0.34);
-  border: 3px solid #D25F45;
   cursor: pointer;
   user-select: none;
 `;
@@ -127,7 +125,7 @@ const DivPStyled = styled.div`
 `;
 
 const PPrecoStyled = styled.p`
- font-family: "Poppins", Arial, Helvetica, sans-serif;
+ font-family: "Lato", Arial, Helvetica, sans-serif;
  font-weight: 300;
  color: white;
  letter-spacing: 0.71px;
@@ -148,7 +146,7 @@ const PItensStyled = styled(PPrecoStyled)`
 `;
 
 function Footer() {
-  const { totalQuantity, totalValueFormatted, setViewConfirm, viewConfirm, setClickHistory, setQuantities} = useContext(CartContext);
+  const { totalQuantity, totalValueFormatted, setViewConfirm, viewConfirm, setShoppingCart, setQuantities} = useContext(CartContext);
   const navigate = useNavigate();
 
   if (totalQuantity <= 0) return null;
@@ -156,7 +154,7 @@ function Footer() {
   function callCalcel() {
     if (totalQuantity==1){
       setQuantities(products.map(() => 0));
-      setClickHistory([]);
+      setShoppingCart([]);
       setViewConfirm(false)
     }else{setViewConfirm(true);}
   }

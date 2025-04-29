@@ -20,7 +20,7 @@ export function CartProvider({ children }) {
     [],[],[],[],[],[],[],[]
   ]);
 
-  const [clickHistory, setClickHistory] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState([]);
   const [viewConfirm, setViewConfirm] = useState(false);
   const [cancelCart, SetCancelCart] = useState(false);
 
@@ -34,7 +34,7 @@ export function CartProvider({ children }) {
       return next; // devolve o novo estado completo
     });
 
-    setClickHistory(prev => {
+    setShoppingCart(prev => {
       const existingIndex = prev.findIndex(item => product.id === item.id);
       const updatedHistory = [...prev];
   
@@ -62,9 +62,9 @@ export function CartProvider({ children }) {
     });
   };
 
-  const totalQuantity = clickHistory.reduce((acc, item) => acc + item.quant, 0);
+  const totalQuantity = shoppingCart.reduce((acc, item) => acc + item.quant, 0);
 
-  const totalAddedValue = clickHistory.reduce((acumulador, objeto) => {
+  const totalAddedValue = shoppingCart.reduce((acumulador, objeto) => {
     const price = parseFloat(objeto.price.replace(',', '.'));
     const subtotal = objeto.quant * price;
     return acumulador + subtotal;
@@ -75,7 +75,7 @@ export function CartProvider({ children }) {
   return (
     <CartContext.Provider value={{ allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    clickHistory, setClickHistory, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat}}>
+    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat}}>
       {children}
     </CartContext.Provider>
   );
