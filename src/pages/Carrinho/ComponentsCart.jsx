@@ -2,20 +2,22 @@ import styled from "styled-components";
 
 export const BodyStyled = styled.div`
     background-color: rgb(240, 240, 240);
-    height: 100vh;
-    padding-top: 10px;
+    padding-top: 12px;
+    padding-bottom: 30px;
 `;
 
 export const MainStyled = styled.main`
-    width: calc(100% - 14px);
+    width: calc(100% - 30px);
     margin: auto;
     @media screen and (min-width: 320px) and (max-width: 374px){
-        width: calc(100% - 10px);
+        width: calc(100% - 20px);
+    }
+    /* @media screen and (min-width: 375px) and (max-width: 576px){
+        width: calc(100% - 30px);
     }
     @media screen and (min-width: 769px){
         width: calc(100% - 30px);
-        display: block;
-    }
+    } */
 `;
 
 export const CartSectionStyed = styled.div`
@@ -26,13 +28,13 @@ export const CartSectionStyed = styled.div`
     margin: auto;
     background-color: white;
     margin-bottom: 20px;
-    border-radius: 7px;
+    border-radius: 12px 12px 20px 20px;
     padding: 12px;
     padding-top: 0px;
     padding-bottom: 14px;
     box-sizing: border-box;
     border: 1px solid rgb(135, 135, 135);
-
+    
     @media screen and (min-width: 577px) and (max-width: 768px){
         margin-bottom: 17px;
     }
@@ -49,7 +51,7 @@ export const CartSectionStyed = styled.div`
         padding-top: 7px;
         box-shadow: 0px 0px 2px rgb(189, 189, 189);
     }
-`;
+    `;
 
 export const DivHeadStyled = styled.div`
     height: 45px;
@@ -57,7 +59,7 @@ export const DivHeadStyled = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-`;
+    `;
 
 export const PHeadStyled = styled.p`
     width: 100%;
@@ -78,11 +80,10 @@ export const PHeadStyled = styled.p`
     }
 `;
 
-export const ProductListStyled= styled.div`
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
+export const ContainerOfListStyled = styled.div`
+    width: 100%;
+    height: auto;
+    overflow: hidden;
 `;
 
 export const DivSeeAllStyled = styled.div`

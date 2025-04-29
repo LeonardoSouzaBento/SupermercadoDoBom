@@ -26,7 +26,7 @@ const PaiAllProductsStyled = styled.div`
 function PromoSection({variant, categoryKey}) {
   return (
     <PaiAllProductsStyled>
-      <ProductListHome categoryKey={categoryKey}  variant={variant}></ProductListHome>
+      <ProductListHome variant={'home'} categoryKey={categoryKey}></ProductListHome>
     </PaiAllProductsStyled>
   );
 }

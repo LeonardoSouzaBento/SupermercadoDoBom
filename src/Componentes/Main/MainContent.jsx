@@ -44,7 +44,7 @@ function MainContent() {
           <SearchBar />
           <AnnouncementSection />
           <CategorySection setCurrentCategory={setCurrentCategory} />
-          <PromoSection categoryKey={currentCategory} variant={'home'}/>
+          <PromoSection categoryKey={currentCategory}/>
           <Footer/>
           <ShadowBottomStyled></ShadowBottomStyled>
     </Main>

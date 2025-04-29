@@ -1,4 +1,4 @@
-import React, { createContext, useState} from 'react';
+import React, { createContext, useState, useEffect} from 'react';
 import { productsCatId1, productsCatId2, productsCatId3} from '../data/data2';
 import { products } from '../data/data';
 

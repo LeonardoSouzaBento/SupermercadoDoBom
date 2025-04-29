@@ -1,11 +1,13 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CartContext } from '../../Componentes/CartContext';
+import ProductListHome from '../../Componentes/Main/Produto/ProductListHome.jsx';
 import {
   BodyStyled,
   MainStyled,
   CartSectionStyed,
   DivHeadStyled,
   PHeadStyled,
+  ContainerOfListStyled,
   DivSeeAllStyled,
   PSeeAll,
   DivAddStyled,
@@ -21,6 +23,7 @@ import {
   PContinueStyled
 } from './ComponentsCart.jsx';
 
+
 //padding: ${(props) => props.$variant === "cart" ? "8px" : "0px"};
 // background-color: ${({ $variant }) => $variant === 'promo' ? 'lightblue' : 'white'};
 
@@ -28,6 +31,7 @@ import {
 const Cart = () => {
   const{shoppingCart} = useContext(CartContext);
   const{setCartProducts} = useContext(CartContext);
+  const [seeAll, setSeeAll] = useState(false);
 
   /*Variaveis do total*/
   const {totalAddedValue} = useContext(CartContext);
@@ -55,16 +59,19 @@ const Cart = () => {
           <DivHeadStyled>
             <PHeadStyled>Sua Compra</PHeadStyled>
           </DivHeadStyled>
+          
+          <ContainerOfListStyled>
+            <ProductListHome variant={'cart'} categoryKey={12}></ProductListHome>
+          </ContainerOfListStyled>
 
-
-          <DivSeeAllStyled>
-            <PSeeAll>Ver Todos</PSeeAll>
+          <DivSeeAllStyled onClick={()=>{setSeeAll(true)}}>
+            <PSeeAll>Ver Tudo</PSeeAll>
           </DivSeeAllStyled>
         </CartSectionStyed>
 
-        <DivAddStyled>
+        {/* <DivAddStyled>
           <PAddStyled>Adicionar mais produtos</PAddStyled>
-        </DivAddStyled>
+        </DivAddStyled> */}
 
         <FinishSectionStyled>
           <ContainerStyled>
