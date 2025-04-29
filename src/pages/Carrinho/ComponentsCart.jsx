@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
+export const BodyStyled = styled.div`
+    background-color: rgb(236, 236, 236);
+`;
+
 export const MainStyled = styled.main`
     width: calc(100% - 14px);
     margin: auto;
     margin-bottom: 30px;
-    
     @media screen and (min-width: 320px) and (max-width: 374px){
         width: calc(100% - 10px);
     }
@@ -144,9 +147,8 @@ export const DivAddStyled = styled.div`
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
     
-    @media screen and(min-width: 769px){
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
-        margin:0px;
+    @media screen and (min-width: 769px){
+      display: none;
     }
 `;
 
@@ -164,13 +166,20 @@ export const PAddStyled = styled.p`
     }
 `;
 
-export const DivAdd2Styled = styled(DivAddStyled)`
-  width: 100%;
-`;
 
-// const ContainerFinishStyled = styled.div`
-  
-// `;
+
+/*-----------------Finalizar------------------*/
+
+export const DivAdd2Styled = styled(DivAddStyled)`
+  min-width: 100%;
+  display: none;
+  margin: 0px;
+  box-shadow: none;
+  border-radius: 7px;
+  @media screen and (min-width: 769px){
+    display: flex;
+  }
+`;
 
 export const FinishSectionStyled = styled.div`
     width: 100%;
@@ -205,8 +214,23 @@ export const FinishSectionStyled = styled.div`
 `;
 
 export const ContainerStyled = styled.div`
-  height: auto;
-  width: auto;
+    height: auto;
+    width: 100%;
+
+    @media screen and (min-width: 769px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 18px;
+        width: 49%;
+        height: 170px;
+        border: 1px solid rgb(149, 149, 149);
+        border-radius: 7px;
+        padding: 17px 12px;
+        background-color: white;
+        box-shadow: 0px 0px 3px rgb(173, 173, 173);
+    }
 `;
 
 export const DivAvisoStyled = styled.div`
@@ -222,6 +246,12 @@ export const DivAvisoStyled = styled.div`
     background-color: rgb(255, 240, 194);
     margin-bottom: 12px;
     color: rgb(142, 0, 0);
+
+    
+    @media screen and (min-width: 769px){
+        margin: 0px;
+      
+    }
 `;
 
 export const PAvisoStyled = styled.p`
@@ -278,7 +308,6 @@ export const InputCupomStyled = styled.input`
 
 export const DivValueStyled = styled.div`
     width: 100%;
-    height: 40px;
     margin: auto;
     padding: 10px 6px;
     margin-bottom: 10px;
@@ -287,7 +316,7 @@ export const DivValueStyled = styled.div`
     box-sizing: border-box;
     gap: 12px;
 
-    @media screen and (max-width: 769px){
+    @media screen and (min-width: 769px){
         padding: 0px;
         margin: 0px;
     }
@@ -304,7 +333,6 @@ export const DivStyled = styled.div`
 
 export const PValueStyled = styled.p`
    font-family: "Inter", Arial, Helvetica, sans-serif;
-   font-weight: 600;
 
    @media screen and (min-width: 320px) and (max-width: 374px){
         font-size: 1.05em;
@@ -316,6 +344,7 @@ export const PValueStyled = styled.p`
     @media screen and (min-width: 577px) and (max-width: 768px){
     }
 `;
+
 
 export const DivContinueStyled = styled.div`
     display: flex;
