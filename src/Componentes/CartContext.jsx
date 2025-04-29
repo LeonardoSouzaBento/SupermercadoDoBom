@@ -6,21 +6,24 @@ export const CartContext = createContext();
 
 export function CartProvider({ children }) {
 
+  const [cartProducts, setCartProducts] = useState([]);
+  const [cartQuantities, setCartQuantities] = useState([]);
+
   const [currentCategory, setCurrentCategory] = useState(0);
 
   const allProductsInCat = [products, productsCatId1, productsCatId2, productsCatId3,[],
-  [],[],[],[],[],[],[]]
+  [],[],[],[],[],[],[], cartProducts];
 
-  //array para lembrar as quantidades de product itens alteradas
   const [allQuantities, setAllQuantities] = useState([
     products.map(() => 0),
     productsCatId1.map(() => 0),
     productsCatId2.map(() => 0),
     productsCatId3.map(() => 0),
-    [],[],[],[],[],[],[],[]
+    [],[],[],[],[],[],[],[], cartQuantities
   ]);
 
   const [shoppingCart, setShoppingCart] = useState([]);
+
   const [viewConfirm, setViewConfirm] = useState(false);
   const [cancelCart, SetCancelCart] = useState(false);
 
@@ -60,7 +63,26 @@ export function CartProvider({ children }) {
       
       return updatedHistory;
     });
+
   };
+
+  /*Guardar no carrinho*/
+  useEffect(() => {
+    setAllQuantities(prev => {
+      const next = [...prev];
+      next[12] = shoppingCart.map(item => item.quant);
+      return next;
+    });
+
+    const simplifiedCart = shoppingCart.map(item => ({
+      id: item.id,
+      name: item.name,
+      weight: item.weight,
+      price: item.price,
+      url: item.url,
+    }));
+    setCartProducts(simplifiedCart);
+  }, [shoppingCart]);
 
   const totalQuantity = shoppingCart.reduce((acc, item) => acc + item.quant, 0);
 
@@ -75,7 +97,7 @@ export function CartProvider({ children }) {
   return (
     <CartContext.Provider value={{ allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat}}>
+    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat, setCartProducts}}>
       {children}
     </CartContext.Provider>
   );

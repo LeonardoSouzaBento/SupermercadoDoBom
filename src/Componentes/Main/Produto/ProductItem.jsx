@@ -24,14 +24,14 @@ import {
   PnomeStyled
 } from './ComponentesProdutos';
 
-const Oferta = ({ products, discount, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange })=>{
+const Oferta = ({ product, discount, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange })=>{
   return(
     <DivOfertaStyled>
       <PaiImgOfertaStyled>
         <DivOffStyled>
           <PoffStyled>-{discount}%</PoffStyled>
         </DivOffStyled>
-        <ImgOfertaStyed src={products.url}></ImgOfertaStyed>
+        <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
 
         {!mostrarBotoes &&
           <DivMaisStyled onClick={() => {
@@ -86,7 +86,7 @@ const Preco = ({ price, discount}) => {
         </PaiPrecoStyled>
 )};
 
-const DescOferta = ({ product}) => {
+const DescOferta = ({product}) => {
   return (
     <DescOfertaStyled>
       <Preco
@@ -121,7 +121,7 @@ function ProductItem({ product, quantity, onQuantityChange, variant}) {
     <PaiProdStyled $variant={variant}>
       <DescOferta product={product}></DescOferta>
 
-      <Oferta products={product}
+      <Oferta product={product}
       quantity={quantity}
       setMostrarBotoes={setMostrarBotoes}
       mostrarBotoes={mostrarBotoes}

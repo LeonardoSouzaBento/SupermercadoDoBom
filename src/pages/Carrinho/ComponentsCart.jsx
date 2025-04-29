@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useContext } from "react";
 
 export const BodyStyled = styled.div`
     background-color: rgb(240, 240, 240);

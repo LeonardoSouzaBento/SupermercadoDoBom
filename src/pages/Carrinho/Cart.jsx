@@ -27,6 +27,7 @@ import {
 
 const Cart = () => {
   const{shoppingCart} = useContext(CartContext);
+  const{setCartProducts} = useContext(CartContext);
 
   /*Variaveis do total*/
   const {totalAddedValue} = useContext(CartContext);
