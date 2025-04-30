@@ -5,21 +5,22 @@ import { products } from '../data/data';
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-
   const [cartProducts, setCartProducts] = useState([]);
-  const [cartQuantities, setCartQuantities] = useState([]);
+  const [cartQuantities] = useState([]);
+  const [searchProducts, setSearchProducts]= useState([]);
+  const [searchQuantities, setSearchQuantities] = useState([]);
 
   const [currentCategory, setCurrentCategory] = useState(0);
 
   const allProductsInCat = [products, productsCatId1, productsCatId2, productsCatId3,[],
-  [],[],[],[],[],[],[], cartProducts];
+  [],[],[],[],[],[],[], cartProducts, searchProducts];
 
   const [allQuantities, setAllQuantities] = useState([
     products.map(() => 0),
     productsCatId1.map(() => 0),
     productsCatId2.map(() => 0),
     productsCatId3.map(() => 0),
-    [],[],[],[],[],[],[],[], cartQuantities
+    [],[],[],[],[],[],[],[], cartQuantities, searchQuantities
   ]);
 
   const [shoppingCart, setShoppingCart] = useState([]);

@@ -6,26 +6,27 @@ import { CartContext } from '../../CartContext';
 
 const DivStyled = styled.div`
     width: 100%;
+    height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
     padding: 0px;
     padding-bottom: 12px;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-direction: ${(props) => props.$variant === 'home' ? "column" : "row"};
+    flex-wrap: ${(props) => props.$variant === 'home' ? "wrap" : "nowrap"};
+    justify-content: ${(props) => props.$variant === 'home' ? "flex-start" : "center"};
     gap: 12px;
     position: relative;
     @media screen and (min-width: 320px) and (max-width: 375px){
       gap: 8px;
-      height: 570px;
+      height: ${(props) => props.$variant === 'home' ? "570px" : "max-content"};
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-      height: 593px;
+      height: ${(props) => props.$variant === 'home' ? "593px" : "max-content"};
     }
     @media screen and (min-width: 577px) and (max-width: 768px){
-       height: 552px;
+      height: ${(props) => props.$variant === 'home' ? "552px" : "max-content"};
     }
     @media screen and (min-width: 769px) and (max-width: 992px){
-       height: 555px;
+      height: ${(props) => props.$variant === 'home' ? "555px" : "max-content"};
     }
     @media screen and (min-width: 993px){
       padding-bottom: 5px;
@@ -63,22 +64,21 @@ function ProductListHome({variant, categoryKey}) {
   const products = allProductsInCat[categoryKey];
   const quantities = allQuantities[categoryKey];
 
-  return (
+  return ( 
     <DivStyled $variant={variant}>
       {products.length === 0 ? (
         <NoProcutsStyed>
           <span className="material-symbols-outlined">
           search_off
           </span>
-          <PNoneStyled>Nenhum produto nesta categoria ainda</PNoneStyled>
+          <PNoneStyled>{categoryKey==12?'Nenhum produto no seu carrinho':'Nenhum produto nesta categoria ainda'}</PNoneStyled>
         </NoProcutsStyed>
       ) : (
       products.map((product, idx) => (
         <ProductItem 
           variant={variant}
-          key={product.id} 
+          key={`${product.id}-${idx}`}
           id={product.id}
-          $price={product.price}
           product={product}
           quantity={quantities[idx] || 0}
           onQuantityChange={(newQuantity, isAdding) =>

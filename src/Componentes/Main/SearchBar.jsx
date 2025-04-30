@@ -4,19 +4,12 @@ import styled from 'styled-components';
 const ContainerForShadow = styled.div`
   height: auto;
   width: 100%;
-  /* position: sticky;
-  top: 0px;
-  z-index: 3;
-  @media screen and (min-width: 993px){
-    position: relative;
-  } */
 `;
 
 const ContainerForFormStyled = styled.div`
   width: 100%;
   padding: 14px 0px;
   padding-bottom: 13px;
-  /* background-color: #f0f0f0; */
 `;
 
 const FormStyled = styled.form`
@@ -41,7 +34,6 @@ const InputStyled = styled.input`
   font-size: 0.85em;
   text-indent: 20px;
   font-size: 0.97em;
-  /* border: 1px solid rgb(84, 84, 84); */
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.49);
   &:focus{
     outline: 1px solid black;
@@ -58,7 +50,7 @@ const InputStyled = styled.input`
   @media screen and (min-width: 769px){
     font-size: 1.02em;
   }
-  `;
+`;
 
 const DivSpanStyled = styled.div`
   display: flex;
@@ -84,20 +76,20 @@ const ShadowStyled = styled.div`
   }
 `;
 
-function SearchBar() {
+export default function SearchBar() {
+
+  function handleClickSearch() {
+    
+  }
   return (
     <ContainerForShadow>
       <ContainerForFormStyled>
           <FormStyled action="/search" method="post" id="for_search">
             <InputStyled type="search" id="search" name="query" placeholder="O que você quer? Digite aqui"></InputStyled>
-            <DivSpanStyled><span className="material-symbols-rounded" style={{color: "red"}}>search</span></DivSpanStyled>
+            <DivSpanStyled onClick={handleClickSearch}><span className="material-symbols-rounded" style={{color: "red"}}>search</span></DivSpanStyled>
           </FormStyled>
       </ContainerForFormStyled>
-
-      {/* <ShadowStyled></ShadowStyled> */}
     </ContainerForShadow>
     
   );
 }
-
-export default SearchBar;

@@ -29,12 +29,10 @@ import {
 
 
 const Cart = () => {
-  const{shoppingCart} = useContext(CartContext);
-  const{setCartProducts} = useContext(CartContext);
-  const [seeAll, setSeeAll] = useState(false);
+  const{totalAddedValue} = useContext(CartContext);
+  const [seeAll, setSeeAll] = useState(true);
 
   /*Variaveis do total*/
-  const {totalAddedValue} = useContext(CartContext);
   const totalValue = totalAddedValue.toLocaleString('pt-BR', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -59,19 +57,19 @@ const Cart = () => {
           <DivHeadStyled>
             <PHeadStyled>Sua Compra</PHeadStyled>
           </DivHeadStyled>
-          
+         
           <ContainerOfListStyled>
             <ProductListHome variant={'cart'} categoryKey={12}></ProductListHome>
           </ContainerOfListStyled>
-
+     
           <DivSeeAllStyled onClick={()=>{setSeeAll(true)}}>
             <PSeeAll>Ver Tudo</PSeeAll>
           </DivSeeAllStyled>
         </CartSectionStyed>
 
-        {/* <DivAddStyled>
+        <DivAddStyled>
           <PAddStyled>Adicionar mais produtos</PAddStyled>
-        </DivAddStyled> */}
+        </DivAddStyled>
 
         <FinishSectionStyled>
           <ContainerStyled>

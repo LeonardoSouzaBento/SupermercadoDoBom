@@ -17,12 +17,12 @@ export const PaiProdStyled = styled.div`
     padding-right: 5px;
     
     @media screen and (min-width: 320px) and (max-width: 375px){
-       max-width: 265px;
+       max-width: ${(props) => props.$variant === 'home' ? "265px" : "100%"};
        height: 180px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-       max-width: 300px;
-       height: 185px;
+       max-width: ${(props) => props.$variant === 'home' ? "300px" : "340px"};
+       height: ${(props) => props.$variant === 'home' ? "185px" : "165px"};
     }
     @media screen and (min-width: 577px) and (max-width: 768px){
        max-width: 320px;
@@ -42,7 +42,7 @@ export const DescOfertaStyled = styled.div`
     height: 100%;
     width: 52%;
     padding: 2px;
-    padding-left: 14px;
+    padding-left: ${(props) => props.$variant === 'home' ? "14px" : "6px"};
     padding-right: 0px;
     box-sizing: border-box;
 `;

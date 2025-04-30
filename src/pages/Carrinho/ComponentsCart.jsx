@@ -4,6 +4,8 @@ export const BodyStyled = styled.div`
     background-color: rgb(240, 240, 240);
     padding-top: 12px;
     padding-bottom: 30px;
+    min-height: 100vh;
+    height: auto;
 `;
 
 export const MainStyled = styled.main`
@@ -82,8 +84,15 @@ export const PHeadStyled = styled.p`
 
 export const ContainerOfListStyled = styled.div`
     width: 100%;
-    height: auto;
     overflow: hidden;
+`;
+
+export const DivFlexRowStyled = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const DivSeeAllStyled = styled.div`

@@ -24,15 +24,16 @@ import {
   PnomeStyled
 } from './ComponentesProdutos';
 
-const Oferta = ({ product, discount, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange })=>{
+const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange, variant})=>{
   return(
     <DivOfertaStyled>
       <PaiImgOfertaStyled>
+        {(product.discount!=''&& product.discount!=null) &&
         <DivOffStyled>
-          <PoffStyled>-{discount}%</PoffStyled>
-        </DivOffStyled>
+          <PoffStyled>-{product.discount}%</PoffStyled>
+        </DivOffStyled>}
         <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
-
+        
         {!mostrarBotoes &&
           <DivMaisStyled onClick={() => {
               setMostrarBotoes(true);
@@ -46,12 +47,13 @@ const Oferta = ({ product, discount, quantity, setMostrarBotoes, mostrarBotoes, 
           quantity={quantity}
           onQuantityChange={onQuantityChange}
           setMostrarBotoes={setMostrarBotoes}
+          variant={variant}
         />}
       </PaiImgOfertaStyled>
     </DivOfertaStyled>
 )}
 
-const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes }) => {
+const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes, variant}) => {
 
   const handleMore = () =>
     onQuantityChange(quantity + 1, true );
@@ -59,6 +61,8 @@ const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes }) => {
   const handleFewer = () => {
     if (quantity > 1) {
       onQuantityChange(quantity - 1, false);
+    } else if (variant === 'cart') {
+      onQuantityChange(0, false);
     } else {
       onQuantityChange(0, false);
       setMostrarBotoes(false);
@@ -74,7 +78,7 @@ const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes }) => {
   );
 }
 
-const Preco = ({ price, discount}) => {
+const Preco = ({price}) => {
   return (
         <PaiPrecoStyled>
 
@@ -90,7 +94,6 @@ const DescOferta = ({product}) => {
   return (
     <DescOfertaStyled>
       <Preco
-      discount={product.discount}
       price={product.price}>
       </Preco>
       <DivNomeStyled>
@@ -104,7 +107,7 @@ const DescOferta = ({product}) => {
 }
 
 
-function ProductItem({ product, quantity, onQuantityChange, variant}) {
+function ProductItem({product, quantity, onQuantityChange, variant}) {
 
   const [mostrarBotoes, setMostrarBotoes] = useState(false);
 
@@ -119,14 +122,14 @@ function ProductItem({ product, quantity, onQuantityChange, variant}) {
 
   return (
     <PaiProdStyled $variant={variant}>
-      <DescOferta product={product}></DescOferta>
+      <DescOferta product={product} $variant={variant}></DescOferta>
 
       <Oferta product={product}
       quantity={quantity}
       setMostrarBotoes={setMostrarBotoes}
       mostrarBotoes={mostrarBotoes}
       onQuantityChange={onQuantityChange}
-      discount={product.discount}
+      variant={variant}
       >
       </Oferta>
     </PaiProdStyled>
