@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import Header from '../Header/Header';
 import HelpSection from './HelpSection';
-import SearchBar from './SearchBar';
+import SearchBar from './BarraPesquisa/SearchBar';
 import AnnouncementSection from './Annoucement_section/AnnouncementSection';
 import CategorySection from './Categorias/CategorySection';
 import PromoSection from './PromoSection';

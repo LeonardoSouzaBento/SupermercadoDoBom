@@ -8,8 +8,7 @@ export function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
   const [cartQuantities] = useState([]);
   const [searchProducts, setSearchProducts]= useState([]);
-  const [searchQuantities, setSearchQuantities] = useState([]);
-
+  const [searchQuantitites, setSearchQuantities] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(0);
 
   const allProductsInCat = [products, productsCatId1, productsCatId2, productsCatId3,[],
@@ -20,7 +19,7 @@ export function CartProvider({ children }) {
     productsCatId1.map(() => 0),
     productsCatId2.map(() => 0),
     productsCatId3.map(() => 0),
-    [],[],[],[],[],[],[],[], cartQuantities, searchQuantities
+    [],[],[],[],[],[],[],[], cartQuantities, searchQuantitites
   ]);
 
   const [shoppingCart, setShoppingCart] = useState([]);
@@ -98,7 +97,7 @@ export function CartProvider({ children }) {
   return (
     <CartContext.Provider value={{ allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat, setCartProducts}}>
+    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
       {children}
     </CartContext.Provider>
   );

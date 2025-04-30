@@ -4,7 +4,7 @@ import { CartContext } from '../CartContext';
 import { products } from '../../data/data';
 import ConfirmDialog from './ConfirmDialog';
 import styled from "styled-components";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const FooterStyled = styled.footer`
     display: flex;
@@ -15,7 +15,7 @@ const FooterStyled = styled.footer`
     width: 100%;
     background-color: transparent;
     margin: auto;
-    position: sticky;
+    position: fixed;
     bottom: 7px;
     z-index: 4;
     border-radius: 5px;
@@ -135,7 +135,6 @@ const PPrecoStyled = styled.p`
   }
   @media screen and (min-width: 375px) and (max-width: 576px){
     font-size: 1.12em;
-
   }
   @media screen and (min-width: 577px){
     font-size: 1.14em;

@@ -1,9 +1,18 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { AllProducts } from '../../../data/AllProducts';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../CartContext';
+import { binaryPrefixSearch } from './BuscaBinaria';
 
 const ContainerForShadow = styled.div`
   height: auto;
   width: 100%;
+  position: sticky;
+  top: 0px;
+  padding-bottom: 15px;
 `;
 
 const ContainerForFormStyled = styled.div`
@@ -29,7 +38,7 @@ const InputStyled = styled.input`
   height: 100%;
   width: 100%;
   border-radius: 20px;
-  border: none;
+  border: 1px solid rgb(95, 95, 95);
   font-weight: 300;
   font-size: 0.85em;
   text-indent: 20px;
@@ -37,6 +46,13 @@ const InputStyled = styled.input`
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.49);
   &:focus{
     outline: 1px solid black;
+    box-shadow: none;
+    background-color: white;
+  }
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
   }
   @media screen and (min-width: 320px) and (max-width:374px){
     font-size: 0.92em;
@@ -57,12 +73,13 @@ const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   height: 30px;
-  width:25px;
-  background-color: rgb(255, 255, 255);
+  width:30px;
   border-radius: 50%;
   position: absolute;
   top: 5px;
-  right: 15px;
+  right: 12px;
+  user-select: none;
+  cursor: pointer;
 `;
 
 const ShadowStyled = styled.div`
@@ -76,20 +93,37 @@ const ShadowStyled = styled.div`
   }
 `;
 
-export default function SearchBar() {
+export default function SearchBar({variant}) {
+
+  const [input, setInput] = useState("");
+  const {setSearchProducts, setSearchQuantities}=useContext(CartContext);
 
   function handleClickSearch() {
-    
+    const term = input.toLowerCase();
+    const results = binaryPrefixSearch(AllProducts, term);
+    setSearchProducts(results);
+    setSearchQuantities(results.map(() => 0));
   }
+
   return (
     <ContainerForShadow>
       <ContainerForFormStyled>
-          <FormStyled action="/search" method="post" id="for_search">
-            <InputStyled type="search" id="search" name="query" placeholder="O que você quer? Digite aqui"></InputStyled>
-            <DivSpanStyled onClick={handleClickSearch}><span className="material-symbols-rounded" style={{color: "red"}}>search</span></DivSpanStyled>
+          <FormStyled onSubmit={(e) => {
+            e.preventDefault();
+            handleClickSearch();
+          }}>
+            <InputStyled 
+            type="text" 
+            name="query" 
+            placeholder="O que você quer? Digite aqui"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            >
+            </InputStyled>
+            <DivSpanStyled onClick={handleClickSearch}>
+            <span className="material-symbols-rounded" style={{color: "red"}}>search</span></DivSpanStyled>
           </FormStyled>
       </ContainerForFormStyled>
     </ContainerForShadow>
-    
   );
 }

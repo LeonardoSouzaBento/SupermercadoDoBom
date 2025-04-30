@@ -5,16 +5,18 @@ import ProductItem from './ProductItem';
 import { CartContext } from '../../CartContext';
 
 const DivStyled = styled.div`
-    width: 100%;
+    width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
     height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
     padding: 0px;
     padding-bottom: 12px;
     display: flex;
     flex-direction: ${(props) => props.$variant === 'home' ? "column" : "row"};
-    flex-wrap: ${(props) => props.$variant === 'home' ? "wrap" : "nowrap"};
+    flex-wrap: wrap;
     justify-content: ${(props) => props.$variant === 'home' ? "flex-start" : "center"};
     gap: 12px;
     position: relative;
+    ${(props) => props.$variant === 'inSearch' && 'margin: auto;'}
+
     @media screen and (min-width: 320px) and (max-width: 375px){
       gap: 8px;
       height: ${(props) => props.$variant === 'home' ? "570px" : "max-content"};
