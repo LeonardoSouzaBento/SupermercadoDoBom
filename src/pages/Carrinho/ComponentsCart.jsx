@@ -11,6 +11,7 @@ export const BodyStyled = styled.div`
 export const MainStyled = styled.main`
     width: calc(100% - 30px);
     margin: auto;
+    min-height: 100vh;
     @media screen and (min-width: 320px) and (max-width: 374px){
         width: calc(100% - 20px);
     }
@@ -25,8 +26,8 @@ export const MainStyled = styled.main`
 export const CartSectionStyed = styled.div`
     width: 100%;
     max-width: 500px;
-    display: flex;
-    flex-wrap: wrap;
+    height: max-content;
+    min-height: 300px;
     margin: auto;
     background-color: white;
     margin-bottom: 20px;
@@ -95,37 +96,37 @@ export const DivFlexRowStyled = styled.div`
     align-items: center;
 `;
 
-export const DivSeeAllStyled = styled.div`
-    height: 40px;
-    width: 100%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    border-radius: 6px;
-    background-color: rgb(243, 243, 243);
-    @media screen and(min-width: 768px){
-        width: 50%;
-    }
-`;
+// export const DivSeeAllStyled = styled.div`
+//     height: 40px;
+//     width: 100%;
+//     margin: auto;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 5px;
+//     border-radius: 6px;
+//     background-color: rgb(243, 243, 243);
+//     @media screen and(min-width: 768px){
+//         width: 50%;
+//     }
+// `;
 
-export const PSeeAll = styled.p`
-    font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    padding-bottom: 2px;
-    text-transform: uppercase;
-    @media screen and (min-width: 320px) and (max-width: 374px){
-        font-size: 1.07em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px){
-        font-size: 1.092em;
-    }
+// export const PSeeAll = styled.p`
+//     font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
+//     font-weight: 500;
+//     padding-bottom: 2px;
+//     text-transform: uppercase;
+//     @media screen and (min-width: 320px) and (max-width: 374px){
+//         font-size: 1.07em;
+//     }
+//     @media screen and (min-width: 375px) and (max-width: 576px){
+//         font-size: 1.092em;
+//     }
 
-    @media screen and (min-width: 577px){
-        font-size: 1.11em;
-    }
-`;
+//     @media screen and (min-width: 577px){
+//         font-size: 1.11em;
+//     }
+// `;
 
 export const DivAddStyled = styled.div`
     width: 95%;
@@ -162,7 +163,6 @@ export const PAddStyled = styled.p`
 `;
 
 /*seção Finalizar*/
-
 export const DivAdd2Styled = styled(DivAddStyled)`
   min-width: 100%;
   display: none;
@@ -175,15 +175,21 @@ export const DivAdd2Styled = styled(DivAddStyled)`
 `;
 
 export const FinishSectionStyled = styled.div`
-    width: 100%;
+    width: calc(100% - 31px);
     max-width: 500px;
     margin: auto;
     background-color: white;
     border: 1px solid rgb(128, 128, 128);
     border-radius: 9px;
-    padding: 15px 0px;
-    padding-top: 12px;
-
+    padding: 12px 0px;
+    padding-top: 10px;
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    @media screen and (min-width: 320px) and (max-width: 374px){
+        width: calc(100% - 21px);
+    }
     @media screen and (min-width: 769px){
         width: 240px;
         height: max-content;

@@ -8,8 +8,6 @@ import {
   DivHeadStyled,
   PHeadStyled,
   ContainerOfListStyled,
-  DivSeeAllStyled,
-  PSeeAll,
   DivAddStyled,
   PAddStyled,
   FinishSectionStyled,
@@ -30,7 +28,6 @@ import {
 
 const Cart = () => {
   const{totalAddedValue} = useContext(CartContext);
-  const [seeAll, setSeeAll] = useState(true);
 
   /*Variaveis do total*/
   const totalValue = totalAddedValue.toLocaleString('pt-BR', {
@@ -61,16 +58,12 @@ const Cart = () => {
           <ContainerOfListStyled>
             <ProductListHome variant={'cart'} categoryKey={12}></ProductListHome>
           </ContainerOfListStyled>
-     
-          <DivSeeAllStyled onClick={()=>{setSeeAll(true)}}>
-            <PSeeAll>Ver Tudo</PSeeAll>
-          </DivSeeAllStyled>
         </CartSectionStyed>
 
         <DivAddStyled>
-          <PAddStyled>Adicionar mais produtos</PAddStyled>
+          <PAddStyled>{falta==40?'Adicionar produtos':'Adicionar mais produtos'}</PAddStyled>
         </DivAddStyled>
-
+        {falta!=40 &&
         <FinishSectionStyled>
           <ContainerStyled>
 
@@ -98,7 +91,7 @@ const Cart = () => {
 
           </ContainerStyled>
         </FinishSectionStyled>
-
+        }
       </MainStyled>
     </BodyStyled>
   )

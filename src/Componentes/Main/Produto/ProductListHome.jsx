@@ -66,17 +66,16 @@ function ProductListHome({variant, categoryKey}) {
   const products = allProductsInCat[categoryKey];
   const quantities = allQuantities[categoryKey];
 
+  if(products.length==0){
+    return(
+    <NoProcutsStyed>
+      <PNoneStyled>{categoryKey==12?'Nenhum produto no seu carrinho':'Nenhum produto nesta categoria ainda'}</PNoneStyled>
+    </NoProcutsStyed>
+    )
+  }else{
   return ( 
     <DivStyled $variant={variant}>
-      {products.length === 0 ? (
-        <NoProcutsStyed>
-          <span className="material-symbols-outlined">
-          search_off
-          </span>
-          <PNoneStyled>{categoryKey==12?'Nenhum produto no seu carrinho':'Nenhum produto nesta categoria ainda'}</PNoneStyled>
-        </NoProcutsStyed>
-      ) : (
-      products.map((product, idx) => (
+      {products.map((product, idx) => (
         <ProductItem 
           variant={variant}
           key={`${product.id}-${idx}`}
@@ -86,9 +85,9 @@ function ProductListHome({variant, categoryKey}) {
           onQuantityChange={(newQuantity, isAdding) =>
             handleQuantityChange(categoryKey, idx, newQuantity, product, isAdding)}
         />
-      )))}
+      ))}
     </DivStyled>
-  );
+  )};
 }
 
 
