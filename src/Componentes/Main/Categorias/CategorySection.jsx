@@ -17,7 +17,7 @@ const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) =
 
 function CategorySection({setCurrentCategory}) {
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
-  const {setLimitCategories, limitCategories} = useContext(CartContext);
+  const {setLimitCategories} = useContext(CartContext);
 
   const category = [
     { id: 0, icon: 'icons/iconePromo.png', label: 'Promoções' },
@@ -53,7 +53,6 @@ function CategorySection({setCurrentCategory}) {
         const totalWidth = category.length * itemWidth + (category.length - 1) * gap;
         const limit = divWidth - totalWidth;
         window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
-        console.log(limitCategories);
       }
     };
 

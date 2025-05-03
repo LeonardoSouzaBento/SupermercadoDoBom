@@ -8,8 +8,6 @@ export function CartProvider({ children }) {
   const [limitProductList, setLimitProductList] = useState(0);
   const [limitCategories, setLimitCategories] = useState(0);
   const [limitAdvertisements, setLimitAdvertisements] = useState(0);
-  const [widthProductItem, setWidthProductItem] = useState(0);
-  const [productItemReady, setProductItemReady] = useState(false);
 
   const [cartProducts, setCartProducts] = useState([]);
   const [cartQuantities] = useState([]);
@@ -101,7 +99,7 @@ export function CartProvider({ children }) {
   const totalValueFormatted = totalAddedValue.toFixed(2).replace('.', ',');
 
   return (
-    <CartContext.Provider value={{setProductItemReady, setWidthProductItem,setLimitProductList, setLimitCategories, setLimitAdvertisements,allQuantities,
+    <CartContext.Provider value={{setLimitProductList, setLimitCategories, setLimitAdvertisements,allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
     shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
       {children}

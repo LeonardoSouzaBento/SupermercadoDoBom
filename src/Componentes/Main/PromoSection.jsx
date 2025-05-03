@@ -27,25 +27,28 @@ const PaiAllProductsStyled = styled.div`
 `;
 
 function PromoSection({variant, categoryKey}) {
-  const {widthProductItem, setLimitProductList, productItemReady} = useContext(CartContext);
+  const {setLimitProductList} = useContext(CartContext);
   const productListRef= useRef(null);
   const paiAllProductsRef=useRef(null);
-  let quantProdsInLine = 0;
-  let gap = 0;
-  let widthProdsLine = 0;
-  let widthPaiAll = 0;
-
+ 
   useEffect(() => {
     if (
       !productListRef.current ||
       !paiAllProductsRef.current
     ) return;
+  
+    const firstItem = productListRef.current.querySelector(':first-child');
+    if (!firstItem) return;
+  
+    const widthProductItem = firstItem.offsetWidth;
+    const quantProdsInLine = Math.ceil(products.length / 3);
+    const gap = parseFloat(getComputedStyle(productListRef.current).gap) || 0;
+    const widthProdsLine = quantProdsInLine * widthProductItem + (quantProdsInLine - 1) * gap;
+    const widthPaiAll = paiAllProductsRef.current.offsetWidth;
+    const calculatedLimit = widthPaiAll - widthProdsLine;
     
-    quantProdsInLine = Math.ceil(products.length / 3);
-    gap = parseFloat(getComputedStyle(productListRef.current).gap) || 0;
-    widthProdsLine = quantProdsInLine * widthProductItem + (quantProdsInLine - 1) * gap;
-    widthPaiAll = paiAllProductsRef.current.offsetWidth;
-  }, [productItemReady]);
+    setLimitProductList(calculatedLimit);
+  }, [setLimitProductList]);
 
 
   return (
