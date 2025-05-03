@@ -1,8 +1,9 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useRef, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import {ProductListHome} from './Produto/ProductListHome';
 import { products } from '../../data/data';
+import { CartContext } from '../CartContext';
 
 const PaiAllProductsStyled = styled.div`
    overflow-x: hidden;
@@ -26,15 +27,26 @@ const PaiAllProductsStyled = styled.div`
 `;
 
 function PromoSection({variant, categoryKey}) {
-
+  const {widthProductItem, setLimitProductList, productItemReady} = useContext(CartContext);
   const productListRef= useRef(null);
   const paiAllProductsRef=useRef(null);
+  let quantProdsInLine = 0;
+  let gap = 0;
+  let widthProdsLine = 0;
+  let widthPaiAll = 0;
 
-  if(productListRef.current && paiAllProductsRef.current){
-    let quantProdsInLine = Math.ceil(products.length / 3);
-    let gap = parseFloat(getComputedStyle(productListRef.current).gap);
-    console.log('gap: '+gap);
-  }
+  useEffect(() => {
+    if (
+      !productListRef.current ||
+      !paiAllProductsRef.current
+    ) return;
+    
+    quantProdsInLine = Math.ceil(products.length / 3);
+    gap = parseFloat(getComputedStyle(productListRef.current).gap) || 0;
+    widthProdsLine = quantProdsInLine * widthProductItem + (quantProdsInLine - 1) * gap;
+    widthPaiAll = paiAllProductsRef.current.offsetWidth;
+  }, [productItemReady]);
+
 
   return (
     <PaiAllProductsStyled ref={paiAllProductsRef}>

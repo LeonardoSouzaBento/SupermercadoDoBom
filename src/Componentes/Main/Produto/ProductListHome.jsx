@@ -77,7 +77,8 @@ export const ProductListHome = React.forwardRef (({variant, categoryKey}, ref)=>
   return ( 
     <DivStyled $variant={variant} ref={ref}>
       {products.map((product, idx) => (
-        <ProductItem 
+        <ProductItem
+          isFirst={idx === 0}
           variant={variant}
           key={`${product.id}-${idx}`}
           id={product.id}

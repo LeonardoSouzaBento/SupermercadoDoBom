@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useRef, useEffect} from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled } from './ComponentesCategorias';
+import { useContext } from 'react';
+import { CartContext } from '../../CartContext';
 
 const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) => {
   return (
@@ -15,6 +17,7 @@ const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) =
 
 function CategorySection({setCurrentCategory}) {
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
+  const {setLimitCategories, limitCategories} = useContext(CartContext);
 
   const category = [
     { id: 0, icon: 'icons/iconePromo.png', label: 'Promoções' },
@@ -35,18 +38,46 @@ function CategorySection({setCurrentCategory}) {
     setCurrentCategory(categoryId);
     setSelectedCategoryId(categoryId);
   };
-  const DivfRef = useRef(null); //para aplicar função
+  const DivfRef = useRef(null); //Para aplicar função
   const DivRef = useRef(null);
   const CategoryItemRef = useRef(null);
 
-  if (CategoryItemRef.current && DivRef.current && DivfRef.current) {
-    const WidthCategoyItem = CategoryItemRef.current.offsetWidth;
-    const divWidth = DivRef.current.offsetWidth;
-    const divfStyle = getComputedStyle(DivfRef.current);
-    const gap = parseFloat(divfStyle.gap) || 0;
-    let divfwidth = (category.length - 1) * gap + WidthCategoyItem * category.length;
-    let limite = divWidth - divfwidth;
-  }
+  useEffect(() => {
+    let resizeTimeoutId = null;
+
+    const updateLimitCategories = () => {
+      if (CategoryItemRef.current && DivRef.current && DivfRef.current) {
+        const itemWidth = CategoryItemRef.current.offsetWidth;
+        const divWidth = DivRef.current.offsetWidth;
+        const gap = parseFloat(getComputedStyle(DivfRef.current).gap) || 0;
+        const totalWidth = category.length * itemWidth + (category.length - 1) * gap;
+        const limit = divWidth - totalWidth;
+        window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
+        console.log(limitCategories);
+      }
+    };
+
+    updateLimitCategories();
+
+    const handleResize = () => {
+      if (resizeTimeoutId) {
+        clearTimeout(resizeTimeoutId);
+      }
+      resizeTimeoutId = setTimeout(() => {
+        updateLimitCategories();
+        resizeTimeoutId = null;
+      }, 300); // Debounce: executa somente após 300ms da última redimensionada
+    };
+  
+    window.addEventListener('resize', handleResize);
+  
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (resizeTimeoutId) {
+        clearTimeout(resizeTimeoutId);
+      }
+    };
+  }, [category.length, setLimitCategories]);
 
   return (
     <Div ref={DivRef}>

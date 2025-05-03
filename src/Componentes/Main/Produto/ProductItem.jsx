@@ -109,11 +109,12 @@ const DescOferta = ({product}) => {
 }
 
 
-function ProductItem({product, quantity, onQuantityChange, variant}) {
-  const { setWidthProductItem } = useContext(CartContext);
+function ProductItem({product, quantity, onQuantityChange, variant, isFirst}) {
+  const { setWidthProductItem, setProductItemReady, productItemReady} = useContext(CartContext);
   const [mostrarBotoes, setMostrarBotoes] = useState(false);
   const paiProdRef = useRef(null);
-    
+
+
   useEffect(() => {
     let resizeTimeoutId = null;
 
@@ -125,6 +126,7 @@ function ProductItem({product, quantity, onQuantityChange, variant}) {
       resizeTimeoutId = setTimeout(() => {
         if (paiProdRef.current) {
           setWidthProductItem(paiProdRef.current.offsetWidth);
+          setProductItemReady(true);
         }
         resizeTimeoutId = null;
       }, 300); //debounce. Somente se o usuario para de redimensionar por 300ms
@@ -132,6 +134,7 @@ function ProductItem({product, quantity, onQuantityChange, variant}) {
     // Define a largura inicial na montagem (sem debounce)
     if (paiProdRef.current) {
       setWidthProductItem(paiProdRef.current.offsetWidth);
+      setProductItemReady(true);
     }
     window.addEventListener('resize', handleResize);
     return () => {
@@ -140,7 +143,7 @@ function ProductItem({product, quantity, onQuantityChange, variant}) {
         clearTimeout(resizeTimeoutId);
       }
     };
-  }, [setWidthProductItem]); 
+  }, [setWidthProductItem]);
 
   // toda vez que quantity mudar, ajusta a visibilidade dos botões
   useEffect(() => {
@@ -152,7 +155,7 @@ function ProductItem({product, quantity, onQuantityChange, variant}) {
   }, [quantity]);
 
   return (
-    <PaiProdStyled $variant={variant} ref={paiProdRef}>
+    <PaiProdStyled $variant={variant} ref={paiProdRef} isFirst={isFirst}>
       <DescOferta product={product} $variant={variant}></DescOferta>
 
       <Oferta product={product}
