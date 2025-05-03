@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import {
   PaiProdStyled,
   PpesoStyled,
@@ -23,6 +23,8 @@ import {
   DivNomeStyled,
   PnomeStyled
 } from './ComponentesProdutos';
+import { CartContext } from '../../CartContext';
+
 
 const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange, variant})=>{
   return(
@@ -108,8 +110,37 @@ const DescOferta = ({product}) => {
 
 
 function ProductItem({product, quantity, onQuantityChange, variant}) {
-
+  const { setWidthProductItem } = useContext(CartContext);
   const [mostrarBotoes, setMostrarBotoes] = useState(false);
+  const paiProdRef = useRef(null);
+    
+  useEffect(() => {
+    let resizeTimeoutId = null;
+
+    function handleResize() {
+      if (resizeTimeoutId) {
+        clearTimeout(resizeTimeoutId);
+      }
+
+      resizeTimeoutId = setTimeout(() => {
+        if (paiProdRef.current) {
+          setWidthProductItem(paiProdRef.current.offsetWidth);
+        }
+        resizeTimeoutId = null;
+      }, 300); //debounce. Somente se o usuario para de redimensionar por 300ms
+    }
+    // Define a largura inicial na montagem (sem debounce)
+    if (paiProdRef.current) {
+      setWidthProductItem(paiProdRef.current.offsetWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (resizeTimeoutId) {
+        clearTimeout(resizeTimeoutId);
+      }
+    };
+  }, [setWidthProductItem]); 
 
   // toda vez que quantity mudar, ajusta a visibilidade dos botões
   useEffect(() => {
@@ -121,7 +152,7 @@ function ProductItem({product, quantity, onQuantityChange, variant}) {
   }, [quantity]);
 
   return (
-    <PaiProdStyled $variant={variant}>
+    <PaiProdStyled $variant={variant} ref={paiProdRef}>
       <DescOferta product={product} $variant={variant}></DescOferta>
 
       <Oferta product={product}

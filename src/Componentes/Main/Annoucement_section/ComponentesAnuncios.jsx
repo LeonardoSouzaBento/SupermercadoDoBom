@@ -76,7 +76,6 @@ export const Advertisements= styled.div`
     display: flex;
     flex-flow: row nowrap;
     gap: 16px;
-    /* transform: translateX(-363.5px); */
     transform: translateX(${props=>props.$center}px);
 
     @media screen and (min-width: 375px) and (max-width:576px){

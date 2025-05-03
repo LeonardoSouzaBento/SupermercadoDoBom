@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchBarCopy from "../Componentes/Main/BarraPesquisa/SearchBarCopy";
-import ProductListHome from "../Componentes/Main/Produto/ProductListHome";
+import {ProductListHome} from "../Componentes/Main/Produto/ProductListHome";
 import Footer from '../Componentes/Footer/Footer';
 
 const SearchAction = () => {

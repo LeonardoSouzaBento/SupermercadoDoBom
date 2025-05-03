@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { CartContext } from '../../Componentes/CartContext';
-import ProductListHome from '../../Componentes/Main/Produto/ProductListHome.jsx';
+import {ProductListHome} from '../../Componentes/Main/Produto/ProductListHome.jsx';
 import {
   BodyStyled,
   MainStyled,

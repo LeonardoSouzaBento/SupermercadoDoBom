@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState, useCallback, useContext } from 'react';
 import { Div, P, Img,Advertisements, Span, Fundo, Pagination} from './ComponentesAnuncios';
-
+import { CartContext } from '../../CartContext';
 
 let imageUrls = [
   "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg", //farinha
@@ -12,6 +12,9 @@ let imageUrls = [
 ];
 
 function AnnouncementSection() {
+
+  const {setLimitAdvertisements}= useContext(CartContext);
+
   //Caucular os índices centrais
   const divRef = useRef(null);
   const fundoRefs = useRef([]);
@@ -19,13 +22,12 @@ function AnnouncementSection() {
   const [indicesCentrais, setIndices] = useState([]);
   const [center, setCenter] = useState(0);
 
-
+  //calcular centro
   const recalcularCenter = useCallback(() => {
     if (divRef.current && fundoRefs.current.length > 0 && advertisementsRef.current) {
-      const divWidth = divRef.current.offsetWidth;
-      const fundoWidth = fundoRefs.current[0]?.offsetWidth || 0;;
-      const advertisementsStyle = getComputedStyle(advertisementsRef.current);
-      const gap = parseFloat(advertisementsStyle.gap);
+      const divWidth = divRef.current.offsetWidth; //largura container pai
+      const fundoWidth = fundoRefs.current[0]?.offsetWidth || 0;//largura da imagem
+      const gap = parseFloat(getComputedStyle(advertisementsRef.current).gap);
 
       let img_center = Math.ceil((imageUrls.length) / 2);
 
@@ -37,7 +39,9 @@ function AnnouncementSection() {
         indices = [img_center - 1, img_center, img_center + 1];
       }
  
-      let widtAllAds = imageUrls.length * fundoWidth + gap * (imageUrls.length - 1);
+      let widtAllAds = imageUrls.length * fundoWidth + gap * (imageUrls.length - 1);//largura de tdos os anuncios
+      let limite = divWidth-widtAllAds;
+      setLimitAdvertisements(limite); //Limite de rolagem para anuncios
       let Initialcenter = 0;
       function obterLimites() {
         if ((imageUrls.length) % 2 === 0) {
@@ -51,6 +55,7 @@ function AnnouncementSection() {
     }
   }, [imageUrls]);
 
+  //recalcular centro em caso de resize de tela
   useEffect(() => {
     recalcularCenter();
 
@@ -92,6 +97,7 @@ function AnnouncementSection() {
       setIndices(novosIndices);
     }
   }, [center]);
+
 
   return (
     <Div ref={divRef}>

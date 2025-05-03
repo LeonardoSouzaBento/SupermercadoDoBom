@@ -60,7 +60,8 @@ const PNoneStyled = styled.p`
   padding-left: 15px;
 `;
 
-function ProductListHome({variant, categoryKey}) {
+
+export const ProductListHome = React.forwardRef (({variant, categoryKey}, ref)=>{
   const { allQuantities, allProductsInCat, handleQuantityChange} = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
@@ -74,7 +75,7 @@ function ProductListHome({variant, categoryKey}) {
     )
   }else{
   return ( 
-    <DivStyled $variant={variant}>
+    <DivStyled $variant={variant} ref={ref}>
       {products.map((product, idx) => (
         <ProductItem 
           variant={variant}
@@ -88,7 +89,5 @@ function ProductListHome({variant, categoryKey}) {
       ))}
     </DivStyled>
   )};
-}
+})
 
-
-export default ProductListHome;

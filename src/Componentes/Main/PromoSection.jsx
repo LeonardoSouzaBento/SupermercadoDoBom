@@ -1,6 +1,8 @@
 import React from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
-import ProductListHome from './Produto/ProductListHome';
+import {ProductListHome} from './Produto/ProductListHome';
+import { products } from '../../data/data';
 
 const PaiAllProductsStyled = styled.div`
    overflow-x: hidden;
@@ -24,9 +26,19 @@ const PaiAllProductsStyled = styled.div`
 `;
 
 function PromoSection({variant, categoryKey}) {
+
+  const productListRef= useRef(null);
+  const paiAllProductsRef=useRef(null);
+
+  if(productListRef.current && paiAllProductsRef.current){
+    let quantProdsInLine = Math.ceil(products.length / 3);
+    let gap = parseFloat(getComputedStyle(productListRef.current).gap);
+    console.log('gap: '+gap);
+  }
+
   return (
-    <PaiAllProductsStyled>
-      <ProductListHome variant={'home'} categoryKey={categoryKey}></ProductListHome>
+    <PaiAllProductsStyled ref={paiAllProductsRef}>
+      <ProductListHome variant={'home'} categoryKey={categoryKey} ref={productListRef}></ProductListHome>
     </PaiAllProductsStyled>
   );
 }

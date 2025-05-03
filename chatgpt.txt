@@ -1,0 +1,57 @@
+function AnnouncementSection() { 
+ const recalcularCenter = useCallback(() => {
+    ...
+      let limite = divWidth-widtAllAds;
+	...
+  }, [imageUrls]);
+  ...
+    return (
+    <Div ref={divRef}>
+      <P>Temos novidades!</P>
+      <Advertisements ref={advertisementsRef} $center={center}>
+        {imageUrls.map((url, index) => (
+          <Fundo key={index} $bg={url} ref={(el) => (fundoRefs.current[index] = el)
+          }>
+            <Img src={url} alt={`Imagem de anúncio ${index + 1}`} id={`anun ${index + 1}`} />
+          </Fundo>
+        ))}
+      </Advertisements>
+      <Pagination>
+        {imageUrls.map((_, i) => (
+          <Span key={i} $atual={indicesCentrais.includes(i)}></Span>
+        ))}
+      </Pagination>
+    </Div>
+  );
+}
+
+export default AnnouncementSection;
+
+function CategorySection({setCurrentCategory}) {
+
+  if (CategoryItemRef.current && DivRef.current && DivfRef.current) {
+   ...
+     let limite = divWidth - divfwidth;
+   ...
+  }
+
+  return (
+    <Div ref={DivRef}>
+      <Span className="material-symbols-outlined">swipe_left</Span>{/*Para tutorial de como usar a tela*/}
+      <Divf ref={DivfRef}>
+        {category.map((cat, index) => (
+          <CategoryItem 
+            ref={index === 0 ? CategoryItemRef : null}
+            category={cat}  
+            key={cat.id} onClick={() => handleCategoryClick(cat.id)}
+            isSelected={cat.id === selectedCategoryId}/>
+        ))}
+      </Divf>
+    </Div>
+  );
+}
+
+export default CategorySection;
+
+Como vc converteria essas funções a seguir para um hook personalizado? Nota: imgs_anun equivale advertsiments, secoes equivale a Divf e promos equivale a productListHome 
+
