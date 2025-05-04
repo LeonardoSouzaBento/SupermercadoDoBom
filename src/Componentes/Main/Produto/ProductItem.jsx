@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect} from 'react';
 import {
   PaiProdStyled,
   PpesoStyled,
@@ -24,7 +24,6 @@ import {
   PnomeStyled
 } from './ComponentesProdutos';
 import { CartContext } from '../../CartContext';
-
 
 const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange, variant})=>{
   return(
@@ -110,8 +109,15 @@ const DescOferta = ({product}) => {
 
 
 function ProductItem({product, quantity, onQuantityChange, variant}) {
-  const { setWidthProductItem, setProductItemReady, productItemReady} = useContext(CartContext);
   const [mostrarBotoes, setMostrarBotoes] = useState(false);
+
+  useEffect(() => {
+    if (quantity > 0 && !mostrarBotoes) {
+      setMostrarBotoes(true);
+    } else if(quantity === 0 && mostrarBotoes){
+      setMostrarBotoes(false);
+    }
+  }, [quantity, mostrarBotoes]);
 
   return (
     <PaiProdStyled $variant={variant}>
