@@ -3,38 +3,44 @@ import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
 import { CartContext } from '../../CartContext';
+import { useScroll } from '../../../useScroll';
 
-const DivStyled = styled.div`
-    width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
-    height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
-    padding: 0px;
-    padding-bottom: 12px;
-    display: flex;
-    flex-direction: ${(props) => props.$variant === 'home' ? "column" : "row"};
-    flex-wrap: wrap;
-    justify-content: ${(props) => props.$variant === 'home' ? "flex-start" : "center"};
-    gap: 12px;
-    position: relative;
-    ${(props) => props.$variant === 'inSearch' && 'margin: auto;'}
+const DivStyled = styled.div.attrs(props => ({
+  style: {
+    transform: `translateX(${props.$translateValue ?? 0}px)`
+  }
+}))`
+  width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
+  height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
+  padding: 0px;
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: ${(props) => props.$variant === 'home' ? "column" : "row"};
+  flex-wrap: wrap;
+  justify-content: ${(props) => props.$variant === 'home' ? "flex-start" : "center"};
+  gap: 12px;
+  position: relative;
 
-    @media screen and (min-width: 320px) and (max-width: 375px){
-      gap: 8px;
-      height: ${(props) => props.$variant === 'home' ? "570px" : "max-content"};
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px){
-      height: ${(props) => props.$variant === 'home' ? "593px" : "max-content"};
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px){
-      height: ${(props) => props.$variant === 'home' ? "552px" : "max-content"};
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px){
-      height: ${(props) => props.$variant === 'home' ? "555px" : "max-content"};
-    }
-    @media screen and (min-width: 993px){
-      padding-bottom: 5px;
-      height: 540px;
-      gap: 11px;
-    }
+  ${(props) => props.$variant === 'inSearch' && 'margin: auto;'}
+
+  @media screen and (min-width: 320px) and (max-width: 375px){
+    gap: 8px;
+    height: ${(props) => props.$variant === 'home' ? "570px" : "max-content"};
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px){
+    height: ${(props) => props.$variant === 'home' ? "593px" : "max-content"};
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px){
+    height: ${(props) => props.$variant === 'home' ? "552px" : "max-content"};
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px){
+    height: ${(props) => props.$variant === 'home' ? "555px" : "max-content"};
+  }
+  @media screen and (min-width: 993px){
+    padding-bottom: 5px;
+    height: 540px;
+    gap: 11px;
+  }
 `;
 
 const NoProcutsStyed= styled.div`
@@ -61,12 +67,12 @@ const PNoneStyled = styled.p`
 `;
 
 
-export const ProductListHome = React.forwardRef (({variant, categoryKey}, ref)=>{
+export const ProductListHome = React.forwardRef (({variant, categoryKey, $translateValue}, ref)=>{
   const { allQuantities, allProductsInCat, handleQuantityChange} = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
   const quantities = allQuantities[categoryKey];
-
+  
   if(products.length==0){
     return(
     <NoProcutsStyed>
@@ -75,7 +81,7 @@ export const ProductListHome = React.forwardRef (({variant, categoryKey}, ref)=>
     )
   }else{
   return ( 
-    <DivStyled $variant={variant} ref={ref}>
+    <DivStyled $variant={variant} ref={ref} $translateValue={$translateValue}>
       {products.map((product, idx) => (
         <ProductItem
           variant={variant}

@@ -12,13 +12,15 @@ import { CartContext } from '../CartContext';
 
 const Main = styled.main`
   max-width: 1390px;
-  height: 100%;
+  /* max-height: 100vh; */
   margin: auto;
   background-color: rgb(237, 237, 237);
   position: relative;
   padding: 0px;
   box-shadow: inset 0px -3px 6px rgb(198, 198, 198);
   position: relative;
+  overflow-y: hidden;
+  z-index: 5;
 `;
 
 const ShadowBottomStyled = styled.div`
@@ -39,14 +41,14 @@ function MainContent() {
 
   return (
     <Main>
-          <HelpSection />
-          <Header />
-          <SearchBar />
-          <AnnouncementSection />
-          <CategorySection setCurrentCategory={setCurrentCategory} />
-          <PromoSection categoryKey={currentCategory}/>
-          <Footer/>
-          <ShadowBottomStyled></ShadowBottomStyled>
+      <HelpSection />
+      <Header />
+      <SearchBar />
+      <AnnouncementSection />
+      <CategorySection setCurrentCategory={setCurrentCategory} />
+      <PromoSection categoryKey={currentCategory}/>
+      <Footer/>
+      <ShadowBottomStyled></ShadowBottomStyled>
     </Main>
   );
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import { useRef, useContext, useEffect } from 'react';
+import { useState, useRef, useContext, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import {ProductListHome} from './Produto/ProductListHome';
-import { products } from '../../data/data';
 import { CartContext } from '../CartContext';
+import { useScroll } from '../../useScroll';
 
 const PaiAllProductsStyled = styled.div`
    overflow-x: hidden;
@@ -27,33 +27,51 @@ const PaiAllProductsStyled = styled.div`
 `;
 
 function PromoSection({variant, categoryKey}) {
-  const {setLimitProductList} = useContext(CartContext);
-  const productListRef= useRef(null);
+  useScroll();
+  const {setLimitProductList, translateX3, currentCategory, allProductsInCat, promotionsRef} = useContext(CartContext);
   const paiAllProductsRef=useRef(null);
- 
-  useEffect(() => {
-    if (
-      !productListRef.current ||
-      !paiAllProductsRef.current
-    ) return;
-  
-    const firstItem = productListRef.current.querySelector(':first-child');
-    if (!firstItem) return;
-  
+
+  const calcLimit = useCallback(() => {
+    if (!promotionsRef.current || !paiAllProductsRef.current) {
+      return;
+    }
+    const firstItem = promotionsRef.current.querySelector(':first-child');
+    if (!firstItem) {
+      return;
+    }
     const widthProductItem = firstItem.offsetWidth;
-    const quantProdsInLine = Math.ceil(products.length / 3);
-    const gap = parseFloat(getComputedStyle(productListRef.current).gap) || 0;
-    const widthProdsLine = quantProdsInLine * widthProductItem + (quantProdsInLine - 1) * gap;
+    const quantProdsInLine = Math.ceil(allProductsInCat[currentCategory]?.length / 3) || 0;
+    const gap = parseFloat(getComputedStyle(promotionsRef.current).gap) || 0;
+    const widthProdsLine = quantProdsInLine * widthProductItem + (quantProdsInLine > 0 ? (quantProdsInLine - 1) * gap : 0);
     const widthPaiAll = paiAllProductsRef.current.offsetWidth;
     const calculatedLimit = widthPaiAll - widthProdsLine;
-    
     setLimitProductList(calculatedLimit);
-  }, [setLimitProductList]);
+  }, [currentCategory, allProductsInCat]);
 
+  const handleResize = useCallback(() => {
+    let timeoutId;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(calcLimit, 300);
+    };
+  }, [calcLimit]);
+
+  useEffect(() => {
+    calcLimit();
+  }, [calcLimit])
+
+  useEffect(() => {
+    const debouncedResizeHandler = handleResize();
+    window.addEventListener('resize', debouncedResizeHandler);
+
+    return () => {
+      window.removeEventListener('resize', debouncedResizeHandler);
+    };
+  }, [handleResize]);
 
   return (
     <PaiAllProductsStyled ref={paiAllProductsRef}>
-      <ProductListHome variant={'home'} categoryKey={categoryKey} ref={productListRef}></ProductListHome>
+      <ProductListHome variant={'home'} categoryKey={categoryKey}  ref={promotionsRef} $translateValue={translateX3}></ProductListHome>
     </PaiAllProductsStyled>
   );
 }

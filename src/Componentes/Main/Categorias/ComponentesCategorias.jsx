@@ -24,39 +24,41 @@ export const Div = styled.div`
     }
 `;
 
-export const Divf = styled.div`
-    width: 100%;
-    position: relative;
-    -webkit-user-select: none; /* Para Safari */
-    -ms-user-select: none; /* Para IE */
-    user-select: none;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row nowrap;
-    padding: 5px;
-    padding-left: 0px;
-    position: relative;
-    gap: 10px;
-    box-sizing: border-box;
+export const Divf = styled.div.attrs(props => ({
+  style: {
+    transform: `translateX(${props.$translateValue ?? 0}px)`
+  }
+}))`
+  width: 100%;
+  position: relative;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  padding: 5px 0 0 0;
+  gap: 10px;
+  box-sizing: border-box;
 
-    Divf:active {
+  &:active {
     cursor: grabbing; 
-    }
+  }
 
-    @media screen and (min-width: 320px) and (max-width: 375px){
-     gap: 15px;
-     padding-bottom: 17px;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px){
-      padding-bottom: 22px;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px){
-      padding-bottom: 26px;
-    }
-    @media screen and (min-width: 768px){
-     padding-bottom: 30px;
-    }
+  @media screen and (min-width: 320px) and (max-width: 375px){
+    gap: 15px;
+    padding-bottom: 17px;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px){
+    padding-bottom: 22px;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px){
+    padding-bottom: 26px;
+  }
+  @media screen and (min-width: 768px){
+    padding-bottom: 30px;
+  }
 `;
 
 export const Span = styled.span`

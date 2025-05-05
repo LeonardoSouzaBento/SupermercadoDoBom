@@ -112,10 +112,11 @@ function ProductItem({product, quantity, onQuantityChange, variant}) {
   const [mostrarBotoes, setMostrarBotoes] = useState(false);
 
   useEffect(() => {
-    if (quantity > 0 && !mostrarBotoes) {
+    if (!mostrarBotoes && quantity > 0) {
       setMostrarBotoes(true);
-    } else if(quantity === 0 && mostrarBotoes){
-      setMostrarBotoes(false);
+    // } else if(mostrarBotoes && quantity == 0){
+    //   setMostrarBotoes(false);
+    // }
     }
   }, [quantity, mostrarBotoes]);
 

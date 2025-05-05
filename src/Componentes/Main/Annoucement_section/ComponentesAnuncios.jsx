@@ -68,25 +68,28 @@ export const P = styled.p`
   }
 `;
 
-export const Advertisements= styled.div`
-    height: 174px;
-    width:100%;
-    margin: auto;
-    padding-bottom: 30px;
-    display: flex;
-    flex-flow: row nowrap;
-    gap: 16px;
-    transform: translateX(${props=>props.$center}px);
+export const Advertisements = styled.div.attrs(props => ({
+  style: {
+    transform: `translateX(${props.$translateValue ?? 0}px)`
+  }
+}))`
+  height: 174px;
+  width: 100%;
+  margin: auto;
+  padding-bottom: 30px;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 16px;
 
-    @media screen and (min-width: 375px) and (max-width:576px){
+  @media screen and (min-width: 375px) and (max-width: 576px){
     gap: 15px;
-    }
-    @media screen and (min-width: 577px) and (max-width:768px){
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px){
     gap: 18px;
-    }
-    @media screen and (min-width: 769px){
+  }
+  @media screen and (min-width: 769px){
     gap: 17px;
-    }
+  }
 `;
 
 export const Fundo = styled.div`

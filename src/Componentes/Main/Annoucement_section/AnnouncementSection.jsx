@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback, useContext } from 'react';
 import { Div, P, Img,Advertisements, Span, Fundo, Pagination} from './ComponentesAnuncios';
 import { CartContext } from '../../CartContext';
+import { useScroll } from '../../../useScroll';
 
 let imageUrls = [
   "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg", //farinha
@@ -13,17 +14,15 @@ let imageUrls = [
 
 function AnnouncementSection() {
 
-  const {setLimitAdvertisements}= useContext(CartContext);
-
+  const {setLimitAdvertisements, setTranslateX1, translateX1, advertisementsRef}= useContext(CartContext);
   //Caucular os índices centrais
   const divRef = useRef(null);
   const fundoRefs = useRef([]);
-  const advertisementsRef = useRef(null);
   const [indicesCentrais, setIndices] = useState([]);
-  const [center, setCenter] = useState(0);
 
-  //calcular centro
+  //calcular centro/ obter o limite/ iniciar a paginação
   const recalcularCenter = useCallback(() => {
+    //centro e limite
     if (divRef.current && fundoRefs.current.length > 0 && advertisementsRef.current) {
       const divWidth = divRef.current.offsetWidth; //largura container pai
       const fundoWidth = fundoRefs.current[0]?.offsetWidth || 0;//largura da imagem
@@ -37,7 +36,8 @@ function AnnouncementSection() {
       let indices = [img_center];
       if (anun_visible === 3) {
         indices = [img_center - 1, img_center, img_center + 1];
-      }
+        setIndices(indices)
+      }else{setIndices(indices)};
  
       let widtAllAds = imageUrls.length * fundoWidth + gap * (imageUrls.length - 1);//largura de tdos os anuncios
       let limite = divWidth-widtAllAds;
@@ -51,58 +51,59 @@ function AnnouncementSection() {
         }
       }
       obterLimites();
-      setCenter(Initialcenter);
+      setTranslateX1(Initialcenter);
     }
   }, [imageUrls]);
 
-  //recalcular centro em caso de resize de tela
-  useEffect(() => {
-    recalcularCenter();
-
-    const handleResize = () => {
-      let timeoutId;
-      return () => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(recalcularCenter, 300); // 300ms de delay após o redimensionamento parar
-      };
+  //evento de resize
+  const handleResize = useCallback(() => {
+    let timeoutId;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(recalcularCenter, 300);
     };
+  }, [recalcularCenter]);
 
+  useEffect(() => {
     const debouncedResizeHandler = handleResize();
-
     window.addEventListener('resize', debouncedResizeHandler);
 
     return () => {
       window.removeEventListener('resize', debouncedResizeHandler);
     };
   }, [recalcularCenter]);
- 
-  //Atualizaer a paginação
+
+  // Cálculo inicial na montagem
   useEffect(() => {
-    if (fundoRefs.current.length > 0 && divRef.current) {
-      const divWidth = divRef.current.offsetWidth;
-      const novosIndices = [];
+    recalcularCenter(); 
+  }, [recalcularCenter]);
 
-      fundoRefs.current.forEach((fundoRef, index) => {
-        if (fundoRef) {
-          const rect = fundoRef.getBoundingClientRect();
-          const larguraFundo = fundoRef.offsetWidth;
-          const larguraVisivel = Math.min(rect.right, divRef.current.getBoundingClientRect().right) - Math.max(rect.left, divRef.current.getBoundingClientRect().left);
-          const porcentagemVisivel = (larguraVisivel / larguraFundo) * 100;
+  // //atualizar paginação
+  // const updatePagination = useCallback(() => {
+  //   if (fundoRefs.current.length > 0 && divRef.current) {
+  //     const novosIndices = [];
 
-          if (porcentagemVisivel >= 70) {
-            novosIndices.push(index);
-          }
-        }
-      });
-      setIndices(novosIndices);
-    }
-  }, [center]);
+  //     fundoRefs.current.forEach((fundoRef, index) => {
+  //       if (fundoRef) {
+  //         const rect = fundoRef.getBoundingClientRect();
+  //         const larguraFundo = fundoRef.offsetWidth;
+  //         const larguraVisivel = Math.min(rect.right, divRef.current.getBoundingClientRect().right) - Math.max(rect.left, divRef.current.getBoundingClientRect().left);
+  //         const porcentagemVisivel = (larguraVisivel / larguraFundo) * 100;
+
+  //         if (porcentagemVisivel >= 70) {
+  //           novosIndices.push(index);
+  //         }
+  //       }
+  //     });
+  //     setIndices(novosIndices);
+  //   }
+  // }, []);
 
 
   return (
     <Div ref={divRef}>
       <P>Temos novidades!</P>
-      <Advertisements ref={advertisementsRef} $center={center}>
+      <Advertisements ref={advertisementsRef} $translateValue={translateX1}>
         {imageUrls.map((url, index) => (
           <Fundo key={index} $bg={url} ref={(el) => (fundoRefs.current[index] = el)
           }>

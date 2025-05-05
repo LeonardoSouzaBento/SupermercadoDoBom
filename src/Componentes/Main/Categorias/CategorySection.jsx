@@ -3,6 +3,7 @@ import { useState, useRef, useEffect} from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled } from './ComponentesCategorias';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
+import { useScroll } from '../../../useScroll';
 
 const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) => {
   return (
@@ -17,7 +18,7 @@ const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) =
 
 function CategorySection({setCurrentCategory}) {
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
-  const {setLimitCategories} = useContext(CartContext);
+  const {setLimitCategories, translateX2, categoriesRef} = useContext(CartContext);
 
   const category = [
     { id: 0, icon: 'icons/iconePromo.png', label: 'Promoções' },
@@ -38,7 +39,7 @@ function CategorySection({setCurrentCategory}) {
     setCurrentCategory(categoryId);
     setSelectedCategoryId(categoryId);
   };
-  const DivfRef = useRef(null); //Para aplicar função
+
   const DivRef = useRef(null);
   const CategoryItemRef = useRef(null);
 
@@ -46,10 +47,10 @@ function CategorySection({setCurrentCategory}) {
     let resizeTimeoutId = null;
 
     const updateLimitCategories = () => {
-      if (CategoryItemRef.current && DivRef.current && DivfRef.current) {
+      if (CategoryItemRef.current && DivRef.current && categoriesRef.current) {
         const itemWidth = CategoryItemRef.current.offsetWidth;
         const divWidth = DivRef.current.offsetWidth;
-        const gap = parseFloat(getComputedStyle(DivfRef.current).gap) || 0;
+        const gap = parseFloat(getComputedStyle(categoriesRef.current).gap) || 0;
         const totalWidth = category.length * itemWidth + (category.length - 1) * gap;
         const limit = divWidth - totalWidth;
         window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
@@ -81,7 +82,7 @@ function CategorySection({setCurrentCategory}) {
   return (
     <Div ref={DivRef}>
       <Span className="material-symbols-outlined">swipe_left</Span>{/*Para tutorial de como usar a tela*/}
-      <Divf ref={DivfRef}>
+      <Divf ref={categoriesRef} $translateValue={translateX2}>
         {category.map((cat, index) => (
           <CategoryItem 
             ref={index === 0 ? CategoryItemRef : null}

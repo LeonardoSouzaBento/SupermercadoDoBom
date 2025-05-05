@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect} from 'react';
+import React, { createContext, useState, useEffect, useRef} from 'react';
 import { productsCatId1, productsCatId2, productsCatId3} from '../data/data2';
 import { products } from '../data/data';
 
@@ -8,6 +8,12 @@ export function CartProvider({ children }) {
   const [limitProductList, setLimitProductList] = useState(0);
   const [limitCategories, setLimitCategories] = useState(0);
   const [limitAdvertisements, setLimitAdvertisements] = useState(0);
+  const [translateX1, setTranslateX1] = useState(0);
+  const [translateX2, setTranslateX2] = useState(0);
+  const [translateX3, setTranslateX3] = useState(0);
+  const advertisementsRef = useRef();
+  const categoriesRef    = useRef();
+  const promotionsRef    = useRef();
 
   const [cartProducts, setCartProducts] = useState([]);
   const [cartQuantities] = useState([]);
@@ -99,7 +105,9 @@ export function CartProvider({ children }) {
   const totalValueFormatted = totalAddedValue.toFixed(2).replace('.', ',');
 
   return (
-    <CartContext.Provider value={{setLimitProductList, setLimitCategories, setLimitAdvertisements,allQuantities,
+    <CartContext.Provider value={{ advertisementsRef, categoriesRef, promotionsRef,
+    translateX1, setTranslateX1, translateX2, setTranslateX2, translateX3, setTranslateX3,setLimitProductList, 
+    setLimitCategories, setLimitAdvertisements,allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
     shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
       {children}
