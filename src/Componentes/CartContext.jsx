@@ -105,7 +105,7 @@ export function CartProvider({ children }) {
   const totalValueFormatted = totalAddedValue.toFixed(2).replace('.', ',');
 
   return (
-    <CartContext.Provider value={{ advertisementsRef, categoriesRef, promotionsRef,
+    <CartContext.Provider value={{advertisementsRef, categoriesRef, promotionsRef,
     translateX1, setTranslateX1, translateX2, setTranslateX2, translateX3, setTranslateX3,setLimitProductList, limitProductList,
     setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,

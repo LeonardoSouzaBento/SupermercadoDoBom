@@ -31,8 +31,31 @@ export function useScroll() {
     { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false }
   ]).current;
 
-  const translates = [translateX1, translateX2, translateX3];
+  const translateRefs = [
+    useRef(translateX1),
+    useRef(translateX2),
+    useRef(translateX3)
+  ];
+  useEffect(() => {
+    translateRefs[0].current = translateX1;
+    translateRefs[1].current = translateX2;
+    translateRefs[2].current = translateX3;
+  }, [translateX1, translateX2, translateX3]);
+  
   const setTranslates = [setTranslateX1, setTranslateX2, setTranslateX3];
+
+  //array de limites
+  const limitsTranslateRefs = [
+    useRef(limitAdvertisements),
+    useRef(limitCategories),
+    useRef(limitProductList)
+  ];
+
+  useEffect(() => {
+    limitsTranslateRefs[0].current = limitAdvertisements;
+    limitsTranslateRefs[1].current = limitCategories;
+    limitsTranslateRefs[2].current = limitProductList;
+  }, [limitAdvertisements, limitCategories, limitProductList]);
 
   // Variáveis de scroll de página
   const page = { 
@@ -51,31 +74,44 @@ export function useScroll() {
   const maxSpeed = 2.0;
   const limiar = 4;
 
+  const listeners = useRef([[], [], []]);
+
   useEffect(() => {
     refs.forEach((refWrapper, i) => {
       const el = refWrapper?.current;
       if (!el) return;
-      el.addEventListener('touchstart',  e => iniciarArraste(e, i), { passive: false });
-      el.addEventListener('mousedown',   e => iniciarArraste(e, i), { passive: false });
-      el.addEventListener('touchmove',   e => aoMover(e, i),      { passive: false });
-      el.addEventListener('mousemove',   e => aoMover(e, i),      { passive: false });
-      el.addEventListener('touchend',    e => finalizarArraste(e, i));
-      el.addEventListener('mouseup',     e => finalizarArraste(e, i));
+  
+      const start = e => iniciarArraste(e, i);
+      const move = e => aoMover(e, i);
+      const end = e => finalizarArraste(e, i);
+  
+      listeners.current[i] = [start, move, end];
+  
+      el.addEventListener('touchstart', start, { passive: false });
+      el.addEventListener('mousedown', start, { passive: false });
+      el.addEventListener('touchmove', move, { passive: false });
+      el.addEventListener('mousemove', move, { passive: false });
+      el.addEventListener('touchend', end);
+      el.addEventListener('mouseup', end);
     });
-
+  
     return () => {
       refs.forEach((refWrapper, i) => {
         const el = refWrapper?.current;
-        if (!el) return;
-        el.removeEventListener('touchstart',  e => iniciarArraste(e, i));
-        el.removeEventListener('mousedown',   e => iniciarArraste(e, i));
-        el.removeEventListener('touchmove',   e => aoMover(e, i));
-        el.removeEventListener('mousemove',   e => aoMover(e, i));
-        el.removeEventListener('touchend',    e => finalizarArraste(e, i));
-        el.removeEventListener('mouseup',     e => finalizarArraste(e, i));
+        if (!el || !listeners.current[i]) return;
+  
+        const [start, move, end] = listeners.current[i];
+  
+        el.removeEventListener('touchstart', start);
+        el.removeEventListener('mousedown', start);
+        el.removeEventListener('touchmove', move);
+        el.removeEventListener('mousemove', move);
+        el.removeEventListener('touchend', end);
+        el.removeEventListener('mouseup', end);
       });
     };
   }, [advertisementsRef, categoriesRef, promotionsRef]);
+  
 
   const iniciarArraste = (e, i) => {
     e.preventDefault();
@@ -90,16 +126,15 @@ export function useScroll() {
 
     const posX = page.initialX;
     variables[i].arrastando = true;
-    variables[i].toc_ini = posX - translates[i];
+    variables[i].toc_ini = posX - translateRefs[i].current;
     variables[i].time_touch = Date.now();
-  
+    variables[i].arraste=0;
     if (variables[i].animacao) {
       cancelAnimationFrame(variables[i].animacao);
       variables[i].animacao = null;
     }
   };
   
-
   function aoMover(e, i) {
     e.preventDefault();
     if (!variables[i].arrastando) return;
@@ -141,17 +176,32 @@ export function useScroll() {
   function finalizarArraste(e, i) {
     e.preventDefault();
     if (!page.dragY) {
-      console.log(translates[i]);
       if (!variables[i].arrastando) return;
       variables[i].arrastando = false;
+
       const decel = () => {
         if (Math.abs(variables[i].velocidade) > 0.01) {
           variables[i].velocidade *= 0.95;
-          variables[i].arraste += variables[i].velocidade * 16;
-          setTranslates[i](translates[i] + variables[i].arraste);
+          const deslocamento = variables[i].velocidade * 16;
+          const proximo = translateRefs[i].current + deslocamento;
+      
+          const min = limitsTranslateRefs[i].current;
+          const max = 0;
+      
+          if (proximo < min) {
+            translateRefs[i].current = min;
+            variables[i].velocidade = 0;
+          } else if (proximo > max) {
+            translateRefs[i].current = max;
+            variables[i].velocidade = 0;
+          } else {
+            translateRefs[i].current = proximo;
+          }
+      
+          setTranslates[i](translateRefs[i].current);
           variables[i].animacao = requestAnimationFrame(decel);
         } else {
-          variables[i].animacao = null;    
+          variables[i].animacao = null;
         }
       };
       decel();
@@ -184,4 +234,15 @@ export function useScroll() {
     };
     requestAnimationFrame(step);
   }
+
+  // const aplicarLimites = (i) => {
+  //   if ( translateRefs[i].current < limitsTranslateRefs[i].current) {
+  //     setTranslates[i](limitsTranslateRefs[i].current)
+  //     variables[i].velocidade = 0;
+  //   }
+  //   if (translateRefs[i].current > 0) {
+  //     setTranslates[i](0)
+  //     variables[i].velocidade = 0;
+  //   }
+  // };
 }

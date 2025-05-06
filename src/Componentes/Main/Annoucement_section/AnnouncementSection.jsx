@@ -14,7 +14,7 @@ let imageUrls = [
 
 function AnnouncementSection() {
 
-  const {setLimitAdvertisements, setTranslateX1, translateX1, advertisementsRef}= useContext(CartContext);
+  const {setLimitAdvertisements, setTranslateX1, translateX1, advertisementsRef, AdvertisementsCenter}= useContext(CartContext);
   //Caucular os índices centrais
   const divRef = useRef(null);
   const fundoRefs = useRef([]);
