@@ -106,8 +106,8 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider value={{ advertisementsRef, categoriesRef, promotionsRef,
-    translateX1, setTranslateX1, translateX2, setTranslateX2, translateX3, setTranslateX3,setLimitProductList, 
-    setLimitCategories, setLimitAdvertisements,allQuantities,
+    translateX1, setTranslateX1, translateX2, setTranslateX2, translateX3, setTranslateX3,setLimitProductList, limitProductList,
+    setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
     shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
       {children}

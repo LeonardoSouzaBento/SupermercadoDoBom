@@ -44,7 +44,8 @@ function PromoSection({variant, categoryKey}) {
     const gap = parseFloat(getComputedStyle(promotionsRef.current).gap) || 0;
     const widthProdsLine = quantProdsInLine * widthProductItem + (quantProdsInLine > 0 ? (quantProdsInLine - 1) * gap : 0);
     const widthPaiAll = paiAllProductsRef.current.offsetWidth;
-    const calculatedLimit = widthPaiAll - widthProdsLine;
+    const marginleft = parseFloat(getComputedStyle(paiAllProductsRef.current).marginLeft);
+    const calculatedLimit = widthPaiAll - widthProdsLine - marginleft;
     setLimitProductList(calculatedLimit);
   }, [currentCategory, allProductsInCat]);
 

@@ -26,9 +26,9 @@ export function useScroll() {
 
   // Estado interno de arraste
   const variables = useRef([
-    { arraste: 0, limit: limitAdvertisements, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
-    { arraste: 0, limit: limitCategories,    toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
-    { arraste: 0, limit: limitProductList,   toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false }
+    { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
+    { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
+    { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false }
   ]).current;
 
   // Variáveis de scroll de página
@@ -81,6 +81,7 @@ export function useScroll() {
   }
 
   function aoMover(e, i) {
+    e.preventDefault();
     const v = variables[i];
     if (!v.arrastando) return;
     const now = Date.now();
@@ -105,7 +106,6 @@ export function useScroll() {
       if (i === 0 && translateX1 !== v.arraste) setTranslateX1(v.arraste);
       if (i === 1 && translateX2 !== v.arraste) setTranslateX2(v.arraste);
       if (i === 2 && translateX3 !== v.arraste) setTranslateX3(v.arraste);
-      page.current.initialX = x;
       aplicarLimites(i);
     }
     else if (page.current.firstAngle > 60 && window.innerWidth < 993) {
@@ -120,6 +120,7 @@ export function useScroll() {
   }
 
   function finalizarArraste(e, i) {
+    e.preventDefault();
     const v = variables[i];
     if (!page.current.dragY) {
       if (!v.arrastando) return;
@@ -144,7 +145,10 @@ export function useScroll() {
 
   function aplicarLimites(i) {
     const v = variables[i];
-    if (v.arraste < v.limit) { v.arraste = v.limit; v.velocidade = 0; }
-    if (v.arraste > 0)        { v.arraste = 0;     v.velocidade = 0; }
+    const limits = [limitAdvertisements, limitCategories, limitProductList];
+    const limit = limits[i]; // sempre atualizado
+  
+    if (v.arraste < limit) { v.arraste = limit; v.velocidade = 0; }
+    if (v.arraste > 0)      { v.arraste = 0;     v.velocidade = 0; }
   }
 }
