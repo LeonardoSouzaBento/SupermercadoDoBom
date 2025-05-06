@@ -12,6 +12,7 @@ import { CartContext } from '../CartContext';
 
 const Main = styled.main`
   max-width: 1390px;
+  height: max-content;
   /* max-height: 100vh; */
   margin: auto;
   background-color: rgb(237, 237, 237);

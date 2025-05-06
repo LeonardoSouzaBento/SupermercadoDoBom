@@ -26,7 +26,7 @@ export function useScroll() {
 
   // Estado interno de arraste
   const variables = useRef([
-    { arraste: translateX1, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
+    { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
     { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
     { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false }
   ]).current;
@@ -87,26 +87,25 @@ export function useScroll() {
     page.speed=0;
     page.startTime = Date.now();
     //
-    const v = variables[i];
+
     const posX = page.initialX;
-    v.arrastando = true;
-    v.toc_ini = posX - translates[i];
-    v.time_touch = Date.now();
+    variables[i].arrastando = true;
+    variables[i].toc_ini = posX - translates[i];
+    variables[i].time_touch = Date.now();
   
-    if (v.animacao) {
-      cancelAnimationFrame(v.animacao);
-      v.animacao = null;
+    if (variables[i].animacao) {
+      cancelAnimationFrame(variables[i].animacao);
+      variables[i].animacao = null;
     }
   };
   
 
   function aoMover(e, i) {
     e.preventDefault();
-    const v = variables[i];
-    if (!v.arrastando) return;
+    if (!variables[i].arrastando) return;
 
     const now = Date.now();
-    const dt = Math.max(1, now - v.time_touch);
+    const dt = Math.max(1, now - variables[i].time_touch);
     const x = e.touches ? e.touches[0].clientX : e.clientX;
     const y = e.touches ? e.touches[0].clientY : e.clientY;
     const dx = Math.abs(x - page.initialX);
@@ -122,18 +121,16 @@ export function useScroll() {
 
     if (page.firstAngle < 45) {
       page.dragY = false;
-      v.velocidade = (x - v.toc_ini2) / dt;
-      v.time_touch = now;
-      v.toc_ini2 = x;
-      v.arraste = x - v.toc_ini;
-      setTranslates[i](v.arraste);
-      aplicarLimites(i);
+      page.initialX = x;
+      variables[i].velocidade = (x - variables[i].toc_ini2) / dt;
+      variables[i].time_touch = now;
+      variables[i].toc_ini2 = x;
     }
     else if (page.firstAngle > 60 && window.innerWidth < 993) {
       page.deltaY = y - page.initialY;
-      page.speed = page.deltaY / dt; //antes: now - page.startTime
-      page.speed = Math.sign(speed) * Math.max(minSpeed, Math.min(Math.abs(speed), maxSpeed));
-      window.scrollBy(0, -deltaY);
+      page.speed = page.deltaY / dt;
+      page.speed = Math.sign(page.speed) * Math.max(minSpeed, Math.min(Math.abs(page.speed), maxSpeed));
+      window.scrollBy(0, -page.deltaY);
       page.initialY = y;
       page.startTime = now;
       page.dragY = true;
@@ -142,28 +139,28 @@ export function useScroll() {
   }
 
   function finalizarArraste(e, i) {
-    const v = variables[i];
+    e.preventDefault();
     if (!page.dragY) {
-      if (!v.arrastando) return;
-      v.arrastando = false;
+      console.log(translates[i]);
+      if (!variables[i].arrastando) return;
+      variables[i].arrastando = false;
       const decel = () => {
-        if (Math.abs(v.velocidade) > 0.01) {
-          v.velocidade *= 0.95;
-          v.arraste += v.velocidade * 16;
-          setTranslates[i](v.arraste);
-          v.animacao = requestAnimationFrame(decel);
-          aplicarLimites(i);
+        if (Math.abs(variables[i].velocidade) > 0.01) {
+          variables[i].velocidade *= 0.95;
+          variables[i].arraste += variables[i].velocidade * 16;
+          setTranslates[i](translates[i] + variables[i].arraste);
+          variables[i].animacao = requestAnimationFrame(decel);
         } else {
-          v.animacao = null;    
+          variables[i].animacao = null;    
         }
       };
       decel();
     }
     if(page.dragY){
-      if (Math.abs(speed) < minSpeed) {
-        page.speed = minSpeed * Math.sign(speed); // Garante movimento mínimo
+      if (Math.abs(page.speed) < minSpeed) {
+        page.speed = minSpeed * Math.sign(page.speed); // Garante movimento mínimo
       }
-      if (!Number.isFinite(speed)) page.speed = minSpeed * Math.sign(deltaY);
+      if (!Number.isFinite(page.speed)) page.speed = minSpeed * Math.sign(page.deltaY);
       startMomentumScroll();
     }
     page.initialX = null
@@ -174,20 +171,11 @@ export function useScroll() {
     page.dragY = null, 
     page.startTime = null;
   }
-
-  function aplicarLimites(i) {
-    const v = variables[i];
-    const limits = [limitAdvertisements, limitCategories, limitProductList];
-    const limit = limits[i]; // sempre atualizado
   
-    if (v.arraste < limit) { v.arraste = limit; v.velocidade = 0; }
-    if (v.arraste > 0)      { v.arraste = 0;     v.velocidade = 0; }
-  }
-
   function startMomentumScroll() {
     const decay = 0.95;
     const step = () => {
-      if (Math.abs(speed) > 0.1) {
+      if (Math.abs(page.speed) > 0.1) {
         page.speed *= decay;
         window.scrollBy(0, -page.speed * 16);
         requestAnimationFrame(step);
