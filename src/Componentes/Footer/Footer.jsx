@@ -145,18 +145,10 @@ const PItensStyled = styled(PPrecoStyled)`
 `;
 
 function Footer() {
-  const { totalQuantity, totalValueFormatted, setViewConfirm, viewConfirm, setShoppingCart, setQuantities} = useContext(CartContext);
+  const { totalQuantity, totalValueFormatted} = useContext(CartContext);
   const navigate = useNavigate();
 
   if (totalQuantity <= 0) return null;
-
-  function callCalcel() {
-    if (totalQuantity==1){
-      setQuantities(products.map(() => 0));
-      setShoppingCart([]);
-      setViewConfirm(false)
-    }else{setViewConfirm(true);}
-  }
 
   return(
   <FooterStyled>
