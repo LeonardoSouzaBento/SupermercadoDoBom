@@ -9,7 +9,7 @@ const DivStyled = styled.div.attrs(props => ({
   style: {
     transform: `translateX(${props.$translateValue ?? 0}px)`
   }
-}))`
+  }))`
   width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
   height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
   padding: 0px;

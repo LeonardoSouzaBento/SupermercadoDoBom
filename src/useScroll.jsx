@@ -14,7 +14,7 @@ export function useScroll() {
     translateX3,
     setTranslateX1,
     setTranslateX2,
-    setTranslateX3,
+    setTranslateX3
   } = useContext(CartContext);
 
   // Refs agrupados
@@ -26,9 +26,9 @@ export function useScroll() {
 
   // Estado interno de arraste
   const variables = useRef([
-    { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
-    { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
-    { arraste: 0, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false }
+    { arraste: 0, toc_ini: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
+    { arraste: 0, toc_ini: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
+    { arraste: 0, toc_ini: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false }
   ]).current;
 
   const translateRefs = [
@@ -124,9 +124,8 @@ export function useScroll() {
     page.startTime = Date.now();
     //
 
-    const posX = page.initialX;
     variables[i].arrastando = true;
-    variables[i].toc_ini = posX - translateRefs[i].current;
+    variables[i].toc_ini = page.initialX;
     variables[i].time_touch = Date.now();
     variables[i].arraste=0;
     if (variables[i].animacao) {
@@ -136,7 +135,6 @@ export function useScroll() {
   };
   
   function aoMover(e, i) {
-    e.preventDefault();
     if (!variables[i].arrastando) return;
 
     const now = Date.now();
@@ -147,20 +145,36 @@ export function useScroll() {
     const dy = Math.abs(y - page.initialY);
     if (dx <= limiar && dy <= limiar) return;
 
-    if (page.firstDiffX === null && page.firstDiffY) {
+    if (page.firstDiffX === null && page.firstDiffY ===null) {
       page.firstDiffX = dx;
       page.firstDiffY = dy;
       page.firstAngle  = Math.atan2(dy, dx) * (180 / Math.PI);
-      if (page.firstAngle === null) page.firstAngle = 0;
     }
 
     if (page.firstAngle < 45) {
       page.dragY = false;
-      page.initialX = x;
-      variables[i].velocidade = (x - variables[i].toc_ini2) / dt;
+    
+      const deslocamento = x - variables[i].toc_ini;
+      variables[i].velocidade = deslocamento / dt;
       variables[i].time_touch = now;
-      variables[i].toc_ini2 = x;
+      variables[i].toc_ini= x;
+    
+      const proximo = translateRefs[i].current + deslocamento;
+
+      const max = limitsTranslateRefs[i].current;
+      const min = 0;
+      
+      if (proximo < max) {
+        translateRefs[i].current = max;
+      } else if (proximo > min) {
+        translateRefs[i].current = min;
+      } else {
+        translateRefs[i].current = proximo;
+      }
+      setTranslates[i](translateRefs[i].current);
+      page.initialX = x;
     }
+    
     else if (page.firstAngle > 60 && window.innerWidth < 993) {
       page.deltaY = y - page.initialY;
       page.speed = page.deltaY / dt;
@@ -170,11 +184,9 @@ export function useScroll() {
       page.startTime = now;
       page.dragY = true;
     }
-    else{page.dragY = null;}
   }
 
   function finalizarArraste(e, i) {
-    e.preventDefault();
     if (!page.dragY) {
       if (!variables[i].arrastando) return;
       variables[i].arrastando = false;
@@ -185,14 +197,14 @@ export function useScroll() {
           const deslocamento = variables[i].velocidade * 16;
           const proximo = translateRefs[i].current + deslocamento;
       
-          const min = limitsTranslateRefs[i].current;
-          const max = 0;
+          const max = limitsTranslateRefs[i].current;
+          const min = 0;
       
-          if (proximo < min) {
-            translateRefs[i].current = min;
-            variables[i].velocidade = 0;
-          } else if (proximo > max) {
+          if (proximo < max) {
             translateRefs[i].current = max;
+            variables[i].velocidade = 0;
+          } else if (proximo > min) {
+            translateRefs[i].current = min;
             variables[i].velocidade = 0;
           } else {
             translateRefs[i].current = proximo;
@@ -207,10 +219,12 @@ export function useScroll() {
       decel();
     }
     if(page.dragY){
-      if (Math.abs(page.speed) < minSpeed) {
-        page.speed = minSpeed * Math.sign(page.speed); // Garante movimento mínimo
+      if (window.scrollY === 0 && page.deltaY > 80) {
+        location.reload();
       }
-      if (!Number.isFinite(page.speed)) page.speed = minSpeed * Math.sign(page.deltaY);
+      if (Math.abs(page.speed) < minSpeed || !Number.isFinite(page.speed) || page.speed === 0) {
+        page.speed = minSpeed * (page.deltaY !== 0 ? Math.sign(page.deltaY) : -1);
+      }
       startMomentumScroll();
     }
     page.initialX = null
@@ -230,19 +244,7 @@ export function useScroll() {
         window.scrollBy(0, -page.speed * 16);
         requestAnimationFrame(step);
       }
-      //removi o else daqui
     };
     requestAnimationFrame(step);
   }
-
-  // const aplicarLimites = (i) => {
-  //   if ( translateRefs[i].current < limitsTranslateRefs[i].current) {
-  //     setTranslates[i](limitsTranslateRefs[i].current)
-  //     variables[i].velocidade = 0;
-  //   }
-  //   if (translateRefs[i].current > 0) {
-  //     setTranslates[i](0)
-  //     variables[i].velocidade = 0;
-  //   }
-  // };
 }

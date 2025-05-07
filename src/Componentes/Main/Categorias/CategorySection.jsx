@@ -6,8 +6,25 @@ import { CartContext } from '../../CartContext';
 import { useScroll } from '../../../useScroll';
 
 const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) => {
+  let touchStartTime = null;
+
+  const handlePointerDown = () => {
+    touchStartTime = Date.now();
+  };
+
+  const handlePointerUp = () => {
+    const duration = Date.now() - touchStartTime;
+    if (duration < 200) {
+      onClick();
+    }
+  };
+
   return (
-    <DivCat onClick={onClick} $selected={isSelected} ref={ref}>
+    <DivCat 
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp} 
+      $selected={isSelected} 
+      ref={ref}>
       <ImgStyled src={category.icon} alt={category.label}/>
       <DivNameSection>
         <PStyled>{category.label}</PStyled>

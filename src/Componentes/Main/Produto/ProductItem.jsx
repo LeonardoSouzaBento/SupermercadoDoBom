@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext, useRef} from 'react';
 import {
   PaiProdStyled,
   PpesoStyled,
@@ -23,9 +23,21 @@ import {
   DivNomeStyled,
   PnomeStyled
 } from './ComponentesProdutos';
-import { CartContext } from '../../CartContext';
 
 const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange, variant})=>{
+  let toqueInicio = null;
+  const iniciarToque = () => {
+    toqueInicio = Date.now();
+  };
+
+  const finalizarToque = () => {
+    const duracao = Date.now() - toqueInicio;
+    if (duracao < 200) { // só considera toques curtos (menos de 200ms)
+      setMostrarBotoes(true);
+      onQuantityChange(1, true);
+    }
+  };
+
   return(
     <DivOfertaStyled>
       <PaiImgOfertaStyled>
@@ -36,10 +48,9 @@ const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantity
         <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
         
         {!mostrarBotoes &&
-          <DivMaisStyled onClick={() => {
-              setMostrarBotoes(true);
-              onQuantityChange(1, true);
-            }}>
+          <DivMaisStyled 
+            onPointerDown={iniciarToque}
+            onPointerUp={finalizarToque}>
             <PMaisStyled>+</PMaisStyled>
           </DivMaisStyled>
         }

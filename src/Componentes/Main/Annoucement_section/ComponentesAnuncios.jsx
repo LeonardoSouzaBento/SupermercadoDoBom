@@ -129,6 +129,8 @@ export const Img = styled.img`
     margin: auto;
     position: relative;
     z-index: 1;
+    user-select: none;
+    touch-action: none;
 `;
 
 export const Pagination = styled.div`

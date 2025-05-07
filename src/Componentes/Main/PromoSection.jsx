@@ -46,7 +46,8 @@ function PromoSection({variant, categoryKey}) {
     const widthPaiAll = paiAllProductsRef.current.offsetWidth;
     const marginleft = parseFloat(getComputedStyle(paiAllProductsRef.current).marginLeft);
     const calculatedLimit = widthPaiAll - widthProdsLine - marginleft;
-    setLimitProductList(calculatedLimit);
+    const calculatedLimit2 = calculatedLimit + marginleft;
+    window.innerWidth<993?setLimitProductList(calculatedLimit): setLimitProductList(calculatedLimit2);
   }, [currentCategory, allProductsInCat]);
 
   const handleResize = useCallback(() => {
