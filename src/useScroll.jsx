@@ -73,7 +73,6 @@ export function useScroll() {
   const minSpeed = 0.7;
   const maxSpeed = 2.0;
   const limiar = 4;
-  let rafId = null;
 
   const listeners = useRef([[], [], []]);
 
@@ -156,8 +155,6 @@ export function useScroll() {
     if (page.firstAngle !== null && page.firstAngle < 45) {
       page.dragY = false;
     
-      // const deslocamentoBruto = x - variables[i].toc_ini;
-      // const deslocamento = Math.round(deslocamentoBruto);
       const deslocamento = x - variables[i].toc_ini;
 
       if (Math.abs(deslocamento) < 0.5) return;
@@ -175,25 +172,8 @@ export function useScroll() {
 
       variables[i].time_touch = now;
       variables[i].toc_ini= x;
-
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(() => {
-      const proximo = translateRefs[i].current + deslocamento;
-      const max = limitsTranslateRefs[i].current;
-      const min = 0;
-
-      if (proximo < max) {
-        translateRefs[i].current = max;
-      } else if (proximo > min) {
-        translateRefs[i].current = min;
-      } else {
-        translateRefs[i].current = proximo;
-      }
-
-      setTranslates[i](translateRefs[i].current);
-    });
-
-    page.initialX = x;
+      setTranslates[i](translateRefs[i].current + deslocamento);
+      page.initialX = x;
     }
     
     else if (page.firstAngle > 60 && window.innerWidth < 993) {
@@ -211,30 +191,33 @@ export function useScroll() {
     if (!page.dragY) {
       if (!variables[i].arrastando) return;
       variables[i].arrastando = false;
-
+  
+      // Cancela animação anterior, se existir
+      if (variables[i].animacao) {
+        cancelAnimationFrame(variables[i].animacao);
+      }
+  
       const decel = () => {
         if (Math.abs(variables[i].velocidade) > 0.01) {
           variables[i].velocidade *= 0.95;
-          const deslocamento = variables[i].velocidade * 24;
-          const proximo = translateRefs[i].current + deslocamento;
-      
+          const deslocamento = variables[i].velocidade * 16;
+          let proximo = translateRefs[i].current + deslocamento;
+  
           const max = limitsTranslateRefs[i].current;
           const min = 0;
-      
+  
           if (proximo < max) {
-            translateRefs[i].current = max;
+            proximo = max;
             variables[i].velocidade = 0;
           } else if (proximo > min) {
-            translateRefs[i].current = min;
+            proximo = min;
             variables[i].velocidade = 0;
-          } else {
-            translateRefs[i].current = proximo;
           }
-      
-          setTranslates[i](translateRefs[i].current);
+  
+          translateRefs[i].current = proximo;
+          setTranslates[i](proximo);
+  
           variables[i].animacao = requestAnimationFrame(decel);
-        } else {
-          variables[i].animacao = null;
         }
       };
       decel();
@@ -259,8 +242,8 @@ export function useScroll() {
       deltaY: 0,
       speed: 0
     });
-    rafId = null;
     variables[i].historicoVelocidade=[];
+    variables[i].animacao=null;
   }
   
   function startMomentumScroll() {
