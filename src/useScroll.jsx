@@ -26,9 +26,9 @@ export function useScroll() {
 
   // Estado interno de arraste
   const variables = useRef([
-    { arraste: 0, toc_ini: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
-    { arraste: 0, toc_ini: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false },
-    { arraste: 0, toc_ini: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false }
+    { arraste: 0, toc_ini: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false, historicoVelocidade: []},
+    { arraste: 0, toc_ini: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false, historicoVelocidade: []},
+    { arraste: 0, toc_ini: 0, time_touch: 0, velocidade: 0, animacao: null, arrastando: false, historicoVelocidade: []}
   ]).current;
 
   const translateRefs = [
@@ -159,12 +159,21 @@ export function useScroll() {
       const deslocamentoBruto = x - variables[i].toc_ini;
       const deslocamento = Math.round(deslocamentoBruto);
 
-      if (Math.abs(deslocamento) < 0.4) return;
+      if (Math.abs(deslocamento) < 0.5) return;
 
-      variables[i].velocidade = deslocamento / dt;
+      const novaVel = deslocamento / dt;
+      variables[i].historicoVelocidade.push(novaVel);
+      if (variables[i].historicoVelocidade.length > 5) {
+        variables[i].historicoVelocidade.shift();
+      }
+
+      // Calcular a média e aplicar
+      const historico = variables[i].historicoVelocidade;
+      const media = historico.reduce((a, b) => a + b, 0) / historico.length;
+      variables[i].velocidade = media;
+
       variables[i].time_touch = now;
       variables[i].toc_ini= x;
-    
        // Evita múltiplas execuções por frame
     if (rafId) cancelAnimationFrame(rafId);
     rafId = requestAnimationFrame(() => {
@@ -246,6 +255,7 @@ export function useScroll() {
     page.dragY = null, 
     page.startTime = null;
     rafId = null;
+    variables[i].historicoVelocidade=[];
   }
   
   function startMomentumScroll() {
