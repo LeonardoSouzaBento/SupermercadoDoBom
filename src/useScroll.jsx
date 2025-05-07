@@ -231,17 +231,16 @@ export function useScroll() {
       }
       startMomentumScroll();
     }
-    Object.assign(page, {
-      initialX: null,
-      initialY: null,
-      firstAngle: null,
-      firstDiffX: null,
-      firstDiffY: null,
-      dragY: null,
-      startTime: null,
-      deltaY: 0,
-      speed: 0
-    });
+  
+    page.initialX = null
+    page.initialY = null
+    page.firstAngle = null
+    page.firstDiffX = null
+    page.firstDiffY = null
+    page.dragY= null
+    page.startTime = null
+    page.deltaY = 0
+    page.speed = 0
     variables[i].historicoVelocidade=[];
     variables[i].animacao=null;
   }
