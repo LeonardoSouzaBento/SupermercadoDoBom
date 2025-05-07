@@ -73,6 +73,7 @@ export function useScroll() {
   const minSpeed = 0.7;
   const maxSpeed = 2.0;
   const limiar = 4;
+  let rafId = null;
 
   const listeners = useRef([[], [], []]);
 
@@ -135,10 +136,11 @@ export function useScroll() {
   };
   
   function aoMover(e, i) {
+    e.preventDefault();
     if (!variables[i].arrastando) return;
 
     const now = Date.now();
-    const dt = Math.max(1, now - variables[i].time_touch);
+    const dt = Math.max(16, now - variables[i].time_touch);
     const x = e.touches ? e.touches[0].clientX : e.clientX;
     const y = e.touches ? e.touches[0].clientY : e.clientY;
     const dx = Math.abs(x - page.initialX);
@@ -154,16 +156,22 @@ export function useScroll() {
     if (page.firstAngle < 45) {
       page.dragY = false;
     
-      const deslocamento = x - variables[i].toc_ini;
+      const deslocamentoBruto = x - variables[i].toc_ini;
+      const deslocamento = Math.round(deslocamentoBruto);
+
+      if (Math.abs(deslocamento) < 0.4) return;
+
       variables[i].velocidade = deslocamento / dt;
       variables[i].time_touch = now;
       variables[i].toc_ini= x;
     
+       // Evita múltiplas execuções por frame
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
       const proximo = translateRefs[i].current + deslocamento;
-
       const max = limitsTranslateRefs[i].current;
       const min = 0;
-      
+
       if (proximo < max) {
         translateRefs[i].current = max;
       } else if (proximo > min) {
@@ -171,8 +179,11 @@ export function useScroll() {
       } else {
         translateRefs[i].current = proximo;
       }
+
       setTranslates[i](translateRefs[i].current);
-      page.initialX = x;
+    });
+
+    page.initialX = x;
     }
     
     else if (page.firstAngle > 60 && window.innerWidth < 993) {
@@ -194,7 +205,7 @@ export function useScroll() {
       const decel = () => {
         if (Math.abs(variables[i].velocidade) > 0.01) {
           variables[i].velocidade *= 0.95;
-          const deslocamento = variables[i].velocidade * 16;
+          const deslocamento = variables[i].velocidade * 24;
           const proximo = translateRefs[i].current + deslocamento;
       
           const max = limitsTranslateRefs[i].current;
@@ -234,6 +245,7 @@ export function useScroll() {
     page.firstDiffY = null, 
     page.dragY = null, 
     page.startTime = null;
+    rafId = null;
   }
   
   function startMomentumScroll() {

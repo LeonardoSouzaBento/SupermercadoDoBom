@@ -204,6 +204,7 @@ export const DivOfertaStyled = styled.div`
         object-fit: contain;
         padding: 5px;
         box-sizing: border-box;
+        user-select: none;
     `;
 
     export const DivResizeStyled = styled.div`
