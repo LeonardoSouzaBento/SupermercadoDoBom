@@ -200,8 +200,7 @@ export function useScroll() {
       const decel = () => {
         if (Math.abs(variables[i].velocidade) > 0.01) {
           variables[i].velocidade *= 0.95;
-          const deslocamento = variables[i].velocidade * 16;
-          let proximo = translateRefs[i].current + deslocamento;
+          let proximo = translateRefs[i].current + variables[i].velocidade * 16;
   
           const max = limitsTranslateRefs[i].current;
           const min = 0;
@@ -214,9 +213,8 @@ export function useScroll() {
             variables[i].velocidade = 0;
           }
   
-          translateRefs[i].current = proximo;
+          // translateRefs[i].current = proximo;
           setTranslates[i](proximo);
-  
           variables[i].animacao = requestAnimationFrame(decel);
         }
       };
