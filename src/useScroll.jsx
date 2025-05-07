@@ -153,11 +153,12 @@ export function useScroll() {
       page.firstAngle  = Math.atan2(dy, dx) * (180 / Math.PI);
     }
 
-    if (page.firstAngle < 45) {
+    if (page.firstAngle !== null && page.firstAngle < 45) {
       page.dragY = false;
     
-      const deslocamentoBruto = x - variables[i].toc_ini;
-      const deslocamento = Math.round(deslocamentoBruto);
+      // const deslocamentoBruto = x - variables[i].toc_ini;
+      // const deslocamento = Math.round(deslocamentoBruto);
+      const deslocamento = x - variables[i].toc_ini;
 
       if (Math.abs(deslocamento) < 0.5) return;
 
@@ -174,7 +175,7 @@ export function useScroll() {
 
       variables[i].time_touch = now;
       variables[i].toc_ini= x;
-       // Evita múltiplas execuções por frame
+
     if (rafId) cancelAnimationFrame(rafId);
     rafId = requestAnimationFrame(() => {
       const proximo = translateRefs[i].current + deslocamento;
@@ -247,13 +248,17 @@ export function useScroll() {
       }
       startMomentumScroll();
     }
-    page.initialX = null
-    page.initialY= null 
-    page.firstAngle = null, 
-    page.firstDiffX = null, 
-    page.firstDiffY = null, 
-    page.dragY = null, 
-    page.startTime = null;
+    Object.assign(page, {
+      initialX: null,
+      initialY: null,
+      firstAngle: null,
+      firstDiffX: null,
+      firstDiffY: null,
+      dragY: null,
+      startTime: null,
+      deltaY: 0,
+      speed: 0
+    });
     rafId = null;
     variables[i].historicoVelocidade=[];
   }

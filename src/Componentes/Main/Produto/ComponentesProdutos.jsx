@@ -205,6 +205,7 @@ export const DivOfertaStyled = styled.div`
         padding: 5px;
         box-sizing: border-box;
         user-select: none;
+        touch-action: none;
     `;
 
     export const DivResizeStyled = styled.div`

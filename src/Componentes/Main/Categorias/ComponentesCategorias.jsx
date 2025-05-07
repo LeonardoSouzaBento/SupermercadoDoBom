@@ -29,6 +29,7 @@ export const Divf = styled.div.attrs(props => ({
     transform: `translateX(${props.$translateValue ?? 0}px)`
   }
 }))`
+  will-change: transform;
   width: 100%;
   position: relative;
   -webkit-user-select: none;

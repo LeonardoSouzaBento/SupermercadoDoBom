@@ -73,6 +73,7 @@ export const Advertisements = styled.div.attrs(props => ({
     transform: `translateX(${props.$translateValue ?? 0}px)`
   }
 }))`
+  will-change: transform;
   height: 174px;
   width: 100%;
   margin: auto;
