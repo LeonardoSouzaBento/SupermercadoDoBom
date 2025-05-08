@@ -145,6 +145,7 @@ export function useScroll() {
       }
   
       const decel = () => {
+        if (Math.abs(variables.velocidade) > 0.01) {
           variables.velocidade *= 0.95;
           variables.currentTranslate += variables.velocidade * 16;
           const max = limitsTranslateRefs[i].current;
@@ -159,6 +160,7 @@ export function useScroll() {
           }
           if (ref) ref.style.transform = `translateX(${variables.currentTranslate}px)`;
           variables.animacao = requestAnimationFrame(decel);
+        }
       };
       decel();
     }
@@ -200,6 +202,7 @@ export function useScroll() {
   const listeners = useRef([]);
 
   useEffect(() => {
+    if (refs.some(ref => !ref.current)) return;
     refs.forEach((refWrapper, i) => {
       const el = refWrapper.current;
       if (!el) return;
@@ -228,5 +231,5 @@ export function useScroll() {
         el.removeEventListener('pointerup', end);
       });
     };
-  }, [advertisementsRef.current, categoriesRef.current, promotionsRef.current]);
+  }, [advertisementsRef, categoriesRef, promotionsRef]);
 }
