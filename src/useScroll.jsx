@@ -139,11 +139,12 @@ export function useScroll() {
     if (!variables[i].arrastando) return;
 
     const now = Date.now();
-    const dt = Math.max(16, now - variables[i].time_touch);
+    const dt = Math.max(1, now - variables[i].time_touch);
     const x = e.touches ? e.touches[0].clientX : e.clientX;
     const y = e.touches ? e.touches[0].clientY : e.clientY;
     const dx = Math.abs(x - page.initialX);
     const dy = Math.abs(y - page.initialY);
+
     if (dx <= limiar && dy <= limiar) return;
 
     if (page.firstDiffX === null && page.firstDiffY ===null) {
