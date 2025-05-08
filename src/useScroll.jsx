@@ -135,8 +135,8 @@ export function useScroll() {
       variables.time_touch = now;
       variables.toc_ini= x;
       setTranslates[i](translateRefs[i].current + deslocamento);
-      page.initialX = x;
       // ref.current.style.transform = `translateX(${translateRefs[i].current + deslocamento}px)`;
+      page.initialX = x;
     }
     
     else if (page.firstCheck === 'page' && window.innerWidth < 993) {
@@ -163,6 +163,7 @@ export function useScroll() {
       }
   
       const decel = () => {
+        const ref = refs[i];
         if (Math.abs(variables.velocidade) > 0.01) {
           variables.velocidade *= 0.95;
           let proximo = translateRefs[i].current + variables.velocidade * 16;
@@ -178,6 +179,7 @@ export function useScroll() {
             variables.velocidade = 0;
           }
           setTranslates[i](proximo);
+          // ref.current.style.transform = `translateX(${proximo}px)`;
           variables.animacao = requestAnimationFrame(decel);
         }
       };
