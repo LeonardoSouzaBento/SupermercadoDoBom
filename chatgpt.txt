@@ -1,10 +1,3 @@
-    // const novaVel = deslocamento / dt;
-      // variables[i].historicoVelocidade.push(novaVel);
-      // if (variables[i].historicoVelocidade.length > 8) {
-      //   variables[i].historicoVelocidade.shift();
-      // }
+Talvez seja melhor aplicar o CSS de transformação diretamente no elemento via ref.current.style.transform = ... durante o arraste, e só no “final” atualizar o contexto.
 
-      // // Calcular a média e aplicar
-      // const historico = variables[i].historicoVelocidade;
-      // const media = historico.reduce((a, b) => a + b, 0) / historico.length;
-      // variables[i].velocidade = media;
+colocar a transformação em aoMover dentro de um requestAnimationFrame
