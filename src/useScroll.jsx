@@ -24,9 +24,6 @@ export function useScroll() {
     promotionsRef
   ];
 
-  const lastUpdateTimeRef = useRef([0, 0, 0]); // um para cada scroll div
-  const updateInterval = 16; 
-
   // Estado interno de arraste
   const variablesRef = useRef(
     refs.map(() => ({
@@ -81,6 +78,8 @@ export function useScroll() {
   const maxSpeed = 2.0;
   const limiar = 4;
 
+  const listeners = useRef([[], [], []]);
+
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
     if (e.type === "mousedown" && e.button !== 0) return;
@@ -107,7 +106,6 @@ export function useScroll() {
   const aoMover = useCallback((e, i) => {
     e.preventDefault();
     const variables = variablesRef.current[i];
-    const ref = refs[i];
     if (!variables.arrastando) return;
     const page = pageRef.current;
     const now = Date.now();
@@ -135,16 +133,10 @@ export function useScroll() {
 
       variables.time_touch = now;
       variables.toc_ini= x;
-      const novoTranslate = translateRefs[i].current + deslocamento;
-
-      // Aplica throttling na atualização de estado
-      if (now - lastUpdateTimeRef.current[i] >= updateInterval) {
-        lastUpdateTimeRef.current[i] = now;
-        setTranslates[i](novoTranslate);
-      }
+      setTranslates[i](translateRefs[i].current + deslocamento);
       page.initialX = x;
-      // ref.current.style.transform = `translateX(${translateRefs[i].current + deslocamento}px)`;
     }
+    
     else if (page.firstCheck === 'page' && window.innerWidth < 993) {
       page.deltaY = y - page.initialY;
       page.speed = page.deltaY / dt;
@@ -153,7 +145,7 @@ export function useScroll() {
       page.initialY = y;
       page.startTime = now;
       page.dragY = true;
-    } else {page.dragY = false;}
+    }
   }, []);
 
   const finalizarArraste = useCallback((e, i) => {
@@ -169,8 +161,9 @@ export function useScroll() {
       }
   
       const decel = () => {
+        if (Math.abs(variables.velocidade) > 0.01) {
           variables.velocidade *= 0.95;
-          let proximo = translateRefs[i].current + variables.velocidade * 24;
+          let proximo = translateRefs[i].current + variables.velocidade * 16;
   
           const max = limitsTranslateRefs[i].current;
           const min = 0;
@@ -184,6 +177,7 @@ export function useScroll() {
           }
           setTranslates[i](proximo);
           variables.animacao = requestAnimationFrame(decel);
+        }
       };
       decel();
     }
@@ -222,36 +216,40 @@ export function useScroll() {
     requestAnimationFrame(step);
   }, []);
 
-  const handlersRef = useRef(
-    refs.map((_, i) => ({
-      start: (e) => iniciarArraste(e, i),
-      move:  (e) => aoMover(e, i),
-      end:   (e) => finalizarArraste(e, i),
-    }))
-  );
-
   useEffect(() => {
     refs.forEach((refWrapper, i) => {
-      const el = refWrapper.current;
+      const el = refWrapper?.current;
       if (!el) return;
-
-      const { start, move, end } = handlersRef.current[i];
-
-      el.addEventListener('pointerdown', start, { passive: false });
-      el.addEventListener('pointermove', move, { passive: false });
-      el.addEventListener('pointerup', end);
+  
+      const start = e => iniciarArraste(e, i);
+      const move = e => aoMover(e, i);
+      const end = e => finalizarArraste(e, i);
+  
+      listeners.current[i] = [start, move, end];
+  
+      el.addEventListener('touchstart', start, { passive: false });
+      el.addEventListener('mousedown', start, { passive: false });
+      el.addEventListener('touchmove', move, { passive: false });
+      el.addEventListener('mousemove', move, { passive: false });
+      el.addEventListener('touchend', end);
+      el.addEventListener('mouseup', end);
     });
-
+  
     return () => {
       refs.forEach((refWrapper, i) => {
-        const el = refWrapper.current;
-        if (!el) return;
+        const el = refWrapper?.current;
+        if (!el || !listeners.current[i]) return;
 
-        const { start, move, end } = handlersRef.current[i];
+        const start = e => iniciarArraste(e, i);
+        const move = e => aoMover(e, i);
+        const end = e => finalizarArraste(e, i);
 
-        el.addEventListener('pointerdown', start, { passive: false });
-        el.addEventListener('pointermove', move, { passive: false });
-        el.addEventListener('pointerup', end);
+        el.removeEventListener('touchstart', start);
+        el.removeEventListener('mousedown', start);
+        el.removeEventListener('touchmove', move);
+        el.removeEventListener('mousemove', move);
+        el.removeEventListener('touchend', end);
+        el.removeEventListener('mouseup', end);
       });
     };
   }, []);
