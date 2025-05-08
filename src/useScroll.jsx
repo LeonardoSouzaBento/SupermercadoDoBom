@@ -212,8 +212,6 @@ export function useScroll() {
             proximo = min;
             variables[i].velocidade = 0;
           }
-  
-          // translateRefs[i].current = proximo;
           setTranslates[i](proximo);
           variables[i].animacao = requestAnimationFrame(decel);
         }
@@ -237,8 +235,8 @@ export function useScroll() {
     page.firstDiffY = null
     page.dragY= null
     page.startTime = null
-    page.deltaY = 0
-    page.speed = 0
+    // // page.deltaY = 0
+    // // page.speed = 0
     variables[i].historicoVelocidade=[];
     variables[i].animacao=null;
   }
