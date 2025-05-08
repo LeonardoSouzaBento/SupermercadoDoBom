@@ -160,9 +160,7 @@ export function useScroll() {
 
       if (Math.abs(deslocamento) < 0.5) return;
       const velocidade = deslocamento / dt;
-      if (variables[i].velocidade === 0) {
-        variables[i].velocidade = velocidade;
-      }
+      variables[i].velocidade = velocidade;
 
       variables[i].time_touch = now;
       variables[i].toc_ini= x;
