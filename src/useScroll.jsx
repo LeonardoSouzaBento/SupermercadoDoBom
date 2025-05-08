@@ -159,17 +159,10 @@ export function useScroll() {
       const deslocamento = x - variables[i].toc_ini;
 
       if (Math.abs(deslocamento) < 0.5) return;
-
-      const novaVel = deslocamento / dt;
-      variables[i].historicoVelocidade.push(novaVel);
-      if (variables[i].historicoVelocidade.length > 5) {
-        variables[i].historicoVelocidade.shift();
+      const velocidade = deslocamento / dt;
+      if (variables[i].velocidade === 0) {
+        variables[i].velocidade = velocidade;
       }
-
-      // Calcular a média e aplicar
-      const historico = variables[i].historicoVelocidade;
-      const media = historico.reduce((a, b) => a + b, 0) / historico.length;
-      variables[i].velocidade = media;
 
       variables[i].time_touch = now;
       variables[i].toc_ini= x;
