@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback, useContext } from 'react';
 import { Div, P, Img,Advertisements, Span, Fundo, Pagination} from './ComponentesAnuncios';
 import { CartContext } from '../../CartContext';
-import { useScroll } from '../../../useScroll';
+import { useScroll } from '../../../useScroll2';
 
 let imageUrls = [
   "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg", //farinha
@@ -13,8 +13,8 @@ let imageUrls = [
 ];
 
 function AnnouncementSection() {
-
-  const {setLimitAdvertisements, setTranslateX1, translateX1, advertisementsRef, AdvertisementsCenter}= useContext(CartContext);
+  useScroll();
+  const {setLimitAdvertisements, setTranslateX1, translateX1, advertisementsRef}= useContext(CartContext);
   //Caucular os índices centrais
   const divRef = useRef(null);
   const fundoRefs = useRef([]);

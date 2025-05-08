@@ -24,12 +24,9 @@ export const Div = styled.div`
     }
 `;
 
-export const Divf = styled.div.attrs(props => ({
-  style: {
-    transform: `translateX(${props.$translateValue ?? 0}px)`
-  }
-}))`
+export const Divf = styled.div`
   will-change: transform;
+  transform: translateX(0px);
   width: 100%;
   position: relative;
   -webkit-user-select: none;

@@ -9,12 +9,6 @@ export function useScroll() {
     limitAdvertisements,
     limitCategories,
     limitProductList,
-    translateX1,
-    translateX2,
-    translateX3,
-    setTranslateX1,
-    setTranslateX2,
-    setTranslateX3
   } = useContext(CartContext);
 
   // Refs agrupados
@@ -31,23 +25,12 @@ export function useScroll() {
       toc_ini: 0,
       time_touch: 0,
       velocidade: 0,
-      animacao: null
+      animacao: null,
+      currentTranslate: 0
     }))
   );
 
-  const translateRefs = [
-    useRef(translateX1),
-    useRef(translateX2),
-    useRef(translateX3)
-  ];
-  useEffect(() => {
-    translateRefs[0].current = translateX1;
-    translateRefs[1].current = translateX2;
-    translateRefs[2].current = translateX3;
-  }, [translateX1, translateX2, translateX3]);
   
-  const setTranslates = [setTranslateX1, setTranslateX2, setTranslateX3];
-
   //array de limites
   const limitsTranslateRefs = [
     useRef(limitAdvertisements),
@@ -104,7 +87,7 @@ export function useScroll() {
   const aoMover = useCallback((e, i) => {
     e.preventDefault();
     const variables = variablesRef.current[i];
-    const ref = refs[i];
+    const ref = refs[i].current;
     if (!variables.arrastando) return;
     const page = pageRef.current;
     const now = Date.now();
@@ -125,16 +108,16 @@ export function useScroll() {
     if (page.firstAngle !== null && page.firstCheck === 'divs') {
       page.dragY = false;
       const deslocamento = x - variables.toc_ini;
-
       if (Math.abs(deslocamento) < 0.5) return;
-      const velocidade = deslocamento / dt;
-      variables.velocidade = velocidade;
 
+      variables.velocidade = deslocamento / dt;
       variables.time_touch = now;
       variables.toc_ini= x;
-      setTranslates[i](translateRefs[i].current + deslocamento);
+   
+      variables.currentTranslate += deslocamento;
+      ref.style.transform = `translateX(${variables.currentTranslate}px)`;
+
       page.initialX = x;
-      // ref.current.style.transform = `translateX(${translateRefs[i].current + deslocamento}px)`;
     }
     
     else if (page.firstCheck === 'page' && window.innerWidth < 993) {
@@ -152,6 +135,7 @@ export function useScroll() {
     const page = pageRef.current;
     const variables = variablesRef.current[i];
     if (!page.dragY) {
+      const ref = refs[i].current;
       if (!variables.arrastando) return;
       variables.arrastando = false;
   
@@ -162,19 +146,18 @@ export function useScroll() {
   
       const decel = () => {
           variables.velocidade *= 0.95;
-          let proximo = translateRefs[i].current + variables.velocidade * 16;
-  
+          variables.currentTranslate += variables.velocidade * 16;
           const max = limitsTranslateRefs[i].current;
           const min = 0;
   
-          if (proximo < max) {
-            proximo = max;
+          if (variables.currentTranslate < max) {
+            variables.currentTranslate = max;
             variables.velocidade = 0;
-          } else if (proximo > min) {
-            proximo = min;
+          } else if (variables.currentTranslate > min) {
+            variables.currentTranslate = min;
             variables.velocidade = 0;
           }
-          setTranslates[i](proximo);
+          if (ref) ref.style.transform = `translateX(${variables.currentTranslate}px)`;
           variables.animacao = requestAnimationFrame(decel);
       };
       decel();
@@ -217,27 +200,22 @@ export function useScroll() {
   const listeners = useRef([]);
 
   useEffect(() => {
-    // Montagem: para cada ref, criamos as 3 handlers e guardamos em listeners.current
     refs.forEach((refWrapper, i) => {
       const el = refWrapper.current;
       if (!el) return;
 
-      // Criamos as funções uma única vez aqui
       const start = e => iniciarArraste(e, i);
       const move  = e => aoMover(e, i);
       const end   = e => finalizarArraste(e, i);
 
-      // Guardamos numa estrutura para reutilizar depois
       listeners.current[i] = { start, move, end };
 
-      // Adicionamos os listeners
       el.addEventListener('pointerdown', start, { passive: false });
       el.addEventListener('pointermove', move, { passive: false });
       el.addEventListener('pointerup', end);
     });
 
     return () => {
-      // Desmontagem: removemos usando exatamente as mesmas referências
       refs.forEach((refWrapper, i) => {
         const el = refWrapper.current;
         const handlers = listeners.current[i];
@@ -245,10 +223,10 @@ export function useScroll() {
 
         const { start, move, end } = handlers;
 
-        el.addEventListener('pointerdown', start, { passive: false });
-        el.addEventListener('pointermove', move, { passive: false });
-        el.addEventListener('pointerup', end);
+        el.removeEventListener('pointerdown', start, { passive: false });
+        el.removeEventListener('pointermove', move, { passive: false });
+        el.removeEventListener('pointerup', end);
       });
     };
-  }, []);
+  }, [advertisementsRef.current, categoriesRef.current, promotionsRef.current]);
 }

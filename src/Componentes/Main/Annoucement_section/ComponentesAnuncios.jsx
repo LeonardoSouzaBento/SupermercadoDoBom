@@ -68,12 +68,9 @@ export const P = styled.p`
   }
 `;
 
-export const Advertisements = styled.div.attrs(props => ({
-  style: {
-    transform: `translateX(${props.$translateValue ?? 0}px)`
-  }
-}))`
+export const Advertisements = styled.div`
   will-change: transform;
+  transform: translateX(0px);
   height: 174px;
   width: 100%;
   margin: auto;

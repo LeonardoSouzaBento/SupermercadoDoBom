@@ -3,7 +3,7 @@ import { useState, useRef, useEffect} from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled } from './ComponentesCategorias';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
-import { useScroll } from '../../../useScroll';
+import { useScroll } from '../../../useScroll2';
 
 const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) => {
   let touchStartTime = null;
@@ -34,6 +34,7 @@ const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) =
 });
 
 function CategorySection({setCurrentCategory}) {
+  useScroll();
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
   const {setLimitCategories, translateX2, categoriesRef} = useContext(CartContext);
 

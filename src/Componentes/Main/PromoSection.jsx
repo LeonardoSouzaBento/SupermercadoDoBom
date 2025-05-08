@@ -3,7 +3,7 @@ import { useState, useRef, useContext, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import {ProductListHome} from './Produto/ProductListHome';
 import { CartContext } from '../CartContext';
-import { useScroll } from '../../useScroll';
+import { useScroll } from '../../useScroll2';
 
 const PaiAllProductsStyled = styled.div`
    overflow-x: hidden;

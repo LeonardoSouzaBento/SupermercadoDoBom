@@ -5,12 +5,9 @@ import ProductItem from './ProductItem';
 import { CartContext } from '../../CartContext';
 import { useScroll } from '../../../useScroll';
 
-const DivStyled = styled.div.attrs(props => ({
-  style: {
-    transform: `translateX(${props.$translateValue ?? 0}px)`,
-  }
-  }))`
+const DivStyled = styled.div`
   will-change: transform;
+  transform: translateX(0px);
   width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
   height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
   padding: 0px;
