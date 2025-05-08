@@ -78,8 +78,6 @@ export function useScroll() {
   const maxSpeed = 2.0;
   const limiar = 4;
 
-  const listeners = useRef([[], [], []]);
-
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
     if (e.type === "mousedown" && e.button !== 0) return;
@@ -163,7 +161,6 @@ export function useScroll() {
       }
   
       const decel = () => {
-        if (Math.abs(variables.velocidade) > 0.01) {
           variables.velocidade *= 0.95;
           let proximo = translateRefs[i].current + variables.velocidade * 16;
   
@@ -179,7 +176,6 @@ export function useScroll() {
           }
           setTranslates[i](proximo);
           variables.animacao = requestAnimationFrame(decel);
-        }
       };
       decel();
     }
@@ -218,40 +214,40 @@ export function useScroll() {
     requestAnimationFrame(step);
   }, []);
 
+  const listeners = useRef([]);
+
   useEffect(() => {
+    // Montagem: para cada ref, criamos as 3 handlers e guardamos em listeners.current
     refs.forEach((refWrapper, i) => {
-      const el = refWrapper?.current;
+      const el = refWrapper.current;
       if (!el) return;
-  
+
+      // Criamos as funções uma única vez aqui
       const start = e => iniciarArraste(e, i);
-      const move = e => aoMover(e, i);
-      const end = e => finalizarArraste(e, i);
-  
-      listeners.current[i] = [start, move, end];
-  
-      el.addEventListener('touchstart', start, { passive: false });
-      el.addEventListener('mousedown', start, { passive: false });
-      el.addEventListener('touchmove', move, { passive: false });
-      el.addEventListener('mousemove', move, { passive: false });
-      el.addEventListener('touchend', end);
-      el.addEventListener('mouseup', end);
+      const move  = e => aoMover(e, i);
+      const end   = e => finalizarArraste(e, i);
+
+      // Guardamos numa estrutura para reutilizar depois
+      listeners.current[i] = { start, move, end };
+
+      // Adicionamos os listeners
+      el.addEventListener('pointerdown', start, { passive: false });
+      el.addEventListener('pointermove', move, { passive: false });
+      el.addEventListener('pointerup', end);
     });
-  
+
     return () => {
+      // Desmontagem: removemos usando exatamente as mesmas referências
       refs.forEach((refWrapper, i) => {
-        const el = refWrapper?.current;
-        if (!el || !listeners.current[i]) return;
+        const el = refWrapper.current;
+        const handlers = listeners.current[i];
+        if (!el || !handlers) return;
 
-        const start = e => iniciarArraste(e, i);
-        const move = e => aoMover(e, i);
-        const end = e => finalizarArraste(e, i);
+        const { start, move, end } = handlers;
 
-        el.removeEventListener('touchstart', start);
-        el.removeEventListener('mousedown', start);
-        el.removeEventListener('touchmove', move);
-        el.removeEventListener('mousemove', move);
-        el.removeEventListener('touchend', end);
-        el.removeEventListener('mouseup', end);
+        el.addEventListener('pointerdown', start, { passive: false });
+        el.addEventListener('pointermove', move, { passive: false });
+        el.addEventListener('pointerup', end);
       });
     };
   }, []);
