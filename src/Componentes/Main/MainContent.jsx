@@ -19,7 +19,7 @@ const Main = styled.main`
   box-shadow: inset 0px -3px 6px rgb(198, 198, 198);
   position: relative;
   overflow-y: hidden;
-
+  overflow-x: hidden;
   @media screen and (min-width: 993px){
     overflow-y: auto;
   }

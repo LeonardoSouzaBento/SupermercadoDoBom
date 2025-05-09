@@ -26,7 +26,7 @@ export const Div = styled.div`
 
 export const Divf = styled.div`
   will-change: transform;
-  transform: translateX(0px);
+  overflow-x: scroll;
   width: 100%;
   position: relative;
   -webkit-user-select: none;

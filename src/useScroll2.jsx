@@ -26,7 +26,7 @@ export function useScroll() {
       time_touch: 0,
       velocidade: 0,
       animacao: null,
-      currentTranslate: 0
+      scroll_ini:0
     }))
   );
 
@@ -49,7 +49,6 @@ export function useScroll() {
     initialX: null,
     initialY: null,
     firstAngle: null,
-    firstCheck: false,
     dragY: null,
     startTime: null,
     deltaY: 0,
@@ -63,12 +62,16 @@ export function useScroll() {
 
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
+    e.stopPropagation();
+    const ref = refs[i].current;
+
     if (e.type === "mousedown" && e.button !== 0) return;
     //
     const page = pageRef.current;
     const variables = variablesRef.current[i];
     page.initialX = e.touches ? e.touches[0].clientX : e.clientX;
     page.initialY = e.touches ? e.touches[0].clientY : e.clientY;
+    variables.scroll_ini = ref.scrollLeft; //
     page.deltaY = 0;
     page.speed=0;
     page.startTime = Date.now();
@@ -86,6 +89,7 @@ export function useScroll() {
   
   const aoMover = useCallback((e, i) => {
     e.preventDefault();
+    e.stopPropagation();
     const variables = variablesRef.current[i];
     const ref = refs[i].current;
     if (!variables.arrastando) return;
@@ -113,9 +117,7 @@ export function useScroll() {
       variables.velocidade = deslocamento / dt;
       variables.time_touch = now;
       variables.toc_ini= x;
-   
-      variables.currentTranslate += deslocamento;
-      ref.style.transform = `translateX(${variables.currentTranslate}px)`;
+      ref.scrollLeft =  ref.scrollLeft - deslocamento;
 
       page.initialX = x;
     }
@@ -132,38 +134,37 @@ export function useScroll() {
   }, []);
 
   const finalizarArraste = useCallback((e, i) => {
+    e.stopPropagation();
     const page = pageRef.current;
     const variables = variablesRef.current[i];
     if (!page.dragY) {
       const ref = refs[i].current;
       if (!variables.arrastando) return;
-      variables.arrastando = false;
-  
+
       // Cancela animação anterior, se existir
       if (variables.animacao) {
         cancelAnimationFrame(variables.animacao);
       }
   
+      const velocidadeInicial = variables.velocidade;
+
       const decel = () => {
-        if (Math.abs(variables.velocidade) > 0.01) {
+        if (Math.abs(variables.velocidade) > 0.1) {
           variables.velocidade *= 0.95;
-          variables.currentTranslate += variables.velocidade * 16;
-          const max = limitsTranslateRefs[i].current;
-          const min = 0;
-  
-          if (variables.currentTranslate < max) {
-            variables.currentTranslate = max;
-            variables.velocidade = 0;
-          } else if (variables.currentTranslate > min) {
-            variables.currentTranslate = min;
-            variables.velocidade = 0;
-          }
-          if (ref) ref.style.transform = `translateX(${variables.currentTranslate}px)`;
+          ref.scrollLeft -= variables.velocidade * 16;
           variables.animacao = requestAnimationFrame(decel);
+        } else {
+          variables.velocidade = 0;
+          variables.animacao = null;
         }
       };
-      decel();
+
+      if (Math.abs(velocidadeInicial) > 0.1) {
+        variables.animacao = requestAnimationFrame(decel);
+      }
+        variables.arrastando = false;
     }
+
     if(page.dragY){
       if (window.scrollY === 0 && page.deltaY > 80) {
         location.reload();
@@ -181,8 +182,8 @@ export function useScroll() {
     page.firstDiffY = null
     page.dragY= null
     page.startTime = null
-    // // page.deltaY = 0
-    // // page.speed = 0
+    page.deltaY = 0
+    page.speed = 0
     variables.animacao=null;
   }, []);
   
@@ -202,7 +203,7 @@ export function useScroll() {
   const listeners = useRef([]);
 
   useEffect(() => {
-    if (refs.some(ref => !ref.current)) return;
+    // if (refs.some(ref => !ref.current)) return;
     refs.forEach((refWrapper, i) => {
       const el = refWrapper.current;
       if (!el) return;
@@ -213,9 +214,9 @@ export function useScroll() {
 
       listeners.current[i] = { start, move, end };
 
-      el.addEventListener('pointerdown', start, { passive: false });
-      el.addEventListener('pointermove', move, { passive: false });
-      el.addEventListener('pointerup', end);
+      el.addEventListener('mousedown', start, { passive: false });
+      el.addEventListener('mousemove', move, { passive: false });
+      el.addEventListener('mouseup', end);
     });
 
     return () => {
@@ -226,10 +227,10 @@ export function useScroll() {
 
         const { start, move, end } = handlers;
 
-        el.removeEventListener('pointerdown', start, { passive: false });
-        el.removeEventListener('pointermove', move, { passive: false });
-        el.removeEventListener('pointerup', end);
+        el.removeEventListener('mousedown', start, { passive: false });
+        el.removeEventListener('mousemove', move, { passive: false });
+        el.removeEventListener('mouseup', end);
       });
     };
-  }, [advertisementsRef, categoriesRef, promotionsRef]);
+  }, []);
 }

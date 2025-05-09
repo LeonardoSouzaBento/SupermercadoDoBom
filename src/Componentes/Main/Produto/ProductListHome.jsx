@@ -7,7 +7,7 @@ import { useScroll } from '../../../useScroll';
 
 const DivStyled = styled.div`
   will-change: transform;
-  transform: translateX(0px);
+  overflow-x: scroll;
   width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
   height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
   padding: 0px;

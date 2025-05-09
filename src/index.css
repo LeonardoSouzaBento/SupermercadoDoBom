@@ -5,9 +5,11 @@
 ::-webkit-scrollbar{
   visibility: hidden;
   width: 0;
+  height: 0px;
 }
 
 html{
   min-height: 100vh;
   height: auto;
+  overflow-x: hidden;
 }

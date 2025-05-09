@@ -70,7 +70,7 @@ export const P = styled.p`
 
 export const Advertisements = styled.div`
   will-change: transform;
-  transform: translateX(0px);
+  overflow-x: scroll;
   height: 174px;
   width: 100%;
   margin: auto;
