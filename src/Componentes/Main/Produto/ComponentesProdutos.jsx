@@ -11,6 +11,7 @@ export const PaiProdStyled = styled.div`
     border-radius: 9px 9px 14px 9px;
     border: 1px solid rgb(150, 150, 150);
     cursor: default;
+    -webkit-user-select: none;
     user-select: none;
     position: relative;
     box-sizing: border-box;
@@ -197,6 +198,9 @@ export const DivOfertaStyled = styled.div`
         width: 100%;
         height: 100%;
         border-radius: 4px;
+        -webkit-user-select: none;
+        user-select: none;
+        touch-action: none;
     `;
     export const ImgOfertaStyed = styled.img`
         height: 100%;
@@ -204,6 +208,7 @@ export const DivOfertaStyled = styled.div`
         object-fit: contain;
         padding: 5px;
         box-sizing: border-box;
+        -webkit-user-select: none;
         user-select: none;
         touch-action: none;
     `;
@@ -248,6 +253,7 @@ export const DivOfertaStyled = styled.div`
         font-weight: 600;
         color: white;
         cursor: pointer;
+        -webkit-user-select: none;
         user-select: none;
         color:rgb(227, 97, 68);
         padding-bottom: 4px;
@@ -264,6 +270,7 @@ export const DivOfertaStyled = styled.div`
         justify-content: space-between;
         border-radius: 20px;
         cursor: pointer;
+        -webkit-user-select: none;
         user-select: none;
         position: absolute;
         bottom: 5px;

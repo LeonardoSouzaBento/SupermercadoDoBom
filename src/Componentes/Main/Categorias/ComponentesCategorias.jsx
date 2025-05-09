@@ -31,6 +31,7 @@ export const Divf = styled.div`
   position: relative;
   -webkit-user-select: none;
   -ms-user-select: none;
+  -webkit-user-select: none;
   user-select: none;
   margin: auto;
   display: flex;

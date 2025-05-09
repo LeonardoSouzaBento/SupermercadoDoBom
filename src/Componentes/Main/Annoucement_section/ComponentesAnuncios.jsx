@@ -127,6 +127,7 @@ export const Img = styled.img`
     margin: auto;
     position: relative;
     z-index: 1;
+    -webkit-user-select: none;
     user-select: none;
     touch-action: none;
 `;
