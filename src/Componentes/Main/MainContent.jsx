@@ -19,13 +19,10 @@ const Main = styled.main`
   padding: 0px;
   box-shadow: inset 0px -3px 6px rgb(198, 198, 198);
   position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
-  /* overflow-y: hidden;
-  overflow-x: hidden; */
-  /* @media screen and (min-width: 993px){
-    overflow-y: auto;
-  } */
+  /* overflow: hidden; */
+  @media screen and (min-width: 993px){
+    overflow: auto;
+  }
 `;
 
 const ShadowBottomStyled = styled.div`

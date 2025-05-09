@@ -177,9 +177,9 @@ export function useScroll2() {
 
       listeners.current[i] = { start, move, end };
 
-      el.addEventListener('mousedown', start, { passive: false });
-      el.addEventListener('mousemove', move, { passive: false });
-      el.addEventListener('mouseup', end, { passive: false });
+      el.addEventListener('pointerdown', start, { passive: false });
+      el.addEventListener('pointermove', move, { passive: false });
+      el.addEventListener('pointerup', end, { passive: false });
     });
 
     return () => {
@@ -190,9 +190,9 @@ export function useScroll2() {
 
         const { start, move, end } = handlers;
 
-        el.removeEventListener('mousedown', start, { passive: false });
-        el.removeEventListener('mousemove', move, { passive: false });
-        el.removeEventListener('mouseup', end, { passive: false });
+        el.removeEventListener('pointerdown', start, { passive: false });
+        el.removeEventListener('pointermove', move, { passive: false });
+        el.removeEventListener('pointerup', end, { passive: false });
       });
     };
   }, []);

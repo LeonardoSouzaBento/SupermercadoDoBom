@@ -245,7 +245,7 @@ export function useScroll() {
         const move = e => aoMover(e, i);
         const end = e => finalizarArraste(e, i);
 
-         el.removeEventListener('pointerdown', start, { passive: false });
+        el.removeEventListener('pointerdown', start, { passive: false });
         el.removeEventListener('pointermove', move, { passive: false });
         el.removeEventListener('pointerup', end);
       });
