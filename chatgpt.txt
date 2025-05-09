@@ -17,3 +17,9 @@ const DivStyled = styled.div.attrs(props => ({
     transform: `translateX(${props.$translateValue ?? 0}px)`,
   }
   }))`
+
+  $translateValue={translateX3}
+
+  $translateValue={translateX2}
+
+  $translateValue={translateX1}

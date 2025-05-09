@@ -1,7 +1,7 @@
 import { useEffect, useContext, useRef, useCallback } from "react";
 import { CartContext } from "./Componentes/CartContext";
 
-export function useScroll() {
+export function useScroll2() {
   const {
     advertisementsRef,
     categoriesRef,
@@ -46,35 +46,29 @@ export function useScroll() {
 
   // Variáveis de scroll de página
   const pageRef = useRef({
+    firstCheck: '',
     initialX: null,
     initialY: null,
+    firstDiffX: null,
+    firstDiffY: null,
     firstAngle: null,
     dragY: null,
-    startTime: null,
-    deltaY: 0,
-    speed: 0,
-    firstCheck: ''
   });
 
-  const minSpeed = 0.7;
-  const maxSpeed = 2.0;
   const limiar = 4;
 
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
     e.stopPropagation();
-    const ref = refs[i].current;
+    if (e.button !== 0) return;
 
-    if (e.type === "mousedown" && e.button !== 0) return;
+    const ref = refs[i].current;
     //
     const page = pageRef.current;
     const variables = variablesRef.current[i];
-    page.initialX = e.touches ? e.touches[0].clientX : e.clientX;
-    page.initialY = e.touches ? e.touches[0].clientY : e.clientY;
+    page.initialX = e.clientX;
+    page.initialY = e.clientY;
     variables.scroll_ini = ref.scrollLeft; //
-    page.deltaY = 0;
-    page.speed=0;
-    page.startTime = Date.now();
     //
 
     variables.arrastando = true;
@@ -93,14 +87,15 @@ export function useScroll() {
     const variables = variablesRef.current[i];
     const ref = refs[i].current;
     if (!variables.arrastando) return;
+
     const page = pageRef.current;
     const now = Date.now();
     const dt = Math.max(1, now - variables.time_touch);
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    const y = e.touches ? e.touches[0].clientY : e.clientY;
+    const x = e.clientX;
+    const y = e.clientY;
     const dx = Math.abs(x - page.initialX);
     const dy = Math.abs(y - page.initialY);
-    if (dx <= limiar && dy <= limiar) return;
+    // if (dx <= limiar && dy <= limiar) return;
 
     if (page.firstDiffX === null && page.firstDiffY ===null) {
       page.firstDiffX = dx;
@@ -112,36 +107,32 @@ export function useScroll() {
     if (page.firstAngle !== null && page.firstCheck === 'divs') {
       page.dragY = false;
       const deslocamento = x - variables.toc_ini;
-      if (Math.abs(deslocamento) < 0.5) return;
-
       variables.velocidade = deslocamento / dt;
+
+      if (Math.abs(variables.velocidade) > 1.4) {
+        variables.velocidade = 1.4 * Math.sign(variables.velocidade);
+      }
       variables.time_touch = now;
       variables.toc_ini= x;
       ref.scrollLeft =  ref.scrollLeft - deslocamento;
 
       page.initialX = x;
     }
-    
-    else if (page.firstCheck === 'page' && window.innerWidth < 993) {
-      page.deltaY = y - page.initialY;
-      page.speed = page.deltaY / dt;
-      page.speed = Math.sign(page.speed) * Math.max(minSpeed, Math.min(Math.abs(page.speed), maxSpeed));
-      window.scrollBy(0, -page.deltaY);
-      page.initialY = y;
-      page.startTime = now;
-      page.dragY = true;
-    }
   }, []);
 
   const finalizarArraste = useCallback((e, i) => {
+    e.preventDefault();
     e.stopPropagation();
+
     const page = pageRef.current;
+    if(page.dragY) return;
+
     const variables = variablesRef.current[i];
+
     if (!page.dragY) {
       const ref = refs[i].current;
       if (!variables.arrastando) return;
 
-      // Cancela animação anterior, se existir
       if (variables.animacao) {
         cancelAnimationFrame(variables.animacao);
       }
@@ -149,56 +140,28 @@ export function useScroll() {
       const velocidadeInicial = variables.velocidade;
 
       const decel = () => {
-        if (Math.abs(variables.velocidade) > 0.1) {
-          variables.velocidade *= 0.95;
-          ref.scrollLeft -= variables.velocidade * 16;
-          variables.animacao = requestAnimationFrame(decel);
-        } else {
-          variables.velocidade = 0;
-          variables.animacao = null;
-        }
+        variables.velocidade *= 0.95;
+        ref.scrollLeft -= variables.velocidade * 16;
+        variables.animacao = requestAnimationFrame(decel);
       };
-
       if (Math.abs(velocidadeInicial) > 0.1) {
         variables.animacao = requestAnimationFrame(decel);
+      } 
+      else{
+        variables.velocidade = 0;
+        variables.animacao = null;
       }
-        variables.arrastando = false;
-    }
 
-    if(page.dragY){
-      if (window.scrollY === 0 && page.deltaY > 80) {
-        location.reload();
-      }
-      if (Math.abs(page.speed) < minSpeed || !Number.isFinite(page.speed) || page.speed === 0) {
-        page.speed = minSpeed * (page.deltaY !== 0 ? Math.sign(page.deltaY) : -1);
-      }
-      startMomentumScroll();
+      variables.arrastando = false;
+      page.initialX = null
+      page.initialY = null
+      page.firstAngle = null
+      page.firstDiffX = null
+      page.firstDiffY = null
+      page.dragY= null
     }
-  
-    page.initialX = null
-    page.initialY = null
-    page.firstAngle = null
-    page.firstDiffX = null
-    page.firstDiffY = null
-    page.dragY= null
-    page.startTime = null
-    page.deltaY = 0
-    page.speed = 0
-    variables.animacao=null;
   }, []);
   
-  const startMomentumScroll = useCallback(() => {
-    const page = pageRef.current;
-    const decay = 0.95;
-    const step = () => {
-      if (Math.abs(page.speed) > 0.1) {
-        page.speed *= decay;
-        window.scrollBy(0, -page.speed * 16);
-        requestAnimationFrame(step);
-      }
-    };
-    requestAnimationFrame(step);
-  }, []);
 
   const listeners = useRef([]);
 
@@ -216,7 +179,7 @@ export function useScroll() {
 
       el.addEventListener('mousedown', start, { passive: false });
       el.addEventListener('mousemove', move, { passive: false });
-      el.addEventListener('mouseup', end);
+      el.addEventListener('mouseup', end, { passive: false });
     });
 
     return () => {
@@ -229,7 +192,7 @@ export function useScroll() {
 
         el.removeEventListener('mousedown', start, { passive: false });
         el.removeEventListener('mousemove', move, { passive: false });
-        el.removeEventListener('mouseup', end);
+        el.removeEventListener('mouseup', end, { passive: false });
       });
     };
   }, []);

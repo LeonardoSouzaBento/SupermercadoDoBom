@@ -12,17 +12,20 @@ import { CartContext } from '../CartContext';
 
 const Main = styled.main`
   max-width: 1390px;
+  height: max-content;
   margin: auto;
   background-color: rgb(237, 237, 237);
   position: relative;
   padding: 0px;
   box-shadow: inset 0px -3px 6px rgb(198, 198, 198);
   position: relative;
-  overflow-y: hidden;
+  overflow-y: auto;
   overflow-x: hidden;
-  @media screen and (min-width: 993px){
+  /* overflow-y: hidden;
+  overflow-x: hidden; */
+  /* @media screen and (min-width: 993px){
     overflow-y: auto;
-  }
+  } */
 `;
 
 const ShadowBottomStyled = styled.div`

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Div = styled.div`
   width:100%;
   position: relative;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   margin: auto;
   padding-bottom: 48px;
   border-radius: 5px;
@@ -69,7 +69,7 @@ export const P = styled.p`
 `;
 
 export const Advertisements = styled.div`
-  will-change: transform;
+  /* will-change: transform; */
   overflow-x: scroll;
   height: 174px;
   width: 100%;

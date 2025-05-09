@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Div = styled.div`
     width: calc(100% - 20px);
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     margin-left: 20px;
     position: relative;
 
@@ -25,7 +25,7 @@ export const Div = styled.div`
 `;
 
 export const Divf = styled.div`
-  will-change: transform;
+  /* will-change: transform; */
   overflow-x: scroll;
   width: 100%;
   position: relative;

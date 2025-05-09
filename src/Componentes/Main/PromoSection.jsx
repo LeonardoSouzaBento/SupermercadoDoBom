@@ -3,10 +3,10 @@ import { useState, useRef, useContext, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import {ProductListHome} from './Produto/ProductListHome';
 import { CartContext } from '../CartContext';
-import { useScroll } from '../../useScroll2';
+import { useScroll2 } from '../../useScroll2';
 
 const PaiAllProductsStyled = styled.div`
-   overflow-x: hidden;
+   /* overflow-x: hidden; */
    margin-left: 10px;
    @media screen and (min-width: 320px) and (max-width: 375px){
     width: calc(100% - 15px);
@@ -27,7 +27,7 @@ const PaiAllProductsStyled = styled.div`
 `;
 
 function PromoSection({variant, categoryKey}) {
-  useScroll();
+  useScroll2();
   const {setLimitProductList, translateX3, currentCategory, allProductsInCat, promotionsRef} = useContext(CartContext);
   const paiAllProductsRef=useRef(null);
 
@@ -73,7 +73,7 @@ function PromoSection({variant, categoryKey}) {
 
   return (
     <PaiAllProductsStyled ref={paiAllProductsRef}>
-      <ProductListHome variant={'home'} categoryKey={categoryKey}  ref={promotionsRef} $translateValue={translateX3}></ProductListHome>
+      <ProductListHome variant={'home'} categoryKey={categoryKey}  ref={promotionsRef}></ProductListHome>
     </PaiAllProductsStyled>
   );
 }
