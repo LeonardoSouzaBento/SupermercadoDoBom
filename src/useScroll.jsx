@@ -66,22 +66,22 @@ export function useScroll() {
     initialX: null,
     initialY: null,
     firstAngle: null,
+    firstCheck: false,
     dragY: null,
     startTime: null,
     deltaY: 0,
     speed: 0,
-    firstCheck: null //false para pagina; true para divs
+    firstCheck: ''
   });
 
   const minSpeed = 0.7;
   const maxSpeed = 2.0;
+  const limiar = 4;
 
   const listeners = useRef([[], [], []]);
 
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
-    e.stopPropagation();
-
     if (e.type === "mousedown" && e.button !== 0) return;
     //
     const page = pageRef.current;
@@ -105,7 +105,6 @@ export function useScroll() {
   
   const aoMover = useCallback((e, i) => {
     e.preventDefault();
-    e.stopPropagation();
     const variables = variablesRef.current[i];
     if (!variables.arrastando) return;
     const page = pageRef.current;
@@ -115,24 +114,22 @@ export function useScroll() {
     const y = e.touches ? e.touches[0].clientY : e.clientY;
     const dx = Math.abs(x - page.initialX);
     const dy = Math.abs(y - page.initialY);
+    if (dx <= limiar && dy <= limiar) return;
 
     if (page.firstDiffX === null && page.firstDiffY ===null) {
-      const widhtWindow = window.innerWidth;
       page.firstDiffX = dx;
       page.firstDiffY = dy;
       page.firstAngle  = Math.atan2(dy, dx) * (180 / Math.PI);
-      page.firstAngle < 45 && (page.firstCheck = true);
-      (page.firstAngle > 45 && widhtWindow < 993)&&(page.firstCheck = false);
+      page.firstAngle < 45 ? page.firstCheck = 'divs':page.firstCheck = 'page';
     }
 
-    if (page.firstAngle !== null && page.firstCheck === true) {
+    if (page.firstAngle !== null && page.firstCheck === 'divs') {
+      page.dragY = false;
       const deslocamento = x - variables.toc_ini;
 
+      if (Math.abs(deslocamento) < 0.5) return;
       const velocidade = deslocamento / dt;
       variables.velocidade = velocidade;
-      if (Math.abs(variables.velocidade) > 1.4) {
-        variables.velocidade = 1.4 * Math.sign(variables.velocidade);
-      }
 
       variables.time_touch = now;
       variables.toc_ini= x;
@@ -140,24 +137,21 @@ export function useScroll() {
       page.initialX = x;
     }
     
-    else if (page.firstCheck === false) {
+    else if (page.firstCheck === 'page' && window.innerWidth < 993) {
       page.deltaY = y - page.initialY;
       page.speed = page.deltaY / dt;
       page.speed = Math.sign(page.speed) * Math.max(minSpeed, Math.min(Math.abs(page.speed), maxSpeed));
       window.scrollBy(0, -page.deltaY);
       page.initialY = y;
       page.startTime = now;
+      page.dragY = true;
     }
   }, []);
 
   const finalizarArraste = useCallback((e, i) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
     const page = pageRef.current;
     const variables = variablesRef.current[i];
-
-    if (page.firstCheck === true) {
+    if (!page.dragY) {
       if (!variables.arrastando) return;
       variables.arrastando = false;
   
@@ -187,7 +181,7 @@ export function useScroll() {
       };
       decel();
     }
-    if(page.firstCheck === false){
+    if(page.dragY){
       if (window.scrollY === 0 && page.deltaY > 80) {
         location.reload();
       }
@@ -202,10 +196,10 @@ export function useScroll() {
     page.firstAngle = null
     page.firstDiffX = null
     page.firstDiffY = null
-    page.firstCheck = null
+    page.dragY= null
     page.startTime = null
-    // page.deltaY = 0
-    // page.speed = 0
+    // // page.deltaY = 0
+    // // page.speed = 0
     variables.animacao=null;
   }, []);
   
@@ -225,19 +219,20 @@ export function useScroll() {
   useEffect(() => {
     refs.forEach((refWrapper, i) => {
       const el = refWrapper?.current;
-      if (!el) {
-      console.warn(`Elemento para ref ${i} não encontrado.`);
-      return;
-    }
+      if (!el) return;
+  
       const start = e => iniciarArraste(e, i);
       const move = e => aoMover(e, i);
       const end = e => finalizarArraste(e, i);
   
       listeners.current[i] = [start, move, end];
   
-      el.addEventListener('pointerdown', start, { passive: false });
-      el.addEventListener('pointermove', move, { passive: false });
-      el.addEventListener('pointerup', end, { passive: false });
+      el.addEventListener('touchstart', start, { passive: false });
+      el.addEventListener('mousedown', start, { passive: false });
+      el.addEventListener('touchmove', move, { passive: false });
+      el.addEventListener('mousemove', move, { passive: false });
+      el.addEventListener('touchend', end);
+      el.addEventListener('mouseup', end);
     });
   
     return () => {
@@ -249,9 +244,12 @@ export function useScroll() {
         const move = e => aoMover(e, i);
         const end = e => finalizarArraste(e, i);
 
-        el.removeEventListener('pointerdown', start, { passive: false });
-        el.removeEventListener('pointermove', move, { passive: false });
-        el.removeEventListener('pointerup', end, { passive: false });
+        el.removeEventListener('touchstart', start);
+        el.removeEventListener('mousedown', start);
+        el.removeEventListener('touchmove', move);
+        el.removeEventListener('mousemove', move);
+        el.removeEventListener('touchend', end);
+        el.removeEventListener('mouseup', end);
       });
     };
   }, []);
