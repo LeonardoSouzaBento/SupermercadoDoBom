@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Div = styled.div`
     width: calc(100% - 20px);
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
     margin-left: 20px;
     position: relative;
 
@@ -24,9 +24,13 @@ export const Div = styled.div`
     }
 `;
 
-export const Divf = styled.div`
-  /* will-change: transform; */
-  overflow-x: scroll;
+export const Divf = styled.div.attrs(props => ({
+  style: {
+    transform: `translateX(${props.$translateValue ?? 0}px)`
+  }
+  }))`
+  will-change: transform;
+  overflow-x: visible;
   width: 100%;
   position: relative;
   -webkit-user-select: none;

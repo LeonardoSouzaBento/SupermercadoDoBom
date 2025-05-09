@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Div = styled.div`
   width:100%;
   position: relative;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   margin: auto;
   padding-bottom: 48px;
   border-radius: 5px;
@@ -68,9 +68,13 @@ export const P = styled.p`
   }
 `;
 
-export const Advertisements = styled.div`
-  /* will-change: transform; */
-  overflow-x: scroll;
+export const Advertisements = styled.div.attrs(props => ({
+  style: {
+    transform: `translateX(${props.$translateValue ?? 0}px)`
+  }
+  }))`
+  will-change: transform;
+  overflow-x: visible;
   height: 174px;
   width: 100%;
   margin: auto;

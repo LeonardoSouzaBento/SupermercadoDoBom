@@ -3,7 +3,7 @@ import { useState, useRef, useEffect} from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled } from './ComponentesCategorias';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
-import { useScroll2 } from '../../../useScroll2';
+import { useScroll } from '../../../useScroll';
 
 const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) => {
   let touchStartTime = null;
@@ -34,7 +34,7 @@ const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) =
 });
 
 function CategorySection({setCurrentCategory}) {
-  useScroll2();
+  useScroll();
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
   const {setLimitCategories, translateX2, categoriesRef} = useContext(CartContext);
 
@@ -100,7 +100,7 @@ function CategorySection({setCurrentCategory}) {
   return (
     <Div ref={DivRef}>
       <Span className="material-symbols-outlined">swipe_left</Span>{/*Para tutorial de como usar a tela*/}
-      <Divf ref={categoriesRef}>
+      <Divf ref={categoriesRef} $translateValue={translateX2}>
         {category.map((cat, index) => (
           <CategoryItem 
             ref={index === 0 ? CategoryItemRef : null}

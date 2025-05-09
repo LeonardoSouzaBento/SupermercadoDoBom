@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback, useContext } from 'react';
 import { Div, P, Img,Advertisements, Span, Fundo, Pagination} from './ComponentesAnuncios';
 import { CartContext } from '../../CartContext';
-import { useScroll2 } from '../../../useScroll2';
+import { useScroll } from '../../../useScroll';
 
 let imageUrls = [
   "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg", //farinha
@@ -13,8 +13,8 @@ let imageUrls = [
 ];
 
 function AnnouncementSection() {
-  useScroll2();
-  const {setLimitAdvertisements, setTranslateX1, advertisementsRef}= useContext(CartContext);
+  useScroll();
+  const {setLimitAdvertisements, setTranslateX1, advertisementsRef, translateX1}= useContext(CartContext);
   //Caucular os índices centrais
   const divRef = useRef(null);
   const fundoRefs = useRef([]);
@@ -65,45 +65,24 @@ function AnnouncementSection() {
   }, [recalcularCenter]);
 
   useEffect(() => {
-    const debouncedResizeHandler = handleResize();
-    window.addEventListener('resize', debouncedResizeHandler);
+    const debouncedHandleResize = handleResize();
+    window.addEventListener('resize', debouncedHandleResize);
 
     return () => {
-      window.removeEventListener('resize', debouncedResizeHandler);
+      window.removeEventListener('resize', debouncedHandleResize);
     };
-  }, [recalcularCenter]);
+  }, [handleResize]);
 
   // Cálculo inicial na montagem
   useEffect(() => {
-    recalcularCenter(); 
+    recalcularCenter();
   }, [recalcularCenter]);
-
-  // //atualizar paginação
-  // const updatePagination = useCallback(() => {
-  //   if (fundoRefs.current.length > 0 && divRef.current) {
-  //     const novosIndices = [];
-
-  //     fundoRefs.current.forEach((fundoRef, index) => {
-  //       if (fundoRef) {
-  //         const rect = fundoRef.getBoundingClientRect();
-  //         const larguraFundo = fundoRef.offsetWidth;
-  //         const larguraVisivel = Math.min(rect.right, divRef.current.getBoundingClientRect().right) - Math.max(rect.left, divRef.current.getBoundingClientRect().left);
-  //         const porcentagemVisivel = (larguraVisivel / larguraFundo) * 100;
-
-  //         if (porcentagemVisivel >= 70) {
-  //           novosIndices.push(index);
-  //         }
-  //       }
-  //     });
-  //     setIndices(novosIndices);
-  //   }
-  // }, []);
 
 
   return (
     <Div ref={divRef}>
       <P>Temos novidades!</P>
-      <Advertisements ref={advertisementsRef}>
+      <Advertisements ref={advertisementsRef} $translateValue={translateX1}>
         {imageUrls.map((url, index) => (
           <Fundo key={index} $bg={url} ref={(el) => (fundoRefs.current[index] = el)
           }>

@@ -70,17 +70,18 @@ export function useScroll() {
     startTime: null,
     deltaY: 0,
     speed: 0,
-    firstCheck: ''
+    firstCheck: null //false para pagina; true para divs
   });
 
   const minSpeed = 0.7;
   const maxSpeed = 2.0;
-  const limiar = 4;
 
   const listeners = useRef([[], [], []]);
 
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
+    e.stopPropagation();
+
     if (e.type === "mousedown" && e.button !== 0) return;
     //
     const page = pageRef.current;
@@ -104,8 +105,8 @@ export function useScroll() {
   
   const aoMover = useCallback((e, i) => {
     e.preventDefault();
+    e.stopPropagation();
     const variables = variablesRef.current[i];
-    const ref = refs[i];
     if (!variables.arrastando) return;
     const page = pageRef.current;
     const now = Date.now();
@@ -114,45 +115,49 @@ export function useScroll() {
     const y = e.touches ? e.touches[0].clientY : e.clientY;
     const dx = Math.abs(x - page.initialX);
     const dy = Math.abs(y - page.initialY);
-    if (dx <= limiar && dy <= limiar) return;
 
     if (page.firstDiffX === null && page.firstDiffY ===null) {
+      const widhtWindow = window.innerWidth;
       page.firstDiffX = dx;
       page.firstDiffY = dy;
       page.firstAngle  = Math.atan2(dy, dx) * (180 / Math.PI);
-      page.firstAngle < 45 ? page.firstCheck = 'divs':page.firstCheck = 'page';
+      page.firstAngle < 45 && (page.firstCheck = true);
+      (page.firstAngle > 45 && widhtWindow < 993)&&(page.firstCheck = false);
     }
 
-    if (page.firstAngle !== null && page.firstCheck === 'divs') {
-      page.dragY = false;
+    if (page.firstAngle !== null && page.firstCheck === true) {
       const deslocamento = x - variables.toc_ini;
 
-      if (Math.abs(deslocamento) < 0.5) return;
       const velocidade = deslocamento / dt;
       variables.velocidade = velocidade;
+      if (Math.abs(variables.velocidade) > 1.4) {
+        variables.velocidade = 1.4 * Math.sign(variables.velocidade);
+      }
 
       variables.time_touch = now;
       variables.toc_ini= x;
       setTranslates[i](translateRefs[i].current + deslocamento);
-      // ref.current.style.transform = `translateX(${translateRefs[i].current + deslocamento}px)`;
       page.initialX = x;
     }
     
-    else if (page.firstCheck === 'page' && window.innerWidth < 993) {
+    else if (page.firstCheck === false) {
       page.deltaY = y - page.initialY;
       page.speed = page.deltaY / dt;
       page.speed = Math.sign(page.speed) * Math.max(minSpeed, Math.min(Math.abs(page.speed), maxSpeed));
       window.scrollBy(0, -page.deltaY);
       page.initialY = y;
       page.startTime = now;
-      page.dragY = true;
     }
   }, []);
 
   const finalizarArraste = useCallback((e, i) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
     const page = pageRef.current;
     const variables = variablesRef.current[i];
-    if (!page.dragY) {
+
+    if (page.firstCheck === true) {
       if (!variables.arrastando) return;
       variables.arrastando = false;
   
@@ -162,7 +167,6 @@ export function useScroll() {
       }
   
       const decel = () => {
-        const ref = refs[i];
         if (Math.abs(variables.velocidade) > 0.01) {
           variables.velocidade *= 0.95;
           let proximo = translateRefs[i].current + variables.velocidade * 16;
@@ -178,13 +182,12 @@ export function useScroll() {
             variables.velocidade = 0;
           }
           setTranslates[i](proximo);
-          // ref.current.style.transform = `translateX(${proximo}px)`;
           variables.animacao = requestAnimationFrame(decel);
         }
       };
       decel();
     }
-    if(page.dragY){
+    if(page.firstCheck === false){
       if (window.scrollY === 0 && page.deltaY > 80) {
         location.reload();
       }
@@ -199,10 +202,10 @@ export function useScroll() {
     page.firstAngle = null
     page.firstDiffX = null
     page.firstDiffY = null
-    page.dragY= null
+    page.firstCheck = null
     page.startTime = null
-    // // page.deltaY = 0
-    // // page.speed = 0
+    // page.deltaY = 0
+    // page.speed = 0
     variables.animacao=null;
   }, []);
   
@@ -222,18 +225,19 @@ export function useScroll() {
   useEffect(() => {
     refs.forEach((refWrapper, i) => {
       const el = refWrapper?.current;
-      if (!el) return;
-  
+      if (!el) {
+      console.warn(`Elemento para ref ${i} não encontrado.`);
+      return;
+    }
       const start = e => iniciarArraste(e, i);
       const move = e => aoMover(e, i);
       const end = e => finalizarArraste(e, i);
   
       listeners.current[i] = [start, move, end];
   
-     
       el.addEventListener('pointerdown', start, { passive: false });
       el.addEventListener('pointermove', move, { passive: false });
-      el.addEventListener('pointerup', end);
+      el.addEventListener('pointerup', end, { passive: false });
     });
   
     return () => {
@@ -247,7 +251,7 @@ export function useScroll() {
 
         el.removeEventListener('pointerdown', start, { passive: false });
         el.removeEventListener('pointermove', move, { passive: false });
-        el.removeEventListener('pointerup', end);
+        el.removeEventListener('pointerup', end, { passive: false });
       });
     };
   }, []);

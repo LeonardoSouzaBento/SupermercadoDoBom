@@ -1,12 +1,16 @@
 import React from 'react';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
 import { CartContext } from '../../CartContext';
 
-const DivStyled = styled.div`
-  /* will-change: transform; */
-  overflow-x: scroll;
+const DivStyled = styled.div.attrs(props => ({
+  style: {
+    transform: `translateX(${props.$translateValue ?? 0}px)`,
+  }
+  }))`
+  will-change: transform;
+  overflow-x: visible;
   width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
   height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
   padding: 0px;
@@ -64,7 +68,7 @@ const PNoneStyled = styled.p`
 `;
 
 
-export const ProductListHome = React.forwardRef (({variant, categoryKey}, ref)=>{
+export const ProductListHome = React.forwardRef (({variant, categoryKey, $translateValue}, ref)=>{
   const { allQuantities, allProductsInCat, handleQuantityChange} = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
@@ -78,7 +82,7 @@ export const ProductListHome = React.forwardRef (({variant, categoryKey}, ref)=>
     )
   }else{
   return ( 
-    <DivStyled $variant={variant} ref={ref}>
+    <DivStyled $variant={variant} ref={ref} $translateValue={$translateValue}>
       {products.map((product, idx) => (
         <ProductItem
           variant={variant}

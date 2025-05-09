@@ -55,8 +55,6 @@ export function useScroll2() {
     dragY: null,
   });
 
-  const limiar = 4;
-
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
     e.stopPropagation();

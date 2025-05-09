@@ -1,25 +1,95 @@
-export const Advertisements = styled.div.attrs(props => ({
-  style: {
-    transform: `translateX(${props.$translateValue ?? 0}px)`
-  }
-}))`
+  //atualizar paginação
+  const updatePagination = useCallback(() => {
+    if (fundoRefs.current.length > 0 && divRef.current) {
+      const novosIndices = [];
+
+      fundoRefs.current.forEach((fundoRef, index) => {
+        if (fundoRef) {
+          const rect = fundoRef.getBoundingClientRect();
+          const larguraFundo = fundoRef.offsetWidth;
+          const larguraVisivel = Math.min(rect.right, divRef.current.getBoundingClientRect().right) - Math.max(rect.left, divRef.current.getBoundingClientRect().left);
+          const porcentagemVisivel = (larguraVisivel / larguraFundo) * 100;
+
+          if (porcentagemVisivel >= 70) {
+            novosIndices.push(index);
+          }
+        }
+      });
+      setIndices(novosIndices);
+    }
+  }, []);
 
 
-  export const Divf = styled.div.attrs(props => ({
-  style: {
-    transform: `translateX(${props.$translateValue ?? 0}px)`
-  }
-}))`
+   //calcular centro/ obter o limite/ iniciar a paginação
+  useCallback(() => {
+    if (!divRef.current && !fundoRefs.current.length > 0 && !advertisementsRef.current){
+      return;
+    }
+    function calcLimits(){
+      const divWidth = divRef.current.offsetWidth; //largura container pai
+      const fundoWidth = fundoRefs.current[0]?.offsetWidth || 0;//largura da imagem
+      const gap = parseFloat(getComputedStyle(advertisementsRef.current).gap);
+
+      let img_center = Math.ceil((imageUrls.length) / 2);
+
+      const visibleRatio = divWidth / (fundoWidth + gap);
+      const anun_visible = visibleRatio > 2.6 ? 3 : 1;
+
+      let indices = [img_center];
+      if (anun_visible === 3) {
+        indices = [img_center - 1, img_center, img_center + 1];
+        setIndices(indices)
+      }else{setIndices(indices)};
+
+      let widtAllAds = imageUrls.length * fundoWidth + gap * (imageUrls.length - 1);//largura de tdos os anuncios
+      let limite = divWidth-widtAllAds;
+      setLimitAdvertisements(limite); //Limite de rolagem para anuncios
+      let Initialcenter = 0;
+
+      if ((imageUrls.length) % 2 === 0) {
+        Initialcenter = ((divWidth - widtAllAds)/2) - (fundoWidth/2 + gap/2)
+      } else {
+        Initialcenter = (divWidth - widtAllAds) / 2;
+      }
+      setTranslateX1(Initialcenter);
+    }
+    calcLimits();
+  }, [imageUrls, wasResize]);
 
 
-const DivStyled = styled.div.attrs(props => ({
-  style: {
-    transform: `translateX(${props.$translateValue ?? 0}px)`,
-  }
-  }))`
+  useEffect(() => {
+    if (!promotionsRef.current || !paiAllProductsRef.current) {
+      return;
+    }
+    function calcLimit(params) {
+      const firstItem = promotionsRef.current.querySelector(':first-child');
+      if (!firstItem) {
+        return;
+      }
+      const widthProductItem = firstItem.offsetWidth;
+      const quantProdsInLine = Math.ceil(allProductsInCat[currentCategory]?.length / 3) || 0;
+      const gap = parseFloat(getComputedStyle(promotionsRef.current).gap) || 0;
+      const widthProdsLine = quantProdsInLine * widthProductItem + (quantProdsInLine > 0 ? (quantProdsInLine - 1) * gap : 0);
+      const widthPaiAll = paiAllProductsRef.current.offsetWidth;
+      const marginleft = parseFloat(getComputedStyle(paiAllProductsRef.current).marginLeft);
+      const calculatedLimit = widthPaiAll - widthProdsLine - marginleft;
+      const calculatedLimit2 = calculatedLimit + marginleft;
+      window.innerWidth<993?setLimitProductList(calculatedLimit): setLimitProductList(calculatedLimit2);
+    }
+    calcLimit()
+  }, [currentCategory, allProductsInCat, wasResize]);
 
-  $translateValue={translateX3}
-
-  $translateValue={translateX2}
-
-  $translateValue={translateX1}
+    useEffect(() => {
+     if (!CategoryItemRef.current && !DivRef.current && !categoriesRef.current){
+      return;
+     }
+      const updateLimitCategories = () => {
+      const itemWidth = CategoryItemRef.current.offsetWidth;
+      const divWidth = DivRef.current.offsetWidth;
+      const gap = parseFloat(getComputedStyle(categoriesRef.current).gap) || 0;
+      const totalWidth = category.length * itemWidth + (category.length - 1) * gap;
+      const limit = divWidth - totalWidth;
+      window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
+    };
+    updateLimitCategories();
+  }, [wasResize]);
