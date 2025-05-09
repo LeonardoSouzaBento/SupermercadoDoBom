@@ -3,7 +3,6 @@ import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
 import { CartContext } from '../../CartContext';
-import { useScroll } from '../../../useScroll';
 
 const DivStyled = styled.div`
   /* will-change: transform; */
@@ -65,7 +64,7 @@ const PNoneStyled = styled.p`
 `;
 
 
-export const ProductListHome = React.forwardRef (({variant, categoryKey, $translateValue}, ref)=>{
+export const ProductListHome = React.forwardRef (({variant, categoryKey}, ref)=>{
   const { allQuantities, allProductsInCat, handleQuantityChange} = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
@@ -79,7 +78,7 @@ export const ProductListHome = React.forwardRef (({variant, categoryKey, $transl
     )
   }else{
   return ( 
-    <DivStyled $variant={variant} ref={ref} $translateValue={$translateValue}>
+    <DivStyled $variant={variant} ref={ref}>
       {products.map((product, idx) => (
         <ProductItem
           variant={variant}

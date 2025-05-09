@@ -28,7 +28,7 @@ const PaiAllProductsStyled = styled.div`
 
 function PromoSection({variant, categoryKey}) {
   useScroll2();
-  const {setLimitProductList, translateX3, currentCategory, allProductsInCat, promotionsRef} = useContext(CartContext);
+  const {setLimitProductList, currentCategory, allProductsInCat, promotionsRef} = useContext(CartContext);
   const paiAllProductsRef=useRef(null);
 
   const calcLimit = useCallback(() => {
