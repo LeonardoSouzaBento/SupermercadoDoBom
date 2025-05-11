@@ -82,9 +82,9 @@ const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes, variant}) => {
 
   return (
     <DivQuantStyled>
-      <BotoesStyled onClick={handleFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
+      <BotoesStyled onPointerDown={handleFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
       <BotoesStyled><PQuantStyled>{quantity}</PQuantStyled></BotoesStyled>
-      <BotoesStyled onClick={handleMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
+      <BotoesStyled onPointerDown={handleMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
     </DivQuantStyled>
   );
 }

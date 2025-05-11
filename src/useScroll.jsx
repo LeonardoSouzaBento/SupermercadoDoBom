@@ -132,15 +132,22 @@ export function useScroll() {
       }
       variables.time_touch = now;
       variables.toc_ini= x;
-      setTranslates[i](translateRefs[i].current + deslocamento);
+      // setTranslates[i](translateRefs[i].current + deslocamento);
       page.initialX = x;
+      const decel = () => {
+        if (Math.abs(variables.velocidade) > 0.01) {
+          setTranslates[i](translateRefs[i].current + deslocamento);
+          variables.animacao = requestAnimationFrame(decel);
+        }
+      };
+      decel();
     }
     
     if (!page.firstCheck && !isDesktop) {
       page.deltaY = y - page.initialY;
       page.speed = page.deltaY / dt;
       (Math.abs(page.speed)>maxSpeed) && (page.speed = maxSpeed * Math.sign(page.speed))
-      window.scrollBy(0, -page.deltaY * 0.9);
+      window.scrollBy(0, -page.deltaY);
       page.initialY = y;
       page.startTime = now;
     }
@@ -192,7 +199,7 @@ export function useScroll() {
     page.firstDiffY = null
     page.startTime = null
     page.firstCheck = false;
-    page.deltaY = 0
+    // page.deltaY = 0
     // page.speed = 0
     variables.animacao=null;
   }, []);
@@ -203,7 +210,7 @@ export function useScroll() {
     const step = () => {
       if (Math.abs(page.speed) > 0.1) {
         page.speed *= decay;
-        window.scrollBy(0, -page.speed * 12);
+        window.scrollBy(0, -page.speed * 16);
         requestAnimationFrame(step);
       }
     };
