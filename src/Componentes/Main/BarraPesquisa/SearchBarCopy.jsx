@@ -1,25 +1,15 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { AllProducts } from '../../../data/AllProducts';
-import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
 import { binaryPrefixSearch } from './BuscaBinaria';
 
-const ContainerForShadow = styled.div`
-  height: auto;
-  width: 100%;
-  position: sticky;
-  top: 0px;
-  padding-bottom: 15px;
-`;
-
 const ContainerForFormStyled = styled.div`
   width: 100%;
-  padding: 19px 0px;
-  padding-bottom: 15px;
-  /* background-color: #D74545; */
+  padding: 12px 0px;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
   background-image: linear-gradient(to bottom, #D74545,rgba(215, 69, 69, 0.79));
 `;
 
@@ -43,17 +33,19 @@ const InputStyled = styled.input`
   font-size: 0.85em;
   text-indent: 20px;
   font-size: 0.97em;
-  border: 1px solid rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  border: none;
   &:focus{
     outline: none;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.56);
     box-shadow: none;
-    background-color: white;
+    background-color: white !important;
   }
   &::-webkit-search-cancel-button,
   &::-webkit-search-decoration {
     -webkit-appearance: none;
     appearance: none;
+    background-color: white;
   }
   @media screen and (min-width: 320px) and (max-width:374px){
     font-size: 0.92em;
@@ -83,18 +75,7 @@ const DivSpanStyled = styled.div`
   cursor: pointer;
 `;
 
-const ShadowStyled = styled.div`
-  display: block;
-  height: 6px;
-  background-image: linear-gradient(to bottom,rgb(219, 219, 219), rgba(0, 0, 0, 0));
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  @media screen and (min-width: 993px){
-    display: none;
-  }
-`;
-
-export default function SearchBar({variant}) {
+export default function SearchBarCopy() {
 
   const [input, setInput] = useState("");
   const {setSearchProducts, setSearchQuantities}=useContext(CartContext);
@@ -107,25 +88,23 @@ export default function SearchBar({variant}) {
   }
 
   return (
-    <ContainerForShadow>
-      <ContainerForFormStyled>
-          <FormStyled onSubmit={(e) => {
-            e.preventDefault();
-            handleClickSearch();
-          }}>
-            <InputStyled 
-            type="text" 
-            name="query" 
-            placeholder="O que você quer? Digite aqui"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            >
-            </InputStyled>
-            <DivSpanStyled onClick={handleClickSearch}>
-            <span className="material-symbols-rounded" style={{color: "grey"}}>search</span></DivSpanStyled>
-          </FormStyled>
-      </ContainerForFormStyled>
-      {/* <ShadowStyled></ShadowStyled> */}
-    </ContainerForShadow>
+    <ContainerForFormStyled>
+      <FormStyled onSubmit={(e) => {
+        e.preventDefault();
+        handleClickSearch();
+      }}>
+        <InputStyled 
+        type="text" 
+        name="query" 
+        placeholder="O que você quer? Digite aqui"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        >
+        </InputStyled>
+        <DivSpanStyled onClick={handleClickSearch}>
+          <span className="material-symbols-rounded" style={{color: "grey"}}>search</span>
+        </DivSpanStyled>
+      </FormStyled>
+    </ContainerForFormStyled>
   );
 }

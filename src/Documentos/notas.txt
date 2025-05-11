@@ -1,25 +1,50 @@
-setClickHistory(prev => {
-      const updatedHistory = [...prev, { id, price, add: isAdding, quant: 1}];
-      
-      if (isAdding && updatedHistory.length > 1) {
-        for (let i = updatedHistory.length - 2; i >= 0; i--) {
-          if (updatedHistory[i].id === id) {
-            updatedHistory[i].quant += 1;
-            updatedHistory.pop();
-            break;
-          }
-        }
-      }
+removido de promoSection:
 
-      if (!isAdding) {
-        updatedHistory.pop();
-        for (let i = updatedHistory.length - 1; i >= 0; i--) {
-          if (updatedHistory[i].id === id) {
-            updatedHistory.splice(i, 1);
-            break;
-          }
-        }
-      }
+// const handleResize = useCallback(() => {
+//   let timeoutId;
+//   return () => {
+//     clearTimeout(timeoutId);
+//     timeoutId = setTimeout(calcLimit, 300);
+//   };
+// }, [calcLimit]);
 
-      return updatedHistory;
-});
+// useEffect(() => {
+//   calcLimit();
+// }, [calcLimit])
+
+// useEffect(() => {
+//   const debouncedResizeHandler = handleResize();
+//   window.addEventListener('resize', debouncedResizeHandler);
+
+//   return () => {
+//     window.removeEventListener('resize', debouncedResizeHandler);
+//   };
+// }, [handleResize]);
+
+removido de categorias:
+
+useEffect(() => {
+  let resizeTimeoutId = null;
+
+  updateLimitCategories();
+
+  const handleResize = () => {
+    if (resizeTimeoutId) {
+      clearTimeout(resizeTimeoutId);
+    }
+    resizeTimeoutId = setTimeout(() => {
+      updateLimitCategories();
+      resizeTimeoutId = null;
+    }, 300); // Debounce: executa somente após 300ms da última redimensionada
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+    if (resizeTimeoutId) {
+      clearTimeout(resizeTimeoutId);
+    }
+  };
+}, [category.length, setLimitCategories]);
+

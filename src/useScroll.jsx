@@ -72,8 +72,7 @@ export function useScroll() {
     firstCheck: true
   });
 
-  const minSpeed = 0.7;
-  const maxSpeed = 1.5;
+  let isDesktop = false;
 
   const listeners = useRef([[], [], []]);
 
@@ -89,6 +88,7 @@ export function useScroll() {
     page.speed=0;
     page.firstCheck = true;
     page.startTime = Date.now();
+    if(window.innerWidth<993){isDesktop=true}else{isDesktop=false}
     //
 
     variables.arrastando = true;
@@ -134,11 +134,13 @@ export function useScroll() {
       page.initialX = x;
     }
     
-    else if (page.firstCheck === false) {
+    else if (page.firstCheck === false && isDesktop==false) {
       page.deltaY = y - page.initialY;
       page.speed = page.deltaY / dt;
-      page.speed = Math.sign(page.speed) * Math.max(minSpeed, Math.min(Math.abs(page.speed), maxSpeed));
-      window.scrollBy(0, -page.deltaY);
+      if(Math.abs(page.speed) > 1.3){
+        page.speed = 1.3 * Math.sign(page.speed);
+      }
+      window.scrollBy(0, -page.deltaY*0.8);
       page.initialY = y;
       page.startTime = now;
     }
@@ -178,14 +180,14 @@ export function useScroll() {
       };
       decel();
     }
-    if(page.firstCheck===false){
+    if(page.firstCheck===false && isDesktop==false){
       if (window.scrollY === 0 && page.deltaY > 80) {
         location.reload();
       }
-      if (Math.abs(page.speed) < minSpeed || !Number.isFinite(page.speed) || page.speed === 0) {
-        page.speed = minSpeed * (page.deltaY !== 0 ? Math.sign(page.deltaY) : -1);
+      if (page.speed != 0) {
+        startMomentumScroll();
       }
-      startMomentumScroll();
+      // startMomentumScroll();
     }
     page.initialX = null
     page.initialY = null
@@ -222,13 +224,17 @@ export function useScroll() {
       const end = e => finalizarArraste(e, i);
   
       listeners.current[i] = [start, move, end];
-  
-      el.addEventListener('touchstart', start, { passive: false });
-      el.addEventListener('mousedown', start, { passive: false });
-      el.addEventListener('touchmove', move, { passive: false });
-      el.addEventListener('mousemove', move, { passive: false });
-      el.addEventListener('touchend', end, { passive: false });
-      el.addEventListener('mouseup', end, { passive: false });
+
+      el.addEventListener('pointerdown', start, { passive: false });
+      el.addEventListener('pointermove', move, { passive: false });
+      el.addEventListener('pointerup', end, { passive: false });
+
+      // el.addEventListener('touchstart', start, { passive: false });
+      // el.addEventListener('mousedown', start, { passive: false });
+      // el.addEventListener('touchmove', move, { passive: false });
+      // el.addEventListener('mousemove', move, { passive: false });
+      // el.addEventListener('touchend', end, { passive: false });
+      // el.addEventListener('mouseup', end, { passive: false });
     });
   
     return () => {
@@ -240,12 +246,16 @@ export function useScroll() {
         const move = e => aoMover(e, i);
         const end = e => finalizarArraste(e, i);
 
-        el.removeEventListener('touchstart', start);
-        el.removeEventListener('mousedown', start);
-        el.removeEventListener('touchmove', move);
-        el.removeEventListener('mousemove', move);
-        el.removeEventListener('touchend', end);
-        el.removeEventListener('mouseup', end);
+        el.removeEventListener('pointerdown', start, { passive: false });
+        el.removeEventListener('pointermove', move, { passive: false });
+        el.removeEventListener('pointerup', end, { passive: false });
+
+        // el.removeEventListener('touchstart', start);
+        // el.removeEventListener('mousedown', start);
+        // el.removeEventListener('touchmove', move);
+        // el.removeEventListener('mousemove', move);
+        // el.removeEventListener('touchend', end);
+        // el.removeEventListener('mouseup', end);
       });
     };
   }, []);

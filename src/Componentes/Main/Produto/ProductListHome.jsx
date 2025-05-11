@@ -45,26 +45,25 @@ const DivStyled = styled.div.attrs(props => ({
 `;
 
 const NoProcutsStyed= styled.div`
-  height: 100px;
-  width: 100%;
-  max-width: 220px;
-  padding: 0px 15px;
+  height: max-content;
+  width: max-content;
+  padding: 15px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   position: absolute;
-  top: 100px;
+  top: 16px;
   right: 50%;
   transform: translateX(50%);
   background-color: white;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14);
   border: 1px solid rgb(136, 136, 136);
-  border-radius: 7px;
+  border-radius: 8px;
 `;
 const PNoneStyled = styled.p`
   font-family: "Quicksand", Arial, Helvetica, sans-serif;
   font-weight: 600;
-  padding-left: 15px;
+  width: 100%;
+  text-align: center;
 `;
 
 

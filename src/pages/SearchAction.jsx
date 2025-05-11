@@ -5,7 +5,7 @@ import Footer from '../Componentes/Footer/Footer';
 
 const SearchAction = () => {
   return (
-    <div style={{minHeight:'100vh'}}>
+    <div style={{backgroundColor:'rgb(240, 240, 240)', minHeight:'100vh'}}>
         <SearchBarCopy></SearchBarCopy>
         <ProductListHome variant={'inSearch'} categoryKey={13}></ProductListHome>
         <Footer></Footer>

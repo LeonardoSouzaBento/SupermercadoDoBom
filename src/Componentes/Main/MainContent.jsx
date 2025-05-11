@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useCallback, useEffect } from 'react';
 import Header from '../Header/Header';
 import HelpSection from './HelpSection';
 import SearchBar from './BarraPesquisa/SearchBar';
@@ -41,6 +41,26 @@ const ShadowBottomStyled = styled.div`
 function MainContent() {
   const {currentCategory, setCurrentCategory} = useContext(CartContext)
   const [viewDialog, setViewDialog] = useState(false);
+  const [wasResized, setWasResized] = useState(0);
+
+  const handleResize = useCallback(() => {
+    let timeoutId;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setWasResized(prevWasResized => prevWasResized + 1);
+      }, 300);
+    };
+  }, [setWasResized]);
+
+  useEffect(() => {
+    const debouncedHandleResize = handleResize();
+    window.addEventListener('resize', debouncedHandleResize);
+
+    return () => {
+      window.removeEventListener('resize', debouncedHandleResize);
+    };
+  }, [handleResize]);
 
   return (
     <Main>
@@ -48,8 +68,8 @@ function MainContent() {
       <Header />
       <SearchBar />
       <AnnouncementSection />
-      <CategorySection setCurrentCategory={setCurrentCategory} />
-      <PromoSection categoryKey={currentCategory}/>
+      <CategorySection setCurrentCategory={setCurrentCategory} wasResized={wasResized}/>
+      <PromoSection categoryKey={currentCategory} wasResized={wasResized}/>
       {!viewDialog && (<Footer setViewDialog={setViewDialog}/>)}
       {viewDialog && (<ConfirmDialog setViewDialog={setViewDialog}/>)}
       <ShadowBottomStyled/>

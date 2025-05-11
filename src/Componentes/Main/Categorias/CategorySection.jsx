@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useRef, useEffect} from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled } from './ComponentesCategorias';
 import { useContext } from 'react';
@@ -33,7 +33,7 @@ const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) =
   );
 });
 
-function CategorySection({setCurrentCategory}) {
+function CategorySection({setCurrentCategory, wasResized}) {
   useScroll();
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
   const {setLimitCategories, translateX2, categoriesRef} = useContext(CartContext);
@@ -61,42 +61,21 @@ function CategorySection({setCurrentCategory}) {
   const DivRef = useRef(null);
   const CategoryItemRef = useRef(null);
 
+  const updateLimitCategories = useCallback(() => {
+    if (CategoryItemRef.current && DivRef.current && categoriesRef.current) {
+      const itemWidth = CategoryItemRef.current.offsetWidth;
+      const divWidth = DivRef.current.offsetWidth;
+      const gap = parseFloat(getComputedStyle(categoriesRef.current).gap) || 0;
+      const totalWidth = category.length * itemWidth + (category.length - 1) * gap;
+      const limit = divWidth - totalWidth;
+      window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
+    }
+  },[category.length, setLimitCategories])
+
   useEffect(() => {
-    let resizeTimeoutId = null;
-
-    const updateLimitCategories = () => {
-      if (CategoryItemRef.current && DivRef.current && categoriesRef.current) {
-        const itemWidth = CategoryItemRef.current.offsetWidth;
-        const divWidth = DivRef.current.offsetWidth;
-        const gap = parseFloat(getComputedStyle(categoriesRef.current).gap) || 0;
-        const totalWidth = category.length * itemWidth + (category.length - 1) * gap;
-        const limit = divWidth - totalWidth;
-        window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
-      }
-    };
-
     updateLimitCategories();
-
-    const handleResize = () => {
-      if (resizeTimeoutId) {
-        clearTimeout(resizeTimeoutId);
-      }
-      resizeTimeoutId = setTimeout(() => {
-        updateLimitCategories();
-        resizeTimeoutId = null;
-      }, 300); // Debounce: executa somente após 300ms da última redimensionada
-    };
+  }, [wasResized])
   
-    window.addEventListener('resize', handleResize);
-  
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      if (resizeTimeoutId) {
-        clearTimeout(resizeTimeoutId);
-      }
-    };
-  }, [category.length, setLimitCategories]);
-
   return (
     <Div ref={DivRef}>
       <Span className="material-symbols-outlined">swipe_left</Span>{/*Para tutorial de como usar a tela*/}
