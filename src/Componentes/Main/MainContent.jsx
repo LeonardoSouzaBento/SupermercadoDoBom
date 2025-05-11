@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Header from '../Header/Header';
 import HelpSection from './HelpSection';
 import SearchBar from './BarraPesquisa/SearchBar';
@@ -7,6 +6,7 @@ import AnnouncementSection from './Annoucement_section/AnnouncementSection';
 import CategorySection from './Categorias/CategorySection';
 import PromoSection from './PromoSection';
 import Footer from '../Footer/Footer';
+import ConfirmDialog from '../Footer/ConfirmDialog';
 import styled from 'styled-components';
 import { CartContext } from '../CartContext';
 
@@ -40,6 +40,7 @@ const ShadowBottomStyled = styled.div`
 
 function MainContent() {
   const {currentCategory, setCurrentCategory} = useContext(CartContext)
+  const [viewDialog, setViewDialog] = useState(false);
 
   return (
     <Main>
@@ -49,8 +50,9 @@ function MainContent() {
       <AnnouncementSection />
       <CategorySection setCurrentCategory={setCurrentCategory} />
       <PromoSection categoryKey={currentCategory}/>
-      <Footer/>
-      <ShadowBottomStyled></ShadowBottomStyled>
+      {!viewDialog && (<Footer setViewDialog={setViewDialog}/>)}
+      {viewDialog && (<ConfirmDialog setViewDialog={setViewDialog}/>)}
+      <ShadowBottomStyled/>
     </Main>
   );
 }

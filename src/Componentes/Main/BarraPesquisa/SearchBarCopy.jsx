@@ -17,8 +17,10 @@ const ContainerForShadow = styled.div`
 
 const ContainerForFormStyled = styled.div`
   width: 100%;
-  padding: 14px 0px;
-  padding-bottom: 13px;
+  padding: 19px 0px;
+  padding-bottom: 15px;
+  /* background-color: #D74545; */
+  background-image: linear-gradient(to bottom, #D74545,rgba(215, 69, 69, 0.79));
 `;
 
 const FormStyled = styled.form`
@@ -30,22 +32,21 @@ const FormStyled = styled.form`
   margin: auto;
   height: 40px;
   position: relative;
-  background-color:rgb(240, 240, 240);
   border-radius: 33px;
-  `;
+`;
 
 const InputStyled = styled.input`
   height: 100%;
   width: 100%;
   border-radius: 20px;
-  border: 1px solid rgb(95, 95, 95);
   font-weight: 300;
   font-size: 0.85em;
   text-indent: 20px;
   font-size: 0.97em;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.49);
+  border: 1px solid rgba(0, 0, 0, 0.48);
   &:focus{
-    outline: 1px solid black;
+    outline: none;
+    border: none;
     box-shadow: none;
     background-color: white;
   }
@@ -84,10 +85,10 @@ const DivSpanStyled = styled.div`
 
 const ShadowStyled = styled.div`
   display: block;
-  height: 4px;
-  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.16), rgba(240, 240, 240, 0));
+  height: 6px;
+  background-image: linear-gradient(to bottom,rgb(219, 219, 219), rgba(0, 0, 0, 0));
   background-size: 100% 100%;
-
+  background-repeat: no-repeat;
   @media screen and (min-width: 993px){
     display: none;
   }
@@ -121,9 +122,10 @@ export default function SearchBar({variant}) {
             >
             </InputStyled>
             <DivSpanStyled onClick={handleClickSearch}>
-            <span className="material-symbols-rounded" style={{color: "red"}}>search</span></DivSpanStyled>
+            <span className="material-symbols-rounded" style={{color: "grey"}}>search</span></DivSpanStyled>
           </FormStyled>
       </ContainerForFormStyled>
+      {/* <ShadowStyled></ShadowStyled> */}
     </ContainerForShadow>
   );
 }

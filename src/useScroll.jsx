@@ -14,7 +14,7 @@ export function useScroll() {
     translateX3,
     setTranslateX1,
     setTranslateX2,
-    setTranslateX3
+    setTranslateX3,
   } = useContext(CartContext);
 
   // Refs agrupados
@@ -66,17 +66,14 @@ export function useScroll() {
     initialX: null,
     initialY: null,
     firstAngle: null,
-    firstCheck: false,
-    dragY: null,
     startTime: null,
     deltaY: 0,
     speed: 0,
-    firstCheck: ''
+    firstCheck: true
   });
 
   const minSpeed = 0.7;
-  const maxSpeed = 2.0;
-  const limiar = 4;
+  const maxSpeed = 1.5;
 
   const listeners = useRef([[], [], []]);
 
@@ -90,6 +87,7 @@ export function useScroll() {
     page.initialY = e.touches ? e.touches[0].clientY : e.clientY;
     page.deltaY = 0;
     page.speed=0;
+    page.firstCheck = true;
     page.startTime = Date.now();
     //
 
@@ -114,44 +112,43 @@ export function useScroll() {
     const y = e.touches ? e.touches[0].clientY : e.clientY;
     const dx = Math.abs(x - page.initialX);
     const dy = Math.abs(y - page.initialY);
-    if (dx <= limiar && dy <= limiar) return;
 
     if (page.firstDiffX === null && page.firstDiffY ===null) {
       page.firstDiffX = dx;
       page.firstDiffY = dy;
       page.firstAngle  = Math.atan2(dy, dx) * (180 / Math.PI);
-      page.firstAngle < 45 ? page.firstCheck = 'divs':page.firstCheck = 'page';
+      // if(page.firstAngle < 45) page.firstCheck = true;
+      if (page.firstAngle > 45) page.firstCheck=false;
     }
 
-    if (page.firstAngle !== null && page.firstCheck === 'divs') {
-      page.dragY = false;
+    if (page.firstAngle !== null && page.firstCheck === true) {
+      e.preventDefault();
       const deslocamento = x - variables.toc_ini;
-
-      if (Math.abs(deslocamento) < 0.5) return;
-      const velocidade = deslocamento / dt;
-      variables.velocidade = velocidade;
-
+      variables.velocidade = deslocamento / dt;
+      if (Math.abs(variables.velocidade) > 1.4) {
+        variables.velocidade = 1.4 * Math.sign(variables.velocidade);
+      }
       variables.time_touch = now;
       variables.toc_ini= x;
       setTranslates[i](translateRefs[i].current + deslocamento);
       page.initialX = x;
     }
     
-    else if (page.firstCheck === 'page' && window.innerWidth < 993) {
+    else if (page.firstCheck === false) {
       page.deltaY = y - page.initialY;
       page.speed = page.deltaY / dt;
       page.speed = Math.sign(page.speed) * Math.max(minSpeed, Math.min(Math.abs(page.speed), maxSpeed));
       window.scrollBy(0, -page.deltaY);
       page.initialY = y;
       page.startTime = now;
-      page.dragY = true;
     }
   }, []);
 
   const finalizarArraste = useCallback((e, i) => {
+    e.preventDefault(e);
     const page = pageRef.current;
     const variables = variablesRef.current[i];
-    if (!page.dragY) {
+    if (page.firstCheck===true) {
       if (!variables.arrastando) return;
       variables.arrastando = false;
   
@@ -181,7 +178,7 @@ export function useScroll() {
       };
       decel();
     }
-    if(page.dragY){
+    if(page.firstCheck===false){
       if (window.scrollY === 0 && page.deltaY > 80) {
         location.reload();
       }
@@ -190,16 +187,15 @@ export function useScroll() {
       }
       startMomentumScroll();
     }
-  
     page.initialX = null
     page.initialY = null
     page.firstAngle = null
     page.firstDiffX = null
     page.firstDiffY = null
-    page.dragY= null
     page.startTime = null
-    // // page.deltaY = 0
-    // // page.speed = 0
+    page.firstCheck = false;
+    // page.deltaY = 0
+    // page.speed = 0
     variables.animacao=null;
   }, []);
   
@@ -231,8 +227,8 @@ export function useScroll() {
       el.addEventListener('mousedown', start, { passive: false });
       el.addEventListener('touchmove', move, { passive: false });
       el.addEventListener('mousemove', move, { passive: false });
-      el.addEventListener('touchend', end);
-      el.addEventListener('mouseup', end);
+      el.addEventListener('touchend', end, { passive: false });
+      el.addEventListener('mouseup', end, { passive: false });
     });
   
     return () => {

@@ -245,6 +245,7 @@ export const DivOfertaStyled = styled.div`
         border: 4px solid rgb(227, 97, 68);
         border-radius: 50%;
         cursor: pointer;
+        background-color: white;
     `;
 
     export const PMaisStyled= styled.p`
@@ -257,7 +258,7 @@ export const DivOfertaStyled = styled.div`
         user-select: none;
         color:rgb(227, 97, 68);
         padding-bottom: 4px;
-        padding-left: 0px;
+        padding-left: 1px;
     `;
 
 

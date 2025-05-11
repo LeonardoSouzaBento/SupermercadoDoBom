@@ -17,7 +17,7 @@ const FooterStyled = styled.footer`
     margin: auto;
     position: fixed;
     bottom: 7px;
-    z-index: 4;
+    z-index: 2;
     border-radius: 5px;
 
     @media screen and (min-width: 993px){
@@ -29,21 +29,23 @@ const CartDescStyled = styled.div`
   display: flex;
   width: 90%;
   max-width: 400px;
-  height: 45px;
+  height: 40px;
+  border: 4px solid rgb(230, 104, 76);
   background-color:rgb(230, 104, 76);
-  border-radius: 14px 0px 0px 14px;
+  border-radius: 23px 0px 0px 23px;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   user-select: none;
+  overflow: hidden;
 `;
 
 const DivCancelECart = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 110px;
   height: 100%;
+  width: auto;
   gap: 10px;
 `;
 
@@ -57,18 +59,17 @@ const DivCartStyled = styled.div`
 `;
 
 const DivCancelStyled= styled(DivCartStyled)`
-  height: 95%;
+  height: 100%;
   width: 42px;
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
-  box-shadow: 8px 0px 20px rgba(0, 0, 0, 0.15);
-  display: none;
+  box-shadow: 8px 0px 20px rgba(0, 0, 0, 0.16);
 `;
 
 const SpanCancelStyled = styled.div`
   font-variation-settings:
   'FILL' 1;
-  color: #fc6b4c;
+  color: rgb(69, 44, 44);
   font-size: 1.45em;
   font-weight: 600;
 `;
@@ -144,7 +145,7 @@ const PPrecoStyled = styled.p`
 const PItensStyled = styled(PPrecoStyled)`
 `;
 
-function Footer() {
+function Footer({setViewDialog}) {
   const { totalQuantity, totalValueFormatted} = useContext(CartContext);
   const navigate = useNavigate();
 
@@ -165,6 +166,12 @@ function Footer() {
         }}>
         
           <DivCancelECart>
+            <DivCancelStyled onPointerDown={(e)=>{e.stopPropagation(e); setViewDialog(true)}}>
+              <SpanCancelStyled className='material-symbols-outlined'>
+                delete
+              </SpanCancelStyled>
+            </DivCancelStyled>
+
             <DivCartSetaStyled>
               <DivCartStyled>
                 <SpanCartStyled className='material-symbols-rounded'>shopping_cart</SpanCartStyled>

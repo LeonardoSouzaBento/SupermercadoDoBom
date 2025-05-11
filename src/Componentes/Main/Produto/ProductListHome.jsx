@@ -74,13 +74,6 @@ export const ProductListHome = React.forwardRef (({variant, categoryKey, $transl
   const products = allProductsInCat[categoryKey];
   const quantities = allQuantities[categoryKey];
   
-  if(products.length==0){
-    return(
-    <NoProcutsStyed>
-      <PNoneStyled>{categoryKey==12?'Nenhum produto no seu carrinho':'Nenhum produto nesta categoria ainda'}</PNoneStyled>
-    </NoProcutsStyed>
-    )
-  }else{
   return ( 
     <DivStyled $variant={variant} ref={ref} $translateValue={$translateValue}>
       {products.map((product, idx) => (
@@ -91,10 +84,15 @@ export const ProductListHome = React.forwardRef (({variant, categoryKey, $transl
           product={product}
           quantity={quantities[idx] || 0}
           onQuantityChange={(newQuantity, isAdding) =>
-            handleQuantityChange(categoryKey, idx, newQuantity, product, isAdding)}
+          handleQuantityChange(categoryKey, idx, newQuantity, product, isAdding)}
         />
       ))}
+      {products.length==0 &&
+      (<NoProcutsStyed>
+        <PNoneStyled>{categoryKey==12?'Nenhum produto no seu carrinho':'Nenhum produto encontrado'}</PNoneStyled>
+      </NoProcutsStyed>
+      )}
     </DivStyled>
-  )};
+  );
 })
 

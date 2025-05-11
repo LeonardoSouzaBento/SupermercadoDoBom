@@ -38,11 +38,13 @@ const InputStyled = styled.input`
   width: 100%;
   border-radius: 20px;
   border: none;
-  font-weight: 300;
-  font-size: 0.85em;
   text-indent: 20px;
-  font-size: 0.97em;
   box-shadow: rgba(0, 0, 0, 0.49);
+  font-weight: 400;
+  font-size: 0.85em;
+  font-size: 0.97em;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+
   &:focus{
     outline: 1px solid black;
     box-shadow: none;
@@ -54,16 +56,16 @@ const InputStyled = styled.input`
     appearance: none;
   }
   @media screen and (min-width: 320px) and (max-width:374px){
-    font-size: 0.92em;
+    font-size: 0.95em;
   }
   @media screen and (min-width: 375px) and (max-width:576px){
-    font-size: 0.95;
-  }
-  @media screen and (min-width: 577px) and (max-width:768px){
     font-size: 1em;
   }
+  @media screen and (min-width: 577px) and (max-width:768px){
+    font-size: 1.03em;
+  }
   @media screen and (min-width: 769px){
-    font-size: 1.02em;
+    font-size: 1.04em;
   }
 `;
 
@@ -132,7 +134,7 @@ export default function SearchBar() {
             >
             </InputStyled>
             <DivSpanStyled onClick={handleClickSearch}>
-            <span className="material-symbols-rounded" style={{color: "red"}}>search</span></DivSpanStyled>
+            <span className="material-symbols-rounded" style={{color: "rgb: (150, 150, 150)"}}>search</span></DivSpanStyled>
           </FormStyled>
       </ContainerForFormStyled>
     </ContainerForShadow>

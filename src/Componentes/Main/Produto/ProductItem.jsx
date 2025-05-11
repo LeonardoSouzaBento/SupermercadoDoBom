@@ -32,7 +32,7 @@ const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantity
 
   const finalizarToque = () => {
     const duracao = Date.now() - toqueInicio;
-    if (duracao < 200) { // só considera toques curtos (menos de 200ms)
+    if (duracao < 100) { // só considera toques curtos (menos de 200ms)
       setMostrarBotoes(true);
       onQuantityChange(1, true);
     }
@@ -125,9 +125,8 @@ function ProductItem({product, quantity, onQuantityChange, variant}) {
   useEffect(() => {
     if (!mostrarBotoes && quantity > 0) {
       setMostrarBotoes(true);
-    // } else if(mostrarBotoes && quantity == 0){
-    //   setMostrarBotoes(false);
-    // }
+    } else if(mostrarBotoes && quantity == 0){
+      setMostrarBotoes(false);
     }
   }, [quantity, mostrarBotoes]);
 

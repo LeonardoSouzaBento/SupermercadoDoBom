@@ -14,7 +14,7 @@ const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) =
 
   const handlePointerUp = () => {
     const duration = Date.now() - touchStartTime;
-    if (duration < 200) {
+    if (duration < 100) {
       onClick();
     }
   };
