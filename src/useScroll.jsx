@@ -132,15 +132,9 @@ export function useScroll() {
       }
       variables.time_touch = now;
       variables.toc_ini= x;
-      // setTranslates[i](translateRefs[i].current + deslocamento);
+      setTranslates[i](translateRefs[i].current + deslocamento);
       page.initialX = x;
-      const decel = () => {
-        if (Math.abs(variables.velocidade) > 0.01) {
-          setTranslates[i](translateRefs[i].current + deslocamento);
-          variables.animacao = requestAnimationFrame(decel);
-        }
-      };
-      decel();
+      
     }
     
     if (!page.firstCheck && !isDesktop) {

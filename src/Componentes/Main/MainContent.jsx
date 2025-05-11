@@ -18,7 +18,7 @@ const Main = styled.main`
   padding: 0px;
   box-shadow: inset 0px -3px 6px rgb(198, 198, 198);
   position: relative;
-  touch-action: none;
+  touch-action: pan-y;
 `;
 
 const ShadowBottomStyled = styled.div`

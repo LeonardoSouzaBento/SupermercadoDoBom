@@ -74,6 +74,7 @@ export const Advertisements = styled.div.attrs(props => ({
   }
   }))`
   will-change: transform;
+  transition: transform 0.4s linear;
   overflow-x: visible;
   height: 174px;
   width: 100%;

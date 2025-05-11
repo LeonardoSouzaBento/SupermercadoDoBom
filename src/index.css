@@ -10,11 +10,12 @@
 
 body{
   overflow: hidden;
-  touch-action: none;
+  touch-action: pan-y;
 }
 
 @media screen and (min-width: 993px){
   body{
     overflow: auto;
+    touch-action: pan-y;
   }
 }
