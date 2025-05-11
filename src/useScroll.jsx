@@ -69,7 +69,7 @@ export function useScroll() {
     startTime: null,
     deltaY: 0,
     speed: 0,
-    firstCheck: true,
+    firstCheck: false,
   });
 
   // const minSpeed = 0.7;
@@ -88,7 +88,7 @@ export function useScroll() {
     page.initialY = e.touches ? e.touches[0].clientY : e.clientY;
     page.deltaY = 0;
     page.speed=0;
-    page.firstCheck = true;
+    page.firstCheck = false;
     page.startTime = Date.now();
     (isDesktop===false && window.innerWidth > 993) && (isDesktop=true);
     //
