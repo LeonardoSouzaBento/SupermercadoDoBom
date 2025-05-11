@@ -26,7 +26,7 @@ const PaiAllProductsStyled = styled.div`
   }
 `;
 
-function PromoSection({variant, categoryKey, wasResized}) {
+function PromoSection({variant, categoryKey}) {
   useScroll();
   const {setLimitProductList, currentCategory, allProductsInCat, promotionsRef, translateX3} = useContext(CartContext);
   const paiAllProductsRef=useRef(null);
@@ -50,10 +50,27 @@ function PromoSection({variant, categoryKey, wasResized}) {
     window.innerWidth<993?setLimitProductList(calculatedLimit): setLimitProductList(calculatedLimit2);
   }, [currentCategory, allProductsInCat]);
 
+  const handleResize = useCallback(() => {
+    let timeoutId;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(calcLimit, 300);
+    };
+  }, [calcLimit]);
+
   useEffect(() => {
-    calcLimit()
-  },[wasResized])
-  
+    calcLimit();
+  }, [calcLimit])
+
+  useEffect(() => {
+    const debouncedResizeHandler = handleResize();
+    window.addEventListener('resize', debouncedResizeHandler);
+
+    return () => {
+      window.removeEventListener('resize', debouncedResizeHandler);
+    };
+  }, [handleResize]);
+
   return (
     <PaiAllProductsStyled ref={paiAllProductsRef}>
       <ProductListHome variant={'home'} categoryKey={categoryKey}  ref={promotionsRef} $translateValue={translateX3}></ProductListHome>

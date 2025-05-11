@@ -61,7 +61,10 @@ function CategorySection({setCurrentCategory, wasResized}) {
   const DivRef = useRef(null);
   const CategoryItemRef = useRef(null);
 
-  const updateLimitCategories = useCallback(() => {
+  useEffect(() => {
+  let resizeTimeoutId = null;
+
+  const updateLimitCategories = () => {
     if (CategoryItemRef.current && DivRef.current && categoriesRef.current) {
       const itemWidth = CategoryItemRef.current.offsetWidth;
       const divWidth = DivRef.current.offsetWidth;
@@ -70,12 +73,30 @@ function CategorySection({setCurrentCategory, wasResized}) {
       const limit = divWidth - totalWidth;
       window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
     }
-  },[category.length, setLimitCategories])
+  };
 
-  useEffect(() => {
-    updateLimitCategories();
-  }, [wasResized])
-  
+  updateLimitCategories();
+
+  const handleResize = () => {
+    if (resizeTimeoutId) {
+      clearTimeout(resizeTimeoutId);
+    }
+    resizeTimeoutId = setTimeout(() => {
+      updateLimitCategories();
+      resizeTimeoutId = null;
+    }, 300); // Debounce: executa somente após 300ms da última redimensionada
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+    if (resizeTimeoutId) {
+      clearTimeout(resizeTimeoutId);
+    }
+  };
+  }, [category.length, setLimitCategories]);
+
   return (
     <Div ref={DivRef}>
       <Span className="material-symbols-outlined">swipe_left</Span>{/*Para tutorial de como usar a tela*/}

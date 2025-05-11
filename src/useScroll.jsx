@@ -69,9 +69,11 @@ export function useScroll() {
     startTime: null,
     deltaY: 0,
     speed: 0,
-    firstCheck: true
+    firstCheck: true,
   });
 
+  // const minSpeed = 0.7;
+  const maxSpeed = 1.4;
   let isDesktop = false;
 
   const listeners = useRef([[], [], []]);
@@ -88,7 +90,7 @@ export function useScroll() {
     page.speed=0;
     page.firstCheck = true;
     page.startTime = Date.now();
-    if(window.innerWidth<993){isDesktop=true}else{isDesktop=false}
+    (isDesktop===false && window.innerWidth > 993) && (isDesktop=true);
     //
 
     variables.arrastando = true;
@@ -117,11 +119,11 @@ export function useScroll() {
       page.firstDiffX = dx;
       page.firstDiffY = dy;
       page.firstAngle  = Math.atan2(dy, dx) * (180 / Math.PI);
-      // if(page.firstAngle < 45) page.firstCheck = true;
+      if(page.firstAngle < 45) page.firstCheck = true;
       if (page.firstAngle > 45) page.firstCheck=false;
     }
 
-    if (page.firstAngle !== null && page.firstCheck === true) {
+    if (page.firstAngle !== null && page.firstCheck) {
       e.preventDefault();
       const deslocamento = x - variables.toc_ini;
       variables.velocidade = deslocamento / dt;
@@ -134,13 +136,11 @@ export function useScroll() {
       page.initialX = x;
     }
     
-    else if (page.firstCheck === false && isDesktop==false) {
+    if (!page.firstCheck && !isDesktop) {
       page.deltaY = y - page.initialY;
       page.speed = page.deltaY / dt;
-      if(Math.abs(page.speed) > 1.3){
-        page.speed = 1.3 * Math.sign(page.speed);
-      }
-      window.scrollBy(0, -page.deltaY*0.8);
+      (Math.abs(page.speed)>maxSpeed) && (page.speed = maxSpeed * Math.sign(page.speed))
+      window.scrollBy(0, -page.deltaY * 0.9);
       page.initialY = y;
       page.startTime = now;
     }
@@ -150,7 +150,8 @@ export function useScroll() {
     e.preventDefault(e);
     const page = pageRef.current;
     const variables = variablesRef.current[i];
-    if (page.firstCheck===true) {
+    if (page.firstCheck) {
+      e.preventDefault(e);
       if (!variables.arrastando) return;
       variables.arrastando = false;
   
@@ -180,14 +181,9 @@ export function useScroll() {
       };
       decel();
     }
-    if(page.firstCheck===false && isDesktop==false){
-      if (window.scrollY === 0 && page.deltaY > 80) {
-        location.reload();
-      }
-      if (page.speed != 0) {
-        startMomentumScroll();
-      }
-      // startMomentumScroll();
+    if(!page.firstCheck && !isDesktop){
+      (window.scrollY === 0 && page.deltaY > 80) && (location.reload());
+      (page.speed!=0)&&(startMomentumScroll())
     }
     page.initialX = null
     page.initialY = null
@@ -196,7 +192,7 @@ export function useScroll() {
     page.firstDiffY = null
     page.startTime = null
     page.firstCheck = false;
-    // page.deltaY = 0
+    page.deltaY = 0
     // page.speed = 0
     variables.animacao=null;
   }, []);
@@ -207,7 +203,7 @@ export function useScroll() {
     const step = () => {
       if (Math.abs(page.speed) > 0.1) {
         page.speed *= decay;
-        window.scrollBy(0, -page.speed * 16);
+        window.scrollBy(0, -page.speed * 12);
         requestAnimationFrame(step);
       }
     };
@@ -224,17 +220,13 @@ export function useScroll() {
       const end = e => finalizarArraste(e, i);
   
       listeners.current[i] = [start, move, end];
-
-      el.addEventListener('pointerdown', start, { passive: false });
-      el.addEventListener('pointermove', move, { passive: false });
-      el.addEventListener('pointerup', end, { passive: false });
-
-      // el.addEventListener('touchstart', start, { passive: false });
-      // el.addEventListener('mousedown', start, { passive: false });
-      // el.addEventListener('touchmove', move, { passive: false });
-      // el.addEventListener('mousemove', move, { passive: false });
-      // el.addEventListener('touchend', end, { passive: false });
-      // el.addEventListener('mouseup', end, { passive: false });
+  
+      el.addEventListener('touchstart', start, { passive: false });
+      el.addEventListener('mousedown', start, { passive: false });
+      el.addEventListener('touchmove', move, { passive: false });
+      el.addEventListener('mousemove', move, { passive: false });
+      el.addEventListener('touchend', end, { passive: false });
+      el.addEventListener('mouseup', end, { passive: false });
     });
   
     return () => {
@@ -246,16 +238,12 @@ export function useScroll() {
         const move = e => aoMover(e, i);
         const end = e => finalizarArraste(e, i);
 
-        el.removeEventListener('pointerdown', start, { passive: false });
-        el.removeEventListener('pointermove', move, { passive: false });
-        el.removeEventListener('pointerup', end, { passive: false });
-
-        // el.removeEventListener('touchstart', start);
-        // el.removeEventListener('mousedown', start);
-        // el.removeEventListener('touchmove', move);
-        // el.removeEventListener('mousemove', move);
-        // el.removeEventListener('touchend', end);
-        // el.removeEventListener('mouseup', end);
+        el.removeEventListener('touchstart', start);
+        el.removeEventListener('mousedown', start);
+        el.removeEventListener('touchmove', move);
+        el.removeEventListener('mousemove', move);
+        el.removeEventListener('touchend', end);
+        el.removeEventListener('mouseup', end);
       });
     };
   }, []);

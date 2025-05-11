@@ -67,8 +67,7 @@ const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantity
 
 const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes, variant}) => {
 
-  const handleMore = () =>
-    onQuantityChange(quantity + 1, true );
+  const handleMore = () => onQuantityChange(quantity + 1, true );
 
   const handleFewer = () => {
     if (quantity > 1) {
@@ -83,9 +82,9 @@ const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes, variant}) => {
 
   return (
     <DivQuantStyled>
-      <BotoesStyled onPointerDown={handleFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
+      <BotoesStyled onClick={handleFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
       <BotoesStyled><PQuantStyled>{quantity}</PQuantStyled></BotoesStyled>
-      <BotoesStyled onPointerDown={handleMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
+      <BotoesStyled onClick={handleMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
     </DivQuantStyled>
   );
 }

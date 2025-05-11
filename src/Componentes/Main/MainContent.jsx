@@ -41,26 +41,6 @@ const ShadowBottomStyled = styled.div`
 function MainContent() {
   const {currentCategory, setCurrentCategory} = useContext(CartContext)
   const [viewDialog, setViewDialog] = useState(false);
-  const [wasResized, setWasResized] = useState(0);
-
-  const handleResize = useCallback(() => {
-    let timeoutId;
-    return () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setWasResized(prevWasResized => prevWasResized + 1);
-      }, 300);
-    };
-  }, [setWasResized]);
-
-  useEffect(() => {
-    const debouncedHandleResize = handleResize();
-    window.addEventListener('resize', debouncedHandleResize);
-
-    return () => {
-      window.removeEventListener('resize', debouncedHandleResize);
-    };
-  }, [handleResize]);
 
   return (
     <Main>
@@ -68,8 +48,8 @@ function MainContent() {
       <Header />
       <SearchBar />
       <AnnouncementSection />
-      <CategorySection setCurrentCategory={setCurrentCategory} wasResized={wasResized}/>
-      <PromoSection categoryKey={currentCategory} wasResized={wasResized}/>
+      <CategorySection setCurrentCategory={setCurrentCategory}/>
+      <PromoSection categoryKey={currentCategory}/>
       {!viewDialog && (<Footer setViewDialog={setViewDialog}/>)}
       {viewDialog && (<ConfirmDialog setViewDialog={setViewDialog}/>)}
       <ShadowBottomStyled/>
