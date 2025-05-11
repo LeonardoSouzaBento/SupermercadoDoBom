@@ -31,7 +31,7 @@ export const Divf = styled.div.attrs(props => ({
   }))`
   will-change: transform;
   overflow-x: visible;
-  transition: transform 0.5s linear;
+  transition: transform 0.3s linear;
   width: 100%;
   position: relative;
   -webkit-user-select: none;
