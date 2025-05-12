@@ -6,27 +6,22 @@ export function useScroll() {
     advertisementsRef,
     categoriesRef,
     promotionsRef,
-    mainRef,
     limitAdvertisements,
     limitCategories,
     limitProductList,
-    limitMain,
     translateX1,
     translateX2,
     translateX3,
-    translateMain, 
     setTranslateX1,
     setTranslateX2,
-    setTranslateX3,
-    setTranslateMain
+    setTranslateX3
   } = useContext(CartContext);
 
   // Refs agrupados
   const refs = [
     advertisementsRef,
     categoriesRef,
-    promotionsRef,
-    mainRef
+    promotionsRef
   ];
 
   // Estado interno de arraste
@@ -43,72 +38,48 @@ export function useScroll() {
   const translateRefs = [
     useRef(translateX1),
     useRef(translateX2),
-    useRef(translateX3),
-    useRef(translateMain)
+    useRef(translateX3)
   ];
   useEffect(() => {
     translateRefs[0].current = translateX1;
     translateRefs[1].current = translateX2;
     translateRefs[2].current = translateX3;
-    translateRefs[3].current = translateMain;
-  }, [translateX1, translateX2, translateX3, translateMain]);
-    
-  const setTranslates = [setTranslateX1, setTranslateX2, setTranslateX3, setTranslateMain];
+  }, [translateX1, translateX2, translateX3]);
+  
+  const setTranslates = [setTranslateX1, setTranslateX2, setTranslateX3];
 
   //array de limites
   const limitsTranslateRefs = [
     useRef(limitAdvertisements),
     useRef(limitCategories),
-    useRef(limitProductList),
-    useRef(limitMain)
+    useRef(limitProductList)
   ];
 
   useEffect(() => {
     limitsTranslateRefs[0].current = limitAdvertisements;
     limitsTranslateRefs[1].current = limitCategories;
     limitsTranslateRefs[2].current = limitProductList;
-    limitsTranslateRefs[3].current = limitMain;
-  }, [limitAdvertisements, limitCategories, limitProductList, limitMain]);
+  }, [limitAdvertisements, limitCategories, limitProductList]);
 
   // Variáveis de scroll de página
-const pageRefs = useRef(
-  {
-    initialX: 0,
-    initialY: 0,
+  const pageRef = useRef({
+    initialX: null,
+    initialY: null,
     firstAngle: null,
-    firstDiffX: null,
-    firstDiffY: null,
-    startTime: 0,
-    deltaY: 0,
-    speed: 0,
-    firstCheck: null,
-  }
-);
-
-  // const minSpeed = 0.7;
-  const maxSpeed = 1.4;
-  let isDesktop = false;
-
-  const listeners = useRef([[], [], []]);
+    dragY: null,
+    firstCheck: ''
+  });
 
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
-    e.stopPropagation();
     if (e.type === "mousedown" && e.button !== 0) return;
     //
-    const page = pageRefs.current;
+    const page = pageRef.current;
     const variables = variablesRef.current[i];
     page.initialX = e.touches ? e.touches[0].clientX : e.clientX;
     page.initialY = e.touches ? e.touches[0].clientY : e.clientY;
     page.deltaY = 0;
     page.speed=0;
-    page.firstCheck = null;
-    page.firstAngle = null;
-    page.firstDiffX = null;
-    page.firstDiffY = null;
-
-    page.startTime = Date.now();
-    (isDesktop===false && window.innerWidth > 993) && (isDesktop=true);
     //
 
     variables.arrastando = true;
@@ -123,71 +94,60 @@ const pageRefs = useRef(
   
   const aoMover = useCallback((e, i) => {
     e.preventDefault();
-    e.stopPropagation();
     const variables = variablesRef.current[i];
     if (!variables.arrastando) return;
-    const page = pageRefs.current;
+    const page = pageRef.current;
     const now = Date.now();
     const dt = Math.max(1, now - variables.time_touch);
     const x = e.touches ? e.touches[0].clientX : e.clientX;
     const y = e.touches ? e.touches[0].clientY : e.clientY;
     const dx = Math.abs(x - page.initialX);
     const dy = Math.abs(y - page.initialY);
+    if (dx <= 4 && dy <= 4) return;
 
     if (page.firstDiffX === null && page.firstDiffY ===null) {
       page.firstDiffX = dx;
       page.firstDiffY = dy;
       page.firstAngle  = Math.atan2(dy, dx) * (180 / Math.PI);
-      if(page.firstAngle < 45) page.firstCheck = true;
-      if (page.firstAngle > 45) page.firstCheck=false;
+      page.firstAngle < 45 ? page.firstCheck = 'divs':page.firstCheck = 'page';
     }
 
-    if (page.firstCheck) {
-      e.preventDefault();
+    if (page.firstAngle !== null && page.firstCheck === 'divs') {
+      page.dragY = false;
       const deslocamento = x - variables.toc_ini;
-      variables.velocidade = deslocamento / dt;
-      if (Math.abs(variables.velocidade) > 1.4) {
-        variables.velocidade = 1.4 * Math.sign(variables.velocidade);
-      }
+
+      if (Math.abs(deslocamento) < 0.5) return;
+      const velocidade = deslocamento / dt;
+      variables.velocidade = velocidade;
+
       variables.time_touch = now;
       variables.toc_ini= x;
       setTranslates[i](translateRefs[i].current + deslocamento);
       page.initialX = x;
-      
     }
-    else if(!page.firstCheck && !isDesktop) {
-      page.deltaY = y - page.initialY;
-      page.speed = page.deltaY / dt;
-      (Math.abs(page.speed)>maxSpeed) && (page.speed = maxSpeed * Math.sign(page.speed))
-      setTranslates[3](translateRefs[3].current + page.deltaY);
-      page.initialY = y;
-      page.startTime = now;
-    };
+    
   }, []);
 
   const finalizarArraste = useCallback((e, i) => {
-    e.preventDefault(e);
-    e.stopPropagation();
-    const page = pageRefs.current;
+    const page = pageRef.current;
     const variables = variablesRef.current[i];
-
-    if(page.firstCheck) {
-      e.preventDefault(e);
+    if (!page.dragY) {
       if (!variables.arrastando) return;
       variables.arrastando = false;
+  
       // Cancela animação anterior, se existir
       if (variables.animacao) {
         cancelAnimationFrame(variables.animacao);
       }
-
+  
       const decel = () => {
         if (Math.abs(variables.velocidade) > 0.01) {
           variables.velocidade *= 0.95;
-          let proximo = translateRefs[i].current + variables.velocidade * 20;
-
+          let proximo = translateRefs[i].current + variables.velocidade * 16;
+  
           const max = limitsTranslateRefs[i].current;
           const min = 0;
-
+  
           if (proximo < max) {
             proximo = max;
             variables.velocidade = 0;
@@ -201,43 +161,17 @@ const pageRefs = useRef(
       };
       decel();
     }
-    if(!page.firstCheck && !isDesktop){
-      (window.scrollY === 0 && page.deltaY < -80) && (location.reload());
-      
-      const decel = () => {
-      if (Math.abs(variables.velocidade) > 0.01) {
-        variables.velocidade *= 0.95;
-        let proximo = translateRefs[3].current + variables.velocidade * 20;
-
-        const max = limitsTranslateRefs[3].current;
-        const min = 0;
-
-        if (proximo < max) {
-          proximo = max;
-          variables.velocidade = 0;
-        } else if (proximo > min) {
-          proximo = min;
-          variables.velocidade = 0;
-        }
-        setTranslates[3](proximo);
-        variables.animacao = requestAnimationFrame(decel);
-      }
-      decel()
-    };
-      // (page.speed!=0)&&(startMomentumScroll())
-    }
+ 
     page.initialX = null
     page.initialY = null
     page.firstAngle = null
     page.firstDiffX = null
     page.firstDiffY = null
-    page.startTime = null
-    page.firstCheck = null
-    page.deltaY = 0
-    page.speed = 0
+    page.dragY= null
     variables.animacao=null;
   }, []);
   
+  const listeners = useRef([[], [], []]);
 
   useEffect(() => {
     refs.forEach((refWrapper, i) => {
@@ -254,8 +188,8 @@ const pageRefs = useRef(
       el.addEventListener('mousedown', start, { passive: false });
       el.addEventListener('touchmove', move, { passive: false });
       el.addEventListener('mousemove', move, { passive: false });
-      el.addEventListener('touchend', end, { passive: false });
-      el.addEventListener('mouseup', end, { passive: false });
+      el.addEventListener('touchend', end);
+      el.addEventListener('mouseup', end);
     });
   
     return () => {
@@ -263,9 +197,7 @@ const pageRefs = useRef(
         const el = refWrapper?.current;
         if (!el || !listeners.current[i]) return;
 
-        const start = e => iniciarArraste(e, i);
-        const move = e => aoMover(e, i);
-        const end = e => finalizarArraste(e, i);
+        const [start, move, end] = listeners.current[i];
 
         el.removeEventListener('touchstart', start);
         el.removeEventListener('mousedown', start);

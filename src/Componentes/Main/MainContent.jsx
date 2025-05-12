@@ -9,7 +9,7 @@ import Footer from '../Footer/Footer';
 import ConfirmDialog from '../Footer/ConfirmDialog';
 import styled from 'styled-components';
 import { CartContext } from '../CartContext';
-import { useScroll } from '../../useScroll';
+import { useScrollMain } from '../../useScrollMain';
 
 const Main = styled.main.attrs(props => ({
   style: {
@@ -40,15 +40,16 @@ const ShadowBottomStyled = styled.div`
 `;
 
 function MainContent() {
-  useScroll();
   const {currentCategory, setCurrentCategory, setLimitMain, mainRef, translateMain} = useContext(CartContext)
   const [viewDialog, setViewDialog] = useState(false);
   const resizeTimeoutId = useRef(null);
 
   const calcLimit = useCallback(() => {
     if(mainRef.current){
-      const mainHeight = getComputedStyle(mainRef.current).height;
-      setLimitMain(mainHeight);
+      const heightWindow = window.innerHeight;
+      const mainHeight = parseFloat(getComputedStyle(mainRef.current).height);
+      const limit = heightWindow - mainHeight;
+      setLimitMain(limit);
     }
   },[mainRef, setLimitMain]);
 
@@ -78,6 +79,8 @@ function MainContent() {
       }
     };
   }, [handleResize]);
+
+  useScrollMain();
 
   return (
     <Main ref={mainRef} $translateValue={translateMain}>

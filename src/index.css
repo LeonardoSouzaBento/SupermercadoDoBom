@@ -8,12 +8,13 @@
   height: 0px;
 }
 
-body{
-  overflow-y: hidden;
+html, body {
+  overflow: hidden;
+  touch-action: none; /* Para evitar rolagem no mobile */
 }
-
 @media screen and (min-width: 993px){
-  body{
-    overflow: auto;
+  html, body {
+  overflow: auto;
+  touch-action: none;
   }
 }
