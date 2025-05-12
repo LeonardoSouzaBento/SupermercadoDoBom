@@ -90,6 +90,7 @@ function CategorySection({setCurrentCategory, wasResized}) {
   window.addEventListener('resize', handleResize);
 
   return () => {
+    
     window.removeEventListener('resize', handleResize);
     if (resizeTimeoutId) {
       clearTimeout(resizeTimeoutId);

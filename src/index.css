@@ -9,12 +9,11 @@
 }
 
 body{
-  touch-action: pan-y;
+  overflow-y: hidden;
 }
 
-/* @media screen and (min-width: 993px){
+@media screen and (min-width: 993px){
   body{
     overflow: auto;
-    touch-action: pan-y;
   }
-} */
+}

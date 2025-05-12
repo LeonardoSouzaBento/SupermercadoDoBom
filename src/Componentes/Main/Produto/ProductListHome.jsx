@@ -10,7 +10,7 @@ const DivStyled = styled.div.attrs(props => ({
   }
   }))`
   will-change: transform;
-  transition: transform 0.3s linear;
+  transition: transform 0.1s linear;
   overflow-x: visible;
   width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
   height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
