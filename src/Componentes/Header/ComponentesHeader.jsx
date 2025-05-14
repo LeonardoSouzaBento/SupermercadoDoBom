@@ -6,7 +6,7 @@ const DivLogoENomeStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 16px;
     border-radius: 10px;
 `;
 

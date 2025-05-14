@@ -10,6 +10,38 @@ export const AllProducts = [
   {
     id: 14,
     discount: 7,
+    url: 'https://mambodelivery.vtexassets.com/arquivos/ids/157342/acucar-cristal-uniao-1kg.jpg?v=637883104097200000',
+    weight: '1 kg',
+    name: 'Açúcar Cristal União',
+    price: '3,70'
+  },
+   {
+    id: 14,
+    discount: null,
+    url: 'https://static.cdnlive.com.br/uploads/641/produto/15913790815886_zoom.jpg',
+    weight: '1 kg',
+    name: 'Açúcar De Confeiteiro União',
+    price: '3,70'
+  },
+  {
+    id: 14,
+    discount: null,
+    url: 'https://mambodelivery.vtexassets.com/arquivos/ids/157356/acucar-demerara-naturale-uniao-1kg.jpg?v=637883104273030000',
+    weight: '1 kg',
+    name: 'Açúcar Demerara União',
+    price: '3,70'
+  },
+  {
+    id: 14,
+    discount: null,
+    url: 'https://savegnagoio.vtexassets.com/arquivos/ids/367924-800-auto?v=638080992980770000&width=800&height=auto&aspect=true',
+    weight: '1 kg',
+    name: 'Açúcar Mascavo União',
+    price: '3,70'
+  },
+  {
+    id: 14,
+    discount: null,
     url: 'https://supermercadosimperatriz.vteximg.com.br/arquivos/ids/156897-1000-1000/ACUCAR-UNIAO-1KG-REFINADO.png?v=637734306362170000',
     weight: '1 kg',
     name: 'Açúcar Refinado União',

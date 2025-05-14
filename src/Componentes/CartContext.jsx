@@ -39,9 +39,6 @@ export function CartProvider({ children }) {
 
   const [shoppingCart, setShoppingCart] = useState([]);
 
-  const [viewConfirm, setViewConfirm] = useState(false);
-  const [cancelCart, SetCancelCart] = useState(false);
-
   const handleQuantityChange = (categoryKey, index, newQuantity, product, isAdding) => {
     
     setAllQuantities(prev => { 
@@ -115,7 +112,7 @@ export function CartProvider({ children }) {
     translateMain, setTranslateMain, limitMain, setLimitMain, setLimitProductList, limitProductList,
     setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, cancelCart, SetCancelCart, viewConfirm, setViewConfirm, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
+    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
       {children}
     </CartContext.Provider>
   );

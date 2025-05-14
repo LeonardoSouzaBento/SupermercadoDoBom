@@ -5,10 +5,9 @@ export const Div = styled.div`
   position: relative;
   overflow-x: hidden;
   margin: auto;
+  padding-top: 12px;
   padding-bottom: 48px;
   border-radius: 5px;
-
-  //celulares
   @media screen and (min-width: 320px) and (max-width:576px){
     width: 100%;
     padding-bottom: 41px;
@@ -16,11 +15,9 @@ export const Div = styled.div`
   @media screen and (min-width: 577px) and (max-width:768px){
     width: calc(100% - 15px);
   }
-  //tablets
   @media screen and (min-width: 769px) and (max-width:992px){
     width: calc(100% - 20px);
   }
-  //notebooks
   @media screen and (min-width: 993px) and (max-width:1200px){
     width: calc(100% - 20px);
     margin-bottom: 70px;
@@ -35,7 +32,6 @@ export const Div = styled.div`
 export const P = styled.p`
     width: 100%;
     text-align: center;
-    margin-top: 10px;
     margin-bottom: 28px;
     font-size: 1.15em;
     font-family: "Roboto Condensed", sans-serif;
@@ -91,24 +87,30 @@ export const Advertisements = styled.div.attrs(props => ({
     gap: 18px;
   }
   @media screen and (min-width: 769px){
-    gap: 17px;
+    gap: 20px;
   }
 `;
 
 export const Fundo = styled.div`
     position: relative;
     height: 170px;
-    min-width: 254px;
-    border-radius: 7px;
+    min-width: 265px;
+
     @media screen and (min-width: 320px) and (max-width: 374px){
-      width: 256px;
+      min-width: 265px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
+      min-width: 300px;
+    }
+    @media screen and (min-width: 576px) and (max-width: 768px){
       min-width: 320px;
     }
-    @media screen and (min-width: 576px){
-      min-width: 320px;
+    @media screen and (min-width: 769px){
+      min-width: 325px;
     }
+    /* @media screen and (min-width: 993px){
+      min-width: 330px;
+    } */
     
     &::before {
     content: '';
@@ -120,7 +122,8 @@ export const Fundo = styled.div`
     background-image: url(${props => props.$bg});
     background-size: cover;
     background-position: center;
-    filter: blur(5px) brightness(0.72);
+    border-radius: 8px;
+    filter: blur(5px) brightness(0.7);
     z-index: 0;
   }
 `;

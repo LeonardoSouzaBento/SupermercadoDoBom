@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../CartContext";
-import { products } from "../../data/data";
 
 const ContainerStyled = styled.div`
   background-color: rgba(25, 25, 27, 0.64);
@@ -19,9 +18,9 @@ const DivStyled= styled.div`
   justify-content: center;
   align-items: center;
   width: 210px;
-  height: max-content;
+  height: 175px;
   padding: 32px 20px;
-  border-radius: 8px 8px 24px 8px;
+  border-radius: 8px;
   position: absolute;
   right: 8px;
   bottom: 8px;
@@ -121,8 +120,38 @@ const PVoltarStyled = styled(GenericPStyled)`
   font-weight: 500;
 `;
 
-export default function ConfirmDialog({setViewDialog}){
+const DivFeedbackStyled = styled.div`
+  height: max-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0px;
+  padding-bottom: 8px;
+  transition: opacity 0.5s linear;
+`;
+
+const SpanCheckStyled = styled.span`
+  color: rgb(99, 154, 48);
+  position: relative;
+  transform: none;
+  padding: 0px;
+  font-size: 4.1em;
+  font-weight: 400;
+  border-radius: 50%;
+`;
+
+const PFeedbackStyled = styled(GenericPStyled)`
+  scale: 1.02;
+  font-weight: 500;
+  font-family: "Montserrat";
+`;
+
+export default function ConfirmDialog({setViewConfirm}){
     const {setAllQuantities, setShoppingCart} = useContext(CartContext);
+    const [viewFeedback, setViewFeedback] = useState(false);
 
     const handleConfirmCancel = (action) => {
       const duration = Date.now() - window.startClickTime;
@@ -137,10 +166,16 @@ export default function ConfirmDialog({setViewDialog}){
               Array(prevQuantities[12].length).fill(0),
               Array(prevQuantities[13].length).fill(0)
             ]);
-            setViewDialog(false);
             setShoppingCart([]);
+
+            setViewFeedback(true);
+
+            setTimeout(() => {
+              setViewConfirm(false);
+              setViewFeedback(false);
+            }, 1500);
           } else if (action === 0) {
-            setViewDialog(false);
+            setViewConfirm(false);
           }
         }
     };
@@ -148,6 +183,7 @@ export default function ConfirmDialog({setViewDialog}){
     return(
       <ContainerStyled>
         <DivStyled>
+        {viewFeedback===false?(<>
           <DivCancelStyled>
               <SpanStyled className="material-symbols-outlined">
                 exclamation
@@ -165,7 +201,14 @@ export default function ConfirmDialog({setViewDialog}){
               onPointerDown={(e)=>{window.startClickTime = Date.now()}}
               onPointerUp={()=>handleConfirmCancel(0)}
             >Voltar</PVoltarStyled>
-          </DivSimNaoStyled>
+          </DivSimNaoStyled></>):(
+          <DivFeedbackStyled>
+            <SpanCheckStyled className="material-symbols-outlined">
+              check_circle
+            </SpanCheckStyled>
+            <PFeedbackStyled>Compra Cancelada!</PFeedbackStyled>
+          </DivFeedbackStyled>
+        )}
         </DivStyled>
       </ContainerStyled>
     )

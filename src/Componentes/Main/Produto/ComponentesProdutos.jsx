@@ -9,7 +9,7 @@ export const PaiProdStyled = styled.div`
     height: 165px;
     background-color: white;
     border-radius: 9px 9px 14px 9px;
-    border: 1px solid rgb(150, 150, 150);
+    border: ${(props)=>props.$variant === 'home'? '1px solid rgb(150, 150, 150)': '1px solid rgb(190, 190, 190)'};
     cursor: default;
     -webkit-user-select: none;
     user-select: none;
@@ -242,7 +242,7 @@ export const DivOfertaStyled = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 4px solid rgb(227, 97, 68);
+        border: 4px solid rgb(227, 97, 64);
         border-radius: 50%;
         cursor: pointer;
         background-color: white;
@@ -256,7 +256,7 @@ export const DivOfertaStyled = styled.div`
         cursor: pointer;
         -webkit-user-select: none;
         user-select: none;
-        color:rgb(227, 97, 68);
+        color:rgb(227, 97, 64);
         padding-bottom: 4px;
         padding-left: 1px;
     `;
@@ -266,7 +266,7 @@ export const DivOfertaStyled = styled.div`
     export const DivQuantStyled = styled.div`
         width: 128px;
         height: 32px;
-        border: 4px solid rgb(227, 97, 68);
+        border: 4px solid rgb(227, 97, 64);
         display: flex;
         justify-content: space-between;
         border-radius: 20px;

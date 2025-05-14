@@ -1,12 +1,11 @@
 import { useContext, useState, useCallback, useEffect, useRef } from 'react';
 import Header from '../Header/Header';
-import HelpSection from './HelpSection';
-import SearchBar from './BarraPesquisa/SearchBar';
+// import HelpSection from './HelpSection';
+// import SearchBar from './BarraPesquisa/SearchBar';
 import AnnouncementSection from './Annoucement_section/AnnouncementSection';
 import CategorySection from './Categorias/CategorySection';
 import PromoSection from './PromoSection';
 import Footer from '../Footer/Footer';
-import ConfirmDialog from '../Footer/ConfirmDialog';
 import styled from 'styled-components';
 import { CartContext } from '../CartContext';
 import { useScrollMain } from '../../useScrollMain';
@@ -17,13 +16,9 @@ const Main = styled.main.attrs(props => ({
   }
   }))`
   max-width: 1390px;
-  height: max-content;
   margin: auto;
-  background-color: rgb(237, 237, 237);
-  position: relative;
   padding: 0px;
-  box-shadow: inset 0px -3px 6px rgb(198, 198, 198);
-  position: relative;
+  background-color: rgb(237, 237, 237);
 `;
 
 const ShadowBottomStyled = styled.div`
@@ -40,14 +35,13 @@ const ShadowBottomStyled = styled.div`
 `;
 
 function MainContent() {
-  const {currentCategory, setCurrentCategory, setLimitMain, mainRef, translateMain} = useContext(CartContext)
-  const [viewDialog, setViewDialog] = useState(false);
+  const {currentCategory, setCurrentCategory, setLimitMain, mainRef, translateMain, viewCancel} = useContext(CartContext)
   const resizeTimeoutId = useRef(null);
 
   const calcLimit = useCallback(() => {
     if(mainRef.current){
       const heightWindow = window.innerHeight;
-      const mainHeight = parseFloat(getComputedStyle(mainRef.current).height);
+      const mainHeight = parseFloat(getComputedStyle(mainRef.current).height)+180;
       const limit = heightWindow - mainHeight;
       setLimitMain(limit);
     }
@@ -83,17 +77,16 @@ function MainContent() {
   useScrollMain();
 
   return (
+   <> 
+    <Header/>
     <Main ref={mainRef} $translateValue={translateMain}>
-      <HelpSection />
-      <Header />
-      <SearchBar />
       <AnnouncementSection />
       <CategorySection setCurrentCategory={setCurrentCategory}/>
       <PromoSection categoryKey={currentCategory}/>
-      {!viewDialog && (<Footer setViewDialog={setViewDialog}/>)}
-      {viewDialog && (<ConfirmDialog setViewDialog={setViewDialog}/>)}
       <ShadowBottomStyled/>
     </Main>
+    <Footer/>
+  </>
   );
 }
 

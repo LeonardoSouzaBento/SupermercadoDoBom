@@ -10,7 +10,7 @@ const ContainerForFormStyled = styled.div`
   padding: 12px 0px;
   padding-bottom: 14px;
   margin-bottom: 16px;
-  background-image: linear-gradient(to bottom, #D74545,rgba(215, 69, 69, 0.79));
+  background-color: #D74545;
 `;
 
 const FormStyled = styled.form`
@@ -18,11 +18,15 @@ const FormStyled = styled.form`
   flex-flow: row nowrap;
   align-items: center;
   width: 90%;
-  max-width: 1180px;
+  max-width: 792px;
   margin: auto;
   height: 40px;
   position: relative;
-  border-radius: 33px;
+
+  @media screen and (min-width: 993px){
+    margin: 0px;
+    margin-left: 32px;
+  }
 `;
 
 const InputStyled = styled.input`
@@ -58,6 +62,9 @@ const InputStyled = styled.input`
   }
   @media screen and (min-width: 769px){
     font-size: 1.02em;
+  }
+  @media screen and (min-width: 993px){
+   border-radius: 20px;
   }
 `;
 

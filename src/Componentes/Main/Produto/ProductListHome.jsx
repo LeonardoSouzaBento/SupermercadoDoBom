@@ -22,7 +22,6 @@ const DivStyled = styled.div.attrs(props => ({
   justify-content: ${(props) => props.$variant === 'home' ? "flex-start" : "center"};
   gap: 12px;
   position: relative;
-
   ${(props) => props.$variant === 'inSearch' && 'margin: auto;'}
 
   @media screen and (min-width: 320px) and (max-width: 375px){

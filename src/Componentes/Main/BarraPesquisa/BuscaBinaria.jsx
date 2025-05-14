@@ -3,6 +3,8 @@ export function binaryPrefixSearch(array, prefix) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   }
 
+  if (!prefix.trim()) return [];
+
   let left = 0;
   let right = array.length - 1;
   let matchIndex = -1;

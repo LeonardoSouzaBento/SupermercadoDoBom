@@ -1,10 +1,8 @@
-import React from 'react';
-import { useContext} from 'react';
+import { useContext, useState} from 'react';
 import { CartContext } from '../CartContext';
-import { products } from '../../data/data';
-import ConfirmDialog from './ConfirmDialog';
 import styled from "styled-components";
 import {useNavigate} from 'react-router-dom';
+import ConfirmDialog from './ConfirmDialog';
 
 const FooterStyled = styled.footer`
     display: flex;
@@ -14,7 +12,6 @@ const FooterStyled = styled.footer`
     height: fit-content;
     width: 100%;
     background-color: transparent;
-    margin: auto;
     position: fixed;
     bottom: 7px;
     z-index: 2;
@@ -145,51 +142,54 @@ const PPrecoStyled = styled.p`
 const PItensStyled = styled(PPrecoStyled)`
 `;
 
-function Footer({setViewDialog}) {
+export default function Footer() {
   const { totalQuantity, totalValueFormatted} = useContext(CartContext);
   const navigate = useNavigate();
+  const [viewConfirm, setViewConfirm] = useState(false);
 
-  if (totalQuantity <= 0) return null;
+  if (totalQuantity <= 0) {return null}
 
+  if(viewConfirm===false){
   return(
   <FooterStyled>
-    {totalQuantity > 0 && 
-      <CartDescStyled  
-        onPointerDown={() => {
-        window.startClickTime = Date.now();
-        }}
-        onPointerUp={(e) => {
-        const duration = Date.now() - window.startClickTime;
-        if (duration < 300) {
-          navigate('/Cart');
-        }
-        }}>
-        
-          <DivCancelECart>
-            <DivCancelStyled onPointerDown={(e)=>{e.stopPropagation(e); setViewDialog(true)}}>
-              <SpanCancelStyled className='material-symbols-outlined'>
-                delete
-              </SpanCancelStyled>
-            </DivCancelStyled>
+    <CartDescStyled  
+      onPointerDown={() => {
+      window.startClickTime = Date.now();
+      }}
+      onPointerUp={(e) => {
+      const duration = Date.now() - window.startClickTime;
+      if (duration < 300) {
+        navigate('/Cart');
+      }
+      }}>
+      
+        <DivCancelECart>
+          <DivCancelStyled onPointerDown={(e)=>{e.stopPropagation(e); setViewConfirm(true)}}>
+            <SpanCancelStyled className='material-symbols-outlined'>
+              delete
+            </SpanCancelStyled>
+          </DivCancelStyled>
 
-            <DivCartSetaStyled>
-              <DivCartStyled>
-                <SpanCartStyled className='material-symbols-rounded'>shopping_cart</SpanCartStyled>
-              </DivCartStyled>
-              <DivSetaStyled>
-                <SpanSetaStyled className='material-symbols-rounded'>chevron_right</SpanSetaStyled>
-              </DivSetaStyled>
-            </DivCartSetaStyled>
-          </DivCancelECart>
+          <DivCartSetaStyled>
+            <DivCartStyled>
+              <SpanCartStyled className='material-symbols-rounded'>shopping_cart</SpanCartStyled>
+            </DivCartStyled>
+            <DivSetaStyled>
+              <SpanSetaStyled className='material-symbols-rounded'>chevron_right</SpanSetaStyled>
+            </DivSetaStyled>
+          </DivCartSetaStyled>
+        </DivCancelECart>
 
-          <DivPStyled>
-            <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>
-            <PItensStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PItensStyled>
-          </DivPStyled>
-      </CartDescStyled>
-    }
+        <DivPStyled>
+          <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>
+          <PItensStyled>{totalQuantity} {totalQuantity==1?'item':'itens'}</PItensStyled>
+        </DivPStyled>
+    </CartDescStyled>
   </FooterStyled>
-  )
+  )}
+  if(viewConfirm){
+    return(
+      <ConfirmDialog setViewConfirm={setViewConfirm}></ConfirmDialog>
+    )
+  }
 }
-
-export default Footer;

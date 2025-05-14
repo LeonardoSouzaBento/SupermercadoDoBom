@@ -8,6 +8,7 @@ import { useScroll } from '../../useScroll';
 const PaiAllProductsStyled = styled.div`
    overflow-x: hidden;
    margin-left: 10px;
+   padding-bottom: 36px;
    @media screen and (min-width: 320px) and (max-width: 375px){
     width: calc(100% - 15px);
     margin-left: 15px;
