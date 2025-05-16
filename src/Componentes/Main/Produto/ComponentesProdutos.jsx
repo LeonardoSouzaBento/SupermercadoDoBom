@@ -9,7 +9,7 @@ export const PaiProdStyled = styled.div`
     height: 165px;
     background-color: white;
     border-radius: 9px 9px 14px 9px;
-    border: ${(props)=>props.$variant === 'home'? '1px solid rgb(150, 150, 150)': '1px solid rgb(190, 190, 190)'};
+    border: ${(props)=>props.$variant === 'home'? '1px solid rgb(150, 150, 150)': '1px solid rgb(171, 171, 171)'};
     cursor: default;
     -webkit-user-select: none;
     user-select: none;

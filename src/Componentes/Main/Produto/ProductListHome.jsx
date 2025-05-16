@@ -10,7 +10,6 @@ const DivStyled = styled.div.attrs(props => ({
   }
   }))`
   will-change: transform;
-  transition: transform 0.1s linear;
   overflow-x: visible;
   width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
   height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
@@ -23,6 +22,7 @@ const DivStyled = styled.div.attrs(props => ({
   gap: 12px;
   position: relative;
   ${(props) => props.$variant === 'inSearch' && 'margin: auto;'}
+  margin-top: ${props=>props.$variant=== 'inSearch' && "8px"};
 
   @media screen and (min-width: 320px) and (max-width: 375px){
     gap: 8px;

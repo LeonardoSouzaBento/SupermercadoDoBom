@@ -1,7 +1,5 @@
-import { useContext, useState, useCallback, useEffect, useRef } from 'react';
+import { useContext, useCallback, useEffect, useRef } from 'react';
 import Header from '../Header/Header';
-// import HelpSection from './HelpSection';
-// import SearchBar from './BarraPesquisa/SearchBar';
 import AnnouncementSection from './Annoucement_section/AnnouncementSection';
 import CategorySection from './Categorias/CategorySection';
 import PromoSection from './PromoSection';
@@ -9,6 +7,8 @@ import Footer from '../Footer/Footer';
 import styled from 'styled-components';
 import { CartContext } from '../CartContext';
 import { useScrollMain } from '../../useScrollMain';
+import SearchBar from './BarraPesquisa/SearchBar';
+// import SearchBar from './BarraPesquisa/SearchBar';
 
 const Main = styled.main.attrs(props => ({
   style: {
@@ -26,22 +26,18 @@ const ShadowBottomStyled = styled.div`
   width: 100%;
   position: fixed;
   bottom: 0px;
-  height: 8px;
-  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.09), rgba(240, 240, 240, 0));
+  height: 36px;
+  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.12), rgba(240, 240, 240, 0));
   background-size: 100% 100%;
-  @media screen and (min-width: 993px){
-    display: none;
-  }
 `;
 
 function MainContent() {
   const {currentCategory, setCurrentCategory, setLimitMain, mainRef, translateMain, viewCancel} = useContext(CartContext)
   const resizeTimeoutId = useRef(null);
-
   const calcLimit = useCallback(() => {
     if(mainRef.current){
       const heightWindow = window.innerHeight;
-      const mainHeight = parseFloat(getComputedStyle(mainRef.current).height)+180;
+      const mainHeight = parseFloat(getComputedStyle(mainRef.current).height);
       const limit = heightWindow - mainHeight;
       setLimitMain(limit);
     }
@@ -77,16 +73,17 @@ function MainContent() {
   useScrollMain();
 
   return (
-   <> 
-    <Header/>
+   <div>
+    <SearchBar></SearchBar>
     <Main ref={mainRef} $translateValue={translateMain}>
+      <Header/>
       <AnnouncementSection />
       <CategorySection setCurrentCategory={setCurrentCategory}/>
       <PromoSection categoryKey={currentCategory}/>
       <ShadowBottomStyled/>
     </Main>
     <Footer/>
-  </>
+  </div>
   );
 }
 

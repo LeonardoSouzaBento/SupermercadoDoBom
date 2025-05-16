@@ -123,6 +123,7 @@ export function useScroll() {
       variables.time_touch = now;
       variables.toc_ini= x;
       setTranslates[i](translateRefs[i].current + deslocamento);
+
       page.initialX = x;
     }
     

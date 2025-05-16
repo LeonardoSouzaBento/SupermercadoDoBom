@@ -64,20 +64,20 @@ export const AllProducts = [
     cat_id: 1
   },
   {
-    id: 5,
-    discount: 12,
-    url: 'https://i.pinimg.com/736x/82/8c/9d/828c9df9391929f798d8e4ecdc02f327.jpg',
-    weight: '',
-    name: 'Bandeja com 30 ovos de galinha vermelhos',
-    price: '17,00'
-  },
-  {
     id: 1,
     url: 'https://i.pinimg.com/736x/2f/8a/ef/2f8aefcc4c33101b44cd58b1bf19c8fb.jpg',
     weight: '1 kg',
     name: 'banana prata',
     price: '5,50',
     cat_id: 3
+  },
+  {
+    id: 5,
+    discount: 12,
+    url: 'https://i.pinimg.com/736x/82/8c/9d/828c9df9391929f798d8e4ecdc02f327.jpg',
+    weight: '',
+    name: 'Bandeja com 30 ovos de galinha vermelhos',
+    price: '17,00'
   },
   {
     id: 120,

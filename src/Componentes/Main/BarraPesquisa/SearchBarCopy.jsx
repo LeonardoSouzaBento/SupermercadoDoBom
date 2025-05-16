@@ -4,114 +4,67 @@ import { AllProducts } from '../../../data/AllProducts';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
 import { binaryPrefixSearch } from './BuscaBinaria';
-
-const ContainerForFormStyled = styled.div`
-  width: 100%;
-  padding: 12px 0px;
-  padding-bottom: 14px;
-  margin-bottom: 16px;
-  background-color: #D74545;
-`;
-
-const FormStyled = styled.form`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  width: 90%;
-  max-width: 792px;
-  margin: auto;
-  height: 40px;
-  position: relative;
-
-  @media screen and (min-width: 993px){
-    margin: 0px;
-    margin-left: 32px;
-  }
-`;
-
-const InputStyled = styled.input`
-  height: 100%;
-  width: 100%;
-  border-radius: 20px;
-  font-weight: 300;
-  font-size: 0.85em;
-  text-indent: 20px;
-  font-size: 0.97em;
-  border: 1px solid rgba(0, 0, 0, 0.29);
-  border: none;
-  &:focus{
-    outline: none;
-    border: 1px solid rgba(0, 0, 0, 0.56);
-    box-shadow: none;
-    background-color: white !important;
-  }
-  &::-webkit-search-cancel-button,
-  &::-webkit-search-decoration {
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: white;
-  }
-  @media screen and (min-width: 320px) and (max-width:374px){
-    font-size: 0.92em;
-  }
-  @media screen and (min-width: 375px) and (max-width:576px){
-    font-size: 0.95;
-  }
-  @media screen and (min-width: 577px) and (max-width:768px){
-    font-size: 1em;
-  }
-  @media screen and (min-width: 769px){
-    font-size: 1.02em;
-  }
-  @media screen and (min-width: 993px){
-   border-radius: 20px;
-  }
-`;
-
-const DivSpanStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  width:30px;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  right: 12px;
-  user-select: none;
-  cursor: pointer;
-`;
+import { ContainerForFormStyled, FormStyled ,InputStyled, DivSpanStyled, CompletionsDivStyled, PStyled } from './ComponentesSearchBar';
 
 export default function SearchBarCopy() {
-
   const [input, setInput] = useState("");
   const {setSearchProducts, setSearchQuantities}=useContext(CartContext);
+  const [completes, setCompletes] = useState(['']);
 
-  function handleClickSearch() {
+  function whenTyping(e) {
+    setInput(e.target.value)
     const term = input.toLowerCase();
+    if(term.length%2==0){
     const results = binaryPrefixSearch(AllProducts, term);
-    setSearchProducts(results);
-    setSearchQuantities(results.map(() => 0));
+    const threeResults = results.slice(0, 4);
+    const newCompletions = threeResults.map(product => {
+        return product.name.slice(0, 13);
+    });
+    setCompletes([...newCompletions]);
+    }
+    if(term.length<=1){setCompletes([''])}
+  }
+
+  function handleClickSearch(action, text) {
+    if(action===0){
+      const term = input.toLowerCase();
+      const results = binaryPrefixSearch(AllProducts, term);
+      setSearchProducts(results);
+      setSearchQuantities(results.map(() => 0));}
+    else{
+      const results = binaryPrefixSearch(AllProducts, text);
+      setSearchProducts(results);
+      setSearchQuantities(results.map(() => 0));
+      setTimeout(() => {
+        setCompletes([''])
+      }, 300);
+    }
   }
 
   return (
-    <ContainerForFormStyled>
+    <ContainerForFormStyled $copy={true}>
       <FormStyled onSubmit={(e) => {
         e.preventDefault();
-        handleClickSearch();
-      }}>
+        handleClickSearch(0);
+      }} $copy={true}>
         <InputStyled 
         type="text" 
         name="query" 
-        placeholder="O que você quer? Digite aqui"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        $copy={true}
+        onChange={(e) => whenTyping(e)}
         >
         </InputStyled>
-        <DivSpanStyled onClick={handleClickSearch}>
-          <span className="material-symbols-rounded" style={{color: "grey"}}>search</span>
+        <DivSpanStyled onClick={(e)=>handleClickSearch(0)}>
+          <span className="material-symbols-rounded" style={{color: "black"}}>search</span>
         </DivSpanStyled>
       </FormStyled>
+
+      {completes!='' && (
+        <CompletionsDivStyled>
+            {completes.map((e, i)=>(<PStyled key={i} onPointerDown={()=>{handleClickSearch(1, e)}} $copy={true}>{e}...</PStyled>))}
+        </CompletionsDivStyled>
+      )}
     </ContainerForFormStyled>
   );
 }

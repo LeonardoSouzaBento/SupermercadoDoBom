@@ -9,6 +9,8 @@ export function CartProvider({ children }) {
   const [limitCategories, setLimitCategories] = useState(0);
   const [limitAdvertisements, setLimitAdvertisements] = useState(0);
   const [limitMain, setLimitMain] = useState(0);
+  const [viewSuggestion, setviewSuggestion] = useState(false); // Sugestão de busca
+  const [preventClick, setPreventClick] = useState(false); // prevenir click durante a sugestão
 
   const [translateX1, setTranslateX1] = useState(0);
   const [translateX2, setTranslateX2] = useState(0);
@@ -19,7 +21,8 @@ export function CartProvider({ children }) {
   const categoriesRef = useRef();
   const promotionsRef = useRef();
   const mainRef = useRef(null);
-
+  const SearchBarRef = useRef(null);
+  
   const [cartProducts, setCartProducts] = useState([]);
   const [cartQuantities] = useState([]);
   const [searchProducts, setSearchProducts]= useState([]);
@@ -112,7 +115,7 @@ export function CartProvider({ children }) {
     translateMain, setTranslateMain, limitMain, setLimitMain, setLimitProductList, limitProductList,
     setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
+    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities, viewSuggestion, preventClick, setPreventClick, setviewSuggestion, SearchBarRef}}>
       {children}
     </CartContext.Provider>
   );

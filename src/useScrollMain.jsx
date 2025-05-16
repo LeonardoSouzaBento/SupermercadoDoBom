@@ -2,7 +2,7 @@ import { useEffect, useContext, useRef, useCallback } from "react";
 import { CartContext } from "./Componentes/CartContext";
 
 export function useScrollMain() {
-  const {mainRef, limitMain, translateMain, setTranslateMain} = useContext(CartContext);
+  const {mainRef, limitMain, translateMain, setTranslateMain, SearchBarRef} = useContext(CartContext);
 
   // Estado interno de arraste
   const variablesRef = useRef({
@@ -85,7 +85,17 @@ export function useScrollMain() {
       variables.toc_ini= y;
       page.initialX = x;
       page.initialY=y;
-      setTranslateMain(translateMainRef.current + deslocamento);
+      let proximo = translateMainRef.current + deslocamento;
+      if (proximo < limitMainRef.current) {
+        proximo = limitMainRef.current;
+        variables.velocidade = 0;
+      }
+      setTranslateMain(proximo);
+      SearchBarRef.current.style.transform = `translateY(${proximo}px)`;
+
+      if(proximo<-113){
+        SearchBarRef.current.style.transform = `translateY(-113px)`;
+      }
     }
   }, []);
 
@@ -109,11 +119,23 @@ export function useScrollMain() {
           if (proximo < limitMainRef.current) {
             proximo = limitMainRef.current;
             variables.velocidade = 0;
-          } else if (proximo > 0) {
+          } 
+          if(proximo>140){
+            proximo=0;
+            setTimeout(() => {
+              location.reload();
+            }, 600);
+          }
+          else if (proximo > 0) {
             proximo = 0;
             variables.velocidade = 0;
           }
           setTranslateMain(proximo);
+          SearchBarRef.current.style.transform = `translateY(${proximo}px)`;
+
+          if(proximo<-113){
+            SearchBarRef.current.style.transform = `translateY(-113px)`;
+          }
           variables.animacao = requestAnimationFrame(decel);
         }
       };

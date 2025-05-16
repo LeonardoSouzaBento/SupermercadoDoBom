@@ -157,6 +157,8 @@ export default function ConfirmDialog({setViewConfirm}){
       const duration = Date.now() - window.startClickTime;
         if (duration < 100) {
           if (action === 1) {
+            setViewFeedback(true);
+            
             setAllQuantities(prevQuantities => [
               Array(prevQuantities[0].length).fill(0),
               Array(prevQuantities[1].length).fill(0),  
@@ -167,8 +169,6 @@ export default function ConfirmDialog({setViewConfirm}){
               Array(prevQuantities[13].length).fill(0)
             ]);
             setShoppingCart([]);
-
-            setViewFeedback(true);
 
             setTimeout(() => {
               setViewConfirm(false);

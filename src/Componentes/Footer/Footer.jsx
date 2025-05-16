@@ -9,14 +9,13 @@ const FooterStyled = styled.footer`
     flex-flow: row nowrap;
     justify-content: flex-end;
     align-items: center;
-    height: fit-content;
+    height: 45px;
     width: 100%;
     background-color: transparent;
     position: fixed;
     bottom: 7px;
     z-index: 2;
     border-radius: 5px;
-
     @media screen and (min-width: 993px){
       bottom: 9px;
     }
@@ -147,7 +146,7 @@ export default function Footer() {
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
 
-  if (totalQuantity <= 0) {return null}
+  if (totalQuantity <= 0 && viewConfirm===false) {return null}
 
   if(viewConfirm===false){
   return(
