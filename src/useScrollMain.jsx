@@ -2,7 +2,7 @@ import { useEffect, useContext, useRef, useCallback } from "react";
 import { CartContext } from "./Componentes/CartContext";
 
 export function useScrollMain() {
-  const {mainRef, limitMain, translateMain, setTranslateMain, SearchBarRef} = useContext(CartContext);
+  const {mainRef, limitMain, translateMain, setTranslateMain} = useContext(CartContext);
 
   // Estado interno de arraste
   const variablesRef = useRef({
@@ -17,9 +17,10 @@ export function useScrollMain() {
   const limitMainRef = useRef(limitMain);
 
   useEffect(() => {
-    translateMainRef.current = translateMain
+    translateMainRef.current = translateMain;
+    
   }, [translateMain]);
-  
+
   useEffect(() => {
     limitMainRef.current = limitMain;
   }, [limitMain]);
@@ -34,6 +35,7 @@ export function useScrollMain() {
   });
 
   const iniciarArraste = useCallback((e) =>  {
+    // setIsDragging(false);
     e.preventDefault();
     //
     const page = pageRef.current;
@@ -56,6 +58,7 @@ export function useScrollMain() {
   
   const aoMover = useCallback((e) => {
     e.preventDefault();
+    // setIsDragging(true);
     const variables = variablesRef.current;
     if (!variables.arrastando) return;
     const page = pageRef.current;
@@ -80,6 +83,9 @@ export function useScrollMain() {
       if (Math.abs(deslocamento) < 0.5) return;
       const velocidade = deslocamento / dt;
       variables.velocidade = velocidade;
+      if(Math.abs(velocidade)>1.7){
+        variables.velocidade = 1.7 * Math.sign(velocidade);
+      }
 
       variables.time_touch = now;
       variables.toc_ini= y;
@@ -91,11 +97,6 @@ export function useScrollMain() {
         variables.velocidade = 0;
       }
       setTranslateMain(proximo);
-      SearchBarRef.current.style.transform = `translateY(${proximo}px)`;
-
-      if(proximo<-113){
-        SearchBarRef.current.style.transform = `translateY(-113px)`;
-      }
     }
   }, []);
 
@@ -112,7 +113,7 @@ export function useScrollMain() {
       }
   
       const decel = () => {
-        if (Math.abs(variables.velocidade) > 0.01) {
+        if (Math.abs(variables.velocidade) > 0.1) {
           variables.velocidade *= 0.95;
           let proximo = translateMainRef.current + variables.velocidade * 16;
           
@@ -131,13 +132,9 @@ export function useScrollMain() {
             variables.velocidade = 0;
           }
           setTranslateMain(proximo);
-          SearchBarRef.current.style.transform = `translateY(${proximo}px)`;
-
-          if(proximo<-113){
-            SearchBarRef.current.style.transform = `translateY(-113px)`;
-          }
           variables.animacao = requestAnimationFrame(decel);
         }
+        // else{setIsDragging(false);}
       };
       decel();
     }

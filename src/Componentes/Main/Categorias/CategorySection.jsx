@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useState, useRef, useEffect} from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled } from './ComponentesCategorias';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
 import { useScroll } from '../../../useScroll';
 
-const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) => {
+const CategoryItem = React.forwardRef(({ category, handleCategoryClick, isSelected }, ref) => {
   let touchStartTime = null;
 
   const handlePointerDown = () => {
@@ -14,8 +14,8 @@ const CategoryItem = React.forwardRef(({ category, onClick, isSelected }, ref) =
 
   const handlePointerUp = () => {
     const duration = Date.now() - touchStartTime;
-    if (duration < 100) {
-      onClick();
+    if (duration < 100 ) {
+      handleCategoryClick(category.id)
     }
   };
 
@@ -106,7 +106,8 @@ function CategorySection({setCurrentCategory, wasResized}) {
           <CategoryItem 
             ref={index === 0 ? CategoryItemRef : null}
             category={cat}  
-            key={cat.id} onClick={() => handleCategoryClick(cat.id)}
+            key={cat.id}
+            handleCategoryClick={handleCategoryClick}
             isSelected={cat.id === selectedCategoryId}/>
         ))}
       </Divf>

@@ -12,7 +12,7 @@ function SearchBar() {
   const [returnedProducts, setReturnedproducts] = useState([]);
   
   const {setSearchProducts, setSearchQuantities, viewSuggestion, 
-  setviewSuggestion, SearchBarRef, preventClick, setPreventClick} = useContext(CartContext);
+  setviewSuggestion, SearchBarRef, preventClick, setPreventClick, translateMain} = useContext(CartContext);
   const [searchInitiated, setSearchInitiated] = useState(false);
   const [completes, setCompletes] = useState(['']);
 
@@ -55,6 +55,7 @@ function SearchBar() {
     else{
       const results = binaryPrefixSearch(AllProducts, text);
       setReturnedproducts(results);
+
     }
     setSearchInitiated(true);
   }
@@ -72,7 +73,7 @@ function SearchBar() {
     });
     setCompletes([...newCompletions]);
     }
-    if(term.length<=1){setCompletes([''])}
+    if(e.target.value == ''){setCompletes([''])}
   }
 
   function animateInputMessage(message) {
@@ -112,7 +113,7 @@ function SearchBar() {
   }, [returnedProducts]);
 
   return (
-    <ContainerForFormStyled ref={SearchBarRef} $copy={false}>
+    <ContainerForFormStyled ref={SearchBarRef} $copy={false} $translateValue={translateMain}>
         <FormStyled onSubmit={(e) => {
           e.preventDefault();
           handleClickSearch(0);

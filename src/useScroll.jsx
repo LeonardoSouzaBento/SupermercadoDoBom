@@ -119,6 +119,9 @@ export function useScroll() {
       if (Math.abs(deslocamento) < 0.5) return;
       const velocidade = deslocamento / dt;
       variables.velocidade = velocidade;
+      if(Math.abs(velocidade)>1.7){
+        variables.velocidade = 1.7 * Math.sign(velocidade);
+      }
 
       variables.time_touch = now;
       variables.toc_ini= x;
@@ -142,7 +145,7 @@ export function useScroll() {
       }
   
       const decel = () => {
-        if (Math.abs(variables.velocidade) > 0.01) {
+        if (Math.abs(variables.velocidade) > 0.15) {
           variables.velocidade *= 0.95;
           let proximo = translateRefs[i].current + variables.velocidade * 16;
   

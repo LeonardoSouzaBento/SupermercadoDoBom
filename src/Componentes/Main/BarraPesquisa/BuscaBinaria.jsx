@@ -4,44 +4,29 @@ export function binaryPrefixSearch(array, prefix) {
   }
 
   if (!prefix.trim()) return [];
-
-  let left = 0;
-  let right = array.length - 1;
-  let matchIndex = -1;
   const normalizedPrefix = normalize(prefix);
+  const results = [];
+  let start = 0;
+  let end = array.length - 1;
 
-  // Etapa 1: encontrar um índice com prefixo correspondente
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
-    const normalizedName = normalize(array[mid].name);
+  while (end - start > 40) {
+    const midIndex = Math.floor((start + end) / 2);
+    const midElementNormalized = array[midIndex]?.name ? normalize(array[midIndex].name) : '';
 
-    if (normalizedName.startsWith(normalizedPrefix)) {
-      matchIndex = mid;
-      break;
-    } else if (normalizedName < normalizedPrefix) {
-      left = mid + 1;
+    if (midElementNormalized.startsWith(normalizedPrefix)) {
+      end = midIndex; // Tenta encontrar um índice ainda menor que também comece com o prefixo
+    } else if (midElementNormalized < normalizedPrefix) {
+      start = midIndex + 1;
     } else {
-      right = mid - 1;
+      end = midIndex - 1;
     }
   }
 
-  // Nenhum encontrado
-  if (matchIndex === -1) return [];
-
-  // Etapa 2: expandir para os lados
-  const results = [];
-
-  // Para trás
-  let i = matchIndex;
-  while (i >= 0 && normalize(array[i].name).startsWith(normalizedPrefix)) {
-    i--;
-  }
-  i++; // voltar para o primeiro válido
-
-  // Para frente
-  while (i < array.length && normalize(array[i].name).startsWith(normalizedPrefix)) {
-    results.push(array[i]);
-    i++;
+  for (let i = start; i <= end; i++) {
+    const currentElementNameNormalized = array[i]?.name ? normalize(array[i].name) : '';
+    if (currentElementNameNormalized.startsWith(normalizedPrefix)) {
+      results.push(array[i]);
+    }
   }
 
   return results;

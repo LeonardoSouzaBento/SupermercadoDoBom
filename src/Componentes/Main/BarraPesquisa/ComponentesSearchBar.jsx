@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 
 
-export const ContainerForFormStyled = styled.div`
+export const ContainerForFormStyled = styled.div.attrs(props => ({
+  style: {
+    transform: `translateY(${props.$translateValue ?? 0}px)`
+  }
+  }))`
   width: 100%;
   padding-top: 13px;
   padding-bottom: 14px;
@@ -68,7 +72,6 @@ export const InputStyled = styled.input`
   @media screen and (min-width: 769px){
     font-size: 1.04em;
   }
-
 `;
 
 export const DivSpanStyled = styled.div`
@@ -170,7 +173,7 @@ export const PStyled = styled.p`
   width: auto;
   padding: 9px 16px;
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(187, 187, 187);
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 20px;
   text-transform: uppercase;
   font-family: "Roboto", Arial, sans-serif;

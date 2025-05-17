@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 import { AllProducts } from '../../../data/AllProducts';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
 import { binaryPrefixSearch } from './BuscaBinaria';
-import { ContainerForFormStyled, FormStyled ,InputStyled, DivSpanStyled, CompletionsDivStyled, PStyled } from './ComponentesSearchBar';
+import { ContainerForFormStyled, FormStyled, InputStyled, DivSpanStyled, CompletionsDivStyled, PStyled } from './ComponentesSearchBar';
+
 
 export default function SearchBarCopy() {
   const [input, setInput] = useState("");
@@ -18,11 +18,11 @@ export default function SearchBarCopy() {
     const results = binaryPrefixSearch(AllProducts, term);
     const threeResults = results.slice(0, 4);
     const newCompletions = threeResults.map(product => {
-        return product.name.slice(0, 13);
+      return product.name.slice(0, 13);
     });
     setCompletes([...newCompletions]);
     }
-    if(term.length<=1){setCompletes([''])}
+    if(e.target.value == ''){setCompletes([''])}
   }
 
   function handleClickSearch(action, text) {
@@ -30,7 +30,9 @@ export default function SearchBarCopy() {
       const term = input.toLowerCase();
       const results = binaryPrefixSearch(AllProducts, term);
       setSearchProducts(results);
-      setSearchQuantities(results.map(() => 0));}
+      setSearchQuantities(results.map(() => 0));
+      setCompletes(['']);
+    }
     else{
       const results = binaryPrefixSearch(AllProducts, text);
       setSearchProducts(results);

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {FormStyled, InputStyled, DivSpanStyled} from './ComponentesSearchBar'
+import {FormStyled, DivSpanStyled} from './ComponentesSearchBar'
 
 const ContainerForFormStyled = styled.div`
   width: 100%;
@@ -8,6 +8,17 @@ const ContainerForFormStyled = styled.div`
   position: relative;
   visibility: hidden;
 `;
+
+export const InputStyled = styled.input`
+  height: 100%;
+  width: 100%;
+  touch-action: auto;
+  border-radius: 22px;
+  border: 1px solid rgb(172, 172, 172);
+  background-color: ${props => props.$copy ? 'rgb(255, 255, 255)' : 'white'};
+  border: 4px solid blue;
+`;
+
 
 export default function SearchBarNoFunctions() {
   return (

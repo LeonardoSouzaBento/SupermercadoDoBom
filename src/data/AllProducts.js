@@ -155,7 +155,7 @@ export const AllProducts = [
     id: 51,
     url: 'https://th.bing.com/th/id/OIP.t1QgaD4e2oT-gglRLF240QHaHa?rs=1&pid=ImgDetMain',
     weight: '1 kg',
-    name: 'Feijão-Carioca Kicaldo',
+    name: 'Feijão Carioca Kicaldo',
     price: '8,00',
     cat_id: 1
   },
@@ -163,7 +163,7 @@ export const AllProducts = [
     id: 49,
     url: 'https://fortatacadista.vteximg.com.br/arquivos/ids/299408-1000-1000/2713870_7896079461117_FEIJAO-PRETO-NAMORADO-1KG-TP1.jpg?v=637764861700730000',
     weight: '1 kg',
-    name: 'Feijão-Preto Namorado',
+    name: 'Feijão Preto Namorado',
     price: '10,00',
     cat_id: 1
   },
@@ -276,7 +276,7 @@ export const AllProducts = [
     discount: 35,
     url: 'https://supermercadosimperatriz.vteximg.com.br/arquivos/ids/182881-1000-1000/cocacola-2litros.png?v=637774374772900000',
     weight: '2 L',
-    name: 'Refrigerante Coca-Cola',
+    name: 'Refrigerante Coca Cola',
     price: '8,99'
   },
   {

@@ -22,11 +22,15 @@ const DivStyled= styled.div`
   padding: 32px 20px;
   border-radius: 8px;
   position: absolute;
-  right: 8px;
-  bottom: 8px;
+  right: 56px;
+  bottom: 56px;
   background-color:rgb(255, 255, 255);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.59);
   gap: 8px;
+
+  @media screen and (min-width: 320px) and (max-width: 576px){
+    right: 8px;
+  }
 `;
 
 const DivCancelStyled = styled.div`

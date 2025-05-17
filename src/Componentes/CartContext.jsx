@@ -16,6 +16,7 @@ export function CartProvider({ children }) {
   const [translateX2, setTranslateX2] = useState(0);
   const [translateX3, setTranslateX3] = useState(0);
   const [translateMain, setTranslateMain] = useState(0);
+  // const [isDragging, setIsDragging] = useState(false);
 
   const advertisementsRef = useRef();
   const categoriesRef = useRef();
