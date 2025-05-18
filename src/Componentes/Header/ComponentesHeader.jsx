@@ -1,5 +1,6 @@
-import React from 'react';
+import { useState, useContext } from 'react';
 import styled from 'styled-components';
+import { ViewContext } from '../viewContext';
 
 const DivLogoENomeStyled = styled.div`
     height: 100%;
@@ -134,28 +135,43 @@ export const Divlogo = () => {
 
 const DivMoreOptionsStyled = styled.div`
     width: max-content;
-    height: 40px;
+    height: 44px;
     display: flex;
     align-items: center;
-    background-color:rgb(215, 69, 69);
-
+    justify-content: center;
+    background-color: ${props=>props.$changeBackground? 'rgb(174, 56, 56)':'rgb(215, 69, 69)'};
     color: white;
+    position: relative;
+    z-index: 2;
+    transition: all 100ms ease;
+    box-sizing: border-box;
+    cursor: pointer;
+
     @media (max-width: 992px){
-        width: 40px;
         display: flex;
-        align-items: center;
-        justify-content: center;
         border-radius: 50%;
-        box-sizing: border-box;
-        transition: all 100ms ease;
-        box-shadow: 0px 0px 2px rgba(255, 88, 88, 0.5);
+        box-shadow: 0px 0px 2px rgba(255, 88, 88, 0.59);
     }
     @media (min-width: 993px){
         gap: 8px;
         border-radius: 9px;
         padding: 7px 15px;
-        box-sizing: border-box;
-        transition: all 100ms ease;
+    }
+    @media screen and (min-width: 320px) and (max-width: 375px) {
+        width: 42px;
+        height: 42px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+        width: 44px;
+        height: 44px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+        width: 47px;
+        height: 47px;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+        width: 49px;
+        height: 49px;
     }
 `;
 
@@ -167,18 +183,44 @@ const PStyled = styled.p`
     @media (max-width: 993px){
        display: none;
     }
+    user-select: none;
 `;
 
 const SpanStyled = styled.span`
-    font-size: 1.34em;
+    font-size: 1.45em;
     font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 28;
+    cursor: pointer;
+    user-select: none;
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+        font-size: 1.5em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+        font-size: 1.7em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+        font-size: 1.8em;
+    }
 `;
 
 //div das opcoes
 export const MoreOptions= () => {
+    const {viewOptions, setViewOptions} = useContext(ViewContext);
+
+    function handleClick() {
+        if(viewOptions === false){
+            setViewOptions(true)
+        }
+        else{
+            setViewOptions(false)
+        }
+    }
+
     return (
-        <DivMoreOptionsStyled>
-            <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
+        <DivMoreOptionsStyled 
+        $changeBackground={viewOptions} 
+        onPointerDown={handleClick}
+        data-ignore-click>
+            <SpanStyled className="material-symbols-outlined">menu</SpanStyled>
             <PStyled>Mais opções</PStyled>
         </DivMoreOptionsStyled>
     )

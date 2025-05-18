@@ -9,14 +9,11 @@ export function CartProvider({ children }) {
   const [limitCategories, setLimitCategories] = useState(0);
   const [limitAdvertisements, setLimitAdvertisements] = useState(0);
   const [limitMain, setLimitMain] = useState(0);
-  const [viewSuggestion, setviewSuggestion] = useState(false); // Sugestão de busca
-  const [preventClick, setPreventClick] = useState(false); // prevenir click durante a sugestão
 
   const [translateX1, setTranslateX1] = useState(0);
   const [translateX2, setTranslateX2] = useState(0);
   const [translateX3, setTranslateX3] = useState(0);
   const [translateMain, setTranslateMain] = useState(0);
-  // const [isDragging, setIsDragging] = useState(false);
 
   const advertisementsRef = useRef();
   const categoriesRef = useRef();
@@ -116,7 +113,7 @@ export function CartProvider({ children }) {
     translateMain, setTranslateMain, limitMain, setLimitMain, setLimitProductList, limitProductList,
     setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities, viewSuggestion, preventClick, setPreventClick, setviewSuggestion, SearchBarRef}}>
+    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities, SearchBarRef}}>
       {children}
     </CartContext.Provider>
   );

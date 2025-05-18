@@ -1,22 +1,21 @@
 import styled from 'styled-components';
 import { Divlogo, MoreOptions} from './ComponentesHeader';
-// import SearchBar from '../Main/BarraPesquisa/SearchBar';
 import SearchBarNoFunctions from '../Main/BarraPesquisa/SearchBarNoFunctions';
 
 export const HeaderStyled = styled.header `
+    width: 100%;
+    max-width: 1390px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
-    max-width: 1390px;
     background-color: rgb(237, 237, 237);
-    height: 180px;
     z-index: 2;
     flex: none;
 `;
 const NomeELogoStyled= styled.div`
-    height: 120px;
+    height: 40px;
     width: 90%;
     max-width: 1150px;
     margin-top: 0px;

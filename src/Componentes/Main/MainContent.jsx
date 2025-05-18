@@ -6,9 +6,11 @@ import PromoSection from './PromoSection';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components';
 import { CartContext } from '../CartContext';
+import { ViewContext } from '../viewContext';
 import { useScrollMain } from '../../useScrollMain';
 import SearchBar from './BarraPesquisa/SearchBar';
-// import SearchBar from './BarraPesquisa/SearchBar';
+import OptionSection from './OptionSection';
+
 
 const Main = styled.main.attrs(props => ({
   style: {
@@ -32,8 +34,11 @@ const ShadowBottomStyled = styled.div`
 `;
 
 function MainContent() {
-  const {currentCategory, setCurrentCategory, setLimitMain, mainRef, translateMain, viewCancel} = useContext(CartContext)
+  const { viewOptions, setViewOptions} = useContext(ViewContext);
+  const {currentCategory, setCurrentCategory, setLimitMain, mainRef, translateMain} = useContext(CartContext)
   const resizeTimeoutId = useRef(null);
+  const divRef = useRef(null);
+  
   const calcLimit = useCallback(() => {
     if(mainRef.current){
       const heightWindow = window.innerHeight;
@@ -72,8 +77,30 @@ function MainContent() {
 
   useScrollMain();
 
+  //Esconder mais opções
+  useEffect(() => {
+    const handlePointerDown = (e) => {
+      if (e.target.closest('[data-ignore-click]')) return;
+      setViewOptions(false);
+    };
+
+    const divElement = divRef.current;
+
+    if (viewOptions && divElement) {
+      divElement.addEventListener('pointerdown', handlePointerDown);
+    } else if (divElement) {
+      divElement.removeEventListener('pointerdown', handlePointerDown);
+    }
+
+    return () => {
+      if (divElement) {
+        divElement.removeEventListener('pointerdown', handlePointerDown);
+      }
+    };
+  }, [viewOptions, setViewOptions]); 
+
   return (
-   <div>
+   <div ref={divRef}>
     <SearchBar></SearchBar>
     <Main ref={mainRef} $translateValue={translateMain}>
       <Header/>
@@ -82,6 +109,7 @@ function MainContent() {
       <PromoSection categoryKey={currentCategory}/>
       <ShadowBottomStyled/>
     </Main>
+    {viewOptions && (<OptionSection></OptionSection>)}
     <Footer/>
   </div>
   );

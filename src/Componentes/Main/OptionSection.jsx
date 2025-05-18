@@ -1,99 +1,201 @@
-import React from 'react'
+import { useState } from 'react';
 import styled from 'styled-components';
 
-const FundoStyled = styled.div`
+export const ContainerStyled = styled.div`
+    width: max-content;
+    height: max-content;
     position: fixed;
-    top: 0px;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.505);
-    z-index: 5;
-    transition: opacity 0.3s ease;
-    opacity: 0%;
-    touch-action: none;
+    right: 4.8%;
+    top: 120px;
+    background-color: transparent;
+    z-index: 6;
+
+    @media screen and (min-width: 320px) and (max-width: 375px) {
+      top: 124px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      top: 123px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      top: 121px;
+    }
 `;
 
-const DivOptions = styled.div`
-    min-width: 300px;
-    width: 70%;
-    max-width: 360px;
-    position: absolute;
-    background-color: white;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    border-radius: 8px 0px 0px 8px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    font-family: "Fira Sans", sans-serif;
-    padding: 20px 25px;
-    padding-right: 10px;
-    right: 0px;
-    bottom: 60px;
+export const DivNameSpanStyled = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: max-content;
+  width: 260px;
+  border-radius: 24px;
+  margin-bottom: 18px;
 `;
 
-const DivHeadOptions = styled.div`
-  padding: 0px;
-  margin-bottom: 8px;
-`;
-
-const PaiOptions = styled.div`
+const DivPStyled = styled.div`
     display: flex;
     align-items: center;
-    padding-top:12px;
-    gap: 12px;
-    padding-bottom: 12px;
+    width: max-content;
+    background-color: #741d09;
+    margin-right: -20px;
+
+    @media screen and (min-width: 320px) and (max-width: 375px) {
+      height: 44px;
+       border-radius: 21px 0px 0px 21px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      height: 46px;
+      border-radius: 22px 0px 0px 22px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      height: 49px;
+       border-radius: 24px 0px 0px 24px;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      height: 50.8px;
+      border-radius: 25px 0px 0px 25px;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      height: 51px;
+      border-radius: 25px 0px 0px 25px;
+    }
+    @media screen and (min-width: 1201px) {
+      height: 52px;
+      border-radius: 26px 0px 0px 26px;
+    }
 `;
 
-const SpanOptions = styled.span`
-  font-variation-settings:'FILL' 1;
-  color: rgb(101, 101, 101);
-  font-size: 1.35em;
-  color: #4e4848;
+export const POptionStyled = styled.p`
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  color: white;
+  padding-right: 36px;
+  padding-left: 24px;
+  outline: 1px solid rgba(0, 0, 0, 0.19);
+
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.05em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.06em;
+  }
+  @media screen and (min-width: 993px){
+     font-size: 1.065em;
+  }
 `;
 
-const OptionsP = styled.p`
-  letter-spacing: 0.5px;
+export const DivSpanStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #741D09;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.26);
+  cursor: default;
+
+  @media screen and (min-width: 320px) and (max-width: 375px) {
+    width: 44px;
+    height: 44px;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    width: 46px;
+    height: 46px;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    width: 49px;
+    height: 49px;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    width: 50.8px;
+    height: 50.8px;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    width: 51px;
+    height: 51px;
+  }
+  @media screen and (min-width: 1201px) {
+    width: 52px;
+    height: 52px;
+  }
 `;
 
+export const SpanOptionsStyled = styled.span`
+  font-weight: 300;
+  font-size: 1.9em;
+  color: rgb(255, 255, 255);
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 300,
+  'GRAD' -25,
+  'opsz' 24;
+  cursor: default;
+  user-select: none;
+`;
+
+const SpanOptionsStyled2 = styled(SpanOptionsStyled)`
+  font-size: 1.75em;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' -25,
+  'opsz' 24;
+  padding-top: 3px;
+`;
 
 const OptionSection = () => {
-  return (
-    <FundoStyled>
-        <DivOptions>
-            <DivHeadOptions/>
-            <PaiOptions>
-                <SpanOptions className="material-symbols-rounded">settings</SpanOptions>
-                <OptionsP>Configurações</OptionsP>
-            </PaiOptions>
 
-            <PaiOptions>
-                <SpanOptions className="material-symbols-rounded">notifications</SpanOptions>
-                <OptionsP>Notificações</OptionsP>
-            </PaiOptions>
+    const [viewNameOption, setViewNameOption] = useState([false, false, false]);
+    function viewTheNameOption(index) {
+      setViewNameOption(viewNameOption.map((_, i) => {
+        return i === index ? true : false;
+      }));
+    }
 
-            <PaiOptions>
-                <SpanOptions className="material-symbols-rounded">shopping_bag</SpanOptions>
-                <OptionsP>Meus Pedidos</OptionsP>
-            </PaiOptions>
+    return (
+        <ContainerStyled>
+            <DivNameSpanStyled>
+                {viewNameOption[0] && (
+                <DivPStyled>
+                  <POptionStyled>Sobre o autor</POptionStyled>
+                </DivPStyled>)}
 
-            <PaiOptions>
-                <SpanOptions className="material-symbols-rounded">mail</SpanOptions>
-                <OptionsP>Fale Conosco</OptionsP>
-            </PaiOptions>
+                <DivSpanStyled 
+                onMouseMove={()=>{viewTheNameOption(0)}} 
+                onMouseLeave={()=>{setViewNameOption([false, false, false])}}>
+                    <SpanOptionsStyled className='material-symbols-rounded'>
+                       person_search
+                    </SpanOptionsStyled>
+                </DivSpanStyled>
+            </DivNameSpanStyled>
 
-            <PaiOptions>
-                <SpanOptions className="material-symbols-rounded"> id_card</SpanOptions>
-                <OptionsP>Trabalhe Conosco</OptionsP>
-            </PaiOptions>
+            <DivNameSpanStyled >
+                {viewNameOption[1] && (
+                <DivPStyled>
+                  <POptionStyled>Deixar Comentário</POptionStyled>
+                </DivPStyled>)}
 
-            <PaiOptions>
-                <SpanOptions className="material-symbols-rounded"> login</SpanOptions>
-                <OptionsP>Entrar/Se cadastrar</OptionsP>
-            </PaiOptions>
-        </DivOptions>
-    </FundoStyled>
-  )
+                <DivSpanStyled
+                onMouseMove={()=>{viewTheNameOption(1)}} 
+                onMouseLeave={()=>{setViewNameOption([false, false, false])}}>
+                    <SpanOptionsStyled2 className='material-symbols-rounded'>
+                        add_comment
+                    </SpanOptionsStyled2>
+                </DivSpanStyled>
+            </DivNameSpanStyled>
+
+            <DivNameSpanStyled>
+                {viewNameOption[2] && (<DivPStyled>
+                  <POptionStyled>Sobre o site</POptionStyled>
+                </DivPStyled>)}
+                <DivSpanStyled
+                onMouseMove={()=>{viewTheNameOption(2)}} 
+                onMouseLeave={()=>{setViewNameOption([false, false, false])}}>
+                    <SpanOptionsStyled className='material-symbols-rounded'>
+                        description
+                    </SpanOptionsStyled>
+                </DivSpanStyled>
+            </DivNameSpanStyled>
+        </ContainerStyled>
+    )
 }
 
 export default OptionSection;

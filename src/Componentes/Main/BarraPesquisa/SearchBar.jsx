@@ -2,6 +2,7 @@ import { useState, useEffect, useContext, useRef } from 'react';
 import { AllProducts } from '../../../data/AllProducts';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
+import { ViewContext } from '../../viewContext';
 import { binaryPrefixSearch } from './BuscaBinaria';
 import animateMessage from '../../Funções/AnimationOfWrite';
 import {ContainerForFormStyled, FormStyled, InputStyled, DivSpanStyled, DivMsgStyled, PointedShapeStyed, PMsgStyled, CompletionsDivStyled, PStyled} from './ComponentesSearchBar'
@@ -10,9 +11,10 @@ function SearchBar() {
   const navigate = useNavigate();
   const [thisInput, setThisInput] = useState("");
   const [returnedProducts, setReturnedproducts] = useState([]);
-  
-  const {setSearchProducts, setSearchQuantities, viewSuggestion, 
-  setviewSuggestion, SearchBarRef, preventClick, setPreventClick, translateMain} = useContext(CartContext);
+
+  const {preventClick, setPreventClick, viewSuggestion, setviewSuggestion} = useContext(ViewContext);
+  const {setSearchProducts, setSearchQuantities, SearchBarRef, translateMain} = useContext(CartContext);
+
   const [searchInitiated, setSearchInitiated] = useState(false);
   const [completes, setCompletes] = useState(['']);
 
