@@ -2,7 +2,7 @@ import { useRef, useContext, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import {ProductListHome} from './ProductSection/ProductListHome';
 import { CartContext } from '../CartContext';
-import {useScrollX} from '../../hooks/useScrollX'
+// import {useScrollX} from '../../hooks/useScrollX'
 
 const PaiAllProductsStyled = styled.div`
    overflow-x: hidden;
@@ -27,7 +27,7 @@ const PaiAllProductsStyled = styled.div`
 `;
 
 function PromoSection({variant, categoryKey}) {
-  useScrollX();
+  // useScrollX();
   const {setLimitProductList, currentCategory, allProductsInCat, promotionsRef, translateX3} = useContext(CartContext);
   const paiAllProductsRef=useRef(null);
 

@@ -30,7 +30,8 @@ export const Divf = styled.div.attrs(props => ({
   }
   }))`
   will-change: transform;
-  overflow-x: visible;
+  /* overflow-x: visible; */
+  overflow-x: scroll;
   width: 100%;
   position: relative;
   -webkit-user-select: none;
@@ -112,11 +113,11 @@ export const ImgStyled = styled.img`
   height: 40px;
   width: 40px;
   background-color:rgb(255, 83, 83);
-  border-radius: 50%;
+  border-radius: 47%;
   filter: contrast(1.7) saturate(1.8);
   transition: all 0.32s ease;
   padding: 4px;
-  box-shadow: 0px 0px 2px rgb(91, 91, 91);
+  /* box-shadow: 0px 0px 2px rgb(91, 91, 91); */
 
   @media screen and (min-width: 320px) and (max-width: 375px){
     width: 39px;

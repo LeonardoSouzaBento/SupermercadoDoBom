@@ -1,4 +1,24 @@
-pegar todos os produtos iguais e separar deles a segunda parte
+  //alteração do overflow se for mobile
+  const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    // Se o desktop estiver com tela reduzida pela aba dev
+    const handleScrollAttempt = () => {
+      if (window.innerWidth <= 992 && document.body.style.overflow === 'hidden') {
+        document.documentElement.style.overflow = 'auto';
+        document.body.style.overflow = 'auto';
+        window.removeEventListener('wheel', handleScrollAttempt);
+      }
+    };
+
+    calcLimit();
+    if(window.innerWidth <= 992 && isTouchDevice()){
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('wheel', handleScrollAttempt);
+    } else {
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.overflow = 'auto';
+    }
+
 
 
 // const handleResize = useCallback(() => {

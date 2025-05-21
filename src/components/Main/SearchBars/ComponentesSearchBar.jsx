@@ -39,7 +39,7 @@ export const FormStyled = styled.form`
   margin: auto;
   background-color: white;
   border-radius: 20px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
 
   ${props => props.$copy && 'box-shadow: none;'};
   position: relative;

@@ -200,7 +200,7 @@ export const DivOfertaStyled = styled.div`
         border-radius: 4px;
         -webkit-user-select: none;
         user-select: none;
-        touch-action: none;
+        /* touch-action: none; */
     `;
     export const ImgOfertaStyed = styled.img`
         height: 100%;
@@ -209,8 +209,8 @@ export const DivOfertaStyled = styled.div`
         padding: 5px;
         box-sizing: border-box;
         -webkit-user-select: none;
-        user-select: none !important;
-        touch-action: none !important;
+        user-select: none;
+        /* touch-action: none !important; */
     `;
 
     export const DivResizeStyled = styled.div`

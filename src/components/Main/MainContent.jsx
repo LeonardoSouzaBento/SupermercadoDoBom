@@ -1,4 +1,4 @@
-import { useContext, useCallback, useEffect, useRef } from 'react';
+import { useContext, useCallback, useEffect, useRef, useState } from 'react';
 import Header from '../Header/Header';
 import AnnouncementSection from './AnnoucementSection/AnnouncementSection';
 import CategoriesSection from './CategoriesSection/CategoriesSection';
@@ -8,7 +8,7 @@ import Footer from '../Footer/Footer';
 import styled from 'styled-components';
 import { CartContext } from '../CartContext';
 import { ViewContext } from '../viewContext';
-import {useScrollYHome} from '../../hooks/useScrollYHome'
+// import {useScrollYHome} from '../../hooks/useScrollYHome'
 import SearchBar from './SearchBars/SearchBar';
 import OptionSection from './OptionSection';
 
@@ -36,6 +36,8 @@ const ShadowBottomStyled = styled.div`
 function MainContent() {
   const { viewOptions, setViewOptions} = useContext(ViewContext);
   const {currentCategory, setCurrentCategory, setLimitMain, mainRef, translateMain} = useContext(CartContext)
+  const [isMobile, setIsMobile] = useState(false);
+
   const resizeTimeoutId = useRef(null);
   const divRef = useRef(null);
   
@@ -50,23 +52,20 @@ function MainContent() {
 
   useEffect(() => {
     const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    // Se o desktop estiver com tela reduzida pela aba dev
+    //caso a aba esteja aberta no inicio do carregamento
     const handleScrollAttempt = () => {
-      if (window.innerWidth <= 992 && document.body.style.overflow === 'hidden') {
-        document.documentElement.style.overflow = 'auto';
-        document.body.style.overflow = 'auto';
+      if (window.innerWidth <= 992 && isMobile) {
+        setIsMobile(false);
         window.removeEventListener('wheel', handleScrollAttempt);
       }
     };
 
     calcLimit();
     if(window.innerWidth <= 992 && isTouchDevice()){
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
+      setIsMobile(true);
       window.addEventListener('wheel', handleScrollAttempt);
     } else {
-      document.documentElement.style.overflow = 'auto';
-      document.body.style.overflow = 'auto';
+      setIsMobile(false);
     }
   }, [calcLimit])
   
@@ -96,7 +95,7 @@ function MainContent() {
     };
   }, [handleResize]);
 
-  useScrollYHome();
+  // useScrollYHome();
 
   //Esconder mais opções com toque fora
   useEffect(() => {
@@ -125,10 +124,10 @@ function MainContent() {
     <SearchBar></SearchBar>
     <Main ref={mainRef} $translateValue={translateMain}>
       <Header/>
-      <AnnouncementSection />
+      <AnnouncementSection isMobile={isMobile}/>
       <LabelPromos></LabelPromos>
-      <CategoriesSection setCurrentCategory={setCurrentCategory}/>
-      <PromoSection categoryKey={currentCategory}/>
+      <CategoriesSection setCurrentCategory={setCurrentCategory} isMobile={isMobile}/>
+      <PromoSection categoryKey={currentCategory} isMobile={isMobile}/>
       <ShadowBottomStyled/>
     </Main>
     {viewOptions && (<OptionSection></OptionSection>)}

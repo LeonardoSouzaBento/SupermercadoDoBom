@@ -36,9 +36,9 @@ export const P = styled.p`
   font-size: 1.15em;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 500;
-  color:rgb(153, 71, 74);
+  /* color:rgb(153, 71, 74); */
+  color: #6C0A0B;
 
- //celulares
   @media screen and (min-width: 320px) and (max-width:374px){
     font-size: 1.14em;
     margin-bottom: 29px;
@@ -50,11 +50,9 @@ export const P = styled.p`
     font-size: 1.26em;
     margin-bottom: 29px;
   }
-  //tablets
   @media screen and (min-width: 769px) and (max-width:992px){
     font-size: 1.28em;
   }
-  //notebooks
   @media screen and (min-width: 993px) and (max-width:1200px){
     font-size: 1.30em;
     margin-top: 9px;
@@ -64,13 +62,18 @@ export const P = styled.p`
   }
 `;
 
+//transform: `translateX(${props.$translateValue ?? 0}px)`
+
 export const Advertisements = styled.div.attrs(props => ({
   style: {
-    transform: `translateX(${props.$translateValue ?? 0}px)`
+    transform: `translateX(${0}px)`
   }
   }))`
   will-change: transform;
-  overflow-x: visible;
+  /* overflow-x: visible; */
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory; //scroll para mobile
+  scroll-behavior: smooth;
   height: 174px;
   width: 100%;
   margin: auto;
@@ -136,7 +139,7 @@ export const Img = styled.img`
     z-index: 1;
     -webkit-user-select: none;
     user-select: none;
-    touch-action: none;
+    /* touch-action: none; */
 `;
 
 export const Pagination = styled.div`

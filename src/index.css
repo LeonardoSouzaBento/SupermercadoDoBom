@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
 }
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
   visibility: hidden;
   width: 0;
   height: 0px;
-}
+} */
 
 /* html, body {
   overflow: hidden;
