@@ -8,15 +8,10 @@ import Footer from '../Footer/Footer';
 import styled from 'styled-components';
 import { CartContext } from '../CartContext';
 import { ViewContext } from '../viewContext';
-// import {useScrollYHome} from '../../hooks/useScrollYHome'
 import SearchBar from './SearchBars/SearchBar';
 import OptionSection from './OptionSection';
 
-const Main = styled.main.attrs(props => ({
-  style: {
-    transform: `translateY(${props.$translateValue ?? 0}px)`,
-  }
-  }))`
+const Main = styled.main`
   max-width: 1390px;
   margin: auto;
   padding: 0px;
@@ -29,73 +24,56 @@ const ShadowBottomStyled = styled.div`
   position: fixed;
   bottom: 0px;
   height: 36px;
-  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.12), rgba(240, 240, 240, 0));
+  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.1), rgba(240, 240, 240, 0));
   background-size: 100% 100%;
 `;
 
 function MainContent() {
   const { viewOptions, setViewOptions} = useContext(ViewContext);
-  const {currentCategory, setCurrentCategory, setLimitMain, mainRef, translateMain} = useContext(CartContext)
-  const [isMobile, setIsMobile] = useState(false);
+  const {currentCategory, isMobile, setIsMobile} = useContext(CartContext)
 
-  const resizeTimeoutId = useRef(null);
   const divRef = useRef(null);
   
-  const calcLimit = useCallback(() => {
-    if(mainRef.current){
-      const heightWindow = window.innerHeight;
-      const mainHeight = parseFloat(getComputedStyle(mainRef.current).height);
-      const limit = heightWindow - mainHeight;
-      setLimitMain(limit);
-    }
-  },[mainRef, setLimitMain]);
-
   useEffect(() => {
-    const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    //caso a aba esteja aberta no inicio do carregamento
-    const handleScrollAttempt = () => {
-      if (window.innerWidth <= 992 && isMobile) {
+    // detectar mouse
+    const isTouchDevice = () => {
+      return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    };
+    const detectMouseEvent = (e) => {
+      const wasMouseEvent = (e.type === 'wheel') || (e.type === 'pointerdown' && e.pointerType === 'mouse');
+
+      if (window.innerWidth <= 992 && isMobile && wasMouseEvent) {
         setIsMobile(false);
-        window.removeEventListener('wheel', handleScrollAttempt);
+        window.removeEventListener('wheel', detectMouseEvent);
+        window.removeEventListener('pointerdown', detectMouseEvent);
+        document.body.classList.add('hide-scrollbar');
       }
+      window.removeEventListener('wheel', detectMouseEvent);
+      window.removeEventListener('pointerdown', detectMouseEvent);
     };
 
-    calcLimit();
-    if(window.innerWidth <= 992 && isTouchDevice()){
+    if (window.innerWidth <= 992 && isTouchDevice()) {
       setIsMobile(true);
-      window.addEventListener('wheel', handleScrollAttempt);
+      window.addEventListener('wheel', detectMouseEvent);
+      window.addEventListener('pointerdown', detectMouseEvent);
     } else {
       setIsMobile(false);
-    }
-  }, [calcLimit])
-  
-  const handleResize = useCallback(() => {
-    if (resizeTimeoutId.current) {
-      clearTimeout(resizeTimeoutId.current);
+      document.body.classList.add('hide-scrollbar');
     }
 
-    resizeTimeoutId.current = setTimeout(() => {
-      calcLimit();
-      resizeTimeoutId.current = null;
-    }, 300);
-  }, [calcLimit]);
-  
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    // detectar toque touch
+    const detectTouchEvent = ()=>{
+      setIsMobile(true);
+      window.removeEventListener('touchstart', detectTouchEvent)
+    }
+    window.addEventListener('touchstart', detectTouchEvent)
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      document.documentElement.style.overflow = ''; 
-      document.body.style.overflow = '';
-
-      if (resizeTimeoutId.current) {
-        clearTimeout(resizeTimeoutId.current);
-      }
+      window.removeEventListener('touchstart', detectTouchEvent)
+      window.removeEventListener('wheel', detectMouseEvent);
+      window.removeEventListener('pointerdown', detectMouseEvent);
     };
-  }, [handleResize]);
-
-  // useScrollYHome();
+  }, []);
 
   //Esconder mais opções com toque fora
   useEffect(() => {
@@ -122,12 +100,12 @@ function MainContent() {
   return (
    <div ref={divRef}>
     <SearchBar></SearchBar>
-    <Main ref={mainRef} $translateValue={translateMain}>
+    <Main>
       <Header/>
-      <AnnouncementSection isMobile={isMobile}/>
+      <AnnouncementSection/>
       <LabelPromos></LabelPromos>
-      <CategoriesSection setCurrentCategory={setCurrentCategory} isMobile={isMobile}/>
-      <PromoSection categoryKey={currentCategory} isMobile={isMobile}/>
+      <CategoriesSection/>
+      <PromoSection categoryKey={currentCategory}/>
       <ShadowBottomStyled/>
     </Main>
     {viewOptions && (<OptionSection></OptionSection>)}

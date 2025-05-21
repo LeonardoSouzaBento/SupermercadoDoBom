@@ -2,13 +2,15 @@ import { useRef, useContext, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import {ProductListHome} from './ProductSection/ProductListHome';
 import { CartContext } from '../CartContext';
-// import {useScrollX} from '../../hooks/useScrollX'
+import {useScrollX} from '../../hooks/useScrollX'
 
 const PaiAllProductsStyled = styled.div`
-   overflow-x: hidden;
-   margin-left: 10px;
-   padding-bottom: 36px;
-   @media screen and (min-width: 320px) and (max-width: 375px){
+  overflow-x: hidden;
+  margin-left: 10px;
+  padding-top: 12px;
+  padding-bottom: 36px;
+
+  @media screen and (min-width: 320px) and (max-width: 375px){
     width: calc(100% - 15px);
     margin-left: 15px;
   }
@@ -20,16 +22,20 @@ const PaiAllProductsStyled = styled.div`
     width: calc(100% - 20px);
     margin-left: 20px;
   }
+  @media screen and (min-width: 993px){
+    padding-top: 0px;
+  }
   @media screen and (min-width: 1201px){
     width: calc(100% - 52px);
     margin: auto;
   }
 `;
 
-function PromoSection({variant, categoryKey}) {
-  // useScrollX();
-  const {setLimitProductList, currentCategory, allProductsInCat, promotionsRef, translateX3} = useContext(CartContext);
+function PromoSection({categoryKey}) {
+  
+  const {setLimitProductList, currentCategory, allProductsInCat, promotionsRef, translateX3, isMobile} = useContext(CartContext);
   const paiAllProductsRef=useRef(null);
+  useScrollX();
 
   const calcLimit = useCallback(() => {
     if (!promotionsRef.current || !paiAllProductsRef.current) {
@@ -73,7 +79,12 @@ function PromoSection({variant, categoryKey}) {
 
   return (
     <PaiAllProductsStyled ref={paiAllProductsRef}>
-      <ProductListHome variant={'home'} categoryKey={categoryKey}  ref={promotionsRef} $translateValue={translateX3}></ProductListHome>
+      <ProductListHome 
+      variant={'home'} 
+      categoryKey={categoryKey}  
+      ref={promotionsRef} 
+      $translateValue={translateX3}
+      $isMobile={isMobile}/>
     </PaiAllProductsStyled>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback, useContext } from 'react';
 import { Div, P, Img,Advertisements, Span, Fundo, Pagination} from './ComponentsAnnouncements';
 import { CartContext } from '../../CartContext';
-// import {useScrollX} from '../../../hooks/useScrollX'
+import {useScrollX} from '../../../hooks/useScrollX'
 
 let imageUrls = [
   "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg", //farinha
@@ -13,8 +13,10 @@ let imageUrls = [
 ];
 
 function AnnouncementSection() {
-  // useScrollX();
-  const {setLimitAdvertisements, setTranslateX1, advertisementsRef, translateX1}= useContext(CartContext);
+  const {setLimitAdvertisements, setTranslateX1, advertisementsRef, translateX1, isMobile}= useContext(CartContext);
+
+  useScrollX();
+
   //Caucular os índices centrais
   const divRef = useRef(null);
   const fundoRefs = useRef([]);
@@ -51,7 +53,7 @@ function AnnouncementSection() {
         }
       }
       obterLimites();
-      setTranslateX1(Initialcenter);
+      setTranslateX1(Initialcenter)
     }
   }, [imageUrls]);
 
@@ -82,7 +84,7 @@ function AnnouncementSection() {
   return (
     <Div ref={divRef}>
       <P>Melhores ofertas!</P>
-      <Advertisements ref={advertisementsRef} $translateValue={translateX1}>
+      <Advertisements ref={advertisementsRef} $translateValue={translateX1} $isMobile={isMobile}>
         {imageUrls.map((url, index) => (
           <Fundo key={index} $bg={url} ref={(el) => (fundoRefs.current[index] = el)
           }>

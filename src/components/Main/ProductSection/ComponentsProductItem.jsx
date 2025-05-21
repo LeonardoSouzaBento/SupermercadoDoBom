@@ -16,6 +16,7 @@ export const PaiProdStyled = styled.div`
     position: relative;
     box-sizing: border-box;
     padding-right: 5px;
+    scroll-snap-align: start;
     
     @media screen and (min-width: 320px) and (max-width: 375px){
        max-width: ${(props) => props.$variant === 'home' ? "265px" : "100%"};

@@ -1,3 +1,23 @@
+//rolagem da pagina inicial com translate e rolagem padrão desligada
+
+//variaveis usadas de CartContext
+const [translateMain, setTranslateMain] = useState(0);
+const [limitMain, setLimitMain] = useState(0);
+const mainRef = useRef(null);
+const SearchBarRef = useRef(null);
+
+//calculo de limite do main
+const calcLimit = useCallback(() => {
+  if(mainRef.current){
+    const heightWindow = window.innerHeight;
+    const mainHeight = parseFloat(getComputedStyle(mainRef.current).height);
+    const limit = heightWindow - mainHeight;
+    setLimitMain(limit);
+  }
+},[mainRef, setLimitMain]);
+
+//A barra de pesquisa tambem precisava ser movida
+
 import { useEffect, useContext, useRef, useCallback } from "react";
 import { CartContext } from "../components/CartContext";
 

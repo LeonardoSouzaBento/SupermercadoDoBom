@@ -67,17 +67,17 @@ export function useScrollX() {
     initialY: null,
     firstAngle: null,
     dragY: null,
-    firstCheck: ''
+    firstCheck: null
   });
 
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
-    if (e.type === "mousedown" && e.button !== 0) return;
+    if (e.button !== 0) return;
     //
     const page = pageRef.current;
     const variables = variablesRef.current[i];
-    page.initialX = e.touches ? e.touches[0].clientX : e.clientX;
-    page.initialY = e.touches ? e.touches[0].clientY : e.clientY;
+    page.initialX =  e.clientX;
+    page.initialY =  e.clientY;
     page.deltaY = 0;
     page.speed=0;
     //
@@ -109,18 +109,18 @@ export function useScrollX() {
       page.firstDiffX = dx;
       page.firstDiffY = dy;
       page.firstAngle  = Math.atan2(dy, dx) * (180 / Math.PI);
-      page.firstAngle < 45 ? page.firstCheck = 'divs':page.firstCheck = 'page';
+      if (page.firstAngle < 45) page.firstCheck = true;
     }
 
-    if (page.firstAngle !== null && page.firstCheck === 'divs') {
+    if (page.firstAngle !== null && page.firstCheck === true) {
       page.dragY = false;
-      const deslocamento = (x - variables.toc_ini)*1.3;
+      const deslocamento = x - variables.toc_ini;
 
       if (Math.abs(deslocamento) < 0.5) return;
-      const velocidade = (deslocamento / dt)*1.3;
+      const velocidade = deslocamento / dt;
       variables.velocidade = velocidade;
-      if(Math.abs(velocidade)>1.4){
-        variables.velocidade = 1.4 * Math.sign(velocidade);
+      if(Math.abs(velocidade)>1.7){
+        variables.velocidade = 1.7 * Math.sign(velocidade);
       }
 
       variables.time_touch = now;
@@ -197,11 +197,9 @@ export function useScrollX() {
   
       listeners.current[i] = [start, move, end];
   
-      el.addEventListener('touchstart', start, { passive: false });
+
       el.addEventListener('mousedown', start, { passive: false });
-      el.addEventListener('touchmove', move, { passive: false });
       el.addEventListener('mousemove', move, { passive: false });
-      el.addEventListener('touchend', end);
       el.addEventListener('mouseup', end);
     });
   
@@ -212,11 +210,8 @@ export function useScrollX() {
 
         const [start, move, end] = listeners.current[i];
 
-        el.removeEventListener('touchstart', start);
         el.removeEventListener('mousedown', start);
-        el.removeEventListener('touchmove', move);
         el.removeEventListener('mousemove', move);
-        el.removeEventListener('touchend', end);
         el.removeEventListener('mouseup', end);
       });
     };

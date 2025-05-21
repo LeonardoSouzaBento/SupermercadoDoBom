@@ -1,13 +1,13 @@
 Resumo
 
 Esse projeto iniciou em 08/04/2025. É um site de e-commerce simulado feito em React. Usa Styled Components, useContext e useNavigate levando a Cart e a SearchAction, as duas 'páginas' do site.
-A rolagem da pagina Home é feita por dois hooks, eles alteram os estados passados como props ao estilo do componente.
+O site tem um hook próprio para a rolar horizontalmente as divs da Home em desktops. Em dispositivos mobile a rolagem é nativa por 'overflow-x: scroll'.
 
 Nota do autor:
 O repósitorio gitHub desse projeto é privado (para manter a propriedade pessoal dele).
 
 Você pode ver o código mais importante abaixo, ele está em 
-cartContext, useScrollX.jsx e useScrollYHome.jsx.
+cartContext e useScrollX.jsx.
 
 Arquivo routes, para confirmar apenas:
 

@@ -32,11 +32,10 @@ export const Div = styled.div`
 export const P = styled.p`
   width: 100%;
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
   font-size: 1.15em;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 500;
-  /* color:rgb(153, 71, 74); */
   color: #6C0A0B;
 
   @media screen and (min-width: 320px) and (max-width:374px){
@@ -62,18 +61,14 @@ export const P = styled.p`
   }
 `;
 
-//transform: `translateX(${props.$translateValue ?? 0}px)`
-
 export const Advertisements = styled.div.attrs(props => ({
   style: {
-    transform: `translateX(${0}px)`
+   transform: props.$isMobile ? 'none' : `translateX(${props.$translateValue ?? 0}px)`
   }
   }))`
   will-change: transform;
-  /* overflow-x: visible; */
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory; //scroll para mobile
-  scroll-behavior: smooth;
+  overflow-x: ${props => props.$isMobile?'scroll':'visible'};
+  ${props=>props.$isMobile && 'scroll-snap-type: x mandatory;'}
   height: 174px;
   width: 100%;
   margin: auto;
@@ -81,7 +76,7 @@ export const Advertisements = styled.div.attrs(props => ({
   display: flex;
   flex-flow: row nowrap;
   gap: 16px;
-
+  padding-top: 12px;
   @media screen and (min-width: 375px) and (max-width: 576px){
     gap: 15px;
   }
@@ -97,7 +92,8 @@ export const Fundo = styled.div`
     position: relative;
     height: 170px;
     min-width: 265px;
-
+    scroll-snap-align: center;
+    
     @media screen and (min-width: 320px) and (max-width: 374px){
       min-width: 265px;
     }

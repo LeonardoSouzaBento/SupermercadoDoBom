@@ -13,7 +13,7 @@ function SearchBar() {
   const [returnedProducts, setReturnedproducts] = useState([]);
 
   const {preventClick, setPreventClick, viewSuggestion, setviewSuggestion} = useContext(ViewContext);
-  const {setSearchProducts, setSearchQuantities, SearchBarRef, translateMain} = useContext(CartContext);
+  const {setSearchProducts, setSearchQuantities} = useContext(CartContext);
 
   const [searchInitiated, setSearchInitiated] = useState(false);
   const [completes, setCompletes] = useState(['']);
@@ -115,7 +115,7 @@ function SearchBar() {
   }, [returnedProducts]);
 
   return (
-    <ContainerForFormStyled ref={SearchBarRef} $copy={false} $translateValue={translateMain}>
+    <ContainerForFormStyled $copy={false}>
         <FormStyled onSubmit={(e) => {
           e.preventDefault();
           handleClickSearch(0);

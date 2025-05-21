@@ -30,8 +30,7 @@ export const Divf = styled.div.attrs(props => ({
   }
   }))`
   will-change: transform;
-  /* overflow-x: visible; */
-  overflow-x: scroll;
+  overflow-x: ${props => props.$isMobile?'scroll':'visible'};
   width: 100%;
   position: relative;
   -webkit-user-select: none;
@@ -65,6 +64,7 @@ export const Divf = styled.div.attrs(props => ({
   }
 `;
 
+//span para animação
 export const Span = styled.span`
     position: absolute;
     top: 20%;
@@ -99,13 +99,12 @@ export const DivCat = styled.div`
     flex: auto;
     border-radius: 5px;
     padding-top: 7px;
-    //esses estilos abaixo
+
     ${props => props.$selected && 
     `background-color: rgb(255, 255, 255);
      border-radius: 8px;
      border: 1px solid rgb(151, 151, 151);
-    // border: 1px solid rgb(138, 138, 138);
-    box-shadow: 0px 0px 2px rgb(186, 186, 186);}
+     box-shadow: 0px 0px 2px rgb(186, 186, 186);}
     `}
 `;
 

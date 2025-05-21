@@ -1,11 +1,7 @@
 import styled, { css } from "styled-components";
 
 
-export const ContainerForFormStyled = styled.div.attrs(props => ({
-  style: {
-    transform: `translateY(${props.$translateValue ?? 0}px)`
-  }
-  }))`
+export const ContainerForFormStyled = styled.div`
   width: 100%;
   height: 40px;
   padding-top: 13px;

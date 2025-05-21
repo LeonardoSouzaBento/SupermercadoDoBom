@@ -3,9 +3,11 @@ import { useState, useRef, useEffect} from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled} from './ComponentsCategories';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
-// import {useScrollX} from '../../../hooks/useScrollX'
+import {useScrollX} from '../../../hooks/useScrollX'
 
-const CategoryItem = React.forwardRef(({ category, handleCategoryClick, isSelected }, ref) => {
+const CategoryItem = React.forwardRef(({ category, isSelected, setSelectedCategoryId}, ref) => {
+
+  const {setCurrentCategory} = useContext(CartContext);
   let touchStartTime = null;
 
   const handlePointerDown = () => {
@@ -15,7 +17,8 @@ const CategoryItem = React.forwardRef(({ category, handleCategoryClick, isSelect
   const handlePointerUp = () => {
     const duration = Date.now() - touchStartTime;
     if (duration < 100 ) {
-      handleCategoryClick(category.id)
+      setCurrentCategory(category.id);
+      setSelectedCategoryId(category.id);
     }
   };
 
@@ -33,10 +36,11 @@ const CategoryItem = React.forwardRef(({ category, handleCategoryClick, isSelect
   );
 });
 
-function CategoriesSection({setCurrentCategory, wasResized}) {
-  // useScrollX();
+function CategoriesSection() {
+  
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
-  const {setLimitCategories, translateX2, categoriesRef} = useContext(CartContext);
+  const {setLimitCategories, translateX2, categoriesRef, isMobile} = useContext(CartContext);
+  useScrollX();
 
   const category = [
     { id: 0, icon: 'icons/iconePromo.png', label: 'Promoções' },
@@ -52,11 +56,6 @@ function CategoriesSection({setCurrentCategory, wasResized}) {
     { id: 10, icon: 'icons/esqua.png', label: 'Papelaria' },
     { id: 11, icon: 'icons/pata.png', label: 'PetShop' }
   ];
-
-  const handleCategoryClick = (categoryId) => {
-    setCurrentCategory(categoryId);
-    setSelectedCategoryId(categoryId);
-  };
 
   const DivRef = useRef(null);
   const CategoryItemRef = useRef(null);
@@ -101,13 +100,13 @@ function CategoriesSection({setCurrentCategory, wasResized}) {
   return (
     <Div ref={DivRef}>
       <Span className="material-symbols-outlined">swipe_left</Span>{/*Para tutorial de como usar a tela*/}
-      <Divf ref={categoriesRef} $translateValue={translateX2}>
+      <Divf ref={categoriesRef} $translateValue={translateX2} $isMobile={isMobile}>
         {category.map((cat, index) => (
           <CategoryItem 
             ref={index === 0 ? CategoryItemRef : null}
             category={cat}  
             key={cat.id}
-            handleCategoryClick={handleCategoryClick}
+            setSelectedCategoryId={setSelectedCategoryId}
             isSelected={cat.id === selectedCategoryId}/>
         ))}
       </Divf>

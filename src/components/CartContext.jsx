@@ -5,27 +5,24 @@ import { promo_products } from '../data/promo_products';
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
+  const [isMobile, setIsMobile] = useState(false);
   const [limitProductList, setLimitProductList] = useState(0);
   const [limitCategories, setLimitCategories] = useState(0);
   const [limitAdvertisements, setLimitAdvertisements] = useState(0);
-  const [limitMain, setLimitMain] = useState(0);
 
   const [translateX1, setTranslateX1] = useState(0);
   const [translateX2, setTranslateX2] = useState(0);
   const [translateX3, setTranslateX3] = useState(0);
-  const [translateMain, setTranslateMain] = useState(0);
 
   const advertisementsRef = useRef();
   const categoriesRef = useRef();
   const promotionsRef = useRef();
-  const mainRef = useRef(null);
-  const SearchBarRef = useRef(null);
 
   const [cartProducts, setCartProducts] = useState([]);
   const [cartQuantities] = useState([]);
   const [searchProducts, setSearchProducts]= useState([]);
   const [searchQuantitites, setSearchQuantities] = useState([]);
-  const [currentCategory, setCurrentCategory] = useState(0);
+  const [currentCategory, setCurrentCategory] = useState(0); //seleção de categorias
 
   const allProductsInCat = [promo_products, productsCatId1, productsCatId2, productsCatId3,[],
   [],[],[],[],[],[],[], cartProducts, searchProducts];
@@ -109,12 +106,11 @@ export function CartProvider({ children }) {
   const totalValueFormatted = totalAddedValue.toFixed(2).replace('.', ',');
 
   return (
-    <CartContext.Provider value={{advertisementsRef, categoriesRef, promotionsRef, mainRef,
-    translateX1, setTranslateX1, translateX2, setTranslateX2, translateX3, setTranslateX3, 
-    translateMain, setTranslateMain, limitMain, setLimitMain, setLimitProductList, limitProductList,
+    <CartContext.Provider value={{isMobile, setIsMobile, advertisementsRef, categoriesRef, promotionsRef,
+    translateX1, setTranslateX1, translateX2, setTranslateX2, translateX3, setTranslateX3, setLimitProductList, limitProductList,
     setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities, SearchBarRef}}>
+    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
       {children}
     </CartContext.Provider>
   );
