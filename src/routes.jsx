@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import MainContent from "./Componentes/Main/MainContent"
-import Cart from "./pages/Carrinho/Cart";
+import MainContent from "./components/Main/MainContent"
+import Cart from "./pages/Cart/Cart";
 import SearchAction from "./pages/SearchAction";
 
 const AppRoutes = () => {

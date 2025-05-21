@@ -1,0 +1,51 @@
+pegar todos os produtos iguais e separar deles a segunda parte
+
+
+// const handleResize = useCallback(() => {
+//   let timeoutId;
+//   return () => {
+//     clearTimeout(timeoutId);
+//     timeoutId = setTimeout(calcLimit, 300);
+//   };
+// }, [calcLimit]);
+
+// useEffect(() => {
+//   calcLimit();
+// }, [calcLimit])
+
+// useEffect(() => {
+//   const debouncedResizeHandler = handleResize();
+//   window.addEventListener('resize', debouncedResizeHandler);
+
+//   return () => {
+//     window.removeEventListener('resize', debouncedResizeHandler);
+//   };
+// }, [handleResize]);
+
+removido de categorias:
+
+useEffect(() => {
+  let resizeTimeoutId = null;
+
+  updateLimitCategories();
+
+  const handleResize = () => {
+    if (resizeTimeoutId) {
+      clearTimeout(resizeTimeoutId);
+    }
+    resizeTimeoutId = setTimeout(() => {
+      updateLimitCategories();
+      resizeTimeoutId = null;
+    }, 300); // Debounce: executa somente após 300ms da última redimensionada
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+    if (resizeTimeoutId) {
+      clearTimeout(resizeTimeoutId);
+    }
+  };
+}, [category.length, setLimitCategories]);
+

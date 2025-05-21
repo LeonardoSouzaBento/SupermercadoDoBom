@@ -1,13 +1,15 @@
-import SearchBarCopy from "../Componentes/Main/BarraPesquisa/SearchBarCopy";
-import {ProductListHome} from "../Componentes/Main/Produto/ProductListHome";
-import Footer from '../Componentes/Footer/Footer';
+import { useEffect } from "react";
+import SearchBarCopy from "../components/Main/SearchBars/SearchBarCopy";
+import {ProductListHome} from "../components/Main/ProductSection/ProductListHome";
+import Footer from '../components/Footer/Footer';
 
 const styles= {
-  minHeight: '100vh',
   backgroundColor: 'rgb(240, 240, 240)'
 }
 
+
 const SearchAction = () => {
+
   return (
     <div style={styles}>
       <SearchBarCopy></SearchBarCopy>
