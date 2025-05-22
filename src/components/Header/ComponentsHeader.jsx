@@ -85,19 +85,15 @@ const PNomeSupStyled = styled.p`
     }
     @media (min-width: 375px) and (max-width: 576px){
         font-size: 0.98em;
-
     }
     @media (min-width: 577px) and (max-width: 768px){
         font-size: 1.06em;
-
     }
     @media (min-width: 769px) and (max-width: 992px){
         font-size: 1.15em;
-
     }
     @media (min-width: 993px){
         font-size: 1.2em;
-
     }
 `;
 
@@ -139,17 +135,16 @@ const DivMoreOptionsStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${props=>props.$changeBackground? 'rgb(174, 56, 56)':'rgb(215, 69, 69)'};
+    background-color: ${props=>props.$changeBackground? 'rgb(43, 37, 37)':'rgb(215, 69, 69)'};
     color: white;
     position: relative;
-    z-index: 2;
-    transition: all 100ms ease;
+    transition: all 100ms linear;
     box-sizing: border-box;
-    cursor: pointer;
+    cursor: pointer !important;
 
     @media (max-width: 992px){
         display: flex;
-        border-radius: 50%;
+        border-radius: ${props=>props.$changeBackground?'50%':'20px'};
         box-shadow: 0px 0px 2px rgba(255, 88, 88, 0.59);
     }
     @media (min-width: 993px){
@@ -184,6 +179,7 @@ const PStyled = styled.p`
        display: none;
     }
     user-select: none;
+    cursor: pointer;
 `;
 
 const SpanStyled = styled.span`

@@ -20,7 +20,7 @@ export const ContainerStyled = styled.div`
       top: 121px;
     }
     @media screen and (min-width: 1201px){
-      right: 8%;
+      right: 8.4%;
     }
 `;
 
@@ -38,7 +38,8 @@ const DivPStyled = styled.div`
     display: flex;
     align-items: center;
     width: max-content;
-    background-color: #741d09;
+    /* background-color: #741d09; */
+    background-color:rgb(43, 37, 37);
     margin-right: -22px;
 
     @media screen and (min-width: 320px) and (max-width: 375px) {
@@ -51,7 +52,7 @@ const DivPStyled = styled.div`
     }
     @media screen and (min-width: 577px) and (max-width: 768px) {
       height: 49px;
-       border-radius: 24px 0px 0px 24px;
+      border-radius: 24px 0px 0px 24px;
     }
     @media screen and (min-width: 769px) and (max-width: 992px) {
       height: 50.8px;
@@ -59,11 +60,11 @@ const DivPStyled = styled.div`
     }
     @media screen and (min-width: 993px) and (max-width: 1200px) {
       height: 51px;
-      border-radius: 25px 0px 0px 25px;
+      border-radius: 12px 0px 0px 12px;
     }
     @media screen and (min-width: 1201px) {
       height: 52px;
-      border-radius: 26px 0px 0px 26px;
+      border-radius: 12px 0px 0px 12px;
     }
 `;
 
@@ -90,7 +91,7 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: #741D09;
+  background-color:rgb(43, 37, 37);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.26);
   cursor: default;
   
@@ -113,10 +114,12 @@ export const DivSpanStyled = styled.div`
   @media screen and (min-width: 993px) and (max-width: 1200px) {
     width: 51px;
     height: 51px;
+    border-radius: 12px;
   }
   @media screen and (min-width: 1201px) {
     width: 52px;
     height: 52px;
+    border-radius: 12px;
   }
 `;
 
@@ -175,54 +178,31 @@ const OptionSection = () => {
       }
     }
 
+    const contents = [
+      {p:'Sobre o autor', icon: 'person_search'},
+      {p:'Deixar Comentário', icon: 'add_comment'},
+      {p: 'Sobre o site', icon:'description'}
+    ]
 
     return (
         <ContainerStyled>
-            <DivNameSpanStyled data-ignore-click>
-                {viewNameOption[0] && (
-                <DivPStyled>
-                  <POptionStyled>Sobre o autor</POptionStyled>
-                </DivPStyled>)}
+          {contents.map((content, i)=>(
+            <DivNameSpanStyled  data-ignore-click key={i}>
+              {viewNameOption[i] && (
+              <DivPStyled>
+                <POptionStyled>{content.p}</POptionStyled>
+              </DivPStyled>)}
 
-                <DivSpanStyled 
-                onMouseMove={()=>{viewTheNameOption(0)}} 
-                onMouseLeave={hideNameOption}
-                onTouchStart={()=>{seeNameWhitTouch(0)}}>
-                    <SpanOptionsStyled className='material-symbols-rounded'>
-                       person_search
-                    </SpanOptionsStyled>
-                </DivSpanStyled>
+              <DivSpanStyled 
+              onMouseMove={()=>{viewTheNameOption(i)}} 
+              onMouseLeave={hideNameOption}
+              onTouchStart={()=>{seeNameWhitTouch(i)}}>
+                  <SpanOptionsStyled className='material-symbols-rounded'>
+                      {content.icon}
+                  </SpanOptionsStyled>
+              </DivSpanStyled>
             </DivNameSpanStyled>
-
-            <DivNameSpanStyled data-ignore-click>
-                {viewNameOption[1] && (
-                <DivPStyled>
-                  <POptionStyled>Deixar Comentário</POptionStyled>
-                </DivPStyled>)}
-
-                <DivSpanStyled
-                onMouseMove={()=>{viewTheNameOption(1)}} 
-                onMouseLeave={hideNameOption}
-                onTouchStart={()=>{seeNameWhitTouch(1)}}>
-                    <SpanOptionsStyled2 className='material-symbols-rounded'>
-                        add_comment
-                    </SpanOptionsStyled2>
-                </DivSpanStyled>
-            </DivNameSpanStyled>
-
-            <DivNameSpanStyled data-ignore-click>
-                {viewNameOption[2] && (<DivPStyled>
-                  <POptionStyled>Sobre o site</POptionStyled>
-                </DivPStyled>)}
-                <DivSpanStyled
-                onMouseMove={()=>{viewTheNameOption(2)}} 
-                onMouseLeave={hideNameOption}
-                onTouchStart={()=>{seeNameWhitTouch(2)}}>
-                    <SpanOptionsStyled className='material-symbols-rounded'>
-                        description
-                    </SpanOptionsStyled>
-                </DivSpanStyled>
-            </DivNameSpanStyled>
+          ))}
         </ContainerStyled>
     )
 }

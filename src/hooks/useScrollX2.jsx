@@ -61,28 +61,15 @@ export function useScrollX() {
     limitsTranslateRefs[2].current = limitProductList;
   }, [limitAdvertisements, limitCategories, limitProductList]);
 
-  // Variáveis de scroll de página
-  const pageRef = useRef({
-    initialX: null,
-    initialY: null,
-    firstAngle: null,
-    firstCheck: true
-  });
 
   const iniciarArraste = useCallback((e, i) =>  {
     e.preventDefault();
     if (e.button !== 0) return;
-    //
-    const page = pageRef.current;
+
     const variables = variablesRef.current[i];
-    page.initialX =  e.clientX;
-    page.initialY =  e.clientY;
-    page.deltaY = 0;
-    page.speed=0;
-    //
 
     variables.arrastando = true;
-    variables.toc_ini = page.initialX;
+    variables.toc_ini = e.clientX;
     variables.time_touch = Date.now();
     variables.arraste=0;
     if (variables.animacao) {
@@ -95,90 +82,64 @@ export function useScrollX() {
     e.preventDefault();
     const variables = variablesRef.current[i];
     if (!variables.arrastando) return;
-    const page = pageRef.current;
     const now = Date.now();
     const dt = Math.max(1, now - variables.time_touch);
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    const y = e.touches ? e.touches[0].clientY : e.clientY;
-    const dx = Math.abs(x - page.initialX);
-    const dy = Math.abs(y - page.initialY);
-    // if (dx <= 4 && dy <= 4) return;
+    const x =  e.clientX;
 
-    if (page.firstDiffX === null && page.firstDiffY ===null) {
-      page.firstDiffX = dx;
-      page.firstDiffY = dy;
-      page.firstAngle  = Math.atan2(dy, dx) * (180 / Math.PI);
-      if (page.firstAngle < 45) {page.firstCheck = true} else {page.firstCheck = false;};
-    }
-
-    if (page.firstCheck === true) {
-      const deslocamento = x - variables.toc_ini;
-
-      // if (Math.abs(deslocamento) < 0.5) return;
-      const velocidade = deslocamento / dt;
-      variables.velocidade = velocidade;
-      if(Math.abs(velocidade)>1.7){
+    const deslocamento = x - variables.toc_ini;
+    const velocidade = deslocamento / dt;
+    variables.velocidade = velocidade;
+    if(Math.abs(velocidade)>1.7){
         variables.velocidade = 1.7 * Math.sign(velocidade);
-      }
-
-      variables.time_touch = now;
-      variables.toc_ini= x;
-
-      let proximo = translateRefs[i].current + deslocamento;
-      const max = limitsTranslateRefs[i].current;
-      if (proximo < max) {
-        proximo = max;
-        variables.velocidade = 0;
-      } else if (proximo > 0) {
-        proximo = 0;
-        variables.velocidade = 0;
-      }
-      setTranslates[i](proximo);
-
-      page.initialX = x;
     }
-    
+
+    variables.time_touch = now;
+    variables.toc_ini= x;
+
+    //limites e setar
+    let proximo = translateRefs[i].current + deslocamento;
+    const max = limitsTranslateRefs[i].current;
+    if (proximo < max) {
+    proximo = max;
+    variables.velocidade = 0;
+    } else if (proximo > 0) {
+    proximo = 0;
+    variables.velocidade = 0;
+    }
+    setTranslates[i](proximo);
   }, []);
 
   const finalizarArraste = useCallback((e, i) => {
-    const page = pageRef.current;
     const variables = variablesRef.current[i];
-    if (page.firstCheck) {
-      if (!variables.arrastando) return;
-      variables.arrastando = false;
+
+    if (!variables.arrastando) return;
+    variables.arrastando = false;
   
-      // Cancela animação anterior, se existir
-      if (variables.animacao) {
-        cancelAnimationFrame(variables.animacao);
-      }
-  
-      const decel = () => {
-        if (Math.abs(variables.velocidade) > 0.15) {
-          variables.velocidade *= 0.95;
-          let proximo = translateRefs[i].current + variables.velocidade * 16;
-  
-          const max = limitsTranslateRefs[i].current;
-  
-          if (proximo < max) {
+    // Cancela animação anterior, se existir
+    if (variables.animacao) {
+    cancelAnimationFrame(variables.animacao);
+    }
+
+    const decel = () => {
+    if (Math.abs(variables.velocidade) > 0.15) {
+        variables.velocidade *= 0.95;
+        let proximo = translateRefs[i].current + variables.velocidade * 16;
+
+        const max = limitsTranslateRefs[i].current;
+
+        if (proximo < max) {
             proximo = max;
             variables.velocidade = 0;
-          } else if (proximo > 0) {
+        } else if (proximo > 0) {
             proximo = 0;
             variables.velocidade = 0;
-          }
-          setTranslates[i](proximo);
-          variables.animacao = requestAnimationFrame(decel);
         }
-      };
-      decel();
-    }
- 
-    page.initialX = null
-    page.initialY = null
-    page.firstAngle = null
-    page.firstDiffX = null
-    page.firstDiffY = null
-    page.firstCheck = true
+        setTranslates[i](proximo);
+        variables.animacao = requestAnimationFrame(decel);
+        }
+    };
+    decel();
+
     variables.animacao=null;
   }, []);
   

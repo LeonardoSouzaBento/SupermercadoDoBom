@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useRef, useEffect} from 'react';
 import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled} from './ComponentsCategories';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
-import {useScrollX} from '../../../hooks/useScrollX'
+import {useScrollX} from '../../../hooks/useScrollX2'
 
 const CategoryItem = React.forwardRef(({ category, isSelected, setSelectedCategoryId}, ref) => {
 
@@ -37,7 +37,6 @@ const CategoryItem = React.forwardRef(({ category, isSelected, setSelectedCatego
 });
 
 function CategoriesSection() {
-  
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
   const {setLimitCategories, translateX2, categoriesRef, isMobile} = useContext(CartContext);
   useScrollX();
@@ -59,11 +58,9 @@ function CategoriesSection() {
 
   const DivRef = useRef(null);
   const CategoryItemRef = useRef(null);
+  const resizeTimeoutId = useRef(null);
 
-  useEffect(() => {
-  let resizeTimeoutId = null;
-
-  const updateLimitCategories = () => {
+  const updateLimitCategories = useCallback(() => {
     if (CategoryItemRef.current && DivRef.current && categoriesRef.current) {
       const itemWidth = CategoryItemRef.current.offsetWidth;
       const divWidth = DivRef.current.offsetWidth;
@@ -72,29 +69,29 @@ function CategoriesSection() {
       const limit = divWidth - totalWidth;
       window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
     }
-  };
-
-  updateLimitCategories();
-
-  const handleResize = () => {
-    if (resizeTimeoutId) {
-      clearTimeout(resizeTimeoutId);
+  },[])
+  
+  const handleResize = useCallback(() => {
+    if (resizeTimeoutId.current) {
+      clearTimeout(resizeTimeoutId.current);
     }
-    resizeTimeoutId = setTimeout(() => {
+    resizeTimeoutId.current = setTimeout(() => {
       updateLimitCategories();
-      resizeTimeoutId = null;
-    }, 300); // Debounce: executa somente após 300ms da última redimensionada
-  };
+      resizeTimeoutId.current = null;
+    }, 300);
+  },[])
+  
 
-  window.addEventListener('resize', handleResize);
+  useEffect(() => {
+    updateLimitCategories();
+    window.addEventListener('resize', handleResize);
 
-  return () => {
-    
-    window.removeEventListener('resize', handleResize);
-    if (resizeTimeoutId) {
-      clearTimeout(resizeTimeoutId);
-    }
-  };
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (resizeTimeoutId.current) {
+        clearTimeout(resizeTimeoutId.current);
+      }
+    };
   }, [category.length, setLimitCategories]);
 
   return (

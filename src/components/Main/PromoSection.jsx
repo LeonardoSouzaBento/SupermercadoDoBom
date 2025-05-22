@@ -2,7 +2,7 @@ import { useRef, useContext, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import {ProductListHome} from './ProductSection/ProductListHome';
 import { CartContext } from '../CartContext';
-import {useScrollX} from '../../hooks/useScrollX'
+import {useScrollX} from '../../hooks/useScrollX2'
 
 const PaiAllProductsStyled = styled.div`
   overflow-x: hidden;
@@ -35,6 +35,7 @@ function PromoSection({categoryKey}) {
   
   const {setLimitProductList, currentCategory, allProductsInCat, promotionsRef, translateX3, isMobile} = useContext(CartContext);
   const paiAllProductsRef=useRef(null);
+  const timeoutId = useRef(null);
   useScrollX();
 
   const calcLimit = useCallback(() => {
@@ -57,11 +58,8 @@ function PromoSection({categoryKey}) {
   }, [currentCategory, allProductsInCat]);
 
   const handleResize = useCallback(() => {
-    let timeoutId;
-    return () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(calcLimit, 300);
-    };
+    if(timeoutId.current){clearTimeout(timeoutId.current)}
+    timeoutId.current = setTimeout(()=>{calcLimit(); timeoutId.current=null}, 300);
   }, [calcLimit]);
 
   useEffect(() => {

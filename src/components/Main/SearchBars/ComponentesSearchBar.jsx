@@ -33,7 +33,6 @@ export const FormStyled = styled.form`
   width: 90%;
   max-width: ${props => props.$copy?'792px':'1180px'};
   margin: auto;
-  background-color: white;
   border-radius: 20px;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
 
@@ -58,7 +57,7 @@ export const InputStyled = styled.input`
   height: 40px;
   width: 100%;
   touch-action: auto;
-  border-radius: 22px;
+  border-radius: 20px;
   border: 1px solid rgb(111, 111, 111);
   background-color: ${props => props.$copy ? 'rgb(255, 255, 255)' : 'white'};
   text-indent: 20px;

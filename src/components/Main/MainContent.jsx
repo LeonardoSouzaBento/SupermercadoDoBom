@@ -34,6 +34,7 @@ function MainContent() {
 
   const divRef = useRef(null);
   
+  //para habilitar scroll nativo
   useEffect(() => {
     // detectar mouse
     const isTouchDevice = () => {
@@ -81,18 +82,23 @@ function MainContent() {
       if (e.target.closest('[data-ignore-click]')) return;
       setViewOptions(false);
     };
-
+    const handleScroll = ()=>{
+      setViewOptions(false);
+    }
     const divElement = divRef.current;
 
     if (viewOptions && divElement) {
       divElement.addEventListener('pointerdown', handlePointerDown);
+      divElement.addEventListener('wheel', handleScroll);
     } else if (divElement) {
       divElement.removeEventListener('pointerdown', handlePointerDown);
+      divElement.removeEventListener('wheel', handleScroll);
     }
 
     return () => {
       if (divElement) {
         divElement.removeEventListener('pointerdown', handlePointerDown);
+        divElement.removeEventListener('wheel', handleScroll);
       }
     };
   }, [viewOptions, setViewOptions]); 

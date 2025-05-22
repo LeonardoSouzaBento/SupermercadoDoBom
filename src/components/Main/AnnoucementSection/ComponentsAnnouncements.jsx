@@ -1,16 +1,15 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Div = styled.div`
   width:100%;
   position: relative;
   overflow-x: hidden;
   margin: auto;
-  padding-top: 12px;
-  padding-bottom: 36px;
+  padding-top: 16px;
+  padding-bottom: 48px;
   border-radius: 5px;
   @media screen and (min-width: 320px) and (max-width:576px){
     width: 100%;
-    padding-bottom: 41px;
   }
   @media screen and (min-width: 577px) and (max-width:768px){
     width: calc(100% - 15px);
@@ -20,41 +19,37 @@ export const Div = styled.div`
   }
   @media screen and (min-width: 993px) and (max-width:1200px){
     width: calc(100% - 20px);
-    margin-bottom: 70px;
-    padding-bottom: 0px;
+    padding-bottom: 52px;
   }
   @media screen and (min-width: 1201px){
     width: calc(100% - 50px);
-
+    padding-bottom: 52px;
   }
 `;
 
 export const P = styled.p`
   width: 100%;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   font-size: 1.15em;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
-  color: #6C0A0B;
+  color:rgb(182, 10, 13);
 
   @media screen and (min-width: 320px) and (max-width:374px){
     font-size: 1.14em;
-    margin-bottom: 29px;
   }
   @media screen and (min-width: 375px) and (max-width:576px){
     font-size: 1.22em;
   }
   @media screen and (min-width: 577px) and (max-width:768px){
     font-size: 1.26em;
-    margin-bottom: 29px;
   }
   @media screen and (min-width: 769px) and (max-width:992px){
     font-size: 1.28em;
   }
   @media screen and (min-width: 993px) and (max-width:1200px){
     font-size: 1.30em;
-    margin-top: 9px;
   }
   @media screen and (min-width: 1201px){
     font-size: 1.32em;
@@ -82,11 +77,21 @@ export const Advertisements = styled.div.attrs(props => ({
     height: 0;
     visibility: hidden;
   }
-  /* Esconde scrollbar no Firefox */
+  /* Esconde scrollbar no Firefox e no IE 10+*/
   scrollbar-width: none;
-  /* Esconde scrollbar no IE 10+ */
   -ms-overflow-style: none;
   
+  ${props => props.$isMobile && css`
+    @media screen and (min-width: 375px) and (max-width: 576px){
+      padding-right: 15px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px){
+      padding-right: 18px;
+    }
+    @media screen and (min-width: 769px){
+      padding-right: 20px;
+    }`
+  }
   @media screen and (min-width: 375px) and (max-width: 576px){
     gap: 15px;
   }
@@ -104,16 +109,16 @@ export const Fundo = styled.div`
     min-width: 265px;
     
     @media screen and (min-width: 320px) and (max-width: 374px){
-      min-width: 265px;
+      min-width: 225px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-      min-width: 300px;
+      min-width: 250px;
     }
     @media screen and (min-width: 576px) and (max-width: 768px){
-      min-width: 320px;
+      min-width: 280px;
     }
     @media screen and (min-width: 769px){
-      min-width: 325px;
+      min-width: 310px;
     }
     /* @media screen and (min-width: 993px){
       min-width: 330px;
@@ -160,9 +165,9 @@ export const Pagination = styled.div`
 export const Span = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
-  background-color: rgb(125, 125, 125);
-  border-radius: 50%;
-  border: 1px solid rgb(136, 136, 136);
+  background-color: grey;
+  border-radius: 4px;
+  border: 1px solid rgb(117, 117, 117);
   ${props => props.$atual && `
     transform: scale(1.1);
     background-color: rgb(255, 255, 255);
@@ -175,7 +180,7 @@ export const Span = styled.span.attrs(() => ({
     width: 7px;
   }
   @media screen and (min-width: 375px){
-    height: 8px;
-    width: 8px;
+    height: 7.5px;
+    width: 7.5px;
   }
 `;
