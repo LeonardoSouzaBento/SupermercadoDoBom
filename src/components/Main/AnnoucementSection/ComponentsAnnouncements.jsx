@@ -6,7 +6,7 @@ export const Div = styled.div`
   overflow-x: hidden;
   margin: auto;
   padding-top: 12px;
-  padding-bottom: 48px;
+  padding-bottom: 36px;
   border-radius: 5px;
   @media screen and (min-width: 320px) and (max-width:576px){
     width: 100%;
@@ -68,7 +68,6 @@ export const Advertisements = styled.div.attrs(props => ({
   }))`
   will-change: transform;
   overflow-x: ${props => props.$isMobile?'scroll':'visible'};
-  ${props=>props.$isMobile && 'scroll-snap-type: x mandatory;'}
   height: 174px;
   width: 100%;
   margin: auto;
@@ -77,6 +76,17 @@ export const Advertisements = styled.div.attrs(props => ({
   flex-flow: row nowrap;
   gap: 16px;
   padding-top: 12px;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+  /* Esconde scrollbar no Firefox */
+  scrollbar-width: none;
+  /* Esconde scrollbar no IE 10+ */
+  -ms-overflow-style: none;
+  
   @media screen and (min-width: 375px) and (max-width: 576px){
     gap: 15px;
   }
@@ -92,7 +102,6 @@ export const Fundo = styled.div`
     position: relative;
     height: 170px;
     min-width: 265px;
-    scroll-snap-align: center;
     
     @media screen and (min-width: 320px) and (max-width: 374px){
       min-width: 265px;

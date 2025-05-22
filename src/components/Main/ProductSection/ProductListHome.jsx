@@ -11,7 +11,6 @@ const DivStyled = styled.div.attrs(props => ({
   }))`
   will-change: transform;
   overflow-x: ${props => props.$isMobile?'scroll':'visible'};
-  ${props=>props.$isMobile && 'scroll-snap-type: x mandatory;'}
   width: max-content;
   max-width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
   height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
