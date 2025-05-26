@@ -32,8 +32,8 @@ export const P = styled.p`
   text-align: center;
   margin-bottom: 12px;
   font-size: 1.15em;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
   color:rgb(182, 10, 13);
 
   @media screen and (min-width: 320px) and (max-width:374px){
@@ -62,7 +62,12 @@ export const Advertisements = styled.div.attrs(props => ({
   }
   }))`
   will-change: transform;
-  overflow-x: ${props => props.$isMobile?'scroll':'visible'};
+  overflow-x: visible;
+  ${props => props.$isMobile && css`
+    overflow-x: scroll;
+    box-sizing: border-box;
+    padding: 0px 20px;
+  `}
   height: 174px;
   width: 100%;
   margin: auto;
@@ -104,27 +109,24 @@ export const Advertisements = styled.div.attrs(props => ({
 `;
 
 export const Fundo = styled.div`
-    position: relative;
-    height: 170px;
-    min-width: 265px;
+  position: relative;
+  height: 170px;
+  min-width: 265px;
+  
+  @media screen and (min-width: 320px) and (max-width: 374px){
+    min-width: 225px;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px){
+    min-width: 250px;
+  }
+  @media screen and (min-width: 576px) and (max-width: 768px){
+    min-width: 280px;
+  }
+  @media screen and (min-width: 769px){
+    min-width: 300px;
+  }
     
-    @media screen and (min-width: 320px) and (max-width: 374px){
-      min-width: 225px;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px){
-      min-width: 250px;
-    }
-    @media screen and (min-width: 576px) and (max-width: 768px){
-      min-width: 280px;
-    }
-    @media screen and (min-width: 769px){
-      min-width: 310px;
-    }
-    /* @media screen and (min-width: 993px){
-      min-width: 330px;
-    } */
-    
-    &::before {
+  &::before {
     content: '';
     position: absolute;
     top: 0;
@@ -137,29 +139,29 @@ export const Fundo = styled.div`
     border-radius: 8px;
     filter: blur(5px) brightness(0.7);
     z-index: 0;
-  }
+ }
 `;
 
 export const Img = styled.img`
-    height: 100%;
-    display: block;
-    object-fit: contain;
-    margin: auto;
-    position: relative;
-    z-index: 1;
-    -webkit-user-select: none;
-    user-select: none;
-    /* touch-action: none; */
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+  border-radius: 4px;
 `;
 
 export const Pagination = styled.div`
-      height: max-content;
-      width: 50%;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 0px;
+    height: max-content;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
 `;
 
 export const Span = styled.span.attrs(() => ({

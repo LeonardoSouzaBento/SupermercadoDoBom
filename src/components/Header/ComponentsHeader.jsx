@@ -1,42 +1,22 @@
-import { useState, useContext } from 'react';
 import styled from 'styled-components';
-import { ViewContext } from '../viewContext';
 
-const DivLogoENomeStyled = styled.div`
-    height: 100%;
+const ContainerStyled = styled.div`
+    width:${props => props.id ?'90%': 'max-content' };
+    height: 132px;
+    ${props => props.id && 'margin: auto;'};
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    border-radius: 10px;
-`;
-
-const ImgLogoStyled = styled.img`
-    border-radius: 50%;
-    border: 1px solid rgb(116, 116, 116);
-    box-shadow: 0px 0px 3px rgb(113, 113, 113);
-    box-sizing: border-box;
-    transform: scaleX(-1);
-    filter: grayscale(0.2) saturate(1.2);
+    gap: 14px;
     @media (min-width: 320px) and (max-width: 374px){
-        height: 54px;
-        width: 54px;
+       gap: 12px;
     }
-    @media (min-width: 375px) and (max-width: 576px){
-        height: 60px;
-        width: 60px;
-    }
-    @media (min-width: 577px) and (max-width: 768px){
-        height: 63px;
-        width: 63px;
-    }
-    @media (min-width: 768px){
-        height: 65px;
-        width: 65px;
+    @media (min-width: 769px){
+       max-width: 340px;
     }
 `;
 
-const DivLogo = styled.div`
+const LogoDivStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +24,6 @@ const DivLogo = styled.div`
     border-radius: 50%;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.67);
     transform: scaleX(-1);
-
     @media (min-width: 320px) and (max-width: 374px){
         height: 54px;
         width: 54px;
@@ -63,7 +42,7 @@ const DivLogo = styled.div`
     }
 `;
 
-const SpanLogo = styled.span`
+const SpanLogoStyled = styled.span`
   color:rgb(241, 16, 24);
   font-size: 2.06em;
   font-weight: 500;
@@ -117,42 +96,11 @@ const PBemVindoStyled = styled(PNomeSupStyled)`
     }
 `;
 
-export const Divlogo = () => {
-    return (
-    <DivLogoENomeStyled>
-        <DivLogo><SpanLogo className='material-symbols-rounded'>handshake</SpanLogo></DivLogo>
-        <DivPsStyled>
-            <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
-            <PBemVindoStyled> Seja bem vindo!</PBemVindoStyled>
-        </DivPsStyled>
-    </DivLogoENomeStyled>
-    )
-}
-
-const DivMoreOptionsStyled = styled.div`
-    width: max-content;
+const SpaceMoreOptions = styled.div`
+    width: 44px;
     height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: ${props=>props.$changeBackground? 'rgb(43, 37, 37)':'rgb(215, 69, 69)'};
-    color: white;
-    position: relative;
-    transition: all 100ms linear;
-    box-sizing: border-box;
-    cursor: pointer !important;
 
-    @media (max-width: 992px){
-        display: flex;
-        border-radius: ${props=>props.$changeBackground?'50%':'20px'};
-        box-shadow: 0px 0px 2px rgba(255, 88, 88, 0.59);
-    }
-    @media (min-width: 993px){
-        gap: 8px;
-        border-radius: 9px;
-        padding: 7px 15px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 375px) {
+    @media screen and (min-width: 320px) and (max-width: 374px) {
         width: 42px;
         height: 42px;
     }
@@ -164,9 +112,80 @@ const DivMoreOptionsStyled = styled.div`
         width: 47px;
         height: 47px;
     }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-        width: 49px;
-        height: 49px;
+    @media screen and (min-width: 769px) {
+        display: none;
+    }
+`;
+
+export const Divlogo = () => {
+    return (
+    <ContainerStyled id='expand'>
+        <ContainerStyled>
+            <LogoDivStyled>
+                <SpanLogoStyled className='material-symbols-rounded'>handshake</SpanLogoStyled>
+            </LogoDivStyled>
+            <DivPsStyled>
+                <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
+                <PBemVindoStyled> Seja bem vindo!</PBemVindoStyled>
+            </DivPsStyled>
+        </ContainerStyled>
+        <SpaceMoreOptions></SpaceMoreOptions>
+    </ContainerStyled>
+    )
+}
+
+
+//botão de mais opções
+
+//div para ajuste de padding
+const DivMoreOptionsStyled = styled.div`
+    z-index: 3;
+    @media screen and (min-width: 769px) {
+        padding-left: 5px;
+    }
+`;
+
+const DivStyled = styled.div`
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: ${props=>props.$changeBackground? 'rgb(43, 37, 37)':'rgb(215, 69, 69)'};
+    border-radius: ${props=>props.$changeBackground?'12%':'20px'};
+    cursor: pointer;
+    transition: all 100ms linear;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    
+    @media screen and (max-width: 768px){
+        position: absolute;
+        top: 45px;
+        right: 5%;
+    }
+    @media screen and (min-width: 320px) and (max-width: 374px) {
+        width: 42px;
+        height: 42px;
+        top: 45px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+        width: 44px;
+        height: 44px;
+        top: 44px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+        width: 43px;
+        height: 43px;
+        top: 44px;
+    }
+    @media screen and (min-width: 769px) {
+        position: relative;
+    }
+    @media screen and (min-width: 1201px) {
+        width: max-content;
+        border-radius: 7px;
+        padding: 0px 16px;
+        gap: 4px;
     }
 `;
 
@@ -175,7 +194,7 @@ const PStyled = styled.p`
     font-weight: 400;
     letter-spacing: 0.8px; 
     margin:0px;
-    @media (max-width: 993px){
+    @media (max-width: 1201px){
        display: none;
     }
     user-select: none;
@@ -198,26 +217,25 @@ const SpanStyled = styled.span`
     }
 `;
 
-//div das opcoes
-export const MoreOptions= () => {
-    const {viewOptions, setViewOptions} = useContext(ViewContext);
+
+export const MoreOptionsButton= ({changeBackground, setViewOptions, viewOptions}) => {
 
     function handleClick() {
-        if(viewOptions === false){
-            setViewOptions(true)
-        }
-        else{
-            setViewOptions(false)
-        }
+      if(viewOptions === false){setViewOptions(true)}
+      else{setViewOptions(false)}
     }
 
     return (
-        <DivMoreOptionsStyled 
-        $changeBackground={viewOptions} 
-        onPointerDown={handleClick}
-        data-ignore-click>
-            <SpanStyled className="material-symbols-outlined">menu</SpanStyled>
-            <PStyled>Mais opções</PStyled>
+        <DivMoreOptionsStyled>
+            <DivStyled 
+            data-ignore-click 
+            $changeBackground={changeBackground}
+            onPointerDown={handleClick}
+            onMouseEnter={()=>{setViewOptions(true)}}
+            >
+                <SpanStyled className="material-symbols-outlined">menu</SpanStyled>
+                <PStyled>Mais opções</PStyled>
+            </DivStyled>
         </DivMoreOptionsStyled>
     )
 }

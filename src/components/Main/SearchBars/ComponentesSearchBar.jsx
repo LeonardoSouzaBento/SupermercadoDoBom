@@ -3,17 +3,16 @@ import styled, { css } from "styled-components";
 
 export const ContainerForFormStyled = styled.div`
   width: 100%;
-  height: 40px;
-  padding-top: 13px;
+  height: max-content;
+  padding-top: 2px;
   padding-bottom: 14px;
   position: relative;
-  z-index: 3;
-  ${props =>
-  props.$copy===false &&
-  css`
-      position: absolute;
-      top: 113px;
-  `}
+  z-index: 2;
+
+  @media screen and (min-width: 769px) {
+    padding-top: 13px;
+  }
+
   ${props =>
   props.$copy &&
   css`
@@ -29,15 +28,13 @@ export const FormStyled = styled.form`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
+  height: 39px;
   width: 90%;
-  max-width: ${props => props.$copy?'792px':'1180px'};
   margin: auto;
   border-radius: 20px;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
-
-  ${props => props.$copy && 'box-shadow: none;'};
   position: relative;
+  max-width: 1180px;
+
   ${props =>
     props.$copy &&
     css`
@@ -46,6 +43,9 @@ export const FormStyled = styled.form`
       width: 90%;
       top: 12px;
       left: 5%;
+      box-shadow: none;
+      border: 1px solid rgb(106, 106, 106);
+      max-width: 792px;
       @media screen and (min-width: 993px) {
         top: 16px;
         left: 4%;
@@ -58,18 +58,18 @@ export const InputStyled = styled.input`
   width: 100%;
   touch-action: auto;
   border-radius: 20px;
-  border: 1px solid rgb(111, 111, 111);
-  background-color: ${props => props.$copy ? 'rgb(255, 255, 255)' : 'white'};
   text-indent: 20px;
   font-weight: 400;
   font-size: 1em;
   letter-spacing: 0.71px;
+  color: black;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  ${props => props.$copy && 'border: 1px solid rgb(106, 106, 106);'}
-
+  background-color: white;
+  border: 1px solid rgb(145, 145, 145);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
   &:focus{
-    outline: 1px solid black;
-    box-shadow: none;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.14); 
+    outline: 1px solid rgb(155, 155, 155);
     background-color: white;
   }
   &::-webkit-search-cancel-button,
@@ -82,7 +82,7 @@ export const InputStyled = styled.input`
   }
   @media screen and (min-width: 769px){
     font-size: 1.04em;
-    border: 1px solid rgb(172, 172, 172);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14);
   }
 `;
 
@@ -192,7 +192,7 @@ export const PStyled = styled.p`
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.17);
   flex: none;
   cursor: default;
-  @media screen and (min-width: 320px) and (max-width: 375px){
+  @media screen and (min-width: 320px) and (max-width: 374px){
     font-size: 0.86em;
     line-height: 18px;
     letter-spacing: 1.01px;

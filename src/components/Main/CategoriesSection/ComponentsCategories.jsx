@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Div = styled.div`
     width: calc(100% - 20px);
@@ -6,7 +6,7 @@ export const Div = styled.div`
     margin-left: 20px;
     position: relative;
 
-    @media screen and (min-width: 320px) and (max-width: 375px){
+    @media screen and (min-width: 320px) and (max-width: 374px){
       width: calc(100% - 15px);
       margin-left: 15px;
     }
@@ -24,13 +24,61 @@ export const Div = styled.div`
     }
 `;
 
+export const DivLabelPromosStyled = styled.div`
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  gap: 8px;
+
+`;
+
+export const PLabelStyled = styled.p`
+  font-weight: ${props => props.id ? '700': '500'};
+  font-family: "Quicksand", sans-serif;
+  color: ${props => props.id ? 'rgb(69, 69, 69)': 'rgb(82, 82, 82)'};
+  text-align: center;
+
+  @media screen and (min-width: 320px) and (max-width:374px){
+    font-size: 1.18em;
+  }
+  @media screen and (min-width: 375px) and (max-width:576px){
+    font-size: 1.25em;
+  }
+  @media screen and (min-width: 577px) and (max-width:768px){
+    font-size: 1.27em;
+  }
+  @media screen and (min-width: 769px) and (max-width:992px){
+    font-size: 1.31em;
+  }
+  @media screen and (min-width: 993px) and (max-width:1200px){
+    font-size: 1.33em;
+  }
+  @media screen and (min-width: 1201px){
+    font-size: 1.35em;
+  }
+`;
+
+
 export const Divf = styled.div.attrs(props => ({
   style: {
     transform: `translateX(${props.$translateValue ?? 0}px)`
   }
   }))`
   will-change: transform;
-  overflow-x: ${props => props.$isMobile?'scroll':'visible'};
+  overflow-x: visible;
+  ${props => props.$isMobile && css`
+    overflow-x: scroll;
+    padding-right: 20px;
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+      max-width: 100px;
+    }
+  `};
   width: 100%;
   position: relative;
   -webkit-user-select: none;
@@ -48,9 +96,8 @@ export const Divf = styled.div.attrs(props => ({
   &:active {
     cursor: grabbing; 
   }
-  ${props=>props.$isMobile && 'padding-right: 12px'}
 
-  @media screen and (min-width: 320px) and (max-width: 375px){
+  @media screen and (min-width: 320px) and (max-width: 374px){
     gap: 15px;
     padding-bottom: 17px;
   }
@@ -119,7 +166,7 @@ export const ImgStyled = styled.img`
   padding: 4px;
   /* box-shadow: 0px 0px 2px rgb(91, 91, 91); */
 
-  @media screen and (min-width: 320px) and (max-width: 375px){
+  @media screen and (min-width: 320px) and (max-width: 374px){
     width: 39px;
     height: 39px;
     padding: 3px;

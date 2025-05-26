@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useState, useRef, useEffect} from 'react';
-import { Div, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled} from './ComponentsCategories';
+import { Div, DivLabelPromosStyled, PLabelStyled, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled} from './ComponentsCategories';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
 import {useScrollX} from '../../../hooks/useScrollX2'
@@ -97,6 +97,11 @@ function CategoriesSection() {
   return (
     <Div ref={DivRef}>
       <Span className="material-symbols-outlined">swipe_left</Span>{/*Para tutorial de como usar a tela*/}
+      <DivLabelPromosStyled>
+        <PLabelStyled id="strong">Mais vendidos por categoria,</PLabelStyled>
+        <PLabelStyled>os produtos básicos ficam aqui.</PLabelStyled>
+      </DivLabelPromosStyled>
+
       <Divf ref={categoriesRef} $translateValue={translateX2} $isMobile={isMobile}>
         {category.map((cat, index) => (
           <CategoryItem 

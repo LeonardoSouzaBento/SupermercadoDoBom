@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import ProductItem from './ProductItem';
 import { CartContext } from '../../CartContext';
 
@@ -10,38 +10,47 @@ const DivStyled = styled.div.attrs(props => ({
   }
   }))`
   will-change: transform;
-  overflow-x: ${props => props.$isMobile?'scroll':'visible'};
+  overflow-x: visible;
+  ${props => props.$isMobile && css` 
+    overflow-x: scroll;
+    box-sizing: border-box;
+    padding-right: 20px;
+  `};
   width: max-content;
   max-width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
   height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
-  padding: 0px;
   padding-bottom: 12px;
   display: flex;
-  flex-direction: ${(props) => props.$variant === 'home' ? "column" : "row"};
   flex-wrap: wrap;
+  flex-direction: ${(props) => props.$variant === 'home' ? "column" : "row"};
   justify-content: ${(props) => props.$variant === 'home' ? "flex-start" : "center"};
   gap: 12px;
   position: relative;
   ${(props) => props.$variant === 'inSearch' && 'margin: auto;'}
   margin-top: ${props=>props.$variant=== 'inSearch' && "8px"};
 
-  @media screen and (min-width: 320px) and (max-width: 375px){
-    gap: 8px;
-    height: ${(props) => props.$variant === 'home' ? "570px" : "max-content"};
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px){
-    height: ${(props) => props.$variant === 'home' ? "593px" : "max-content"};
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px){
-    height: ${(props) => props.$variant === 'home' ? "552px" : "max-content"};
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px){
-    height: ${(props) => props.$variant === 'home' ? "555px" : "max-content"};
-  }
-  @media screen and (min-width: 993px){
-    padding-bottom: 5px;
-    height: 540px;
-    gap: 11px;
+   ${(props) =>
+    props.$variant === 'home' &&
+    css`
+      @media screen and (min-width: 320px) and (max-width: 374px) {
+        gap: 8px;
+        height: 570px;
+      }
+      @media screen and (min-width: 375px) and (max-width: 576px) {
+        height: 593px;
+      }
+      @media screen and (min-width: 577px) and (max-width: 768px) {
+        height: 552px;
+      }
+      @media screen and (min-width: 769px) and (max-width: 992px) {
+        height: 555px;
+      }
+      @media screen and (min-width: 993px){
+        padding-bottom: 5px;
+        height: 540px;
+        gap: 11px;
+      }
+    `
   }
 `;
 

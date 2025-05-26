@@ -7,16 +7,24 @@ html, body{
   overflow-x: hidden;
 }
 
-@media screen and (min-width: 993px){
-  ::-webkit-scrollbar{
-    visibility: hidden;
-    width: 0;
-    height: 0px;
-  }
-}
-
-.hide-scrollbar::-webkit-scrollbar {
+html::-webkit-scrollbar {
   width: 0;
   height: 0;
   visibility: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+/* Para Firefox */
+/* body {
+  scrollbar-width: none;  */
+  /* scrollbar-color: transparent transparent;
+} */
+/* Para Internet Explorer 10+ e alguns navegadores Edge (antigos) */
+body {
+  -ms-overflow-style: none;
 }

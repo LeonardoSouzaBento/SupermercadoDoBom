@@ -1,37 +1,36 @@
-import { useContext, useCallback, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Header from '../Header/Header';
 import AnnouncementSection from './AnnoucementSection/AnnouncementSection';
 import CategoriesSection from './CategoriesSection/CategoriesSection';
-import LabelPromos from './LabelPromos';
 import PromoSection from './PromoSection';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components';
 import { CartContext } from '../CartContext';
-import { ViewContext } from '../viewContext';
-import SearchBar from './SearchBars/SearchBar';
-import OptionSection from './OptionSection';
 
 const Main = styled.main`
   max-width: 1390px;
   margin: auto;
   padding: 0px;
   background-color: rgb(237, 237, 237);
-`;
+  position:  relative;
 
-const ShadowBottomStyled = styled.div`
-  display: block;
-  width: 100%;
-  position: fixed;
-  bottom: 0px;
-  height: 36px;
-  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.1), rgba(240, 240, 240, 0));
-  background-size: 100% 100%;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute; 
+    bottom: 0px;
+    height: 36px;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(240, 240, 240, 0));
+    background-size: 100% 100%;
+    pointer-events: none;
+  }
 `;
 
 function MainContent() {
-  const { viewOptions, setViewOptions} = useContext(ViewContext);
-  const {currentCategory, isMobile, setIsMobile} = useContext(CartContext)
+  const [viewOptions, setViewOptions] = useState(false);
 
+  const {currentCategory, isMobile, setIsMobile} = useContext(CartContext)
   const divRef = useRef(null);
   
   //para habilitar scroll nativo
@@ -47,7 +46,6 @@ function MainContent() {
         setIsMobile(false);
         window.removeEventListener('wheel', detectMouseEvent);
         window.removeEventListener('pointerdown', detectMouseEvent);
-        document.body.classList.add('hide-scrollbar');
       }
       window.removeEventListener('wheel', detectMouseEvent);
       window.removeEventListener('pointerdown', detectMouseEvent);
@@ -59,7 +57,6 @@ function MainContent() {
       window.addEventListener('pointerdown', detectMouseEvent);
     } else {
       setIsMobile(false);
-      document.body.classList.add('hide-scrollbar');
     }
 
     // detectar toque touch
@@ -105,16 +102,12 @@ function MainContent() {
 
   return (
    <div ref={divRef}>
-    <SearchBar></SearchBar>
+    <Header viewOptions={viewOptions} setViewOptions={setViewOptions}/>
     <Main>
-      <Header/>
       <AnnouncementSection/>
-      <LabelPromos></LabelPromos>
       <CategoriesSection/>
       <PromoSection categoryKey={currentCategory}/>
-      <ShadowBottomStyled/>
     </Main>
-    {viewOptions && (<OptionSection></OptionSection>)}
     <Footer/>
   </div>
   );

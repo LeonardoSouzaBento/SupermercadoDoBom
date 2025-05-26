@@ -92,26 +92,28 @@ const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes, variant}) => {
 const Preco = ({price}) => {
   return (
         <PaiPrecoStyled>
-
           <DivPrecoStyled>
             <PSifraStyled>R$</PSifraStyled>
             <PprecoStyled>{price}</PprecoStyled>
           </DivPrecoStyled>
-
         </PaiPrecoStyled>
 )};
 
 const DescOferta = ({product}) => {
+  
+  const existWeight = product.weight!='' && product.weight!=null;
+
   return (
     <DescOfertaStyled>
-      <Preco
-      price={product.price}>
-      </Preco>
       <DivNomeStyled>
         <PnomeStyled>{product.name}</PnomeStyled>
       </DivNomeStyled>
+      <Preco
+      price={product.price}>
+      </Preco>
+
       <DivPesoStyled>
-          <PpesoStyled>{product.weight}</PpesoStyled>
+          <PpesoStyled $exist={existWeight}>{product.weight}</PpesoStyled>
       </DivPesoStyled>
     </DescOfertaStyled>
   );

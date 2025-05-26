@@ -8,7 +8,7 @@ export const PaiProdStyled = styled.div`
     max-width: 330px;
     height: 165px;
     background-color: white;
-    border-radius: 9px 9px 14px 9px;
+    border-radius: 9px 9px 15px 9px;
     border: ${(props)=>props.$variant === 'home'? '1px solid rgb(150, 150, 150)': '1px solid rgb(141, 141, 141)'};
     cursor: default;
     -webkit-user-select: none;
@@ -17,7 +17,7 @@ export const PaiProdStyled = styled.div`
     box-sizing: border-box;
     padding-right: 5px;
     
-    @media screen and (min-width: 320px) and (max-width: 375px){
+    @media screen and (min-width: 320px) and (max-width: 374px){
        max-width: ${(props) => props.$variant === 'home' ? "265px" : "100%"};
        height: 180px;
     }
@@ -43,7 +43,19 @@ export const DescOfertaStyled = styled.div`
     height: 100%;
     width: 52%;
     padding: 2px;
-    padding-left: ${(props) => props.$variant === 'home' ? "14px" : "6px"};
+    @media screen and (min-width: 320px) and (max-width: 374px) {
+        padding-left: 11px;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+        padding-left: 9px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px){
+        padding-left: 8px;
+    }
+    @media screen and (min-width: 769px){
+        padding-left: 7px;
+    }
+    /* padding-left: ${(props) => props.$variant === 'home' ? "14px" : "6px"}; */
     padding-right: 0px;
     box-sizing: border-box;
 `;
@@ -51,7 +63,7 @@ export const DescOfertaStyled = styled.div`
     export const DivNomeStyled = styled.div`
         height: calc(100% - 80px);
         display: flex;
-        flex-direction: column;
+        justify-items: center;
         width: 100%;
         overflow: hidden;
         box-sizing: border-box;
@@ -60,10 +72,11 @@ export const DescOfertaStyled = styled.div`
         text-transform: uppercase;
         font-family: "Quicksand", Arial, sans-serif;
         margin: auto;
-        padding-bottom: 7px;
+        padding-top: 7px;
+        padding-left: 4px;
         font-weight: 600;
-
-        @media screen and (min-width: 320px) and (max-width: 375px){
+        
+        @media screen and (min-width: 320px) and (max-width: 374px){
             font-size: 0.86em;
             line-height: 18px;
             letter-spacing: 1.01px;
@@ -96,18 +109,15 @@ export const DescOfertaStyled = styled.div`
         height: 20px;
         padding: 0px 8px;
         background-color: #CDD4AE;
-        /* background-color:rgb(93, 119, 93); */
         border-radius: 5px;
     `;
 
     export const PoffStyled = styled.p`
         color: #13450a;
-        /* color: white; */
         font-family: "Lato",Arial,sans-serif;
         font-weight: 500;
-        /* font-weight: 400; */
 
-        @media screen and (min-width: 320px) and (max-width: 375px){
+        @media screen and (min-width: 320px) and (max-width: 374px){
           font-size: 0.87em;
         }
         @media screen and (min-width: 375px) and (max-width: 576px){
@@ -119,11 +129,11 @@ export const DescOfertaStyled = styled.div`
     `;
     //peso
     export const DivPesoStyled = styled.div`
-        height: 38px;
+        height: 36.5px;
         width: max-content;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         min-width: 52px;
     `;
     export const PpesoStyled= styled.p`
@@ -131,10 +141,11 @@ export const DescOfertaStyled = styled.div`
         letter-spacing: 0.5px;
         font-family: "Roboto Flex", Arial,sans-serif;
         background-color: rgb(232, 232, 232);
+        ${props => props.$exist==false && 'background-color: white;'}
         padding: 3px 15px;
         padding-bottom: 4px;
         border-radius: 9px;
-        @media screen and (min-width: 320px) and (max-width: 375px){
+        @media screen and (min-width: 320px) and (max-width: 374px){
           font-size: 0.87em;
         }
         @media screen and (min-width: 375px) and (max-width: 576px){
@@ -151,7 +162,8 @@ export const DescOfertaStyled = styled.div`
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        min-height: 40px;
+        height: 30px;
+        max-height: 30px;
     `;
 
     export const DivPrecoStyled = styled.div`
@@ -167,7 +179,8 @@ export const DescOfertaStyled = styled.div`
         font-family: "Lato",Arial,sans-serif;
         font-weight: 600;
         text-indent: 4px;
-        @media screen and (min-width: 320px) and (max-width: 375px){
+
+        @media screen and (min-width: 320px) and (max-width: 374px){
             font-size: 0.96em;
             letter-spacing: 1px;
         }
@@ -259,6 +272,7 @@ export const DivOfertaStyled = styled.div`
         color:rgb(227, 97, 64);
         padding-bottom: 4px;
         padding-left: 1px;
+        user-select: none;
     `;
 
 
@@ -280,7 +294,6 @@ export const DivOfertaStyled = styled.div`
         `;
 
     export const PMais2Styled = styled(PMaisStyled)`
-        /* color:rgb(189, 86, 84); */
         color: rgb(213, 94, 64);
     `;
 

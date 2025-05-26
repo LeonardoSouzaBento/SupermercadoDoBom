@@ -109,7 +109,7 @@ function SearchBar() {
     if (searchInitiated) {
       setSearchProducts(returnedProducts);
       setSearchQuantities(returnedProducts.map(() => 0));
-      navigate("/SearchAction");
+      navigate("/buscar-produtos");
       setSearchInitiated(false);
     }
   }, [returnedProducts]);
@@ -129,7 +129,7 @@ function SearchBar() {
           ref={inputRef}
           />
           <DivSpanStyled onPointerDown={(e)=>{handleClickSearch(0)}}>
-            <span className="material-symbols-rounded" style={{color: "rgb(150, 150, 150)"}}>search</span>
+            <span className="material-symbols-rounded" style={{color: "rgb(77, 77, 77)"}}>search</span>
           </DivSpanStyled>
 
           {viewSuggestion && (
