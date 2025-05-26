@@ -7,7 +7,7 @@ import {useScrollX} from '../../hooks/useScrollX2'
 const PaiAllProductsStyled = styled.div`
   overflow-x: hidden;
   margin-left: 10px;
-  padding-top: 12px;
+  padding-top: 8px;
   padding-bottom: 36px;
 
   @media screen and (min-width: 320px) and (max-width: 374px){

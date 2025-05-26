@@ -70,15 +70,6 @@ export const Divf = styled.div.attrs(props => ({
   }))`
   will-change: transform;
   overflow-x: visible;
-  ${props => props.$isMobile && css`
-    overflow-x: scroll;
-    padding-right: 20px;
-    box-sizing: border-box;
-
-    &::-webkit-scrollbar {
-      max-width: 100px;
-    }
-  `};
   width: 100%;
   position: relative;
   -webkit-user-select: none;
@@ -89,9 +80,7 @@ export const Divf = styled.div.attrs(props => ({
   display: flex;
   justify-content: space-between;
   flex-flow: row nowrap;
-  padding: 5px 0 0 0;
   gap: 10px;
-  box-sizing: border-box;
 
   &:active {
     cursor: grabbing; 
@@ -99,17 +88,26 @@ export const Divf = styled.div.attrs(props => ({
 
   @media screen and (min-width: 320px) and (max-width: 374px){
     gap: 15px;
-    padding-bottom: 17px;
+    margin-bottom: 10px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px){
-    padding-bottom: 22px;
+    margin-bottom: 15px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px){
-    padding-bottom: 26px;
+    margin-bottom: 19px;
   }
-  @media screen and (min-width: 768px){
-    padding-bottom: 30px;
+  @media screen and (min-width: 768px) and (max-width:992){
+    margin-bottom: 23px;
   }
+  @media screen and (min-width: 993px) {
+    margin-bottom: 32px;
+  }
+  ${props => props.$isMobile && css`
+    overflow-x: scroll;
+    padding-right: 19px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+  `};
 `;
 
 //span para animação

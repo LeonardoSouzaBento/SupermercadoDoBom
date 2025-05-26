@@ -61,31 +61,29 @@ export const Advertisements = styled.div.attrs(props => ({
    transform: props.$isMobile ? 'none' : `translateX(${props.$translateValue ?? 0}px)`
   }
   }))`
-  will-change: transform;
-  overflow-x: visible;
-  ${props => props.$isMobile && css`
-    overflow-x: scroll;
-    box-sizing: border-box;
-    padding: 0px 20px;
-  `}
-  height: 174px;
   width: 100%;
   margin: auto;
+  will-change: transform;
   padding-bottom: 30px;
   display: flex;
   flex-flow: row nowrap;
   gap: 16px;
-  padding-top: 12px;
+  margin-top: 12px;
+  overflow-x: visible;
+
+  ${props => props.$isMobile && css`
+    overflow-x: scroll;
+    box-sizing: border-box;
+    padding: 8px 20px;
+    padding-bottom: 24px;
+  `}
 
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
     visibility: hidden;
   }
-  /* Esconde scrollbar no Firefox e no IE 10+*/
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  
+
   ${props => props.$isMobile && css`
     @media screen and (min-width: 375px) and (max-width: 576px){
       padding-right: 15px;

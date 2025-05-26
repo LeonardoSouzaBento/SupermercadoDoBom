@@ -10,24 +10,30 @@ const DivStyled = styled.div.attrs(props => ({
   }
   }))`
   will-change: transform;
+  width: max-content;
+  max-width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
   overflow-x: visible;
+  position: relative;
+
   ${props => props.$isMobile && css` 
     overflow-x: scroll;
     box-sizing: border-box;
     padding-right: 20px;
   `};
-  width: max-content;
-  max-width: ${(props) => props.$variant === 'inSearch' ? "calc(100% - 30px)" : "100%"};
-  height: ${(props) => props.$variant === 'home' ? "auto" : "max-content"};
-  padding-bottom: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: ${(props) => props.$variant === 'home' ? "column" : "row"};
-  justify-content: ${(props) => props.$variant === 'home' ? "flex-start" : "center"};
-  gap: 12px;
-  position: relative;
-  ${(props) => props.$variant === 'inSearch' && 'margin: auto;'}
-  margin-top: ${props=>props.$variant=== 'inSearch' && "8px"};
+
+   ${(props) => props.$variant === 'inSearch' && css`
+    max-width: calc(100% - 30px);
+    flex-direction: row;
+    margin: auto;
+    margin-top: 8px;
+  `}
 
    ${(props) =>
     props.$variant === 'home' &&
