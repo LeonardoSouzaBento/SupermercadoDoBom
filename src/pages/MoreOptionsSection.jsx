@@ -55,13 +55,13 @@ export default function MoreOptionsSection(){
                 {contents.map((content, i)=>{
                     const isSelected = i === selectedOption;
                     return(
-                    <DivNameSpanStyled key={i} $selected={isSelected} onPointerDown={()=>{handleClick(i)}}>
+                    <DivNameSpanStyled key={i} $buttonSelected={isSelected} onPointerDown={()=>{handleClick(i)}}>
                         <DivSpanStyled>
-                            <SpanStyled $selected={isSelected} className='material-symbols-rounded'>{content.icon}
+                            <SpanStyled $buttonSelected={isSelected} className='material-symbols-rounded'>{content.icon}
                             </SpanStyled>
                         </DivSpanStyled>
 
-                         <POptionStyled $selected={isSelected}>{content.p}</POptionStyled>
+                         <POptionStyled $buttonSelected={isSelected}>{content.p}</POptionStyled>
                     </DivNameSpanStyled>
                 )})}
             </NavOptionsStyled>

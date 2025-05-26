@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -172,24 +172,25 @@ const Options = () => {
   const [viewNameOption, setViewNameOption] = useState(null);
   const [numberClicks, setNumberClicks] = useState([0,0,0]);
  
-  function openContentWithMouse(index) {
-    const option = contents[index].navigateTo
-    navigate(`/secao-mais-opcoes?option=${option}`);
-  }
-
-  //abrir com touch
-  function seeNameWithTouch(index) {
-    setViewNameOption(index)
-
-    setNumberClicks(numberClicks.map((_,i)=>{
-      return i === index ? numberClicks + 1 : numberClicks;
-    }));
-
-    if(numberClicks[index]==2){
-      setNumberClicks([0,0,0]);
-      openContentWithMouse(index)
+  function openContent(e, index) {
+    if (e.pointerType === "mouse") {
+      const option = contents[index].navigateTo;
+      navigate(`/secao-mais-opcoes?option=${option}`);
+    } else if (e.pointerType === "touch") {
+      setViewNameOption(index);
+      setNumberClicks(numberClicks.map((_, i)=>{return index==i? numberClicks[i]+1 : 0}));
     }
   }
+
+  useEffect(() => {
+    console.log(numberClicks);
+    const index = numberClicks.findIndex(count => count >= 2);
+    if (index!=-1) {
+      const option = contents[index].navigateTo;
+      setNumberClicks([0, 0, 0]);
+      navigate(`/secao-mais-opcoes?option=${option}`);
+    }
+  }, [numberClicks]);
 
   return (
     <ContainerStyled>
@@ -208,8 +209,8 @@ const Options = () => {
           data-ignore-click
           onMouseEnter={()=>{setViewNameOption(i)}}
           onMouseLeave={()=>{setViewNameOption(null)}}
-          onMouseDown={()=>{openContentWithMouse(i)}}
-          onTouchStart={()=>{seeNameWithTouch(i)}}>
+          onPointerDown={(e) => openContent(e, i)}
+          >
               <SpanOptionsStyled className='material-symbols-rounded'>
                   {content.icon}
               </SpanOptionsStyled>

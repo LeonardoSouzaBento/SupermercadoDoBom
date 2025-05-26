@@ -74,7 +74,7 @@ export const Advertisements = styled.div.attrs(props => ({
   ${props => props.$isMobile && css`
     overflow-x: scroll;
     box-sizing: border-box;
-    padding: 8px 20px;
+    padding: 12px 20px;
     padding-bottom: 24px;
   `}
 

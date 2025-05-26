@@ -105,7 +105,7 @@ export const Divf = styled.div.attrs(props => ({
   ${props => props.$isMobile && css`
     overflow-x: scroll;
     padding-right: 19px;
-    padding-bottom: 8px;
+    padding-bottom: 12px;
     box-sizing: border-box;
   `};
 `;
