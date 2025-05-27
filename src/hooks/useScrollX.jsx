@@ -8,13 +8,7 @@ export function useScrollX() {
     promotionsRef,
     limitAdvertisements,
     limitCategories,
-    limitProductList,
-    translateX1,
-    translateX2,
-    translateX3,
-    setTranslateX1,
-    setTranslateX2,
-    setTranslateX3
+    limitProductList
   } = useContext(CartContext);
 
   const refs = [advertisementsRef, categoriesRef, promotionsRef];
@@ -29,30 +23,16 @@ export function useScrollX() {
     }))
   );
 
-  const translateRefs = [
-    useRef(translateX1),
-    useRef(translateX2),
-    useRef(translateX3)
-  ];
-
-  useEffect(() => {
-    translateRefs[0].current = translateX1;
-    translateRefs[1].current = translateX2;
-    translateRefs[2].current = translateX3;
-  }, [translateX1, translateX2, translateX3]);
-
-  const setTranslates = [setTranslateX1, setTranslateX2, setTranslateX3];
-
-  const limitsTranslateRefs = [
+  const limitsScrollRefs = [
     useRef(limitAdvertisements),
     useRef(limitCategories),
     useRef(limitProductList)
   ];
 
   useEffect(() => {
-    limitsTranslateRefs[0].current = limitAdvertisements;
-    limitsTranslateRefs[1].current = limitCategories;
-    limitsTranslateRefs[2].current = limitProductList;
+    limitsScrollRefs[0].current = limitAdvertisements;
+    limitsScrollRefs[1].current = limitCategories;
+    limitsScrollRefs[2].current = limitProductList;
   }, [limitAdvertisements, limitCategories, limitProductList]);
 
   const iniciarArraste = useCallback((e, i) => {
@@ -88,12 +68,10 @@ export function useScrollX() {
 
     variables.time_touch = now;
     variables.toc_ini = x;
-
-    const el = refs[i].current;
-    if (!el) return;
-
-    let proximo = el.scrollLeft + deslocamento;
-    const maxScroll = -limitsTranslateRefs[i].current;
+    
+    const div = refs[i].current;
+    let proximo = div.scrollLeft + deslocamento;
+    const maxScroll = -limitsScrollRefs[i].current;
 
     if (proximo < 0) {
       proximo = 0;
@@ -103,9 +81,7 @@ export function useScrollX() {
       variables.velocidade = 0;
     }
 
-    el.scrollLeft = proximo;
-    translateRefs[i].current = proximo;
-    setTranslates[i](proximo);
+    div.scrollLeft = proximo;
   }, []);
 
   const finalizarArraste = useCallback((e, i) => {
@@ -117,15 +93,14 @@ export function useScrollX() {
       cancelAnimationFrame(variables.animacao);
     }
 
-    const el = refs[i].current;
-    if (!el) return;
+    const div = refs[i].current;
 
-    const maxScroll = -limitsTranslateRefs[i].current;
+    const maxScroll = -limitsScrollRefs[i].current;
 
     const decel = () => {
       if (Math.abs(variables.velocidade) > 0.15) {
         variables.velocidade *= 0.95;
-        let proximo = el.scrollLeft + variables.velocidade * 16;
+        let proximo = div.scrollLeft + variables.velocidade * 16;
 
         if (proximo < 0) {
           proximo = 0;
@@ -135,9 +110,7 @@ export function useScrollX() {
           variables.velocidade = 0;
         }
 
-        el.scrollLeft = proximo;
-        translateRefs[i].current = proximo;
-        setTranslates[i](proximo);
+        div.scrollLeft = proximo;
 
         variables.animacao = requestAnimationFrame(decel);
       }

@@ -5,15 +5,10 @@ import { promo_products } from '../data/promo_products';
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [isMobile, setIsMobile] = useState(false);
   const [limitProductList, setLimitProductList] = useState(0);
   const [limitCategories, setLimitCategories] = useState(0);
   const [limitAdvertisements, setLimitAdvertisements] = useState(0);
-
-  const [translateX1, setTranslateX1] = useState(0);
-  const [translateX2, setTranslateX2] = useState(0);
-  const [translateX3, setTranslateX3] = useState(0);
-
+  
   const advertisementsRef = useRef();
   const categoriesRef = useRef();
   const promotionsRef = useRef();
@@ -106,8 +101,7 @@ export function CartProvider({ children }) {
   const totalValueFormatted = totalAddedValue.toFixed(2).replace('.', ',');
 
   return (
-    <CartContext.Provider value={{isMobile, setIsMobile, advertisementsRef, categoriesRef, promotionsRef,
-    translateX1, setTranslateX1, translateX2, setTranslateX2, translateX3, setTranslateX3, setLimitProductList, limitProductList,
+    <CartContext.Provider value={{advertisementsRef, categoriesRef, promotionsRef, setLimitProductList, limitProductList,
     setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, allQuantities,
     setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
     shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
@@ -116,4 +110,8 @@ export function CartProvider({ children }) {
   );
 }
 
+  // const [isMobile, setIsMobile] = useState(false);
+  // const [translateX1, setTranslateX1] = useState(0);
+  // const [translateX2, setTranslateX2] = useState(0);
+  // const [translateX3, setTranslateX3] = useState(0);
 

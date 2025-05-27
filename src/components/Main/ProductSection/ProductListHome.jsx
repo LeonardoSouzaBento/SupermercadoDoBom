@@ -4,11 +4,7 @@ import styled, {css} from 'styled-components';
 import ProductItem from './ProductItem';
 import { CartContext } from '../../CartContext';
 
-const DivStyled = styled.div.attrs(props => ({
-  style: {
-    transform: `translateX(${props.$translateValue ?? 0}px)`
-  }
-  }))`
+const DivStyled = styled.div`
   will-change: transform;
   width: max-content;
   max-width: 100%;
@@ -19,14 +15,16 @@ const DivStyled = styled.div.attrs(props => ({
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 12px;
-  overflow-x: visible;
   position: relative;
+  overflow-x: scroll;
+  box-sizing: border-box;
+  padding-right: 20px;
 
-  ${props => props.$isMobile && css` 
-    overflow-x: scroll;
-    box-sizing: border-box;
-    padding-right: 20px;
-  `};
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
    ${(props) => props.$variant === 'inSearch' && css`
     max-width: calc(100% - 30px);
@@ -83,14 +81,14 @@ const PNoneStyled = styled.p`
 `;
 
 
-export const ProductListHome = React.forwardRef (({variant, categoryKey, $translateValue}, ref)=>{
-  const { allQuantities, allProductsInCat, handleQuantityChange, isMobile} = useContext(CartContext);
+export const ProductListHome = React.forwardRef (({variant, categoryKey, }, ref)=>{
+  const { allQuantities, allProductsInCat, handleQuantityChange} = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
   const quantities = allQuantities[categoryKey];
   
   return ( 
-    <DivStyled $variant={variant} ref={ref} $translateValue={$translateValue} $isMobile={isMobile}>
+    <DivStyled $variant={variant} ref={ref}>
       {products.map((product, idx) => (
         <ProductItem
           variant={variant}

@@ -63,51 +63,35 @@ export const PLabelStyled = styled.p`
 `;
 
 
-export const Divf = styled.div.attrs(props => ({
-  style: {
-    transform: `translateX(${props.$translateValue ?? 0}px)`
-  }
-  }))`
-  will-change: transform;
-  overflow-x: visible;
+export const Divf = styled.div`
   width: 100%;
-  position: relative;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
   margin: auto;
   display: flex;
   justify-content: space-between;
   flex-flow: row nowrap;
   gap: 10px;
+  position: relative;
+  /* -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none; */
+  overflow-x: scroll;
+  padding-right: 19px;
+  box-sizing: border-box;
+  margin-bottom: 17px;
 
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    display: none;
+  }
   &:active {
-    cursor: grabbing; 
+    cursor: grabbing;
   }
 
   @media screen and (min-width: 320px) and (max-width: 374px){
     gap: 15px;
-    margin-bottom: 10px;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px){
-    margin-bottom: 15px;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px){
-    margin-bottom: 19px;
-  }
-  @media screen and (min-width: 768px) and (max-width:992){
-    margin-bottom: 23px;
-  }
-  @media screen and (min-width: 993px) {
-    margin-bottom: 32px;
-  }
-  ${props => props.$isMobile && css`
-    overflow-x: scroll;
-    padding-right: 19px;
-    padding-bottom: 12px;
-    box-sizing: border-box;
-  `};
 `;
 
 //span para animação

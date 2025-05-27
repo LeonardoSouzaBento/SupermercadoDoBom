@@ -3,7 +3,7 @@ import { useState, useRef, useEffect} from 'react';
 import { Div, DivLabelPromosStyled, PLabelStyled, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled} from './ComponentsCategories';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
-import {useScrollX} from '../../../hooks/useScrollX2'
+import {useScrollX} from '../../../hooks/useScrollX'
 
 const CategoryItem = React.forwardRef(({ category, isSelected, setSelectedCategoryId}, ref) => {
 
@@ -38,7 +38,7 @@ const CategoryItem = React.forwardRef(({ category, isSelected, setSelectedCatego
 
 function CategoriesSection() {
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
-  const {setLimitCategories, translateX2, categoriesRef, isMobile} = useContext(CartContext);
+  const {setLimitCategories, categoriesRef} = useContext(CartContext);
   useScrollX();
 
   const category = [
@@ -102,7 +102,7 @@ function CategoriesSection() {
         <PLabelStyled>os produtos básicos ficam aqui.</PLabelStyled>
       </DivLabelPromosStyled>
 
-      <Divf ref={categoriesRef} $translateValue={translateX2} $isMobile={isMobile}>
+      <Divf ref={categoriesRef}>
         {category.map((cat, index) => (
           <CategoryItem 
             ref={index === 0 ? CategoryItemRef : null}

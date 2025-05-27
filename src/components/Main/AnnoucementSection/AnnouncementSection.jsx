@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback, useContext } from 'react';
 import { Div, P, Img,Advertisements, Span, Fundo, Pagination} from './ComponentsAnnouncements';
 import { CartContext } from '../../CartContext';
-import {useScrollX} from '../../../hooks/useScrollX2'
+import {useScrollX} from '../../../hooks/useScrollX'
 
 let imageUrls = [
   "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg", //farinha
@@ -13,7 +13,7 @@ let imageUrls = [
 ];
 
 function AnnouncementSection() {
-  const {setLimitAdvertisements, setTranslateX1, advertisementsRef, translateX1, isMobile}= useContext(CartContext);
+  const {setLimitAdvertisements, advertisementsRef}= useContext(CartContext);
 
   useScrollX();
 
@@ -45,7 +45,7 @@ function AnnouncementSection() {
       }else{setCentralIndices(indices)};
  
       let widtAllAds = imageUrls.length * fundoWidth + gap * (imageUrls.length - 1);//largura de tdos os anuncios
-      let limite = divWidth-widtAllAds;
+      let limite = divWidth-widtAllAds-28;
       setLimitAdvertisements(limite); //Limite de rolagem para anuncios
       let Initialcenter = 0;
       function obterLimites() {
@@ -56,7 +56,7 @@ function AnnouncementSection() {
         }
       }
       obterLimites();
-      setTranslateX1(Initialcenter)
+      advertisementsRef.current.scrollLeft = Initialcenter*-1;
     }
   },
   [imageUrls.length]);
@@ -126,7 +126,7 @@ function AnnouncementSection() {
   return (
     <Div ref={divRef}>
       <P>Maiores ofertas!</P>
-      <Advertisements ref={advertisementsRef} $translateValue={translateX1} $isMobile={isMobile}>
+      <Advertisements ref={advertisementsRef}>
         {imageUrls.map((url, index) => (
           <Fundo key={index} $bg={url} ref={(el) => (fundoRefs.current[index] = el)
           }>

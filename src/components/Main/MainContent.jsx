@@ -30,49 +30,9 @@ const Main = styled.main`
 function MainContent() {
   const [viewOptions, setViewOptions] = useState(false);
 
-  const {currentCategory, isMobile, setIsMobile} = useContext(CartContext)
+  const {currentCategory} = useContext(CartContext)
   const divRef = useRef(null);
   
-  //para habilitar scroll nativo
-  useEffect(() => {
-    // detectar mouse
-    const isTouchDevice = () => {
-      return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    };
-    const detectMouseEvent = (e) => {
-      const wasMouseEvent = (e.type === 'wheel') || (e.type === 'pointerdown' && e.pointerType === 'mouse');
-
-      if (window.innerWidth <= 992 && isMobile && wasMouseEvent) {
-        setIsMobile(false);
-        window.removeEventListener('wheel', detectMouseEvent);
-        window.removeEventListener('pointerdown', detectMouseEvent);
-      }
-      window.removeEventListener('wheel', detectMouseEvent);
-      window.removeEventListener('pointerdown', detectMouseEvent);
-    };
-
-    if (window.innerWidth <= 992 && isTouchDevice()) {
-      setIsMobile(true);
-      window.addEventListener('wheel', detectMouseEvent);
-      window.addEventListener('pointerdown', detectMouseEvent);
-    } else {
-      setIsMobile(false);
-    }
-
-    // detectar toque touch
-    const detectTouchEvent = ()=>{
-      setIsMobile(true);
-      window.removeEventListener('touchstart', detectTouchEvent)
-    }
-    window.addEventListener('touchstart', detectTouchEvent)
-
-    return () => {
-      window.removeEventListener('touchstart', detectTouchEvent)
-      window.removeEventListener('wheel', detectMouseEvent);
-      window.removeEventListener('pointerdown', detectMouseEvent);
-    };
-  }, []);
-
   //Esconder mais opções com toque fora
   useEffect(() => {
     const handlePointerDown = (e) => {

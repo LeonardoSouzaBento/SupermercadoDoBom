@@ -183,7 +183,6 @@ const Options = () => {
   }
 
   useEffect(() => {
-    console.log(numberClicks);
     const index = numberClicks.findIndex(count => count >= 2);
     if (index!=-1) {
       const option = contents[index].navigateTo;

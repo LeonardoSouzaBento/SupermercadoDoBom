@@ -6,7 +6,7 @@ export const Div = styled.div`
   overflow-x: hidden;
   margin: auto;
   padding-top: 16px;
-  padding-bottom: 48px;
+  padding-bottom: 40px;
   border-radius: 5px;
   @media screen and (min-width: 320px) and (max-width:576px){
     width: 100%;
@@ -19,11 +19,9 @@ export const Div = styled.div`
   }
   @media screen and (min-width: 993px) and (max-width:1200px){
     width: calc(100% - 20px);
-    padding-bottom: 52px;
   }
   @media screen and (min-width: 1201px){
     width: calc(100% - 50px);
-    padding-bottom: 52px;
   }
 `;
 
@@ -56,45 +54,28 @@ export const P = styled.p`
   }
 `;
 
-export const Advertisements = styled.div.attrs(props => ({
-  style: {
-   transform: props.$isMobile ? 'none' : `translateX(${props.$translateValue ?? 0}px)`
-  }
-  }))`
+export const Advertisements = styled.div`
   width: 100%;
   margin: auto;
   will-change: transform;
-  padding-bottom: 30px;
   display: flex;
   flex-flow: row nowrap;
   gap: 16px;
   margin-top: 12px;
-  overflow-x: visible;
+  overflow-x: scroll;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  padding-left: 15px;
+  padding-bottom: 24px;
+  margin-bottom: 8px;
 
-  ${props => props.$isMobile && css`
-    overflow-x: scroll;
-    box-sizing: border-box;
-    padding: 12px 20px;
-    padding-bottom: 24px;
-  `}
-
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    visibility: hidden;
+    display: none;
   }
 
-  ${props => props.$isMobile && css`
-    @media screen and (min-width: 375px) and (max-width: 576px){
-      padding-right: 15px;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px){
-      padding-right: 18px;
-    }
-    @media screen and (min-width: 769px){
-      padding-right: 20px;
-    }`
-  }
+
   @media screen and (min-width: 375px) and (max-width: 576px){
     gap: 15px;
   }
