@@ -3,15 +3,17 @@ BodyStyled,
 WrapperStyled, 
 NavOptionsStyled, 
 DivNameSpanStyled,
-DivNameSpanFalseStyled,
 POptionStyled, 
 DivSpanStyled, 
 SpanStyled,
-DivContentStyled
-} from "../components/Main/MoreOptionsSection/ComponentsOptionSection"
-import AboutMe from "../components/Main/MoreOptionsSection/AboutMe"
-import AboutTheWebsite from "../components/Main/MoreOptionsSection/AboutTheWebsite"
-import InsertComment from "../components/Main/MoreOptionsSection/InsertComment"
+DivContentStyled,
+DivCodeStyled,
+PreStyled
+} from "../components/Main/MoreOptionsSection/ComponentsOptionSection";
+import AboutMe from "../components/Main/MoreOptionsSection/AboutMe";
+import AboutTheWebsite from "../components/Main/MoreOptionsSection/AboutTheWebsite";
+import InsertComment from "../components/Main/MoreOptionsSection/InsertComment";
+import { routesCode, cartContextCode} from "../components/Main/MoreOptionsSection/CodeTexts";
 import { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
 
@@ -35,7 +37,8 @@ export default function MoreOptionsSection(){
 
     const [seeTheOption, setSeeTheOption] = useState('');
     const [selectedOption, setSelectedOption] = useState(0);
-    
+    const [selectedButtonCode, setSelectedButtonCode] = useState(0);
+
     useEffect(() => {
         const index = urlOptions.indexOf(option);
         setSelectedOption(index);
@@ -49,6 +52,7 @@ export default function MoreOptionsSection(){
     }
 
   return (
+    <>
     <BodyStyled>
         <WrapperStyled>
             <NavOptionsStyled>
@@ -69,9 +73,18 @@ export default function MoreOptionsSection(){
             <DivContentStyled>
                 {seeTheOption=='aboutMe' && (<AboutMe/>)}
                 {seeTheOption=='comment' && (<InsertComment/>)}
-                {seeTheOption=='aboutSite' && (<AboutTheWebsite/>)}
+                {seeTheOption=='aboutSite' && (<AboutTheWebsite 
+                selectedButtonCode={selectedButtonCode} 
+                setSelectedButtonCode={setSelectedButtonCode}/>)}
             </DivContentStyled>
         </WrapperStyled>
+
+        {seeTheOption==='aboutSite' && (
+            <DivCodeStyled>
+                {selectedButtonCode==0 && (<PreStyled>{cartContextCode}</PreStyled>)}
+            </DivCodeStyled>
+        )}
     </BodyStyled>
+   </>        
   )
 }

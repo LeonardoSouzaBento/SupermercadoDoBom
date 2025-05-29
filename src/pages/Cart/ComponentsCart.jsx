@@ -3,56 +3,34 @@ import styled from "styled-components";
 export const BodyStyled = styled.div`
     background-color: rgb(240, 240, 240);
     padding-top: 12px;
-    padding-bottom: 30px;
-    min-height: 100vh;
     height: auto;
 `;
 
 export const MainStyled = styled.main`
     width: calc(100% - 30px);
     margin: auto;
-    min-height: 100vh;
     @media screen and (min-width: 320px) and (max-width: 374px){
         width: calc(100% - 20px);
     }
-    /* @media screen and (min-width: 375px) and (max-width: 576px){
-        width: calc(100% - 30px);
-    }
-    @media screen and (min-width: 769px){
-        width: calc(100% - 30px);
-    } */
 `;
 
 export const CartSectionStyed = styled.div`
     width: 100%;
-    max-width: 500px;
+    max-width: 1000px;
     height: max-content;
     min-height: 300px;
     margin: auto;
     background-color: white;
     margin-bottom: 20px;
-    border-radius: 12px 12px 20px 20px;
+    border-radius: 8px 8px 20px 20px;
     padding: 12px;
     padding-top: 0px;
     padding-bottom: 14px;
+    margin-bottom: 139px;
     box-sizing: border-box;
-    border: 1px solid rgb(135, 135, 135);
-    
+    background-color: rgb(225, 225, 225);
     @media screen and (min-width: 577px) and (max-width: 768px){
         margin-bottom: 17px;
-    }
-    @media screen and (min-width: 769px){
-        width: calc(100% - 255px);
-        max-width: none;
-        margin: 0px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 15px;
-        margin-bottom: 20px;
-        padding-top: 7px;
-        box-shadow: 0px 0px 2px rgb(189, 189, 189);
     }
     `;
 
@@ -84,8 +62,6 @@ export const PHeadStyled = styled.p`
 `;
 
 export const ContainerOfListStyled = styled.div`
-    width: 100%;
-    overflow: hidden;
 `;
 
 export const DivFlexRowStyled = styled.div`
@@ -95,38 +71,6 @@ export const DivFlexRowStyled = styled.div`
     justify-content: center;
     align-items: center;
 `;
-
-// export const DivSeeAllStyled = styled.div`
-//     height: 40px;
-//     width: 100%;
-//     margin: auto;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 5px;
-//     border-radius: 6px;
-//     background-color: rgb(243, 243, 243);
-//     @media screen and(min-width: 768px){
-//         width: 50%;
-//     }
-// `;
-
-// export const PSeeAll = styled.p`
-//     font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
-//     font-weight: 500;
-//     padding-bottom: 2px;
-//     text-transform: uppercase;
-//     @media screen and (min-width: 320px) and (max-width: 374px){
-//         font-size: 1.07em;
-//     }
-//     @media screen and (min-width: 375px) and (max-width: 576px){
-//         font-size: 1.092em;
-//     }
-
-//     @media screen and (min-width: 577px){
-//         font-size: 1.11em;
-//     }
-// `;
 
 export const DivAddStyled = styled.div`
     width: 95%;
@@ -191,20 +135,11 @@ export const FinishSectionStyled = styled.div`
         width: calc(100% - 21px);
     }
     @media screen and (min-width: 769px){
-        width: 240px;
         height: max-content;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: transparent;
+        padding: 24px 12px;
         background-color: rgb(255, 255, 255);
         border: 1px solid rgb(149, 149, 149);
-        position: fixed;
-        top: 0;
-        right: 0px;
-        /* transform: translateY(-50%); */
     }
-
 `;
 
 export const ContainerStyled = styled.div`
@@ -221,7 +156,7 @@ export const ContainerStyled = styled.div`
     box-sizing: border-box;
 
     @media screen and (min-width: 769px){
-       margin: 0px;
+    
     }
 `;
 

@@ -6,12 +6,12 @@ import { CartContext } from '../../CartContext';
 
 const DivStyled = styled.div`
   will-change: transform;
-  width: max-content;
   max-width: 100%;
   height: max-content;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 12px;
@@ -38,24 +38,26 @@ const DivStyled = styled.div`
     css`
       @media screen and (min-width: 320px) and (max-width: 374px) {
         gap: 8px;
-        height: 570px;
+        height: 565px;
       }
       @media screen and (min-width: 375px) and (max-width: 576px) {
-        height: 593px;
+        height: 592px;
       }
-      @media screen and (min-width: 577px) and (max-width: 768px) {
-        height: 552px;
-      }
-      @media screen and (min-width: 769px) and (max-width: 992px) {
-        height: 555px;
+      @media screen and (min-width: 577px){
+        height: 577px;
       }
       @media screen and (min-width: 993px){
         padding-bottom: 5px;
-        height: 540px;
+        height: 548px;
         gap: 11px;
       }
     `
   }
+  ${props => props.$variant==='cart' && css`
+    flex-direction: row;
+    padding-right: 0px;
+    justify-content: center;
+  `}
 `;
 
 const NoProcutsStyed= styled.div`
@@ -92,7 +94,7 @@ export const ProductListHome = React.forwardRef (({variant, categoryKey, }, ref)
       {products.map((product, idx) => (
         <ProductItem
           variant={variant}
-          key={`${product.id}-${idx}`}
+          key={`${product.id}-${product.cat_id}`}
           id={product.id}
           product={product}
           quantity={quantities[idx] || 0}

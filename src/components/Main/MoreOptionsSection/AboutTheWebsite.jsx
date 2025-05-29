@@ -1,35 +1,14 @@
-import { PStyled, H1Styled, PButtonStyled } from "./ComponentsOptionSection"
+import { PStyled, PButtonStyled,H1Styled } from "./ComponentsOptionSection"
 import styled from "styled-components";
 
-const CodeDisplay = () => {
-  const codeContent = `
-    routes.jsx
-    import { Routes, Route } from "react-router-dom";
-    import MainContent from "./components/Main/MainContent"
-    import Cart from "./pages/Cart/Cart";
-    import SearchAction from "./pages/SearchAction";
-
-    const AppRoutes = () => {
-    return (
-        <Routes>
-        <Route path="/" element={<MainContent />}/>
-        <Route path="/Cart" element={<Cart />} />
-        <Route path="/SearchAction" element={<SearchAction />} />
-        </Routes>
-    );
-    };
-
-    export default AppRoutes;
+const DivGenericStyled = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  height: max-content;
+  align-items: center;
+  margin-bottom: 16px;
 `;
-
-  const escapedCode = codeContent
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-
-  return (
-      <pre dangerouslySetInnerHTML={{ __html: `<code>${escapedCode}</code>` }}/>
-  );
-};
 
 
 function folderOrganization() {
@@ -71,28 +50,62 @@ function folderOrganization() {
     )
 }
 
-export default function AboutTheWebsite () {
+export default function AboutTheWebsite ({selectedButtonCode, setSelectedButtonCode}) {
 
   return (
     <>
         <H1Styled>Resumo</H1Styled>
         <PStyled>
-            Esse projeto iniciou em 08/04/2025. É um site de e-commerce simulado feito em React. Usa Styled Components, useContext e useNavigate levando a Cart e a SearchAction, as duas 'páginas' do site**. <br/>
-            O site tem um hook próprio para a rolar horizontalmente as divs da Home em desktops. Em dispositivos mobile a rolagem é nativa por 'overflow-x: scroll'. <br/>
-            O BackEnd é inexistente. As imagens vem de links da internet.
-            <br/>
-            <PButtonStyled>Organização das pastas e do projeto:</PButtonStyled>
-            <br/>
-            <strong>Notas do autor:</strong><br/>
-                O repósitorio gitHub desse projeto é privado (para manter a propriedade pessoal dele).
-                <br/>
-                Você pode ver o código mais importante abaixo, ele está em 
-                <PButtonStyled>cartContext</PButtonStyled> e 
-                <PButtonStyled>useScrollX.jsx</PButtonStyled>.
-                <br/>
-                **Arquivo <PButtonStyled>routes</PButtonStyled>, para confirmar apenas:
+          <strong>Nota do autor:</strong><br/>
+          O repósitorio gitHub é privado.
+          <br/>
         </PStyled>
 
+        <PStyled>
+          Esse site de e-commerce simulado feito em React iniciou em 08/04/2025. Ele é feito com <strong>Styled Components, useContext e useNavigate</strong> levando a Cart e a SearchAction, as duas "páginas" do site. <br/>
+          A rolagem das divs em desktops é feita por um hook próprio que aplica scrollLeft.
+        </PStyled>
+    
+        <DivGenericStyled>
+          <PStyled $variant={'site'}>Você pode ver o código mais importante abaixo, ele está em </PStyled>
+          <PButtonStyled $variant={'site'}
+          $buttonSelected={selectedButtonCode === 0}
+          onClick={() => setSelectedButtonCode(0)}>
+            CartContext.jsx
+          </PButtonStyled>
+          <DivGenericStyled>
+            <PStyled $variant={'site'}>e em</PStyled>
+            <PButtonStyled $variant={'site'}>useScrollX</PButtonStyled>
+            <PStyled $variant={'site'}>(importante para desktops).</PStyled>
+          </DivGenericStyled>
+        </DivGenericStyled>
+          <br/>
+
+        <DivGenericStyled>
+          <PStyled $variant={'site'}>• Arquivo</PStyled>
+          <PButtonStyled $variant={'site'} 
+          $buttonSelected={selectedButtonCode === 1}
+          onPointerDown={() => setSelectedButtonCode(1)}>
+            routes
+          </PButtonStyled>
+          <PStyled $variant={'site'}> para confirmar apenas:</PStyled>
+        </DivGenericStyled>
+
+        <DivGenericStyled>
+          <PStyled>•</PStyled>
+          <PButtonStyled 
+          $variant={'site'}
+          $buttonSelected={selectedButtonCode === 2}
+          onPointerDown={() => setSelectedButtonCode(2)}>
+            Organização das pastas e do projeto:
+          </PButtonStyled>
+          <br/>
+        </DivGenericStyled>
+
+        <PStyled>
+        • O BackEnd é inexistente. As imagens vem de links da internet.
+        </PStyled>
     </>
+
   )
 }

@@ -3,7 +3,8 @@ import styled, {css} from "styled-components";
 export const BodyStyled = styled.div`
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding-top: 20px;
   background-color: #3C3C3C;
 `;
@@ -17,7 +18,7 @@ export const WrapperStyled = styled.div`
   border-radius: 8px;
   background-color: rgb(237, 237, 237);
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.43);
-  margin-bottom: 100px;
+  margin-bottom: 24px;
 `;
 
 export const NavOptionsStyled = styled.nav`
@@ -111,9 +112,11 @@ export const DivContentStyled = styled.div`
 `;
 
 export const PStyled = styled.p`
+  max-width: max-content;
   font-family: "Roboto";
   font-weight: 400;
   margin-bottom: 16px;
+  ${props => props.$variant && 'margin-bottom: 0px;'}
   ${props => props.$monospace && 'font-family: "Roboto Mono", monospace;'}
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
@@ -144,11 +147,10 @@ export const PStyled = styled.p`
 
 export const PButtonStyled = styled(PStyled)`
   max-width: 350px;
+  height: max-content;
   padding: 5px 16px;
   background-color: rgb(216, 216, 216);
   border: 1px solid rgb(155, 155, 155);
-  ${props => props.$buttonSelected && 'background-color: rgb(26, 26, 26);'}
-  ${props => props.$buttonSelected && 'color: white;'}
   margin-bottom: 0px;
   border-radius: 4px;
   letter-spacing: 0.7px;
@@ -159,14 +161,28 @@ export const PButtonStyled = styled(PStyled)`
 
   @media screen and (max-width: 740px) {
     min-width: 100%;
+    ${props => props.$variant && 'min-width: max-content;'}
   }
+
+  ${props => props.$buttonSelected && 'background-color: rgb(26, 26, 26);'}
+  ${props => props.$buttonSelected && 'color: white;'}
+  ${props => props.$variant && props.$buttonSelected && css`
+    background-color: rgb(209, 205, 235);
+    border: 1px solid rgb(33, 56, 207);
+  `}
+
+  ${props => props.$variant && css`
+    max-width: max-content;
+    padding: 2px 12px;
+    flex: none;
+    color: black;
+  `}
 `;
 
 export const H1Styled = styled.h1`
   font-family: "Roboto", sans-serif;
   font-weight: 200;
   margin-bottom: 15px;
-  /* color: rgb(79, 79, 79); */
   
   @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.9em;
@@ -188,3 +204,20 @@ export const H1Styled = styled.h1`
   }
 `;
 
+export const DivCodeStyled = styled.div`
+  background-color: rgb(39, 39, 39);
+  width: 100%;
+  padding-left: 36px;
+  padding-top: 18px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  border: 1px solid rgb(61, 38, 188);
+  box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.73);
+`;
+
+export const PreStyled = styled.pre`
+ @media screen and (min-width: 993px) {
+   font-family: "Roboto Mono", monospace;
+   color: white;
+ }
+`;

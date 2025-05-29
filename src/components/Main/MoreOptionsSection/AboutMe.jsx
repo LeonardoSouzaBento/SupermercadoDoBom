@@ -152,27 +152,27 @@ const AboutMe = () => {
         
         {buttonSelected==0 && (<>
           <DivImgStyled>
-            <ImgStyled src="public/sobre_mim/pintando1.gif"/>
+            <ImgStyled src="src/assets/sobre_mim/pintando1.gif"/>
           </DivImgStyled>
 
           <DivImgStyled>
-            <ImgStyled src="public/sobre_mim/pintando2.gif"/>
+            <ImgStyled src="src/assets/sobre_mim/pintando2.gif"/>
           </DivImgStyled>
         </>)}
         
         {buttonSelected==1 && (<>
           <DivImgStyled>
-            <ImgStyled src="public/sobre_mim/pintura1.jpg"/>
+            <ImgStyled src="src/assets/sobre_mim/pintura1.jpg"/>
           </DivImgStyled>
           
           <DivImgStyled>
-            <ImgStyled src="public/sobre_mim/pintura.jpg"/>
+            <ImgStyled src="src/assets/sobre_mim/pintura.jpg"/>
           </DivImgStyled>
         </>)}
         
         {buttonSelected==2 && (
           <DivImgStyled>
-            <ImgStyled src="public/sobre_mim/ilustracao_compressed.png"></ImgStyled>
+            <ImgStyled src="src/assets/sobre_mim/ilustracao_compressed.png"></ImgStyled>
           </DivImgStyled>
         )}
       </DivReferentMidea>

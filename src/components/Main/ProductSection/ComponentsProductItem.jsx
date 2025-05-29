@@ -5,8 +5,7 @@ export const PaiProdStyled = styled.div`
     justify-content: center;
     width: 100%;
     min-width: 265px;
-    max-width: 330px;
-    height: 165px;
+    height: 180px;
     background-color: white;
     border-radius: 9px 9px 15px 9px;
     border: ${(props)=>props.$variant === 'home'? '1px solid rgb(150, 150, 150)': '1px solid rgb(141, 141, 141)'};
@@ -18,19 +17,21 @@ export const PaiProdStyled = styled.div`
     padding-right: 5px;
     
     @media screen and (min-width: 320px) and (max-width: 374px){
-       max-width: ${(props) => props.$variant === 'home' ? "265px" : "100%"};
+       max-width: ${(props) => props.$variant === 'home' ? "260px" : "100%"};
        height: 180px;
     }
     @media screen and (min-width: 375px) and (max-width: 576px){
-       max-width: ${(props) => props.$variant === 'home' ? "300px" : "340px"};
-       height: ${(props) => props.$variant === 'home' ? "185px" : "165px"};
+       max-width: ${(props) => props.$variant === 'home' ? "285px" : "340px"};
+       height: ${(props) => props.$variant === 'home' ? "185px" : "170px"};
     }
     @media screen and (min-width: 577px) and (max-width: 768px){
-       max-width: 320px;
-       height: 170px;
+       max-width: 290px;
     }
     @media screen and (min-width: 769px) and (max-width: 992px){
-       max-width: 325px;
+       max-width: 305px;
+    }
+    @media screen and (min-width: 993px) {
+       max-width: 320px;
        height: 170px;
     }
 `;

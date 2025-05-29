@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useRef} from 'react';
-import { productsCatId1, productsCatId2, productsCatId3} from '../data/products_by_category';
+import { productsCatId1, productsCatId2, productsCatId3, 
+productsCatId4, productsCatId5, productsCatId6, productsCatId7, productsCatId8, productsCatId9} from '../data/products_by_category';
 import { promo_products } from '../data/promo_products';
 
 export const CartContext = createContext();
@@ -17,17 +18,27 @@ export function CartProvider({ children }) {
   const [cartQuantities] = useState([]);
   const [searchProducts, setSearchProducts]= useState([]);
   const [searchQuantitites, setSearchQuantities] = useState([]);
-  const [currentCategory, setCurrentCategory] = useState(0); //seleção de categorias
+  const [currentCategory, setCurrentCategory] = useState(0); //Seleção de categorias
 
-  const allProductsInCat = [promo_products, productsCatId1, productsCatId2, productsCatId3,[],
-  [],[],[],[],[],[],[], cartProducts, searchProducts];
+  const allProductsInCat = [promo_products, productsCatId1, productsCatId2, productsCatId3,
+  productsCatId4, productsCatId5, productsCatId6, productsCatId7, productsCatId8, 
+  productsCatId9,[],[], cartProducts, searchProducts];
 
   const [allQuantities, setAllQuantities] = useState([
     promo_products.map(() => 0),
     productsCatId1.map(() => 0),
     productsCatId2.map(() => 0),
     productsCatId3.map(() => 0),
-    [],[],[],[],[],[],[],[], cartQuantities, searchQuantitites
+    productsCatId4.map(() => 0),
+    productsCatId5.map(() => 0),
+    productsCatId6.map(() => 0),
+    productsCatId7.map(() => 0),
+    productsCatId8.map(() => 0),
+    productsCatId9.map(() => 0),
+    [],
+    [], 
+    cartQuantities, 
+    searchQuantitites
   ]);
 
   const [shoppingCart, setShoppingCart] = useState([]);
@@ -81,11 +92,11 @@ export function CartProvider({ children }) {
     });
 
     const simplifiedCart = shoppingCart.map(item => ({
-      id: item.id,
-      name: item.name,
-      weight: item.weight,
-      price: item.price,
       url: item.url,
+      name: item.name,
+      price: item.price,
+      weight: item.weight,
+      id: item.id,
     }));
     setCartProducts(simplifiedCart);
   }, [shoppingCart]);
@@ -101,17 +112,18 @@ export function CartProvider({ children }) {
   const totalValueFormatted = totalAddedValue.toFixed(2).replace('.', ',');
 
   return (
-    <CartContext.Provider value={{advertisementsRef, categoriesRef, promotionsRef, setLimitProductList, limitProductList,
-    setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, allQuantities,
-    setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, setSearchProducts, setSearchQuantities}}>
+    <CartContext.Provider value={{advertisementsRef, categoriesRef, promotionsRef, setLimitProductList, 
+    limitProductList, setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, 
+    allQuantities, setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
+    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, 
+    setSearchProducts, setSearchQuantities}}>
       {children}
     </CartContext.Provider>
   );
 }
 
-  // const [isMobile, setIsMobile] = useState(false);
-  // const [translateX1, setTranslateX1] = useState(0);
-  // const [translateX2, setTranslateX2] = useState(0);
-  // const [translateX3, setTranslateX3] = useState(0);
+// const [isMobile, setIsMobile] = useState(false);
+// const [translateX1, setTranslateX1] = useState(0);
+// const [translateX2, setTranslateX2] = useState(0);
+// const [translateX3, setTranslateX3] = useState(0);
 

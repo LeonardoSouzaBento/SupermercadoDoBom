@@ -26,13 +26,18 @@ const Cart = () => {
 
   useEffect(() => {
     if (totalAddedValue === 0) {
-      // Zerar categoria 12 e outras relacionadas
       setAllQuantities(prevQuantities => [
         Array(prevQuantities[0].length).fill(0),
         Array(prevQuantities[1].length).fill(0),
         Array(prevQuantities[2].length).fill(0),
         Array(prevQuantities[3].length).fill(0),
-        ...prevQuantities.slice(4, 12),
+        Array(prevQuantities[4].length).fill(0),
+        Array(prevQuantities[5].length).fill(0),
+        Array(prevQuantities[6].length).fill(0),
+        Array(prevQuantities[7].length).fill(0),
+        Array(prevQuantities[8].length).fill(0),
+        Array(prevQuantities[9].length).fill(0),
+        Array(prevQuantities[10].length).fill(0),
         Array(prevQuantities[12].length).fill(0),
         Array(prevQuantities[13].length).fill(0)
       ]);

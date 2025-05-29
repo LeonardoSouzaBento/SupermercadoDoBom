@@ -19,12 +19,7 @@ body::-webkit-scrollbar {
   visibility: hidden;
 }
 
-/* Para Firefox */
-/* body {
-  scrollbar-width: none;  */
-  /* scrollbar-color: transparent transparent;
-} */
-/* Para Internet Explorer 10+ e alguns navegadores Edge (antigos) */
 body {
+  background-color: rgb(240, 240, 240);
   -ms-overflow-style: none;
 }

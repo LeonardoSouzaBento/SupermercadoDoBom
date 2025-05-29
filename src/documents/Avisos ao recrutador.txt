@@ -3,3 +3,4 @@ Notas para recrutadores testadores
 Se o site não encaixar bem no simulador de telas touch da aba dev,  clique novamente no icone do simulador.
 [security_update_good]
 Se os teus toques forem de mouse, as divs arrastam por hook personalizado. [adicionar icone web trafic do google icons]
+O filtro amarelo para leitura muda as cores originais
