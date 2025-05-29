@@ -3,13 +3,15 @@ import { all_products } from '../../../data/all_products';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
 import { ViewContext } from '../../viewContext';
-import { binaryPrefixSearch } from './binaryPrefixSearch';
+import { sequentialPrefixSearch } from './sequentialPrefixSearch';
 import animateMessage from '../../../functions/AnimationOfWrite';
 import {ContainerForFormStyled, FormStyled, InputStyled, DivSpanStyled, DivMsgStyled, PointedShapeStyed, PMsgStyled, CompletionsDivStyled, PStyled} from './ComponentesSearchBar'
 
 function SearchBar() {
   const navigate = useNavigate();
   const [thisInput, setThisInput] = useState("");
+  const [prevInput, setPrevInput] = useState('');
+
   const [returnedProducts, setReturnedproducts] = useState([]);
 
   const {preventClick, setPreventClick, viewSuggestion, setviewSuggestion} = useContext(ViewContext);
@@ -17,9 +19,11 @@ function SearchBar() {
 
   const [searchInitiated, setSearchInitiated] = useState(false);
   const [completes, setCompletes] = useState(['']);
+  const [sixUniqueSuggestions, setSixUniqueSuggestions] = useState(['']);
+  const [countComplete, setCountCompletes] = useState(2);
 
   const [textOfTip, setTextOfTip] = useState(0);
-  const tip = "Digite 'açucar'.";
+  const tip = "Digite 'biscoito'.";
   const inputRef= useRef(null);
 
   const viewTip = ()=> {
@@ -32,7 +36,7 @@ function SearchBar() {
       setviewSuggestion(false);
     }, 3400);
   }
-
+  //prevenir click durante a dica
  useEffect(() => {
     const inputElement = inputRef.current;
     if (inputElement) {
@@ -44,38 +48,90 @@ function SearchBar() {
     }
   }, [preventClick]);
 
-  function handleClickSearch(action, text) {
-    if(action===0){
-      const term = thisInput.toLowerCase();
-      if (!term) {
-        animateInputMessage("Digite algo");
-        return
-      };
-      const results = binaryPrefixSearch(all_products, term);
-      setReturnedproducts(results);
-    }
-    else{
-      const results = binaryPrefixSearch(all_products, text);
-      setReturnedproducts(results);
-    }
-    setSearchInitiated(true);
+  //produtos únicos para sugestão
+  function getUniqueResults(products, start = 0, end = 14) {
+  const seen = new Set();
+  return products
+    .map(p => p.name)
+    .filter(name => {
+      const prefix = name.slice(start, end).toLowerCase();
+      if (seen.has(prefix)) return false;
+      seen.add(prefix);
+      return true;
+    });
   }
 
   function whenTyping(e) {
-    if(viewSuggestion) return;
-    setThisInput(e.target.value);
+    if (viewSuggestion) return;
 
-    const term = thisInput.toLowerCase();
-    if(term.length%2==0){
-      const results = binaryPrefixSearch(all_products, term);
-      const fourResults = results.slice(0, 4);
+    const value = e.target.value;
+    setPrevInput(thisInput);
+    setThisInput(value);
 
-      const newCompletions = fourResults.map(product => {
-          return product.name.slice(0, 13);
-      });
-      setCompletes([...newCompletions]);
+    const term = value.toLowerCase().trim();
+
+    if (term.length % 2 === 0 && term !== '') {
+      const results = sequentialPrefixSearch(all_products, term);
+      const uniqueResults = getUniqueResults(results, 0, 14).slice(0, 6);
+
+      setSixUniqueSuggestions(uniqueResults);
+      const completions = uniqueResults.map(name => name.slice(0, 13));
+      setCompletes(completions);
+    } else if (term === '') {
+      setCompletes(['']);
     }
-    if(e.target.value == ''){setCompletes([''])}
+  }
+
+  function normalize(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  }
+
+  function handleClickComplete(suggestion) {
+    const newSuggestion = thisInput + suggestion.slice(thisInput.length);
+
+    const matchedItem = sixUniqueSuggestions.find(item => 
+      normalize(item).startsWith(normalize(newSuggestion))
+    );
+
+    const completeSuggestion = matchedItem.split(/\s+/).slice(0, countComplete).join(' ');
+
+    setThisInput(completeSuggestion);
+    setCompletes(['']);
+
+    const results = sequentialPrefixSearch(all_products, completeSuggestion);
+    let newStart = completeSuggestion.length;
+    let newEnd = newStart + 14;
+
+    const uniqueResults = getUniqueResults(results, newStart, newEnd);
+    const newresults = uniqueResults.slice(0, 6);
+    setSixUniqueSuggestions(newresults);
+
+    const newCompletions = uniqueResults.map(name => name.slice(newStart, newEnd));
+    setCompletes([...newCompletions]);
+
+    setCountCompletes(countComplete+1);
+  }
+
+  useEffect(() => {
+    const currentWords = thisInput.trim().split(/\s+/).filter(Boolean).length;
+    const prevWords = prevInput.trim().split(/\s+/).filter(Boolean).length;
+
+    if (currentWords < prevWords && countComplete > 2) {
+      setCountCompletes(2);
+    }
+  }, [thisInput]);
+  
+
+  function handleClickSearch() {
+    const term = thisInput.toLowerCase();
+    if (!term) {
+      animateInputMessage("Digite algo");
+      return
+    };
+    const results = sequentialPrefixSearch(all_products, term);
+    setReturnedproducts(results);
+    
+    setSearchInitiated(true);
   }
 
   function animateInputMessage(message) {
@@ -128,7 +184,7 @@ function SearchBar() {
           onChange={(e) => whenTyping(e)}
           ref={inputRef}
           />
-          <DivSpanStyled onPointerDown={(e)=>{handleClickSearch(0)}}>
+          <DivSpanStyled onPointerDown={(e)=>{handleClickSearch()}}>
             <span className="material-symbols-rounded" style={{color: "rgb(77, 77, 77)"}}>search</span>
           </DivSpanStyled>
 
@@ -140,7 +196,8 @@ function SearchBar() {
         </FormStyled>
         {completes!='' && (
           <CompletionsDivStyled>
-            {completes.map((e, i)=>(<PStyled key={i} onPointerDown={()=>{handleClickSearch(1, e)}}>{e}...</PStyled>))}
+            {completes.map((suggestion, i)=>
+            (<PStyled key={i} onPointerDown={()=>{handleClickComplete(suggestion)}}>{suggestion}...</PStyled>))}
           </CompletionsDivStyled>
         )}
         

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { all_products } from '../../../data/all_products';
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
-import { binaryPrefixSearch } from './binaryPrefixSearch';
+import { sequentialPrefixSearch } from './sequentialPrefixSearch';
 import { ContainerForFormStyled, FormStyled, InputStyled, DivSpanStyled, CompletionsDivStyled, PStyled } from './ComponentesSearchBar';
 
 export default function SearchBarCopy() {
@@ -14,7 +14,7 @@ export default function SearchBarCopy() {
     setInput(e.target.value)
     const term = input.toLowerCase();
     if(term.length%2==0){
-    const results = binaryPrefixSearch(all_products, term);
+    const results = sequentialPrefixSearch(all_products, term);
     const threeResults = results.slice(0, 4);
     const newCompletions = threeResults.map(product => {
       return product.name.slice(0, 13);
@@ -27,13 +27,13 @@ export default function SearchBarCopy() {
   function handleClickSearch(action, text) {
     if(action===0){
       const term = input.toLowerCase();
-      const results = binaryPrefixSearch(all_products, term);
+      const results = sequentialPrefixSearch(all_products, term);
       setSearchProducts(results);
       setSearchQuantities(results.map(() => 0));
       setCompletes(['']);
     }
     else{
-      const results = binaryPrefixSearch(all_products, text);
+      const results = sequentialPrefixSearch(all_products, text);
       setSearchProducts(results);
       setSearchQuantities(results.map(() => 0));
       setTimeout(() => {
