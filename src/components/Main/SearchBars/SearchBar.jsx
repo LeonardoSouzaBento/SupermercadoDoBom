@@ -67,7 +67,7 @@ function SearchBar() {
     const value = e.target.value;
     setPrevInput(thisInput);
     setThisInput(value);
-
+    
     const term = value.toLowerCase().trim();
 
     if (term.length % 2 === 0 && term !== '') {
@@ -113,11 +113,13 @@ function SearchBar() {
   }
 
   useEffect(() => {
-    const currentWords = thisInput.trim().split(/\s+/).filter(Boolean).length;
-    const prevWords = prevInput.trim().split(/\s+/).filter(Boolean).length;
+    if(countComplete>2){
+      const currentWords = thisInput.trim().split(/\s+/).filter(Boolean).length;
+      const prevWords = prevInput.trim().split(/\s+/).filter(Boolean).length;
 
-    if (currentWords < prevWords && countComplete > 2) {
-      setCountCompletes(2);
+      if (currentWords <= prevWords) {
+        setCountCompletes(2);
+      }
     }
   }, [thisInput]);
   
