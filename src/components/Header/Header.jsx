@@ -34,7 +34,7 @@ const Header = ({viewOptions, setViewOptions}) => {
   return (
     <HeaderStyled>
       <Divlogo></Divlogo>
-      <SearchBar></SearchBar>
+      <SearchBar copy={false}></SearchBar>
       <MoreOptionsButton 
         changeBackground={viewOptions} 
         setViewOptions={setViewOptions}

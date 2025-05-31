@@ -19,6 +19,7 @@ const DivStyled = styled.div`
   overflow-x: scroll;
   box-sizing: border-box;
   padding-right: 20px;
+  padding-bottom: 4px;
 
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */

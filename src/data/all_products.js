@@ -83,7 +83,7 @@ export const all_products = [
     id: 120,
     url: 'https://i.pinimg.com/736x/f6/87/1d/f6871d446cc8d4042a071b789127153b.jpg',
     weight: '140 g',
-    name: 'Biscoito Wafer Bauducco',
+    name: 'Biscoito Wafer Bauducco sabor chocolate',
     price: '2,29',
     cat_id: 2
   },
