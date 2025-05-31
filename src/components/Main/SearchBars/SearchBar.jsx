@@ -24,6 +24,10 @@ function normalize(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 }
 
+function normalize2(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
 function animateInputMessage(message, setState) {
   let index = 0;
 
@@ -119,8 +123,8 @@ function SearchBar({copy}) {
 
   function handleClickComplete(suggestion) {
     let newSuggestion = '';
-    let normalizedInput = normalize(thisInput);
-    suggestion = normalize(suggestion)
+    let normalizedInput = normalize2(thisInput);
+    suggestion = normalize2(suggestion)
 
     if (suggestion.startsWith(normalizedInput)) {
       newSuggestion = normalizedInput + suggestion.slice(normalizedInput.length);
@@ -130,10 +134,11 @@ function SearchBar({copy}) {
     }
 
     let copyUniqueSuggestions = sixUniqueSuggestions.map(item => normalize(item));
-
-    const matchedItem = copyUniqueSuggestions.find(item => 
-      item.startsWith(newSuggestion)
+    let matchedIndex = copyUniqueSuggestions.findIndex(item =>
+    item.startsWith(newSuggestion)
     );
+    let matchedItem = sixUniqueSuggestions[matchedIndex];
+
     const completeSuggestion = matchedItem.split(/\s+/).slice(0, countComplete).join(' ');
 
     setThisInput(completeSuggestion);
