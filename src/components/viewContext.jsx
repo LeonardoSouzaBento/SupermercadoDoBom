@@ -1,10 +1,18 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const ViewContext = createContext();
 
 export const ViewContextProvider = ({ children }) => {
   
-    const [tipForRecruiter, setTipForRecruiter] = useState(false);
+    const [tipForRecruiter, setTipForRecruiter] = useState(() => {
+      const stored = localStorage.getItem('tipForRecruiter');
+      return stored ? JSON.parse(stored) : false; // valor padrão: false
+    });
+
+    useEffect(() => {
+      localStorage.setItem('tipForRecruiter', JSON.stringify(tipForRecruiter));
+    }, [tipForRecruiter]);
+
     const [preventClick, setPreventClick] = useState(false); // prevenir click durante a dica
 
     

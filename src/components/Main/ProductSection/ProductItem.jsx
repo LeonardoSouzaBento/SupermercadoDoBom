@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import { useState} from 'react';
 import {
   PaiProdStyled,
   PpesoStyled,
@@ -24,7 +24,7 @@ import {
   PnomeStyled
 } from './ComponentsProductItem';
 
-const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantityChange, variant})=>{
+const Oferta = ({ product, quantity, setQuantity, handleQuantityChange, })=>{
   let toqueInicio = null;
   const iniciarToque = () => {
     toqueInicio = Date.now();
@@ -32,9 +32,10 @@ const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantity
 
   const finalizarToque = () => {
     const duracao = Date.now() - toqueInicio;
-    if (duracao < 100) { // só considera toques curtos (menos de 200ms)
-      setMostrarBotoes(true);
-      onQuantityChange(1, true);
+    if (duracao < 100) { 
+      setQuantity(1);
+      product.quant = 1;
+      handleQuantityChange(product, true);
     }
   };
 
@@ -47,43 +48,46 @@ const Oferta = ({ product, quantity, setMostrarBotoes, mostrarBotoes, onQuantity
         </DivOffStyled>}
         <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
         
-        {!mostrarBotoes &&
+        {quantity===0 &&
           <DivMaisStyled 
             onPointerDown={iniciarToque}
             onPointerUp={finalizarToque}>
             <PMaisStyled>+</PMaisStyled>
           </DivMaisStyled>
         }
-        {mostrarBotoes &&
+        {quantity>=1 &&
         <Botoes
           quantity={quantity}
-          onQuantityChange={onQuantityChange}
-          setMostrarBotoes={setMostrarBotoes}
-          variant={variant}
+          setQuantity={setQuantity}
+          handleQuantityChange={handleQuantityChange}
+          product={product}
         />}
       </PaiImgOfertaStyled>
     </DivOfertaStyled>
 )}
 
-const Botoes = ({ quantity, onQuantityChange, setMostrarBotoes, variant}) => {
+const Botoes = ({ quantity, product, setQuantity, handleQuantityChange}) => {
 
-  const handleMore = () => onQuantityChange(quantity + 1, true );
+  function handleMore(){
+    setQuantity(quantity+1);
+    handleQuantityChange(product, true);
+  } 
 
-  const handleFewer = () => {
+  function handleFewer (){
     if (quantity > 1) {
-      onQuantityChange(quantity - 1, false);
-    } else if (variant === 'cart') {
-      onQuantityChange(0, false);
-    } else {
-      onQuantityChange(0, false);
-      setMostrarBotoes(false);
+      setQuantity(quantity-1)
+      handleQuantityChange(product, false);
+    }
+    else {
+      setQuantity(0)
+      handleQuantityChange(product, false);
     }
   };
 
   return (
     <DivQuantStyled>
       <BotoesStyled onPointerDown={handleFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
-      <BotoesStyled><PQuantStyled>{quantity}</PQuantStyled></BotoesStyled>
+      <BotoesStyled><PQuantStyled>{product.quant}</PQuantStyled></BotoesStyled>
       <BotoesStyled onPointerDown={handleMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
     </DivQuantStyled>
   );
@@ -119,33 +123,21 @@ const DescOferta = ({product}) => {
   );
 }
 
-
-function ProductItem({product, quantity, onQuantityChange, variant}) {
-  const [mostrarBotoes, setMostrarBotoes] = useState(false);
-
-  useEffect(() => {
-    if (!mostrarBotoes && quantity > 0) {
-      setMostrarBotoes(true);
-    } else if(mostrarBotoes && quantity == 0){
-      setMostrarBotoes(false);
-    }
-  }, [quantity, mostrarBotoes]);
+function ProductItem({product, handleQuantityChange, variant}) {
+  const [quantity, setQuantity] = useState(product.quant);
 
   return (
     <PaiProdStyled $variant={variant}>
-      <DescOferta product={product} $variant={variant}></DescOferta>
-
-      <Oferta product={product}
-      quantity={quantity}
-      setMostrarBotoes={setMostrarBotoes}
-      mostrarBotoes={mostrarBotoes}
-      onQuantityChange={onQuantityChange}
-      variant={variant}
-      >
-      </Oferta>
+      <DescOferta product={product} $variant={variant}/>
+      <Oferta
+        product={product}
+        setQuantity={setQuantity}
+        quantity={quantity}
+        handleQuantityChange={handleQuantityChange}
+        variant={variant}
+      />
     </PaiProdStyled>
   );
 }
-
 
 export default ProductItem;

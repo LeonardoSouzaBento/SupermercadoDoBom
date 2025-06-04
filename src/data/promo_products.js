@@ -120,3 +120,7 @@ export const promo_products = [
       price: '26,90'
     }
 ];
+
+promo_products.forEach((product) => {
+  product.quant = 0;
+});

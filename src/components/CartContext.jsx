@@ -14,96 +14,55 @@ export function CartProvider({ children }) {
   const categoriesRef = useRef();
   const promotionsRef = useRef();
 
-  const [cartProducts, setCartProducts] = useState([]);
-  const [cartQuantities] = useState([]);
+  const [cartProducts, setCartProducts] = useState(() => {
+    // Lê do localStorage ao iniciar
+    const stored = localStorage.getItem('cartProducts');
+    return stored ? JSON.parse(stored) : [];
+  });
   const [searchProducts, setSearchProducts]= useState([]);
-  const [searchQuantitites, setSearchQuantities] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(0); //Seleção de categorias
 
   const allProductsInCat = [promo_products, productsCatId1, productsCatId2, productsCatId3,
   productsCatId4, productsCatId5, productsCatId6, productsCatId7, productsCatId8, 
   productsCatId9,[],[], cartProducts, searchProducts];
 
-  const [allQuantities, setAllQuantities] = useState([
-    promo_products.map(() => 0),
-    productsCatId1.map(() => 0),
-    productsCatId2.map(() => 0),
-    productsCatId3.map(() => 0),
-    productsCatId4.map(() => 0),
-    productsCatId5.map(() => 0),
-    productsCatId6.map(() => 0),
-    productsCatId7.map(() => 0),
-    productsCatId8.map(() => 0),
-    productsCatId9.map(() => 0),
-    [],
-    [],
-    cartQuantities,
-    searchQuantitites
-  ]);
 
-  const [shoppingCart, setShoppingCart] = useState([]);
+  function handleQuantityChange(product, isAdding) {
+    setCartProducts(prev => {
+      const existingItemIndex = prev.findIndex(item => item.id === product.id);
+      const updatedCart = [...prev];
 
-  const handleQuantityChange = (categoryKey, index, newQuantity, product, isAdding) => {
-    
-    setAllQuantities(prev => { 
-      const next = [...prev]; //copia allQuantities
-      const updatedCategory = [...(next[categoryKey] || [])]; // copia a categoria específica
-      updatedCategory[index] = newQuantity; // altera a quantidade do item desejado
-      next[categoryKey] = updatedCategory; // atualiza o array da categoria no array geral
-      return next; // devolve o novo estado completo
-    });
-
-    //registrar todos os dados dos produtos
-    setShoppingCart(prev => {
-      const existingIndex = prev.findIndex(item => product.id === item.id);
-      const updatedHistory = [...prev];
-  
       if (isAdding) {
-        if (existingIndex !== -1) {
-          // Atualiza quantidade se já existir
-          updatedHistory[existingIndex].quant += 1;
+        if (existingItemIndex !== -1) {
+          // Produto já está no carrinho, aumenta a quantidade
+          updatedCart[existingItemIndex].quant += 1;
         } else {
-          // Adiciona novo item se não existir
-          updatedHistory.push({ ...product, quant: 1 });
+          // Produto ainda não está no carrinho, adiciona com quant atual
+          updatedCart.push(product);
         }
       } else {
-        if (existingIndex !== -1) {
-          if (updatedHistory[existingIndex].quant > 1) {
-            // Diminui quantidade se maior que 1
-            updatedHistory[existingIndex].quant -= 1;
+        if (existingItemIndex !== -1) {
+          if (updatedCart[existingItemIndex].quant > 1) {
+            // Diminui a quantidade
+            updatedCart[existingItemIndex].quant -= 1;
           } else {
-            // Remove item se quantidade chegar a 0
-            updatedHistory.splice(existingIndex, 1);
+            // Remove o produto do carrinho
+            updatedCart.splice(existingItemIndex, 1);
           }
         }
       }
-      
-      return updatedHistory;
+      return updatedCart;
     });
-  };
+  }
 
-  //Guardar quant. e prods. no carrinho (categoria 12)
   useEffect(() => {
-    setAllQuantities(prev => {
-      const next = [...prev];
-      next[12] = shoppingCart.map(item => item.quant);
-      return next;
-    });
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+  }, [cartProducts]);
 
-    const simplifiedCart = shoppingCart.map(item => ({
-      url: item.url,
-      name: item.name,
-      price: item.price,
-      weight: item.weight,
-      id: item.id,
-    }));
-    setCartProducts(simplifiedCart);
-  }, [shoppingCart]);
+  const totalQuantity = cartProducts.reduce((acc, item) => acc + item.quant, 0);
 
-  const totalQuantity = shoppingCart.reduce((acc, item) => acc + item.quant, 0);
-
-  const totalAddedValue = shoppingCart.reduce((acumulador, objeto) => {
-    const price = parseFloat(objeto.price.replace(',', '.'));
+  const totalAddedValue = cartProducts.reduce((acumulador, objeto) => {
+    const price = parseFloat(objeto.price?.replace(',', '.'));
     const subtotal = objeto.quant * price;
     return acumulador + subtotal;
   }, 0); //valor inicial do acumulador
@@ -113,16 +72,10 @@ export function CartProvider({ children }) {
   return (
     <CartContext.Provider value={{advertisementsRef, categoriesRef, promotionsRef, setLimitProductList, 
     limitProductList, setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, 
-    allQuantities, setAllQuantities, handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    shoppingCart, setShoppingCart, totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, 
-    setSearchProducts, setSearchQuantities}}>
+    handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
+    totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, 
+    searchProducts, setSearchProducts}}>
       {children}
     </CartContext.Provider>
   );
 }
-
-// const [isMobile, setIsMobile] = useState(false);
-// const [translateX1, setTranslateX1] = useState(0);
-// const [translateX2, setTranslateX2] = useState(0);
-// const [translateX3, setTranslateX3] = useState(0);
-

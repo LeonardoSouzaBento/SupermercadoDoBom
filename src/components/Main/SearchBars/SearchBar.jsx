@@ -63,7 +63,7 @@ function SearchBar({copy}) {
   const [returnedProducts, setReturnedproducts] = useState([]);
 
   const {preventClick, setPreventClick, tipForRecruiter, setTipForRecruiter} = useContext(ViewContext);
-  const {setSearchProducts, setSearchQuantities} = useContext(CartContext);
+  const {setSearchProducts} = useContext(CartContext);
 
   const [searchInitiated, setSearchInitiated] = useState(false);
   const [completions, setCompletions] = useState(['']);
@@ -184,7 +184,6 @@ function SearchBar({copy}) {
   useEffect(() => {
     if (searchInitiated) {
       setSearchProducts(returnedProducts);
-      setSearchQuantities(returnedProducts.map(() => 0));
       setCompletions([])
       if(copy===false){
         navigate("/buscar-produtos");

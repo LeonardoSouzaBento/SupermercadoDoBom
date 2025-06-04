@@ -27,13 +27,6 @@ const DivStyled = styled.div`
     display: none;
   }
 
-   ${(props) => props.$variant === 'inSearch' && css`
-    max-width: calc(100% - 30px);
-    flex-direction: row;
-    margin: auto;
-    margin-top: 8px;
-  `}
-
    ${(props) =>
     props.$variant === 'home' &&
     css`
@@ -59,10 +52,15 @@ const DivStyled = styled.div`
     justify-content: center;
     padding-right: 0px;
   `}
-  ${props => props.$variant && 'inSearch' && css`
+  ${props => props.$variant==='inSearch' && css`
     height: auto;
     flex-direction: row;
     justify-content: flex-start;
+    padding-left: 16px;
+
+    @media screen and (min-width: 993px) {
+      padding-left: 20px;
+    }
   `}
 `;
 
@@ -90,22 +88,18 @@ const PNoneStyled = styled.p`
 
 
 export const ProductListHome = React.forwardRef (({variant, categoryKey, }, ref)=>{
-  const { allQuantities, allProductsInCat, handleQuantityChange} = useContext(CartContext);
+  const {allProductsInCat, handleQuantityChange} = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
-  const quantities = allQuantities[categoryKey];
   
   return ( 
     <DivStyled $variant={variant} ref={ref}>
-      {products.map((product, idx) => (
+      {products.map((product) => (
         <ProductItem
           variant={variant}
           key={`${product.id}-${product.cat_id}`}
-          id={product.id}
           product={product}
-          quantity={quantities[idx] || 0}
-          onQuantityChange={(newQuantity, isAdding) =>
-          handleQuantityChange(categoryKey, idx, newQuantity, product, isAdding)}
+          handleQuantityChange={(product, isAdding) => handleQuantityChange(product, isAdding)}
         />
       ))}
       {products.length==0 &&

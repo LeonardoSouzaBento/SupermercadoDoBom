@@ -5,7 +5,7 @@ export const productsCatId1 = [
     price: "8,00",
     weight: "1 kg",
     cat_id: 1,
-    id: 1
+    id: 1,
   },
   {
     url: "https://redemix.vteximg.com.br/arquivos/ids/190102-1000-1000/7893500025740.jpg?v=637901180443400000",
@@ -476,3 +476,31 @@ export const productsCatId9 = [
     id: 1
   },
 ];
+
+productsCatId1.forEach((product) => {
+  product.quant = 0;
+});
+productsCatId2.forEach((product) => {
+  product.quant = 0;
+});
+productsCatId3.forEach((product) => {
+  product.quant = 0;
+});
+productsCatId4.forEach((product) => {
+  product.quant = 0;
+});
+productsCatId5.forEach((product) => {
+  product.quant = 0;
+});
+productsCatId6.forEach((product) => {
+  product.quant = 0;
+});
+productsCatId7.forEach((product) => {
+  product.quant = 0;
+});
+productsCatId8.forEach((product) => {
+  product.quant = 0;
+});
+productsCatId9.forEach((product) => {
+  product.quant = 0;
+});

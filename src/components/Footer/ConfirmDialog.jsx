@@ -158,7 +158,7 @@ const PFeedbackStyled = styled(GenericPStyled)`
 `;
 
 export default function ConfirmDialog({setViewConfirm}){
-    const {setAllQuantities, setShoppingCart} = useContext(CartContext);
+    const {setCartProducts} = useContext(CartContext);
     const [viewFeedback, setViewFeedback] = useState(false);
 
     const handleConfirmCancel = (action) => {
@@ -166,17 +166,8 @@ export default function ConfirmDialog({setViewConfirm}){
         if (duration < 100) {
           if (action === 1) {
             setViewFeedback(true);
-            
-            setAllQuantities(prevQuantities => [
-              Array(prevQuantities[0].length).fill(0),
-              Array(prevQuantities[1].length).fill(0),  
-              Array(prevQuantities[2].length).fill(0),  
-              Array(prevQuantities[3].length).fill(0),           
-              ...prevQuantities.slice(4, 12),    //manter os arrays vazios
-              Array(prevQuantities[12].length).fill(0),
-              Array(prevQuantities[13].length).fill(0)
-            ]);
-            setShoppingCart([]);
+       
+            setCartProducts([]);
 
             setTimeout(() => {
               setViewConfirm(false);
