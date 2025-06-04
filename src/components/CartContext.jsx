@@ -36,8 +36,8 @@ export function CartProvider({ children }) {
     productsCatId8.map(() => 0),
     productsCatId9.map(() => 0),
     [],
-    [], 
-    cartQuantities, 
+    [],
+    cartQuantities,
     searchQuantitites
   ]);
 
@@ -80,7 +80,6 @@ export function CartProvider({ children }) {
       
       return updatedHistory;
     });
-
   };
 
   //Guardar quant. e prods. no carrinho (categoria 12)

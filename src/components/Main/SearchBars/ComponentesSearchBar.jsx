@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 
-
 export const ContainerForFormStyled = styled.div`
   width: 100%;
   height: max-content;
@@ -8,6 +7,7 @@ export const ContainerForFormStyled = styled.div`
   padding-bottom: 14px;
   position: relative;
   z-index: 2;
+  box-sizing: border-box;
 
   @media screen and (min-width: 769px) {
     padding-top: 13px;
@@ -16,9 +16,19 @@ export const ContainerForFormStyled = styled.div`
   ${props =>
   props.$copy &&
   css`
-    @media screen and (min-width: 993px) {
-      padding-top: 16px;
-      padding-bottom: 16px;
+    padding-top: 18px;
+    padding-bottom: 20px;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    background-color: #F0F0F0;
+
+    @media screen and (min-width: 769px) {
+      justify-content: flex-start;
+      padding-left: 24px;
+      padding-top: 18px;
     }
   `}
 `;
@@ -38,18 +48,10 @@ export const FormStyled = styled.form`
   ${props =>
     props.$copy &&
     css`
-      position: fixed;
       height: 40px;
       width: 90%;
-      top: 12px;
-      left: 5%;
-      box-shadow: none;
-      border: 1px solid rgb(106, 106, 106);
-      max-width: 792px;
-      @media screen and (min-width: 993px) {
-        top: 16px;
-        left: 4%;
-      }
+      max-width: 684px;
+      margin: 0;
     `}
 `;
 
@@ -84,6 +86,7 @@ export const InputStyled = styled.input`
     font-size: 1.04em;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14);
   }
+  ${props => props.$copy && 'box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14);'}
 `;
 
 export const DivSpanStyled = styled.div`

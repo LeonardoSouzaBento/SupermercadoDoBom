@@ -194,19 +194,22 @@ function SearchBar({copy}) {
   }, [searchInitiated, returnedProducts]);
 
   return (
-    <ContainerForFormStyled $copy={false}>
-        <FormStyled onSubmit={(e) => {
+    <ContainerForFormStyled $copy={copy}>
+        <FormStyled
+          $copy={copy}
+          onSubmit={(e) => {
           e.preventDefault();
           handleClickSearch(0);
         }}>
-          <InputStyled 
-          type="text" 
-          name="query" 
-          placeholder="O que você quer? Digite aqui"
-          value={thisInput}
-          onChange={(e) => whenTyping(e)}
-          onClick={preventClick ? null : viewTip}
-          ref={inputRef}
+          <InputStyled
+            $copy={copy}
+            type="text" 
+            name="query" 
+            placeholder="O que você quer? Digite aqui"
+            value={thisInput}
+            onChange={(e) => whenTyping(e)}
+            onClick={preventClick ? null : viewTip}
+            ref={inputRef}
           />
           <DivSpanStyled onPointerDown={(e)=>{handleClickSearch()}}>
             <span className="material-symbols-rounded" style={{color: "rgb(77, 77, 77)"}}>search</span>

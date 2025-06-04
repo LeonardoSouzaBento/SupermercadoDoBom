@@ -8,14 +8,16 @@ export const PaiProdStyled = styled.div`
     height: 180px;
     background-color: white;
     border-radius: 9px 9px 15px 9px;
-    border: ${(props)=>props.$variant === 'home'? '1px solid rgb(150, 150, 150)': '1px solid rgb(141, 141, 141)'};
+    border: ${(props)=>props.$variant === 'home'? '1px solid rgb(150, 150, 150)': '1px solid rgb(185, 185, 185)'};
     cursor: default;
     -webkit-user-select: none;
     user-select: none;
     position: relative;
     box-sizing: border-box;
     padding-right: 5px;
+    box-shadow: ${props => props.$variant !='home' && '0px 0px 4px rgba(0, 0, 0, 0.13)'};
     
+
     @media screen and (min-width: 320px) and (max-width: 374px){
        max-width: ${(props) => props.$variant === 'home' ? "260px" : "100%"};
        height: 180px;
@@ -29,10 +31,12 @@ export const PaiProdStyled = styled.div`
     }
     @media screen and (min-width: 769px) and (max-width: 992px){
        max-width: 305px;
+       ${props => props.$variant !='home' && 'max-width: 300px;'}
     }
     @media screen and (min-width: 993px) {
        max-width: 320px;
        height: 170px;
+       ${props => props.$variant !='home' && 'max-width: 300px;'}
     }
 `;
 

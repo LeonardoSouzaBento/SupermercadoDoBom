@@ -123,6 +123,7 @@ export const Fundo = styled.div`
 
 export const Img = styled.img`
   height: 100%;
+  width: auto;
   display: block;
   object-fit: contain;
   margin: auto;

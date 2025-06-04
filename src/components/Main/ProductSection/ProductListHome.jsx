@@ -56,8 +56,13 @@ const DivStyled = styled.div`
   }
   ${props => props.$variant==='cart' && css`
     flex-direction: row;
-    padding-right: 0px;
     justify-content: center;
+    padding-right: 0px;
+  `}
+  ${props => props.$variant && 'inSearch' && css`
+    height: auto;
+    flex-direction: row;
+    justify-content: flex-start;
   `}
 `;
 

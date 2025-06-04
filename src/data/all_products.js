@@ -328,3 +328,8 @@ export const all_products = [
     price: '5,00'
   }
 ];
+
+all_products.forEach((product, index) => {
+  product.id = index + 1;
+  product.quant = 0;
+});

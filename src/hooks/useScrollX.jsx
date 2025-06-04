@@ -59,13 +59,11 @@ export function useScrollX() {
     const now = Date.now();
     const dt = Math.max(1, now - variables.time_touch);
     const x = e.clientX;
-    const deslocamento = variables.toc_ini - x;
+    const deslocamento = (variables.toc_ini - x)*0.7;
     const velocidade = deslocamento / dt;
 
-    variables.velocidade = Math.abs(velocidade) > 1.7
-      ? 1.7 * Math.sign(velocidade)
-      : velocidade;
-
+    if(Math.abs(velocidade) > 1.7){variables.velocidade = 1.7 * Math.sign(velocidade)}
+    
     variables.time_touch = now;
     variables.toc_ini = x;
     
