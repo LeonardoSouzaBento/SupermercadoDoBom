@@ -1,4 +1,5 @@
-import { useState} from 'react';
+import { useState, useEffect, useContext} from 'react';
+import { CartContext } from '../../CartContext';
 import {
   PaiProdStyled,
   PpesoStyled,
@@ -87,7 +88,7 @@ const Botoes = ({ quantity, product, setQuantity, handleQuantityChange}) => {
   return (
     <DivQuantStyled>
       <BotoesStyled onPointerDown={handleFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
-      <BotoesStyled><PQuantStyled>{product.quant}</PQuantStyled></BotoesStyled>
+      <BotoesStyled><PQuantStyled>{quantity}</PQuantStyled></BotoesStyled>
       <BotoesStyled onPointerDown={handleMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
     </DivQuantStyled>
   );
@@ -124,7 +125,19 @@ const DescOferta = ({product}) => {
 }
 
 function ProductItem({product, handleQuantityChange, variant}) {
+  const {cartProducts, totalAddedValue} = useContext(CartContext);
   const [quantity, setQuantity] = useState(product.quant);
+
+  useEffect(() => {
+    cartProducts.map((item)=>{
+      if(item.id == product.id){
+        setQuantity(item.quant);
+      }
+    })
+    if (totalAddedValue==0) {
+      setQuantity(0)
+    }
+  },[])
 
   return (
     <PaiProdStyled $variant={variant}>

@@ -145,7 +145,6 @@ export default function Footer() {
   const { totalQuantity, totalValueFormatted} = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
-  const [isOnTheCart, setIsOnTheCart] = useState(false);
 
   if (totalQuantity <= 0 && viewConfirm===false) {return null}
 
@@ -159,7 +158,6 @@ export default function Footer() {
       onPointerUp={(e) => {
       const duration = Date.now() - window.startClickTime;
       if (duration < 300) {
-        setIsOnTheCart(true);
         navigate('/meu-carrinho');
       }
       }}>

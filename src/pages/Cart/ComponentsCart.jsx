@@ -21,7 +21,7 @@ export const MainStyled = styled.main`
 export const CartSectionStyed = styled.div`
   width: 100%;
   max-width: 1000px;
-  height: max-content;
+  min-height: calc(100vh - 350px);
   max-height: calc(100vh - 350px);
   margin: auto;
   margin-top: 24px;
@@ -34,7 +34,6 @@ export const CartSectionStyed = styled.div`
   border-bottom: 1px solid rgb(199, 199, 199);
   position: relative;
   overflow-y: scroll;
-
   &::-webkit-scrollbar {
     display: none;
   }
@@ -46,15 +45,14 @@ export const CartSectionStyed = styled.div`
     margin: 0;
     margin-top: 24px;
     margin-left: 24px;
-    padding-bottom: 0px;
     box-shadow: inset 4px 0px 8px rgba(0, 0, 0, 0.06);
   }
 `;
 
 export const ShadowStyled = styled.div`
-  position: sticky;
-  bottom: 0;
-  left: 0;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
   width: 100%;
   height: 32px;
   background-image: linear-gradient(
@@ -210,7 +208,8 @@ export const DivAvisoStyled = styled.div`
   border-radius: 4px;
   padding: 12px 15px;
   box-sizing: border-box;
-  background-color: rgb(255, 236, 202);
+  background-color: rgb(255, 234, 201);
+  border: 1px solid rgb(235, 220, 152);
 `;
 
 export const PAvisoStyled = styled.p`
@@ -286,7 +285,7 @@ export const DivContinueStyled = styled.div`
   width: 100%;
   height: 40px;
   background-color: ${(props) =>
-    props.$nocontinue ? " #E1E1E1" : "rgb(36, 160, 12)"};
+    props.$nocontinue ? "rgb(227, 227, 227)" : "rgb(36, 160, 12)"};
   border-radius: 7px;
   ${(props) =>
     props.$nocontinue ? "color: rgb(74, 74, 74);" : "color: white;"}

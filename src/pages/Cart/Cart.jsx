@@ -1,4 +1,5 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../components/CartContext";
 import { ProductListHome } from "../../components/Main/ProductSection/ProductListHome.jsx";
 import {
@@ -22,8 +23,15 @@ import {
 } from "./ComponentsCart.jsx";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const { totalAddedValue } = useContext(CartContext);
 
+  useEffect(() => {
+    if(totalAddedValue == 0){
+      navigate('/');
+    }
+  }, [totalAddedValue])
+  
   const totalValue = totalAddedValue.toLocaleString("pt-BR", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -41,66 +49,72 @@ const Cart = () => {
     maximumFractionDigits: 2,
   });
 
+  if(totalAddedValue!=0){
   return (
     <MainStyled>
-      <CartSectionStyed>
-        <DivHeadStyled>
-          <PHeadStyled>Sua Compra</PHeadStyled>
-        </DivHeadStyled>
+      <div style={{ position: "relative", height:'max-content' }}>
+        <CartSectionStyed>
+          <DivHeadStyled>
+            <PHeadStyled>Sua Compra</PHeadStyled>
+          </DivHeadStyled>
 
-        <ContainerProductList>
-          <ProductListHome variant={"cart"} categoryKey={12}></ProductListHome>
-        </ContainerProductList>
-        
-        <ShadowStyled/>
-      </CartSectionStyed>
+          <ContainerProductList>
+            <ProductListHome
+              variant={"cart"}
+              categoryKey={12}
+            ></ProductListHome>
+          </ContainerProductList>
+        </CartSectionStyed>
+        <ShadowStyled />
+      </div>
 
-      {falta != 40 && (
-        <FinishSectionStyled>
-          <DivAddStyled>
-            <PAddStyled>
-              {falta == 40 ? "Adicionar produtos" : "Adicionar mais produtos"}
-            </PAddStyled>
-          </DivAddStyled>
+      <FinishSectionStyled>
+        <DivAddStyled>
+          <PAddStyled>
+            {falta == 40 ? "Adicionar produtos" : "Adicionar mais produtos"}
+          </PAddStyled>
+        </DivAddStyled>
 
-          <ContainerStyled>
-            {falta > 0 && (
-              <DivAvisoStyled>
-                <PAvisoStyled>
-                  Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
-                </PAvisoStyled>
-              </DivAvisoStyled>
-            )}
+        <ContainerStyled>
+          {falta > 0 && (
+            <DivAvisoStyled>
+              <PAvisoStyled>
+                Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
+              </PAvisoStyled>
+            </DivAvisoStyled>
+          )}
 
-            <DivValueStyled>
-              <DivStyled>
-                <PValueStyled>Valor da compra:</PValueStyled>
-                <PValueStyled>R$ {totalValue}</PValueStyled>
-              </DivStyled>
+          <DivValueStyled>
+            <DivStyled>
+              <PValueStyled>Valor da compra:</PValueStyled>
+              <PValueStyled>R$ {totalValue}</PValueStyled>
+            </DivStyled>
 
-              <DivStyled>
-                <PValueStyled>Valor da entrega:</PValueStyled>
-                <PValueStyled>4,00</PValueStyled>
-              </DivStyled>
+            <DivStyled>
+              <PValueStyled>Valor da entrega:</PValueStyled>
+              <PValueStyled>4,00</PValueStyled>
+            </DivStyled>
 
-              <DivStyled>
-                <PValueStyled>
-                  <strong>Valor total:</strong>
-                </PValueStyled>
-                <PValueStyled>
-                  <strong>{totalFormatted}</strong>
-                </PValueStyled>
-              </DivStyled>
-            </DivValueStyled>
+            <DivStyled>
+              <PValueStyled>
+                <strong>Valor total:</strong>
+              </PValueStyled>
+              <PValueStyled>
+                <strong>{totalFormatted}</strong>
+              </PValueStyled>
+            </DivStyled>
+          </DivValueStyled>
 
-            <DivContinueStyled $nocontinue={falta > 0}>
-              <PContinueStyled>Continuar</PContinueStyled>
-            </DivContinueStyled>
-          </ContainerStyled>
-        </FinishSectionStyled>
-      )}
+          <DivContinueStyled $nocontinue={falta > 0}>
+            <PContinueStyled>Continuar</PContinueStyled>
+          </DivContinueStyled>
+        </ContainerStyled>
+      </FinishSectionStyled>
     </MainStyled>
-  );
+  )}
+  else{
+    return null
+  }
 };
 
 export default Cart;

@@ -19,6 +19,7 @@ export function CartProvider({ children }) {
     const stored = localStorage.getItem('cartProducts');
     return stored ? JSON.parse(stored) : [];
   });
+  
   const [searchProducts, setSearchProducts]= useState([]);
   const [currentCategory, setCurrentCategory] = useState(0); //Seleção de categorias
 
@@ -73,7 +74,7 @@ export function CartProvider({ children }) {
     <CartContext.Provider value={{advertisementsRef, categoriesRef, promotionsRef, setLimitProductList, 
     limitProductList, setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, 
     handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
-    totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, 
+    totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, cartProducts,
     searchProducts, setSearchProducts}}>
       {children}
     </CartContext.Provider>
