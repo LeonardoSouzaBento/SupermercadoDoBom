@@ -211,24 +211,24 @@ export const DivOfertaStyled = styled.div`
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
-`;
+    `;
     export const PaiImgOfertaStyled = styled.div`
         width: 100%;
         height: 100%;
-        border-radius: 4px;
+        border-radius: 6px;
         -webkit-user-select: none;
         user-select: none;
-        /* touch-action: none; */
-    `;
+        `;
     export const ImgOfertaStyed = styled.img`
         height: 100%;
         width: 100%;
         object-fit: contain;
-        padding: 5px;
+        padding: 4px;
         box-sizing: border-box;
         -webkit-user-select: none;
         user-select: none;
-        /* touch-action: none !important; */
+        border-radius: 6px 6px 18px 6px;
+        background-color: rgb(255, 255, 255);
     `;
 
     export const DivResizeStyled = styled.div`
