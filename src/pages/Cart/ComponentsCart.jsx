@@ -3,55 +3,76 @@ import styled from "styled-components";
 export const MainStyled = styled.main`
   margin: auto;
   @media screen and (min-width: 320px) and (max-width: 374px) {
-    width: calc(100% - 20px);
+    width: calc(100% - 24px);
+  }
+  @media screen and (min-width: 375px) and (max-width: 768px) {
+    width: calc(100% - 32px);
   }
   @media screen and (min-width: 769px) {
     display: grid;
     grid-template-columns: auto 350px;
     grid-template-rows: auto;
   }
+  @media screen and (min-width: 1201px) {
+    grid-template-columns: auto 420px;
+  }
 `;
 
 export const CartSectionStyed = styled.div`
-  width: calc(100% - 30px);
+  width: 100%;
   max-width: 1000px;
   height: max-content;
-  min-height: 300px;
+  max-height: calc(100vh - 350px);
   margin: auto;
   margin-top: 24px;
-  margin-bottom: 20px;
-  padding: 12px;
-  padding-top: 0px;
-  padding-bottom: 14px;
+  margin-bottom: 32px;
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
   background-color: rgb(225, 225, 225);
   box-shadow: inset 0px -3px 7px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgb(199, 199, 199);
+  position: relative;
+  overflow-y: scroll;
 
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    margin-bottom: 17px;
+  &::-webkit-scrollbar {
+    display: none;
   }
+
   @media screen and (min-width: 769px) {
     width: calc(100% - 24px);
+    min-height: calc(100vh - 48px);
+    max-height: calc(100vh - 48px);
     margin: 0;
     margin-top: 24px;
     margin-left: 24px;
-    min-height: calc(100vh - 24px);
+    padding-bottom: 0px;
     box-shadow: inset 4px 0px 8px rgba(0, 0, 0, 0.06);
   }
-  @media screen and (min-width: 993px) {
-    min-height: calc(100vh - 48px);
-  }
+`;
 
+export const ShadowStyled = styled.div`
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0)
+  );
+  background-size: 100% 100%;
+  border-radius: 0px 0px 8px 8px;
 `;
 
 export const DivHeadStyled = styled.div`
-  height: 45px;
+  height: 48px;
   width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+  padding-top: 8px;
 `;
 
 export const PHeadStyled = styled.p`
@@ -63,27 +84,35 @@ export const PHeadStyled = styled.p`
   font-size: 1.2em;
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
-    font-size: 1.16em;
+    font-size: 1.18em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.21em;
+    font-size: 1.22em;
   }
-  @media screen and (min-width: 577px) {
-    font-size: 1.23em;
+  @media screen and (min-width: 577px) and (max-width: 768px){
+    font-size: 1.24em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+     font-size: 1.26em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+     font-size: 1.28em;
+  }
+  @media screen and (min-width: 1201px) {
+     font-size: 1.3em;
   }
 `;
 
-export const ContainerProductList = styled.div``;
+export const ContainerProductList = styled.div`
+  padding: 0px 12px;
+`;
 
 /*seção Finalizar*/
 export const FinishSectionStyled = styled.div`
-  width: calc(100% - 30px);
+  width: 100%;
   margin: auto;
   padding-bottom: 24px;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
-    width: calc(100% - 21px);
-  }
   @media screen and (min-width: 769px) {
     width: 300px;
     height: 100vh;
@@ -120,6 +149,7 @@ export const DivAddStyled = styled.div`
     border: 1px solid rgb(173, 173, 173);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
     height: 44px;
+    border-radius: 22px;
   }
 `;
 
@@ -130,10 +160,19 @@ export const PAddStyled = styled.p`
     font-size: 1.16em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.19em;
+    font-size: 1.2em;
   }
-  @media screen and (min-width: 577px) {
-    font-size: 1.22em;
+  @media screen and (min-width: 577px) and (max-width: 768px){
+    font-size: 1.24em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.28em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.32em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.4em;
   }
 `;
 
@@ -141,15 +180,15 @@ export const ContainerStyled = styled.div`
   height: auto;
   width: 100%;
   max-width: 460px;
+  padding: 18px 12px;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  border-radius: 7px;
-  padding: 18px 12px;
   box-sizing: border-box;
   background-color: white;
+  border-radius: 8px;
   border: 1px solid rgb(173, 173, 173);
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 
@@ -158,6 +197,7 @@ export const ContainerStyled = styled.div`
     margin: 0;
     padding-top: 24px;
     padding-bottom: 44px;
+    border-radius: 7px;
   }
 `;
 
@@ -225,9 +265,17 @@ export const PValueStyled = styled.p`
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.09em;
   }
-
-  @media screen and (min-width: 577px) and (max-width: 768px) {
+  @media screen and (min-width: 577px) and (max-width: 768px){
     font-size: 1.1em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.152em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.122em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.132em;
   }
 `;
 

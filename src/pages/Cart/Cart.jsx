@@ -7,6 +7,7 @@ import {
   DivHeadStyled,
   PHeadStyled,
   ContainerProductList,
+  ShadowStyled,
   DivAddStyled,
   PAddStyled,
   FinishSectionStyled,
@@ -50,6 +51,8 @@ const Cart = () => {
         <ContainerProductList>
           <ProductListHome variant={"cart"} categoryKey={12}></ProductListHome>
         </ContainerProductList>
+        
+        <ShadowStyled/>
       </CartSectionStyed>
 
       {falta != 40 && (
