@@ -20,6 +20,9 @@ import {
   PValueStyled,
   DivContinueStyled,
   PContinueStyled,
+  BlurDivStyled,
+  DivMsgVoidCart,
+  ImgVoidCartStyled
 } from "./ComponentsCart.jsx";
 
 const Cart = () => {
@@ -28,7 +31,9 @@ const Cart = () => {
 
   useEffect(() => {
     if(totalAddedValue == 0){
-      navigate('/');
+      setTimeout(() => {
+        navigate('/');
+      }, 500);
     }
   }, [totalAddedValue])
   
@@ -52,7 +57,7 @@ const Cart = () => {
   if(totalAddedValue!=0){
   return (
     <MainStyled>
-      <div style={{ position: "relative", height:'max-content' }}>
+      <div style={{ position: "relative", height:'max-content'}}>
         <CartSectionStyed>
           <DivHeadStyled>
             <PHeadStyled>Sua Compra</PHeadStyled>
@@ -109,11 +114,27 @@ const Cart = () => {
             <PContinueStyled>Continuar</PContinueStyled>
           </DivContinueStyled>
         </ContainerStyled>
+
       </FinishSectionStyled>
     </MainStyled>
   )}
   else{
-    return null
+    return (
+      <div style={{
+        minHeight:'100vh', 
+        minWidth:'100vw', 
+        display:'flex', 
+        justifyContent:'center', 
+        alignItems:'center',
+        backgroundColor:'rgb(220, 220, 220)'}}>
+        <DivMsgVoidCart>
+          <BlurDivStyled>
+            <ImgVoidCartStyled src="/void-cart-background.png"></ImgVoidCartStyled>
+          </BlurDivStyled>
+          <PHeadStyled><strong>COMPRA DESFEITA</strong></PHeadStyled>
+        </DivMsgVoidCart>
+      </div>
+    )
   }
 };
 

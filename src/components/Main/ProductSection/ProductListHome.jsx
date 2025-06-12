@@ -42,6 +42,7 @@ const DivStyled = styled.div`
       }
       @media screen and (min-width: 993px){
         padding-bottom: 5px;
+        padding-right: 4px;
         height: 548px;
         gap: 11px;
       }

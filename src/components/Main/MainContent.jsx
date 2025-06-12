@@ -51,7 +51,7 @@ function MainContent() {
       divElement.removeEventListener('pointerdown', handlePointerDown);
       divElement.removeEventListener('wheel', handleScroll);
     }
-
+    
     return () => {
       if (divElement) {
         divElement.removeEventListener('pointerdown', handlePointerDown);

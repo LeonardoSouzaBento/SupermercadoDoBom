@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const MainStyled = styled.main`
   margin: auto;
+  /* background-color:rgb(237, 237, 237); */
+
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: calc(100% - 24px);
   }
@@ -54,6 +56,7 @@ export const ShadowStyled = styled.div`
   bottom: 0px;
   left: 0px;
   width: 100%;
+  max-width: 100%;
   height: 32px;
   background-image: linear-gradient(
     to top,
@@ -62,6 +65,11 @@ export const ShadowStyled = styled.div`
   );
   background-size: 100% 100%;
   border-radius: 0px 0px 8px 8px;
+
+  @media screen and (min-width: 769px) {
+    width: calc(100% - 24px);
+    margin-left: 24px;
+  }
 `;
 
 export const DivHeadStyled = styled.div`
@@ -87,17 +95,17 @@ export const PHeadStyled = styled.p`
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.22em;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px){
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.24em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-     font-size: 1.26em;
+    font-size: 1.26em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-     font-size: 1.28em;
+    font-size: 1.28em;
   }
   @media screen and (min-width: 1201px) {
-     font-size: 1.3em;
+    font-size: 1.3em;
   }
 `;
 
@@ -160,7 +168,7 @@ export const PAddStyled = styled.p`
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.2em;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px){
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.24em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
@@ -264,7 +272,7 @@ export const PValueStyled = styled.p`
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.09em;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px){
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.1em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
@@ -305,4 +313,37 @@ export const PContinueStyled = styled.p`
   @media screen and (min-width: 577px) {
     font-size: 1.2em;
   }
+`;
+
+export const DivMsgVoidCart = styled.div`
+  width: 340px;
+  padding: 9px;
+  padding-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  background-color:rgb(240, 240, 240);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.19);
+  border-radius: 9px;
+`;
+
+export const BlurDivStyled = styled.div`
+  height: 340px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 4px;
+`;
+
+export const ImgVoidCartStyled = styled.img`
+  width: 290px;
+  height: 290px;
+  position: relative;
+  z-index: 2;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.23);
 `;

@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext} from 'react';
-import { CartContext } from '../../CartContext';
+import { useState, useEffect, useContext } from "react";
+import { CartContext } from "../../CartContext";
 import {
   PaiProdStyled,
   PpesoStyled,
@@ -22,126 +22,143 @@ import {
   PMais2Styled,
   DescOfertaStyled,
   DivNomeStyled,
-  PnomeStyled
-} from './ComponentsProductItem';
+  PnomeStyled,
+} from "./ComponentsProductItem";
 
-const Oferta = ({ product, quantity, setQuantity, handleQuantityChange, })=>{
+const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
   let toqueInicio = null;
-  const iniciarToque = () => {
+
+  const handleTouchStart = (e) => {
     toqueInicio = Date.now();
   };
 
-  const finalizarToque = () => {
+  const handleTouchEnd = (e) => {
     const duracao = Date.now() - toqueInicio;
-    if (duracao < 100) { 
+    if (duracao < 100) {
+      setQuantity(1);
+      product.quant = 1;
+      handleQuantityChange(product, true);
+    }
+    toqueInicio = null;
+  };
+
+  const handleClick = (e) => {
+    if (e.type === "click") {
       setQuantity(1);
       product.quant = 1;
       handleQuantityChange(product, true);
     }
   };
 
-  return(
+  return (
     <DivOfertaStyled>
       <PaiImgOfertaStyled>
-        {(product.discount!=''&& product.discount!=null) &&
-        <DivOffStyled>
-          <PoffStyled>-{product.discount}%</PoffStyled>
-        </DivOffStyled>}
+        {product.discount != "" && product.discount != null && (
+          <DivOffStyled>
+            <PoffStyled>-{product.discount}%</PoffStyled>
+          </DivOffStyled>
+        )}
         <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
-        
-        {quantity===0 &&
-          <DivMaisStyled 
-            onPointerDown={iniciarToque}
-            onPointerUp={finalizarToque}>
+
+        {quantity === 0 && (
+          <DivMaisStyled
+            onClick={handleClick}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <PMaisStyled>+</PMaisStyled>
           </DivMaisStyled>
-        }
-        {quantity>=1 &&
-        <Botoes
-          quantity={quantity}
-          setQuantity={setQuantity}
-          handleQuantityChange={handleQuantityChange}
-          product={product}
-        />}
+        )}
+        {quantity >= 1 && (
+          <Botoes
+            quantity={quantity}
+            setQuantity={setQuantity}
+            handleQuantityChange={handleQuantityChange}
+            product={product}
+          />
+        )}
       </PaiImgOfertaStyled>
     </DivOfertaStyled>
-)}
+  );
+};
 
-const Botoes = ({ quantity, product, setQuantity, handleQuantityChange}) => {
-
-  function handleMore(){
-    setQuantity(quantity+1);
+const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
+  function handleMore() {
+    setQuantity(quantity + 1);
     handleQuantityChange(product, true);
-  } 
+  }
 
-  function handleFewer (){
+  function handleFewer() {
     if (quantity > 1) {
-      setQuantity(quantity-1)
+      setQuantity(quantity - 1);
+      handleQuantityChange(product, false);
+    } else {
+      setQuantity(0);
       handleQuantityChange(product, false);
     }
-    else {
-      setQuantity(0)
-      handleQuantityChange(product, false);
-    }
-  };
+  }
 
   return (
     <DivQuantStyled>
-      <BotoesStyled onPointerDown={handleFewer}><PMenosStyled>-</PMenosStyled></BotoesStyled>
-      <BotoesStyled><PQuantStyled>{quantity}</PQuantStyled></BotoesStyled>
-      <BotoesStyled onPointerDown={handleMore}><PMais2Styled>+</PMais2Styled></BotoesStyled>
+      <BotoesStyled onPointerDown={handleFewer}>
+        <PMenosStyled>-</PMenosStyled>
+      </BotoesStyled>
+      <BotoesStyled>
+        <PQuantStyled>{quantity}</PQuantStyled>
+      </BotoesStyled>
+      <BotoesStyled onPointerDown={handleMore}>
+        <PMais2Styled>+</PMais2Styled>
+      </BotoesStyled>
     </DivQuantStyled>
   );
-}
+};
 
-const Preco = ({price}) => {
+const Preco = ({ price }) => {
   return (
-        <PaiPrecoStyled>
-          <DivPrecoStyled>
-            <PSifraStyled>R$</PSifraStyled>
-            <PprecoStyled>{price}</PprecoStyled>
-          </DivPrecoStyled>
-        </PaiPrecoStyled>
-)};
+    <PaiPrecoStyled>
+      <DivPrecoStyled>
+        <PSifraStyled>R$</PSifraStyled>
+        <PprecoStyled>{price}</PprecoStyled>
+      </DivPrecoStyled>
+    </PaiPrecoStyled>
+  );
+};
 
-const DescOferta = ({product}) => {
-  
-  const existWeight = product.weight!='' && product.weight!=null;
+const DescOferta = ({ product }) => {
+  const existWeight = product.weight != "" && product.weight != null;
 
   return (
     <DescOfertaStyled>
       <DivNomeStyled>
         <PnomeStyled>{product.name}</PnomeStyled>
       </DivNomeStyled>
-      <Preco
-      price={product.price}>
-      </Preco>
+      <Preco price={product.price}></Preco>
 
       <DivPesoStyled>
-          <PpesoStyled $exist={existWeight}>{product.weight}</PpesoStyled>
+        <PpesoStyled $exist={existWeight}>{product.weight}</PpesoStyled>
       </DivPesoStyled>
     </DescOfertaStyled>
   );
-}
+};
 
-function ProductItem({product, handleQuantityChange, variant}) {
-  const {cartProducts, totalAddedValue} = useContext(CartContext);
+function ProductItem({ product, handleQuantityChange, variant }) {
+  const { cartProducts, totalAddedValue } = useContext(CartContext);
   const [quantity, setQuantity] = useState(product.quant);
 
   useEffect(() => {
-    cartProducts.map((item)=>{
-      if(item.id == product.id){
+    cartProducts.map((item) => {
+      if (item.id == product.id) {
         setQuantity(item.quant);
       }
-    })
-    if (totalAddedValue==0) {
-      setQuantity(0)
+    });
+    if (totalAddedValue == 0) {
+      setQuantity(0);
     }
-  },[])
+  }, []);
 
   return (
     <PaiProdStyled $variant={variant}>
-      <DescOferta product={product} $variant={variant}/>
+      <DescOferta product={product} $variant={variant} />
       <Oferta
         product={product}
         setQuantity={setQuantity}
