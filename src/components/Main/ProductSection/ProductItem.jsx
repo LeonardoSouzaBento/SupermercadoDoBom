@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { CartContext } from "../../CartContext";
 import {
   PaiProdStyled,
@@ -26,21 +26,40 @@ import {
 } from "./ComponentsProductItem";
 
 const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
+  const divMaisRef = useRef(null);
   let toqueInicio = null;
 
-  const handleTouchStart = (e) => {
-    toqueInicio = Date.now();
-  };
+  useEffect(() => {
+    const element = divMaisRef.current;
 
-  const handleTouchEnd = (e) => {
-    const duracao = Date.now() - toqueInicio;
-    if (duracao < 100) {
-      setQuantity(1);
-      product.quant = 1;
-      handleQuantityChange(product, true);
+    const handleTouchStart = (e) => {
+      toqueInicio = Date.now();
+    };
+
+    const handleTouchEnd = (e) => {
+      const duracao = Date.now() - toqueInicio;
+      if (duracao < 100) {
+        setQuantity(1);
+        product.quant = 1;
+        handleQuantityChange(product, true);
+      }
+      toqueInicio = null;
+    };
+
+    if (element) {
+      element.addEventListener("touchstart", handleTouchStart, {
+        passive: true,
+      });
+      element.addEventListener("touchend", handleTouchEnd, { passive: true });
     }
-    toqueInicio = null;
-  };
+
+    return () => {
+      if (element) {
+        element.removeEventListener("touchstart", handleTouchStart);
+        element.removeEventListener("touchend", handleTouchEnd);
+      }
+    };
+  }, []);
 
   const handleClick = (e) => {
     if (e.type === "click") {
@@ -61,11 +80,7 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
         <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
 
         {quantity === 0 && (
-          <DivMaisStyled
-            onClick={handleClick}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
+          <DivMaisStyled onClick={handleClick} ref={divMaisRef}>
             <PMaisStyled>+</PMaisStyled>
           </DivMaisStyled>
         )}

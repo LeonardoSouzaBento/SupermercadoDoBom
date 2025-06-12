@@ -33,7 +33,7 @@ const Cart = () => {
     if(totalAddedValue == 0){
       setTimeout(() => {
         navigate('/');
-      }, 500);
+      }, 2300);
     }
   }, [totalAddedValue])
   
