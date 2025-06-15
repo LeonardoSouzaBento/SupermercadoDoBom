@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const MainStyled = styled.main`
   margin: auto;
-  /* background-color:rgb(237, 237, 237); */
-
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: calc(100% - 24px);
   }
@@ -23,7 +21,7 @@ export const MainStyled = styled.main`
 export const CartSectionStyed = styled.div`
   width: 100%;
   max-width: 1000px;
-  min-height: calc(100vh - 350px);
+  min-height: 420px;
   max-height: calc(100vh - 350px);
   margin: auto;
   margin-top: 24px;
@@ -32,14 +30,18 @@ export const CartSectionStyed = styled.div`
   border-radius: 10px;
   box-sizing: border-box;
   background-color: rgb(225, 225, 225);
-  box-shadow: inset 0px -3px 7px rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgb(199, 199, 199);
+  border: 1px solid rgb(204, 204, 204);
+  border-top: none;
+  border-right: none;
   position: relative;
-  overflow-y: scroll;
+  overflow-y: hidden;
   &::-webkit-scrollbar {
     display: none;
   }
-
+  @media screen and (min-width: 320px) and (max-width: 430px) {
+    min-height: 360px;
+    max-height: 360px;
+  }
   @media screen and (min-width: 769px) {
     width: calc(100% - 24px);
     min-height: calc(100vh - 48px);
@@ -47,9 +49,106 @@ export const CartSectionStyed = styled.div`
     margin: 0;
     margin-top: 24px;
     margin-left: 24px;
-    box-shadow: inset 4px 0px 8px rgba(0, 0, 0, 0.06);
   }
 `;
+
+export const DivSpanCalcelCart = styled.div`
+  width: 38px;
+  height: 40px;
+  padding-left: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  border-radius: 8px;
+  border: 1px solid rgb(184, 184, 184);
+  background-color: rgb(238, 238, 238);
+  box-shadow: -2px 2px 4px rgba(93, 93, 93, 0.15);
+  cursor: pointer;
+`;
+
+export const SpanCalcelCart = styled.span`
+  padding-bottom: 1px;
+  font-variation-settings:
+  'FILL'1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 22;
+  color: rgb(72, 72, 72);
+
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    font-size: 1.7em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.75em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.76em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.77em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.78em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.79em;
+  }
+`;
+
+export const BoxConfirmCalcel= styled.div`
+  width: 100%;
+  height: 52px;
+  padding-right: 2px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border-radius: 8px 8px 0px 0px;
+  background-color: #E36140;
+  ${props => props.$viewFeedback && 'background-color: rgb(36, 160, 12);'};
+  ${props => props.$viewFeedback && 'padding-right: 16px;'};
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+`;
+
+export const DivSpanConfirmCancel = styled(DivSpanCalcelCart)`
+  position: relative;
+  padding-bottom: 0px;
+  margin-bottom: 8px;
+`;
+
+export const PConfirmCancelStyled = styled.p`
+  font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-weight: 300;
+  color: white;
+  padding-right: 4px;
+
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    font-size: 1.23em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.285em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.305em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.315em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.335em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.355em;
+  }
+`;
+
 
 export const ShadowStyled = styled.div`
   position: absolute;
@@ -60,7 +159,7 @@ export const ShadowStyled = styled.div`
   height: 32px;
   background-image: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.07),
     rgba(0, 0, 0, 0)
   );
   background-size: 100% 100%;
@@ -73,12 +172,12 @@ export const ShadowStyled = styled.div`
 `;
 
 export const DivHeadStyled = styled.div`
-  height: 48px;
+  height: 50px;
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  padding-top: 8px;
+  margin-bottom: 12px;
+  position: relative;
 `;
 
 export const PHeadStyled = styled.p`
@@ -87,7 +186,6 @@ export const PHeadStyled = styled.p`
   color: rgb(0, 0, 0);
   text-align: center;
   font-weight: 300;
-  font-size: 1.2em;
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.18em;
@@ -113,6 +211,42 @@ export const ContainerProductList = styled.div`
   padding: 0px 12px;
 `;
 
+export const DivSeeMoreStyled = styled.div`
+  height: 40px;
+  width: max-content;
+  padding: 0px 24px;
+  max-width: 380px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(50%);
+  background-color: rgb(255, 255, 255);
+`;
+
+export const PSeeMoreStyled = styled.p`
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    font-size: 1.1em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.1em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.1em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.1em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.1em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.1em;
+  }
+`;
+
 /*seção Finalizar*/
 export const FinishSectionStyled = styled.div`
   width: 100%;
@@ -134,7 +268,7 @@ export const FinishSectionStyled = styled.div`
 //botão adicionar
 export const DivAddStyled = styled.div`
   width: 95%;
-  max-width: 450px;
+  max-width: 385px;
   margin: auto;
   height: 40px;
   margin-bottom: 26px;
@@ -145,14 +279,13 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(173, 173, 173);
+  border: 1px solid rgb(134, 134, 134);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
 
   @media screen and (min-width: 769px) {
     width: 100%;
     order: 2;
     margin: 0;
-    border: 1px solid rgb(173, 173, 173);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
     height: 44px;
     border-radius: 22px;
@@ -185,7 +318,7 @@ export const PAddStyled = styled.p`
 export const ContainerStyled = styled.div`
   height: auto;
   width: 100%;
-  max-width: 460px;
+  max-width: 400px;
   padding: 18px 12px;
   margin: auto;
   display: flex;
@@ -195,14 +328,14 @@ export const ContainerStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 8px;
-  border: 1px solid rgb(173, 173, 173);
+  border: 1px solid rgb(156, 156, 156);
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 
   @media screen and (min-width: 769px) {
     display: block;
     margin: 0;
     padding-top: 24px;
-    padding-bottom: 44px;
+    padding-bottom: 28px;
     border-radius: 7px;
   }
 `;
@@ -217,7 +350,11 @@ export const DivAvisoStyled = styled.div`
   padding: 12px 15px;
   box-sizing: border-box;
   background-color: rgb(255, 234, 201);
-  border: 1px solid rgb(235, 220, 152);
+  border: 1px solid rgb(255, 155, 78);
+
+  @media screen and (min-width: 768px) {
+    border-radius: 6px;
+  }
 `;
 
 export const PAvisoStyled = styled.p`
@@ -292,11 +429,13 @@ export const DivContinueStyled = styled.div`
   justify-content: center;
   width: 100%;
   height: 40px;
+  border-radius: 5px;
+  border: 1px solid rgb(30, 131, 10);
   background-color: ${(props) =>
-    props.$nocontinue ? "rgb(227, 227, 227)" : "rgb(36, 160, 12)"};
-  border-radius: 7px;
+    props.$nocontinue ? "rgb(188, 241, 163)" : "rgb(36, 160, 12)"};
   ${(props) =>
-    props.$nocontinue ? "color: rgb(74, 74, 74);" : "color: white;"}
+    props.$nocontinue ? "color: rgb(255, 255, 255);" : "color: white;"}
+  ${props => props.$nocontinue && 'border: 1px solid rgb(255, 155, 78);'}
 `;
 
 export const PContinueStyled = styled.p`
@@ -324,7 +463,7 @@ export const DivMsgVoidCart = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4px;
-  background-color:rgb(240, 240, 240);
+  background-color: rgb(240, 240, 240);
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.19);
   border-radius: 9px;
 `;

@@ -14,10 +14,10 @@ export const ViewContextProvider = ({ children }) => {
     }, [tipForRecruiter]);
 
     const [preventClick, setPreventClick] = useState(false); // prevenir click durante a dica
-
+    const [viewFeedback, setViewFeedback] = useState(false);
     
   return (
-    <ViewContext.Provider value={{tipForRecruiter, setTipForRecruiter, preventClick, setPreventClick}}>
+    <ViewContext.Provider value={{tipForRecruiter, setTipForRecruiter, preventClick, setPreventClick, viewFeedback, setViewFeedback}}>
       {children}
     </ViewContext.Provider>
   );

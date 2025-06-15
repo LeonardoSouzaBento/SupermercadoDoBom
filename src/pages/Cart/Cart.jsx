@@ -1,10 +1,16 @@
-import { useContext, useEffect} from "react";
+import { useContext, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../components/CartContext";
+import { ViewContext } from "../../components/viewContext.jsx";
 import { ProductListHome } from "../../components/Main/ProductSection/ProductListHome.jsx";
 import {
   MainStyled,
   CartSectionStyed,
+  DivSpanCalcelCart,
+  SpanCalcelCart,
+  BoxConfirmCalcel,
+  PConfirmCancelStyled,
+  DivSpanConfirmCancel,
   DivHeadStyled,
   PHeadStyled,
   ContainerProductList,
@@ -20,23 +26,34 @@ import {
   PValueStyled,
   DivContinueStyled,
   PContinueStyled,
-  BlurDivStyled,
   DivMsgVoidCart,
+  BlurDivStyled,
   ImgVoidCartStyled
 } from "./ComponentsCart.jsx";
 
 const Cart = () => {
   const navigate = useNavigate();
   const { totalAddedValue } = useContext(CartContext);
+  const [seeCancelDialog, setSeeCancelDialog] = useState(false);
+  const { setCartProducts } = useContext(CartContext);
+  const {viewFeedback, setViewFeedback} = useContext(ViewContext);
+
+  const handleConfirmCancel = () => { 
+    setViewFeedback(true);
+    setTimeout(() => {
+      setCartProducts([]);
+      setViewFeedback(false);
+    }, 1400);
+  };
 
   useEffect(() => {
-    if(totalAddedValue == 0){
+    if (totalAddedValue == 0) {
       setTimeout(() => {
-        navigate('/');
-      }, 2300);
+        navigate("/");
+      }, 2500);
     }
-  }, [totalAddedValue])
-  
+  }, [totalAddedValue]);
+
   const totalValue = totalAddedValue.toLocaleString("pt-BR", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -54,71 +71,101 @@ const Cart = () => {
     maximumFractionDigits: 2,
   });
 
-  if(totalAddedValue!=0){
-  return (
-    <MainStyled>
-      <div style={{ position: "relative", height:'max-content'}}>
-        <CartSectionStyed>
-          <DivHeadStyled>
-            <PHeadStyled>Sua Compra</PHeadStyled>
-          </DivHeadStyled>
+  if (totalAddedValue != 0) {
+    return (
+      <MainStyled>
+        <div style={{ position: "relative", height: "max-content" }}>
+          <CartSectionStyed>
+            <DivHeadStyled>
+              <DivSpanCalcelCart onClick={()=>{setSeeCancelDialog(true)}}>
+                <SpanCalcelCart className="material-symbols-outlined">
+                  delete
+                </SpanCalcelCart>
+              </DivSpanCalcelCart>
 
-          <ContainerProductList>
-            <ProductListHome
-              variant={"cart"}
-              categoryKey={12}
-            ></ProductListHome>
-          </ContainerProductList>
-        </CartSectionStyed>
-        <ShadowStyled />
-      </div>
+              {seeCancelDialog && (
+              <BoxConfirmCalcel>
+                <PConfirmCancelStyled>Cancelar a compra?</PConfirmCancelStyled>
 
-      <FinishSectionStyled>
-        <DivAddStyled>
-          <PAddStyled>
-            {falta == 40 ? "Adicionar produtos" : "Adicionar mais produtos"}
-          </PAddStyled>
-        </DivAddStyled>
+                <DivSpanConfirmCancel onClick={handleConfirmCancel}>
+                  <SpanCalcelCart className="material-symbols-outlined">
+                    check
+                  </SpanCalcelCart>
+                </DivSpanConfirmCancel>
 
-        <ContainerStyled>
-          {falta > 0 && (
-            <DivAvisoStyled>
-              <PAvisoStyled>
-                Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
-              </PAvisoStyled>
-            </DivAvisoStyled>
-          )}
+                <DivSpanConfirmCancel onClick={()=>{setSeeCancelDialog(false)}}>
+                  <SpanCalcelCart className="material-symbols-outlined">
+                    close
+                  </SpanCalcelCart>
+                </DivSpanConfirmCancel>
+              </BoxConfirmCalcel>
+              )}
+              {viewFeedback && (
+                <BoxConfirmCalcel $viewFeedback={viewFeedback}>
+                  <PConfirmCancelStyled>
+                    Compra Cancelada!
+                  </PConfirmCancelStyled>
+                </BoxConfirmCalcel>
+              )}
 
-          <DivValueStyled>
-            <DivStyled>
-              <PValueStyled>Valor da compra:</PValueStyled>
-              <PValueStyled>R$ {totalValue}</PValueStyled>
-            </DivStyled>
+              <PHeadStyled>Sua Compra</PHeadStyled>
+            </DivHeadStyled>
 
-            <DivStyled>
-              <PValueStyled>Valor da entrega:</PValueStyled>
-              <PValueStyled>4,00</PValueStyled>
-            </DivStyled>
+            <ContainerProductList>
+              <ProductListHome
+                variant={"cart"}
+                categoryKey={12}
+              ></ProductListHome>
+            </ContainerProductList>
+          </CartSectionStyed>
+          <ShadowStyled />
+        </div>
 
-            <DivStyled>
-              <PValueStyled>
-                <strong>Valor total:</strong>
-              </PValueStyled>
-              <PValueStyled>
-                <strong>{totalFormatted}</strong>
-              </PValueStyled>
-            </DivStyled>
-          </DivValueStyled>
+        <FinishSectionStyled>
+          <DivAddStyled>
+            <PAddStyled>
+              {falta == 40 ? "Adicionar produtos" : "Adicionar mais produtos"}
+            </PAddStyled>
+          </DivAddStyled>
 
-          <DivContinueStyled $nocontinue={falta > 0}>
-            <PContinueStyled>Continuar</PContinueStyled>
-          </DivContinueStyled>
-        </ContainerStyled>
+          <ContainerStyled>
+            {falta > 0 && (
+              <DivAvisoStyled>
+                <PAvisoStyled>
+                  Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
+                </PAvisoStyled>
+              </DivAvisoStyled>
+            )}
 
-      </FinishSectionStyled>
-    </MainStyled>
-  )}
-  else{
+            <DivValueStyled>
+              <DivStyled>
+                <PValueStyled>Valor da compra:</PValueStyled>
+                <PValueStyled>R$ {totalValue}</PValueStyled>
+              </DivStyled>
+
+              <DivStyled>
+                <PValueStyled>Valor da entrega:</PValueStyled>
+                <PValueStyled>R$ 4,00</PValueStyled>
+              </DivStyled>
+
+              <DivStyled>
+                <PValueStyled>
+                  <strong>Valor total:</strong>
+                </PValueStyled>
+                <PValueStyled>
+                  <strong>R$ {totalFormatted}</strong>
+                </PValueStyled>
+              </DivStyled>
+            </DivValueStyled>
+
+            <DivContinueStyled $nocontinue={falta > 0}>
+              <PContinueStyled>Continuar</PContinueStyled>
+            </DivContinueStyled>
+          </ContainerStyled>
+        </FinishSectionStyled>
+      </MainStyled>
+    );
+  }  else{
     return (
       <div style={{
         minHeight:'100vh', 
@@ -131,7 +178,7 @@ const Cart = () => {
           <BlurDivStyled>
             <ImgVoidCartStyled src="/void-cart-background.png"></ImgVoidCartStyled>
           </BlurDivStyled>
-          <PHeadStyled><strong>COMPRA DESFEITA</strong></PHeadStyled>
+          <PHeadStyled><strong>Carrinho vazio!</strong></PHeadStyled>
         </DivMsgVoidCart>
       </div>
     )

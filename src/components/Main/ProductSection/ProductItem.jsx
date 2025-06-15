@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { CartContext } from "../../CartContext";
+import { ViewContext } from "../../viewContext";
 import {
   PaiProdStyled,
   PpesoStyled,
@@ -25,7 +26,7 @@ import {
   PnomeStyled,
 } from "./ComponentsProductItem";
 
-const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
+const Oferta = ({ product, quantity, setQuantity, handleQuantityChange, variant }) => {
   const divMaisRef = useRef(null);
   let toqueInicio = null;
 
@@ -70,14 +71,14 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
   };
 
   return (
-    <DivOfertaStyled>
+    <DivOfertaStyled $variant={variant}>
       <PaiImgOfertaStyled>
         {product.discount != "" && product.discount != null && (
           <DivOffStyled>
             <PoffStyled>-{product.discount}%</PoffStyled>
           </DivOffStyled>
         )}
-        <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
+        <ImgOfertaStyed src={product.url} $variant={variant}></ImgOfertaStyed>
 
         {quantity === 0 && (
           <DivMaisStyled onClick={handleClick} ref={divMaisRef}>
@@ -128,30 +129,29 @@ const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
   );
 };
 
-const Preco = ({ price }) => {
+const Preco = ({ product, variant }) => {
+  const existWeight = product.weight != "" && product.weight != null;
   return (
-    <PaiPrecoStyled>
-      <DivPrecoStyled>
+    <PaiPrecoStyled $variant={variant}>
+      <DivPrecoStyled $variant={variant}>
         <PSifraStyled>R$</PSifraStyled>
-        <PprecoStyled>{price}</PprecoStyled>
+        <PprecoStyled>{product.price}</PprecoStyled>
       </DivPrecoStyled>
+      
+      <DivPesoStyled $exist={existWeight} $variant={variant}>
+        <PpesoStyled>{product.weight}</PpesoStyled>
+      </DivPesoStyled>
     </PaiPrecoStyled>
   );
 };
 
-const DescOferta = ({ product }) => {
-  const existWeight = product.weight != "" && product.weight != null;
-
+const DescOferta = ({ product, variant}) => {
   return (
-    <DescOfertaStyled>
+    <DescOfertaStyled $variant={variant}>
       <DivNomeStyled>
         <PnomeStyled>{product.name}</PnomeStyled>
       </DivNomeStyled>
-      <Preco price={product.price}></Preco>
-
-      <DivPesoStyled>
-        <PpesoStyled $exist={existWeight}>{product.weight}</PpesoStyled>
-      </DivPesoStyled>
+      <Preco price={product.price} variant={variant} product={product}></Preco>
     </DescOfertaStyled>
   );
 };
@@ -159,6 +159,7 @@ const DescOferta = ({ product }) => {
 function ProductItem({ product, handleQuantityChange, variant }) {
   const { cartProducts, totalAddedValue } = useContext(CartContext);
   const [quantity, setQuantity] = useState(product.quant);
+  const {viewFeedback} = useContext(ViewContext);
 
   useEffect(() => {
     cartProducts.map((item) => {
@@ -171,9 +172,15 @@ function ProductItem({ product, handleQuantityChange, variant }) {
     }
   }, []);
 
+  useEffect(() => {
+    if (viewFeedback==true) {
+      setQuantity(0);
+    }
+  }, [viewFeedback])
+  
   return (
     <PaiProdStyled $variant={variant}>
-      <DescOferta product={product} $variant={variant} />
+      <DescOferta product={product} variant={variant} />
       <Oferta
         product={product}
         setQuantity={setQuantity}

@@ -88,7 +88,7 @@ const PNoneStyled = styled.p`
 `;
 
 
-export const ProductListHome = React.forwardRef (({variant, categoryKey, }, ref)=>{
+export const ProductListHome = React.forwardRef (({variant, categoryKey }, ref)=>{
   const {allProductsInCat, handleQuantityChange} = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];

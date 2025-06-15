@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import { CartContext } from "../CartContext";
+import { ViewContext } from "../viewContext";
 
 const ContainerStyled = styled.div`
   background-color: rgba(25, 25, 27, 0.64);
@@ -12,7 +13,7 @@ const ContainerStyled = styled.div`
   z-index: 3;
 `;
 
-const DivStyled= styled.div`
+const DivStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,11 +25,11 @@ const DivStyled= styled.div`
   position: absolute;
   right: 56px;
   bottom: 56px;
-  background-color:rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.59);
   gap: 8px;
 
-  @media screen and (min-width: 320px) and (max-width: 576px){
+  @media screen and (min-width: 320px) and (max-width: 576px) {
     right: 8px;
   }
 `;
@@ -66,13 +67,13 @@ const PQuestionStyled = styled.p`
   cursor: default;
   /* letter-spacing: 0.71px; */
   font-size: 1.15em;
-  @media screen and (min-width: 320px) and (max-width: 374px){
+  @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.15em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px){
+  @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.16em;
   }
-  @media screen and (min-width: 577px){
+  @media screen and (min-width: 577px) {
     font-size: 1.17em;
   }
 `;
@@ -95,13 +96,13 @@ const GenericPStyled = styled.p`
   letter-spacing: 0.72px;
   border-radius: 4px;
   cursor: default;
-  @media screen and (min-width: 320px) and (max-width: 374px){
+  @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px){
+  @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.03em;
   }
-  @media screen and (min-width: 577px){
+  @media screen and (min-width: 577px) {
     font-size: 1.05em;
   }
 `;
@@ -110,13 +111,13 @@ const PSimStyled = styled(GenericPStyled)`
   background-color: rgb(201, 0, 0);
   color: white;
   font-weight: 500;
-  @media screen and (min-width: 320px) and (max-width: 374px){
+  @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.1em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px){
+  @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.105em;
   }
-  @media screen and (min-width: 577px){
+  @media screen and (min-width: 577px) {
     font-size: 1.11em;
   }
 `;
@@ -157,50 +158,81 @@ const PFeedbackStyled = styled(GenericPStyled)`
   cursor: default;
 `;
 
-export default function ConfirmDialog({setViewConfirm}){
-    const {setCartProducts} = useContext(CartContext);
-    const [viewFeedback, setViewFeedback] = useState(false);
+export default function ConfirmDialog({ setViewConfirm }) {
+  const { setCartProducts } = useContext(CartContext);
+  const { viewFeedback, setViewFeedback } = useContext(ViewContext);
 
-    const handleConfirmCancel = (action) => {
-      const duration = Date.now() - window.startClickTime;
-        if (duration < 100) {
-          if (action === 1) {
-            setViewFeedback(true);
-       
-            setCartProducts([]);
+  const handleConfirmCancel = (action) => {
+    const duration = Date.now() - window.startClickTime;
+    if (duration < 110) {
+      if (action === 1) {
+        setViewFeedback(true);
 
-            setTimeout(() => {
-              setViewConfirm(false);
-              setViewFeedback(false);
-            }, 1500);
-          } else if (action === 0) {
-            setViewConfirm(false);
-          }
-        }
-    };
+        setCartProducts([]);
 
-    return(
-      <ContainerStyled>
-        <DivStyled>
-        {viewFeedback===false?(<>
-          <DivCancelStyled>
+        setTimeout(() => {
+          setViewConfirm(false);
+          setViewFeedback(false);
+        }, 1500);
+      } else if (action === 0) {
+        setViewConfirm(false);
+      }
+    }
+    //pra toque de touchpad
+    if (action === "1") {
+      setViewFeedback(true);
+
+      setCartProducts([]);
+
+      setTimeout(() => {
+        setViewConfirm(false);
+        setViewFeedback(false);
+      }, 1500);
+    }
+    if (action === "0") {
+      setViewConfirm(false);
+    }
+  };
+
+  return (
+    <ContainerStyled>
+      <DivStyled>
+        {viewFeedback === false ? (
+          <>
+            <DivCancelStyled>
               <SpanStyled className="material-symbols-outlined">
                 exclamation
               </SpanStyled>
               <PQuestionStyled>Cancelar a compra?</PQuestionStyled>
-          </DivCancelStyled>
+            </DivCancelStyled>
 
-          <DivSimNaoStyled>
-            <PSimStyled 
-              onPointerDown={(e)=>{window.startClickTime = Date.now();}}
-              onPointerUp={()=>handleConfirmCancel(1)}>
-              Sim, cancelar</PSimStyled>
+            <DivSimNaoStyled>
+              <PSimStyled
+                onTouchStart={(e) => {
+                  window.startClickTime = Date.now();
+                }}
+                onTouchEnd={() => handleConfirmCancel(1)}
+                onClick={() => {
+                  handleConfirmCancel("1");
+                }}
+              >
+                Sim, cancelar
+              </PSimStyled>
 
-            <PVoltarStyled 
-              onPointerDown={(e)=>{window.startClickTime = Date.now()}}
-              onPointerUp={()=>handleConfirmCancel(0)}
-            >Voltar</PVoltarStyled>
-          </DivSimNaoStyled></>):(
+              <PVoltarStyled
+                onTouchStart={(e) => {
+                  window.startClickTime = Date.now();
+                }}
+                onTouchEnd={() => handleConfirmCancel(0)}
+                onClick={() => {
+                  handleConfirmCancel("0");
+                }}
+              >
+                Voltar
+              </PVoltarStyled>
+            </DivSimNaoStyled>
+          </>
+        ) : (
           <DivFeedbackStyled>
             <SpanCheckStyled className="material-symbols-outlined">
               check_circle
@@ -208,7 +240,7 @@ export default function ConfirmDialog({setViewConfirm}){
             <PFeedbackStyled>Compra Cancelada!</PFeedbackStyled>
           </DivFeedbackStyled>
         )}
-        </DivStyled>
-      </ContainerStyled>
-    )
+      </DivStyled>
+    </ContainerStyled>
+  );
 }

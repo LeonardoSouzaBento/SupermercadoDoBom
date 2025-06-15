@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const BodyStyled = styled.div`
   min-height: 100vh;
@@ -6,19 +6,53 @@ export const BodyStyled = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
-  background-color: #3C3C3C;
+  background-color: rgba(0, 0, 0, 0.58);
+
+  &::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+
+    @media screen and (min-width: 320px) and (max-width: 576px) {
+      background-color: rgb(172, 172, 172);
+      mix-blend-mode: normal;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      background: url(screenshot-backgrounds/background577.jpeg);
+      background-size: 100%, auto;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      background: url(screenshot-backgrounds/background769.jpeg);
+      background-size: 100%, auto;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      background: url(screenshot-backgrounds/background993.jpeg);
+      background-size: 100%, auto;
+    }
+    @media screen and (min-width: 1201px) {
+      background: url(screenshot-backgrounds/background1200.jpeg);
+      background-size: 100%, auto;
+    }
+  }
 `;
 
 export const WrapperStyled = styled.div`
   width: 80%;
   max-width: 700px;
-  padding:30px 28px;
+  padding: 30px 28px;
   padding-top: 24px;
   padding-bottom: 36px;
-  border-radius: 8px;
+  border-radius: 12px;
   background-color: rgb(237, 237, 237);
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.43);
   margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
 `;
 
 export const NavOptionsStyled = styled.nav`
@@ -42,9 +76,10 @@ export const DivNameSpanStyled = styled.div`
   align-items: center;
   border-radius: 5px;
   flex: 1 0 auto;
-  background-color: ${props => props.$buttonSelected ? 'rgb(255, 255, 255)' : 'rgb(43, 37, 37)'};
-  ${props => props.$buttonSelected && ' border: 1px solid rgb(180, 180, 180);'}
-  ${props => props.$buttonSelected && 'box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);'}
+  background-color: ${(props) =>
+    props.$buttonSelected ? "#D1CDEB" : "rgb(255, 255, 255)"};
+  ${(props) => props.$buttonSelected && "border: 2px solid rgb(0, 24, 177);"};
+  ${(props) => !props.$buttonSelected && "border: 1px solid rgb(191, 191, 191);"};
   gap: 4px;
   cursor: pointer;
 
@@ -54,7 +89,7 @@ export const DivNameSpanStyled = styled.div`
   @media screen and (min-width: 430px) and (max-width: 671px) {
     max-width: 50%;
   }
-  @media screen and (min-width: 577px){
+  @media screen and (min-width: 577px) {
     padding-left: 8px;
   }
 `;
@@ -71,10 +106,7 @@ export const DivNameSpanFalseStyled = styled.div`
 
 export const POptionStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: ${props => props.$buttonSelected ? '500' : '400'};
-  color: white;
-  ${props => props.$buttonSelected && 'color: rgb(0,0,0);'}
-
+  font-weight: 500;
   padding-right: 19px;
   cursor: pointer;
   user-select: none;
@@ -85,7 +117,7 @@ export const POptionStyled = styled.p`
   @media screen and (min-width: 769px) and (max-width: 992px) {
     font-size: 1.06em;
   }
-  @media screen and (min-width: 993px){
+  @media screen and (min-width: 993px) {
     font-size: 1.065em;
   }
 `;
@@ -99,33 +131,26 @@ export const DivSpanStyled = styled.div`
 `;
 
 export const SpanStyled = styled.span`
-  color: white;
-  ${props => props.$buttonSelected && 'color: black;'}
-  font-size: ${props => props.$buttonSelected ? '1.7em' : '1.5em'};
+  font-size: ${(props) => (props.$buttonSelected ? "1.7em" : "1.5em")};
   font-weight: 300;
-
-  font-variation-settings: 'FILL' 1;
+  font-variation-settings: "FILL" 1;
 `;
 
-export const DivContentStyled = styled.div`
-
-`;
+export const DivContentStyled = styled.div``;
 
 export const PStyled = styled.p`
   max-width: max-content;
   font-family: "Roboto";
   font-weight: 400;
   margin-bottom: 16px;
-  ${props => props.$variant && 'margin-bottom: 0px;'}
-  ${props => props.$monospace && 'font-family: "Roboto Mono", monospace;'}
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.13em;
-    line-height: 1.40em;
+    line-height: 1.4em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.13em;
-    line-height: 1.40em;
+    line-height: 1.4em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.15em;
@@ -143,6 +168,32 @@ export const PStyled = styled.p`
     font-size: 1.16em;
     line-height: 1.42em;
   }
+  //destacar tecnologias
+  ${(props) => props.$variant && "margin-bottom: 0px;"}
+  ${(props) => props.$monospace && 'font-family: "Roboto Mono", monospace;'}
+  ${(props) =>
+    props.$monospace &&
+    css`
+      color: rgb(7, 0, 106);
+      @media screen and (min-width: 320px) and (max-width: 374px) {
+        font-size: 1.12em;
+      }
+      @media screen and (min-width: 375px) and (max-width: 576px) {
+        font-size: 1.11em;
+      }
+      @media screen and (min-width: 577px) and (max-width: 768px) {
+        font-size: 1.12em;
+      }
+      @media screen and (min-width: 769px) and (max-width: 992px) {
+        font-size: 1.13em;
+      }
+      @media screen and (min-width: 993px) and (max-width: 1200px) {
+        font-size: 1.14em;
+      }
+      @media screen and (min-width: 1201px) {
+        font-size: 1.15em;
+      }
+    `}
 `;
 
 export const PButtonStyled = styled(PStyled)`
@@ -161,63 +212,46 @@ export const PButtonStyled = styled(PStyled)`
 
   @media screen and (max-width: 740px) {
     min-width: 100%;
-    ${props => props.$variant && 'min-width: max-content;'}
+    ${(props) => props.$variant && "min-width: max-content;"}
   }
+  ${(props) =>
+    props.$buttonSelected &&
+    css`
+      background-color: rgb(209, 205, 235);
+      border: 1px solid rgb(0, 24, 177);
+    `}
 
-  ${props => props.$buttonSelected && 'background-color: rgb(26, 26, 26);'}
-  ${props => props.$buttonSelected && 'color: white;'}
-  ${props => props.$variant && props.$buttonSelected && css`
-    background-color: rgb(209, 205, 235);
-    border: 1px solid rgb(33, 56, 207);
-  `}
-
-  ${props => props.$variant && css`
-    max-width: max-content;
-    padding: 2px 12px;
-    flex: none;
-    color: black;
-  `}
+  ${(props) =>
+    props.$variant &&
+    css`
+      max-width: max-content;
+      padding: 2px 12px;
+      flex: none;
+      color: black;
+    `}
 `;
 
 export const H1Styled = styled.h1`
   font-family: "Roboto", sans-serif;
   font-weight: 200;
-  margin-bottom: 15px;
-  
+  margin-bottom: 20px;
+
   @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.9em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 2em;
+    font-size: 1.97em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 2.05em;
+    font-size: 2.01em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 2.1em;
+    font-size: 2.06em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 2.12em;
+    font-size: 2.08em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 2.14em;
+    font-size: 2.1em;
   }
-`;
-
-export const DivCodeStyled = styled.div`
-  background-color: rgb(39, 39, 39);
-  width: 100%;
-  padding-left: 36px;
-  padding-top: 18px;
-  box-sizing: border-box;
-  margin-top: 10px;
-  border: 1px solid rgb(61, 38, 188);
-  box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.73);
-`;
-
-export const PreStyled = styled.pre`
- @media screen and (min-width: 993px) {
-   font-family: "Roboto Mono", monospace;
-   color: white;
- }
 `;

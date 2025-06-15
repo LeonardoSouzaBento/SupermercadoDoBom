@@ -50,7 +50,7 @@ const PLineStyled = styled.p`
 
 const DivReferentMidea = styled.div`
   width: 100%;
-  height: 345px;
+  height: 315px;
   border-radius: 7px;
   display: flex;
   flex-wrap: wrap;
@@ -71,11 +71,13 @@ const DivReferentMidea = styled.div`
 const DivImgStyled = styled.div`
   width: 100%;
   max-width: 340px;
+  max-height: 310px;
+  ${props => props.$painting && 'max-height: 290px;'};
   overflow: hidden;
   border-radius: 4px;
   box-shadow: inset 0px 0px 12px rgba(0, 0, 0, 0.49);
-
-  
+  outline: 1px solid rgb(202, 202, 202);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
 
   @media screen and (max-width: 882px) {
     height: 310px;
@@ -88,6 +90,7 @@ const ImgStyled = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: top;
+  ${props => props.$hue && 'filter: grayscale(0.8) contrast(1.1) opacity(0.96);'}
 `;
 
 
@@ -140,39 +143,39 @@ const AboutMe = () => {
       <PStyled $monospace={true}>React, StyledComponents, HTML, CSS, Javascript...<br/></PStyled>
       <PLineStyled $final={true}>_____________________________________</PLineStyled>
 
-      <H2Styled $cv={true}>Historico proffisional <em>(relacionado)</em></H2Styled>
+      <H2Styled $cv={true}>Historico proffisional (relacionado)</H2Styled>
 
       <DivPButtons>
         {previousWork.map((e, i)=>(
-          <PButtonStyled key={i} onPointerDown={()=>{setButtonSelected(i)}} $buttonSelected={buttonSelected==i}>{e}</PButtonStyled>
+          <PButtonStyled key={i} onClick={()=>{setButtonSelected(i)}} $buttonSelected={buttonSelected==i}>{e}</PButtonStyled>
         ))}
       </DivPButtons>
         
       <DivReferentMidea>
         
         {buttonSelected==0 && (<>
-          <DivImgStyled>
-            <ImgStyled src="/pintando1.gif"/>
+          <DivImgStyled $painting={true}>
+            <ImgStyled src="sobre_mim/pintando1.gif" $hue={true}/>
           </DivImgStyled>
 
-          <DivImgStyled>
-            <ImgStyled src="/pintando2.gif"/>
+          <DivImgStyled $painting={true}>
+            <ImgStyled src="sobre_mim/pintando2.gif" $hue={true}/>
           </DivImgStyled>
         </>)}
         
         {buttonSelected==1 && (<>
           <DivImgStyled>
-            <ImgStyled src="/pintura1.jpg"/>
+            <ImgStyled src="sobre_mim/pintura1.jpg"/>
           </DivImgStyled>
           
           <DivImgStyled>
-            <ImgStyled src="/pintura.jpg"/>
+            <ImgStyled src="sobre_mim/pintura.jpg"/>
           </DivImgStyled>
         </>)}
         
         {buttonSelected==2 && (
           <DivImgStyled>
-            <ImgStyled src="/ilustracao_compressed.png"></ImgStyled>
+            <ImgStyled src="sobre_mim/ilustracao_compressed.png"></ImgStyled>
           </DivImgStyled>
         )}
       </DivReferentMidea>

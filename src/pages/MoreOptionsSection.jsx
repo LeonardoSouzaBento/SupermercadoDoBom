@@ -7,13 +7,11 @@ POptionStyled,
 DivSpanStyled, 
 SpanStyled,
 DivContentStyled,
-DivCodeStyled,
-PreStyled
 } from "../components/Main/MoreOptionsSection/ComponentsOptionSection";
 import AboutMe from "../components/Main/MoreOptionsSection/AboutMe";
 import AboutTheWebsite from "../components/Main/MoreOptionsSection/AboutTheWebsite";
 import InsertComment from "../components/Main/MoreOptionsSection/InsertComment";
-import { routesCode, cartContextCode} from "../components/Main/MoreOptionsSection/CodeTexts";
+// import { routesCode, cartContextCode} from "../components/Main/MoreOptionsSection/CodeTexts";
 import { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
 
@@ -78,12 +76,6 @@ export default function MoreOptionsSection(){
                 setSelectedButtonCode={setSelectedButtonCode}/>)}
             </DivContentStyled>
         </WrapperStyled>
-
-        {seeTheOption==='aboutSite' && (
-            <DivCodeStyled>
-                {selectedButtonCode==0 && (<PreStyled>{cartContextCode}</PreStyled>)}
-            </DivCodeStyled>
-        )}
     </BodyStyled>
    </>        
   )
