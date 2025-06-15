@@ -1,32 +1,6 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import styled from "styled-components"
-import { PStyled, H1Styled, PButtonStyled } from "./ComponentsOptionSection"
-
-const H2Styled = styled.h2`
-  font-size: 1.1em;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  margin-bottom: 12px;
-
-  @media screen and (min-width: 320px) and (max-width: 374px) {
-    font-size: 1.48em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.5em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.51em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.52em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.53em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.54em;
-  }
-`;
+import { PStyled, H1Styled, H2Styled, PButtonStyled } from "./ComponentsOptionSection"
 
 const DivPButtons = styled.div`
   display: flex;
@@ -126,7 +100,7 @@ const AboutMe = () => {
         Estou procurando um estágio como desenvolvedor web junior (apenas estágio remoto).
       </PStyled>
       <PLineStyled>____________________________________</PLineStyled>
-
+      <br/>
       <H2Styled>Contato</H2Styled>
 
       <PStyled>
@@ -135,14 +109,15 @@ const AboutMe = () => {
         Email: bentosouzaleonardo@gmail.com <br/>
       </PStyled>
       <PLineStyled>____________________________________</PLineStyled>
-      
+      <br/>
+
       <H2Styled>Conhecimentos futuros</H2Styled>
-      <PStyled $monospace={true}>Redux, Tailwind, Typescript, Express, Firebase...<br/></PStyled>
+      <PStyled $monospace={true} $mb={true}>Redux, Tailwind, Typescript, Express, Firebase...<br/></PStyled>
 
       <H2Styled>Conhecimentos atuais</H2Styled>
       <PStyled $monospace={true}>React, StyledComponents, HTML, CSS, Javascript...<br/></PStyled>
       <PLineStyled $final={true}>_____________________________________</PLineStyled>
-
+      <br/>
       <H2Styled $cv={true}>Historico proffisional (relacionado)</H2Styled>
 
       <DivPButtons>

@@ -5,8 +5,12 @@ export const BodyStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 16px;
   background-color: rgba(0, 0, 0, 0.58);
+
+  @media screen and (min-width: 320px) and (max-width: 576px) {
+    padding-top: 0px;
+  }
 
   &::after {
     content: "";
@@ -21,6 +25,7 @@ export const BodyStyled = styled.div`
     @media screen and (min-width: 320px) and (max-width: 576px) {
       background-color: rgb(172, 172, 172);
       mix-blend-mode: normal;
+      padding-top: 0px;
     }
     @media screen and (min-width: 577px) and (max-width: 768px) {
       background: url(screenshot-backgrounds/background577.jpeg);
@@ -47,12 +52,22 @@ export const WrapperStyled = styled.div`
   padding: 30px 28px;
   padding-top: 24px;
   padding-bottom: 36px;
-  border-radius: 12px;
+  border-radius: 8px;
   background-color: rgb(237, 237, 237);
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.43);
   margin-bottom: 24px;
   position: relative;
   z-index: 1;
+
+  @media screen and (min-width: 320px) and (max-width: 576px) {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0px;
+  }
+  @media screen and (max-width: 577px) {
+    padding: 24px 20px;
+    padding-bottom: 28px;
+  }
 `;
 
 export const NavOptionsStyled = styled.nav`
@@ -74,13 +89,16 @@ export const DivNameSpanStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 4px;
   border-radius: 5px;
   flex: 1 0 auto;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgb(182, 182, 182);
+
   background-color: ${(props) =>
     props.$buttonSelected ? "#D1CDEB" : "rgb(255, 255, 255)"};
   ${(props) => props.$buttonSelected && "border: 2px solid rgb(0, 24, 177);"};
-  ${(props) => !props.$buttonSelected && "border: 1px solid rgb(191, 191, 191);"};
-  gap: 4px;
+  ${(props) => props.$buttonSelected && "box-shadow: none;"};
   cursor: pointer;
 
   @media screen and (min-width: 320px) and (max-width: 430px) {
@@ -142,7 +160,6 @@ export const PStyled = styled.p`
   max-width: max-content;
   font-family: "Roboto";
   font-weight: 400;
-  margin-bottom: 16px;
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.13em;
@@ -169,7 +186,6 @@ export const PStyled = styled.p`
     line-height: 1.42em;
   }
   //destacar tecnologias
-  ${(props) => props.$variant && "margin-bottom: 0px;"}
   ${(props) => props.$monospace && 'font-family: "Roboto Mono", monospace;'}
   ${(props) =>
     props.$monospace &&
@@ -193,6 +209,7 @@ export const PStyled = styled.p`
       @media screen and (min-width: 1201px) {
         font-size: 1.15em;
       }
+      ${(props) => props.$mb && "margin-bottom: 20px;"}
     `}
 `;
 
@@ -237,21 +254,47 @@ export const H1Styled = styled.h1`
   margin-bottom: 20px;
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
-    font-size: 1.9em;
+    font-size: 1.75em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.97em;
+    font-size: 1.8em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 2.01em;
+    font-size: 1.85em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 2.06em;
+    font-size: 1.9em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 2.08em;
+    font-size: 2em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 2.1em;
+    font-size: 2.05em;
+  }
+`;
+
+export const H2Styled = styled.h2`
+  font-size: 1.1em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  margin-bottom: 12px;
+
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    font-size: 1.25em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.3em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.35em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.4em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.45em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.5em;
   }
 `;
