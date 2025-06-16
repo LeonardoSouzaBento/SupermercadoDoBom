@@ -430,12 +430,16 @@ export const DivContinueStyled = styled.div`
   width: 100%;
   height: 40px;
   border-radius: 5px;
+  color: white;
   border: 1px solid rgb(30, 131, 10);
+  cursor: pointer;
+  transition: background-color 0.08s ease;
   background-color: ${(props) =>
     props.$nocontinue ? "rgb(188, 241, 163)" : "rgb(36, 160, 12)"};
-  ${(props) =>
-    props.$nocontinue ? "color: rgb(255, 255, 255);" : "color: white;"}
   ${props => props.$nocontinue && 'border: 1px solid rgb(255, 155, 78);'}
+  &:hover{
+    background-color: ${props => !props.$nocontinue && 'rgb(23, 138, 0)'};
+  }
 `;
 
 export const PContinueStyled = styled.p`

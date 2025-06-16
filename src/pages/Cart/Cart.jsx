@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../components/CartContext";
 import { ViewContext } from "../../components/viewContext.jsx";
@@ -28,7 +28,7 @@ import {
   PContinueStyled,
   DivMsgVoidCart,
   BlurDivStyled,
-  ImgVoidCartStyled
+  ImgVoidCartStyled,
 } from "./ComponentsCart.jsx";
 
 const Cart = () => {
@@ -36,9 +36,9 @@ const Cart = () => {
   const { totalAddedValue } = useContext(CartContext);
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
   const { setCartProducts } = useContext(CartContext);
-  const {viewFeedback, setViewFeedback} = useContext(ViewContext);
+  const { viewFeedback, setViewFeedback } = useContext(ViewContext);
 
-  const handleConfirmCancel = () => { 
+  const handleConfirmCancel = () => {
     setViewFeedback(true);
     setTimeout(() => {
       setCartProducts([]);
@@ -77,34 +77,42 @@ const Cart = () => {
         <div style={{ position: "relative", height: "max-content" }}>
           <CartSectionStyed>
             <DivHeadStyled>
-              <DivSpanCalcelCart onClick={()=>{setSeeCancelDialog(true)}}>
+              <DivSpanCalcelCart
+                onClick={() => {
+                  setSeeCancelDialog(true);
+                }}
+              >
                 <SpanCalcelCart className="material-symbols-outlined">
                   delete
                 </SpanCalcelCart>
               </DivSpanCalcelCart>
 
               {seeCancelDialog && (
-              <BoxConfirmCalcel>
-                <PConfirmCancelStyled>Cancelar a compra?</PConfirmCancelStyled>
+                <BoxConfirmCalcel>
+                  <PConfirmCancelStyled>
+                    Cancelar a compra?
+                  </PConfirmCancelStyled>
 
-                <DivSpanConfirmCancel onClick={handleConfirmCancel}>
-                  <SpanCalcelCart className="material-symbols-outlined">
-                    check
-                  </SpanCalcelCart>
-                </DivSpanConfirmCancel>
+                  <DivSpanConfirmCancel onClick={handleConfirmCancel}>
+                    <SpanCalcelCart className="material-symbols-outlined">
+                      check
+                    </SpanCalcelCart>
+                  </DivSpanConfirmCancel>
 
-                <DivSpanConfirmCancel onClick={()=>{setSeeCancelDialog(false)}}>
-                  <SpanCalcelCart className="material-symbols-outlined">
-                    close
-                  </SpanCalcelCart>
-                </DivSpanConfirmCancel>
-              </BoxConfirmCalcel>
+                  <DivSpanConfirmCancel
+                    onClick={() => {
+                      setSeeCancelDialog(false);
+                    }}
+                  >
+                    <SpanCalcelCart className="material-symbols-outlined">
+                      close
+                    </SpanCalcelCart>
+                  </DivSpanConfirmCancel>
+                </BoxConfirmCalcel>
               )}
               {viewFeedback && (
                 <BoxConfirmCalcel $viewFeedback={viewFeedback}>
-                  <PConfirmCancelStyled>
-                    Compra Cancelada!
-                  </PConfirmCancelStyled>
+                  <PConfirmCancelStyled>Compra Cancelada!</PConfirmCancelStyled>
                 </BoxConfirmCalcel>
               )}
 
@@ -158,30 +166,35 @@ const Cart = () => {
               </DivStyled>
             </DivValueStyled>
 
-            <DivContinueStyled $nocontinue={falta > 0}>
+            <DivContinueStyled $nocontinue={falta > 0} onClick={()=>{navigate("/meu-carrinho/cadastrar-endereco")}}>
               <PContinueStyled>Continuar</PContinueStyled>
             </DivContinueStyled>
           </ContainerStyled>
         </FinishSectionStyled>
       </MainStyled>
     );
-  }  else{
+  } else {
     return (
-      <div style={{
-        minHeight:'100vh', 
-        minWidth:'100vw', 
-        display:'flex', 
-        justifyContent:'center', 
-        alignItems:'center',
-        backgroundColor:'rgb(220, 220, 220)'}}>
+      <div
+        style={{
+          minHeight: "100vh",
+          minWidth: "100vw",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "rgb(220, 220, 220)",
+        }}
+      >
         <DivMsgVoidCart>
           <BlurDivStyled>
             <ImgVoidCartStyled src="/void-cart-background.png"></ImgVoidCartStyled>
           </BlurDivStyled>
-          <PHeadStyled><strong>Carrinho vazio!</strong></PHeadStyled>
+          <PHeadStyled>
+            <strong>Carrinho vazio!</strong>
+          </PHeadStyled>
         </DivMsgVoidCart>
       </div>
-    )
+    );
   }
 };
 

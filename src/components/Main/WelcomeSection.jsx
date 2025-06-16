@@ -67,10 +67,7 @@ function WelcomeSection() {
     <Div>
       <Divf>
         <Img src="/logoGenerico_compressed.jpg" alt="logo do mercado em tela cheia: Supermercado União" />
-        <P>Seja bem-vindo</P>
-        <DivLoading>
-          <Img2 src="/progress_activity_30.svg"/>
-        </DivLoading>
+        <P>Supermercado União: o mais barato  está aqui!</P>
       </Divf>
     </Div>
   );

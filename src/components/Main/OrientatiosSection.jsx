@@ -35,7 +35,7 @@ const Divfp = styled.p`
     line-height: 25px;
 `;
 
-function HelpSection() {
+function OrientatiosSection() {
   return (
     <Ajuda>
       <Divf>
@@ -50,4 +50,4 @@ function HelpSection() {
   );
 }
 
-export default HelpSection;
+export default OrientatiosSection;
