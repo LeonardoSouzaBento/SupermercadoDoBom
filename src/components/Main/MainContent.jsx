@@ -90,8 +90,8 @@ function MainContent() {
           <CategoriesSection />
           <PromoSection categoryKey={currentCategory} />
         </Main>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }
