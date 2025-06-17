@@ -8,8 +8,10 @@ import {
   SubmitButtonStyled,
   NoKnowMyCEP,
 } from "./ComponentsAddressPage";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AddressPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     rua: "",
     numero: "",
@@ -111,12 +113,10 @@ const AddressPage = () => {
               value={formData.bairro}
               maxLength={50}
               onChange={handleChange}
-              style={{marginBottom:'16px'}}
+              style={{ marginBottom: "16px" }}
             />
           </div>
-            <SubmitButtonStyled type="submit">
-              Salvar Endereço
-            </SubmitButtonStyled>
+          <SubmitButtonStyled type="submit" onClick={()=>{navigate("/")}}>Salvar Endereço</SubmitButtonStyled>
         </form>
       </BoxStyled>
     </DivStyled>

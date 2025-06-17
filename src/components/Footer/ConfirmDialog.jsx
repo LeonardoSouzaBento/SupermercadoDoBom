@@ -4,13 +4,13 @@ import { CartContext } from "../CartContext";
 import { ViewContext } from "../viewContext";
 
 const ContainerStyled = styled.div`
-  background-color: rgba(25, 25, 27, 0.64);
   position: fixed;
-  top: 0px;
-  right: 0px;
-  height: 100vh;
+  bottom: 0;
+  left: 0;
+  height: 100%;
   width: 100%;
-  z-index: 3;
+  z-index: 4;
+  background-color: rgba(25, 25, 27, 0.64);
 `;
 
 const DivStyled = styled.div`
@@ -22,7 +22,7 @@ const DivStyled = styled.div`
   height: 175px;
   padding: 32px 20px;
   border-radius: 8px;
-  position: absolute;
+  position: fixed;
   right: 56px;
   bottom: 56px;
   background-color: rgb(255, 255, 255);

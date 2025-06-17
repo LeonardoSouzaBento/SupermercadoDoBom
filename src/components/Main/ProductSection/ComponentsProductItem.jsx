@@ -39,7 +39,6 @@ export const PaiProdStyled = styled.div`
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
       border-radius: 9px;
-      border: 1px solid rgb(185, 185, 185);
       border-radius: 9p;
       box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.13);
 

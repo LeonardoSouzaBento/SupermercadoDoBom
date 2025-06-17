@@ -29,10 +29,9 @@ export const CartSectionStyed = styled.div`
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
-  background-color: rgb(225, 225, 225);
-  border: 1px solid rgb(204, 204, 204);
+  background-color: rgb(220, 220, 220);
+  border: 1px solid rgb(208, 208, 208);
   border-top: none;
-  border-right: none;
   position: relative;
   overflow-y: hidden;
   &::-webkit-scrollbar {
@@ -63,9 +62,8 @@ export const DivSpanCalcelCart = styled.div`
   top: 4px;
   right: 4px;
   border-radius: 8px;
-  border: 1px solid rgb(184, 184, 184);
   background-color: rgb(238, 238, 238);
-  box-shadow: -2px 2px 4px rgba(93, 93, 93, 0.15);
+  box-shadow: -2px 2px 4px rgba(93, 93, 93, 0.18);
   cursor: pointer;
 `;
 
@@ -279,14 +277,13 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(134, 134, 134);
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgb(199, 199, 199);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
 
   @media screen and (min-width: 769px) {
     width: 100%;
     order: 2;
     margin: 0;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
     height: 44px;
     border-radius: 22px;
   }
@@ -328,8 +325,9 @@ export const ContainerStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 8px;
-  border: 1px solid rgb(156, 156, 156);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(207, 207, 207);
+  border-top: none;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.18);
 
   @media screen and (min-width: 769px) {
     display: block;
@@ -431,7 +429,6 @@ export const DivContinueStyled = styled.div`
   height: 40px;
   border-radius: 5px;
   color: white;
-  border: 1px solid rgb(30, 131, 10);
   cursor: pointer;
   transition: background-color 0.08s ease;
   background-color: ${(props) =>
