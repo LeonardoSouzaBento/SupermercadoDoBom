@@ -1,6 +1,23 @@
 import styled from "styled-components";
 
-export const MainStyled = styled.main`
+// export const BoxStyled = styled.div`
+//   position: relative;
+//   &::after{
+//     content: '';
+//     height: 100%;
+//     width: 100%;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     background: url(/pattern-icons-backgrounds/background-pattern.png);
+//     background-size: 900px;
+//     filter: opacity(0.5);
+//     mix-blend-mode: multiply;
+//     z-index: -2;
+//   }
+// `;
+
+export const MainStyled = styled.div`
   margin: auto;
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: calc(100% - 24px);
@@ -24,12 +41,13 @@ export const CartSectionStyed = styled.div`
   min-height: 420px;
   max-height: calc(100vh - 350px);
   margin: auto;
-  margin-top: 24px;
+  margin-top: 16px;
   margin-bottom: 32px;
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
   background-color: rgb(220, 220, 220);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   border: 1px solid rgb(208, 208, 208);
   border-top: none;
   position: relative;
@@ -48,6 +66,7 @@ export const CartSectionStyed = styled.div`
     margin: 0;
     margin-top: 24px;
     margin-left: 24px;
+    overflow-y: scroll;
   }
 `;
 
@@ -69,11 +88,7 @@ export const DivSpanCalcelCart = styled.div`
 
 export const SpanCalcelCart = styled.span`
   padding-bottom: 1px;
-  font-variation-settings:
-  'FILL'1,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 22;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
   color: rgb(72, 72, 72);
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
@@ -96,7 +111,7 @@ export const SpanCalcelCart = styled.span`
   }
 `;
 
-export const BoxConfirmCalcel= styled.div`
+export const BoxConfirmCalcel = styled.div`
   width: 100%;
   height: 52px;
   padding-right: 2px;
@@ -108,9 +123,9 @@ export const BoxConfirmCalcel= styled.div`
   top: 0px;
   right: 0px;
   border-radius: 8px 8px 0px 0px;
-  background-color: #E36140;
-  ${props => props.$viewFeedback && 'background-color: rgb(36, 160, 12);'};
-  ${props => props.$viewFeedback && 'padding-right: 16px;'};
+  background-color: #e36140;
+  ${(props) => props.$viewFeedback && "background-color: rgb(36, 160, 12);"};
+  ${(props) => props.$viewFeedback && "padding-right: 16px;"};
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 `;
 
@@ -146,7 +161,6 @@ export const PConfirmCancelStyled = styled.p`
     font-size: 1.355em;
   }
 `;
-
 
 export const ShadowStyled = styled.div`
   position: absolute;
@@ -210,38 +224,53 @@ export const ContainerProductList = styled.div`
 `;
 
 export const DivSeeMoreStyled = styled.div`
-  height: 40px;
-  width: max-content;
-  padding: 0px 24px;
-  max-width: 380px;
+  height: 42px;
+  width: calc(100% - 10px);
+  margin-left: 5.6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
   position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(50%);
-  background-color: rgb(255, 255, 255);
+  bottom: 5px;
+  left: 0;
+  background-color: rgb(238, 238, 238);
+  box-shadow: 0px 2px 4px rgba(93, 93, 93, 0.2);
+  border-radius: 6px 6px 9px 9px;
+  border: 1px solid rgb(191, 191, 191);
+  border-top: none;
+
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
 `;
 
 export const PSeeMoreStyled = styled.p`
-  font-weight: 400;
+  font-weight: 500;
   font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.9em;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
-    font-size: 1.1em;
-  }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.1em;
+    font-size: 0.92em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.1em;
+    font-size: 0.94em;
   }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.1em;
+`;
+
+export const SpanSeeAllStyled = styled.span`
+  font-weight: 300;
+  font-size: 1.65em;
+  padding-top: 2px;
+
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.68em;
+    padding-top: 2.5px;
   }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.1em;
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.70em;
+    padding-top: 3px;
   }
 `;
 
@@ -433,9 +462,9 @@ export const DivContinueStyled = styled.div`
   transition: background-color 0.08s ease;
   background-color: ${(props) =>
     props.$nocontinue ? "rgb(188, 241, 163)" : "rgb(36, 160, 12)"};
-  ${props => props.$nocontinue && 'border: 1px solid rgb(255, 155, 78);'}
-  &:hover{
-    background-color: ${props => !props.$nocontinue && 'rgb(23, 138, 0)'};
+  ${(props) => props.$nocontinue && "border: 1px solid rgb(137, 255, 131);"}
+  &:hover {
+    background-color: ${(props) => !props.$nocontinue && "rgb(23, 138, 0)"};
   }
 `;
 

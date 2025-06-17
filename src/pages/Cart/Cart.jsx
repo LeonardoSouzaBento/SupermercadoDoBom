@@ -29,6 +29,9 @@ import {
   DivMsgVoidCart,
   BlurDivStyled,
   ImgVoidCartStyled,
+  DivSeeMoreStyled,
+  PSeeMoreStyled,
+  SpanSeeAllStyled,
 } from "./ComponentsCart.jsx";
 
 const Cart = () => {
@@ -125,6 +128,12 @@ const Cart = () => {
                 categoryKey={12}
               ></ProductListHome>
             </ContainerProductList>
+            <DivSeeMoreStyled>
+              <PSeeMoreStyled>Ver todos</PSeeMoreStyled>
+              <SpanSeeAllStyled className="material-symbols-rounded">
+                keyboard_arrow_down
+              </SpanSeeAllStyled>
+            </DivSeeMoreStyled>
           </CartSectionStyed>
           <ShadowStyled />
         </div>
@@ -166,7 +175,12 @@ const Cart = () => {
               </DivStyled>
             </DivValueStyled>
 
-            <DivContinueStyled $nocontinue={falta > 0} onClick={()=>{navigate("/meu-carrinho/cadastrar-endereco")}}>
+            <DivContinueStyled
+              $nocontinue={falta > 0}
+              onClick={() => {
+                navigate("/meu-carrinho/cadastrar-endereco");
+              }}
+            >
               <PContinueStyled>Continuar</PContinueStyled>
             </DivContinueStyled>
           </ContainerStyled>

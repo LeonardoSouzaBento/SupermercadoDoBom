@@ -45,42 +45,31 @@ export const PaiProdStyled = styled.div`
       @media screen and (max-width: 430px) {
         flex-direction: row;
         min-width: 260px;
-        height: 180px;
+        height: 175px;
         border-radius: 9px 9px 15px 9px;
-        border: 1px solid rgb(150, 150, 150);
-        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.13);
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.18);
       }
       @media screen and (min-width: 320px) and (max-width: 374px) {
-        max-width: 290px;
+        max-width: 100%;
+        height: 170px;
       }
       @media screen and (min-width: 375px) and (max-width: 430px) {
         max-width: 300px;
-        height: 185px;
       }
 
       @media screen and (min-width: 431px) and (max-width: 992px) {
         flex-direction: column;
         justify-content: space-between;
         max-width: 180px;
-        min-height: 280px;
-      }
-      @media screen and (min-width: 431px) and (max-width: 576px) {
-        height: 275px;
-        width: 215px;
-      }
-      @media screen and (min-width: 577px) and (max-width: 768px) {
-        height: 210px;
-      }
-      @media screen and (min-width: 769px) and (max-width: 992px) {
-        height: 320px;
+        min-height: 285px;
       }
     `}
 
     @media screen and (min-width: 993px) {
-    flex-direction: row;
-    max-width: 305px;
-    height: 170px;
-  }
+      flex-direction: row;
+      max-width: 305px;
+      height: 170px;
+    }
 `;
 
 //Descrição da Oferta: nome, desconto e peso
@@ -100,8 +89,8 @@ export const DescOfertaStyled = styled.div`
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
       @media screen and (max-width: 430px) {
-         height: 100%;
-         width: 52%;
+        height: 100%;
+        width: 52%;
       }
       @media screen and (min-width: 431px) and (max-width: 992px) {
         height: 42%;
@@ -242,7 +231,6 @@ export const PaiPrecoStyled = styled.div`
   align-items: flex-start;
   gap: 8px;
   padding-bottom: 5px;
-
   ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
@@ -402,6 +390,14 @@ export const DivQuantStyled = styled.div`
   bottom: 5px;
   right: 0px;
   background-color: rgba(255, 255, 255, 0.9);
+
+  ${(props) =>
+    (props.$variant == "cart" || props.$variant == "inSearch") &&
+    css`
+      @media screen and (min-width: 430px) and (max-width: 992px) {
+        width: 162px;
+      }
+    `}
 `;
 
 export const PMais2Styled = styled(PMaisStyled)`

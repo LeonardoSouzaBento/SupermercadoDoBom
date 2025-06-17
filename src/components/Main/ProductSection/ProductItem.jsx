@@ -91,6 +91,7 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange, variant 
             setQuantity={setQuantity}
             handleQuantityChange={handleQuantityChange}
             product={product}
+            variant={variant}
           />
         )}
       </PaiImgOfertaStyled>
@@ -98,7 +99,7 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange, variant 
   );
 };
 
-const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
+const Botoes = ({ quantity, product, setQuantity, handleQuantityChange, variant }) => {
   function handleMore() {
     setQuantity(quantity + 1);
     handleQuantityChange(product, true);
@@ -115,7 +116,7 @@ const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
   }
 
   return (
-    <DivQuantStyled>
+    <DivQuantStyled $variant={variant}>
       <BotoesStyled onPointerDown={handleFewer}>
         <PMenosStyled>-</PMenosStyled>
       </BotoesStyled>
