@@ -8,12 +8,45 @@ export const DivStyled = styled.div`
   padding-bottom: 16px;
   box-sizing: border-box;
   background-color: rgb(240, 240, 240);
+  position: relative;
+  z-index: 2;
 
   @media screen and (max-width: 375px) {
     padding: 0px;
   }
   @media screen and (max-width: 577px) {
     padding: 12px;
+  }
+
+  &::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(3.5px) brightness(0.65);
+
+    @media screen and (min-width: 320px) and (max-width: 576px) {
+      padding-top: 0px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      background: url(/screenshot-backgrounds/background577.jpeg);
+      background-size: 100%, auto;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      background: url(/screenshot-backgrounds/background769.jpeg);
+      background-size: 100%, auto;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      background: url(/screenshot-backgrounds/background993.jpeg);
+      background-size: 100%, auto;
+    }
+    @media screen and (min-width: 1201px) {
+      background: url(/screenshot-backgrounds/background1200.jpeg);
+      background-size: 100%, auto;
+    }
   }
 `;
 
@@ -30,6 +63,9 @@ export const BoxStyled = styled.div`
   padding-top: 16px;
   padding-bottom: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  
 `;
 
 // Título
@@ -116,7 +152,7 @@ export const InputStyled = styled.input`
   border-radius: 6px;
   font-size: 1.025em;
 
-  &:focus{
+  &:focus {
     outline: 1px solid rgb(56, 56, 56);
   }
 `;

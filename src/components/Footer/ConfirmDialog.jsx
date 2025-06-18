@@ -67,6 +67,7 @@ const PQuestionStyled = styled.p`
   cursor: default;
   /* letter-spacing: 0.71px; */
   font-size: 1.15em;
+
   @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.15em;
   }
@@ -120,11 +121,23 @@ const PSimStyled = styled(GenericPStyled)`
   @media screen and (min-width: 577px) {
     font-size: 1.11em;
   }
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: rgb(168, 0, 0);
+    outline: 1px solid rgba(0, 0, 0, 0.65);
+  }
 `;
 
 const PVoltarStyled = styled(GenericPStyled)`
   background-color: rgb(235, 235, 235);
   font-weight: 500;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: rgb(213, 213, 213);
+    outline: 1px solid rgba(162, 162, 162, 0.69);
+  }
 `;
 
 const DivFeedbackStyled = styled.div`
