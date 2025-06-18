@@ -97,7 +97,7 @@ const AboutMe = () => {
       <PStyled>
         Meu nome é <strong>Leonardo Souza Bento. </strong>
         Estou cursando Engenharia de Software desde março de 2023.
-        Estou procurando um estágio como desenvolvedor web junior (apenas estágio remoto).
+        Estou procurando um trabalho como desenvolvedor web junior (apenas trabalho remoto).
       </PStyled>
       <PLineStyled>____________________________________</PLineStyled>
       <br/>
