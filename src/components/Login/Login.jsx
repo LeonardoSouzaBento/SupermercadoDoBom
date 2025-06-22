@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { PStyled } from "../Main/MoreOptionsSection/ComponentsOptionSection";
 
 const ContainerStyled = styled.div`
   height: 100vh;

@@ -33,6 +33,7 @@ import {
   PSeeMoreStyled,
   SpanSeeAllStyled,
 } from "./ComponentsCart.jsx";
+import RegisterAddress from "../../components/RegisterAddress/RegisterAddress.jsx";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const Cart = () => {
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
   const { setCartProducts } = useContext(CartContext);
   const { viewFeedback, setViewFeedback } = useContext(ViewContext);
+  const [seeAdressForm, setSeeAdressForm] = useState(false);
 
   const handleConfirmCancel = () => {
     setViewFeedback(true);
@@ -76,116 +78,124 @@ const Cart = () => {
 
   if (totalAddedValue != 0) {
     return (
-      <MainStyled>
-        <div style={{ position: "relative", height: "max-content" }}>
-          <CartSectionStyed>
-            <DivHeadStyled>
-              <DivSpanCalcelCart
+      <div style={{ position: "relative", height:'100%'}}>
+        <MainStyled $seeAdressForm={seeAdressForm}>
+          <div style={{ position: "relative", height: "max-content" }}>
+            <CartSectionStyed>
+              <DivHeadStyled>
+                <DivSpanCalcelCart
+                  onClick={() => {
+                    setSeeCancelDialog(true);
+                  }}
+                >
+                  <SpanCalcelCart className="material-symbols-outlined">
+                    delete
+                  </SpanCalcelCart>
+                </DivSpanCalcelCart>
+
+                {seeCancelDialog && (
+                  <BoxConfirmCalcel>
+                    <PConfirmCancelStyled>
+                      Cancelar a compra?
+                    </PConfirmCancelStyled>
+
+                    <DivSpanConfirmCancel onClick={handleConfirmCancel}>
+                      <SpanCalcelCart className="material-symbols-outlined">
+                        check
+                      </SpanCalcelCart>
+                    </DivSpanConfirmCancel>
+
+                    <DivSpanConfirmCancel
+                      onClick={() => {
+                        setSeeCancelDialog(false);
+                      }}
+                    >
+                      <SpanCalcelCart className="material-symbols-outlined">
+                        close
+                      </SpanCalcelCart>
+                    </DivSpanConfirmCancel>
+                  </BoxConfirmCalcel>
+                )}
+                {viewFeedback && (
+                  <BoxConfirmCalcel $viewFeedback={viewFeedback}>
+                    <PConfirmCancelStyled>
+                      Compra Cancelada!
+                    </PConfirmCancelStyled>
+                  </BoxConfirmCalcel>
+                )}
+
+                <PHeadStyled>Sua Compra</PHeadStyled>
+              </DivHeadStyled>
+
+              <ContainerProductList>
+                <ProductListHome
+                  variant={"cart"}
+                  categoryKey={12}
+                ></ProductListHome>
+              </ContainerProductList>
+              <DivSeeMoreStyled>
+                <PSeeMoreStyled>Ver todos</PSeeMoreStyled>
+                <SpanSeeAllStyled className="material-symbols-rounded">
+                  keyboard_arrow_down
+                </SpanSeeAllStyled>
+              </DivSeeMoreStyled>
+            </CartSectionStyed>
+            <ShadowStyled />
+          </div>
+
+          <FinishSectionStyled>
+            <DivAddStyled>
+              <PAddStyled>
+                {falta == 40 ? "Adicionar produtos" : "Adicionar mais produtos"}
+              </PAddStyled>
+            </DivAddStyled>
+
+            <ContainerStyled>
+              {falta > 0 && (
+                <DivAvisoStyled>
+                  <PAvisoStyled>
+                    Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
+                  </PAvisoStyled>
+                </DivAvisoStyled>
+              )}
+
+              <DivValueStyled>
+                <DivStyled>
+                  <PValueStyled>Valor da compra:</PValueStyled>
+                  <PValueStyled>R$ {totalValue}</PValueStyled>
+                </DivStyled>
+
+                <DivStyled>
+                  <PValueStyled>Valor da entrega:</PValueStyled>
+                  <PValueStyled>R$ 4,00</PValueStyled>
+                </DivStyled>
+
+                <DivStyled>
+                  <PValueStyled>
+                    <strong>Total </strong>(com entrega):
+                  </PValueStyled>
+                  <PValueStyled>
+                    <strong>R$ {totalFormatted}</strong>
+                  </PValueStyled>
+                </DivStyled>
+              </DivValueStyled>
+
+              <DivContinueStyled
+                $nocontinue={falta > 0}
                 onClick={() => {
-                  setSeeCancelDialog(true);
+                  setSeeAdressForm(true);
                 }}
               >
-                <SpanCalcelCart className="material-symbols-outlined">
-                  delete
-                </SpanCalcelCart>
-              </DivSpanCalcelCart>
+                <PContinueStyled>Continuar</PContinueStyled>
+              </DivContinueStyled>
+            </ContainerStyled>
+          </FinishSectionStyled>
+        </MainStyled>
 
-              {seeCancelDialog && (
-                <BoxConfirmCalcel>
-                  <PConfirmCancelStyled>
-                    Cancelar a compra?
-                  </PConfirmCancelStyled>
-
-                  <DivSpanConfirmCancel onClick={handleConfirmCancel}>
-                    <SpanCalcelCart className="material-symbols-outlined">
-                      check
-                    </SpanCalcelCart>
-                  </DivSpanConfirmCancel>
-
-                  <DivSpanConfirmCancel
-                    onClick={() => {
-                      setSeeCancelDialog(false);
-                    }}
-                  >
-                    <SpanCalcelCart className="material-symbols-outlined">
-                      close
-                    </SpanCalcelCart>
-                  </DivSpanConfirmCancel>
-                </BoxConfirmCalcel>
-              )}
-              {viewFeedback && (
-                <BoxConfirmCalcel $viewFeedback={viewFeedback}>
-                  <PConfirmCancelStyled>Compra Cancelada!</PConfirmCancelStyled>
-                </BoxConfirmCalcel>
-              )}
-
-              <PHeadStyled>Sua Compra</PHeadStyled>
-            </DivHeadStyled>
-
-            <ContainerProductList>
-              <ProductListHome
-                variant={"cart"}
-                categoryKey={12}
-              ></ProductListHome>
-            </ContainerProductList>
-            <DivSeeMoreStyled>
-              <PSeeMoreStyled>Ver todos</PSeeMoreStyled>
-              <SpanSeeAllStyled className="material-symbols-rounded">
-                keyboard_arrow_down
-              </SpanSeeAllStyled>
-            </DivSeeMoreStyled>
-          </CartSectionStyed>
-          <ShadowStyled />
-        </div>
-
-        <FinishSectionStyled>
-          <DivAddStyled>
-            <PAddStyled>
-              {falta == 40 ? "Adicionar produtos" : "Adicionar mais produtos"}
-            </PAddStyled>
-          </DivAddStyled>
-
-          <ContainerStyled>
-            {falta > 0 && (
-              <DivAvisoStyled>
-                <PAvisoStyled>
-                  Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
-                </PAvisoStyled>
-              </DivAvisoStyled>
-            )}
-
-            <DivValueStyled>
-              <DivStyled>
-                <PValueStyled>Valor da compra:</PValueStyled>
-                <PValueStyled>R$ {totalValue}</PValueStyled>
-              </DivStyled>
-
-              <DivStyled>
-                <PValueStyled>Valor da entrega:</PValueStyled>
-                <PValueStyled>R$ 4,00</PValueStyled>
-              </DivStyled>
-
-              <DivStyled>
-                <PValueStyled>
-                  <strong>Valor total:</strong>
-                </PValueStyled>
-                <PValueStyled>
-                  <strong>R$ {totalFormatted}</strong>
-                </PValueStyled>
-              </DivStyled>
-            </DivValueStyled>
-
-            <DivContinueStyled
-              $nocontinue={falta > 0}
-              onClick={() => {
-                navigate("/meu-carrinho/cadastrar-endereco");
-              }}
-            >
-              <PContinueStyled>Continuar</PContinueStyled>
-            </DivContinueStyled>
-          </ContainerStyled>
-        </FinishSectionStyled>
-      </MainStyled>
+        {seeAdressForm && (
+          <RegisterAddress setSeeAdressForm={setSeeAdressForm} />
+        )}
+      </div>
     );
   } else {
     return (

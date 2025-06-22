@@ -1,57 +1,8 @@
 import styled from "styled-components";
 
-// Container geral da página
-export const DivStyled = styled.div`
-  min-height: 100vh;
-  width: 100%;
-  padding: 12px;
-  padding-bottom: 16px;
-  box-sizing: border-box;
-  background-color: rgb(240, 240, 240);
-  position: relative;
-  z-index: 2;
-
-  @media screen and (max-width: 375px) {
-    padding: 0px;
-  }
-  @media screen and (max-width: 577px) {
-    padding: 12px;
-  }
-
-  &::after {
-    content: '';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: blur(3.5px) brightness(0.65);
-
-    @media screen and (min-width: 320px) and (max-width: 576px) {
-      padding-top: 0px;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      background: url(/screenshot-backgrounds/background577.jpeg);
-      background-size: 100%, auto;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      background: url(/screenshot-backgrounds/background769.jpeg);
-      background-size: 100%, auto;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      background: url(/screenshot-backgrounds/background993.jpeg);
-      background-size: 100%, auto;
-    }
-    @media screen and (min-width: 1201px) {
-      background: url(/screenshot-backgrounds/background1200.jpeg);
-      background-size: 100%, auto;
-    }
-  }
-`;
-
 // Caixa central onde ficam os inputs
 export const BoxStyled = styled.div`
+  height: auto;
   width: 100%;
   max-width: 380px;
   box-sizing: border-box;
@@ -59,13 +10,32 @@ export const BoxStyled = styled.div`
   border-radius: 8px;
   background-color: white;
   border: 1px solid rgb(180, 180, 180);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   padding: 12px 20px;
   padding-top: 16px;
   padding-bottom: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
+  position: sticky;
+  top: -8px;
+  left: 50%;
+  transform: translate(-50%, 0%);
 
-  
+  @media screen and (min-width: 769px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.29);
+    border: 1px solid rgb(136, 136, 136);
+  }
+`;
+
+export const SpanCloseStyled = styled.span`
+  font-size: 1.75em;
+  color: red;
+  font-weight: 400;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 `;
 
 // Título
