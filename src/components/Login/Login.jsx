@@ -15,7 +15,8 @@ const ContainerStyled = styled.div`
 `;
 
 const BoxLoginStyled = styled.div`
-  width: 375px;
+  width: 380px;
+  max-width: 380px;
   padding: 18px;
   padding-top: 16px;
   padding-bottom: 20px;
@@ -34,11 +35,12 @@ const BoxLoginStyled = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 374px) {
     width: 100%;
-    box-sizing: border-box;
   }
-  @media screen and (max-width: 577px) {
+  @media screen and(min-width: 375px) and (max-width: 577px) {
+    width: calc(100% - 8px);
+    max-width: 380px;
     top: 43%;
   }
 `;

@@ -1,8 +1,8 @@
-import React from 'react';
-import { useContext } from 'react';
-import styled, {css} from 'styled-components';
-import ProductItem from './ProductItem';
-import { CartContext } from '../../CartContext';
+import React from "react";
+import { useContext } from "react";
+import styled, { css } from "styled-components";
+import ProductItem from "./ProductItem";
+import { CartContext } from "../../CartContext";
 
 const DivStyled = styled.div`
   will-change: transform;
@@ -27,8 +27,8 @@ const DivStyled = styled.div`
     display: none;
   }
 
-   ${(props) =>
-    props.$variant === 'home' &&
+  ${(props) =>
+    props.$variant === "home" &&
     css`
       @media screen and (min-width: 320px) and (max-width: 374px) {
         gap: 8px;
@@ -37,35 +37,47 @@ const DivStyled = styled.div`
       @media screen and (min-width: 375px) and (max-width: 576px) {
         height: 592px;
       }
-      @media screen and (min-width: 577px){
+      @media screen and (min-width: 577px) {
         height: 577px;
       }
-      @media screen and (min-width: 993px){
+      @media screen and (min-width: 993px) {
         padding-bottom: 5px;
         padding-right: 4px;
         height: 548px;
         gap: 11px;
       }
-    `
-  }
-  ${props => props.$variant==='cart' && css`
-    flex-direction: row;
-    justify-content: center;
-    padding-right: 0px;
-  `}
-  ${props => props.$variant==='inSearch' && css`
-    height: auto;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding-left: 16px;
+    `}
+  ${(props) =>
+    (props.$variant === "cart" || props.$variant === "inSearch") &&
+    css`
+      padding-top: 4px;
+      flex-direction: row;
+    `}
 
-    @media screen and (min-width: 993px) {
-      padding-left: 20px;
-    }
-  `}
+  ${(props) =>
+    props.$variant === "cart" &&
+    css`
+      justify-content: center;
+      padding-right: 0px;
+    `}
+
+  ${(props) =>
+    props.$variant === "inSearch" &&
+    css`
+      height: auto;
+      justify-content: flex-start;
+      padding-left: 16px;
+
+      @media screen and (max-width: 430px) {
+         justify-content: center;
+      }
+      @media screen and (min-width: 993px) {
+        padding-left: 20px;
+      }
+    `}
 `;
 
-const NoProcutsStyed= styled.div`
+const NoProcutsStyed = styled.div`
   height: max-content;
   width: max-content;
   padding: 15px;
@@ -87,28 +99,34 @@ const PNoneStyled = styled.p`
   text-align: center;
 `;
 
+export const ProductListHome = React.forwardRef(
+  ({ variant, categoryKey }, ref) => {
+    const { allProductsInCat, handleQuantityChange } = useContext(CartContext);
 
-export const ProductListHome = React.forwardRef (({variant, categoryKey }, ref)=>{
-  const {allProductsInCat, handleQuantityChange} = useContext(CartContext);
+    const products = allProductsInCat[categoryKey];
 
-  const products = allProductsInCat[categoryKey];
-  
-  return ( 
-    <DivStyled $variant={variant} ref={ref}>
-      {products.map((product) => (
-        <ProductItem
-          variant={variant}
-          key={`${product.id}-${product.cat_id}`}
-          product={product}
-          handleQuantityChange={(product, isAdding) => handleQuantityChange(product, isAdding)}
-        />
-      ))}
-      {products.length==0 &&
-      (<NoProcutsStyed>
-        <PNoneStyled>{categoryKey == 12 ? "Nenhum produto no seu carrinho" : 'Nenhum produto registrado'}</PNoneStyled>
-      </NoProcutsStyed>
-      )}
-    </DivStyled>
-  );
-})
-
+    return (
+      <DivStyled $variant={variant} ref={ref}>
+        {products.map((product) => (
+          <ProductItem
+            variant={variant}
+            key={`${product.id}-${product.cat_id}`}
+            product={product}
+            handleQuantityChange={(product, isAdding) =>
+              handleQuantityChange(product, isAdding)
+            }
+          />
+        ))}
+        {products.length == 0 && (
+          <NoProcutsStyed>
+            <PNoneStyled>
+              {categoryKey == 12
+                ? "Nenhum produto no seu carrinho"
+                : "Nenhum produto registrado"}
+            </PNoneStyled>
+          </NoProcutsStyed>
+        )}
+      </DivStyled>
+    );
+  }
+);

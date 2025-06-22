@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 export const MainStyled = styled.div`
   margin: auto;
@@ -17,30 +17,8 @@ export const MainStyled = styled.div`
   @media screen and (min-width: 1201px) {
     grid-template-columns: auto 420px;
   }
-  transition: filter 1s ease;
-  ${(props) =>
-    props.$seeAdressForm &&
-    css`
-      filter: blur(2.5px);
-      &::after {
-        content: "";
-        height: 100%;
-        width: 100%;
-        padding: 20px;
-        padding-bottom: 0px;
-        margin-left: -20px;
-        margin-top: -20px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        background-color: rgb(240, 240, 240);
-        
-        @media screen and (min-width: 769px) {
-          background-color: rgba(0, 0, 0, 0.28);
-        }
-      }
-    `};
+  transition: filter 0.9s ease;
+  ${(props) => props.$seeAdressForm && " filter: blur(2.5px)"}
 `;
 
 export const CartSectionStyed = styled.div`
@@ -75,7 +53,6 @@ export const CartSectionStyed = styled.div`
     margin-top: 24px;
     margin-left: 24px;
     overflow-y: scroll;
-    
   }
 `;
 

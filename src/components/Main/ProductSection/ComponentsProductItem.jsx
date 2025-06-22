@@ -38,15 +38,13 @@ export const PaiProdStyled = styled.div`
   ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
-      border-radius: 9px;
-      border-radius: 9p;
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.13);
+      border-radius: 9px 9px 15px 9px;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.28);
 
       @media screen and (max-width: 430px) {
         flex-direction: row;
         min-width: 260px;
         height: 175px;
-        border-radius: 9px 9px 15px 9px;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.18);
       }
       @media screen and (min-width: 320px) and (max-width: 374px) {
@@ -62,7 +60,9 @@ export const PaiProdStyled = styled.div`
         justify-content: space-between;
         max-width: 180px;
         min-height: 285px;
+        border-radius: 9px;
       }
+
     `}
 
     @media screen and (min-width: 993px) {

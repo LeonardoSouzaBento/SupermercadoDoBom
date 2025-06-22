@@ -7,6 +7,8 @@ const DivStyled = styled.div`
   position: relative;
   min-height: 100vh;
   min-width: 100vw;
+  padding-bottom: 59px;
+  box-sizing: border-box;
   background-color: #F0F0F0;
 `;
 

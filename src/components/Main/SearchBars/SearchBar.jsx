@@ -1,31 +1,48 @@
-import { useState, useEffect, useContext, useRef } from 'react';
-import { all_products } from '../../../data/all_products';
-import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../../CartContext';
-import { ViewContext } from '../../viewContext';
-import { sequentialPrefixSearch } from './sequentialPrefixSearch';
-import animateMessage from '../../../functions/AnimationOfWrite';
-import {ContainerForFormStyled, FormStyled, InputStyled, DivSpanStyled, DivMsgStyled, PointedShapeStyed, PMsgStyled, CompletionsDivStyled, PStyled} from './ComponentesSearchBar'
+import { useState, useEffect, useContext, useRef } from "react";
+import { all_products } from "../../../data/all_products";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../CartContext";
+import { ViewContext } from "../../viewContext";
+import { sequentialPrefixSearch } from "./sequentialPrefixSearch";
+import animateMessage from "../../../functions/AnimationOfWrite";
+import {
+  ContainerForFormStyled,
+  FormStyled,
+  InputStyled,
+  DivSpanStyled,
+  DivMsgStyled,
+  PointedShapeStyed,
+  PMsgStyled,
+  CompletionsDivStyled,
+  PStyled,
+} from "./ComponentesSearchBar";
 
 //produtos únicos para sugestão
 function getUniqueResults(products, start = 0, end = 14) {
-const seen = new Set();
-return products
-  .map(p => p.name)
-  .filter(name => {
-    const prefix = name.slice(start, end).toLowerCase();
-    if (seen.has(prefix)) return false;
-    seen.add(prefix);
-    return true;
-  });
+  const seen = new Set();
+  return products
+    .map((p) => p.name)
+    .filter((name) => {
+      const prefix = name.slice(start, end).toLowerCase();
+      if (seen.has(prefix)) return false;
+      seen.add(prefix);
+      return true;
+    });
 }
 
 function normalize(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
 }
 
 function normalize2(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 }
 
 function animateInputMessage(message, setState) {
@@ -50,40 +67,40 @@ function animateInputMessage(message, setState) {
             clearInterval(eraseInterval);
           }
         }, 40); // apagar mais rápido
-      }, (message.length*100)); // tempo de exibição completa
+      }, message.length * 100); // tempo de exibição completa
     }
   }, 80); // escrever uma letra a cada 80ms
 }
 
-function SearchBar({copy}) {
+function SearchBar({ copy }) {
   const navigate = useNavigate();
   const [thisInput, setThisInput] = useState("");
-  const [prevInput, setPrevInput] = useState('');
+  const [prevInput, setPrevInput] = useState("");
 
   const [returnedProducts, setReturnedproducts] = useState([]);
 
-  const {preventClick, setPreventClick, tipForRecruiter, setTipForRecruiter} = useContext(ViewContext);
-  const {setSearchProducts} = useContext(CartContext);
+  const { preventClick, setPreventClick, tipForRecruiter, setTipForRecruiter } =
+    useContext(ViewContext);
+  const { setSearchProducts } = useContext(CartContext);
 
   const [searchInitiated, setSearchInitiated] = useState(false);
-  const [completions, setCompletions] = useState(['']);
-  const [sixUniqueSuggestions, setSixUniqueSuggestions] = useState(['']);
+  const [completions, setCompletions] = useState([""]);
+  const [sixUniqueSuggestions, setSixUniqueSuggestions] = useState([""]);
   const [countComplete, setCountCompletes] = useState(2);
 
   const [textOfTip, setTextOfTip] = useState(0);
   const tip = "Digite 'Biscoito'";
-  const inputRef= useRef(null);
+  const inputRef = useRef(null);
 
-  const viewTip = ()=> {
-    setTipForRecruiter(true);
+  const viewTip = () => {
     setPreventClick(true);
 
-    animateMessage(tip, setTextOfTip)
+    animateMessage(tip, setTextOfTip);
 
     setTimeout(() => {
       setTipForRecruiter(false);
     }, 3400);
-  }
+  };
 
   function whenTyping(e) {
     if (tipForRecruiter) return;
@@ -94,18 +111,21 @@ function SearchBar({copy}) {
     const term = value.toLowerCase().trim();
 
     // está apagando
-    if(value <= prevInput) {
+    if (value <= prevInput) {
       setSixUniqueSuggestions([]);
-      setCompletions([])
-    }// escrevendo
-    else{
-       if (term.length % 2 === 0) {
+      setCompletions([]);
+    } // escrevendo
+    else {
+      if (term.length % 2 === 0) {
         const results = sequentialPrefixSearch(all_products, term);
         const uniqueResults = getUniqueResults(results, 0, 14).slice(0, 6);
         setSixUniqueSuggestions(uniqueResults);
-        const completions = uniqueResults.map(name => name.slice(0, 13));
+        const completions = uniqueResults.map((name) => name.slice(0, 13));
 
-        if (completions[0] && normalize(term).startsWith(normalize(completions[0]))) {
+        if (
+          completions[0] &&
+          normalize(term).startsWith(normalize(completions[0]))
+        ) {
           setCompletions([]);
           setSixUniqueSuggestions([]);
         } else {
@@ -115,34 +135,39 @@ function SearchBar({copy}) {
     }
     if (term === "") {
       setSixUniqueSuggestions([]);
-      setCompletions([])
+      setCompletions([]);
       setCountCompletes(2);
       return;
     }
   }
 
   function handleClickComplete(suggestion) {
-    let newSuggestion = '';
+    let newSuggestion = "";
     let normalizedInput = normalize2(thisInput);
-    suggestion = normalize2(suggestion)
+    suggestion = normalize2(suggestion);
 
     if (suggestion.startsWith(normalizedInput)) {
-      newSuggestion = normalizedInput + suggestion.slice(normalizedInput.length);
-    } 
-    else{
+      newSuggestion =
+        normalizedInput + suggestion.slice(normalizedInput.length);
+    } else {
       newSuggestion = normalizedInput + suggestion;
     }
 
-    let copyUniqueSuggestions = sixUniqueSuggestions.map(item => normalize(item));
-    let matchedIndex = copyUniqueSuggestions.findIndex(item =>
-    item.startsWith(newSuggestion)
+    let copyUniqueSuggestions = sixUniqueSuggestions.map((item) =>
+      normalize(item)
+    );
+    let matchedIndex = copyUniqueSuggestions.findIndex((item) =>
+      item.startsWith(newSuggestion)
     );
     let matchedItem = sixUniqueSuggestions[matchedIndex];
 
-    const completeSuggestion = matchedItem.split(/\s+/).slice(0, countComplete).join(' ');
+    const completeSuggestion =
+      matchedItem !== undefined
+        ? matchedItem.split(/\s+/).slice(0, countComplete).join(" ")
+        : suggestion;
 
     setThisInput(completeSuggestion);
-    setCompletions(['']);
+    setCompletions([""]);
 
     const results = sequentialPrefixSearch(all_products, completeSuggestion);
     let newStart = completeSuggestion.length;
@@ -152,14 +177,16 @@ function SearchBar({copy}) {
     const newresults = uniqueResults.slice(0, 6); //restringir a 6 resultados
     setSixUniqueSuggestions(newresults);
 
-    const newCompletions = uniqueResults.map(name => name.slice(newStart, newEnd));
+    const newCompletions = uniqueResults.map((name) =>
+      name.slice(newStart, newEnd)
+    );
     setCompletions([...newCompletions]);
 
-    setCountCompletes(countComplete+1);
+    setCountCompletes(countComplete + 1);
   }
 
   useEffect(() => {
-    if(countComplete>2){
+    if (countComplete > 2) {
       const currentWords = thisInput.trim().split(/\s+/).filter(Boolean).length;
       const prevWords = prevInput.trim().split(/\s+/).filter(Boolean).length;
 
@@ -168,14 +195,13 @@ function SearchBar({copy}) {
       }
     }
   }, [thisInput]);
-  
 
   function handleClickSearch() {
     const term = thisInput.toLowerCase();
     if (!term) {
       animateInputMessage("Digite algo", setThisInput);
-      return
-    };
+      return;
+    }
     const results = sequentialPrefixSearch(all_products, term);
     setReturnedproducts(results);
     setSearchInitiated(true);
@@ -184,8 +210,8 @@ function SearchBar({copy}) {
   useEffect(() => {
     if (searchInitiated) {
       setSearchProducts(returnedProducts);
-      setCompletions([])
-      if(copy===false){
+      setCompletions([]);
+      if (copy === false) {
         navigate("/buscar-produtos");
         setSearchInitiated(false);
       }
@@ -194,40 +220,58 @@ function SearchBar({copy}) {
 
   return (
     <ContainerForFormStyled $copy={copy}>
-        <FormStyled
-          $copy={copy}
-          onSubmit={(e) => {
+      <FormStyled
+        $copy={copy}
+        onSubmit={(e) => {
           e.preventDefault();
           handleClickSearch(0);
-        }}>
-          <InputStyled
-            $copy={copy}
-            type="text" 
-            name="query" 
-            placeholder="O que você quer? Digite aqui"
-            value={thisInput}
-            onChange={(e) => whenTyping(e)}
-            onClick={preventClick ? null : viewTip}
-            ref={inputRef}
-          />
-          <DivSpanStyled onPointerDown={(e)=>{handleClickSearch()}}>
-            <span className="material-symbols-rounded" style={{color: "rgb(77, 77, 77)"}}>search</span>
-          </DivSpanStyled>
+        }}
+      >
+        <InputStyled
+          $copy={copy}
+          type="text"
+          name="query"
+          placeholder="O que você quer? Digite aqui"
+          value={thisInput}
+          onChange={(e) => whenTyping(e)}
+          onClick={preventClick ? null : viewTip}
+          ref={inputRef}
+        />
+        <DivSpanStyled
+          onPointerDown={(e) => {
+            handleClickSearch();
+          }}
+        >
+          <span
+            className="material-symbols-rounded"
+            style={{ color: "rgb(77, 77, 77)" }}
+          >
+            search
+          </span>
+        </DivSpanStyled>
 
-          {tipForRecruiter && (
+        {tipForRecruiter && (
           <DivMsgStyled>
-            <PointedShapeStyed/>
+            <PointedShapeStyed />
             <PMsgStyled>{textOfTip}</PMsgStyled>
-          </DivMsgStyled>)}
-        </FormStyled>
-
-        {completions!='' && (
-          <CompletionsDivStyled>
-            {completions.map((suggestion, i)=>
-            (<PStyled key={i} onPointerDown={()=>{handleClickComplete(suggestion)}}>{suggestion}...</PStyled>))}
-          </CompletionsDivStyled>
+          </DivMsgStyled>
         )}
-        
+      </FormStyled>
+
+      {completions != "" && (
+        <CompletionsDivStyled>
+          {completions.map((suggestion, i) => (
+            <PStyled
+              key={i}
+              onPointerDown={() => {
+                handleClickComplete(suggestion);
+              }}
+            >
+              {suggestion}...
+            </PStyled>
+          ))}
+        </CompletionsDivStyled>
+      )}
     </ContainerForFormStyled>
   );
 }

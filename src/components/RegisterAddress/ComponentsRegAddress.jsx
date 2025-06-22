@@ -1,30 +1,64 @@
 import styled from "styled-components";
 
+export const Box0Styled = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 400px) {
+    background-color: rgb(235, 235, 235);
+  }
+  @media screen and (min-width: 401px) and (max-width: 768px) {
+    background-color: rgb(240, 240, 240);
+  }
+  @media screen and (min-width: 769px) {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    justify-content: flex-end;
+  }
+`;
+
 // Caixa central onde ficam os inputs
 export const BoxStyled = styled.div`
   height: auto;
-  width: 100%;
-  max-width: 380px;
+  width: calc(100% - 30px);
+  max-width: 400px;
   box-sizing: border-box;
-  margin: auto;
-  border-radius: 8px;
+  border-radius: 14px;
   background-color: white;
-  border: 1px solid rgb(180, 180, 180);
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   padding: 12px 20px;
   padding-top: 16px;
   padding-bottom: 4px;
-  position: sticky;
-  top: -8px;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  position: relative;
 
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    width: calc(100% - 20px);
+    border: 1px solid rgb(182, 182, 182);
+  }
+  @media screen and (min-width: 375px) and (max-width: 400px) {
+    width: calc(100% - 20px);
+    border-radius: 12px;
+    box-shadow: none;
+    border: 1px solid rgb(182, 182, 182);
+  }
+  @media screen and (min-width: 401px) and (max-width: 768px) {
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.14);
+    border: 1px solid rgb(176, 176, 176);
+  }
   @media screen and (min-width: 769px) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.29);
-    border: 1px solid rgb(136, 136, 136);
+    margin-right: 10px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border: 1px solid rgb(158, 158, 158);
+  }
+  @media screen and (min-width: 993px) {
+    border-radius: 10px;
   }
 `;
 

@@ -3,14 +3,20 @@ import { createContext, useState, useEffect } from "react";
 export const ViewContext = createContext();
 
 export const ViewContextProvider = ({ children }) => {
+  //dica para recrutador
   const [tipForRecruiter, setTipForRecruiter] = useState(() => {
     const stored = localStorage.getItem("tipForRecruiter");
-    return stored ? JSON.parse(stored) : false; // valor padrão: false
+    return stored ? JSON.parse(stored) : true; // valor padrão: false
   });
   useEffect(() => {
-    localStorage.setItem("tipForRecruiter", JSON.stringify(tipForRecruiter));
+    const stored = localStorage.getItem("tipForRecruiter");
+    if (stored !== "false" || stored!== false) {
+        localStorage.setItem("tipForRecruiter", JSON.stringify(false));
+    }
   }, [tipForRecruiter]);
+  console.log(tipForRecruiter);
 
+  //estado de login
   const [noSkipLogin, setNoSkipLogin] = useState(() => {
     const stored = localStorage.getItem("skipLogin");
     return stored ? JSON.parse(stored) : true;
@@ -27,7 +33,7 @@ export const ViewContextProvider = ({ children }) => {
 
   const [preventClick, setPreventClick] = useState(false);
   const [viewFeedback, setViewFeedback] = useState(false);
-
+  
   return (
     <ViewContext.Provider
       value={{

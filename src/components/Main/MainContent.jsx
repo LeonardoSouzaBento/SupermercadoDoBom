@@ -7,8 +7,7 @@ import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import styled from "styled-components";
 import { CartContext } from "../CartContext";
-// import { ViewContext } from "../viewContext";
-//voltar a aplicar esse estado depois
+import { ViewContext } from "../viewContext";
 
 const Main = styled.main`
   max-width: 1390px;
@@ -37,8 +36,7 @@ const Main = styled.main`
 function MainContent() {
   const [viewOptions, setViewOptions] = useState(false);
   const [quantBlur, setQuantBlur] = useState(3.5);
-  const [noSkipLogin, setNoSkipLogin] = useState(true);
-  // const { noSkipLogin, setNoSkipLogin } = useContext(ViewContext);
+  const { noSkipLogin, setNoSkipLogin } = useContext(ViewContext);
   const { currentCategory } = useContext(CartContext);
   const divRef = useRef(null);
 
@@ -80,7 +78,7 @@ function MainContent() {
 
       <div
         style={{
-          filter: `blur(${quantBlur}px)`,
+          filter: noSkipLogin ? `blur(${quantBlur}px)` : "none",
           transition: "filter 1s ease",
         }}
       >
