@@ -1,22 +1,5 @@
 import styled from "styled-components";
 
-// export const BoxStyled = styled.div`
-//   position: relative;
-//   &::after{
-//     content: '';
-//     height: 100%;
-//     width: 100%;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     background: url(/pattern-icons-backgrounds/background-pattern.png);
-//     background-size: 900px;
-//     filter: opacity(0.5);
-//     mix-blend-mode: multiply;
-//     z-index: -2;
-//   }
-// `;
-
 export const MainStyled = styled.div`
   margin: auto;
   @media screen and (min-width: 320px) and (max-width: 374px) {
