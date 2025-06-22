@@ -4,7 +4,7 @@ import AnnouncementSection from "./AnnoucementSection/AnnouncementSection";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import PromoSection from "./PromoSection";
 import Footer from "../Footer/Footer";
-import Login from "../Login/login";
+import Login from "../Login/Login";
 import styled from "styled-components";
 import { CartContext } from "../CartContext";
 // import { ViewContext } from "../viewContext";
