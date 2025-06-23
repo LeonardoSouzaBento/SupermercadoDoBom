@@ -8,19 +8,18 @@ const PaiAllProductsStyled = styled.div`
   overflow-x: hidden;
   margin-left: 10px;
   padding-top: 8px;
-  padding-bottom: 36px;
-
+  padding-bottom: 40px;
   @media screen and (min-width: 320px) and (max-width: 374px){
     width: calc(100% - 15px);
-    margin-left: 15px;
+    margin-left: 19px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px){
     width: calc(100% - 20px);
-    margin-left: 20px;
+    margin-left: 24px;
   }
   @media screen and (min-width: 577px) and (max-width: 1200px){
     width: calc(100% - 20px);
-    margin-left: 20px;
+    margin-left: 24px;
   }
   @media screen and (min-width: 1201px){
     width: calc(100% - 52px);

@@ -13,7 +13,7 @@ const Main = styled.main`
   max-width: 1390px;
   margin: auto;
   padding: 0px;
-  background-color: rgb(237, 237, 237);
+  background-color: rgb(235, 235, 235);
   position: relative;
 
   &::after {

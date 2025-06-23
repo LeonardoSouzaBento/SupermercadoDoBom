@@ -16,11 +16,10 @@ import {
   PSifraStyled,
   DivMaisStyled,
   DivQuantStyled,
-  BotoesStyled,
+  DivPStyled,
   PQuantStyled,
   PMenosStyled,
   PMaisStyled,
-  PMais2Styled,
   DescOfertaStyled,
   DivNomeStyled,
   PnomeStyled,
@@ -117,15 +116,15 @@ const Botoes = ({ quantity, product, setQuantity, handleQuantityChange, variant 
 
   return (
     <DivQuantStyled $variant={variant}>
-      <BotoesStyled onPointerDown={handleFewer}>
+      <DivPStyled onPointerDown={handleFewer}>
         <PMenosStyled>-</PMenosStyled>
-      </BotoesStyled>
-      <BotoesStyled>
+      </DivPStyled>
+      <DivPStyled>
         <PQuantStyled>{quantity}</PQuantStyled>
-      </BotoesStyled>
-      <BotoesStyled onPointerDown={handleMore}>
-        <PMais2Styled>+</PMais2Styled>
-      </BotoesStyled>
+      </DivPStyled>
+      <DivPStyled onPointerDown={handleMore}>
+        <PMaisStyled>+</PMaisStyled>
+      </DivPStyled>
     </DivQuantStyled>
   );
 };

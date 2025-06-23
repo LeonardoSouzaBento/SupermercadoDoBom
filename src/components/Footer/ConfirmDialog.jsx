@@ -24,13 +24,17 @@ const DivStyled = styled.div`
   border-radius: 8px;
   position: fixed;
   right: 56px;
-  bottom: 56px;
+  bottom: 40px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.59);
   gap: 8px;
 
   @media screen and (min-width: 320px) and (max-width: 576px) {
     right: 8px;
+  }
+  @media screen and (min-width: 993px) {
+    bottom: 10px;
+    right: 234px;
   }
 `;
 

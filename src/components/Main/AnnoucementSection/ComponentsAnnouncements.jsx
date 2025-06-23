@@ -6,7 +6,7 @@ export const Div = styled.div`
   overflow-x: hidden;
   margin: auto;
   padding-top: 16px;
-  padding-bottom: 40px;
+  padding-bottom: 48px;
   border-radius: 5px;
   @media screen and (min-width: 320px) and (max-width:576px){
     width: 100%;
@@ -67,7 +67,7 @@ export const Advertisements = styled.div`
   padding: 12px 20px;
   padding-left: 15px;
   padding-bottom: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
@@ -149,12 +149,10 @@ export const Span = styled.span.attrs(() => ({
 }))`
   background-color: grey;
   border-radius: 4px;
-  border: 1px solid rgb(117, 117, 117);
   ${props => props.$atual && `
-    transform: scale(1.1);
-    background-color: rgb(255, 255, 255);
     padding: 1px;
-    border: 1px solid grey;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.95);
   `}
 
   @media screen and (min-width: 320px) and (max-width: 374px){

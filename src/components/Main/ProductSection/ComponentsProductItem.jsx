@@ -9,16 +9,14 @@ export const PaiProdStyled = styled.div`
   user-select: none;
   position: relative;
   box-sizing: border-box;
-  padding-right: 5px;
-
+  border-radius: 7px;
+  
   ${(props) =>
     props.$variant === "home" &&
     css`
       flex-direction: row;
       min-width: 260px;
       height: 180px;
-      border-radius: 9px 9px 15px 9px;
-      border: 1px solid rgb(175, 175, 175);
 
       @media screen and (min-width: 320px) and (max-width: 374px) {
         max-width: 260px;
@@ -42,13 +40,11 @@ export const PaiProdStyled = styled.div`
   ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
-      border-radius: 9px 9px 15px 9px;
-      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.28);
+      box-shadow: none;
 
       @media screen and (max-width: 431.99px) {
         flex-direction: row;
         height: 175px;
-        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.18);
       }
       @media screen and (min-width: 320px) and (max-width: 374px) {
         max-width: 100%;
@@ -64,7 +60,6 @@ export const PaiProdStyled = styled.div`
         justify-content: space-between;
         max-width: 180px;
         min-height: 285px;
-        border-radius: 9px;
       }
       @media screen and (min-width: 993px) {
         flex-direction: row;
@@ -82,7 +77,6 @@ export const DescOfertaStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2px;
 
   ${(props) =>
     props.$variant === "home" &&
@@ -105,21 +99,24 @@ export const DescOfertaStyled = styled.div`
       }
     `}
   @media screen and (min-width: 320px) and (max-width: 374px) {
-    padding-left: 11px;
+    padding: 0px 11px;
+    padding-bottom: 11px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    padding-left: 9px;
+    padding:0px 9px;
+    padding-bottom: 9px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    padding-left: 8px;
+    padding: 0px 8px;
+    padding-bottom: 8px;
   }
   @media screen and (min-width: 769px) {
-    padding-left: 7px;
+    padding:0px 7px;
+    padding-bottom: 7px;
   }
   @media screen and (min-width: 993px) {
     width: 52%;
   }
-  padding-right: 0px;
   box-sizing: border-box;
 `;
 
@@ -163,8 +160,8 @@ export const PnomeStyled = styled.p`
 //desconto
 export const DivOffStyled = styled.div`
   position: absolute;
-  top: 5px;
-  right: 0px;
+  top: 5.5px;
+  right: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -351,81 +348,79 @@ export const SpanResizeStyled = styled.span`
   color: rgb(133, 133, 133);
 `;
 
+//botão de mais
 export const DivMaisStyled = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   position: absolute;
   bottom: 6px;
   right: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 4px solid rgb(227, 97, 64);
+  background-color: #E6684C;
   border-radius: 50%;
   cursor: pointer;
-  background-color: white;
 `;
 
 export const PMaisStyled = styled.p`
-  font-size: 1.65em;
-  font-family: "Lato", Arial, Helvetica, sans-serif;
-  font-weight: 600;
+  font-size: 1.75em;
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
+  font-weight: 500;
   color: white;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
-  color: rgb(227, 97, 64);
-  padding-bottom: 4px;
+  color: white;
+  padding-bottom: 3.6px;
   padding-left: 1px;
   user-select: none;
 `;
 
-//Selecionar a quantidade, + 1 e -
+//Botão p selecionar a quantidade
 export const DivQuantStyled = styled.div`
   width: 128px;
-  height: 32px;
-  border: 4px solid rgb(227, 97, 64);
+  height: 34px;
+  background-color: #E6684C;
   display: flex;
   justify-content: space-between;
-  border-radius: 20px;
+  border-radius: 18px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
   position: absolute;
-  bottom: 5px;
-  right: 0px;
-  background-color: rgba(255, 255, 255, 0.9);
+  bottom: 7px;
+  right: 6px;
 
   ${(props) =>
     (props.$variant == "cart" || props.$variant == "inSearch") &&
     css`
       @media screen and (min-width: 432px) and (max-width: 992px) {
-        width: 162px;
+        width: 132px;
+        right: 50%;
+        transform: translateX(50%);
       }
     `}
 `;
 
-export const PMais2Styled = styled(PMaisStyled)`
-  color: rgb(213, 94, 64);
-`;
-
-export const BotoesStyled = styled.div`
+export const DivPStyled = styled.div`
   height: 100%;
-  width: 37px;
+  width: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
 `;
 
-export const PMenosStyled = styled(PMais2Styled)`
+export const PMenosStyled = styled(PMaisStyled)`
   padding-bottom: 5px;
   font-size: 1.9em;
 `;
+
 export const PQuantStyled = styled.p`
-  font-size: 1.25em;
-  font-family: "Lato", Arial, Helvetica, sans-serif;
-  font-weight: 700;
+  font-size: 1.3em;
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
+  font-weight: 600;
   padding-bottom: 2px;
-  color: rgb(213, 94, 64);
+  color: white;
 `;

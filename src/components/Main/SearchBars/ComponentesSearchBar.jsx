@@ -33,6 +33,21 @@ export const ContainerForFormStyled = styled.div`
   `}
 `;
 
+export const ShadowStyled = styled.div`
+  width: 100%;
+  height: 12px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.08),
+    rgba(0, 0, 0, 0)
+  );
+  background-size: 100% 100%;
+  border-radius: 0px 0px 8px 8px;
+`;
+
 export const FormStyled = styled.form`
   display: flex;
   flex-flow: row nowrap;
@@ -67,11 +82,10 @@ export const InputStyled = styled.input`
   color: black;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: white;
-  border: 1px solid rgb(145, 145, 145);
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+  border: none;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
   &:focus{
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.14); 
-    outline: 1px solid rgb(155, 155, 155);
+    outline: 1px solid rgb(181, 181, 181);
     background-color: white;
   }
   &::-webkit-search-cancel-button,
@@ -84,9 +98,8 @@ export const InputStyled = styled.input`
   }
   @media screen and (min-width: 769px){
     font-size: 1.04em;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14);
   }
-  ${props => props.$copy && 'box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14);'}
+  /* ${props => props.$copy && 'box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14);'} */
 `;
 
 export const DivSpanStyled = styled.div`

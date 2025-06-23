@@ -13,14 +13,15 @@ const DivStyled = styled.div`
   align-items: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
   margin-bottom: 12px;
   position: relative;
   overflow-x: scroll;
   box-sizing: border-box;
   padding-right: 20px;
   padding-bottom: 4px;
-
+  border-radius: 7px;
+  
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {
@@ -31,20 +32,18 @@ const DivStyled = styled.div`
     props.$variant === "home" &&
     css`
       @media screen and (min-width: 320px) and (max-width: 374px) {
-        gap: 8px;
-        height: 565px;
+        height: 580px;
       }
       @media screen and (min-width: 375px) and (max-width: 576px) {
-        height: 592px;
+        height: 596px;
       }
       @media screen and (min-width: 577px) {
-        height: 577px;
+        height: 582px;
       }
       @media screen and (min-width: 993px) {
         padding-bottom: 5px;
         padding-right: 4px;
-        height: 548px;
-        gap: 11px;
+        height: 552px;
       }
     `}
   ${(props) =>
@@ -57,10 +56,10 @@ const DivStyled = styled.div`
   ${(props) =>
     props.$variant === "cart" &&
     css`
-      justify-content: center;
+      justify-content: flex-start;
       padding-right: 0px;
-      @media screen and (max-width: 768px) {
-        justify-content: flex-start;
+      @media screen and (max-width: 431px) {
+        justify-content: center;
       }
     `}
 

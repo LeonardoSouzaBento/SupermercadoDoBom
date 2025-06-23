@@ -29,9 +29,6 @@ export const ContainerStyled = styled.div`
     top: 110px;
     right: 5.5%;
   }
-  /* @media screen and (min-width: 1201px){
-      right: 8.4%;
-    } */
 `;
 
 export const DivNameSpanStyled = styled.div`
@@ -39,9 +36,9 @@ export const DivNameSpanStyled = styled.div`
   align-items: center;
   justify-content: flex-end;
   height: max-content;
-  width: 260px;
   border-radius: 24px;
   margin-bottom: 18px;
+  cursor: pointer;
 `;
 
 const ContainerPStyled = styled.div`
@@ -82,7 +79,7 @@ export const POptionStyled = styled.p`
   color: white;
   padding-right: 40px;
   padding-left: 24px;
-
+  user-select: none;
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.05em;
   }
@@ -101,9 +98,8 @@ export const DivSpanStyled = styled.div`
   border-radius: 12%;
   background-color: rgb(43, 37, 37);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.26);
-  cursor: default;
   flex: none;
-
+  cursor: pointer;
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: 44px;
     height: 44px;
@@ -141,14 +137,7 @@ export const SpanOptionsStyled = styled.span`
   font-size: 1.9em;
   color: rgb(255, 255, 255);
   font-variation-settings: "FILL" 1, "wght" 300, "GRAD" -25, "opsz" 24;
-  cursor: default;
   user-select: none;
-`;
-
-const SpanOptionsStyled2 = styled(SpanOptionsStyled)`
-  font-size: 1.75em;
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" -25, "opsz" 24;
-  padding-top: 3px;
 `;
 
 const contents = [
@@ -164,10 +153,10 @@ const Options = () => {
   const [numberClicks, setNumberClicks] = useState([0, 0, 0]);
 
   function openContent(e, index) {
-    if (e.pointerType === "mouse") {
+    if (e.pointerType === "mouse" && viewNameOption == index) {
       const option = contents[index].navigateTo;
       navigate(`/secao-mais-opcoes?option=${option}`);
-    } else if (e.pointerType === "touch") {
+    } else if (e.pointerType === "touch" && viewNameOption == index) {
       setViewNameOption(index);
       setNumberClicks(
         numberClicks.map((_, i) => {
@@ -191,8 +180,14 @@ const Options = () => {
       {contents.map((content, i) => (
         <DivNameSpanStyled
           key={i}
-          data-ignore-click
+          onMouseEnter={() => {
+            setViewNameOption(i);
+          }}
+          onMouseLeave={() => {
+            setViewNameOption(null);
+          }}
           onPointerDown={(e) => openContent(e, i)}
+          data-ignore-click
         >
           {viewNameOption == i && (
             <ContainerPStyled>
@@ -203,14 +198,7 @@ const Options = () => {
             </ContainerPStyled>
           )}
 
-          <DivSpanStyled
-            onMouseEnter={() => {
-              setViewNameOption(i);
-            }}
-            onMouseLeave={() => {
-              setViewNameOption(null);
-            }}
-          >
+          <DivSpanStyled>
             <SpanOptionsStyled className="material-symbols-rounded">
               {content.icon}
             </SpanOptionsStyled>
