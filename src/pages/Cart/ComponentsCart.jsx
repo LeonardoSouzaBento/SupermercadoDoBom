@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MainStyled = styled.div`
   margin: auto;
+  padding-top: 16px;
   position: relative;
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: calc(100% - 24px);
@@ -14,9 +15,11 @@ export const MainStyled = styled.div`
     grid-template-columns: auto 330px;
     grid-template-rows: 100vh;
     align-items: center;
+    padding-top: 0px;
   }
   @media screen and (min-width: 1201px) {
-    grid-template-columns: auto 420px;
+    grid-template-columns: 950px 330px;
+    justify-content: center;
   }
   transition: filter 0.9s ease;
   ${(props) => props.$seeAdressForm && " filter: blur(2.5px)"}
@@ -24,23 +27,37 @@ export const MainStyled = styled.div`
 
 export const CartSectionStyed = styled.div`
   width: 100%;
-  max-width: 1000px;
+  max-width: 894px;
   height: 460px;
   margin: auto;
   margin-bottom: 24px;
-  margin-top: 12px;
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
-  background-color: rgb(220, 220, 220);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgb(208, 208, 208);
-  border-top: none;
+  background-color: rgb(227, 227, 227);
+  box-shadow: inset 0px -1px 3px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow-y: hidden;
-  &::-webkit-scrollbar {
-    display: none;
+
+  @media screen and (max-width: 992px) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
+
+  @media screen and (min-width: 993px) {
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; /* cor de fundo da "trilha" */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888; /* cor do "botão" da barra */
+      border-radius: 6px; /* bordas arredondadas */
+    }
+    scrollbar-width: thin; /* Opções: auto | thin | none */
+    scrollbar-color:rgb(211, 211, 211) rgb(237, 237, 237) ; /* thumb | track */
+  }
+
   @media screen and (min-width: 769px) {
     width: calc(100% - 32px);
     height: calc(100vh - 48px);
@@ -50,9 +67,9 @@ export const CartSectionStyed = styled.div`
   }
 `;
 
-export const DivSpanCalcelCart = styled.div`
-  width: 38px;
-  height: 40px;
+export const DivSpanCancelCart = styled.div`
+  width: 37px;
+  height: 37px;
   padding-left: 1px;
   display: flex;
   justify-content: center;
@@ -61,37 +78,36 @@ export const DivSpanCalcelCart = styled.div`
   top: 4px;
   right: 4px;
   border-radius: 8px;
-  background-color: rgb(238, 238, 238);
-  box-shadow: -2px 2px 4px rgba(93, 93, 93, 0.18);
+  background-color: rgb(250, 250, 250);
+  box-shadow: -1px 1px 2px rgba(93, 93, 93, 0.2);
   cursor: pointer;
 `;
 
-export const SpanCalcelCart = styled.span`
-  padding-bottom: 1px;
+export const SpanCancelCart = styled.span`
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
-  color: rgb(72, 72, 72);
+  color: rgb(75, 75, 75);
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
-    font-size: 1.7em;
+    font-size: 1.67em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.75em;
+    font-size: 1.73em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.76em;
+    font-size: 1.74em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.77em;
+    font-size: 1.75em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.78em;
+    font-size: 1.76em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.79em;
+    font-size: 1.77em;
   }
 `;
 
-export const BoxConfirmCalcel = styled.div`
+export const BoxConfirmCancel = styled.div`
   width: 100%;
   height: 52px;
   padding-right: 2px;
@@ -109,7 +125,7 @@ export const BoxConfirmCalcel = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 `;
 
-export const DivSpanConfirmCancel = styled(DivSpanCalcelCart)`
+export const DivSpanConfirmCancel = styled(DivSpanCancelCart)`
   position: relative;
   padding-bottom: 0px;
   margin-bottom: 8px;
@@ -144,22 +160,25 @@ export const PConfirmCancelStyled = styled.p`
 
 export const ShadowStyled = styled.div`
   width: 100%;
-  max-width: 100%;
-  height: 32px;
+  height: 16px;
   position: absolute;
   bottom: 0px;
-  left: 0px;
+  left: 0;
   background-image: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.08),
+    rgba(0, 0, 0, 0.09),
     rgba(0, 0, 0, 0)
   );
   background-size: 100% 100%;
   border-radius: 0px 0px 8px 8px;
 
   @media screen and (min-width: 769px) {
-    width: calc(100% - 24px);
-    margin-left: 12px;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+  }
+  @media screen and (min-width: 993px) {
+    display: none;
   }
 `;
 
@@ -170,7 +189,8 @@ export const DivHeadStyled = styled.div`
   align-items: center;
   margin-bottom: 12px;
   position: relative;
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(227, 227, 227);
+  border-radius: 12px;
 
   @media screen and (min-width: 769px) {
     position: sticky;
@@ -299,7 +319,7 @@ export const DivAddStyled = styled.div`
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(199, 199, 199);
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
 
   @media screen and (min-width: 769px) {
     width: 100%;
@@ -348,7 +368,7 @@ export const ContainerStyled = styled.div`
   border-radius: 8px;
   border: 1px solid rgb(207, 207, 207);
   border-top: none;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.18);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
 
   @media screen and (min-width: 769px) {
     display: block;
@@ -365,21 +385,16 @@ export const DivAvisoStyled = styled.div`
   margin: auto;
   display: flex;
   align-items: center;
-  border-radius: 4px;
-  padding: 12px 15px;
+  border-radius: 3px;
+  padding: 15px 18px;
   box-sizing: border-box;
-  background-color: rgb(255, 234, 201);
-  border: 1px solid rgb(255, 155, 78);
-
-  @media screen and (min-width: 768px) {
-    border-radius: 6px;
-  }
+  background-color: #d04f32;
 `;
 
 export const PAvisoStyled = styled.p`
   font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  color: rgb(188, 0, 0);
+  color: white;
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.09em;
@@ -404,7 +419,8 @@ export const PAvisoStyled = styled.p`
 export const DivValueStyled = styled.div`
   width: 100%;
   margin: auto;
-  margin-top: 16px;
+  margin-top: 22px;
+  margin-bottom: 8px;
   padding: 0px 5px;
   display: flex;
   flex-flow: row wrap;
@@ -453,9 +469,7 @@ export const DivContinueStyled = styled.div`
   color: white;
   cursor: pointer;
   transition: background-color 0.08s ease;
-  background-color: ${(props) =>
-    props.$nocontinue ? "rgb(188, 241, 163)" : "rgb(36, 160, 12)"};
-  ${(props) => props.$nocontinue && "border: 1px solid rgb(137, 255, 131);"}
+  background-color: ${(props) => (props.$nocontinue ? " #39EDAC" : " #7DB42B")};
   &:hover {
     background-color: ${(props) => !props.$nocontinue && "rgb(23, 138, 0)"};
   }

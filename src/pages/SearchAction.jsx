@@ -9,7 +9,7 @@ const DivStyled = styled.div`
   min-width: 100vw;
   padding-bottom: 59px;
   box-sizing: border-box;
-  background-color:rgb(240, 240, 240);
+  background-color:rgb(227, 227, 227);
 `;
 
 const SearchAction = () => {

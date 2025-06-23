@@ -42,7 +42,6 @@ const DivStyled = styled.div`
       }
       @media screen and (min-width: 993px) {
         padding-bottom: 5px;
-        padding-right: 4px;
         height: 552px;
       }
     `}
@@ -51,27 +50,23 @@ const DivStyled = styled.div`
     css`
       padding-top: 4px;
       flex-direction: row;
+      justify-content: center;
     `}
 
   ${(props) =>
     props.$variant === "cart" &&
     css`
-      justify-content: flex-start;
       padding-right: 0px;
-      @media screen and (max-width: 431px) {
-        justify-content: center;
-      }
     `}
 
   ${(props) =>
     props.$variant === "inSearch" &&
     css`
       height: auto;
-      justify-content: flex-start;
       padding-left: 16px;
-
-      @media screen and (max-width: 430px) {
-         justify-content: center;
+      
+      @media screen and (min-width: 768px) {
+        justify-content: flex-start;
       }
       @media screen and (min-width: 993px) {
         padding-left: 20px;

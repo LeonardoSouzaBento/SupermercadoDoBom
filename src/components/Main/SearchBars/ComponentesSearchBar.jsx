@@ -18,12 +18,13 @@ export const ContainerForFormStyled = styled.div`
   css`
     padding-top: 18px;
     padding-bottom: 20px;
+    margin-bottom: 8px;
     position: sticky;
     top: 0px;
     left: 0px;
     display: flex;
     justify-content: center;
-    background-color: #F0F0F0;
+    background-color: rgb(227, 227, 227);
 
     @media screen and (min-width: 769px) {
       justify-content: flex-start;
@@ -37,15 +38,16 @@ export const ShadowStyled = styled.div`
   width: 100%;
   height: 12px;
   position: absolute;
-  bottom: 0px;
+  bottom: -12px;
   left: 0px;
   background-image: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.08),
+    to bottom,
+    rgba(0, 0, 0, 0.04),
     rgba(0, 0, 0, 0)
   );
   background-size: 100% 100%;
-  border-radius: 0px 0px 8px 8px;
+
+  ${props => props.$copy === false && 'display: none;'}
 `;
 
 export const FormStyled = styled.form`
@@ -59,7 +61,6 @@ export const FormStyled = styled.form`
   border-radius: 20px;
   position: relative;
   max-width: 1180px;
-
   ${props =>
     props.$copy &&
     css`
@@ -99,7 +100,7 @@ export const InputStyled = styled.input`
   @media screen and (min-width: 769px){
     font-size: 1.04em;
   }
-  /* ${props => props.$copy && 'box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14);'} */
+  ${props => props.$copy && 'box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);'}
 `;
 
 export const DivSpanStyled = styled.div`

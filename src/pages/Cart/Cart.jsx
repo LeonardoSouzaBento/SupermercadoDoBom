@@ -6,15 +6,15 @@ import { ProductListHome } from "../../components/Main/ProductSection/ProductLis
 import {
   MainStyled,
   CartSectionStyed,
-  DivSpanCalcelCart,
-  SpanCalcelCart,
-  BoxConfirmCalcel,
+  ShadowStyled,
+  DivSpanCancelCart,
+  SpanCancelCart,
+  BoxConfirmCancel,
   PConfirmCancelStyled,
   DivSpanConfirmCancel,
   DivHeadStyled,
   PHeadStyled,
   ContainerProductList,
-  ShadowStyled,
   FinishSectionStyled,
   ContainerStyled,
   DivAvisoStyled,
@@ -146,31 +146,31 @@ const Cart = () => {
 
   if (totalAddedValue != 0) {
     return (
-      <div style={{ position: "relative", height: "100%" }}>
+      <div style={{ position: "relative", height: "100%", backgroundColor:'rgb(245, 245, 245)'}}>
         <MainStyled $seeAdressForm={seeAdressForm}>
           <div style={{ position: "relative", height: "max-content" }}>
             <CartSectionStyed ref={CartSectionRef}>
               <DivHeadStyled>
-                <DivSpanCalcelCart
+                <DivSpanCancelCart
                   onClick={() => {
                     setSeeCancelDialog(true);
                   }}
                 >
-                  <SpanCalcelCart className="material-symbols-outlined">
+                  <SpanCancelCart className="material-symbols-outlined">
                     delete
-                  </SpanCalcelCart>
-                </DivSpanCalcelCart>
+                  </SpanCancelCart>
+                </DivSpanCancelCart>
 
                 {seeCancelDialog && (
-                  <BoxConfirmCalcel>
+                  <BoxConfirmCancel>
                     <PConfirmCancelStyled>
                       Cancelar a compra?
                     </PConfirmCancelStyled>
 
                     <DivSpanConfirmCancel onClick={handleConfirmCancel}>
-                      <SpanCalcelCart className="material-symbols-outlined">
+                      <SpanCancelCart className="material-symbols-outlined">
                         check
-                      </SpanCalcelCart>
+                      </SpanCancelCart>
                     </DivSpanConfirmCancel>
 
                     <DivSpanConfirmCancel
@@ -178,18 +178,18 @@ const Cart = () => {
                         setSeeCancelDialog(false);
                       }}
                     >
-                      <SpanCalcelCart className="material-symbols-outlined">
+                      <SpanCancelCart className="material-symbols-outlined">
                         close
-                      </SpanCalcelCart>
+                      </SpanCancelCart>
                     </DivSpanConfirmCancel>
-                  </BoxConfirmCalcel>
+                  </BoxConfirmCancel>
                 )}
                 {viewFeedback && (
-                  <BoxConfirmCalcel $viewFeedback={viewFeedback}>
+                  <BoxConfirmCancel $viewFeedback={viewFeedback}>
                     <PConfirmCancelStyled>
                       Compra Cancelada!
                     </PConfirmCancelStyled>
-                  </BoxConfirmCalcel>
+                  </BoxConfirmCancel>
                 )}
 
                 <PHeadStyled>Sua Compra</PHeadStyled>
@@ -212,8 +212,8 @@ const Cart = () => {
                   </SpanSeeAllStyled>
                 </DivSeeMoreStyled>
               )}
+            <ShadowStyled/>
             </CartSectionStyed>
-            <ShadowStyled />
           </div>
 
           <FinishSectionStyled>
@@ -250,7 +250,8 @@ const Cart = () => {
               <DivContinueStyled
                 $nocontinue={falta > 0}
                 onClick={() => {
-                  setSeeAdressForm(true);
+                  if(falta <= 0){
+                  setSeeAdressForm(true)}
                 }}
               >
                 <PContinueStyled>Continuar</PContinueStyled>

@@ -25,15 +25,17 @@ const CartDescStyled = styled.div`
   display: flex;
   width: 90%;
   max-width: 400px;
-  height: 40px;
-  border: 4px solid rgb(230, 104, 76);
+  height: 48px;
   background-color:rgb(230, 104, 76);
+  box-shadow:inset 0px 0px 4px rgba(0, 0, 0, 0.17);
   border-radius: 23px 0px 0px 23px;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   user-select: none;
   overflow: hidden;
+  position: relative;
+
 `;
 
 const DivCancelECart = styled.div`
@@ -43,6 +45,7 @@ const DivCancelECart = styled.div`
   height: 100%;
   width: auto;
   gap: 10px;
+  padding-left: 4px;
 `;
 
 const DivCartStyled = styled.div`
@@ -55,8 +58,8 @@ const DivCartStyled = styled.div`
 `;
 
 const DivCancelStyled= styled(DivCartStyled)`
-  height: 100%;
-  width: 42px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
   box-shadow: 8px 0px 20px rgba(0, 0, 0, 0.16);
@@ -122,8 +125,8 @@ const DivPStyled = styled.div`
 `;
 
 const PPrecoStyled = styled.p`
- font-family: "Lato", Arial, Helvetica, sans-serif;
- font-weight: 300;
+ font-family: "Roboto", Arial, Helvetica, sans-serif;
+ font-weight: 400;
  color: white;
  letter-spacing: 0.71px;
 

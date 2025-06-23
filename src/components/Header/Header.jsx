@@ -8,10 +8,7 @@ export const HeaderStyled = styled.header `
     max-width: 1390px;
     height: 180px;
     max-height: 181px;
-    background-color: rgb(235, 235, 235);
-    z-index: 2;
     position: relative;
-
     @media screen and (min-width: 769px){
       height: 134px;
       display: flex;

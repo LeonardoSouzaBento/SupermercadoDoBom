@@ -13,24 +13,11 @@ const Main = styled.main`
   max-width: 1390px;
   margin: auto;
   padding: 0px;
-  background-color: rgb(235, 235, 235);
-  position: relative;
-
-  &::after {
-    content: "";
-    display: block;
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    height: 36px;
-    background-image: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.1),
-      rgba(240, 240, 240, 0)
-    );
-    background-size: 100% 100%;
-    pointer-events: none;
-  }
+  /* background: linear-gradient(to top, rgb(227, 227, 227), rgb(240, 240, 240)); */
+  background: linear-gradient(to top, rgb(223, 223, 223), rgb(235, 235, 235));
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
 `;
 
 function MainContent() {

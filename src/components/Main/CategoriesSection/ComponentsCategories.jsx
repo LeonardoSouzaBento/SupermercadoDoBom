@@ -12,11 +12,9 @@ export const Div = styled.div`
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     width: calc(100% - 20px);
-    margin-left: 20px;
   }
   @media screen and (min-width: 577px) and (max-width: 1200px) {
     width: calc(100% - 20px);
-    margin-left: 20px;
   }
   @media screen and (min-width: 1201px) {
     width: calc(100% - 52px);
@@ -127,7 +125,7 @@ export const DivCat = styled.div`
   ${(props) =>
     props.$selected &&
     `background-color: rgb(255, 255, 255);
-     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);}
+     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);}
     `}
 `;
 
