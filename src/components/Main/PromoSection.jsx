@@ -77,7 +77,7 @@ function PromoSection({categoryKey}) {
       <ProductListHome 
       variant={'home'} 
       categoryKey={categoryKey}  
-      ref={promotionsRef} 
+      ref={promotionsRef}
       />
     </PaiAllProductsStyled>
   );

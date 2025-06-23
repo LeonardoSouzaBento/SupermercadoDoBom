@@ -37,6 +37,9 @@ export const BoxStyled = styled.div`
   padding-bottom: 4px;
   position: relative;
 
+  @media screen and (max-width: 768px) {
+    margin-bottom: 24px;
+  }
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: calc(100% - 20px);
     border: 1px solid rgb(182, 182, 182);

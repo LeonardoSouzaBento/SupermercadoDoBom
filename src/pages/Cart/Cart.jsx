@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../components/CartContext";
 import { ViewContext } from "../../components/viewContext.jsx";
@@ -15,8 +15,6 @@ import {
   PHeadStyled,
   ContainerProductList,
   ShadowStyled,
-  DivAddStyled,
-  PAddStyled,
   FinishSectionStyled,
   ContainerStyled,
   DivAvisoStyled,
@@ -32,8 +30,14 @@ import {
   DivSeeMoreStyled,
   PSeeMoreStyled,
   SpanSeeAllStyled,
+  DivAddStyled,
+  PAddStyled,
 } from "./ComponentsCart.jsx";
 import RegisterAddress from "../../components/RegisterAddress/RegisterAddress.jsx";
+
+//altura - o cabeçalho 'sua compra'
+const heightCartSection = 398;
+const totalHeightCartSection = 460;
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -42,6 +46,12 @@ const Cart = () => {
   const { setCartProducts } = useContext(CartContext);
   const { viewFeedback, setViewFeedback } = useContext(ViewContext);
   const [seeAdressForm, setSeeAdressForm] = useState(false);
+  const [viewButtonSeeAll, setViewButtonsetSeeAll] = useState(true);
+  const [newHeight, setNewHeight] = useState(0);
+  const [applyNewHeight, setApplyNewHeight] = useState(true);
+  const resizeDowntime = useRef(null);
+  const ProductListRef = useRef(null);
+  const CartSectionRef = useRef(null);
 
   const handleConfirmCancel = () => {
     setViewFeedback(true);
@@ -56,6 +66,9 @@ const Cart = () => {
       setTimeout(() => {
         navigate("/");
       }, 2500);
+    }
+    if (ProductListRef.current) {
+      checkHiddenProducts();
     }
   }, [totalAddedValue]);
 
@@ -76,12 +89,67 @@ const Cart = () => {
     maximumFractionDigits: 2,
   });
 
+  // função para ver todos
+  function handleClickSeeAll() {
+    if (applyNewHeight) {
+      setApplyNewHeight(false);
+      CartSectionRef.current.style.height = `${newHeight}px`;
+    } else {
+      setApplyNewHeight(true);
+      CartSectionRef.current.style.height = `${totalHeightCartSection}px`;
+    }
+  }
+
+  // decide se mostra o botão 'ver todos'
+  function checkHiddenProducts() {
+    const productListHeight = ProductListRef.current.offsetHeight;
+
+    if (heightCartSection - productListHeight < 0) {
+      setViewButtonsetSeeAll(true);
+      setNewHeight(productListHeight + 124);
+    } else {
+      setViewButtonsetSeeAll(false);
+    }
+  }
+
+  // resize p reamostrar botão 'ver todos'
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto"
+    });
+    if (ProductListRef.current) {
+      checkHiddenProducts();
+    }
+
+    function handleResize() {
+      if (resizeDowntime.current) {
+        clearTimeout(resizeDowntime.current);
+      }
+      resizeDowntime.current = setTimeout(() => {
+        checkHiddenProducts();
+        if (window.innerWidth >= 769 && viewButtonSeeAll) {
+          CartSectionRef.current.style.height = "calc(100vh - 48px)";
+        }
+      }, 300);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (resizeDowntime.current) {
+        clearTimeout(resizeDowntime.current);
+      }
+    };
+  }, []);
+
   if (totalAddedValue != 0) {
     return (
-      <div style={{ position: "relative", height:'100%'}}>
+      <div style={{ position: "relative", height: "100%" }}>
         <MainStyled $seeAdressForm={seeAdressForm}>
           <div style={{ position: "relative", height: "max-content" }}>
-            <CartSectionStyed>
+            <CartSectionStyed ref={CartSectionRef}>
               <DivHeadStyled>
                 <DivSpanCalcelCart
                   onClick={() => {
@@ -131,25 +199,24 @@ const Cart = () => {
                 <ProductListHome
                   variant={"cart"}
                   categoryKey={12}
+                  ref={ProductListRef}
                 ></ProductListHome>
               </ContainerProductList>
-              <DivSeeMoreStyled>
-                <PSeeMoreStyled>Ver todos</PSeeMoreStyled>
-                <SpanSeeAllStyled className="material-symbols-rounded">
-                  keyboard_arrow_down
-                </SpanSeeAllStyled>
-              </DivSeeMoreStyled>
+              {viewButtonSeeAll && (
+                <DivSeeMoreStyled onClick={handleClickSeeAll}>
+                  <PSeeMoreStyled>
+                    {applyNewHeight ? "Ver todos" : "Ver menos"}
+                  </PSeeMoreStyled>
+                  <SpanSeeAllStyled className="material-symbols-rounded">
+                    keyboard_arrow_down
+                  </SpanSeeAllStyled>
+                </DivSeeMoreStyled>
+              )}
             </CartSectionStyed>
             <ShadowStyled />
           </div>
 
           <FinishSectionStyled>
-            <DivAddStyled>
-              <PAddStyled>
-                {falta == 40 ? "Adicionar produtos" : "Adicionar mais produtos"}
-              </PAddStyled>
-            </DivAddStyled>
-
             <ContainerStyled>
               {falta > 0 && (
                 <DivAvisoStyled>
@@ -189,6 +256,12 @@ const Cart = () => {
                 <PContinueStyled>Continuar</PContinueStyled>
               </DivContinueStyled>
             </ContainerStyled>
+
+            <DivAddStyled>
+              <PAddStyled>
+                {falta == 40 ? "Adicionar produtos" : "Adicionar mais produtos"}
+              </PAddStyled>
+            </DivAddStyled>
           </FinishSectionStyled>
         </MainStyled>
 

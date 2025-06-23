@@ -33,6 +33,10 @@ export const PaiProdStyled = styled.div`
       @media screen and (min-width: 769px) and (max-width: 992px) {
         max-width: 300px;
       }
+       @media screen and (min-width: 993px) {
+        max-width: 305px;
+        height: 170px;
+      }
     `}
 
   ${(props) =>
@@ -41,9 +45,8 @@ export const PaiProdStyled = styled.div`
       border-radius: 9px 9px 15px 9px;
       box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.28);
 
-      @media screen and (max-width: 430px) {
+      @media screen and (max-width: 431.99px) {
         flex-direction: row;
-        min-width: 260px;
         height: 175px;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.18);
       }
@@ -51,25 +54,27 @@ export const PaiProdStyled = styled.div`
         max-width: 100%;
         height: 170px;
       }
-      @media screen and (min-width: 375px) and (max-width: 430px) {
+      @media screen and (min-width: 375px) and (max-width: 431.99px) {
         max-width: 300px;
+        height: 170px;
       }
 
-      @media screen and (min-width: 431px) and (max-width: 992px) {
+      @media screen and (min-width: 432px) and (max-width: 992px) {
         flex-direction: column;
         justify-content: space-between;
         max-width: 180px;
         min-height: 285px;
         border-radius: 9px;
       }
-
+      @media screen and (min-width: 993px) {
+        flex-direction: row;
+        max-width: 295px;
+        height: 170px;
+      }
+      @media screen and (min-width: 1201px) {
+        max-width: 305px;
+      }
     `}
-
-    @media screen and (min-width: 993px) {
-      flex-direction: row;
-      max-width: 305px;
-      height: 170px;
-    }
 `;
 
 //Descrição da Oferta: nome, desconto e peso
@@ -88,11 +93,11 @@ export const DescOfertaStyled = styled.div`
   ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
-      @media screen and (max-width: 430px) {
+      @media screen and (max-width: 432px) {
         height: 100%;
         width: 52%;
       }
-      @media screen and (min-width: 431px) and (max-width: 992px) {
+      @media screen and (min-width: 432px) and (max-width: 992px) {
         height: 42%;
         width: 100%;
         order: 2;
@@ -196,7 +201,7 @@ export const DivPesoStyled = styled.div`
   ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
-      @media screen and (min-width: 431px) and (max-width: 992px) {
+      @media screen and (min-width: 432px) and (max-width: 992px) {
         align-items: center;
       }
     `}
@@ -234,7 +239,7 @@ export const PaiPrecoStyled = styled.div`
   ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
-      @media screen and (min-width: 431px) and (max-width: 992px) {
+      @media screen and (min-width: 432px) and (max-width: 992px) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -249,7 +254,7 @@ export const DivPrecoStyled = styled.div`
   ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
-      @media screen and (min-width: 431px) and (max-width: 992px) {
+      @media screen and (min-width: 432px) and (max-width: 992px) {
         padding-right: 4px;
         box-sizing: border-box;
         order: 1;
@@ -301,7 +306,7 @@ export const DivOfertaStyled = styled.div`
   ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
-      @media screen and (min-width: 431px) and (max-width: 992px) {
+      @media screen and (min-width: 432px) and (max-width: 992px) {
         height: 170px;
         width: 100%;
       }
@@ -394,7 +399,7 @@ export const DivQuantStyled = styled.div`
   ${(props) =>
     (props.$variant == "cart" || props.$variant == "inSearch") &&
     css`
-      @media screen and (min-width: 430px) and (max-width: 992px) {
+      @media screen and (min-width: 432px) and (max-width: 992px) {
         width: 162px;
       }
     `}

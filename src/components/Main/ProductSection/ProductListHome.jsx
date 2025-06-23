@@ -59,6 +59,9 @@ const DivStyled = styled.div`
     css`
       justify-content: center;
       padding-right: 0px;
+      @media screen and (max-width: 768px) {
+        justify-content: flex-start;
+      }
     `}
 
   ${(props) =>

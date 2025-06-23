@@ -12,7 +12,6 @@ const DivStyled = styled.div`
   background-color: #F0F0F0;
 `;
 
-
 const SearchAction = () => {
   return (
     <DivStyled>

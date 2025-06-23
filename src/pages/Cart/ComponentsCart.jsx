@@ -11,8 +11,9 @@ export const MainStyled = styled.div`
   }
   @media screen and (min-width: 769px) {
     display: grid;
-    grid-template-columns: auto 350px;
-    grid-template-rows: auto;
+    grid-template-columns: auto 330px;
+    grid-template-rows: 100vh;
+    align-items: center;
   }
   @media screen and (min-width: 1201px) {
     grid-template-columns: auto 420px;
@@ -24,11 +25,10 @@ export const MainStyled = styled.div`
 export const CartSectionStyed = styled.div`
   width: 100%;
   max-width: 1000px;
-  min-height: 420px;
-  max-height: calc(100vh - 350px);
+  height: 460px;
   margin: auto;
-  margin-top: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  margin-top: 12px;
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
@@ -41,17 +41,11 @@ export const CartSectionStyed = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  @media screen and (min-width: 320px) and (max-width: 430px) {
-    min-height: 360px;
-    max-height: 360px;
-  }
   @media screen and (min-width: 769px) {
-    width: calc(100% - 24px);
-    min-height: calc(100vh - 48px);
-    max-height: calc(100vh - 48px);
-    margin: 0;
-    margin-top: 24px;
-    margin-left: 24px;
+    width: calc(100% - 32px);
+    height: calc(100vh - 48px);
+    max-height: 810px;
+    margin: auto;
     overflow-y: scroll;
   }
 `;
@@ -149,15 +143,15 @@ export const PConfirmCancelStyled = styled.p`
 `;
 
 export const ShadowStyled = styled.div`
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
   width: 100%;
   max-width: 100%;
   height: 32px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
   background-image: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.07),
+    rgba(0, 0, 0, 0.08),
     rgba(0, 0, 0, 0)
   );
   background-size: 100% 100%;
@@ -165,7 +159,7 @@ export const ShadowStyled = styled.div`
 
   @media screen and (min-width: 769px) {
     width: calc(100% - 24px);
-    margin-left: 24px;
+    margin-left: 12px;
   }
 `;
 
@@ -176,6 +170,16 @@ export const DivHeadStyled = styled.div`
   align-items: center;
   margin-bottom: 12px;
   position: relative;
+  background-color: rgb(220, 220, 220);
+
+  @media screen and (min-width: 769px) {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
 `;
 
 export const PHeadStyled = styled.p`
@@ -211,21 +215,22 @@ export const ContainerProductList = styled.div`
 
 export const DivSeeMoreStyled = styled.div`
   height: 42px;
-  width: calc(100% - 10px);
-  margin-left: 5.6px;
+  width: calc(100% - 16px);
+  margin-left: 7.6px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2px;
   position: absolute;
-  bottom: 5px;
+  bottom: 8px;
   left: 0;
   background-color: rgb(238, 238, 238);
   box-shadow: 0px 2px 4px rgba(93, 93, 93, 0.2);
   border-radius: 6px 6px 9px 9px;
   border: 1px solid rgb(191, 191, 191);
   border-top: none;
-
+  z-index: 2;
+  cursor: pointer;
   @media screen and (min-width: 769px) {
     display: none;
   }
@@ -236,6 +241,7 @@ export const PSeeMoreStyled = styled.p`
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   font-size: 0.9em;
+  user-select: none;
 
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 0.92em;
@@ -264,7 +270,7 @@ export const SpanSeeAllStyled = styled.span`
 export const FinishSectionStyled = styled.div`
   width: 100%;
   margin: auto;
-  padding-bottom: 24px;
+  padding-bottom: 40px;
 
   @media screen and (min-width: 769px) {
     width: 300px;
@@ -284,7 +290,7 @@ export const DivAddStyled = styled.div`
   max-width: 385px;
   margin: auto;
   height: 40px;
-  margin-bottom: 26px;
+  margin-top: 26px;
   padding-bottom: 2px;
   display: flex;
   justify-content: center;

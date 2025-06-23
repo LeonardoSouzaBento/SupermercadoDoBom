@@ -14,7 +14,6 @@ export const ViewContextProvider = ({ children }) => {
         localStorage.setItem("tipForRecruiter", JSON.stringify(false));
     }
   }, [tipForRecruiter]);
-  console.log(tipForRecruiter);
 
   //estado de login
   const [noSkipLogin, setNoSkipLogin] = useState(() => {
