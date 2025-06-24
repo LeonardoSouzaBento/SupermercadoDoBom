@@ -13,25 +13,25 @@ export const ContainerForFormStyled = styled.div`
     padding-top: 13px;
   }
 
-  ${props =>
-  props.$copy &&
-  css`
-    padding-top: 18px;
-    padding-bottom: 20px;
-    margin-bottom: 8px;
-    position: sticky;
-    top: 0px;
-    left: 0px;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(227, 227, 227);
-
-    @media screen and (min-width: 769px) {
-      justify-content: flex-start;
-      padding-left: 24px;
+  ${(props) =>
+    props.$copy &&
+    css`
       padding-top: 18px;
-    }
-  `}
+      padding-bottom: 20px;
+      margin-bottom: 8px;
+      position: sticky;
+      top: 0px;
+      left: 0px;
+      display: flex;
+      justify-content: center;
+      background-color: rgb(227, 227, 227);
+
+      @media screen and (min-width: 769px) {
+        justify-content: flex-start;
+        padding-left: 24px;
+        padding-top: 18px;
+      }
+    `}
 `;
 
 export const ShadowStyled = styled.div`
@@ -42,12 +42,12 @@ export const ShadowStyled = styled.div`
   left: 0px;
   background-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.04),
+    rgba(0, 0, 0, 0.03),
     rgba(0, 0, 0, 0)
   );
   background-size: 100% 100%;
 
-  ${props => props.$copy === false && 'display: none;'}
+  ${(props) => props.$copy === false && "display: none;"}
 `;
 
 export const FormStyled = styled.form`
@@ -61,7 +61,7 @@ export const FormStyled = styled.form`
   border-radius: 20px;
   position: relative;
   max-width: 1180px;
-  ${props =>
+  ${(props) =>
     props.$copy &&
     css`
       height: 40px;
@@ -85,8 +85,8 @@ export const InputStyled = styled.input`
   background-color: white;
   border: none;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-  &:focus{
-    outline: 1px solid rgb(181, 181, 181);
+  &:focus {
+    outline: none;
     background-color: white;
   }
   &::-webkit-search-cancel-button,
@@ -94,13 +94,23 @@ export const InputStyled = styled.input`
     -webkit-appearance: none;
     appearance: none;
   }
-  @media screen and (min-width: 577px) and (max-width:768px){
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.03em;
   }
-  @media screen and (min-width: 769px){
+  @media screen and (min-width: 769px) {
     font-size: 1.04em;
   }
-  ${props => props.$copy && 'box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);'}
+  @media screen and (min-width: 1201px) {
+    text-indent: 48px;
+  }
+  ${(props) =>
+    props.$copy &&
+    css`
+      box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+      @media screen and (min-width: 577px) {
+        text-indent: 48px;
+      }
+    `}
 `;
 
 export const DivSpanStyled = styled.div`
@@ -117,6 +127,21 @@ export const DivSpanStyled = styled.div`
   bottom: 0px;
   right: 8px;
   cursor: pointer;
+
+  @media screen and (min-width: 1201px) {
+    position: absolute;
+    left: 4px;
+    bottom: -1px;
+  }
+  ${(props) =>
+    props.$copy &&
+    css`
+      @media screen and (min-width: 577px) {
+        position: absolute;
+        left: 4px;
+        bottom: -1px;
+      }
+    `}
 `;
 
 export const DivMsgStyled = styled.div`
@@ -130,17 +155,17 @@ export const DivMsgStyled = styled.div`
   left: 0px;
   z-index: 4;
 
-  @media screen and (min-width: 320px) and (max-width:374px){
-   max-width: 260px;
-   bottom: -72px;
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    max-width: 260px;
+    bottom: -72px;
   }
-  @media screen and (min-width: 375px) and (max-width:576px){
+  @media screen and (min-width: 375px) and (max-width: 576px) {
     max-width: 308px;
     bottom: -72px;
   }
 `;
 
-export const PointedShapeStyed= styled.div`
+export const PointedShapeStyed = styled.div`
   height: 12px;
   width: 12px;
   background-color: blue;
@@ -156,20 +181,20 @@ export const PMsgStyled = styled.p`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   padding: 12px 0px;
 
-  @media screen and (min-width: 320px) and (max-width:374px){
-   font-size: 1.055em;
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    font-size: 1.055em;
   }
-  @media screen and (min-width: 375px) and (max-width:576px){
-     font-size: 1.07em;
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.07em;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px){
-     font-size: 1.11em;
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.11em;
   }
-  @media screen and (min-width: 769px) and (max-width: 992px){
-     font-size: 1.13em;
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.13em;
   }
-  @media screen and (min-width: 993px){
-     font-size: 1.15em;
+  @media screen and (min-width: 993px) {
+    font-size: 1.15em;
   }
 `;
 
@@ -180,7 +205,8 @@ export const CompletionsDivStyled = styled.div`
   display: flex;
   justify-content: flex-end;
   position: absolute;
-  top: 67px;
+  top: 79px;
+  ${props => props.$copy==false && 'top:68px;'}
   left: 5%;
   align-items: center;
   gap: 12px;
@@ -189,10 +215,10 @@ export const CompletionsDivStyled = styled.div`
   border-radius: 8px;
   background-color: transparent;
 
-  @media screen and (min-width: 769px){
+  @media screen and (min-width: 769px) {
     justify-content: flex-start;
   }
-  @media screen and (min-width: 1201px){
+  @media screen and (min-width: 1201px) {
     left: 7.5%;
   }
 `;
@@ -201,34 +227,39 @@ export const PStyled = styled.p`
   width: max-content;
   padding: 9px 16px;
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(0, 0, 0);
   border-radius: 20px;
   text-transform: uppercase;
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 500;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.24);
+  ${props => props.$copy === false && 'box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);'}
   flex: none;
-  cursor: default;
-  @media screen and (min-width: 320px) and (max-width: 374px){
+  cursor: pointer;
+
+  &:hover{
+    background-color: rgb(249, 249, 249);
+  }
+  @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 0.86em;
     line-height: 18px;
     letter-spacing: 1.01px;
     padding: 9px 12px;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px){
+  @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 0.89em;
     line-height: 18px;
     letter-spacing: 1.05px;
     padding: 9px 12px;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px){
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 0.9em;
     line-height: 19px;
     letter-spacing: 1.06px;
   }
-  @media screen and (min-width: 769px){
+  @media screen and (min-width: 769px) {
     font-size: 0.91em;
     line-height: 20px;
     letter-spacing: 1.06px;
   }
+
 `;

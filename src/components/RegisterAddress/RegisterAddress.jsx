@@ -42,7 +42,7 @@ const RegisterAddress = ({ setSeeAdressForm }) => {
     <Box0Styled>
       <BoxStyled>
         <SpanCloseStyled
-          className="material-symbols-outlined"
+          className="material-symbols-rounded"
           onClick={() => {
             setSeeAdressForm(false);
           }}
@@ -63,13 +63,16 @@ const RegisterAddress = ({ setSeeAdressForm }) => {
             placeholder="CEP"
             value={formData.cep}
             onChange={handleChange}
-            style={{ marginBottom: "10px" }}
+            style={{
+              marginBottom: "12px",
+              backgroundColor: "rgb(240, 240, 240)",
+              boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.5)"
+            }}
           />
-          <NoKnowMyCEP>Não sei meu CEP</NoKnowMyCEP>
 
           <div
             style={{
-              backgroundColor: "rgb(242, 242, 242)",
+              backgroundColor: "rgb(227, 227, 227)",
               marginBottom: "0px",
               padding: "12px",
               paddingBottom: "0px",

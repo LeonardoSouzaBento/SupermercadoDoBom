@@ -9,19 +9,21 @@ export const Box0Styled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.24);
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 768px) {
     background-color: rgb(235, 235, 235);
   }
-  @media screen and (min-width: 401px) and (max-width: 768px) {
-    background-color: rgb(240, 240, 240);
-  }
-  @media screen and (min-width: 769px) {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    justify-content: flex-end;
-  }
+  /* &:before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    filter: saturate(1);
+  } */
 `;
 
 // Caixa central onde ficam os inputs
@@ -36,43 +38,44 @@ export const BoxStyled = styled.div`
   padding-top: 16px;
   padding-bottom: 4px;
   position: relative;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
 
   @media screen and (max-width: 768px) {
     margin-bottom: 24px;
   }
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: calc(100% - 20px);
-    border: 1px solid rgb(182, 182, 182);
   }
   @media screen and (min-width: 375px) and (max-width: 400px) {
     width: calc(100% - 20px);
     border-radius: 12px;
     box-shadow: none;
-    border: 1px solid rgb(182, 182, 182);
   }
   @media screen and (min-width: 401px) and (max-width: 768px) {
     box-shadow: 0 0px 6px rgba(0, 0, 0, 0.14);
-    border: 1px solid rgb(176, 176, 176);
   }
   @media screen and (min-width: 769px) {
     margin-right: 10px;
     padding-left: 24px;
     padding-right: 24px;
-    border: 1px solid rgb(158, 158, 158);
   }
   @media screen and (min-width: 993px) {
-    border-radius: 10px;
+    border-radius: 8px;
+    margin-right: 32px;
   }
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 1.75em;
+  font-size: 1.65em;
   color: red;
   font-weight: 400;
   position: absolute;
   top: 10px;
   right: 10px;
   cursor: pointer;
+  background-color: rgb(236, 236, 236);
+  border-radius: 6px;
+  padding: 2px;
 `;
 
 // Título
@@ -105,24 +108,24 @@ export const TitleStyled = styled.h1`
 // Botão de localização
 export const LocationButtonStyled = styled.button`
   width: 100%;
-  height: 40px;
+  height: 44px;
   padding: 0px 16px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(68, 41, 246);
+  background-color: #16814D;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-family: "Roboto Flex", sans-serif;
   font-size: 1.12em;
+  font-weight: 300;
   text-align: center;
-  border: 1px solid rgb(59, 10, 206);
 
   &:hover {
-    background-color: rgb(22, 40, 230);
+    background-color:rgb(20, 117, 70);
   }
 
   @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -135,7 +138,7 @@ export const LocationButtonStyled = styled.button`
     font-size: 1.145em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.15em;
+    font-size: 1.22em;
   }
 `;
 
@@ -155,24 +158,24 @@ export const InputStyled = styled.input`
   padding: 10px;
   box-sizing: border-box;
   margin-bottom: 14px;
-  border: 1px solid rgb(201, 201, 201);
+  border: none;
   border-radius: 6px;
   font-size: 1.025em;
-
+  color: black;
+  
   &:focus {
-    outline: 1px solid rgb(56, 56, 56);
+    outline: none;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
   }
 `;
 
 // Botão de envio
 export const SubmitButtonStyled = styled(LocationButtonStyled)`
-  width: 100%;
-  height: 44px;
-  background-color: #007bff;
+  background-color: #4429f6;
   border-radius: 0px 0px 6px 6px;
-  border: 1px solid rgb(113, 120, 255);
+  font-weight: 400;
 
   &:hover {
-    background-color: #0069d9;
+    background-color:rgb(57, 34, 204);
   }
 `;

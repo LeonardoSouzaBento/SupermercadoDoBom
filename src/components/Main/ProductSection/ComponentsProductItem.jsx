@@ -19,18 +19,23 @@ export const PaiProdStyled = styled.div`
       height: 180px;
 
       @media screen and (min-width: 320px) and (max-width: 374px) {
+        min-width: 260px;
         max-width: 260px;
       }
       @media screen and (min-width: 375px) and (max-width: 576px) {
+        min-width: 270px;
         max-width: 270px;
       }
       @media screen and (min-width: 577px) and (max-width: 768px) {
+        min-width: 272px;
         max-width: 272px;
       }
       @media screen and (min-width: 769px) and (max-width: 992px) {
+        min-width: 275px;
         max-width: 275px;
       }
       @media screen and (min-width: 993px) {
+        min-width: 280px;
         max-width: 280px;
         height: 170px;
       }
@@ -40,6 +45,7 @@ export const PaiProdStyled = styled.div`
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
       box-shadow: none;
+      //Modo paisagem
       @media screen and (max-width: 431.99px) {
         flex-direction: row;
         height: 180px;
@@ -48,15 +54,20 @@ export const PaiProdStyled = styled.div`
         max-width: 100%;
       }
       @media screen and (min-width: 375px) and (max-width: 431.99px) {
+        min-width: 300px;
         max-width: 300px;
       }
+      //Modo retrato
       @media screen and (min-width: 432px) and (max-width: 992px) {
         flex-direction: column;
         justify-content: space-between;
         max-width: 180px;
+        min-height: 296px;
       }
-      @media screen and (min-width: 993px){
+      //modo paisagem
+      @media screen and (min-width: 993px) {
         flex-direction: row;
+        min-width: 180px;
         max-width: 280px;
         height: 170px;
       }
@@ -372,7 +383,7 @@ export const PMaisStyled = styled.p`
 export const DivQuantStyled = styled.div`
   width: 128px;
   height: 34px;
-  background-color:rgb(220, 97, 70);
+  background-color: rgb(220, 97, 70);
   display: flex;
   justify-content: space-between;
   border-radius: 18px;

@@ -13,11 +13,42 @@ const Main = styled.main`
   max-width: 1390px;
   margin: auto;
   padding: 0px;
-  /* background: linear-gradient(to top, rgb(227, 227, 227), rgb(240, 240, 240)); */
-  background: linear-gradient(to top, rgb(223, 223, 223), rgb(235, 235, 235));
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: bottom;
+  position: relative;
+  background-color: rgb(235, 235, 235);
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(227, 227, 227);
+    background-size: cover;
+    z-index: 1;
+  }
+
+  &::before{
+    content: "";
+    width: 100%;
+    height: 130px;
+    position: absolute;
+    bottom: 40%;
+    left: 0;
+    background: linear-gradient(to top, rgb(227, 227, 227), rgb(235, 235, 235));
+    background-size: cover;
+    z-index: 1;
+  }
+`;
+
+const ShadowBottomStyled = styled.div`
+  width: 100%;
+  height: 36px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to top, rgb(240, 240, 240), rgba(0, 0, 0, 0));
+  z-index: 2;
 `;
 
 function MainContent() {
@@ -74,6 +105,7 @@ function MainContent() {
           <AnnouncementSection />
           <CategoriesSection />
           <PromoSection categoryKey={currentCategory} />
+          <ShadowBottomStyled/>
         </Main>
       </div>
       <Footer />

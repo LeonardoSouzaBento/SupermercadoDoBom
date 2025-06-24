@@ -5,6 +5,7 @@ export const Div = styled.div`
   overflow-x: hidden;
   margin-left: 20px;
   position: relative;
+  z-index: 2;
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: calc(100% - 15px);
@@ -84,6 +85,9 @@ export const Divf = styled.div`
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     gap: 15px;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    margin-bottom: 18px;
   }
 `;
 

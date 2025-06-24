@@ -6,6 +6,8 @@ import { ProductListHome } from "../../components/Main/ProductSection/ProductLis
 import {
   MainStyled,
   CartSectionStyed,
+  CornerStyled,
+  MiniCircleStyled,
   ShadowStyled,
   DivSpanCancelCart,
   SpanCancelCart,
@@ -116,7 +118,7 @@ const Cart = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "auto"
+      behavior: "auto",
     });
     if (ProductListRef.current) {
       checkHiddenProducts();
@@ -146,11 +148,20 @@ const Cart = () => {
 
   if (totalAddedValue != 0) {
     return (
-      <div style={{ position: "relative", height: "100%", backgroundColor:'rgb(245, 245, 245)'}}>
+      <div
+        style={{
+          position: "relative",
+          height: "100%",
+          backgroundColor: "rgb(245, 245, 245)",
+        }}
+      >
         <MainStyled $seeAdressForm={seeAdressForm}>
-          <div style={{ position: "relative", height: "max-content" }}>
+          <div style={{ position: "relative", marginBottom:"24px" }}>
             <CartSectionStyed ref={CartSectionRef}>
               <DivHeadStyled>
+                <CornerStyled>
+                  <MiniCircleStyled />
+                </CornerStyled>
                 <DivSpanCancelCart
                   onClick={() => {
                     setSeeCancelDialog(true);
@@ -212,8 +223,8 @@ const Cart = () => {
                   </SpanSeeAllStyled>
                 </DivSeeMoreStyled>
               )}
-            <ShadowStyled/>
             </CartSectionStyed>
+            <ShadowStyled />
           </div>
 
           <FinishSectionStyled>
@@ -250,8 +261,9 @@ const Cart = () => {
               <DivContinueStyled
                 $nocontinue={falta > 0}
                 onClick={() => {
-                  if(falta <= 0){
-                  setSeeAdressForm(true)}
+                  if (falta <= 0) {
+                    setSeeAdressForm(true);
+                  }
                 }}
               >
                 <PContinueStyled>Continuar</PContinueStyled>

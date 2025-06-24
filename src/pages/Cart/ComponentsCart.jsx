@@ -25,12 +25,28 @@ export const MainStyled = styled.div`
   ${(props) => props.$seeAdressForm && " filter: blur(2.5px)"}
 `;
 
+/* Divs para borda em desktop*/
+export const CornerStyled = styled.div`
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  background-color: #f5f5f5;
+  top: 0;
+  right: 0;
+`;
+
+export const MiniCircleStyled = styled(CornerStyled)`
+  height: 100%;
+  width: 100%;
+  background-color: #e3e3e3;
+  border-radius: 0px 10px 0px 0px;
+`;
+
 export const CartSectionStyed = styled.div`
   width: 100%;
   max-width: 894px;
   height: 460px;
   margin: auto;
-  margin-bottom: 24px;
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
@@ -47,15 +63,15 @@ export const CartSectionStyed = styled.div`
 
   @media screen and (min-width: 993px) {
     &::-webkit-scrollbar-track {
-      background: #f1f1f1; /* cor de fundo da "trilha" */
+      background: rgb(227, 227, 227); /* cor de fundo da "trilha" */
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #888; /* cor do "botão" da barra */
-      border-radius: 6px; /* bordas arredondadas */
+      background: rgb(196, 196, 196); /* cor do "botão" da barra */
+      border-radius: 6px;
     }
     scrollbar-width: thin; /* Opções: auto | thin | none */
-    scrollbar-color:rgb(211, 211, 211) rgb(237, 237, 237) ; /* thumb | track */
+    scrollbar-color: rgb(196, 196, 196) rgb(227, 227, 227); /* thumb | track */
   }
 
   @media screen and (min-width: 769px) {
@@ -162,7 +178,7 @@ export const ShadowStyled = styled.div`
   width: 100%;
   height: 16px;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   left: 0;
   background-image: linear-gradient(
     to top,
@@ -170,12 +186,11 @@ export const ShadowStyled = styled.div`
     rgba(0, 0, 0, 0)
   );
   background-size: 100% 100%;
-  border-radius: 0px 0px 8px 8px;
+  border-radius: 0px 0px 10px 10px;
 
   @media screen and (min-width: 769px) {
-    position: sticky;
-    bottom: 0;
-    left: 0;
+   width: calc(100% - 31px);
+   margin-left: 15px;
   }
   @media screen and (min-width: 993px) {
     display: none;
@@ -307,7 +322,7 @@ export const FinishSectionStyled = styled.div`
 //botão adicionar
 export const DivAddStyled = styled.div`
   width: 95%;
-  max-width: 385px;
+  max-width: 400px;
   margin: auto;
   height: 40px;
   margin-top: 26px;
@@ -316,17 +331,16 @@ export const DivAddStyled = styled.div`
   justify-content: center;
   gap: 12px;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 6.5px;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(199, 199, 199);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
 
   @media screen and (min-width: 769px) {
     width: 100%;
     order: 2;
     margin: 0;
     height: 44px;
-    border-radius: 22px;
   }
 `;
 
@@ -368,7 +382,7 @@ export const ContainerStyled = styled.div`
   border-radius: 8px;
   border: 1px solid rgb(207, 207, 207);
   border-top: none;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.24);
 
   @media screen and (min-width: 769px) {
     display: block;

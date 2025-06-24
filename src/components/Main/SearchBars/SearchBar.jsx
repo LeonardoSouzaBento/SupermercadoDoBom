@@ -240,6 +240,7 @@ function SearchBar({ copy }) {
           ref={inputRef}
         />
         <DivSpanStyled
+          $copy={copy}
           onPointerDown={(e) => {
             handleClickSearch();
           }}
@@ -261,13 +262,14 @@ function SearchBar({ copy }) {
       </FormStyled>
 
       {completions != "" && (
-        <CompletionsDivStyled>
+        <CompletionsDivStyled $copy={copy}>
           {completions.map((suggestion, i) => (
             <PStyled
               key={i}
               onPointerDown={() => {
                 handleClickComplete(suggestion);
               }}
+              $copy={copy}
             >
               {suggestion}...
             </PStyled>
