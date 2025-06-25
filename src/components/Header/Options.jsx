@@ -6,7 +6,7 @@ export const ContainerStyled = styled.div`
   width: auto;
   height: auto;
   position: fixed;
-  right: 4.8%;
+  right: 4.7%;
   top: 120px;
   background-color: transparent;
   z-index: 6;
@@ -20,10 +20,10 @@ export const ContainerStyled = styled.div`
     top: 121px;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    right: 3.1%;
+    right: 3.5%;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    right: 4.71%;
+    right: 5%;
   }
   @media screen and (min-width: 1201px) {
     top: 110px;
@@ -52,25 +52,7 @@ const DivPStyled = styled.div`
   display: flex;
   align-items: center;
   width: max-content;
-
-  @media screen and (min-width: 320px) and (max-width: 374px) {
-    height: 44px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    height: 46px;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    height: 49px;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    height: 50.8px;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    height: 51px;
-  }
-  @media screen and (min-width: 1201px) {
-    height: 52px;
-  }
+  height: 44px;
 `;
 
 export const POptionStyled = styled.p`
@@ -100,30 +82,8 @@ export const DivSpanStyled = styled.div`
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.26);
   flex: none;
   cursor: pointer;
-  @media screen and (min-width: 320px) and (max-width: 374px) {
-    width: 44px;
-    height: 44px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: 46px;
-    height: 46px;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    width: 49px;
-    height: 49px;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    width: 50.8px;
-    height: 50.8px;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    width: 51px;
-    height: 51px;
-  }
-  @media screen and (min-width: 1201px) {
-    width: 52px;
-    height: 52px;
-  }
+  width: 44px;
+  height: 44px;
 `;
 
 const DivSpanFalse = styled(DivSpanStyled)`
@@ -134,7 +94,7 @@ const DivSpanFalse = styled(DivSpanStyled)`
 
 export const SpanOptionsStyled = styled.span`
   font-weight: 300;
-  font-size: 1.9em;
+  font-size: 1.85em;
   color: rgb(255, 255, 255);
   font-variation-settings: "FILL" 1, "wght" 300, "GRAD" -25, "opsz" 24;
   user-select: none;
@@ -153,21 +113,21 @@ const Options = () => {
   const [numberClicks, setNumberClicks] = useState([0, 0, 0]);
 
   function openContent(e, index) {
-    if (e.pointerType === "mouse" && viewNameOption == index) {
+    if (e.pointerType === "mouse") {
       const option = contents[index].navigateTo;
       navigate(`/secao-mais-opcoes?option=${option}`);
-    } else if (e.pointerType === "touch" && viewNameOption == index) {
+    } else if (e.pointerType === "touch") {
       setViewNameOption(index);
       setNumberClicks(
         numberClicks.map((_, i) => {
-          return index == i ? numberClicks[i] + 1 : 0;
+          return index == i ? numberClicks[index] + 1 : 0;
         })
       );
     }
   }
 
   useEffect(() => {
-    const index = numberClicks.findIndex((count) => count >= 2);
+    const index = numberClicks.findIndex((count) => count == 2);
     if (index != -1) {
       const option = contents[index].navigateTo;
       setNumberClicks([0, 0, 0]);
@@ -180,7 +140,7 @@ const Options = () => {
       {contents.map((content, i) => (
         <DivNameSpanStyled
           key={i}
-          onMouseEnter={() => {
+          onMouseEnter={() => { 
             setViewNameOption(i);
           }}
           onMouseLeave={() => {

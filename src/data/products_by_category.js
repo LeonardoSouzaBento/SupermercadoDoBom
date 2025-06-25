@@ -1,3 +1,6 @@
+import { all_products } from "./all_products";
+import { promo_products } from "./promo_products";
+
 export const productsCatId1 = [
   {
     url: "https://th.bing.com/th/id/OIP.t1QgaD4e2oT-gglRLF240QHaHa?rs=1&pid=ImgDetMain",
@@ -477,30 +480,51 @@ export const productsCatId9 = [
   },
 ];
 
-productsCatId1.forEach((product) => {
-  product.quant = 0;
+const allProducts2 = [
+  promo_products,
+  productsCatId1,
+  productsCatId2,
+  productsCatId3,
+  productsCatId4,
+  productsCatId5,
+  productsCatId6,
+  productsCatId7,
+  productsCatId8,
+  productsCatId9,
+];
+
+allProducts2.forEach((products) => {
+  products.forEach((product) => {
+    product.quant = 0;
+  });
 });
-productsCatId2.forEach((product) => {
-  product.quant = 0;
+
+//corrigir os ids
+let currentId = 1;
+
+allProducts2.forEach((products) => {
+  products.forEach((product) => {
+    product.id = currentId++;
+  });
 });
-productsCatId3.forEach((product) => {
-  product.quant = 0;
+
+//repetir os ids se houver produtos iguais
+const urlToIdMap = new Map();
+
+allProducts2.forEach((products) => {
+  products.forEach((product) => {
+    product.id = currentId;
+    urlToIdMap.set(product.url, currentId);
+    currentId++;
+  });
 });
-productsCatId4.forEach((product) => {
-  product.quant = 0;
+
+all_products.forEach((product) => {
+  const existingId = urlToIdMap.get(product.url);
+  if (existingId !== undefined) {
+    product.id = existingId;
+  }
 });
-productsCatId5.forEach((product) => {
-  product.quant = 0;
-});
-productsCatId6.forEach((product) => {
-  product.quant = 0;
-});
-productsCatId7.forEach((product) => {
-  product.quant = 0;
-});
-productsCatId8.forEach((product) => {
-  product.quant = 0;
-});
-productsCatId9.forEach((product) => {
-  product.quant = 0;
-});
+
+
+

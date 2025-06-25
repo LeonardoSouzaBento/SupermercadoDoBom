@@ -23,8 +23,8 @@ const InputTextStyled = styled.textarea`
   padding-top: 12px;
   box-sizing: border-box;
   border-radius: 6px;
-  border: 1px solid rgb(178, 178, 178);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   font-family: "Roboto", sans-serif;
   overflow-wrap: break-word;
   
@@ -64,12 +64,12 @@ const InputSubmitStyled = styled.input`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 500;
   border-radius: 4px;
-  background-color: rgb(38, 26, 204);
+  background-color: rgb(25, 111, 7);
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: white;
   border: none;
 
-  ${(props) => props.$sent && "background-color: rgb(15, 117, 20);"};
+  ${(props) => props.$sent && "background-color: rgb(76, 156, 34);"};
   @media screen and (max-width: 768px) {
     font-size: 1.05em;
   }
@@ -101,7 +101,7 @@ const InsertComment = () => {
   return (
     <ContainerStyled>
       <InputTextStyled
-        placeholder="Seu comentário vai cair no meu whatsapp"
+        placeholder="Seu comentário cai no meu whatsapp"
         type="text"
       />
       <ContainerStyled2>
