@@ -33,6 +33,8 @@ export const ViewContextProvider = ({ children }) => {
   const [preventClick, setPreventClick] = useState(false);
   const [viewFeedback, setViewFeedback] = useState(false);
   
+  const [quantBlur, setQuantBlur] = useState(3.5);
+
   return (
     <ViewContext.Provider
       value={{
@@ -43,7 +45,9 @@ export const ViewContextProvider = ({ children }) => {
         viewFeedback,
         setViewFeedback,
         noSkipLogin, 
-        setNoSkipLogin
+        setNoSkipLogin,
+        quantBlur,
+        setQuantBlur
       }}
     >
       {children}

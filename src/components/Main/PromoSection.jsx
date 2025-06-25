@@ -52,7 +52,7 @@ function PromoSection({categoryKey}) {
     const marginleft = parseFloat(getComputedStyle(paiAllProductsRef.current).marginLeft);
     const calculatedLimit = widthPaiAll - widthProdsLine - marginleft;
     const calculatedLimit2 = calculatedLimit + marginleft;
-    window.innerWidth<993?setLimitProductList(calculatedLimit): setLimitProductList(calculatedLimit2);
+    window.innerWidth<1201?setLimitProductList(calculatedLimit): setLimitProductList(calculatedLimit2);
   }, [currentCategory, allProductsInCat]);
 
   const handleResize = useCallback(() => {

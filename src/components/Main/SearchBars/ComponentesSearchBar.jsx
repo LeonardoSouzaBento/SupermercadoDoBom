@@ -75,7 +75,7 @@ export const InputStyled = styled.input`
   height: 40px;
   width: 100%;
   touch-action: auto;
-  border-radius: 20px;
+  border-radius: 12px;
   text-indent: 20px;
   font-weight: 400;
   font-size: 1em;
@@ -96,6 +96,7 @@ export const InputStyled = styled.input`
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.03em;
+    text-indent: 48px;
   }
   @media screen and (min-width: 769px) {
     font-size: 1.04em;
@@ -128,6 +129,15 @@ export const DivSpanStyled = styled.div`
   right: 8px;
   cursor: pointer;
 
+  ${(props) =>
+    props.$copy == false &&
+    css`
+      @media screen and (min-width: 577px) and (max-width: 768px) {
+        position: absolute;
+        left: 4px;
+        bottom: -1px;
+      }
+    `}
   @media screen and (min-width: 1201px) {
     position: absolute;
     left: 4px;
@@ -206,7 +216,7 @@ export const CompletionsDivStyled = styled.div`
   justify-content: flex-end;
   position: absolute;
   top: 79px;
-  ${props => props.$copy==false && 'top:68px;'}
+  ${(props) => props.$copy == false && "top:68px;"}
   left: 5%;
   align-items: center;
   gap: 12px;
@@ -232,11 +242,12 @@ export const PStyled = styled.p`
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 500;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.24);
-  ${props => props.$copy === false && 'box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);'}
+  ${(props) =>
+    props.$copy === false && "box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);"}
   flex: none;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     background-color: rgb(249, 249, 249);
   }
   @media screen and (min-width: 320px) and (max-width: 374px) {
@@ -261,5 +272,4 @@ export const PStyled = styled.p`
     line-height: 20px;
     letter-spacing: 1.06px;
   }
-
 `;

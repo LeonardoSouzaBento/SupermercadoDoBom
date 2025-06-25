@@ -6,7 +6,6 @@ export const Div = styled.div`
   margin-left: 20px;
   position: relative;
   z-index: 2;
-
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: calc(100% - 15px);
     margin-left: 15px;
@@ -61,18 +60,16 @@ export const PLabelStyled = styled.p`
 `;
 
 export const Divf = styled.div`
-  width: 100%;
+  width: auto;
   margin: auto;
   margin-bottom: 17px;
   padding: 4px;
-  padding-right: 19px;
+  padding-right: 20px;
   display: flex;
-  justify-content: space-between;
   flex-flow: row nowrap;
   gap: 10px;
   position: relative;
   overflow-x: scroll;
-  box-sizing: border-box;
   user-select: none;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
@@ -88,6 +85,10 @@ export const Divf = styled.div`
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     margin-bottom: 18px;
+  }
+  @media screen and (min-width: 1201px) {
+    padding-right: 6px;
+    justify-content: space-between;
   }
 `;
 
@@ -129,7 +130,7 @@ export const DivCat = styled.div`
   ${(props) =>
     props.$selected &&
     `background-color: rgb(255, 255, 255);
-     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);}
+     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.35);}
     `}
 `;
 

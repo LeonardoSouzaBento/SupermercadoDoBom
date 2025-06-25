@@ -43,7 +43,8 @@ const DivImgStyled = styled.div`
   width: 100%;
   height: 310px;
   border-radius: 5px;
-  background-color: #3c3c3c;
+  background-color:rgb(218, 218, 218);
+  box-shadow:inset 0px 0px 4px rgba(0, 0, 0, 0.12);
   ${(props) => props.$painting && "max-height: 290px;"};
 `;
 
@@ -90,7 +91,7 @@ const AboutMe = () => {
       <PStyled $moreWidth={true}>
         Meu nome é <strong>Leonardo Souza Bento. </strong>
         Estou cursando Engenharia de Software desde março de 2023. Estou
-        procurando um trabalho como desenvolvedor web junior (apenas trabalho
+        procurando um trabalho como desenvolvedor front-end junior (apenas trabalho
         remoto).
       </PStyled>
       <PLineStyled>____________________________________</PLineStyled>

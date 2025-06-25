@@ -361,7 +361,7 @@ export const DivMaisStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e6684c;
+  background-color:hsl(11, 76%, 60%);
   border-radius: 50%;
   cursor: pointer;
 `;
@@ -383,7 +383,7 @@ export const PMaisStyled = styled.p`
 export const DivQuantStyled = styled.div`
   width: 128px;
   height: 34px;
-  background-color: rgb(220, 97, 70);
+  background-color: hsl(11, 69%, 58%);
   display: flex;
   justify-content: space-between;
   border-radius: 18px;

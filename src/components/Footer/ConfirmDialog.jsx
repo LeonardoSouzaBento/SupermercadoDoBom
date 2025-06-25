@@ -7,34 +7,34 @@ const ContainerStyled = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   z-index: 4;
-  background-color: rgba(25, 25, 27, 0.64);
+  background-color: rgba(0, 0, 0, 0.12);
 `;
 
 const DivStyled = styled.div`
+  width: 90%;
+  max-width: 400px;
+  height: 164px;
+  padding: 24px 18px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 210px;
-  height: 175px;
-  padding: 32px 20px;
-  border-radius: 8px;
-  position: fixed;
-  right: 56px;
-  bottom: 40px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.59);
   gap: 8px;
+  border-radius: 7px 0px 0px 7px;
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  background-color:rgb(226, 93, 63);
+  ${props => props.$viewFeedback && 'background-color: white;'};
 
-  @media screen and (min-width: 320px) and (max-width: 576px) {
-    right: 8px;
-  }
   @media screen and (min-width: 993px) {
     bottom: 10px;
-    right: 234px;
+    right: 8px;
+    border-radius: 7px;
   }
 `;
 
@@ -54,7 +54,7 @@ const SpanStyled = styled.span`
   font-weight: 600;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.29);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.24);
   position: absolute;
   transform: translateY(-90%);
   cursor: default;
@@ -69,7 +69,6 @@ const PQuestionStyled = styled.p`
   width: 100%;
   text-align: center;
   cursor: default;
-  /* letter-spacing: 0.71px; */
   font-size: 1.15em;
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
@@ -85,7 +84,6 @@ const PQuestionStyled = styled.p`
 
 const DivSimNaoStyled = styled.div`
   display: flex;
-  flex-direction: column;
   width: 100%;
   height: max-content;
   gap: 12px;
@@ -113,7 +111,7 @@ const GenericPStyled = styled.p`
 `;
 
 const PSimStyled = styled(GenericPStyled)`
-  background-color: rgb(201, 0, 0);
+  background-color: rgb(184, 0, 0);
   color: white;
   font-weight: 500;
   @media screen and (min-width: 320px) and (max-width: 374px) {
@@ -129,18 +127,16 @@ const PSimStyled = styled(GenericPStyled)`
 
   &:hover {
     background-color: rgb(168, 0, 0);
-    outline: 1px solid rgba(0, 0, 0, 0.65);
   }
 `;
 
 const PVoltarStyled = styled(GenericPStyled)`
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(255, 255, 255);
   font-weight: 500;
   transition: background-color 0.1s ease;
 
   &:hover {
-    background-color: rgb(213, 213, 213);
-    outline: 1px solid rgba(162, 162, 162, 0.69);
+    background-color: rgb(230, 230, 230);
   }
 `;
 
@@ -175,7 +171,7 @@ const PFeedbackStyled = styled(GenericPStyled)`
   cursor: default;
 `;
 
-export default function ConfirmDialog({ setViewConfirm }) {
+export default function ConfirmDialog({ setViewConfirm, setQuantBlur }) {
   const { setCartProducts } = useContext(CartContext);
   const { viewFeedback, setViewFeedback } = useContext(ViewContext);
 
@@ -184,15 +180,16 @@ export default function ConfirmDialog({ setViewConfirm }) {
     if (duration < 110) {
       if (action === 1) {
         setViewFeedback(true);
-
         setCartProducts([]);
 
         setTimeout(() => {
           setViewConfirm(false);
           setViewFeedback(false);
+          setQuantBlur(0);
         }, 1500);
       } else if (action === 0) {
         setViewConfirm(false);
+        setQuantBlur(0);
       }
     }
     //pra toque de touchpad
@@ -204,16 +201,18 @@ export default function ConfirmDialog({ setViewConfirm }) {
       setTimeout(() => {
         setViewConfirm(false);
         setViewFeedback(false);
+        setQuantBlur(0);
       }, 1500);
     }
     if (action === "0") {
       setViewConfirm(false);
+      setQuantBlur(0);
     }
   };
 
   return (
     <ContainerStyled>
-      <DivStyled>
+      <DivStyled $viewFeedback={viewFeedback}>
         {viewFeedback === false ? (
           <>
             <DivCancelStyled>

@@ -5,11 +5,10 @@ export default function AboutTheWebsite() {
     <>
       <H1Styled>Resumo</H1Styled>
       <H2Styled>Funções importantes para conferir no repósitorio</H2Styled>
-      <PStyled>
+      <PStyled >
         <strong>CartContext.jsx:</strong> anota os produtos que o cliente quer
         obter. Portanto, tem a função principal.
       </PStyled>
-      <br />
       <PStyled>
         <strong>UseScrollX.jsx:</strong> um hook personalizado que rola as divs
         da página inicial com mouse aplicando scrollLeft dinamicamente.
@@ -17,13 +16,13 @@ export default function AboutTheWebsite() {
       <br />
       <H2Styled>Repósitorio</H2Styled>
       <PStyled>
-        A cópia (porque o original me pertence) está aqui:{" "}
+        A cópia está aqui (o original é privado):{" "}
         <a
           target="_blank"
           href="https://github.com/LeonardoSouzaBento/supermercado-do-bom"
           style={{ textDecoration: "none" }}
         >
-          Ver repósitorio no GitHub.{" "}
+          Ver no GitHub.{" "}
         </a>
       </PStyled>
       <br />

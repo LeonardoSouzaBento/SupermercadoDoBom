@@ -13,11 +13,12 @@ const FooterStyled = styled.footer`
   width: 100%;
   background-color: transparent;
   position: fixed;
-  bottom: 7px;
+  bottom: 8px;
   z-index: 2;
   border-radius: 5px;
-  @media screen and (min-width: 993px) {
-    bottom: 9px;
+
+  @media screen and (max-width: 577px) {
+    justify-content: center;
   }
 `;
 
@@ -25,16 +26,25 @@ const CartDescStyled = styled.div`
   display: flex;
   width: 90%;
   max-width: 400px;
-  height: 48px;
-  background-color: rgb(230, 104, 76);
-  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.17);
-  border-radius: 23px 0px 0px 23px;
+  height: 44px;
+  margin-right: 8px;
+  background-color: hsl(11, 90%, 61.40%);
+  border-radius: 24px 6px 6px 24px;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   user-select: none;
   overflow: hidden;
   position: relative;
+
+  @media screen and (max-width: 577px) {
+    border-radius: 24px;
+    margin-right: 0px;
+  }
+  @media screen and (min-width: 993px) {
+    border-radius: 24px 8px 8px 24px;
+    max-width: 470px;
+  }
 `;
 
 const DivCancelECart = styled.div`
@@ -44,7 +54,7 @@ const DivCancelECart = styled.div`
   height: 100%;
   width: auto;
   gap: 10px;
-  padding-left: 4px;
+  padding-left: 3.1px;
 `;
 
 const DivCartStyled = styled.div`
@@ -57,8 +67,8 @@ const DivCartStyled = styled.div`
 `;
 
 const DivCancelStyled = styled(DivCartStyled)`
-  height: 40px;
-  width: 40px;
+  height: 38px;
+  width: 38px;
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
   box-shadow: 8px 0px 20px rgba(0, 0, 0, 0.16);
@@ -141,11 +151,11 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer() {
+export default function Footer({setQuantBlur}) {
   const { totalQuantity, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
-
+  
   if (totalQuantity <= 0 && viewConfirm === false) {
     return null;
   }
@@ -169,6 +179,7 @@ export default function Footer() {
               onPointerDown={(e) => {
                 e.stopPropagation(e);
                 setViewConfirm(true);
+                setQuantBlur(2.5);
               }}
             >
               <SpanCancelStyled className="material-symbols-outlined">
@@ -201,6 +212,6 @@ export default function Footer() {
     );
   }
   if (viewConfirm) {
-    return <ConfirmDialog setViewConfirm={setViewConfirm}></ConfirmDialog>;
+    return <ConfirmDialog setViewConfirm={setViewConfirm} setQuantBlur={setQuantBlur}></ConfirmDialog>;
   }
 }

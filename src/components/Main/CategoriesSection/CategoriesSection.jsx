@@ -65,7 +65,8 @@ function CategoriesSection() {
       const itemWidth = CategoryItemRef.current.offsetWidth;
       const divWidth = DivRef.current.offsetWidth;
       const gap = parseFloat(getComputedStyle(categoriesRef.current).gap) || 0;
-      const totalWidth = category.length * itemWidth + (category.length - 1) * gap;
+      const paddingRight = parseFloat(getComputedStyle(categoriesRef.current).paddingRight);
+      const totalWidth = category.length * itemWidth + (category.length - 1) * gap + paddingRight;
       const limit = divWidth - totalWidth;
       window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
     }

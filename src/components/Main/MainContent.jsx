@@ -23,19 +23,19 @@ const Main = styled.main`
     position: absolute;
     bottom: 0;
     left: 0;
-    background-color: rgb(227, 227, 227);
+    background-color: rgb(225, 225, 225);
     background-size: cover;
     z-index: 1;
   }
 
-  &::before{
+  &::before {
     content: "";
     width: 100%;
     height: 130px;
     position: absolute;
     bottom: 40%;
     left: 0;
-    background: linear-gradient(to top, rgb(227, 227, 227), rgb(235, 235, 235));
+    background: linear-gradient(to top, rgb(225, 225, 225), rgb(235, 235, 235));
     background-size: cover;
     z-index: 1;
   }
@@ -47,14 +47,17 @@ const ShadowBottomStyled = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(to top, rgb(240, 240, 240), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(
+    to top,
+    rgb(240, 240, 240),
+    rgba(0, 0, 0, 0)
+  );
   z-index: 2;
 `;
 
 function MainContent() {
   const [viewOptions, setViewOptions] = useState(false);
-  const [quantBlur, setQuantBlur] = useState(3.5);
-  const { noSkipLogin, setNoSkipLogin } = useContext(ViewContext);
+  const { noSkipLogin, setNoSkipLogin, quantBlur, setQuantBlur } = useContext(ViewContext);
   const { currentCategory } = useContext(CartContext);
   const divRef = useRef(null);
 
@@ -96,7 +99,7 @@ function MainContent() {
 
       <div
         style={{
-          filter: noSkipLogin ? `blur(${quantBlur}px)` : "none",
+          filter: quantBlur != 0 && `blur(${quantBlur}px)`,
           transition: "filter 1s ease",
         }}
       >
@@ -105,10 +108,10 @@ function MainContent() {
           <AnnouncementSection />
           <CategoriesSection />
           <PromoSection categoryKey={currentCategory} />
-          <ShadowBottomStyled/>
+          <ShadowBottomStyled />
         </Main>
       </div>
-      <Footer />
+      <Footer setQuantBlur={setQuantBlur} />
     </div>
   );
 }

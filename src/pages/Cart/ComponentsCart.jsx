@@ -21,8 +21,8 @@ export const MainStyled = styled.div`
     grid-template-columns: 950px 330px;
     justify-content: center;
   }
-  transition: filter 0.9s ease;
-  ${(props) => props.$seeAdressForm && " filter: blur(2.5px)"}
+  transition: filter 0.95s ease;
+  ${(props) => props.$seeAdressForm && " filter: blur(2px)"}
 `;
 
 /* Divs para borda em desktop*/
@@ -30,7 +30,7 @@ export const CornerStyled = styled.div`
   height: 10px;
   width: 10px;
   position: absolute;
-  background-color: #f5f5f5;
+  background-color:rgb(235, 235, 235);
   top: 0;
   right: 0;
 `;
@@ -38,7 +38,7 @@ export const CornerStyled = styled.div`
 export const MiniCircleStyled = styled(CornerStyled)`
   height: 100%;
   width: 100%;
-  background-color: #e3e3e3;
+  background-color: rgb(217, 217, 217);
   border-radius: 0px 10px 0px 0px;
 `;
 
@@ -50,7 +50,7 @@ export const CartSectionStyed = styled.div`
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
-  background-color: rgb(227, 227, 227);
+  background-color: rgb(217, 217, 217);
   box-shadow: inset 0px -1px 3px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow-y: hidden;
@@ -63,15 +63,15 @@ export const CartSectionStyed = styled.div`
 
   @media screen and (min-width: 993px) {
     &::-webkit-scrollbar-track {
-      background: rgb(227, 227, 227); /* cor de fundo da "trilha" */
+      background: rgb(217, 217, 217); /* cor de fundo da "trilha" */
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgb(196, 196, 196); /* cor do "botão" da barra */
+      background: rgb(235, 235, 235); /* cor do "botão" da barra */
       border-radius: 6px;
     }
     scrollbar-width: thin; /* Opções: auto | thin | none */
-    scrollbar-color: rgb(196, 196, 196) rgb(227, 227, 227); /* thumb | track */
+    scrollbar-color: rgb(235, 235, 235) rgb(217, 217, 217); /* thumb | track */
   }
 
   @media screen and (min-width: 769px) {
@@ -204,7 +204,6 @@ export const DivHeadStyled = styled.div`
   align-items: center;
   margin-bottom: 12px;
   position: relative;
-  background-color: rgb(227, 227, 227);
   border-radius: 12px;
 
   @media screen and (min-width: 769px) {
@@ -321,7 +320,7 @@ export const FinishSectionStyled = styled.div`
 
 //botão adicionar
 export const DivAddStyled = styled.div`
-  width: 95%;
+  width: 100%;
   max-width: 400px;
   margin: auto;
   height: 40px;
@@ -337,7 +336,6 @@ export const DivAddStyled = styled.div`
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
 
   @media screen and (min-width: 769px) {
-    width: 100%;
     order: 2;
     margin: 0;
     height: 44px;

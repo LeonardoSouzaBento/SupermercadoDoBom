@@ -11,7 +11,7 @@ import {
 } from "./ComponentsRegAddress";
 import { useNavigate } from "react-router-dom";
 
-const RegisterAddress = ({ setSeeAdressForm }) => {
+const RegisterAddress = ({ setSeeAdressForm, seeAdressForm }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     rua: "",
@@ -64,19 +64,18 @@ const RegisterAddress = ({ setSeeAdressForm }) => {
             value={formData.cep}
             onChange={handleChange}
             style={{
-              marginBottom: "12px",
-              backgroundColor: "rgb(240, 240, 240)",
-              boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.5)"
+              marginBottom: "16px",
+              boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.4)"
             }}
           />
 
           <div
             style={{
-              backgroundColor: "rgb(227, 227, 227)",
+              backgroundColor: "rgb(217, 217, 217)",
               marginBottom: "0px",
               padding: "12px",
               paddingBottom: "0px",
-              borderRadius: "6px 6px 0px 0px",
+              borderRadius: "7px 7px 0px 0px",
               boxShadow: "inset 0px -3px 6px rgba(0, 0, 0, 0.04)",
               overflow: "visible",
             }}

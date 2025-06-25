@@ -170,25 +170,22 @@ const DivStyled = styled.div`
     top: 44px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    width: 42px;
-    height: 42px;
     top: 44px;
   }
   @media screen and (min-width: 769px) {
     position: relative;
-    width: 43px;
-    height: 43px;
   }
   background-color: ${(props) =>
-    props.$changeBackground ? "rgb(43, 37, 37)" : "rgb(215, 69, 69)"};
+    props.$changeBackground ? " #3F0404" : " #d20c0c"};
   border-radius: ${(props) => (props.$changeBackground ? "12%" : "20px")};
 
   @media screen and (min-width: 1201px) {
     width: max-content;
+    height: 42px;
     border-radius: 12px;
     padding: 0px 16px;
     gap: 4px;
-    border-radius: ${(props) => (props.$changeBackground ? "7px" : "12px")};
+    border-radius: ${(props) => (props.$changeBackground ? "6px" : "12px")};
   }
 `;
 

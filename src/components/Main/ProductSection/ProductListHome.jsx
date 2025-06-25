@@ -6,8 +6,10 @@ import { CartContext } from "../../CartContext";
 
 const DivStyled = styled.div`
   will-change: transform;
-  max-width: 100%;
-  height: max-content;
+  width: auto;
+  height: auto;
+  padding-bottom: 4px;
+  padding-right: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -17,9 +19,7 @@ const DivStyled = styled.div`
   margin-bottom: 12px;
   position: relative;
   overflow-x: scroll;
-  box-sizing: border-box;
-  padding-right: 20px;
-  padding-bottom: 4px;
+  box-sizing: border-box !important;
   border-radius: 7px;
   
   scrollbar-width: none; /* Firefox */
@@ -31,24 +31,12 @@ const DivStyled = styled.div`
   ${(props) =>
     props.$variant === "home" &&
     css`
-      @media screen and (min-width: 320px) and (max-width: 374px) {
-        height: 580px;
-      }
-      @media screen and (min-width: 375px) and (max-width: 576px) {
-        height: 596px;
-      }
-      @media screen and (min-width: 577px) {
-        height: 582px;
-      }
+      height: 584px;
       @media screen and (min-width: 577px){
         gap: 16px;
       }
-      /* @media screen and (min-width: 768px) and (max-width: 992px) {
-        border: 1px solid rgb(0,0,0);
-      } */
       @media screen and (min-width: 993px) {
-        padding-bottom: 5px;
-        height: 552px;
+        height: 553px;
       }
     `}
   ${(props) =>
@@ -68,9 +56,8 @@ const DivStyled = styled.div`
   ${(props) =>
     props.$variant === "inSearch" &&
     css`
-      height: auto;
       padding-left: 16px;
-      
+      height: auto;
       @media screen and (min-width: 768px) {
         justify-content: flex-start;
       }
@@ -91,8 +78,7 @@ const NoProcutsStyed = styled.div`
   right: 50%;
   transform: translateX(50%);
   background-color: white;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14);
-  border: 1px solid rgb(136, 136, 136);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.32);
   border-radius: 8px;
 `;
 const PNoneStyled = styled.p`
@@ -119,6 +105,7 @@ export const ProductListHome = React.forwardRef(
               handleQuantityChange(product, isAdding)
             }
           />
+          
         ))}
         {products.length == 0 && (
           <NoProcutsStyed>

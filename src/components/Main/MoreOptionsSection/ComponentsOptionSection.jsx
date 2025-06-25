@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
-export const BodyStyled = styled.div` 
+export const BodyStyled = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(227, 227, 227);
-  
+  background-color: rgb(235, 235, 235);
+
   @media screen and (min-width: 577px) {
     padding-top: 8px;
   }
@@ -17,11 +17,11 @@ export const WrapperStyled = styled.div`
   max-width: 470px;
   padding: 35px 36px;
   border-radius: 8px;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(245, 245, 245);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.37);
   position: relative;
   z-index: 1;
-  
+
   @media screen and (max-width: 450px) {
     padding: 30px 31px;
     padding-bottom: 36px;
@@ -61,18 +61,20 @@ export const DivNameSpanStyled = styled.div`
   background-color: white;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.34);
 
-  ${props => props.$buttonSelected && css`
-    background-color: rgb(38, 38, 38);
-    border: 1px solid rgb(38, 38, 38);
-    color: white;
-  `}
- 
+  ${(props) =>
+    props.$buttonSelected &&
+    css`
+      background-color: rgb(63, 4, 4);
+      border: 1px solid #3f0404;
+      color: white;
+    `}
+
   cursor: pointer;
 
   @media screen and (min-width: 320px) and (max-width: 430px) {
     width: 100%;
   }
-  @media screen and (min-width: 430px){
+  @media screen and (min-width: 430px) {
     max-width: 48%;
   }
   @media screen and (min-width: 577px) {
@@ -117,6 +119,7 @@ export const DivSpanStyled = styled.div`
 `;
 
 export const SpanStyled = styled.span`
+  color: ${(props) => (props.$buttonSelected ? "white" : "#3f0404")};
   font-size: ${(props) => (props.$buttonSelected ? "1.6em" : "1.5em")};
   font-weight: 300;
   font-variation-settings: "FILL" 1;
@@ -126,7 +129,7 @@ export const DivContentStyled = styled.div``;
 
 export const PStyled = styled.p`
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   font-family: "Roboto";
   font-weight: 400;
   text-align: justify;
@@ -155,15 +158,15 @@ export const PStyled = styled.p`
     font-size: 1.16em;
     line-height: 1.42em;
   }
-  ${props => props.$mb && 'margin-bottom: 13px;'};
-  ${props => props.$moreWidth && 'max-width: 100%;'};
+  ${(props) => props.$mb && "margin-bottom: 13px;"};
+  ${(props) => props.$moreWidth && "max-width: 100%;"};
 `;
 
 export const PButtonStyled = styled(PStyled)`
   min-width: 100%;
   height: max-content;
   padding: 6px 14px;
-  background-color:rgb(226, 226, 226);
+  background-color: rgb(226, 226, 226);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
   margin-bottom: 0px;
   border-radius: 5px;
@@ -176,10 +179,10 @@ export const PButtonStyled = styled(PStyled)`
   ${(props) =>
     props.$buttonSelected &&
     css`
-      background-color: #3c3c3c;
+      background-color: rgb(35, 35, 35);
       color: white;
       box-shadow: none;
-      border: 1px solid rgb(60, 60, 60);
+      border: 1px solid rgb(35, 35, 35);
     `}
 `;
 

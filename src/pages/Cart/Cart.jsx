@@ -116,10 +116,13 @@ const Cart = () => {
 
   // resize p reamostrar botão 'ver todos'
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
+    // Espera a próxima pintura do navegador (após o layout completo)
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     });
+
     if (ProductListRef.current) {
       checkHiddenProducts();
     }
@@ -152,11 +155,11 @@ const Cart = () => {
         style={{
           position: "relative",
           height: "100%",
-          backgroundColor: "rgb(245, 245, 245)",
+          backgroundColor: "rgb(235, 235, 235)",
         }}
       >
         <MainStyled $seeAdressForm={seeAdressForm}>
-          <div style={{ position: "relative", marginBottom:"24px" }}>
+          <div style={{ position: "relative", marginBottom: "24px" }}>
             <CartSectionStyed ref={CartSectionRef}>
               <DivHeadStyled>
                 <CornerStyled>

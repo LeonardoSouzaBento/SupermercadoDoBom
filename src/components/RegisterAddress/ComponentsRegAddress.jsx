@@ -9,21 +9,7 @@ export const Box0Styled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.24);
-
-  @media screen and (max-width: 768px) {
-    background-color: rgb(235, 235, 235);
-  }
-  /* &:before{
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    filter: saturate(1);
-  } */
+  background-color: rgb(235, 235, 235);
 `;
 
 // Caixa central onde ficam os inputs
@@ -33,12 +19,12 @@ export const BoxStyled = styled.div`
   max-width: 400px;
   box-sizing: border-box;
   border-radius: 14px;
-  background-color: white;
+  background-color: rgb(245, 245, 245);
   padding: 12px 20px;
   padding-top: 16px;
   padding-bottom: 4px;
   position: relative;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.28);
 
   @media screen and (max-width: 768px) {
     margin-bottom: 24px;
@@ -66,14 +52,13 @@ export const BoxStyled = styled.div`
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 1.65em;
+  font-size: 1.7em;
   color: red;
-  font-weight: 400;
+  font-weight: 500;
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 9px;
   cursor: pointer;
-  background-color: rgb(236, 236, 236);
   border-radius: 6px;
   padding: 2px;
 `;
@@ -110,7 +95,7 @@ export const LocationButtonStyled = styled.button`
   width: 100%;
   height: 44px;
   padding: 0px 16px;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,11 +156,11 @@ export const InputStyled = styled.input`
 
 // Botão de envio
 export const SubmitButtonStyled = styled(LocationButtonStyled)`
-  background-color: #4429f6;
+  background-color: hsl(11, 90%, 61.40%);
   border-radius: 0px 0px 6px 6px;
   font-weight: 400;
 
   &:hover {
-    background-color:rgb(57, 34, 204);
+    background-color:hsl(11, 90%, 51.40%);
   }
 `;

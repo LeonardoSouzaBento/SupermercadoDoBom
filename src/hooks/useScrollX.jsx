@@ -96,7 +96,7 @@ export function useScrollX() {
     const maxScroll = -limitsScrollRefs[i].current;
 
     const decel = () => {
-      if (Math.abs(variables.velocidade) > 0.15) {
+      if (Math.abs(variables.velocidade) > 0.12) {
         variables.velocidade *= 0.95;
         let proximo = div.scrollLeft + variables.velocidade * 16;
 
