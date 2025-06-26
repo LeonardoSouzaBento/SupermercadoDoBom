@@ -169,6 +169,7 @@ export default function Footer({ setQuantBlur }) {
   const { totalQuantity, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
+  const [canHandleClick, setCanHandleClick] = useState(false);
 
   if (totalQuantity <= 0 && viewConfirm === false) {
     return null;
@@ -192,8 +193,10 @@ export default function Footer({ setQuantBlur }) {
             <DivCancelStyled
               onPointerDown={(e) => {
                 e.stopPropagation(e);
+                setCanHandleClick(false);
+                setTimeout(() => setCanHandleClick(true), 200);
                 setViewConfirm(true);
-                setQuantBlur(2.5);
+                setQuantBlur(2);
               }}
             >
               <SpanCancelStyled className="material-symbols-outlined">
@@ -230,6 +233,7 @@ export default function Footer({ setQuantBlur }) {
       <ConfirmDialog
         setViewConfirm={setViewConfirm}
         setQuantBlur={setQuantBlur}
+        canHandleClick={canHandleClick}
       ></ConfirmDialog>
     );
   }

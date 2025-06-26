@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useContext, useState } from "react";
 import { CartContext } from "../CartContext";
 import { ViewContext } from "../viewContext";
@@ -14,9 +14,9 @@ const ContainerStyled = styled.div`
 `;
 
 const DivStyled = styled.div`
-  width: 90%;
+  width: calc(100% - 16px);
   max-width: 400px;
-  height: 164px;
+  height: auto;
   padding: 24px 18px;
   box-sizing: border-box;
   display: flex;
@@ -28,9 +28,18 @@ const DivStyled = styled.div`
   position: absolute;
   right: 8px;
   bottom: 8px;
-  background-color:rgb(226, 93, 63);
-  box-shadow: -1.5px -1.5px 3px rgba(0, 0, 0, 0.3);
-  ${props => props.$viewFeedback && 'background-color: white;'};
+  background-image: linear-gradient(
+    to bottom,
+    hsl(12, 95%, 44%),
+    hsl(12, 95%, 62%)
+  );
+  background-size: 100% 50%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: hsl(12, 95%, 62%);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+  ${(props) => props.$feedback && "background-size: 0% 0%;"};
+  ${(props) => props.$feedback && "background-color: hsl(12, 95%, 59.5%);"}
 
   @media screen and (max-width: 450px) {
     right: 50%;
@@ -38,7 +47,7 @@ const DivStyled = styled.div`
   }
 `;
 
-const DivCancelStyled = styled.div`
+const DivSpanStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,34 +63,65 @@ const SpanStyled = styled.span`
   font-weight: 600;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.09);
   position: absolute;
   transform: translateY(-90%);
+  z-index: 1;
   cursor: default;
+  ${(props) => props.$feedback && "color: rgb(99, 154, 48);"};
+  ${(props) => props.$feedback && "scale: 0.9;"};
 `;
 
 const PQuestionStyled = styled.p`
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 14px;
+  margin-top: 10px;
+  border-radius: 5px;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 400;
-  border-radius: 8px;
-  padding-top: 28px;
-  padding-bottom: 16px;
-  width: 100%;
+  font-size: 1.15em;
   text-align: center;
   cursor: default;
-  font-size: 1.15em;
+  color: white;
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
-    font-size: 1.15em;
+    font-size: 1.24em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.16em;
+    font-size: 1.25em;
   }
-  @media screen and (min-width: 577px) {
-    font-size: 1.17em;
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.26em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.27em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.28em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.3em;
   }
 `;
 
+const DivFeedBackStyled = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+`;
+
+const PFeedBackStyled = styled(PQuestionStyled)`
+  color: white;
+  scale: 1.19;
+  padding: 6px 0px;
+  padding-top: 8px;
+`;
+
+//esconder
 const DivSimNaoStyled = styled.div`
   display: flex;
   width: 100%;
@@ -140,60 +180,16 @@ const PVoltarStyled = styled(GenericPStyled)`
   }
 `;
 
-const DivFeedbackStyled = styled.div`
-  height: max-content;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
-  margin-top: 0px;
-  padding-bottom: 8px;
-  transition: opacity 0.5s linear;
-`;
-
-const SpanCheckStyled = styled.span`
-  color: rgb(99, 154, 48);
-  position: relative;
-  transform: none;
-  padding: 0px;
-  font-size: 4.1em;
-  font-weight: 400;
-  border-radius: 50%;
-  cursor: default;
-`;
-
-const PFeedbackStyled = styled(GenericPStyled)`
-  scale: 1.02;
-  font-weight: 500;
-  font-family: "Montserrat";
-  cursor: default;
-`;
-
-export default function ConfirmDialog({ setViewConfirm, setQuantBlur }) {
+export default function ConfirmDialog({
+  setViewConfirm,
+  setQuantBlur,
+  canHandleClick,
+}) {
   const { setCartProducts } = useContext(CartContext);
   const { viewFeedback, setViewFeedback } = useContext(ViewContext);
 
   const handleConfirmCancel = (action) => {
-    const duration = Date.now() - window.startClickTime;
-    if (duration < 110) {
-      if (action === 1) {
-        setViewFeedback(true);
-        setCartProducts([]);
-
-        setTimeout(() => {
-          setViewConfirm(false);
-          setViewFeedback(false);
-          setQuantBlur(0);
-        }, 1500);
-      } else if (action === 0) {
-        setViewConfirm(false);
-        setQuantBlur(0);
-      }
-    }
-    //pra toque de touchpad
-    if (action === "1") {
+    if (action === 1 && canHandleClick) {
       setViewFeedback(true);
 
       setCartProducts([]);
@@ -202,9 +198,9 @@ export default function ConfirmDialog({ setViewConfirm, setQuantBlur }) {
         setViewConfirm(false);
         setViewFeedback(false);
         setQuantBlur(0);
-      }, 1500);
+      }, 2100);
     }
-    if (action === "0") {
+    else if (action === 0 && canHandleClick) {
       setViewConfirm(false);
       setQuantBlur(0);
     }
@@ -212,49 +208,45 @@ export default function ConfirmDialog({ setViewConfirm, setQuantBlur }) {
 
   return (
     <ContainerStyled>
-      <DivStyled $viewFeedback={viewFeedback}>
-        {viewFeedback === false ? (
-          <>
-            <DivCancelStyled>
-              <SpanStyled className="material-symbols-outlined">
-                exclamation
-              </SpanStyled>
-              <PQuestionStyled>Cancelar a compra?</PQuestionStyled>
-            </DivCancelStyled>
+      <DivStyled $feedback={viewFeedback}>
+        <DivSpanStyled>
+          <SpanStyled
+            className="material-symbols-outlined"
+            $feedback={viewFeedback}
+          >
+            {viewFeedback ? "check" : "exclamation"}
+          </SpanStyled>
 
-            <DivSimNaoStyled>
-              <PSimStyled
-                onTouchStart={(e) => {
-                  window.startClickTime = Date.now();
-                }}
-                onTouchEnd={() => handleConfirmCancel(1)}
-                onClick={() => {
-                  handleConfirmCancel("1");
-                }}
-              >
-                Sim, cancelar
-              </PSimStyled>
+          {viewFeedback == false && (
+            <PQuestionStyled>Cancelar a compra?</PQuestionStyled>
+          )}
+        </DivSpanStyled>
 
-              <PVoltarStyled
-                onTouchStart={(e) => {
-                  window.startClickTime = Date.now();
-                }}
-                onTouchEnd={() => handleConfirmCancel(0)}
-                onClick={() => {
-                  handleConfirmCancel("0");
-                }}
-              >
-                Voltar
-              </PVoltarStyled>
-            </DivSimNaoStyled>
-          </>
-        ) : (
-          <DivFeedbackStyled>
-            <SpanCheckStyled className="material-symbols-outlined">
-              check_circle
-            </SpanCheckStyled>
-            <PFeedbackStyled>Compra Cancelada!</PFeedbackStyled>
-          </DivFeedbackStyled>
+        {/*Botoes de sim ou não*/}
+        {viewFeedback === false && (
+          <DivSimNaoStyled>
+            <PSimStyled
+              onPointerDown={() => {
+                handleConfirmCancel(1);
+              }}
+            >
+              Sim, cancelar
+            </PSimStyled>
+
+            <PVoltarStyled
+              onPointerDown={() => {
+                handleConfirmCancel(0);
+              }}
+            >
+              Voltar
+            </PVoltarStyled>
+          </DivSimNaoStyled>
+        )}
+
+        {viewFeedback && (
+          <DivFeedBackStyled>
+            <PFeedBackStyled>Cancelada!</PFeedBackStyled>
+          </DivFeedBackStyled>
         )}
       </DivStyled>
     </ContainerStyled>

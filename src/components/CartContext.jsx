@@ -35,10 +35,10 @@ export function CartProvider({ children }) {
 
       if (isAdding) {
         if (existingItemIndex !== -1) {
-          // Produto já está no carrinho, aumenta a quantidade
+          // Aumenta a quantidade, se o produto já existir
           updatedCart[existingItemIndex].quant += 1;
         } else {
-          // Produto ainda não está no carrinho, adiciona com quant atual
+          // Adiciona o produto
           updatedCart.push(product);
         }
       } else {
