@@ -13,13 +13,13 @@ const FooterStyled = styled.footer`
   height: 54px;
   background-color: transparent;
   position: fixed;
-  bottom: 4px;
+  bottom: 3.5px;
   z-index: 2;
 
   &::after {
     content: "";
     width: 90%;
-    max-width: 404px;
+    max-width: 400px;
     height: 44px;
     position: absolute;
     top: 0;
@@ -30,10 +30,10 @@ const FooterStyled = styled.footer`
     z-index: -1;
 
     @media screen and (min-width: 577px) and (max-width: 992px) {
-      max-width: 444px;
+      max-width: 440px;
     }
     @media screen and (min-width: 993px) {
-      max-width: 474px;
+      max-width: 470px;
     }
   }
 `;
@@ -90,7 +90,7 @@ const DivCancelStyled = styled(DivCartStyled)`
 
 const SpanCancelStyled = styled.div`
   font-variation-settings: "FILL" 1;
-  color: rgb(69, 44, 44);
+  color: #3f0404;
   font-size: 1.45em;
   font-weight: 600;
 `;

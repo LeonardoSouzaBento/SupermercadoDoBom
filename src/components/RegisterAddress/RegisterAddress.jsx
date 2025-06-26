@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box0Styled,
   BoxStyled,
+  DivSpanStyled,
   SpanCloseStyled,
   TitleStyled,
   LocationButtonStyled,
   InputStyled,
   SubmitButtonStyled,
-  NoKnowMyCEP,
 } from "./ComponentsRegAddress";
 import { useNavigate } from "react-router-dom";
 
-const RegisterAddress = ({ setSeeAdressForm, seeAdressForm }) => {
+const RegisterAddress = ({ setSeeAddressForm }) => {
   const navigate = useNavigate();
+  const [opacityState, setOpacityState] = useState(0);
+
   const [formData, setFormData] = useState({
     rua: "",
     numero: "",
@@ -38,17 +40,28 @@ const RegisterAddress = ({ setSeeAdressForm, seeAdressForm }) => {
     console.log("Sim");
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacityState(1);
+    }, 300);
+  }, []);
+
   return (
-    <Box0Styled>
+    <Box0Styled $opacity={opacityState}>
       <BoxStyled>
-        <SpanCloseStyled
-          className="material-symbols-rounded"
-          onClick={() => {
-            setSeeAdressForm(false);
-          }}
-        >
-          close
-        </SpanCloseStyled>
+        <DivSpanStyled>
+          <SpanCloseStyled
+            className="material-symbols-rounded"
+            onClick={() => {
+              setOpacityState(0);
+              setTimeout(() => {
+                setSeeAddressForm(false);
+              }, 520);
+            }}
+          >
+            close
+          </SpanCloseStyled>
+        </DivSpanStyled>
 
         <TitleStyled>Cadastrar endereço</TitleStyled>
 
@@ -65,7 +78,7 @@ const RegisterAddress = ({ setSeeAdressForm, seeAdressForm }) => {
             onChange={handleChange}
             style={{
               marginBottom: "16px",
-              boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.4)"
+              boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.4)",
             }}
           />
 

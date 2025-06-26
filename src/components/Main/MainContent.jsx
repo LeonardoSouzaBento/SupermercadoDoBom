@@ -57,9 +57,16 @@ const ShadowBottomStyled = styled.div`
 
 function MainContent() {
   const [viewOptions, setViewOptions] = useState(false);
-  const { noSkipLogin, setNoSkipLogin, quantBlur, setQuantBlur } = useContext(ViewContext);
+  const { noSkipLogin, setNoSkipLogin } = useContext(ViewContext);
   const { currentCategory } = useContext(CartContext);
+  const [opacityState, setOpacityState] = useState(0.1);
   const divRef = useRef(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacityState(1);
+    }, 300);
+  }, []);
 
   //Esconder mais opções com toque fora
   useEffect(() => {
@@ -88,26 +95,18 @@ function MainContent() {
     };
   }, [viewOptions, setViewOptions]);
 
-  useEffect(() => {
-    return () => {
-      setQuantBlur(0);
-    }
-  }, [])
-  
-
   return (
     <div ref={divRef}>
-      <Login
-        noSkipLogin={noSkipLogin}
-        setNoSkipLogin={setNoSkipLogin}
-        quantBlur={quantBlur}
-        setQuantBlur={setQuantBlur}
-      />
+      {noSkipLogin && (
+        <Login noSkipLogin={noSkipLogin} setNoSkipLogin={setNoSkipLogin} />
+      )}
 
       <div
         style={{
-          filter: quantBlur != 0 && `blur(${quantBlur}px)`,
+          filter: noSkipLogin ? "blur(2.5px)" : "none",
           transition: "filter 1s ease",
+          opacity: !noSkipLogin ? opacityState : 1,
+          transition: 'opacity 0.15s ease'
         }}
       >
         <Header viewOptions={viewOptions} setViewOptions={setViewOptions} />
@@ -118,7 +117,7 @@ function MainContent() {
           <ShadowBottomStyled />
         </Main>
       </div>
-      <Footer setQuantBlur={setQuantBlur} />
+      <Footer />
     </div>
   );
 }

@@ -15,7 +15,7 @@ const DivStyled = styled.div`
   align-items: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 15px;
   margin-bottom: 12px;
   position: relative;
   overflow-x: scroll;
@@ -31,12 +31,12 @@ const DivStyled = styled.div`
   ${(props) =>
     props.$variant === "home" &&
     css`
-      height: 584px;
+      height: 590px;
       @media screen and (min-width: 577px){
         gap: 16px;
       }
       @media screen and (min-width: 993px) {
-        height: 553px;
+        height: 557px;
       }
     `}
   ${(props) =>
@@ -88,7 +88,9 @@ const PNoneStyled = styled.p`
   text-align: center;
 `;
 
-export const ProductListHome = React.forwardRef(
+
+
+export const ProductList = React.forwardRef(
   ({ variant, categoryKey }, ref) => {
     const { allProductsInCat, handleQuantityChange } = useContext(CartContext);
 

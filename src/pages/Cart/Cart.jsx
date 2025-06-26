@@ -2,7 +2,7 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../components/CartContext";
 import { ViewContext } from "../../components/viewContext.jsx";
-import { ProductListHome } from "../../components/Main/ProductSection/ProductListHome.jsx";
+import { ProductList } from "../../components/Main/ProductSection/ProductList.jsx";
 import {
   MainStyled,
   CartSectionStyed,
@@ -44,13 +44,18 @@ const totalHeightCartSection = 460;
 const Cart = () => {
   const navigate = useNavigate();
   const { totalAddedValue } = useContext(CartContext);
+  const [opacityState, setOpacityState] = useState(0.03); //estado de opacidade
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
   const { setCartProducts } = useContext(CartContext);
-  const { viewFeedback, setViewFeedback } = useContext(ViewContext);
-  const [seeAdressForm, setSeeAdressForm] = useState(false);
+  const { viewFeedback, setViewFeedback } =
+    useContext(ViewContext);
+  const [seeAddressForm, setSeeAddressForm] = useState(false);
   const [viewButtonSeeAll, setViewButtonsetSeeAll] = useState(true);
+
+  //estados para botão ver todos
   const [newHeight, setNewHeight] = useState(0);
   const [applyNewHeight, setApplyNewHeight] = useState(true);
+
   const resizeDowntime = useRef(null);
   const ProductListRef = useRef(null);
   const CartSectionRef = useRef(null);
@@ -116,6 +121,9 @@ const Cart = () => {
 
   // resize p reamostrar botão 'ver todos'
   useEffect(() => {
+    setTimeout(() => {
+      setOpacityState(1);
+    }, 300);
     // Espera a próxima pintura do navegador (após o layout completo)
     requestAnimationFrame(() => {
       window.scrollTo(0, 0);
@@ -158,7 +166,7 @@ const Cart = () => {
           backgroundColor: "rgb(235, 235, 235)",
         }}
       >
-        <MainStyled $seeAdressForm={seeAdressForm}>
+        <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
           <div style={{ position: "relative", marginBottom: "24px" }}>
             <CartSectionStyed ref={CartSectionRef}>
               <DivHeadStyled>
@@ -210,11 +218,11 @@ const Cart = () => {
               </DivHeadStyled>
 
               <ContainerProductList>
-                <ProductListHome
+                <ProductList
                   variant={"cart"}
                   categoryKey={12}
                   ref={ProductListRef}
-                ></ProductListHome>
+                ></ProductList>
               </ContainerProductList>
               {viewButtonSeeAll && (
                 <DivSeeMoreStyled onClick={handleClickSeeAll}>
@@ -265,7 +273,7 @@ const Cart = () => {
                 $nocontinue={falta > 0}
                 onClick={() => {
                   if (falta <= 0) {
-                    setSeeAdressForm(true);
+                    setSeeAddressForm(true);
                   }
                 }}
               >
@@ -281,8 +289,8 @@ const Cart = () => {
           </FinishSectionStyled>
         </MainStyled>
 
-        {seeAdressForm && (
-          <RegisterAddress setSeeAdressForm={setSeeAdressForm} />
+        {seeAddressForm && (
+          <RegisterAddress setSeeAddressForm={setSeeAddressForm} />
         )}
       </div>
     );
@@ -295,7 +303,7 @@ const Cart = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "rgb(220, 220, 220)",
+          backgroundColor: "rgb(235, 235, 235)",
         }}
       >
         <DivMsgVoidCart>

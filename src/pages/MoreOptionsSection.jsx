@@ -36,7 +36,7 @@ export default function MoreOptionsSection(){
     const [seeTheOption, setSeeTheOption] = useState('');
     const [selectedOption, setSelectedOption] = useState(0);
     const [selectedButtonCode, setSelectedButtonCode] = useState(0);
-
+    
     useEffect(() => {
         const index = urlOptions.indexOf(option);
         setSelectedOption(index);

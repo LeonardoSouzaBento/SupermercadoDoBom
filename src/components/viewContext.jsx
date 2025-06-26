@@ -10,8 +10,8 @@ export const ViewContextProvider = ({ children }) => {
   });
   useEffect(() => {
     const stored = localStorage.getItem("tipForRecruiter");
-    if (stored !== "false" || stored!== false) {
-        localStorage.setItem("tipForRecruiter", JSON.stringify(false));
+    if (stored !== "false" || stored !== false) {
+      localStorage.setItem("tipForRecruiter", JSON.stringify(false));
     }
   }, [tipForRecruiter]);
 
@@ -32,8 +32,8 @@ export const ViewContextProvider = ({ children }) => {
 
   const [preventClick, setPreventClick] = useState(false);
   const [viewFeedback, setViewFeedback] = useState(false);
-  
-  const [quantBlur, setQuantBlur] = useState(3.5);
+
+  //estado para opacidade
 
   return (
     <ViewContext.Provider
@@ -44,10 +44,8 @@ export const ViewContextProvider = ({ children }) => {
         setPreventClick,
         viewFeedback,
         setViewFeedback,
-        noSkipLogin, 
-        setNoSkipLogin,
-        quantBlur,
-        setQuantBlur
+        noSkipLogin,
+        setNoSkipLogin
       }}
     >
       {children}

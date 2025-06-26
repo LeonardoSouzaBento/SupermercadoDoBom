@@ -1,5 +1,5 @@
 import SearchBar from "../components/Main/SearchBars/SearchBar";
-import {ProductListHome} from "../components/Main/ProductSection/ProductListHome";
+import {ProductList} from "../components/Main/ProductSection/ProductList";
 import Footer from '../components/Footer/Footer';
 import styled from "styled-components";
 
@@ -16,7 +16,7 @@ const SearchAction = () => {
   return (
     <DivStyled>
       <SearchBar copy={true}></SearchBar>
-      <ProductListHome variant={'inSearch'} categoryKey={13}></ProductListHome>
+      <ProductList variant={'inSearch'} categoryKey={13}/>
       <Footer></Footer>
     </DivStyled>
   )

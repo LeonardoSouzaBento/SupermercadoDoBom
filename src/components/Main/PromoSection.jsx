@@ -1,6 +1,6 @@
 import { useRef, useContext, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import {ProductListHome} from './ProductSection/ProductListHome';
+import {ProductList} from './ProductSection/ProductList';
 import { CartContext } from '../CartContext';
 import {useScrollX} from '../../hooks/useScrollX'
 
@@ -75,7 +75,7 @@ function PromoSection({categoryKey}) {
 
   return (
     <PaiAllProductsStyled ref={paiAllProductsRef}>
-      <ProductListHome 
+      <ProductList
       variant={'home'} 
       categoryKey={categoryKey}  
       ref={promotionsRef}

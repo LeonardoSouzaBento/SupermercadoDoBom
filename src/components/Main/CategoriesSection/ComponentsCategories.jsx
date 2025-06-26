@@ -83,9 +83,6 @@ export const Divf = styled.div`
   @media screen and (min-width: 320px) and (max-width: 374px) {
     gap: 15px;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    margin-bottom: 18px;
-  }
   @media screen and (min-width: 1201px) {
     padding-right: 6px;
     justify-content: space-between;

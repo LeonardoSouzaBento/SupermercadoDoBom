@@ -21,8 +21,8 @@ export const MainStyled = styled.div`
     grid-template-columns: 950px 330px;
     justify-content: center;
   }
-  transition: filter 0.95s ease;
-  ${(props) => props.$seeAdressForm && " filter: blur(2px)"}
+  transition: opacity 0.7s ease;
+  opacity: ${props => props.$opacity};
 `;
 
 /* Divs para borda em desktop*/
@@ -205,7 +205,6 @@ export const DivHeadStyled = styled.div`
   margin-bottom: 12px;
   position: relative;
   border-radius: 12px;
-
   @media screen and (min-width: 769px) {
     position: sticky;
     top: 0;
@@ -513,8 +512,8 @@ export const DivMsgVoidCart = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4px;
-  background-color: rgb(240, 240, 240);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.19);
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.24);
   border-radius: 9px;
 `;
 
@@ -535,4 +534,36 @@ export const ImgVoidCartStyled = styled.img`
   z-index: 2;
   border-radius: 4px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.23);
+`;
+
+const PQuestionStyled = styled.p`
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 14px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1.15em;
+  text-align: center;
+  cursor: default;
+
+  @media screen and (min-width: 320px) and (max-width: 374px) {
+    font-size: 1.24em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.25em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.26em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.27em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.28em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.3em;
+  }
 `;

@@ -11,7 +11,7 @@ const ContainerStyled = styled.div`
   left: 0;
   z-index: 4;
   transition: filter 0.8s ease;
-  ${props => props.$opacity!==1 && 'filter: opacity(0);'};
+  ${(props) => props.$opacity !== 1 && "filter: opacity(0);"};
 `;
 
 const BoxLoginStyled = styled.div`
@@ -227,56 +227,50 @@ const ImgGoogleStyled = styled.img`
   border-radius: 6px;
 `;
 
-const Login = ({ noSkipLogin, setNoSkipLogin, quantBlur, setQuantBlur }) => {
+const Login = ({ noSkipLogin, setNoSkipLogin }) => {
   const [opacity, setOpacity] = useState(1);
 
   function handleClickClose() {
     setOpacity(0);
     setTimeout(() => {
       setNoSkipLogin(false);
-      setQuantBlur(0);
     }, 800);
   }
 
   useEffect(() => {
-    if (noSkipLogin === false && quantBlur !== 0) {
+    if (noSkipLogin === false) {
       setTimeout(() => {
-        setQuantBlur(0);
       }, 825);
     }
   }, [noSkipLogin]);
 
-  if (noSkipLogin) {
-    return (
-      <ContainerStyled $opacity={opacity}>
-        <BoxLoginStyled>
-          <DivSpanCloseStyled onClick={handleClickClose}>
-            <SpanCloseStyled className="material-symbols-rounded">
-              close
-            </SpanCloseStyled>
-          </DivSpanCloseStyled>
+  return (
+    <ContainerStyled $opacity={opacity}>
+      <BoxLoginStyled>
+        <DivSpanCloseStyled onClick={handleClickClose}>
+          <SpanCloseStyled className="material-symbols-rounded">
+            close
+          </SpanCloseStyled>
+        </DivSpanCloseStyled>
 
-          <H1LoginStyled>Cadastre-se</H1LoginStyled>
-          <BoxEmailStyled>
-            <PEmailStyled>E-mail:</PEmailStyled>
-            <InputEmailStyled></InputEmailStyled>
-          </BoxEmailStyled>
-          <BoxLoginGoogle>
-            <PLoginGoogleStyled $whatsapp={true}>
-              Entrar com Whatsapp
-            </PLoginGoogleStyled>
-            <ImgGoogleStyled src="/login/whatsapp-logo.png" $whatsapp={true} />
-          </BoxLoginGoogle>
-          <BoxLoginGoogle>
-            <PLoginGoogleStyled>Entrar com o Google</PLoginGoogleStyled>
-            <ImgGoogleStyled src="/login/Google-Logo.png" />
-          </BoxLoginGoogle>
-        </BoxLoginStyled>
-      </ContainerStyled>
-    );
-  } else {
-    return null;
-  }
+        <H1LoginStyled>Cadastre-se</H1LoginStyled>
+        <BoxEmailStyled>
+          <PEmailStyled>E-mail:</PEmailStyled>
+          <InputEmailStyled></InputEmailStyled>
+        </BoxEmailStyled>
+        <BoxLoginGoogle>
+          <PLoginGoogleStyled $whatsapp={true}>
+            Entrar com Whatsapp
+          </PLoginGoogleStyled>
+          <ImgGoogleStyled src="/login/whatsapp-logo.png" $whatsapp={true} />
+        </BoxLoginGoogle>
+        <BoxLoginGoogle>
+          <PLoginGoogleStyled>Entrar com o Google</PLoginGoogleStyled>
+          <ImgGoogleStyled src="/login/Google-Logo.png" />
+        </BoxLoginGoogle>
+      </BoxLoginStyled>
+    </ContainerStyled>
+  );
 };
 
 export default Login;

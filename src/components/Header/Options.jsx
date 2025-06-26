@@ -42,7 +42,7 @@ export const DivNameSpanStyled = styled.div`
 `;
 
 const ContainerPStyled = styled.div`
-  background-color: #3F0404;
+  background-color: #3f0404;
   display: flex;
   border-radius: 40px 0px 0px 40px; //para não sobrepor o border radius filho
   margin-right: -10px;
