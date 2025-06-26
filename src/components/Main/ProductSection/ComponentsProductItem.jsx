@@ -9,7 +9,7 @@ export const PaiProdStyled = styled.div`
   user-select: none;
   position: relative;
   box-sizing: border-box;
-  border-radius: 7px;
+  border-radius: 8px;
 
   ${(props) =>
     props.$variant === "home" &&

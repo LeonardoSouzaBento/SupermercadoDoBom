@@ -4,11 +4,11 @@ import { CartContext } from '../../CartContext';
 import {useScrollX} from '../../../hooks/useScrollX'
 
 let imageUrls = [
-  "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg", //farinha
-  "https://i.pinimg.com/736x/f6/49/ea/f649ea6e0f7b6ad1ed26d25fa5ff0bf6.jpg", //carne
-  "https://i.pinimg.com/736x/69/f1/d3/69f1d3cf3946afdab4edcd4fd98f1597.jpg", //arroz
   "https://i.pinimg.com/736x/99/9b/e7/999be7d41a28a1781a49dc5c7ab2a963.jpg", //cup
   "https://i.pinimg.com/736x/91/98/39/919839cad01f2cd3cfe201d8332d98b5.jpg", //linguica
+  "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg", //farinha
+  "https://i.pinimg.com/736x/69/f1/d3/69f1d3cf3946afdab4edcd4fd98f1597.jpg", //arroz
+  "https://i.pinimg.com/736x/f6/49/ea/f649ea6e0f7b6ad1ed26d25fa5ff0bf6.jpg", //carne
   'https://i.pinimg.com/736x/03/a4/75/03a475aaf5e64c564e7906a14c11a477.jpg', //fanta
 ];
 
@@ -104,7 +104,7 @@ function AnnouncementSection() {
     setCentralIndices(visible_indices);
   },[])
   
-  //toque para detectar paginação
+  //evento de toque para detectar paginação
   useEffect(() => {
     const el = advertisementsRef.current;
     if (!el) return;

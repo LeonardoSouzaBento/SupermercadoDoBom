@@ -9,16 +9,32 @@ const FooterStyled = styled.footer`
   flex-flow: row nowrap;
   justify-content: flex-end;
   align-items: center;
-  height: 45px;
   width: 100%;
+  height: 54px;
   background-color: transparent;
   position: fixed;
-  bottom: 8px;
+  bottom: 4px;
   z-index: 2;
-  border-radius: 5px;
 
-  @media screen and (max-width: 577px) {
-    justify-content: center;
+  &::after {
+    content: "";
+    width: 90%;
+    max-width: 404px;
+    height: 44px;
+    position: absolute;
+    top: 0;
+    right: -4px;
+    border-radius: 24px 0px 0px 24px;
+    background-color: hsl(11, 90%, 61.4%);
+    filter: blur(2px);
+    z-index: -1;
+
+    @media screen and (min-width: 577px) and (max-width: 992px) {
+      max-width: 444px;
+    }
+    @media screen and (min-width: 993px) {
+      max-width: 474px;
+    }
   }
 `;
 
@@ -27,9 +43,9 @@ const CartDescStyled = styled.div`
   width: 90%;
   max-width: 400px;
   height: 44px;
-  margin-right: 8px;
-  background-color: hsl(11, 90%, 61.40%);
-  border-radius: 24px 6px 6px 24px;
+  min-height: 44px;
+  background-color: hsl(11, 90%, 61.4%);
+  border-radius: 24px 0px 0px 24px;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
@@ -37,12 +53,10 @@ const CartDescStyled = styled.div`
   overflow: hidden;
   position: relative;
 
-  @media screen and (max-width: 577px) {
-    border-radius: 24px;
-    margin-right: 0px;
+  @media screen and (min-width: 577px) and (max-width: 992px) {
+    max-width: 440px;
   }
   @media screen and (min-width: 993px) {
-    border-radius: 24px 8px 8px 24px;
     max-width: 470px;
   }
 `;
@@ -54,7 +68,7 @@ const DivCancelECart = styled.div`
   height: 100%;
   width: auto;
   gap: 10px;
-  padding-left: 3.1px;
+  padding-left: 4px;
 `;
 
 const DivCartStyled = styled.div`
@@ -151,11 +165,11 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer({setQuantBlur}) {
+export default function Footer({ setQuantBlur }) {
   const { totalQuantity, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
-  
+
   if (totalQuantity <= 0 && viewConfirm === false) {
     return null;
   }
@@ -212,6 +226,11 @@ export default function Footer({setQuantBlur}) {
     );
   }
   if (viewConfirm) {
-    return <ConfirmDialog setViewConfirm={setViewConfirm} setQuantBlur={setQuantBlur}></ConfirmDialog>;
+    return (
+      <ConfirmDialog
+        setViewConfirm={setViewConfirm}
+        setQuantBlur={setQuantBlur}
+      ></ConfirmDialog>
+    );
   }
 }

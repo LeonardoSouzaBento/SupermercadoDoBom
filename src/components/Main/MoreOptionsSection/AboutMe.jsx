@@ -34,7 +34,7 @@ const DivReferentMidea = styled.div`
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 18px;
   overflow: hidden;
   position: relative;
 `;
@@ -43,21 +43,40 @@ const DivImgStyled = styled.div`
   width: 100%;
   height: 310px;
   border-radius: 5px;
-  background-color:rgb(218, 218, 218);
-  box-shadow:inset 0px 0px 4px rgba(0, 0, 0, 0.12);
+
+  position: relative;
   ${(props) => props.$painting && "max-height: 290px;"};
+
+  @media screen and (min-width: 400px) {
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 8px;
+      background-color: red;
+      background: url(${(props) => `"${props.$src}"`});
+      background-size: cover;
+      filter: blur(3.5px) brightness(0.95);
+      ${(props) =>
+        props.$hue && "filter: blur(3.5px) grayscale(0.2) contrast(1.1);"};
+      z-index: -1;
+    }
+  }
 `;
 
 const ImgStyled = styled.img`
   display: block;
-  width: 340px;
+  width: 100%;
+  max-width: 340px;
   height: 100%;
   margin: auto;
   object-fit: cover;
   object-position: center;
   border-radius: 7px;
-  ${(props) =>
-    props.$hue && "filter: grayscale(1) contrast(1.1);"}
+  ${(props) => props.$hue && "filter: grayscale(0.2) contrast(1.1);"}
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: 320px;
@@ -91,8 +110,8 @@ const AboutMe = () => {
       <PStyled $moreWidth={true}>
         Meu nome é <strong>Leonardo Souza Bento. </strong>
         Estou cursando Engenharia de Software desde março de 2023. Estou
-        procurando um trabalho como desenvolvedor front-end junior (apenas trabalho
-        remoto).
+        procurando um trabalho como desenvolvedor front-end junior (apenas
+        trabalho remoto).
       </PStyled>
       <PLineStyled>____________________________________</PLineStyled>
       <br />
@@ -140,11 +159,11 @@ const AboutMe = () => {
       <DivReferentMidea>
         {buttonSelected == 0 && (
           <>
-            <DivImgStyled $painting={true}>
+            <DivImgStyled $painting={true} $src={"sobre_mim/pintando1.gif"}>
               <ImgStyled src="sobre_mim/pintando1.gif" $hue={true} />
             </DivImgStyled>
 
-            <DivImgStyled $painting={true}>
+            <DivImgStyled $painting={true} $src={"sobre_mim/pintando2.gif"}>
               <ImgStyled src="sobre_mim/pintando2.gif" $hue={true} />
             </DivImgStyled>
           </>
@@ -152,18 +171,18 @@ const AboutMe = () => {
 
         {buttonSelected == 1 && (
           <>
-            <DivImgStyled>
+            <DivImgStyled $src={"sobre_mim/pintura1.jpg"}>
               <ImgStyled src="sobre_mim/pintura1.jpg" />
             </DivImgStyled>
 
-            <DivImgStyled>
+            <DivImgStyled $src={"sobre_mim/pintura.jpg"}>
               <ImgStyled src="sobre_mim/pintura.jpg" />
             </DivImgStyled>
           </>
         )}
 
         {buttonSelected == 2 && (
-          <DivImgStyled>
+          <DivImgStyled $src={"sobre_mim/ilustracao_compressed.png"}>
             <ImgStyled src="sobre_mim/ilustracao_compressed.png"></ImgStyled>
           </DivImgStyled>
         )}

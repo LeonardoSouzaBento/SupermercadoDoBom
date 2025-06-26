@@ -24,17 +24,17 @@ const DivStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  border-radius: 7px 0px 0px 7px;
+  border-radius: 8px;
   position: absolute;
-  right: 0;
+  right: 8px;
   bottom: 8px;
   background-color:rgb(226, 93, 63);
+  box-shadow: -1.5px -1.5px 3px rgba(0, 0, 0, 0.3);
   ${props => props.$viewFeedback && 'background-color: white;'};
 
-  @media screen and (min-width: 993px) {
-    bottom: 10px;
-    right: 8px;
-    border-radius: 7px;
+  @media screen and (max-width: 450px) {
+    right: 50%;
+    transform: translateX(50%);
   }
 `;
 

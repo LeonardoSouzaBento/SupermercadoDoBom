@@ -88,6 +88,13 @@ function MainContent() {
     };
   }, [viewOptions, setViewOptions]);
 
+  useEffect(() => {
+    return () => {
+      setQuantBlur(0);
+    }
+  }, [])
+  
+
   return (
     <div ref={divRef}>
       <Login

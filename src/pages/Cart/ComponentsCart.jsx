@@ -51,7 +51,7 @@ export const CartSectionStyed = styled.div`
   border-radius: 10px;
   box-sizing: border-box;
   background-color: rgb(217, 217, 217);
-  box-shadow: inset 0px -1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0px -3px 6px rgba(0, 0, 0, 0.09);
   position: relative;
   overflow-y: hidden;
 
@@ -182,7 +182,7 @@ export const ShadowStyled = styled.div`
   left: 0;
   background-image: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.09),
+    rgba(0, 0, 0, 0.01),
     rgba(0, 0, 0, 0)
   );
   background-size: 100% 100%;
