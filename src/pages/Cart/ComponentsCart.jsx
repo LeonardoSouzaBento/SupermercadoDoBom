@@ -21,8 +21,14 @@ export const MainStyled = styled.div`
     grid-template-columns: 950px 330px;
     justify-content: center;
   }
-  transition: opacity 0.7s ease;
-  opacity: ${props => props.$opacity};
+  @media screen and (max-width: 430px) {
+    transition: transform 0.25s ease;
+    transform: translateX(${props => props.$translate}%);
+  }
+  @media screen and (min-width: 430px) {
+    opacity: ${props => props.$opacity};
+    transition: opacity 0.5s ease;
+  }
 `;
 
 /* Divs para borda em desktop*/
@@ -73,7 +79,9 @@ export const CartSectionStyed = styled.div`
     scrollbar-width: thin; /* Opções: auto | thin | none */
     scrollbar-color: rgb(235, 235, 235) rgb(217, 217, 217); /* thumb | track */
   }
-
+  @media screen and (max-width: 768px) {
+    margin-bottom: 16px;
+  }
   @media screen and (min-width: 769px) {
     width: calc(100% - 32px);
     height: calc(100vh - 48px);

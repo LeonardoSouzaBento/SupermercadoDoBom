@@ -44,17 +44,18 @@ const totalHeightCartSection = 460;
 const Cart = () => {
   const navigate = useNavigate();
   const { totalAddedValue } = useContext(CartContext);
-  const [opacityState, setOpacityState] = useState(0.03); //estado de opacidade
+  const [translateState, setTranslateState] = useState(100);
+  const [opacityState, setOpacityState] = useState(0.03);
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
   const { setCartProducts } = useContext(CartContext);
-  const { viewFeedback, setViewFeedback } =
-    useContext(ViewContext);
+  const { viewFeedback, setViewFeedback } = useContext(ViewContext);
   const [seeAddressForm, setSeeAddressForm] = useState(false);
   const [viewButtonSeeAll, setViewButtonsetSeeAll] = useState(true);
 
   //estados para botão ver todos
   const [newHeight, setNewHeight] = useState(0);
   const [applyNewHeight, setApplyNewHeight] = useState(true);
+  const [heightWasAlter, setHeightWasAlter] = useState(false);
 
   const resizeDowntime = useRef(null);
   const ProductListRef = useRef(null);
@@ -101,6 +102,7 @@ const Cart = () => {
     if (applyNewHeight) {
       setApplyNewHeight(false);
       CartSectionRef.current.style.height = `${newHeight}px`;
+      setHeightWasAlter(true);
     } else {
       setApplyNewHeight(true);
       CartSectionRef.current.style.height = `${totalHeightCartSection}px`;
@@ -122,6 +124,7 @@ const Cart = () => {
   // resize p reamostrar botão 'ver todos'
   useEffect(() => {
     setTimeout(() => {
+      setTranslateState(0);
       setOpacityState(1);
     }, 300);
     // Espera a próxima pintura do navegador (após o layout completo)
@@ -141,8 +144,14 @@ const Cart = () => {
       }
       resizeDowntime.current = setTimeout(() => {
         checkHiddenProducts();
-        if (window.innerWidth >= 769 && viewButtonSeeAll) {
-          CartSectionRef.current.style.height = "calc(100vh - 48px)";
+
+        if (heightWasAlter) {
+          if (window.innerWidth >= 769) {
+            CartSectionRef.current.style.height = "calc(100vh - 48px)";
+          } else {
+            CartSectionRef.current.style.height = "460px";
+          }
+          setHeightWasAlter(false);
         }
       }, 300);
     }
@@ -166,8 +175,12 @@ const Cart = () => {
           backgroundColor: "rgb(235, 235, 235)",
         }}
       >
-        <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
-          <div style={{ position: "relative", marginBottom: "24px" }}>
+        <MainStyled
+          $seeAddressForm={seeAddressForm}
+          $translate={translateState}
+          $opacity={opacityState}
+        >
+          <div style={{ position: "relative" }}>
             <CartSectionStyed ref={CartSectionRef}>
               <DivHeadStyled>
                 <CornerStyled>

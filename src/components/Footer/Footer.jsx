@@ -165,7 +165,7 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer({ setQuantBlur }) {
+export default function Footer({ setOpacityState }) {
   const { totalQuantity, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
@@ -185,7 +185,10 @@ export default function Footer({ setQuantBlur }) {
           onPointerUp={(e) => {
             const duration = Date.now() - window.startClickTime;
             if (duration < 300) {
-              navigate("/meu-carrinho");
+              setOpacityState(0);
+              setTimeout(() => {
+                navigate("/meu-carrinho");
+              }, 100);
             }
           }}
         >
@@ -196,7 +199,6 @@ export default function Footer({ setQuantBlur }) {
                 setCanHandleClick(false);
                 setTimeout(() => setCanHandleClick(true), 200);
                 setViewConfirm(true);
-                setQuantBlur(2);
               }}
             >
               <SpanCancelStyled className="material-symbols-outlined">
@@ -232,7 +234,6 @@ export default function Footer({ setQuantBlur }) {
     return (
       <ConfirmDialog
         setViewConfirm={setViewConfirm}
-        setQuantBlur={setQuantBlur}
         canHandleClick={canHandleClick}
       ></ConfirmDialog>
     );

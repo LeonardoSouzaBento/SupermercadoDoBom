@@ -106,7 +106,7 @@ function MainContent() {
           filter: noSkipLogin ? "blur(2.5px)" : "none",
           transition: "filter 1s ease",
           opacity: !noSkipLogin ? opacityState : 1,
-          transition: 'opacity 0.15s ease'
+          transition: 'opacity 0.1s ease'
         }}
       >
         <Header viewOptions={viewOptions} setViewOptions={setViewOptions} />
@@ -117,7 +117,7 @@ function MainContent() {
           <ShadowBottomStyled />
         </Main>
       </div>
-      <Footer />
+      <Footer setOpacityState={setOpacityState}/>
     </div>
   );
 }

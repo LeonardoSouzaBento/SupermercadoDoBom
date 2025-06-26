@@ -10,7 +10,7 @@ const ContainerStyled = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: 4;
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.15);
 `;
 
 const DivStyled = styled.div`
