@@ -5,10 +5,10 @@ export const MainStyled = styled.div`
   padding-top: 16px;
   position: relative;
   @media screen and (min-width: 320px) and (max-width: 374px) {
-    width: calc(100% - 24px);
+    width: 100%;
   }
   @media screen and (min-width: 375px) and (max-width: 768px) {
-    width: calc(100% - 32px);
+    width: calc(100% - 12px);
   }
   @media screen and (min-width: 769px) {
     display: grid;
@@ -213,14 +213,6 @@ export const DivHeadStyled = styled.div`
   margin-bottom: 12px;
   position: relative;
   border-radius: 12px;
-  @media screen and (min-width: 769px) {
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    padding-bottom: 4px;
-    margin-bottom: 8px;
-  }
 `;
 
 export const PHeadStyled = styled.p`
@@ -252,6 +244,9 @@ export const PHeadStyled = styled.p`
 
 export const ContainerProductList = styled.div`
   padding: 0px 12px;
+  @media screen and (max-width: 400px) {
+    padding: 0px;
+  }
 `;
 
 export const DivSeeMoreStyled = styled.div`
