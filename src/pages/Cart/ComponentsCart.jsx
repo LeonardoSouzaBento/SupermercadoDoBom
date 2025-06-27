@@ -6,10 +6,13 @@ export const MainStyled = styled.div`
   width: 100%;
   padding-top: 16px;
 
-  @media screen and (max-width: 430px) {
-    width: calc(100% - 12px);
+  @media screen and (max-width: 375px) {
+    width: calc(100% - 20px);
   }
-  @media screen and (min-width: 430px) and (max-width: 768px) {
+  @media screen and (min-width: 375px) and (max-width: 414px) {
+    width: calc(100% - 20px);
+  }
+  @media screen and (min-width: 414px) and (max-width: 768px) {
     width: calc(100% - 36px);
   }
 
@@ -24,36 +27,52 @@ export const MainStyled = styled.div`
     grid-template-columns: 950px 330px;
     justify-content: center;
   }
-  @media screen and (max-width: 430px) {
-    transition: transform 0.25s ease;
-    transform: translateX(${(props) => props.$translate}%);
-  }
-  @media screen and (min-width: 430px) {
-    opacity: ${(props) => props.$opacity};
-    transition: opacity 0.5s ease;
-  }
+
+  opacity: ${(props) => props.$opacity};
+  transition: opacity 0.5s ease;
 `;
 
 export const CartSectionStyed = styled.div`
   width: 100%;
-  max-width: 894px;
   height: 460px;
   margin: auto;
   border-radius: 12px;
   background-color: white;
   box-sizing: border-box;
   background-color: rgb(250, 250, 250);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3), 0px -1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.33), 0px -1px 3px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow-y: hidden;
+
+  @media screen and (min-width: 375px) and (max-width: 414px) {
+    max-width: 356px;
+  }
+  @media screen and (min-width: 414px) and (max-width: 596px) {
+    max-width: 392px;
+  }
+  @media screen and (min-width: 596px) and (max-width: 768px) {
+    max-width: 560px;
+  }
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 
   @media screen and (max-width: 992px) {
     &::-webkit-scrollbar {
       display: none;
     }
   }
-  /*Estilo da barra*/
+  @media screen and (min-width: 769px) {
+    width: calc(100% - 32px);
+    height: calc(100vh - 48px);
+    max-height: 810px;
+    margin: auto;
+    overflow-y: scroll;
+    border-radius: 14px;
+  }
+    /*Estilo da barra*/
   @media screen and (min-width: 993px) {
+    max-width: 894px;
     &::-webkit-scrollbar-track {
       background: rgb(250, 250, 250); /* cor fundo */
     }
@@ -66,17 +85,6 @@ export const CartSectionStyed = styled.div`
     scrollbar-color: hsl(0, 0%, 78%) rgb(250, 250, 250); /* botão | fundo */
   }
 
-  @media screen and (max-width: 768px) {
-    margin-bottom: 20px;
-  }
-  @media screen and (min-width: 769px) {
-    width: calc(100% - 32px);
-    height: calc(100vh - 48px);
-    max-height: 810px;
-    margin: auto;
-    overflow-y: scroll;
-    border-radius: 14px;
-  }
 `;
 
 export const DivSpanStyled = styled.div`
@@ -87,18 +95,19 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 3px;
-  right: 3px;
+  top: 3.8px;
+  right: 4px;
   border-radius: 4px 10px 4px 4px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.09);
+  border: 1px solid rgba(0, 0, 0, 0.18);
   cursor: pointer;
 
   @media screen and (min-width: 768px) and (max-width: 992px) {
     border-radius: 4px 12px 4px 4px;
   }
   @media screen and (min-width: 993px) {
-    border-radius: 4px;
+    border-radius: 3px;
   }
 `;
 
@@ -106,23 +115,23 @@ export const SpanStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
   color: rgb(38, 0, 0);
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.67em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.73em;
+    font-size: 1.71em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.74em;
+    font-size: 1.72em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.75em;
+    font-size: 1.73em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.76em;
+    font-size: 1.74em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.77em;
+    font-size: 1.75em;
   }
 `;
 
@@ -214,52 +223,50 @@ export const DivHeadStyled = styled.div`
 
 export const PHeadStyled = styled.p`
   width: 100%;
-  font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   color: rgb(27, 27, 27);
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
 
   @media screen and (max-width: 374px) {
-    font-size: 1.23em;
+    font-size: 1.22em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.28em;
+    font-size: 1.24em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.31em;
+    font-size: 1.26em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.34em;
+    font-size: 1.28em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.37em;
+    font-size: 1.31em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.4em;
+    font-size: 1.33em;
   }
 `;
 
 export const ContainerProductList = styled.div`
   padding: 0px 12px;
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 414px) {
     padding: 0px;
   }
 `;
 
-export const DivSeeMoreStyled = styled.div`
-  height: 42px;
-  /* width: calc(100% - 16px); */
+export const DivSeeAllStyled = styled.div`
+  height: 44px;
   width: 100%;
-  /* margin-left: 7.5px; */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2px;
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
-  background-color: rgb(245, 245, 245);
-  box-shadow: 0px -1.5px 3px rgba(0, 0, 0, 0.25);
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0px -1.5px 4px rgba(0, 0, 0, 0.2);
   border: 1px solid rgb(191, 191, 191);
   border-top: none;
   z-index: 2;
@@ -269,7 +276,7 @@ export const DivSeeMoreStyled = styled.div`
   }
 `;
 
-export const PSeeMoreStyled = styled.p`
+export const PSeeAllStyled = styled.p`
   font-weight: 500;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
@@ -303,7 +310,7 @@ export const SpanSeeAllStyled = styled.span`
 export const FinishSectionStyled = styled.div`
   width: 100%;
   margin: auto;
-  padding-bottom: 40px;
+  padding-bottom: 48px;
 
   @media screen and (min-width: 769px) {
     width: 300px;
@@ -320,7 +327,7 @@ export const FinishSectionStyled = styled.div`
 //botão adicionar
 export const DivAddStyled = styled.div`
   width: 100%;
-  max-width: 400px;
+  max-width: 392px;
   margin: auto;
   height: 44px;
   margin-top: 26px;
@@ -331,8 +338,11 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: rgb(250, 250, 250);
-  box-shadow: 0px 2.5px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2.5px 4px rgba(0, 0, 0, 0.33);
 
+  @media screen and (min-width: 375px) and (max-width: 414px) {
+    max-width: 356px;
+  }
   @media screen and (min-width: 769px) {
     order: 2;
     margin: 0;
@@ -343,7 +353,7 @@ export const DivAddStyled = styled.div`
 export const PAddStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.15em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -366,7 +376,7 @@ export const PAddStyled = styled.p`
 export const ContainerStyled = styled.div`
   height: auto;
   width: 100%;
-  max-width: 400px;
+  max-width: 392px;
   padding: 18px 12px;
   margin: auto;
   display: flex;
@@ -376,7 +386,11 @@ export const ContainerStyled = styled.div`
   box-sizing: border-box;
   background-color: rgb(250, 250, 250);
   border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.33);
+
+  @media screen and (min-width: 375px) and (max-width: 414px) {
+    max-width: 356px;
+  }
 
   @media screen and (min-width: 769px) {
     display: block;
@@ -404,7 +418,7 @@ export const PAvisoStyled = styled.p`
   font-weight: 500;
   color: white;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.09em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -449,7 +463,7 @@ export const PValueStyled = styled.p`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   cursor: default;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.08em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -491,7 +505,7 @@ export const PContinueStyled = styled.p`
   padding-bottom: 2px;
   cursor: pointer;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.15em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -547,7 +561,7 @@ const PQuestionStyled = styled.p`
   text-align: center;
   cursor: default;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.24em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

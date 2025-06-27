@@ -51,7 +51,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       <BoxStyled>
         <DivSpanStyled>
           <SpanCloseStyled
-            className="material-symbols-rounded"
+            className="material-symbols-outlined"
             onClick={() => {
               setOpacityState(0);
               setTimeout(() => {
@@ -77,20 +77,22 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
             value={formData.cep}
             onChange={handleChange}
             style={{
-              marginBottom: "16px",
-              boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.4)",
+              marginBottom: "12px",
+              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+              border: "1px solid rgba(0, 0, 0, 0.28)",
+              padding: "12px",
+              borderRadius: "4px",
             }}
           />
 
           <div
             style={{
-              backgroundColor: "rgb(217, 217, 217)",
-              marginBottom: "0px",
-              padding: "12px",
-              paddingBottom: "0px",
-              borderRadius: "7px 7px 0px 0px",
-              boxShadow: "inset 0px -3px 6px rgba(0, 0, 0, 0.04)",
-              overflow: "visible",
+              overflow: "hidden",
+              marginBottom: "20px",
+              borderRadius: "4px",
+              paddingBottom: '4px',
+              backgroundColor: 'white',
+              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.33)",
             }}
           >
             <InputStyled
@@ -144,7 +146,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               required
               maxLength={50}
               onChange={handleChange}
-              style={{ marginBottom: "16px" }}
+              style={{ borderBottom: "none" }}
             />
           </div>
           <SubmitButtonStyled

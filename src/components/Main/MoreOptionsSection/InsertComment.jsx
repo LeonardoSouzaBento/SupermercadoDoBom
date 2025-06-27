@@ -31,7 +31,7 @@ const InputTextStyled = styled.textarea`
   &:focus {
     outline: none;
   }
-    @media screen and (min-width: 320px) and (max-width: 374px) {
+    @media screen and (max-width: 374px) {
     font-size: 1.13em;
     line-height: 1.4em;
   }

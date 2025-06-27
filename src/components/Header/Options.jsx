@@ -10,7 +10,7 @@ export const ContainerStyled = styled.div`
   top: 120px;
   background-color: transparent;
   z-index: 6;
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     top: 124px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

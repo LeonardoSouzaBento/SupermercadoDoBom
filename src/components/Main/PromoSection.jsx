@@ -11,7 +11,7 @@ const PaiAllProductsStyled = styled.div`
   padding-bottom: 40px;
   position: relative;
   z-index: 2;
-  @media screen and (min-width: 320px) and (max-width: 374px){
+  @media screen and (max-width: 374px){
     width: calc(100% - 15px);
     margin-left: 19px;
   }

@@ -78,7 +78,7 @@ const ImgStyled = styled.img`
   border-radius: 7px;
   ${(props) => props.$hue && "filter: grayscale(0.2) contrast(1.1);"}
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     width: 320px;
   }
 `;

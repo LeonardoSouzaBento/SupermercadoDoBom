@@ -8,7 +8,7 @@ export const Div = styled.div`
   padding-top: 16px;
   padding-bottom: 48px;
   border-radius: 5px;
-  @media screen and (min-width: 320px) and (max-width:576px){
+  @media screen and (max-width:576px){
     width: 100%;
   }
   @media screen and (min-width: 577px) and (max-width:768px){
@@ -34,7 +34,7 @@ export const P = styled.p`
   font-weight: 700;
   color:rgb(182, 10, 13);
 
-  @media screen and (min-width: 320px) and (max-width:374px){
+  @media screen and (max-width:374px){
     font-size: 1.14em;
   }
   @media screen and (min-width: 375px) and (max-width:576px){
@@ -92,7 +92,7 @@ export const Fundo = styled.div`
   height: 170px;
   min-width: 265px;
   
-  @media screen and (min-width: 320px) and (max-width: 374px){
+  @media screen and (max-width: 374px){
     min-width: 225px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px){
@@ -147,15 +147,15 @@ export const Pagination = styled.div`
 export const Span = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
-  background-color: grey;
-  border-radius: 4px;
+  background-color: rgb(121, 121, 121);
+  border-radius: 5px;
   ${props => props.$atual && `
     padding: 1px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.95);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
   `}
 
-  @media screen and (min-width: 320px) and (max-width: 374px){
+  @media screen and (max-width: 374px){
     height: 7px;
     width: 7px;
   }

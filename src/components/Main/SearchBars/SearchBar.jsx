@@ -7,7 +7,6 @@ import { sequentialPrefixSearch } from "./sequentialPrefixSearch";
 import animateMessage from "../../../functions/AnimationOfWrite";
 import {
   ContainerForFormStyled,
-  ShadowStyled,
   FormStyled,
   InputStyled,
   DivSpanStyled,
@@ -221,7 +220,6 @@ function SearchBar({ copy }) {
 
   return (
     <ContainerForFormStyled $copy={copy}>
-      <ShadowStyled  $copy={copy}/>
       <FormStyled
         $copy={copy}
         onSubmit={(e) => {

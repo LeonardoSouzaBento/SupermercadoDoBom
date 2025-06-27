@@ -14,7 +14,7 @@ const Main = styled.main`
   margin: auto;
   padding: 0px;
   position: relative;
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(240, 240, 240);
 
   &::after {
     content: "";
@@ -35,7 +35,7 @@ const Main = styled.main`
     position: absolute;
     bottom: 40%;
     left: 0;
-    background: linear-gradient(to top, rgb(225, 225, 225), rgb(235, 235, 235));
+    background: linear-gradient(to top, rgb(225, 225, 225), rgb(240, 240, 240));
     background-size: cover;
     z-index: 1;
   }
@@ -43,14 +43,14 @@ const Main = styled.main`
 
 const ShadowBottomStyled = styled.div`
   width: 100%;
-  height: 36px;
+  height: 12px;
   position: absolute;
   bottom: 0;
   left: 0;
   background-image: linear-gradient(
-    to top,
-    rgb(240, 240, 240),
-    rgba(0, 0, 0, 0)
+    to bottom,
+    rgb(225, 225, 225),
+    rgba(0, 0, 0, 0.08)
   );
   z-index: 2;
 `;

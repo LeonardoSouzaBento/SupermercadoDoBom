@@ -73,7 +73,7 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange, variant 
     <DivOfertaStyled $variant={variant}>
       <PaiImgOfertaStyled>
         {product.discount != "" && product.discount != null && (
-          <DivOffStyled>
+          <DivOffStyled $variant={variant}>
             <PoffStyled>-{product.discount}%</PoffStyled>
           </DivOffStyled>
         )}

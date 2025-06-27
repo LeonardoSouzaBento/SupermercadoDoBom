@@ -77,7 +77,7 @@ const PQuestionStyled = styled.p`
   cursor: default;
   color: white;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.24em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -131,7 +131,7 @@ const GenericPStyled = styled.p`
   letter-spacing: 0.72px;
   border-radius: 4px;
   cursor: default;
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -146,7 +146,7 @@ const PSimStyled = styled(GenericPStyled)`
   background-color: rgb(184, 0, 0);
   color: white;
   font-weight: 500;
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.1em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

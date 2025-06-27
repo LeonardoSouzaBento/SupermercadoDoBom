@@ -10,6 +10,7 @@ export const PaiProdStyled = styled.div`
   position: relative;
   box-sizing: border-box;
   border-radius: 8px;
+  overflow: hidden;
 
   ${(props) =>
     props.$variant === "home" &&
@@ -17,8 +18,9 @@ export const PaiProdStyled = styled.div`
       flex-direction: row;
       min-width: 260px;
       height: 180px;
-      border-radius: 8px 8px 14px 8px;
-      box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.26);
+      /* border-radius: 6px 6px 18px 6px; */
+      border-radius: 8px;
+      box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.2);
 
       @media screen and (max-width: 374px) {
         min-width: 260px;
@@ -44,19 +46,6 @@ export const PaiProdStyled = styled.div`
     `}
 
   ${(props) =>
-    props.$variant === "cart" &&
-    css`
-      border-radius: 0px;
-      border: 1px solid rgba(0, 0, 0, 0.18);
-    `}
-
-  ${(props) =>
-    props.$variant === "inSearch" &&
-    css`
-      box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.15);
-    `}
-  
-  ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
       //Modo paisagem
@@ -76,9 +65,21 @@ export const PaiProdStyled = styled.div`
       @media screen and (min-width: 993px) {
         flex-direction: row;
         min-width: 180px;
-        max-width: 280px;
-        height: 170px;
+        max-width: 270px;
+        height: 180px;
       }
+    `}
+  ${(props) =>
+    props.$variant === "cart" &&
+    css`
+      border-radius: 0px;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+    `}
+
+  ${(props) =>
+    props.$variant === "inSearch" &&
+    css`
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.17);
     `}
 `;
 
@@ -180,7 +181,9 @@ export const DivOffStyled = styled.div`
   height: 20px;
   padding: 0px 8px;
   background-color: #cdd4ae;
-  border-radius: 5px;
+  border-radius: 4px;
+
+  ${(props) => props.$variant === "cart" && "border-radius: 4px 0px 4px 4px;"}
 `;
 
 export const PoffStyled = styled.p`
@@ -208,6 +211,9 @@ export const DivPesoStyled = styled.div`
   align-items: flex-start;
 
   ${(props) =>
+    (props.$variant === "home" || props.$variant === "inSearch") &&
+    " border-radius: 4px;"};
+  ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
       @media screen and (min-width: 375px) and (max-width: 992px) {
@@ -223,7 +229,6 @@ export const PpesoStyled = styled.p`
   background-color: rgb(232, 232, 232);
   padding: 3px 10px;
   padding-bottom: 4px;
-  border-radius: 4px;
   @media screen and (max-width: 374px) {
     font-size: 0.87em;
   }
@@ -335,8 +340,6 @@ export const ImgOfertaStyed = styled.img`
   box-sizing: border-box;
   -webkit-user-select: none;
   user-select: none;
-  border-radius: 6px 6px 18px 6px;
-  background-color: rgb(255, 255, 255);
 `;
 
 export const DivResizeStyled = styled.div`
@@ -364,13 +367,13 @@ export const DivMaisStyled = styled.div`
   width: 34px;
   height: 34px;
   position: absolute;
-  bottom: 6px;
+  bottom: 5.5px;
   right: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: hsl(11, 76%, 60%);
-  border-radius: 12px;
+  border-radius: 18px;
   cursor: pointer;
 `;
 
@@ -394,12 +397,12 @@ export const DivQuantStyled = styled.div`
   background-color: hsl(11, 69%, 58%);
   display: flex;
   justify-content: space-between;
-  border-radius: 16px; //antes 18
+  border-radius: 16px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
   position: absolute;
-  bottom: 7px;
+  bottom: 5.5px;
   right: 6px;
 
   ${(props) =>
@@ -409,7 +412,6 @@ export const DivQuantStyled = styled.div`
       @media screen and (min-width: 375px) and (max-width: 992px) {
         width: 148px;
         right: 10px;
-
       }
     `}
 `;

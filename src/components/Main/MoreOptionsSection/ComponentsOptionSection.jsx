@@ -44,7 +44,7 @@ export const NavOptionsStyled = styled.nav`
   gap: 12px;
   margin-bottom: 28px;
 
-  @media screen and (min-width: 320px) and (max-width: 430px) {
+  @media screen and (max-width: 430px) {
     flex-direction: column;
   }
 `;
@@ -71,7 +71,7 @@ export const DivNameSpanStyled = styled.div`
 
   cursor: pointer;
 
-  @media screen and (min-width: 320px) and (max-width: 430px) {
+  @media screen and (max-width: 430px) {
     width: 100%;
   }
   @media screen and (min-width: 430px) {
@@ -134,7 +134,7 @@ export const PStyled = styled.p`
   font-weight: 400;
   text-align: justify;
   margin-bottom: 10px;
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.13em;
     line-height: 1.4em;
   }
@@ -191,7 +191,7 @@ export const H1Styled = styled.h1`
   font-weight: 200;
   margin-bottom: 20px;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.75em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -217,7 +217,7 @@ export const H2Styled = styled.h2`
   font-weight: 300;
   margin-bottom: 15px;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.25em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

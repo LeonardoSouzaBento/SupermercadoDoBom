@@ -24,7 +24,6 @@ export const ContainerForFormStyled = styled.div`
       left: 0px;
       display: flex;
       justify-content: center;
-      background-color: rgb(227, 227, 227);
 
       @media screen and (min-width: 769px) {
         justify-content: flex-start;
@@ -34,33 +33,33 @@ export const ContainerForFormStyled = styled.div`
     `}
 `;
 
-export const ShadowStyled = styled.div`
-  width: 100%;
-  height: 12px;
-  position: absolute;
-  bottom: -12px;
-  left: 0px;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.03),
-    rgba(0, 0, 0, 0)
-  );
-  background-size: 100% 100%;
+// export const ShadowStyled = styled.div`
+//   width: 100%;
+//   height: 12px;
+//   position: absolute;
+//   bottom: -12px;
+//   left: 0px;
+//   background-image: linear-gradient(
+//     to bottom,
+//     rgba(0, 0, 0, 0.03),
+//     rgba(0, 0, 0, 0)
+//   );
+//   background-size: 100% 100%;
 
-  ${(props) => props.$copy === false && "display: none;"}
-`;
+//   ${(props) => props.$copy === false && "display: none;"}
+// `;
 
 export const FormStyled = styled.form`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  height: 39px;
   width: 90%;
   margin: auto;
-  border-radius: 20px;
   position: relative;
   max-width: 1180px;
+
+
   ${(props) =>
     props.$copy &&
     css`
@@ -84,7 +83,7 @@ export const InputStyled = styled.input`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: white;
   border: none;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.46);
   &:focus {
     outline: none;
     background-color: white;
@@ -107,7 +106,8 @@ export const InputStyled = styled.input`
   ${(props) =>
     props.$copy &&
     css`
-      box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+      height: 44px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.24);
       @media screen and (min-width: 577px) {
         text-indent: 48px;
       }
@@ -165,7 +165,7 @@ export const DivMsgStyled = styled.div`
   left: 0px;
   z-index: 4;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     max-width: 260px;
     bottom: -72px;
   }
@@ -191,7 +191,7 @@ export const PMsgStyled = styled.p`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   padding: 12px 0px;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.055em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -250,7 +250,7 @@ export const PStyled = styled.p`
   &:hover {
     background-color: rgb(249, 249, 249);
   }
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 0.86em;
     line-height: 18px;
     letter-spacing: 1.01px;

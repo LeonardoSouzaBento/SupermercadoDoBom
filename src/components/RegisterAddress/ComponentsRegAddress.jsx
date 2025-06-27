@@ -23,11 +23,10 @@ export const BoxStyled = styled.div`
   box-sizing: border-box;
   border-radius: 14px;
   background-color: rgb(245, 245, 245);
-  padding: 12px 20px;
-  padding-top: 16px;
-  padding-bottom: 4px;
+  padding: 16px;
+  padding-bottom: 28px;
   position: relative;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.26);
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.4);
 
   @media screen and (max-width: 768px) {
     margin-bottom: 18px;
@@ -37,13 +36,12 @@ export const BoxStyled = styled.div`
     border-radius: 12px;
   }
   @media screen and (min-width: 375px) and (max-width: 400px) {
-    width: calc(100% - 20px);
+    width: calc(100% - 24px);
     border-radius: 12px;
   }
   @media screen and (min-width: 769px) {
+    padding: 24px;
     margin-right: 10px;
-    padding-left: 24px;
-    padding-right: 24px;
   }
   @media screen and (min-width: 993px) {
     border-radius: 8px;
@@ -55,33 +53,31 @@ export const DivSpanStyled = styled.div`
   width: 36px;
   height: 36px;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding-top: 4px;
-  padding-right: 3px;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 0px 15px 0px 36px;
-  background-color: hsl(0, 95%, 43%);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  top: 4px;
+  right: 4px;
+  border-radius: 16px 12px 16px 16px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.17);
   cursor: pointer;
-  &:hover{
-    background-color: hsl(0, 95%, 40%);
+  &:hover {
+    background-color: hsl(0, 0%, 95%);
   }
   @media screen and (max-width: 400px) {
-    border-radius: 0px 12px 0px 36px;
+    border-radius: 16px 12px 16px 16px;
   }
   @media screen and (min-width: 993px) {
-    border-radius: 0px 8px 0px 36px;
+    border-radius: 16px 12px 16px 16px;
   }
 `;
 
 export const SpanCloseStyled = styled.span`
   font-size: 1.6em;
   color: red;
-  font-weight: 500;
-  color: white;
+  font-weight: 600;
 `;
 
 // Título
@@ -90,8 +86,8 @@ export const TitleStyled = styled.h1`
   font-size: 24px;
   margin-bottom: 24px;
   user-select: none;
-  font-family: "Roboto Flex", sans-serif;
-  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
   font-size: 1.34em;
 
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -116,18 +112,21 @@ export const LocationButtonStyled = styled.button`
   width: 100%;
   height: 44px;
   padding: 0px 16px;
+  padding-bottom: 2px;
+  box-sizing: border-box;
   margin-bottom: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #16814d;
+  box-shadow: inset 0px -2px 5px rgba(0, 0, 0, 0.2);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  font-family: "Roboto Flex", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.12em;
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
 
   &:hover {
@@ -148,39 +147,26 @@ export const LocationButtonStyled = styled.button`
   }
 `;
 
-export const NoKnowMyCEP = styled(LocationButtonStyled)`
-  height: 38px;
-  background-color: rgb(223, 114, 18);
-  &:hover {
-    background-color: rgb(213, 109, 17);
-  }
-  margin-bottom: 24px;
-  border: none;
-`;
-
 // Estilo dos inputs
 export const InputStyled = styled.input`
   width: 100%;
-  padding: 10px;
+  padding: 15px 10px;
   box-sizing: border-box;
-  margin-bottom: 14px;
   border: none;
-  border-radius: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   font-size: 1.025em;
   color: black;
-
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
   }
 `;
 
 // Botão de envio
 export const SubmitButtonStyled = styled(LocationButtonStyled)`
+  height: 46px;
+  margin-bottom: 0px;
   background-color: hsl(11, 90%, 61.4%);
-  border-radius: 0px 0px 6px 6px;
-  font-weight: 400;
-
   &:hover {
     background-color: hsl(11, 90%, 51.4%);
   }

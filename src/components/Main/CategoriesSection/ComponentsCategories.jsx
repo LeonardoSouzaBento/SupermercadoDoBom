@@ -6,7 +6,7 @@ export const Div = styled.div`
   margin-left: 20px;
   position: relative;
   z-index: 2;
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     width: calc(100% - 15px);
     margin-left: 15px;
   }
@@ -39,7 +39,7 @@ export const PLabelStyled = styled.p`
   color: ${(props) => (props.id ? "rgb(69, 69, 69)" : "rgb(82, 82, 82)")};
   text-align: center;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.18em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -80,7 +80,7 @@ export const Divf = styled.div`
     cursor: grabbing;
   }
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     gap: 15px;
   }
   @media screen and (min-width: 1201px) {
@@ -127,7 +127,7 @@ export const DivCat = styled.div`
   ${(props) =>
     props.$selected &&
     `background-color: rgb(255, 255, 255);
-     box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.42);}
+     box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.29);}
     `}
 `;
 
@@ -140,7 +140,7 @@ export const ImgStyled = styled.img`
   transition: all 0.32s ease;
   padding: 4px;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     width: 39px;
     height: 39px;
     padding: 3px;

@@ -52,6 +52,9 @@ const DivStyled = styled.div`
     css`
       padding-right: 0px;
       gap: 12px;
+      @media screen and (max-width: 413px) {
+        gap: 2px;
+      }
     `}
 
   ${(props) =>

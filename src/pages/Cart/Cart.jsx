@@ -27,8 +27,8 @@ import {
   DivMsgVoidCart,
   BlurDivStyled,
   ImgVoidCartStyled,
-  DivSeeMoreStyled,
-  PSeeMoreStyled,
+  DivSeeAllStyled,
+  PSeeAllStyled,
   SpanSeeAllStyled,
   DivAddStyled,
   PAddStyled,
@@ -42,7 +42,6 @@ const totalHeightCartSection = 460;
 const Cart = () => {
   const navigate = useNavigate();
   const { totalAddedValue } = useContext(CartContext);
-  const [translateState, setTranslateState] = useState(100);
   const [opacityState, setOpacityState] = useState(0.03);
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
   const { setCartProducts } = useContext(CartContext);
@@ -53,7 +52,6 @@ const Cart = () => {
   //estados para botão ver todos
   const [newHeight, setNewHeight] = useState(0);
   const [applyNewHeight, setApplyNewHeight] = useState(true);
-  const [heightWasAlter, setHeightWasAlter] = useState(false);
 
   const resizeDowntime = useRef(null);
   const ProductListRef = useRef(null);
@@ -100,7 +98,6 @@ const Cart = () => {
     if (applyNewHeight) {
       setApplyNewHeight(false);
       CartSectionRef.current.style.height = `${newHeight}px`;
-      setHeightWasAlter(true);
     } else {
       setApplyNewHeight(true);
       CartSectionRef.current.style.height = `${totalHeightCartSection}px`;
@@ -114,15 +111,16 @@ const Cart = () => {
     if (heightCartSection - productListHeight < 0) {
       setViewButtonsetSeeAll(true);
       setNewHeight(productListHeight + 124);
+      setApplyNewHeight(true);
     } else {
       setViewButtonsetSeeAll(false);
+      setApplyNewHeight(false);
     }
   }
 
   // resize p reamostrar botão 'ver todos'
   useEffect(() => {
     setTimeout(() => {
-      setTranslateState(0);
       setOpacityState(1);
     }, 300);
     // Espera a próxima pintura do navegador (após o layout completo)
@@ -143,13 +141,17 @@ const Cart = () => {
       resizeDowntime.current = setTimeout(() => {
         checkHiddenProducts();
 
-        if (heightWasAlter) {
-          if (window.innerWidth >= 769) {
-            CartSectionRef.current.style.height = "calc(100vh - 48px)";
-          } else {
-            CartSectionRef.current.style.height = "460px";
+        const div = CartSectionRef.current;
+        if (window.innerWidth >= 769) {
+          const newHeight = "calc(100vh - 48px)";
+          if (div.style.height !== newHeight) {
+            div.style.height = newHeight;
           }
-          setHeightWasAlter(false);
+        } else {
+          const newHeight = "460px";
+          if (div.style.height !== newHeight) {
+            div.style.height = newHeight;
+          }
         }
       }, 300);
     }
@@ -173,11 +175,7 @@ const Cart = () => {
           backgroundColor: "rgb(235, 235, 235)",
         }}
       >
-        <MainStyled
-          $seeAddressForm={seeAddressForm}
-          $translate={translateState}
-          $opacity={opacityState}
-        >
+        <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
           <div style={{ position: "relative" }}>
             <CartSectionStyed ref={CartSectionRef}>
               <DivHeadStyled>
@@ -197,7 +195,10 @@ const Cart = () => {
                       Cancelar a compra?
                     </PConfirmCancelStyled>
 
-                    <DivSpanStyled2 onClick={handleConfirmCancel} $uniqueBorderRadius={true}>
+                    <DivSpanStyled2
+                      onClick={handleConfirmCancel}
+                      $uniqueBorderRadius={true}
+                    >
                       <SpanStyled className="material-symbols-outlined">
                         check
                       </SpanStyled>
@@ -233,14 +234,14 @@ const Cart = () => {
                 ></ProductList>
               </ContainerProductList>
               {viewButtonSeeAll && (
-                <DivSeeMoreStyled onClick={handleClickSeeAll}>
-                  <PSeeMoreStyled>
+                <DivSeeAllStyled onClick={handleClickSeeAll}>
+                  <PSeeAllStyled>
                     {applyNewHeight ? "Ver todos" : "Ver menos"}
-                  </PSeeMoreStyled>
+                  </PSeeAllStyled>
                   <SpanSeeAllStyled className="material-symbols-rounded">
                     keyboard_arrow_down
                   </SpanSeeAllStyled>
-                </DivSeeMoreStyled>
+                </DivSeeAllStyled>
               )}
             </CartSectionStyed>
             <ShadowStyled />

@@ -115,7 +115,7 @@ const SpanCartStyled = styled.span`
   font-weight: 300;
   font-variation-settings: "FILL" 1;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.6em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -124,7 +124,7 @@ const SpanCartStyled = styled.span`
 `;
 
 const SpanSetaStyled = styled(SpanCartStyled)`
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.5em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -150,7 +150,7 @@ const PPrecoStyled = styled.p`
   color: white;
   letter-spacing: 0.71px;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.06em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

@@ -22,7 +22,7 @@ const LogoDivStyled = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 50%;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
   transform: scaleX(-1);
   @media (min-width: 320px) and (max-width: 374px) {
     height: 54px;
@@ -100,7 +100,7 @@ const SpaceMoreOptions = styled.div`
   width: 44px;
   height: 44px;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     width: 42px;
     height: 42px;
   }
@@ -161,7 +161,7 @@ const DivStyled = styled.div`
     top: 45px;
     right: 5%;
   }
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     top: 45px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
