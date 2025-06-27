@@ -51,6 +51,7 @@ const DivStyled = styled.div`
     props.$variant === "cart" &&
     css`
       padding-right: 0px;
+      gap: 12px;
     `}
 
   ${(props) =>

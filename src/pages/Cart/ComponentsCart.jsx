@@ -3,12 +3,16 @@ import styled from "styled-components";
 export const MainStyled = styled.div`
   margin: auto;
   position: relative;
-  @media screen and (min-width: 320px) and (max-width: 374px) {
-    width: 100%;
-  }
-  @media screen and (min-width: 375px) and (max-width: 768px) {
+  width: 100%;
+  padding-top: 16px;
+
+  @media screen and (max-width: 430px) {
     width: calc(100% - 12px);
   }
+  @media screen and (min-width: 430px) and (max-width: 768px) {
+    width: calc(100% - 36px);
+  }
+
   @media screen and (min-width: 769px) {
     display: grid;
     grid-template-columns: auto 330px;
@@ -22,10 +26,10 @@ export const MainStyled = styled.div`
   }
   @media screen and (max-width: 430px) {
     transition: transform 0.25s ease;
-    transform: translateX(${props => props.$translate}%);
+    transform: translateX(${(props) => props.$translate}%);
   }
   @media screen and (min-width: 430px) {
-    opacity: ${props => props.$opacity};
+    opacity: ${(props) => props.$opacity};
     transition: opacity 0.5s ease;
   }
 `;
@@ -35,11 +39,11 @@ export const CartSectionStyed = styled.div`
   max-width: 894px;
   height: 460px;
   margin: auto;
+  border-radius: 12px;
   background-color: white;
-  border-radius: 16px;
   box-sizing: border-box;
   background-color: rgb(250, 250, 250);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2), 0px -1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3), 0px -1px 3px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow-y: hidden;
 
@@ -48,22 +52,22 @@ export const CartSectionStyed = styled.div`
       display: none;
     }
   }
-
+  /*Estilo da barra*/
   @media screen and (min-width: 993px) {
     &::-webkit-scrollbar-track {
-      background: rgb(250, 250, 250); /* cor de fundo da "trilha" */
+      background: rgb(250, 250, 250); /* cor fundo */
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgb(235, 235, 235); /* cor do "botão" da barra */
+      background: rgb(235, 235, 235); /* cor botão */
       border-radius: 6px;
     }
     scrollbar-width: thin; /* Opções: auto | thin | none */
-    scrollbar-color: hsl(0, 0.00%, 78.00%) rgb(250, 250, 250); /* thumb | track */
+    scrollbar-color: hsl(0, 0%, 78%) rgb(250, 250, 250); /* botão | fundo */
   }
+
   @media screen and (max-width: 768px) {
     margin-bottom: 20px;
-    border-radius: 0px 0px 16px 16px;
   }
   @media screen and (min-width: 769px) {
     width: calc(100% - 32px);
@@ -71,28 +75,34 @@ export const CartSectionStyed = styled.div`
     max-height: 810px;
     margin: auto;
     overflow-y: scroll;
+    border-radius: 14px;
   }
 `;
 
-export const DivSpanCancelCart = styled.div`
-  width: 48px;
-  height: 48px;
-  padding-top: 4px;
-  padding-left: 4px;
+export const DivSpanStyled = styled.div`
+  width: 40px;
+  height: 40px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 0px 8px 0px 40px;
+  top: 3px;
+  right: 3px;
+  border-radius: 4px 10px 4px 4px;
   background-color: rgb(255, 255, 255);
-  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    border-radius: 4px 12px 4px 4px;
+  }
+  @media screen and (min-width: 993px) {
+    border-radius: 4px;
+  }
 `;
 
-export const SpanCancelCart = styled.span`
+export const SpanStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
   color: rgb(38, 0, 0);
 
@@ -134,10 +144,11 @@ export const BoxConfirmCancel = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 `;
 
-export const DivSpanConfirmCancel = styled(DivSpanCancelCart)`
+export const DivSpanStyled2 = styled(DivSpanStyled)`
   position: relative;
   padding-bottom: 0px;
   margin-bottom: 8px;
+  ${(props) => props.$uniqueBorderRadius && "border-radius: 4px;"};
 `;
 
 export const PConfirmCancelStyled = styled.p`
@@ -145,9 +156,9 @@ export const PConfirmCancelStyled = styled.p`
   text-align: center;
   font-weight: 300;
   color: white;
-  padding-right: 4px;
+  padding-right: 8px;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.23em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -182,8 +193,8 @@ export const ShadowStyled = styled.div`
   border-radius: 0px 0px 10px 10px;
 
   @media screen and (min-width: 769px) {
-   width: calc(100% - 31px);
-   margin-left: 15px;
+    width: calc(100% - 31px);
+    margin-left: 15px;
   }
   @media screen and (min-width: 993px) {
     display: none;
@@ -198,7 +209,7 @@ export const DivHeadStyled = styled.div`
   margin-bottom: 18px;
   position: relative;
   border-radius: 12px 12px 0px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
 `;
 
 export const PHeadStyled = styled.p`
@@ -237,18 +248,18 @@ export const ContainerProductList = styled.div`
 
 export const DivSeeMoreStyled = styled.div`
   height: 42px;
-  width: calc(100% - 16px);
-  margin-left: 7.6px;
+  /* width: calc(100% - 16px); */
+  width: 100%;
+  /* margin-left: 7.5px; */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2px;
   position: absolute;
-  bottom: 8px;
+  bottom: 0;
   left: 0;
   background-color: rgb(245, 245, 245);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
+  box-shadow: 0px -1.5px 3px rgba(0, 0, 0, 0.25);
   border: 1px solid rgb(191, 191, 191);
   border-top: none;
   z-index: 2;
@@ -320,7 +331,7 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: rgb(250, 250, 250);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.32);
+  box-shadow: 0px 2.5px 4px rgba(0, 0, 0, 0.3);
 
   @media screen and (min-width: 769px) {
     order: 2;
@@ -333,22 +344,22 @@ export const PAddStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 500;
   @media screen and (min-width: 320px) and (max-width: 374px) {
-    font-size: 1.16em;
+    font-size: 1.15em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.2em;
+    font-size: 1.16em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.24em;
+    font-size: 1.17em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.28em;
+    font-size: 1.18em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.32em;
+    font-size: 1.19em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 `;
 
@@ -435,7 +446,6 @@ export const DivStyled = styled.div`
 `;
 
 export const PValueStyled = styled.p`
-
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   cursor: default;
 

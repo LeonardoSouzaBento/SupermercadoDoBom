@@ -7,11 +7,11 @@ import {
   MainStyled,
   CartSectionStyed,
   ShadowStyled,
-  DivSpanCancelCart,
-  SpanCancelCart,
+  DivSpanStyled,
+  SpanStyled,
   BoxConfirmCancel,
   PConfirmCancelStyled,
-  DivSpanConfirmCancel,
+  DivSpanStyled2,
   DivHeadStyled,
   PHeadStyled,
   ContainerProductList,
@@ -181,15 +181,15 @@ const Cart = () => {
           <div style={{ position: "relative" }}>
             <CartSectionStyed ref={CartSectionRef}>
               <DivHeadStyled>
-                <DivSpanCancelCart
+                <DivSpanStyled
                   onClick={() => {
                     setSeeCancelDialog(true);
                   }}
                 >
-                  <SpanCancelCart className="material-symbols-outlined">
+                  <SpanStyled className="material-symbols-outlined">
                     delete
-                  </SpanCancelCart>
-                </DivSpanCancelCart>
+                  </SpanStyled>
+                </DivSpanStyled>
 
                 {seeCancelDialog && (
                   <BoxConfirmCancel>
@@ -197,21 +197,21 @@ const Cart = () => {
                       Cancelar a compra?
                     </PConfirmCancelStyled>
 
-                    <DivSpanConfirmCancel onClick={handleConfirmCancel}>
-                      <SpanCancelCart className="material-symbols-outlined">
+                    <DivSpanStyled2 onClick={handleConfirmCancel} $uniqueBorderRadius={true}>
+                      <SpanStyled className="material-symbols-outlined">
                         check
-                      </SpanCancelCart>
-                    </DivSpanConfirmCancel>
+                      </SpanStyled>
+                    </DivSpanStyled2>
 
-                    <DivSpanConfirmCancel
+                    <DivSpanStyled2
                       onClick={() => {
                         setSeeCancelDialog(false);
                       }}
                     >
-                      <SpanCancelCart className="material-symbols-outlined">
+                      <SpanStyled className="material-symbols-outlined">
                         close
-                      </SpanCancelCart>
-                    </DivSpanConfirmCancel>
+                      </SpanStyled>
+                    </DivSpanStyled2>
                   </BoxConfirmCancel>
                 )}
                 {viewFeedback && (
