@@ -6,8 +6,6 @@ import { ProductList } from "../../components/Main/ProductSection/ProductList.js
 import {
   MainStyled,
   CartSectionStyed,
-  CornerStyled,
-  MiniCircleStyled,
   ShadowStyled,
   DivSpanCancelCart,
   SpanCancelCart,
@@ -183,9 +181,6 @@ const Cart = () => {
           <div style={{ position: "relative" }}>
             <CartSectionStyed ref={CartSectionRef}>
               <DivHeadStyled>
-                <CornerStyled>
-                  <MiniCircleStyled />
-                </CornerStyled>
                 <DivSpanCancelCart
                   onClick={() => {
                     setSeeCancelDialog(true);

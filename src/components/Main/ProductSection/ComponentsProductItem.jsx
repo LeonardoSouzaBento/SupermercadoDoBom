@@ -18,7 +18,7 @@ export const PaiProdStyled = styled.div`
       min-width: 260px;
       height: 180px;
       border-radius: 8px 8px 14px 8px;
-      box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.26);
 
       @media screen and (min-width: 320px) and (max-width: 374px) {
         min-width: 260px;
@@ -76,7 +76,6 @@ export const DescOfertaStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-
   @media screen and (min-width: 320px) and (max-width: 374px) {
     padding: 11px;
   }
@@ -109,10 +108,12 @@ export const DescOfertaStyled = styled.div`
         padding-right: 0px;
       }
       @media screen and (min-width: 375px) and (max-width: 992px) {
-        height: 42%;
+       
+        height: 127px;
         width: 100%;
         order: 2;
         gap: 4px;
+        /* border-top: 1px solid rgba(0, 0, 0, 0.16); */
       }
       @media screen and (min-width: 993px) {
         padding-right: 0px;
@@ -209,9 +210,9 @@ export const PpesoStyled = styled.p`
   letter-spacing: 0.5px;
   font-family: "Roboto Flex", Arial, sans-serif;
   background-color: rgb(232, 232, 232);
-  padding: 3px 15px;
+  padding: 3px 10px;
   padding-bottom: 4px;
-  border-radius: 12px;
+  border-radius: 4px;
   @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 0.87em;
   }
@@ -382,7 +383,7 @@ export const DivQuantStyled = styled.div`
   background-color: hsl(11, 69%, 58%);
   display: flex;
   justify-content: space-between;
-  border-radius: 10px; //antes 18
+  border-radius: 12px; //antes 18
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
@@ -394,9 +395,7 @@ export const DivQuantStyled = styled.div`
     (props.$variant == "cart" || props.$variant == "inSearch") &&
     css`
       @media screen and (min-width: 375px) and (max-width: 992px) {
-        width: 140px;
-        right: 50%;
-        transform: translate(50%);
+        width: 158px;
       }
     `}
 `;

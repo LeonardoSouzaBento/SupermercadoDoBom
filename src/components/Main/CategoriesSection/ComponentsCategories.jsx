@@ -127,7 +127,7 @@ export const DivCat = styled.div`
   ${(props) =>
     props.$selected &&
     `background-color: rgb(255, 255, 255);
-     box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.45);}
+     box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.42);}
     `}
 `;
 
@@ -135,7 +135,7 @@ export const ImgStyled = styled.img`
   height: 40px;
   width: 40px;
   background-color: rgb(255, 83, 83);
-  border-radius: 16px;   //antes 47%
+  border-radius: 46%;   //antes 47%
   filter: contrast(1.7) saturate(1.8);
   transition: all 0.32s ease;
   padding: 4px;
