@@ -36,7 +36,7 @@ export const CornerStyled = styled.div`
   height: 10px;
   width: 10px;
   position: absolute;
-  background-color:rgb(235, 235, 235);
+  background-color:rgb(240, 240, 240);
   top: 0;
   right: 0;
 `;
@@ -44,7 +44,7 @@ export const CornerStyled = styled.div`
 export const MiniCircleStyled = styled(CornerStyled)`
   height: 100%;
   width: 100%;
-  background-color: rgb(217, 217, 217);
+  background-color: rgb(222, 222, 222);
   border-radius: 0px 10px 0px 0px;
 `;
 
@@ -56,8 +56,8 @@ export const CartSectionStyed = styled.div`
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;
-  background-color: rgb(217, 217, 217);
-  box-shadow: inset 0px -3px 6px rgba(0, 0, 0, 0.09);
+  background-color: rgb(222, 222, 222);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5), 0px -1px 3px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow-y: hidden;
 
@@ -69,7 +69,7 @@ export const CartSectionStyed = styled.div`
 
   @media screen and (min-width: 993px) {
     &::-webkit-scrollbar-track {
-      background: rgb(217, 217, 217); /* cor de fundo da "trilha" */
+      background: rgb(222, 222, 222); /* cor de fundo da "trilha" */
     }
 
     &::-webkit-scrollbar-thumb {
@@ -77,10 +77,10 @@ export const CartSectionStyed = styled.div`
       border-radius: 6px;
     }
     scrollbar-width: thin; /* Opções: auto | thin | none */
-    scrollbar-color: rgb(235, 235, 235) rgb(217, 217, 217); /* thumb | track */
+    scrollbar-color: hsl(0, 0.00%, 79%) rgb(222, 222, 222); /* thumb | track */
   }
   @media screen and (max-width: 768px) {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
   @media screen and (min-width: 769px) {
     width: calc(100% - 32px);
@@ -102,14 +102,14 @@ export const DivSpanCancelCart = styled.div`
   top: 4px;
   right: 4px;
   border-radius: 8px;
-  background-color: rgb(250, 250, 250);
-  box-shadow: -1px 1px 2px rgba(93, 93, 93, 0.2);
+  background-color: rgb(255, 255, 255);
+  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 `;
 
 export const SpanCancelCart = styled.span`
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
-  color: rgb(75, 75, 75);
+  color: rgb(38, 0, 0);
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     font-size: 1.67em;
@@ -226,27 +226,27 @@ export const DivHeadStyled = styled.div`
 export const PHeadStyled = styled.p`
   width: 100%;
   font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
-  color: rgb(0, 0, 0);
+  color: rgb(27, 27, 27);
   text-align: center;
   font-weight: 300;
 
-  @media screen and (min-width: 320px) and (max-width: 374px) {
-    font-size: 1.18em;
+  @media screen and (max-width: 374px) {
+    font-size: 1.23em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.22em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.24em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.26em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
     font-size: 1.28em;
   }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.31em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.34em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.37em;
+  }
   @media screen and (min-width: 1201px) {
-    font-size: 1.3em;
+    font-size: 1.4em;
   }
 `;
 
@@ -265,8 +265,8 @@ export const DivSeeMoreStyled = styled.div`
   position: absolute;
   bottom: 8px;
   left: 0;
-  background-color: rgb(238, 238, 238);
-  box-shadow: 0px 2px 4px rgba(93, 93, 93, 0.2);
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
   border-radius: 6px 6px 9px 9px;
   border: 1px solid rgb(191, 191, 191);
   border-top: none;
@@ -330,17 +330,16 @@ export const DivAddStyled = styled.div`
   width: 100%;
   max-width: 400px;
   margin: auto;
-  height: 40px;
+  height: 44px;
   margin-top: 26px;
   padding-bottom: 2px;
   display: flex;
   justify-content: center;
   gap: 12px;
   align-items: center;
-  border-radius: 6.5px;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(199, 199, 199);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
 
   @media screen and (min-width: 769px) {
     order: 2;
@@ -383,11 +382,9 @@ export const ContainerStyled = styled.div`
   justify-content: center;
   align-items: flex-end;
   box-sizing: border-box;
-  background-color: white;
+  background-color: rgb(245, 245, 245);
   border-radius: 8px;
-  border: 1px solid rgb(207, 207, 207);
-  border-top: none;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 
   @media screen and (min-width: 769px) {
     display: block;

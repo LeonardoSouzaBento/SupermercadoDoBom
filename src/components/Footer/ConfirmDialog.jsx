@@ -16,7 +16,7 @@ const ContainerStyled = styled.div`
 const DivStyled = styled.div`
   width: calc(100% - 16px);
   max-width: 400px;
-  height: ${props => props.$heightDiv};
+  height: ${(props) => props.$heightDiv};
   padding: 24px 18px;
   box-sizing: border-box;
   display: flex;
@@ -28,19 +28,10 @@ const DivStyled = styled.div`
   position: absolute;
   right: 8px;
   bottom: 8px;
-  background-image: linear-gradient(
-    to bottom,
-    hsl(12, 95%, 44%),
-    hsl(12, 95%, 62%)
-  );
-  background-size: 100% 50%;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-color: hsl(12, 95%, 62%);
+  background-color: hsl(12, 95%, 59.5%);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
   transition: height 0.15s ease;
   ${(props) => props.$feedback && "background-size: 0% 0%;"};
-  ${(props) => props.$feedback && "background-color: hsl(12, 95%, 59.5%);"}
 
   @media screen and (max-width: 450px) {
     right: 50%;
@@ -181,27 +172,23 @@ const PVoltarStyled = styled(GenericPStyled)`
   }
 `;
 
-export default function ConfirmDialog({
-  setViewConfirm,
-  canHandleClick,
-}) {
+export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
   const { setCartProducts } = useContext(CartContext);
   const { viewFeedback, setViewFeedback } = useContext(ViewContext);
-  const [heightDiv, setHeightDiv] = useState('163px');
+  const [heightDiv, setHeightDiv] = useState("163px");
 
   const handleConfirmCancel = (action) => {
     if (action === 1 && canHandleClick) {
-      setHeightDiv('105px');
+      setHeightDiv("105px");
       setViewFeedback(true);
       setCartProducts([]);
 
       setTimeout(() => {
         setViewConfirm(false);
         setViewFeedback(false);
-        setHeightDiv('163px')
+        setHeightDiv("163px");
       }, 2100);
-    }
-    else if (action === 0 && canHandleClick) {
+    } else if (action === 0 && canHandleClick) {
       setViewConfirm(false);
     }
   };

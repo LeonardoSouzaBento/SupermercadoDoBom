@@ -135,11 +135,10 @@ export const ImgStyled = styled.img`
   height: 40px;
   width: 40px;
   background-color: rgb(255, 83, 83);
-  border-radius: 47%;
+  border-radius: 16px;   //antes 47%
   filter: contrast(1.7) saturate(1.8);
   transition: all 0.32s ease;
   padding: 4px;
-  /* box-shadow: 0px 0px 2px rgb(91, 91, 91); */
 
   @media screen and (min-width: 320px) and (max-width: 374px) {
     width: 39px;

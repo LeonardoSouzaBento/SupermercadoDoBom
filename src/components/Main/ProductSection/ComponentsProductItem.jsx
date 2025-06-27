@@ -17,6 +17,7 @@ export const PaiProdStyled = styled.div`
       flex-direction: row;
       min-width: 260px;
       height: 180px;
+      border-radius: 8px 8px 14px 8px;
 
       @media screen and (min-width: 320px) and (max-width: 374px) {
         min-width: 260px;
@@ -165,7 +166,7 @@ export const PnomeStyled = styled.p`
 export const DivOffStyled = styled.div`
   position: absolute;
   top: 5.5px;
-  right: 5px;
+  right: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -386,7 +387,7 @@ export const DivQuantStyled = styled.div`
   background-color: hsl(11, 69%, 58%);
   display: flex;
   justify-content: space-between;
-  border-radius: 18px;
+  border-radius: 12px; //antes 18
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
