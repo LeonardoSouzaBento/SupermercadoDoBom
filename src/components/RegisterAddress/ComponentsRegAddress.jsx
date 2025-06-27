@@ -126,24 +126,21 @@ export const LocationButtonStyled = styled.button`
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 1.12em;
-  font-weight: 400;
+  font-weight: 500;
   text-align: center;
 
   &:hover {
     background-color: rgb(20, 117, 70);
   }
 
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.13em;
+  @media screen and (max-width: 374px) {
+    font-size: 1.15em;
   }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.14em;
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.18em;
   }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.145em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.22em;
+  @media screen and (min-width: 577px) {
+    font-size: 1.2em;
   }
 `;
 
