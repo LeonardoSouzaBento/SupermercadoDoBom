@@ -9,16 +9,18 @@ export const ContainerForFormStyled = styled.div`
   z-index: 2;
   box-sizing: border-box;
 
-  @media screen and (min-width: 769px) {
-    padding-top: 13px;
-  }
+  ${(props) =>
+    props.$copy === false &&
+    css`
+      @media screen and (min-width: 769px) {
+        padding-top: 13px;
+      }
+    `}
 
   ${(props) =>
     props.$copy &&
     css`
       padding-top: 18px;
-      padding-bottom: 20px;
-      margin-bottom: 8px;
       position: sticky;
       top: 0px;
       left: 0px;
@@ -28,7 +30,6 @@ export const ContainerForFormStyled = styled.div`
       @media screen and (min-width: 769px) {
         justify-content: flex-start;
         padding-left: 24px;
-        padding-top: 18px;
       }
     `}
 `;
@@ -43,11 +44,9 @@ export const FormStyled = styled.form`
   position: relative;
   max-width: 1180px;
 
-
   ${(props) =>
     props.$copy &&
     css`
-      height: 40px;
       width: 90%;
       max-width: 684px;
       margin: 0;
@@ -67,7 +66,7 @@ export const InputStyled = styled.input`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: white;
   border: none;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.55);
   &:focus {
     outline: none;
     background-color: white;
@@ -91,7 +90,7 @@ export const InputStyled = styled.input`
     props.$copy &&
     css`
       height: 44px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.45);
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
       @media screen and (min-width: 577px) {
         text-indent: 48px;
       }
@@ -225,7 +224,7 @@ export const PStyled = styled.p`
   text-transform: uppercase;
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 600;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.65);
 
   ${(props) =>
     props.$copy === false && "box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.7);"}

@@ -15,7 +15,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-  background-color: rgb(240, 240, 240);
+  background-color: #f5faff;
   -ms-overflow-style: none;
   width: 100%;
   max-width: 1390px;

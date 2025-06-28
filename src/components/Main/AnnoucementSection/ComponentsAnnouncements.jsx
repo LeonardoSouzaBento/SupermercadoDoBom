@@ -32,7 +32,7 @@ export const P = styled.p`
   font-size: 1.15em;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  color:rgb(182, 10, 13);
+  color: #78070B;
 
   @media screen and (max-width:374px){
     font-size: 1.14em;
@@ -152,7 +152,7 @@ export const Span = styled.span.attrs(() => ({
   ${props => props.$atual && `
     padding: 1px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
   `}
 
   @media screen and (max-width: 374px){

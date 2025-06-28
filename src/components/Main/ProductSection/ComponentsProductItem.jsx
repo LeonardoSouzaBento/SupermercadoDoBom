@@ -9,76 +9,39 @@ export const PaiProdStyled = styled.div`
   user-select: none;
   position: relative;
   box-sizing: border-box;
-  border-radius: 8px;
   overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.37);
 
-  ${(props) =>
-    props.$variant === "home" &&
-    css`
-      flex-direction: row;
-      min-width: 260px;
-      height: 180px;
-      border-radius: 8px;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  //paisagem
+  @media screen and (max-width: 375px) {
+    flex-direction: row;
+    height: 170px;
+    min-width: 295px;
+    max-width: 295px;
+  }
+  //retrato
+  @media screen and (min-width: 375px) and (max-width: 992px) {
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 170px;
+    max-width: 170px;
+    min-height: 296px;
+  }
+  //paisagem
+  @media screen and (min-width: 993px) {
+    flex-direction: row;
+    min-width: 270px;
+    max-width: 270px;
+    height: 180px;
+  }
 
-      @media screen and (max-width: 374px) {
-        min-width: 260px;
-        max-width: 260px;
-      }
-      @media screen and (min-width: 375px) and (max-width: 576px) {
-        min-width: 270px;
-        max-width: 270px;
-      }
-      @media screen and (min-width: 577px) and (max-width: 768px) {
-        min-width: 272px;
-        max-width: 272px;
-      }
-      @media screen and (min-width: 769px) and (max-width: 992px) {
-        min-width: 275px;
-        max-width: 275px;
-      }
-      @media screen and (min-width: 993px) {
-        min-width: 280px;
-        max-width: 280px;
-        height: 170px;
-      }
-    `}
-
-  ${(props) =>
-    (props.$variant === "cart" || props.$variant === "inSearch") &&
-    css`
-      //Modo paisagem
-      @media screen and (max-width: 375px) {
-        flex-direction: row;
-        height: 170px;
-        max-width: 295px;
-      }
-      //Modo retrato
-      @media screen and (min-width: 375px) and (max-width: 992px) {
-        flex-direction: column;
-        justify-content: space-between;
-        max-width: 170px;
-        min-height: 296px;
-      }
-      //modo paisagem
-      @media screen and (min-width: 993px) {
-        flex-direction: row;
-        min-width: 180px;
-        max-width: 270px;
-        height: 180px;
-      }
-    `}
   ${(props) =>
     props.$variant === "cart" &&
     css`
       border-radius: 0px;
+      box-shadow: none;
       border: 1px solid rgba(0, 0, 0, 0.2);
-    `}
-
-  ${(props) =>
-    props.$variant === "inSearch" &&
-    css`
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
     `}
 `;
 
@@ -88,48 +51,28 @@ export const DescOfertaStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+
   @media screen and (max-width: 374px) {
     padding: 11px;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    padding: 9px;
+  @media screen and (max-width: 375px) {
+    height: 100%;
+    width: 52%;
+    padding-right: 0px;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
+  @media screen and (min-width: 375px) {
     padding: 8px;
   }
-  @media screen and (min-width: 769px) {
-    padding: 7px;
+  @media screen and (min-width: 375px) and (max-width: 992px) {
+    height: 127px;
+    width: 100%;
+    order: 2;
+    gap: 4px;
   }
   @media screen and (min-width: 993px) {
     width: 52%;
+    padding-right: 0px;
   }
-
-  ${(props) =>
-    props.$variant === "home" &&
-    css`
-      height: 100%;
-      width: 52%;
-      padding-right: 0px !important;
-    `}
-  ${(props) =>
-    (props.$variant === "cart" || props.$variant === "inSearch") &&
-    css`
-      @media screen and (max-width: 375px) {
-        height: 100%;
-        width: 52%;
-        padding-right: 0px;
-      }
-      @media screen and (min-width: 375px) and (max-width: 992px) {
-        height: 127px;
-        width: 100%;
-        order: 2;
-        gap: 4px;
-        /* border-top: 1px solid rgba(0, 0, 0, 0.16); */
-      }
-      @media screen and (min-width: 993px) {
-        padding-right: 0px;
-      }
-    `}
 `;
 
 export const DivNomeStyled = styled.div`
@@ -219,15 +162,11 @@ export const PaiPrecoStyled = styled.div`
   align-items: flex-start;
   gap: 8px;
 
-  ${(props) =>
-    (props.$variant === "cart" || props.$variant === "inSearch") &&
-    css`
-      @media screen and (min-width: 375px) and (max-width: 992px) {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    `}
+  @media screen and (min-width: 375px) and (max-width: 992px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const DivPrecoStyled = styled.div`
@@ -292,7 +231,12 @@ export const DivOffStyled = styled.div`
   background-color: #cdd4ae;
   border-radius: 4px;
 
-  ${(props) => props.$variant === "cart" && "border-radius: 4px 0px 4px 4px;"}
+  ${(props) => props.$variant === "cart" && css`
+    border-radius: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  `}
 `;
 
 export const PoffStyled = styled.p`
@@ -318,14 +262,10 @@ export const DivOfertaStyled = styled.div`
   overflow: hidden;
   position: relative;
 
-  ${(props) =>
-    (props.$variant === "cart" || props.$variant === "inSearch") &&
-    css`
-      @media screen and (min-width: 375px) and (max-width: 992px) {
-        height: 170px;
-        width: 100%;
-      }
-    `}
+  @media screen and (min-width: 375px) and (max-width: 992px) {
+    height: 170px;
+    width: 100%;
+  }
 `;
 export const PaiImgOfertaStyled = styled.div`
   width: 100%;
@@ -374,7 +314,7 @@ export const DivMaisStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: hsl(11, 76%, 60%);
+  background-color: #DC2C32;
   border-radius: 18px;
   cursor: pointer;
 `;
@@ -396,7 +336,8 @@ export const PMaisStyled = styled.p`
 export const DivQuantStyled = styled.div`
   width: 128px;
   height: 34px;
-  background-color: hsl(11, 69%, 58%);
+  background-color: #DB2C32;
+  /* background-color: #C6383D; */
   display: flex;
   justify-content: space-between;
   border-radius: 16px;
@@ -410,7 +351,6 @@ export const DivQuantStyled = styled.div`
   ${(props) =>
     (props.$variant == "cart" || props.$variant == "inSearch") &&
     css`
-      ${(props) => props.$variant === "cart" && "background-color: #f56544;"}
       @media screen and (min-width: 375px) and (max-width: 992px) {
         width: 148px;
         right: 10px;

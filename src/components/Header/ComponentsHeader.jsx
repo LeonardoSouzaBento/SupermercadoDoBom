@@ -21,10 +21,10 @@ const LogoDivStyled = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
-  border-radius: 50%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 47%;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
   transform: scaleX(-1);
-  @media (min-width: 320px) and (max-width: 374px) {
+  @media (max-width: 374px) {
     height: 54px;
     width: 54px;
   }
@@ -43,9 +43,9 @@ const LogoDivStyled = styled.div`
 `;
 
 const SpanLogoStyled = styled.span`
-  color: rgb(241, 16, 24);
+  color: #D00C13;
   font-size: 2.06em;
-  font-weight: 500;
+  font-weight: 600;
 `;
 
 const DivPsStyled = styled.div`
@@ -56,8 +56,8 @@ const DivPsStyled = styled.div`
 
 const PNomeSupStyled = styled.p`
   font-family: "Montserrat", serif;
-  font-weight: 600;
-  color: rgb(209, 13, 19);
+  font-weight: 700;
+  color: #D00C13;
 
   @media (min-width: 320px) and (max-width: 374px) {
     font-size: 0.93em;
@@ -78,7 +78,7 @@ const PNomeSupStyled = styled.p`
 
 const PBemVindoStyled = styled(PNomeSupStyled)`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   @media (min-width: 320px) and (max-width: 374px) {
     font-size: 1.03em;
   }
@@ -122,7 +122,7 @@ export const Divlogo = () => {
     <ContainerStyled id="expand">
       <ContainerStyled>
         <LogoDivStyled>
-          <SpanLogoStyled className="material-symbols-rounded">
+          <SpanLogoStyled className="material-symbols-outlined">
             handshake
           </SpanLogoStyled>
         </LogoDivStyled>
@@ -147,14 +147,16 @@ const DivMoreOptionsStyled = styled.div`
 `;
 
 const DivStyled = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 37px;
+  height: 37px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   cursor: pointer;
   transition: all 100ms linear;
+  border-radius: 4px;
+  box-shadow: inset 0px -2px 5px rgba(0, 0, 0, 0.15);
 
   @media screen and (max-width: 768px) {
     position: absolute;
@@ -165,9 +167,11 @@ const DivStyled = styled.div`
     top: 45px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: 41px;
-    height: 41px;
     top: 44px;
+  }
+  @media screen and (min-width: 577px) {
+    width: 40px;
+    height: 40px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     top: 44px;
@@ -176,22 +180,19 @@ const DivStyled = styled.div`
     position: relative;
   }
   background-color: ${(props) =>
-    props.$changeBackground ? " #3F0404" : " #d20c0c"};
-  border-radius: ${(props) => (props.$changeBackground ? "6px" : "50%")};
+    props.$changeBackground ? " #3F0404" : " #E20E15"};
 
   @media screen and (min-width: 1201px) {
     width: max-content;
     height: 42px;
-    border-radius: 12px;
     padding: 0px 16px;
     gap: 4px;
-    border-radius: ${(props) => (props.$changeBackground ? "6px" : "12px")};
   }
 `;
 
 const PStyled = styled.p`
   font-family: "Montserrat";
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: 0.8px;
   margin: 0px;
   @media (max-width: 1201px) {
@@ -203,7 +204,7 @@ const PStyled = styled.p`
 
 const SpanStyled = styled.span`
   font-size: 1.45em;
-  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 28;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 28;
   cursor: pointer;
   user-select: none;
   @media screen and (min-width: 375px) and (max-width: 576px) {

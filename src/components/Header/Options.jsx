@@ -58,27 +58,18 @@ const DivPStyled = styled.div`
 
 export const POptionStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   color: white;
   padding-right: 40px;
   padding-left: 24px;
   user-select: none;
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.05em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.06em;
-  }
-  @media screen and (min-width: 993px) {
-    font-size: 1.065em;
-  }
 `;
 
 export const DivSpanStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 4px;
   background-color: #3F0404;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.3);
   flex: none;
@@ -95,9 +86,9 @@ const DivSpanFalse = styled(DivSpanStyled)`
 
 export const SpanOptionsStyled = styled.span`
   font-weight: 300;
-  font-size: 1.85em;
+  font-size: 1.7em;
   color: rgb(255, 255, 255);
-  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" -25, "opsz" 24;
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 12, "opsz" 30;
   user-select: none;
 `;
 
@@ -160,7 +151,7 @@ const Options = () => {
           )}
 
           <DivSpanStyled>
-            <SpanOptionsStyled className="material-symbols-rounded">
+            <SpanOptionsStyled className="material-symbols-outlined">
               {content.icon}
             </SpanOptionsStyled>
           </DivSpanStyled>

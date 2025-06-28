@@ -1,6 +1,6 @@
 import { useRef, useContext, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import {ProductList} from './ProductSection/ProductList';
+import { ProductListHome } from './ProductSection/ProductListHome';
 import { CartContext } from '../CartContext';
 import {useScrollX} from '../../hooks/useScrollX'
 
@@ -45,7 +45,7 @@ function PromoSection({categoryKey}) {
       return;
     }
     const widthProductItem = firstItem.offsetWidth;
-    const quantProdsInLine = Math.ceil(allProductsInCat[currentCategory]?.length / 3) || 0;
+    const quantProdsInLine = Math.ceil(allProductsInCat[currentCategory]?.length / 2) || 0;
     const gap = parseFloat(getComputedStyle(promotionsRef.current).gap) || 0;
     const widthProdsLine = quantProdsInLine * widthProductItem + (quantProdsInLine > 0 ? (quantProdsInLine - 1) * gap : 0);
     const widthPaiAll = paiAllProductsRef.current.offsetWidth;
@@ -75,8 +75,7 @@ function PromoSection({categoryKey}) {
 
   return (
     <PaiAllProductsStyled ref={paiAllProductsRef}>
-      <ProductList
-      variant={'home'} 
+      <ProductListHome
       categoryKey={categoryKey}  
       ref={promotionsRef}
       />

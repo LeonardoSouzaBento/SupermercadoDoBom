@@ -10,7 +10,6 @@ const ContainerStyled = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: 4;
-  background-color: rgba(0, 0, 0, 0.15);
 `;
 
 const DivStyled = styled.div`
@@ -28,8 +27,8 @@ const DivStyled = styled.div`
   position: absolute;
   right: 8px;
   bottom: 8px;
-  background-color: hsl(12, 95%, 59.5%);
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+  background-color: #DB2C32;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
   transition: height 0.15s ease;
   ${(props) => props.$feedback && "background-size: 0% 0%;"};
 
@@ -51,11 +50,11 @@ const DivSpanStyled = styled.div`
 const SpanStyled = styled.span`
   font-size: 3.7em;
   padding: 5px;
-  color: rgb(232, 67, 67);
+  color: #C2272C;
   font-weight: 600;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
   position: absolute;
   transform: translateY(-90%);
   z-index: 1;
@@ -70,7 +69,7 @@ const PQuestionStyled = styled.p`
   padding-bottom: 14px;
   margin-top: 10px;
   border-radius: 5px;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   font-size: 1.15em;
   text-align: center;
@@ -78,22 +77,66 @@ const PQuestionStyled = styled.p`
   color: white;
 
   @media screen and (max-width: 374px) {
-    font-size: 1.24em;
+    font-size: 1.35em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.25em;
+    font-size: 1.37em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.26em;
+    font-size: 1.38em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.27em;
+    font-size: 1.39em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.28em;
+    font-size: 1.40em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.3em;
+    font-size: 1.41em;
+  }
+`;
+
+const DivSimNaoStyled = styled.div`
+  display: flex;
+  width: 100%;
+  height: max-content;
+  gap: 12px;
+`;
+
+const PSimStyled = styled.p`
+  width: 100%;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  padding: 11px 0px;
+  padding-bottom: 13px;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: 0.72px;
+  border-radius: 4px;
+  cursor: default;
+  background-color: #8F1D20;
+  color: white;
+
+  &:hover {
+    background-color: #75171B;
+  }
+  transition: background-color 0.1s ease;
+  @media screen and (max-width: 374px) {
+    font-size: 1.05em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.06em;
+  }
+  @media screen and (min-width: 577px) {
+    font-size: 1.07em;
+  }
+`;
+
+const PVoltarStyled = styled(PSimStyled)`
+  color: black;
+  background-color: rgb(255, 255, 255);
+  &:hover {
+    background-color: rgb(230, 230, 230);
   }
 `;
 
@@ -113,64 +156,6 @@ const PFeedBackStyled = styled(PQuestionStyled)`
   padding-top: 8px;
 `;
 
-//esconder
-const DivSimNaoStyled = styled.div`
-  display: flex;
-  width: 100%;
-  height: max-content;
-  gap: 12px;
-`;
-
-const GenericPStyled = styled.p`
-  width: 100%;
-  font-family: "Quicksand", Arial, Helvetica, sans-serif;
-  font-weight: 500;
-  padding: 12px 0px;
-  box-sizing: border-box;
-  text-align: center;
-  letter-spacing: 0.72px;
-  border-radius: 4px;
-  cursor: default;
-  @media screen and (max-width: 374px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.03em;
-  }
-  @media screen and (min-width: 577px) {
-    font-size: 1.05em;
-  }
-`;
-
-const PSimStyled = styled(GenericPStyled)`
-  background-color: rgb(184, 0, 0);
-  color: white;
-  font-weight: 500;
-  @media screen and (max-width: 374px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.105em;
-  }
-  @media screen and (min-width: 577px) {
-    font-size: 1.11em;
-  }
-  transition: background-color 0.1s ease;
-
-  &:hover {
-    background-color: rgb(168, 0, 0);
-  }
-`;
-
-const PVoltarStyled = styled(GenericPStyled)`
-  background-color: rgb(255, 255, 255);
-  font-weight: 500;
-  transition: background-color 0.1s ease;
-
-  &:hover {
-    background-color: rgb(230, 230, 230);
-  }
-`;
 
 export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
   const { setCartProducts } = useContext(CartContext);

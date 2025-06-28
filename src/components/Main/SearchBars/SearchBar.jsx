@@ -236,6 +236,7 @@ function SearchBar({ copy }) {
           onChange={(e) => whenTyping(e)}
           onClick={preventClick ? null : viewTip}
           ref={inputRef}
+          autoComplete="off"
         />
         <DivSpanStyled
           $copy={copy}

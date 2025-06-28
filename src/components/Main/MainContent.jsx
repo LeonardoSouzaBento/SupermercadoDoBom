@@ -14,28 +14,16 @@ const Main = styled.main`
   margin: auto;
   padding: 0px;
   position: relative;
-  background-color: #ebf0f5;
+  background-color: #f5faff;
 `;
 
-const ShadowBottomStyled = styled.div`
-  width: 100%;
-  height: 12px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(225, 225, 225),
-    rgba(0, 0, 0, 0.08)
-  );
-  z-index: 2;
-`;
 
 function MainContent() {
   const [viewOptions, setViewOptions] = useState(false);
   const { noSkipLogin, setNoSkipLogin } = useContext(ViewContext);
   const { currentCategory } = useContext(CartContext);
-  const [opacityState, setOpacityState] = useState(0.1);
+  const [opacityState, setOpacityState] = useState(0);
+  
   const divRef = useRef(null);
 
   useEffect(() => {
@@ -82,7 +70,7 @@ function MainContent() {
           filter: noSkipLogin ? "blur(2.5px)" : "none",
           transition: "filter 1s ease",
           opacity: !noSkipLogin ? opacityState : 1,
-          transition: 'opacity 0.1s ease'
+          transition: 'opacity 0.2s ease'
         }}
       >
         <Header viewOptions={viewOptions} setViewOptions={setViewOptions} />

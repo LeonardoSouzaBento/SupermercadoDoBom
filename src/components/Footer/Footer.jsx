@@ -13,61 +13,22 @@ const FooterStyled = styled.footer`
   height: 60px;
   background-color: transparent;
   position: fixed;
-  bottom: 0px;
+  left: 0;
+  bottom: 0;
   z-index: 2;
-
-  &::after {
-    content: "";
-    width: 90%;
-    max-width: 408px;
-    height: 44px;
-    position: absolute;
-    top: 5px;
-    right: -4px;
-    border-radius: 4px 0px 0px 4px;
-    background-color: hsl(11, 90%, 61.4%);
-    filter: blur(2px);
-    z-index: -1;
-
-    @media screen and (min-width: 577px) and (max-width: 992px) {
-      max-width: 448px;
-    }
-    @media screen and (min-width: 993px) {
-      max-width: 478px;
-    }
-  }
-  &::before {
-    content: "";
-    width: 90%;
-    max-width: 408px;
-    height: 40px;
-    position: absolute;
-    bottom: 5px;
-    right: -4px;
-    border-radius: 4px 0px 0px 4px;
-    background-color: hsl(11, 90%, 61.4%);
-    filter: blur(2px);
-    z-index: -1;
-
-    @media screen and (min-width: 577px) and (max-width: 992px) {
-      max-width: 448px;
-    }
-    @media screen and (min-width: 993px) {
-      max-width: 478px;
-    }
-  }
 `;
 
 const CartDescStyled = styled.div`
-  display: flex;
   width: 90%;
   max-width: 400px;
   height: 44px;
   min-height: 44px;
-  background-color: hsl(11, 90%, 61.4%);
-  border-radius: 4px 0px 0px 4px;
+  margin-right: 8px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #C90C12;
+  border-radius: 4px;
   cursor: pointer;
   user-select: none;
   overflow: hidden;
@@ -103,15 +64,14 @@ const DivCartStyled = styled.div`
 const DivCancelStyled = styled(DivCartStyled)`
   height: 36px;
   width: 36px;
-  border-radius: 50%;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 8px 0px 20px rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  background-color: #630609;
 `;
 
-const SpanCancelStyled = styled.div`
-  font-variation-settings: "FILL" 1;
-  color: #3f0404;
-  font-size: 1.5em;
+const SpanCancelStyled = styled.span`
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 12, "opsz" 30;
+  color: rgb(255, 255, 255);
+  font-size: 1.45em;
   font-weight: 500;
 `;
 
@@ -132,7 +92,7 @@ const DivCartSetaStyled = styled.div`
 const SpanCartStyled = styled.span`
   color: white;
   font-size: 1.74em;
-  font-weight: 300;
+  font-weight: 500;
   font-variation-settings: "FILL" 1;
 
   @media screen and (max-width: 374px) {
@@ -165,20 +125,20 @@ const DivPStyled = styled.div`
 `;
 
 const PPrecoStyled = styled.p`
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 500;
-  color: white;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-weight: 700;
   letter-spacing: 0.71px;
   padding-bottom: 2px;
+  color: white;
 
-   @media screen and (max-width: 374px) {
-    font-size: 1.15em;
+  @media screen and (max-width: 374px) {
+    font-size: 1.14em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.18em;
+    font-size: 1.15em;
   }
   @media screen and (min-width: 577px) {
-    font-size: 1.2em;
+    font-size: 1.18em;
   }
 `;
 
@@ -186,7 +146,7 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer({ setOpacityState }) {
+export default function Footer() {
   const { totalQuantity, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
@@ -206,7 +166,6 @@ export default function Footer({ setOpacityState }) {
           onPointerUp={(e) => {
             const duration = Date.now() - window.startClickTime;
             if (duration < 300) {
-              setOpacityState(0);
               setTimeout(() => {
                 navigate("/meu-carrinho");
               }, 100);
@@ -229,12 +188,12 @@ export default function Footer({ setOpacityState }) {
 
             <DivCartSetaStyled>
               <DivCartStyled>
-                <SpanCartStyled className="material-symbols-rounded">
+                <SpanCartStyled className="material-symbols-outlined">
                   shopping_cart
                 </SpanCartStyled>
               </DivCartStyled>
               <DivSetaStyled>
-                <SpanSetaStyled className="material-symbols-rounded">
+                <SpanSetaStyled className="material-symbols-outlined">
                   chevron_right
                 </SpanSetaStyled>
               </DivSetaStyled>

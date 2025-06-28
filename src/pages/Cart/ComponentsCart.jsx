@@ -4,7 +4,7 @@ export const MainStyled = styled.div`
   margin: auto;
   position: relative;
   width: 100%;
-  padding-top: 2px;
+  padding-top: 0px;
 
   @media screen and (max-width: 375px) {
     width: calc(100% - 20px);
@@ -40,7 +40,7 @@ export const CartSectionStyed = styled.div`
   background-color: white;
   box-sizing: border-box;
   background-color: white;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.55), 0px -1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.55), 0px -1px 3px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow-y: hidden;
 
@@ -92,18 +92,11 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 3.8px;
-  right: 4px;
+  top: 9px;
+  right: 9px;
   border-radius: 4px;
-  background-color: white;
+  background-color:  #f5faff;
   cursor: pointer;
-
-  @media screen and (min-width: 768px) and (max-width: 992px) {
-    border-radius: 4px 12px 4px 4px;
-  }
-  @media screen and (min-width: 993px) {
-    border-radius: 3px;
-  }
 `;
 
 export const SpanStyled = styled.span`
@@ -152,6 +145,7 @@ export const DivSpanStyled2 = styled(DivSpanStyled)`
   position: relative;
   padding-bottom: 0px;
   margin-bottom: 8px;
+  background-color: white;
   ${(props) => props.$uniqueBorderRadius && "border-radius: 4px;"};
 `;
 
@@ -206,14 +200,14 @@ export const ShadowStyled = styled.div`
 `;
 
 export const DivHeadStyled = styled.div`
-  height: 54px;
+  height: 60px;
   width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 18px;
   position: relative;
   border-radius: 12px 12px 0px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 `;
 
 export const PHeadStyled = styled.p`
@@ -222,6 +216,7 @@ export const PHeadStyled = styled.p`
   color: rgb(27, 27, 27);
   text-align: center;
   font-weight: 400;
+  padding-bottom: 2px;
 
   @media screen and (max-width: 374px) {
     font-size: 1.22em;
@@ -319,52 +314,6 @@ export const FinishSectionStyled = styled.div`
   }
 `;
 
-//botão adicionar
-export const DivAddStyled = styled.div`
-  width: 100%;
-  max-width: 392px;
-  margin: auto;
-  height: 44px;
-  margin-top: 26px;
-  padding-bottom: 2px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  align-items: center;
-  border-radius: 8px;
-  background-color: white;
-  box-shadow: 0px 2.5px 4px rgba(0, 0, 0, 0.5);
-
-  @media screen and (min-width: 769px) {
-    order: 2;
-    margin: 0;
-    height: 44px;
-  }
-`;
-
-export const PAddStyled = styled.p`
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 500;
-  @media screen and (max-width: 374px) {
-    font-size: 1.15em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.16em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.19em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.2em;
-  }
-`;
-
 export const ContainerStyled = styled.div`
   height: auto;
   width: 100%;
@@ -378,7 +327,7 @@ export const ContainerStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
 
   @media screen and (min-width: 769px) {
     display: block;
@@ -398,7 +347,7 @@ export const DivAvisoStyled = styled.div`
   border-radius: 3px;
   padding: 15px 18px;
   box-sizing: border-box;
-  background-color: #d04f32;
+  background-color: #C90C12;
 `;
 
 export const PAvisoStyled = styled.p`
@@ -478,21 +427,20 @@ export const DivContinueStyled = styled.div`
   width: 100%;
   height: 40px;
   border-radius: 5px;
-  color: white;
   cursor: pointer;
   transition: background-color 0.08s ease;
-  background-color: ${(props) => (props.$nocontinue ? " #39EDAC" : " #7DB42B")};
+  background-color: ${(props) => (props.$nocontinue ? " #39EDAC" : "rgb(21, 128, 0)")};
   &:hover {
-    background-color: ${(props) => !props.$nocontinue && "rgb(23, 138, 0)"};
+    background-color: ${(props) => !props.$nocontinue && "rgb(17, 103, 0)"};
   }
 `;
 
 export const PContinueStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   padding-bottom: 2px;
   cursor: pointer;
-
+  color: white;
   @media screen and (max-width: 374px) {
     font-size: 1.15em;
   }
@@ -503,6 +451,53 @@ export const PContinueStyled = styled.p`
     font-size: 1.2em;
   }
 `;
+
+//botão adicionar
+export const DivAddStyled = styled.div`
+  width: 100%;
+  max-width: 392px;
+  margin: auto;
+  height: 44px;
+  margin-top: 26px;
+  padding-bottom: 2px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.55);
+
+  @media screen and (min-width: 769px) {
+    order: 2;
+    margin: 0;
+    height: 44px;
+  }
+`;
+
+export const PAddStyled = styled.p`
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  @media screen and (max-width: 374px) {
+    font-size: 1.15em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.16em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.17em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.18em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.19em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.2em;
+  }
+`;
+
 
 export const DivMsgVoidCart = styled.div`
   width: 340px;
@@ -535,36 +530,4 @@ export const ImgVoidCartStyled = styled.img`
   z-index: 2;
   border-radius: 4px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.23);
-`;
-
-const PQuestionStyled = styled.p`
-  width: 100%;
-  padding-top: 12px;
-  padding-bottom: 14px;
-  margin-top: 10px;
-  border-radius: 5px;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 1.15em;
-  text-align: center;
-  cursor: default;
-
-  @media screen and (max-width: 374px) {
-    font-size: 1.24em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.25em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.26em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.27em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.28em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.3em;
-  }
 `;

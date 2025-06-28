@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import SearchBar from "../components/Main/SearchBars/SearchBar";
 import {ProductList} from "../components/Main/ProductSection/ProductList";
 import Footer from '../components/Footer/Footer';
@@ -9,15 +10,25 @@ const DivStyled = styled.div`
   min-width: 100vw;
   padding-bottom: 59px;
   box-sizing: border-box;
-  background-color: #EBF0F5;
+  background-color: #f5faff;
+  opacity: ${props => props.$opacityState};
+  transition: opacity 0.2s ease;
 `;
 
 const SearchAction = () => {
+  const [opacityState, setOpacityState] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacityState(1);
+    }, 200);
+  }, [])
+
   return (
-    <DivStyled>
+    <DivStyled $opacityState={opacityState}>
       <SearchBar copy={true}></SearchBar>
       <ProductList variant={'inSearch'} categoryKey={13}/>
-      <Footer></Footer>
+      <Footer setOpacityState={setOpacityState}></Footer>
     </DivStyled>
   )
 }

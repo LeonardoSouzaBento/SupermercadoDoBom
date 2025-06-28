@@ -172,7 +172,7 @@ const Cart = () => {
         style={{
           position: "relative",
           height: "100%",
-          backgroundColor: " #ebf0f5", /*antes 235 cinza*/
+          backgroundColor: " #f5faff",
         }}
       >
         <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
@@ -183,7 +183,6 @@ const Cart = () => {
                   onClick={() => {
                     setSeeCancelDialog(true);
                   }}
-                  style={{backgroundColor: 'rgb(240, 240, 240)'}}
                 >
                   <SpanStyled className="material-symbols-outlined">
                     delete
