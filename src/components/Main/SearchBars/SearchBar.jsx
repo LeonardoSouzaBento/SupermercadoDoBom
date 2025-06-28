@@ -245,7 +245,7 @@ function SearchBar({ copy }) {
         >
           <span
             className="material-symbols-rounded"
-            style={{ color: "rgb(77, 77, 77)" }}
+            style={{ color: "rgb(50, 50, 50)" }}
           >
             search
           </span>

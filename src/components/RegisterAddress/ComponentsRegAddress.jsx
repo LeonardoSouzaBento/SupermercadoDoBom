@@ -10,7 +10,7 @@ export const Box0Styled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  background-color: rgb(235, 235, 235);
+  background-color: rgba(0, 0, 0, 0.12);
   transition: opacity 0.5s ease;
   opacity: ${(props) => props.$opacity};
 `;
@@ -21,62 +21,49 @@ export const BoxStyled = styled.div`
   width: calc(100% - 30px);
   max-width: 400px;
   box-sizing: border-box;
-  border-radius: 14px;
-  background-color: rgb(245, 245, 245);
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
   padding: 16px;
   padding-bottom: 28px;
   position: relative;
-  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.4);
-
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
   @media screen and (max-width: 768px) {
     margin-bottom: 18px;
   }
   @media screen and (max-width: 374px) {
     width: calc(100% - 16px);
-    border-radius: 12px;
   }
   @media screen and (min-width: 375px) and (max-width: 400px) {
     width: calc(100% - 24px);
-    border-radius: 12px;
   }
   @media screen and (min-width: 769px) {
     padding: 24px;
     margin-right: 10px;
   }
   @media screen and (min-width: 993px) {
-    border-radius: 8px;
     margin-right: 32px;
   }
 `;
 
 export const DivSpanStyled = styled.div`
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 4px;
-  right: 4px;
-  border-radius: 16px 12px 16px 16px;
+  top: 0;
+  right: 0;
   background-color: rgb(255, 255, 255);
-  box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(0, 0, 0, 0.17);
   cursor: pointer;
   &:hover {
     background-color: hsl(0, 0%, 95%);
   }
-  @media screen and (max-width: 400px) {
-    border-radius: 16px 12px 16px 16px;
-  }
-  @media screen and (min-width: 993px) {
-    border-radius: 16px 12px 16px 16px;
-  }
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 1.6em;
-  color: red;
+  font-size: 1.7em;
   font-weight: 600;
 `;
 
@@ -86,7 +73,7 @@ export const TitleStyled = styled.h1`
   font-size: 24px;
   margin-bottom: 24px;
   user-select: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto Flex", sans-serif;
   font-weight: 400;
   font-size: 1.34em;
 

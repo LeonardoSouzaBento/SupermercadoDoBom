@@ -10,30 +10,50 @@ const FooterStyled = styled.footer`
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  height: 54px;
+  height: 60px;
   background-color: transparent;
   position: fixed;
-  bottom: 3.5px;
+  bottom: 0px;
   z-index: 2;
 
   &::after {
     content: "";
     width: 90%;
-    max-width: 400px;
+    max-width: 408px;
     height: 44px;
     position: absolute;
-    top: 0;
+    top: 5px;
     right: -4px;
-    border-radius: 24px 0px 0px 24px;
+    border-radius: 4px 0px 0px 4px;
     background-color: hsl(11, 90%, 61.4%);
     filter: blur(2px);
     z-index: -1;
 
     @media screen and (min-width: 577px) and (max-width: 992px) {
-      max-width: 440px;
+      max-width: 448px;
     }
     @media screen and (min-width: 993px) {
-      max-width: 470px;
+      max-width: 478px;
+    }
+  }
+  &::before {
+    content: "";
+    width: 90%;
+    max-width: 408px;
+    height: 40px;
+    position: absolute;
+    bottom: 5px;
+    right: -4px;
+    border-radius: 4px 0px 0px 4px;
+    background-color: hsl(11, 90%, 61.4%);
+    filter: blur(2px);
+    z-index: -1;
+
+    @media screen and (min-width: 577px) and (max-width: 992px) {
+      max-width: 448px;
+    }
+    @media screen and (min-width: 993px) {
+      max-width: 478px;
     }
   }
 `;
@@ -45,7 +65,7 @@ const CartDescStyled = styled.div`
   height: 44px;
   min-height: 44px;
   background-color: hsl(11, 90%, 61.4%);
-  border-radius: 24px 0px 0px 24px;
+  border-radius: 4px 0px 0px 4px;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
@@ -81,8 +101,8 @@ const DivCartStyled = styled.div`
 `;
 
 const DivCancelStyled = styled(DivCartStyled)`
-  height: 38px;
-  width: 38px;
+  height: 36px;
+  width: 36px;
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
   box-shadow: 8px 0px 20px rgba(0, 0, 0, 0.16);
@@ -91,8 +111,8 @@ const DivCancelStyled = styled(DivCartStyled)`
 const SpanCancelStyled = styled.div`
   font-variation-settings: "FILL" 1;
   color: #3f0404;
-  font-size: 1.45em;
-  font-weight: 600;
+  font-size: 1.5em;
+  font-weight: 500;
 `;
 
 const DivSetaStyled = styled(DivCartStyled)`
@@ -145,19 +165,20 @@ const DivPStyled = styled.div`
 `;
 
 const PPrecoStyled = styled.p`
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-weight: 400;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 500;
   color: white;
   letter-spacing: 0.71px;
+  padding-bottom: 2px;
 
-  @media screen and (max-width: 374px) {
-    font-size: 1.06em;
+   @media screen and (max-width: 374px) {
+    font-size: 1.15em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.12em;
+    font-size: 1.18em;
   }
   @media screen and (min-width: 577px) {
-    font-size: 1.14em;
+    font-size: 1.2em;
   }
 `;
 

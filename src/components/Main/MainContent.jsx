@@ -14,31 +14,7 @@ const Main = styled.main`
   margin: auto;
   padding: 0px;
   position: relative;
-  background-color: rgb(240, 240, 240);
-
-  &::after {
-    content: "";
-    width: 100%;
-    height: 40%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: rgb(225, 225, 225);
-    background-size: cover;
-    z-index: 1;
-  }
-
-  &::before {
-    content: "";
-    width: 100%;
-    height: 130px;
-    position: absolute;
-    bottom: 40%;
-    left: 0;
-    background: linear-gradient(to top, rgb(225, 225, 225), rgb(240, 240, 240));
-    background-size: cover;
-    z-index: 1;
-  }
+  background-color: #ebf0f5;
 `;
 
 const ShadowBottomStyled = styled.div`
@@ -114,7 +90,6 @@ function MainContent() {
           <AnnouncementSection />
           <CategoriesSection />
           <PromoSection categoryKey={currentCategory} />
-          <ShadowBottomStyled />
         </Main>
       </div>
       <Footer setOpacityState={setOpacityState}/>

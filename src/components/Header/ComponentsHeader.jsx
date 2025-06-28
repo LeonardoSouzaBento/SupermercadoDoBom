@@ -22,7 +22,7 @@ const LogoDivStyled = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 50%;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
   transform: scaleX(-1);
   @media (min-width: 320px) and (max-width: 374px) {
     height: 54px;
@@ -177,7 +177,7 @@ const DivStyled = styled.div`
   }
   background-color: ${(props) =>
     props.$changeBackground ? " #3F0404" : " #d20c0c"};
-  border-radius: ${(props) => (props.$changeBackground ? "6px" : "12px")};
+  border-radius: ${(props) => (props.$changeBackground ? "6px" : "50%")};
 
   @media screen and (min-width: 1201px) {
     width: max-content;

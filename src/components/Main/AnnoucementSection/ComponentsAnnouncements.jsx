@@ -30,7 +30,7 @@ export const P = styled.p`
   text-align: center;
   margin-bottom: 12px;
   font-size: 1.15em;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
   color:rgb(182, 10, 13);
 
@@ -147,12 +147,12 @@ export const Pagination = styled.div`
 export const Span = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
-  background-color: rgb(121, 121, 121);
+  background-color: rgb(108, 108, 108);
   border-radius: 5px;
   ${props => props.$atual && `
     padding: 1px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
   `}
 
   @media screen and (max-width: 374px){

@@ -18,9 +18,8 @@ export const PaiProdStyled = styled.div`
       flex-direction: row;
       min-width: 260px;
       height: 180px;
-      /* border-radius: 6px 6px 18px 6px; */
       border-radius: 8px;
-      box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 
       @media screen and (max-width: 374px) {
         min-width: 260px;
@@ -73,13 +72,13 @@ export const PaiProdStyled = styled.div`
     props.$variant === "cart" &&
     css`
       border-radius: 0px;
-      border: 1px solid rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(0, 0, 0, 0.2);
     `}
 
   ${(props) =>
     props.$variant === "inSearch" &&
     css`
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.17);
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
     `}
 `;
 
@@ -144,61 +143,30 @@ export const DivNomeStyled = styled.div`
 `;
 export const PnomeStyled = styled.p`
   text-transform: uppercase;
-  font-family: "Quicksand", Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   margin: auto;
   padding-left: 4px;
-  font-weight: 600;
+  font-weight: 500;
 
   @media screen and (max-width: 374px) {
     font-size: 0.86em;
-    line-height: 18px;
+    line-height: 16px;
     letter-spacing: 1.01px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 0.89em;
-    line-height: 18px;
+    line-height: 17px;
     letter-spacing: 1.05px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 0.9em;
-    line-height: 19px;
+    line-height: 18px;
     letter-spacing: 1.06px;
   }
   @media screen and (min-width: 769px) {
     font-size: 0.91em;
-    line-height: 20px;
+    line-height: 19px;
     letter-spacing: 1.06px;
-  }
-`;
-//desconto
-export const DivOffStyled = styled.div`
-  position: absolute;
-  top: 5.5px;
-  right: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20px;
-  padding: 0px 8px;
-  background-color: #cdd4ae;
-  border-radius: 4px;
-
-  ${(props) => props.$variant === "cart" && "border-radius: 4px 0px 4px 4px;"}
-`;
-
-export const PoffStyled = styled.p`
-  color: #13450a;
-  font-family: "Roboto Flex", Arial, sans-serif;
-  font-weight: 400;
-
-  @media screen and (max-width: 374px) {
-    font-size: 0.87em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 0.94em;
-  }
-  @media screen and (min-width: 577px) {
-    font-size: 0.96em;
   }
 `;
 //peso
@@ -209,10 +177,11 @@ export const DivPesoStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  overflow: hidden;
 
   ${(props) =>
     (props.$variant === "home" || props.$variant === "inSearch") &&
-    " border-radius: 4px;"};
+    "border-radius: 4px;"};
   ${(props) =>
     (props.$variant === "cart" || props.$variant === "inSearch") &&
     css`
@@ -225,7 +194,7 @@ export const DivPesoStyled = styled.div`
 export const PpesoStyled = styled.p`
   font-size: 0.845em;
   letter-spacing: 0.5px;
-  font-family: "Roboto Flex", Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   background-color: rgb(232, 232, 232);
   padding: 3px 10px;
   padding-bottom: 4px;
@@ -280,7 +249,7 @@ export const DivPrecoStyled = styled.div`
 export const PprecoStyled = styled.p`
   width: max-content;
   font-family: "Roboto", Arial, sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   text-indent: 4px;
   padding: 2px 0px;
   @media screen and (max-width: 374px) {
@@ -309,6 +278,39 @@ export const PSifraStyled = styled(PprecoStyled)`
 `;
 
 // Oferta
+//desconto
+export const DivOffStyled = styled.div`
+  position: absolute;
+  top: 5.5px;
+  right: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  padding: 0px 6px;
+  padding-bottom: 2px;
+  background-color: #cdd4ae;
+  border-radius: 4px;
+
+  ${(props) => props.$variant === "cart" && "border-radius: 4px 0px 4px 4px;"}
+`;
+
+export const PoffStyled = styled.p`
+  color: #13450a;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+
+  @media screen and (max-width: 374px) {
+    font-size: 0.87em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 0.94em;
+  }
+  @media screen and (min-width: 577px) {
+    font-size: 0.96em;
+  }
+`;
+
 export const DivOfertaStyled = styled.div`
   height: 100%;
   width: 150px;
@@ -432,7 +434,7 @@ export const PMenosStyled = styled(PMaisStyled)`
 
 export const PQuantStyled = styled.p`
   font-size: 1.3em;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-weight: 500;
   padding-bottom: 2px;
   color: white;

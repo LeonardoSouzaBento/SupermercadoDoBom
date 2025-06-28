@@ -35,7 +35,7 @@ export const DivLabelPromosStyled = styled.div`
 
 export const PLabelStyled = styled.p`
   font-weight: ${(props) => (props.id ? "700" : "500")};
-  font-family: "Quicksand", sans-serif;
+  font-family: "Lato", sans-serif;
   color: ${(props) => (props.id ? "rgb(69, 69, 69)" : "rgb(82, 82, 82)")};
   text-align: center;
 
@@ -62,7 +62,7 @@ export const PLabelStyled = styled.p`
 export const Divf = styled.div`
   width: auto;
   margin: auto;
-  margin-bottom: 17px;
+  margin-bottom: 20px;
   padding: 4px;
   padding-right: 20px;
   display: flex;
@@ -127,7 +127,7 @@ export const DivCat = styled.div`
   ${(props) =>
     props.$selected &&
     `background-color: rgb(255, 255, 255);
-     box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.29);}
+     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);}
     `}
 `;
 
@@ -167,10 +167,10 @@ export const DivNameSection = styled.div`
 `;
 
 export const PStyled = styled.p`
-  font-family: "Quicksand", Arial, sans-serif;
+  font-family: "Lato", Arial, sans-serif;
   font-weight: 500;
   text-align: center;
-  font-size: 0.92em;
+  font-size: 1em;
   letter-spacing: 0.5px;
   margin: 0;
 `;

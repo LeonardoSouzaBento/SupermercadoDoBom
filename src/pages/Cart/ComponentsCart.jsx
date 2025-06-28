@@ -4,7 +4,7 @@ export const MainStyled = styled.div`
   margin: auto;
   position: relative;
   width: 100%;
-  padding-top: 16px;
+  padding-top: 2px;
 
   @media screen and (max-width: 375px) {
     width: calc(100% - 20px);
@@ -36,17 +36,14 @@ export const CartSectionStyed = styled.div`
   width: 100%;
   height: 460px;
   margin: auto;
-  border-radius: 12px;
+  border-radius: 4px 4px 20px 20px;
   background-color: white;
   box-sizing: border-box;
-  background-color: rgb(250, 250, 250);
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.33), 0px -1px 3px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.55), 0px -1px 3px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow-y: hidden;
 
-  @media screen and (min-width: 375px) and (max-width: 414px) {
-    max-width: 356px;
-  }
   @media screen and (min-width: 414px) and (max-width: 596px) {
     max-width: 392px;
   }
@@ -54,7 +51,7 @@ export const CartSectionStyed = styled.div`
     max-width: 560px;
   }
   @media screen and (max-width: 768px) {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   @media screen and (max-width: 992px) {
@@ -74,7 +71,7 @@ export const CartSectionStyed = styled.div`
   @media screen and (min-width: 993px) {
     max-width: 894px;
     &::-webkit-scrollbar-track {
-      background: rgb(250, 250, 250); /* cor fundo */
+      background-color: rgb(255, 255, 255);
     }
 
     &::-webkit-scrollbar-thumb {
@@ -82,14 +79,14 @@ export const CartSectionStyed = styled.div`
       border-radius: 6px;
     }
     scrollbar-width: thin; /* Opções: auto | thin | none */
-    scrollbar-color: hsl(0, 0%, 78%) rgb(250, 250, 250); /* botão | fundo */
+    scrollbar-color: hsl(0, 0%, 78%) rgb(255, 255, 255); /* botão | fundo */
   }
 
 `;
 
 export const DivSpanStyled = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 37px;
+  height: 37px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -97,10 +94,8 @@ export const DivSpanStyled = styled.div`
   position: absolute;
   top: 3.8px;
   right: 4px;
-  border-radius: 4px 10px 4px 4px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.09);
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+  background-color: white;
   cursor: pointer;
 
   @media screen and (min-width: 768px) and (max-width: 992px) {
@@ -211,19 +206,19 @@ export const ShadowStyled = styled.div`
 `;
 
 export const DivHeadStyled = styled.div`
-  height: 50px;
+  height: 54px;
   width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 18px;
   position: relative;
   border-radius: 12px 12px 0px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `;
 
 export const PHeadStyled = styled.p`
   width: 100%;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
   color: rgb(27, 27, 27);
   text-align: center;
   font-weight: 400;
@@ -265,7 +260,7 @@ export const DivSeeAllStyled = styled.div`
   position: absolute;
   bottom: -1px;
   left: 0;
-  background-color: rgb(250, 250, 250);
+  background-color: white;
   box-shadow: 0px -1.5px 4px rgba(0, 0, 0, 0.2);
   border: 1px solid rgb(191, 191, 191);
   border-top: none;
@@ -337,12 +332,9 @@ export const DivAddStyled = styled.div`
   gap: 12px;
   align-items: center;
   border-radius: 8px;
-  background-color: rgb(250, 250, 250);
-  box-shadow: 0px 2.5px 4px rgba(0, 0, 0, 0.33);
+  background-color: white;
+  box-shadow: 0px 2.5px 4px rgba(0, 0, 0, 0.5);
 
-  @media screen and (min-width: 375px) and (max-width: 414px) {
-    max-width: 356px;
-  }
   @media screen and (min-width: 769px) {
     order: 2;
     margin: 0;
@@ -384,13 +376,9 @@ export const ContainerStyled = styled.div`
   justify-content: center;
   align-items: flex-end;
   box-sizing: border-box;
-  background-color: rgb(250, 250, 250);
+  background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.33);
-
-  @media screen and (min-width: 375px) and (max-width: 414px) {
-    max-width: 356px;
-  }
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 
   @media screen and (min-width: 769px) {
     display: block;

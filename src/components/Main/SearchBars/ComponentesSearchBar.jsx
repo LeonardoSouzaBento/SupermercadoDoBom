@@ -33,22 +33,6 @@ export const ContainerForFormStyled = styled.div`
     `}
 `;
 
-// export const ShadowStyled = styled.div`
-//   width: 100%;
-//   height: 12px;
-//   position: absolute;
-//   bottom: -12px;
-//   left: 0px;
-//   background-image: linear-gradient(
-//     to bottom,
-//     rgba(0, 0, 0, 0.03),
-//     rgba(0, 0, 0, 0)
-//   );
-//   background-size: 100% 100%;
-
-//   ${(props) => props.$copy === false && "display: none;"}
-// `;
-
 export const FormStyled = styled.form`
   display: flex;
   flex-flow: row nowrap;
@@ -74,7 +58,7 @@ export const InputStyled = styled.input`
   height: 40px;
   width: 100%;
   touch-action: auto;
-  border-radius: 8px;
+  border-radius: 4px;
   text-indent: 20px;
   font-weight: 400;
   font-size: 1em;
@@ -83,7 +67,7 @@ export const InputStyled = styled.input`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: white;
   border: none;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.46);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
   &:focus {
     outline: none;
     background-color: white;
@@ -107,7 +91,7 @@ export const InputStyled = styled.input`
     props.$copy &&
     css`
       height: 44px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.24);
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.45);
       @media screen and (min-width: 577px) {
         text-indent: 48px;
       }
@@ -237,13 +221,14 @@ export const PStyled = styled.p`
   width: max-content;
   padding: 9px 16px;
   background-color: rgb(255, 255, 255);
-  border-radius: 20px;
+  border-radius: 4px;
   text-transform: uppercase;
   font-family: "Roboto", Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.24);
+
   ${(props) =>
-    props.$copy === false && "box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);"}
+    props.$copy === false && "box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.7);"}
   flex: none;
   cursor: pointer;
 
