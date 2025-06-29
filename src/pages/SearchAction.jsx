@@ -30,7 +30,7 @@ const SearchAction = () => {
     <DivStyled $opacityState={opacityState} $applyBlur={applyBlur}>
       <SearchBar copy={true}></SearchBar>
       <ProductList variant={'inSearch'} categoryKey={13}/>
-      <Footer setApllyBlur={setApllyBlur}></Footer>
+      <Footer setApllyBlur={setApplyBlur}></Footer>
     </DivStyled>
   )
 }
