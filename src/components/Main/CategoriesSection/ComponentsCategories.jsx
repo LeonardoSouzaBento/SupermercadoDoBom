@@ -62,8 +62,9 @@ export const PLabelStyled = styled.p`
 export const Divf = styled.div`
   width: auto;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   padding: 4px;
+  padding-bottom: 8px;
   padding-right: 20px;
   display: flex;
   flex-flow: row nowrap;
@@ -127,7 +128,8 @@ export const DivCat = styled.div`
   ${(props) =>
     props.$selected &&
     `background-color: rgb(255, 255, 255);
-     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.42);}
+     box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.28);
+     border: 1px solid rgba(0, 0, 0, 0.22);
     `}
 `;
 

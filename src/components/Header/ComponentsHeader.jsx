@@ -22,7 +22,8 @@ const LogoDivStyled = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 47%;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 4px 12px -2px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(0, 0, 0, 0.22);
   transform: scaleX(-1);
   @media (max-width: 374px) {
     height: 54px;
@@ -43,7 +44,7 @@ const LogoDivStyled = styled.div`
 `;
 
 const SpanLogoStyled = styled.span`
-  color: #D00C13;
+  color: #d00c13;
   font-size: 2.06em;
   font-weight: 600;
 `;
@@ -57,7 +58,7 @@ const DivPsStyled = styled.div`
 const PNomeSupStyled = styled.p`
   font-family: "Montserrat", serif;
   font-weight: 700;
-  color: #D00C13;
+  color: #d00c13;
 
   @media (min-width: 320px) and (max-width: 374px) {
     font-size: 0.93em;
@@ -156,7 +157,6 @@ const DivStyled = styled.div`
   cursor: pointer;
   transition: all 100ms linear;
   border-radius: 4px;
-  box-shadow: inset 0px -2px 5px rgba(0, 0, 0, 0.15);
 
   @media screen and (max-width: 768px) {
     position: absolute;

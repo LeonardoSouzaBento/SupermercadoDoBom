@@ -10,6 +10,7 @@ export const HeaderStyled = styled.header `
     max-height: 181px;
     position: relative;
     background-color: #f5faff;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.15); */
     @media screen and (min-width: 769px){
       height: 134px;
       display: flex;

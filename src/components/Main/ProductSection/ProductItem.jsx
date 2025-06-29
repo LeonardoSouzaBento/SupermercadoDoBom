@@ -25,7 +25,13 @@ import {
   PnomeStyled,
 } from "./ComponentsProductItem";
 
-const Oferta = ({ product, quantity, setQuantity, handleQuantityChange, variant }) => {
+const Oferta = ({
+  product,
+  quantity,
+  setQuantity,
+  handleQuantityChange,
+  variant,
+}) => {
   const divMaisRef = useRef(null);
   let toqueInicio = null;
 
@@ -98,7 +104,13 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange, variant 
   );
 };
 
-const Botoes = ({ quantity, product, setQuantity, handleQuantityChange, variant }) => {
+const Botoes = ({
+  quantity,
+  product,
+  setQuantity,
+  handleQuantityChange,
+  variant,
+}) => {
   function handleMore() {
     setQuantity(quantity + 1);
     handleQuantityChange(product, true);
@@ -133,19 +145,19 @@ const Preco = ({ product, variant }) => {
   const existWeight = product.weight != "" && product.weight != null;
   return (
     <PaiPrecoStyled $variant={variant}>
+      <DivPesoStyled $exist={existWeight} $variant={variant}>
+        <PpesoStyled>{product.weight}</PpesoStyled>
+      </DivPesoStyled>
+
       <DivPrecoStyled $variant={variant}>
         <PSifraStyled>R$</PSifraStyled>
         <PprecoStyled>{product.price}</PprecoStyled>
       </DivPrecoStyled>
-      
-      <DivPesoStyled $exist={existWeight} $variant={variant}>
-        <PpesoStyled>{product.weight}</PpesoStyled>
-      </DivPesoStyled>
     </PaiPrecoStyled>
   );
 };
 
-const DescOferta = ({ product, variant}) => {
+const DescOferta = ({ product, variant }) => {
   return (
     <DescOfertaStyled $variant={variant}>
       <DivNomeStyled>
@@ -159,7 +171,7 @@ const DescOferta = ({ product, variant}) => {
 function ProductItem({ product, handleQuantityChange, variant }) {
   const { cartProducts, totalAddedValue } = useContext(CartContext);
   const [quantity, setQuantity] = useState(product.quant);
-  const {viewFeedback} = useContext(ViewContext);
+  const { viewFeedback } = useContext(ViewContext);
 
   useEffect(() => {
     cartProducts.map((item) => {
@@ -173,11 +185,11 @@ function ProductItem({ product, handleQuantityChange, variant }) {
   }, []);
 
   useEffect(() => {
-    if (viewFeedback==true) {
+    if (viewFeedback == true) {
       setQuantity(0);
     }
-  }, [viewFeedback])
-  
+  }, [viewFeedback]);
+
   return (
     <PaiProdStyled $variant={variant}>
       <DescOferta product={product} variant={variant} />

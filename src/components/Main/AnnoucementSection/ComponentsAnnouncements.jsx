@@ -152,7 +152,7 @@ export const Span = styled.span.attrs(() => ({
   ${props => props.$atual && `
     padding: 1px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+    box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.6);
   `}
 
   @media screen and (max-width: 374px){

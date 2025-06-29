@@ -10,12 +10,15 @@ const FooterStyled = styled.footer`
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  height: 60px;
   background-color: transparent;
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: 8px;
   z-index: 2;
+
+  @media screen and (max-width: 576px) {
+    justify-content: center;
+  }
 `;
 
 const CartDescStyled = styled.div`
@@ -34,6 +37,9 @@ const CartDescStyled = styled.div`
   overflow: hidden;
   position: relative;
 
+  @media screen and (max-width: 576px) {
+    margin-right: 0px;
+  }
   @media screen and (min-width: 577px) and (max-width: 992px) {
     max-width: 440px;
   }
@@ -146,7 +152,7 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer() {
+export default function Footer({setApllyBlur}) {
   const { totalQuantity, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);

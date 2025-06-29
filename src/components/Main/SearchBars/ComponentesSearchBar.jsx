@@ -65,8 +65,9 @@ export const InputStyled = styled.input`
   color: black;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: white;
-  border: none;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px -2px rgba(170, 174, 177, 0.76);
+
   &:focus {
     outline: none;
     background-color: white;
@@ -90,7 +91,6 @@ export const InputStyled = styled.input`
     props.$copy &&
     css`
       height: 44px;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
       @media screen and (min-width: 577px) {
         text-indent: 48px;
       }
