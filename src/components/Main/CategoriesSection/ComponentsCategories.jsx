@@ -28,7 +28,7 @@ export const DivLabelPromosStyled = styled.div`
   width: 90%;
   max-width: 800px;
   margin: auto;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
@@ -131,10 +131,8 @@ export const DivCat = styled.div`
   ${(props) =>
     props.$selected &&
     css`
-      background-color: #faf5ff;
-      /* box-shadow: 4px 4px 10px -2px rgb(255, 255, 255),
-        inset -4px 4px 10px -6px rgba(0, 0, 0, 0.33); */
-      box-shadow: -6px 6px 6px -4px rgba(0, 0, 0, 0.25),
+      background-color: #f5faff;
+      box-shadow: -6px 6px 6px -4px rgba(0, 0, 0, 0.3),
         6px -6px 6px -4px rgb(255, 255, 255);
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       border-left: 1px solid rgba(0, 0, 0, 0.05);

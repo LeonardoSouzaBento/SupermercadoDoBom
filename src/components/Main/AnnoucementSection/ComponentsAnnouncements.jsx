@@ -1,18 +1,19 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Div = styled.div`
   width: calc(100% - 40px);
   position: relative;
-  overflow-x: hidden;  
+  overflow-x: hidden;
   padding-top: 12px;
-  padding-bottom: 24px;
+  padding-bottom: 30px;
   margin: auto;
-  margin-top: 18px;
+  margin-top: 36px;
   border-radius: 8px;
-  box-shadow: inset 0px 3px 3px 0px rgba(255, 255, 255, 0.92), inset 0px -4px 10px -3px rgba(0, 0, 0, 0.2);
-  
-  @media screen and (min-width: 1201px){
-    width: calc(100% - 50px);
+  box-shadow: inset 0px 3px 3px 0px rgba(255, 255, 255, 0.92),
+    0px 4px 10px -2px rgba(0, 0, 0, 0.25);
+    
+  @media screen and (min-width: 1201px) {
+    width: 90%;
   }
 `;
 
@@ -23,24 +24,24 @@ export const P = styled.p`
   font-size: 1.15em;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  color: #211B37;
+  color: #211b37;
 
-  @media screen and (max-width:374px){
+  @media screen and (max-width: 374px) {
     font-size: 1.14em;
   }
-  @media screen and (min-width: 375px) and (max-width:576px){
+  @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.22em;
   }
-  @media screen and (min-width: 577px) and (max-width:768px){
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.26em;
   }
-  @media screen and (min-width: 769px) and (max-width:992px){
+  @media screen and (min-width: 769px) and (max-width: 992px) {
     font-size: 1.28em;
   }
-  @media screen and (min-width: 993px) and (max-width:1200px){
-    font-size: 1.30em;
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.3em;
   }
-  @media screen and (min-width: 1201px){
+  @media screen and (min-width: 1201px) {
     font-size: 1.32em;
   }
 `;
@@ -66,14 +67,13 @@ export const Advertisements = styled.div`
     display: none;
   }
 
-
-  @media screen and (min-width: 375px) and (max-width: 576px){
+  @media screen and (min-width: 375px) and (max-width: 576px) {
     gap: 15px;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px){
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     gap: 18px;
   }
-  @media screen and (min-width: 769px){
+  @media screen and (min-width: 769px) {
     gap: 20px;
   }
 `;
@@ -82,34 +82,34 @@ export const Fundo = styled.div`
   position: relative;
   height: 170px;
   min-width: 265px;
-  
-  @media screen and (max-width: 374px){
+
+  @media screen and (max-width: 374px) {
     min-width: 225px;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px){
+  @media screen and (min-width: 375px) and (max-width: 576px) {
     min-width: 250px;
   }
-  @media screen and (min-width: 576px) and (max-width: 768px){
+  @media screen and (min-width: 576px) and (max-width: 768px) {
     min-width: 280px;
   }
-  @media screen and (min-width: 769px){
+  @media screen and (min-width: 769px) {
     min-width: 300px;
   }
-    
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(${props => props.$bg});
+    background-image: url(${(props) => props.$bg});
     background-size: cover;
     background-position: center;
     border-radius: 8px;
     filter: blur(5px) brightness(0.7);
     z-index: 0;
- }
+  }
 `;
 
 export const Img = styled.img`
@@ -126,13 +126,13 @@ export const Img = styled.img`
 `;
 
 export const Pagination = styled.div`
-    height: max-content;
-    width: 50%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0px;
+  height: max-content;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px;
 `;
 
 export const Span = styled.span.attrs(() => ({
@@ -140,17 +140,19 @@ export const Span = styled.span.attrs(() => ({
 }))`
   background-color: rgb(108, 108, 108);
   border-radius: 5px;
-  ${props => props.$atual && `
+  ${(props) =>
+    props.$atual &&
+    `
     padding: 1px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.6);
   `}
 
-  @media screen and (max-width: 374px){
+  @media screen and (max-width: 374px) {
     height: 7px;
     width: 7px;
   }
-  @media screen and (min-width: 375px){
+  @media screen and (min-width: 375px) {
     height: 7.5px;
     width: 7.5px;
   }

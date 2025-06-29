@@ -66,7 +66,9 @@ export const InputStyled = styled.input`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: #faf5ff;
   border: none;
-  box-shadow: inset 4px -4px 10px -2px rgb(255, 255, 255), inset -4px 4px 10px -6px rgba(0, 0, 0, 0.33);
+  box-shadow: inset -4px 4px 10px -2px rgb(255, 255, 255),
+    0px 4px 4px -2px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
   &:focus {
     outline: none;
@@ -107,33 +109,37 @@ export const DivSpanStyled = styled.div`
   box-sizing: border-box;
   padding-bottom: 2px;
   user-select: none;
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
   cursor: pointer;
-  background-color: #56458F;
+  background-color: #56458f;
 
   ${(props) =>
-    props.$copy == false &&
+    props.$copy === false &&
     css`
-      @media screen and (min-width: 577px) and (max-width: 768px) {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      @media screen and (min-width: 577px) {
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+      }
+      @media screen and (min-width: 1201px) {
         position: absolute;
         left: 5px;
         bottom: 5px;
       }
     `}
-  @media screen and (min-width: 1201px) {
-    position: absolute;
-    left: 5px;
-    bottom: 5px;
-  }
+
   ${(props) =>
-    props.$copy &&
+    props.$copy === true &&
     css`
-      @media screen and (min-width: 577px) {
+      position: absolute;
+      bottom: 7.5px;
+      right: 7.5px;
+      @media screen and (min-width: 577px) and (max-width: 768px) {
         position: absolute;
-        left: 5px;
-        bottom: 5px;
+        left: 7.5px;
+        bottom: 7.5px;
       }
     `}
 `;

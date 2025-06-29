@@ -61,6 +61,7 @@ const PNomeSupStyled = styled.p`
   font-family: "Montserrat", serif;
   font-weight: 700;
   color: #d00c13;
+  /* color: #56458F; */
 
   @media (min-width: 320px) and (max-width: 374px) {
     font-size: 0.93em;
@@ -82,6 +83,8 @@ const PNomeSupStyled = styled.p`
 const PBemVindoStyled = styled(PNomeSupStyled)`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
+  color: #d00c13;
+
   @media (min-width: 320px) and (max-width: 374px) {
     font-size: 1.03em;
   }
