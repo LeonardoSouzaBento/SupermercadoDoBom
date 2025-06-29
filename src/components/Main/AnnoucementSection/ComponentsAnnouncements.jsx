@@ -1,19 +1,23 @@
 import styled, { css } from "styled-components";
 
 export const Div = styled.div`
-  width: calc(100% - 40px);
+  width: calc(100% - 20px);
   position: relative;
   overflow-x: hidden;
   padding-top: 12px;
-  padding-bottom: 30px;
+  padding-bottom: 32px;
   margin: auto;
   margin-top: 36px;
-  border-radius: 8px;
-  box-shadow: inset 0px 3px 3px 0px rgba(255, 255, 255, 0.92),
-    0px 4px 10px -2px rgba(0, 0, 0, 0.25);
-    
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 769px) {
+    margin-top: 12px;
+  }
   @media screen and (min-width: 1201px) {
-    width: 90%;
+    width: calc(100% - 50px);
   }
 `;
 

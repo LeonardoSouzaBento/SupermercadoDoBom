@@ -64,11 +64,9 @@ export const InputStyled = styled.input`
   letter-spacing: 0.71px;
   color: black;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  background-color: #faf5ff;
+  background-color: white;
   border: none;
-  box-shadow: inset -4px 4px 10px -2px rgb(255, 255, 255),
-    0px 4px 4px -2px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
 
   &:focus {
     outline: none;

@@ -14,29 +14,7 @@ const Main = styled.main`
   margin: auto;
   padding: 0px;
   position: relative;
-  background-color: #f5faff;
-
-  &::before{
-    content: "";
-    width: 100%;
-    height: 120px;
-    position: absolute;
-    bottom: 42%;
-    left: 0;
-    background-image: linear-gradient(to top, rgba(204, 208, 212, 0.21), rgba(0, 0, 0, 0));
-    background-size: 100%;
-  }
-
-  &::after{
-    content: "";
-    width: 100%;
-    height: 42%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color:rgba(204, 208, 212, 0.21);
-    background-size: 100%;
-  }
+  background-color: #EBEFF4;
 `;
 
 

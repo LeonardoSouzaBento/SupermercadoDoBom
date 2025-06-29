@@ -6,7 +6,7 @@ export const Div = styled.div`
   margin-left: 16px;
   position: relative;
   z-index: 2;
-  padding-top: 36px;
+  padding-top: 40px;
 
   @media screen and (max-width: 374px) {
     width: calc(100% - 15px);
@@ -28,7 +28,7 @@ export const DivLabelPromosStyled = styled.div`
   width: 90%;
   max-width: 800px;
   margin: auto;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
@@ -64,7 +64,7 @@ export const PLabelStyled = styled.p`
 export const Divf = styled.div`
   width: auto;
   margin: auto;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   padding: 4px;
   padding-bottom: 8px;
   padding-right: 20px;
@@ -131,11 +131,8 @@ export const DivCat = styled.div`
   ${(props) =>
     props.$selected &&
     css`
-      background-color: #f5faff;
-      box-shadow: -6px 6px 6px -4px rgba(0, 0, 0, 0.3),
-        6px -6px 6px -4px rgb(255, 255, 255);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      border-left: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: white;
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.07), 0px 2px 4px rgba(0, 0, 0, 0.03);
     `}
 `;
 

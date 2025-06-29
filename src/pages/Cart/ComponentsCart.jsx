@@ -39,8 +39,9 @@ export const CartSectionStyed = styled.div`
   border-radius: 4px 4px 20px 20px;
   background-color: white;
   box-sizing: border-box;
-  background-color: white;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.55), 0px -1px 3px rgba(0, 0, 0, 0.08);
+  background-color: #ECF1F6;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 4px 10px -5px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow-y: hidden;
 
@@ -67,21 +68,20 @@ export const CartSectionStyed = styled.div`
     overflow-y: scroll;
     border-radius: 14px;
   }
-    /*Estilo da barra*/
+  /*Estilo da barra*/
   @media screen and (min-width: 993px) {
     max-width: 894px;
     &::-webkit-scrollbar-track {
-      background-color: rgb(255, 255, 255);
+      background-color: #f5faff;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgb(235, 235, 235); /* cor botão */
+      background: #ABAFB3; /* cor botão */
       border-radius: 6px;
     }
     scrollbar-width: thin; /* Opções: auto | thin | none */
-    scrollbar-color: hsl(0, 0%, 78%) rgb(255, 255, 255); /* botão | fundo */
+    scrollbar-color: #ABAFB3 #f5faff; /* botão | fundo */
   }
-
 `;
 
 export const DivSpanStyled = styled.div`
@@ -92,16 +92,15 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 9px;
+  top: 6px;
   right: 9px;
   border-radius: 4px;
-  background-color:  #f5faff;
+  background-color:hsl(207, 33%, 90%);
   cursor: pointer;
 `;
 
 export const SpanStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
-  color: rgb(38, 0, 0);
 
   @media screen and (max-width: 374px) {
     font-size: 1.67em;
@@ -125,7 +124,7 @@ export const SpanStyled = styled.span`
 
 export const BoxConfirmCancel = styled.div`
   width: 100%;
-  height: 52px;
+  height: 50px;
   padding-right: 2px;
   display: flex;
   justify-content: flex-end;
@@ -135,24 +134,27 @@ export const BoxConfirmCancel = styled.div`
   top: 0px;
   right: 0px;
   border-radius: 8px 8px 0px 0px;
-  background-color: #e36140;
-  ${(props) => props.$viewFeedback && "background-color: rgb(36, 160, 12);"};
+  background-color: #DB2C32;
+  ${(props) => props.$viewFeedback && "background-color: rgb(21, 128, 0);"};
   ${(props) => props.$viewFeedback && "padding-right: 16px;"};
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 `;
 
 export const DivSpanStyled2 = styled(DivSpanStyled)`
+  height: 35px;
+  width: 35px;
   position: relative;
   padding-bottom: 0px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   background-color: white;
   ${(props) => props.$uniqueBorderRadius && "border-radius: 4px;"};
+  color: black;
 `;
 
 export const PConfirmCancelStyled = styled.p`
-  font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-weight: 300;
+  font-weight: 500;
   color: white;
   padding-right: 8px;
 
@@ -200,22 +202,22 @@ export const ShadowStyled = styled.div`
 `;
 
 export const DivHeadStyled = styled.div`
-  height: 60px;
+  height: 50px;
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
   position: relative;
   border-radius: 12px 12px 0px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+  color: #212223;
 `;
 
 export const PHeadStyled = styled.p`
   width: 100%;
-  font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
-  color: rgb(27, 27, 27);
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-weight: 400;
+  font-weight: 500;
   padding-bottom: 2px;
 
   @media screen and (max-width: 374px) {
@@ -327,7 +329,8 @@ export const ContainerStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.15),
+    0px 4px 4px -2px rgba(0, 0, 0, 0.15);
 
   @media screen and (min-width: 769px) {
     display: block;
@@ -347,7 +350,7 @@ export const DivAvisoStyled = styled.div`
   border-radius: 3px;
   padding: 15px 18px;
   box-sizing: border-box;
-  background-color: #C90C12;
+  background-color: #c90c12;
 `;
 
 export const PAvisoStyled = styled.p`
@@ -429,7 +432,8 @@ export const DivContinueStyled = styled.div`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.08s ease;
-  background-color: ${(props) => (props.$nocontinue ? " #39EDAC" : "rgb(21, 128, 0)")};
+  background-color: ${(props) =>
+    props.$nocontinue ? " #39EDAC" : "rgb(21, 128, 0)"};
   &:hover {
     background-color: ${(props) => !props.$nocontinue && "rgb(17, 103, 0)"};
   }
@@ -466,7 +470,8 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.55);
+  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.15),
+    0px 4px 4px -2px rgba(0, 0, 0, 0.15);
 
   @media screen and (min-width: 769px) {
     order: 2;
@@ -498,7 +503,6 @@ export const PAddStyled = styled.p`
   }
 `;
 
-
 export const DivMsgVoidCart = styled.div`
   width: 340px;
   padding: 9px;
@@ -509,6 +513,7 @@ export const DivMsgVoidCart = styled.div`
   align-items: center;
   gap: 4px;
   background-color: rgb(245, 245, 245);
+  color: black;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.24);
   border-radius: 9px;
 `;

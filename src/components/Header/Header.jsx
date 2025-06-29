@@ -10,6 +10,7 @@ export const HeaderStyled = styled.header `
     max-height: 181px;
     position: relative;
     background-color: #f5faff;
+    background-image: linear-gradient(to bottom, #f5faff, #EBEFF4);
 
     //modo paisagem
     @media screen and (min-width: 769px){

@@ -10,8 +10,6 @@ export const PaiProdStyled = styled.div`
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  box-shadow: 0 1px 4px rgba(197, 202, 205, 0.57);
-
   border-radius: 7px;
 
   //paisagem
@@ -41,9 +39,7 @@ export const PaiProdStyled = styled.div`
   ${(props) =>
     props.$variant === "cart" &&
     css`
-      border-radius: 0px !important;
-      box-shadow: none;
-      border: 1px solid rgba(0, 0, 0, 0.2);
+      /* box-shadow: 0px 2px 2px  rgba(197, 202, 205, 0.57); */
     `}
 `;
 
@@ -62,7 +58,6 @@ export const DescOfertaStyled = styled.div`
     height: 100%;
     width: 48%;
     padding-right: 0px;
-    box-shadow: inset -4px 0px 10px -4px rgba(0, 0, 0, 0.04);
   }
   @media screen and (min-width: 375px) {
     padding: 8px;
@@ -262,19 +257,9 @@ export const DivOffStyled = styled.div`
   padding-bottom: 2px;
   background-color: #db2c32;
   border-radius: 10px;
-
-  ${(props) =>
-    props.$variant === "cart" &&
-    css`
-      border-radius: 0px;
-      position: absolute;
-      top: 0;
-      right: 0;
-    `}
 `;
 
 export const PoffStyled = styled.p`
-  /* color: #13450a; */
   color: white;
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 400;
