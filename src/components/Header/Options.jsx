@@ -42,11 +42,10 @@ export const DivNameSpanStyled = styled.div`
 `;
 
 const ContainerPStyled = styled.div`
-  background-color: #3f0404;
+  background-color: #56458F;
   display: flex;
-  border-radius: 40px 0px 0px 40px; //para não sobrepor o border radius filho
+  border-radius: 7px; //para não sobrepor o border radius filho
   margin-right: -10px;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.25);
 `;
 
 const DivPStyled = styled.div`
@@ -69,26 +68,19 @@ export const DivSpanStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
-  background-color: #3F0404;
-  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 7px;
+  background-color: #56458F;
   flex: none;
   cursor: pointer;
   width: 44px;
   height: 44px;
 `;
 
-const DivSpanFalse = styled(DivSpanStyled)`
-  display: block;
-  margin-right: -30px;
-  box-shadow: none;
-`;
-
 export const SpanOptionsStyled = styled.span`
   font-weight: 300;
   font-size: 1.7em;
   color: rgb(255, 255, 255);
-  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 12, "opsz" 30;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 12, "opsz" 30;
   user-select: none;
 `;
 
@@ -143,7 +135,6 @@ const Options = () => {
         >
           {viewNameOption == i && (
             <ContainerPStyled>
-              <DivSpanFalse />
               <DivPStyled>
                 <POptionStyled>{content.p}</POptionStyled>
               </DivPStyled>

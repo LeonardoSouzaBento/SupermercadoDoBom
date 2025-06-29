@@ -3,12 +3,14 @@ import styled, { css } from "styled-components";
 export const Div = styled.div`
   width: calc(100% - 20px);
   overflow-x: hidden;
-  margin-left: 20px;
+  margin-left: 16px;
   position: relative;
   z-index: 2;
+  padding-top: 36px;
+
   @media screen and (max-width: 374px) {
     width: calc(100% - 15px);
-    margin-left: 15px;
+    margin-left: 11px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     width: calc(100% - 20px);
@@ -36,7 +38,7 @@ export const DivLabelPromosStyled = styled.div`
 export const PLabelStyled = styled.p`
   font-weight: ${(props) => (props.id ? "700" : "500")};
   font-family: "Lato", sans-serif;
-  color: ${(props) => (props.id ? "rgb(69, 69, 69)" : "rgb(82, 82, 82)")};
+  color: ${(props) => (props.id ? " #221B39" : " #332854")};
   text-align: center;
 
   @media screen and (max-width: 374px) {
@@ -66,6 +68,7 @@ export const Divf = styled.div`
   padding: 4px;
   padding-bottom: 8px;
   padding-right: 20px;
+  padding-left: 8px;
   display: flex;
   flex-flow: row nowrap;
   gap: 10px;
@@ -127,8 +130,14 @@ export const DivCat = styled.div`
   padding-top: 7px;
   ${(props) =>
     props.$selected &&
-    `background-color: rgb(255, 255, 255);
-     box-shadow: 0 3px 3px -1.5px rgba(0, 0, 0, 0.3);
+    css`
+      background-color: #faf5ff;
+      /* box-shadow: 4px 4px 10px -2px rgb(255, 255, 255),
+        inset -4px 4px 10px -6px rgba(0, 0, 0, 0.33); */
+      box-shadow: -6px 6px 6px -4px rgba(0, 0, 0, 0.25),
+        6px -6px 6px -4px rgb(255, 255, 255);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      border-left: 1px solid rgba(0, 0, 0, 0.05);
     `}
 `;
 

@@ -30,15 +30,15 @@ const CartDescStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #443772;
+  background-color: #56458F;
   border-radius: 8px;
   cursor: pointer;
   user-select: none;
   overflow: hidden;
   position: relative;
 
-  &:hover{
-    background-color: #332955;
+  &:hover {
+    background-color: #6753AC;
   }
 
   @media screen and (max-width: 576px) {
@@ -66,11 +66,15 @@ const DivCartStyled = styled.div`
   justify-content: center;
 `;
 
-const DivCancelStyled = styled(DivCartStyled)`
+const DivDeleteStyled = styled(DivCartStyled)`
   height: 36px;
   width: 36px;
   border-radius: 4px;
-  background-color: #211B37;
+  background-color: #332854;
+
+  &:hover {
+    background-color: hsl(255, 35.50%, 18%)
+  }
 `;
 
 const SpanDeleteStyled = styled.span`
@@ -132,7 +136,7 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer({setApllyBlur}) {
+export default function Footer({setApplyBlur}) {
   const { totalQuantity, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
@@ -159,18 +163,19 @@ export default function Footer({setApllyBlur}) {
           }}
         >
           <DivCancelECart>
-            <DivCancelStyled
+            <DivDeleteStyled
               onPointerDown={(e) => {
                 e.stopPropagation(e);
                 setCanHandleClick(false);
                 setTimeout(() => setCanHandleClick(true), 200);
                 setViewConfirm(true);
+                setApplyBlur(true);
               }}
             >
               <SpanDeleteStyled className="material-symbols-outlined">
                 delete
               </SpanDeleteStyled>
-            </DivCancelStyled>
+            </DivDeleteStyled>
 
             <DivCartSetaStyled>
               <DivCartStyled>
@@ -201,6 +206,7 @@ export default function Footer({setApllyBlur}) {
       <ConfirmDialog
         setViewConfirm={setViewConfirm}
         canHandleClick={canHandleClick}
+        setApplyBlur={setApplyBlur}
       ></ConfirmDialog>
     );
   }

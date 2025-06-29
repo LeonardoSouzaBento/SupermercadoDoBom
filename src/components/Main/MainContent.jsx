@@ -45,7 +45,7 @@ function MainContent() {
   const { noSkipLogin, setNoSkipLogin } = useContext(ViewContext);
   const { currentCategory } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
-  const [apllyBlur, setApllyBlur] = useState(false);
+  const [applyBlur, setApplyBlur] = useState(false);
 
   const divRef = useRef(null);
 
@@ -90,9 +90,9 @@ function MainContent() {
 
       <div
         style={{
-          filter: noSkipLogin ? "blur(2.5px)" : "none",
+          filter: (noSkipLogin || applyBlur) ? "blur(2.5px)" : "blur(0px)",
           opacity: !noSkipLogin ? opacityState : 1,
-          transition: 'opacity 0.2s ease filter 1s ease'
+          transition: 'filter 1s ease, opacity 0.2s ease'
         }}
       >
         <Header viewOptions={viewOptions} setViewOptions={setViewOptions} />
@@ -102,7 +102,7 @@ function MainContent() {
           <PromoSection categoryKey={currentCategory} />
         </Main>
       </div>
-      <Footer setOpacityState={setOpacityState}/>
+      <Footer setOpacityState={setOpacityState} setApplyBlur={setApplyBlur}/>
     </div>
   );
 }

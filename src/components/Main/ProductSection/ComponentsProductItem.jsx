@@ -28,16 +28,6 @@ export const PaiProdStyled = styled.div`
     max-width: 170px;
     min-height: 296px;
   }
-  /* ${(props) =>
-    props.$variant === "home" &&
-    css`
-      @media screen and (min-width: 375px) and (max-width: 992px) {
-        min-width: 180px;
-        max-width: 180px;
-        min-height: 270px;
-        max-height: 270px;
-      }
-    `} */
 
   //paisagem
   @media screen and (min-width: 993px) {
@@ -46,13 +36,6 @@ export const PaiProdStyled = styled.div`
     max-width: 280px;
     height: 180px;
     border-radius: 7px;
-
-    /* ${(props) =>
-      props.$variant === "home" &&
-      css`
-        min-width: 280px;
-        max-width: 280px;
-      `} */
   }
 
   ${(props) =>
@@ -269,16 +252,16 @@ export const ImgOfertaStyed = styled.img`
 
 export const DivOffStyled = styled.div`
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 7px;
+  right: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20px;
   padding: 0px 8px;
   padding-bottom: 2px;
-  background-color: #cdd4ae;
-  border-radius: 0px 0px 0px 4px;
+  background-color: #db2c32;
+  border-radius: 10px;
 
   ${(props) =>
     props.$variant === "cart" &&
@@ -291,7 +274,8 @@ export const DivOffStyled = styled.div`
 `;
 
 export const PoffStyled = styled.p`
-  color: #13450a;
+  /* color: #13450a; */
+  color: white;
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 400;
 
@@ -341,7 +325,7 @@ export const DivQuantStyled = styled.div`
   background-color: #db2c32;
   display: flex;
   justify-content: space-between;
-  border-radius: 16px;
+  border-radius: 7.5px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
@@ -349,13 +333,18 @@ export const DivQuantStyled = styled.div`
   bottom: 8px;
   right: 5%;
 
+  @media screen and (min-width: 375px) and (max-width: 992px) {
+    width: 116px;
+    right: 8px;
+  }
+
   /* ${(props) =>
     props.$variant === "home" &&
     css`
       //retrato
       @media screen and (min-width: 375px) and (max-width: 992px) {
-        width: 70%;
-        /* right: 4px; */
+        width: 116px;
+        right: 8px;
       }
     `} */
 `;

@@ -5,7 +5,7 @@ export const BodyStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(235, 235, 235);
+  background-color: #faf5ff;
 
   @media screen and (min-width: 577px) {
     padding-top: 8px;
@@ -17,7 +17,7 @@ export const WrapperStyled = styled.div`
   max-width: 470px;
   padding: 35px 36px;
   border-radius: 8px;
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.37);
   position: relative;
   z-index: 1;

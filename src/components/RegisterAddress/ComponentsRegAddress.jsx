@@ -10,7 +10,7 @@ export const Box0Styled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.1);
   transition: opacity 0.5s ease;
   opacity: ${(props) => props.$opacity};
 `;
@@ -26,7 +26,6 @@ export const BoxStyled = styled.div`
   padding: 16px;
   padding-bottom: 28px;
   position: relative;
-  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   @media screen and (max-width: 768px) {
     margin-bottom: 18px;

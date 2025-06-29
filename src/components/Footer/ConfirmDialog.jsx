@@ -157,7 +157,7 @@ const PFeedBackStyled = styled(PQuestionStyled)`
 `;
 
 
-export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
+export default function ConfirmDialog({ setViewConfirm, canHandleClick, setApplyBlur }) {
   const { setCartProducts } = useContext(CartContext);
   const { viewFeedback, setViewFeedback } = useContext(ViewContext);
   const [heightDiv, setHeightDiv] = useState("163px");
@@ -171,10 +171,12 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
       setTimeout(() => {
         setViewConfirm(false);
         setViewFeedback(false);
+        setApplyBlur(false);
         setHeightDiv("163px");
       }, 2100);
     } else if (action === 0 && canHandleClick) {
       setViewConfirm(false);
+      setApplyBlur(false);
     }
   };
 

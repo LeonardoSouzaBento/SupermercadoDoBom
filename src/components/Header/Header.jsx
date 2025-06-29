@@ -10,9 +10,10 @@ export const HeaderStyled = styled.header `
     max-height: 181px;
     position: relative;
     background-color: #f5faff;
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.15); */
+
+    //modo paisagem
     @media screen and (min-width: 769px){
-      height: 134px;
+      height: 140px;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -35,7 +36,6 @@ const Header = ({viewOptions, setViewOptions}) => {
       <Divlogo></Divlogo>
       <SearchBar copy={false}></SearchBar>
       <MoreOptionsButton 
-        changeBackground={viewOptions} 
         setViewOptions={setViewOptions}
         viewOptions={viewOptions}
       />

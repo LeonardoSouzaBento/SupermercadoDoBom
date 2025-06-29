@@ -64,14 +64,13 @@ export const InputStyled = styled.input`
   letter-spacing: 0.71px;
   color: black;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  background-color: white;
+  background-color: #faf5ff;
   border: none;
-  box-shadow: 0px 6px 6px -4px rgba(0, 0, 0, 0.2),
-    -2px -2px 2px -1px rgba(0, 0, 0, 0.08), 2px 0px 2px -1px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 4px -4px 10px -2px rgb(255, 255, 255), inset -4px 4px 10px -6px rgba(0, 0, 0, 0.33);
 
   &:focus {
     outline: none;
-    background-color: white;
+    background-color: #faf5ff;
   }
   &::-webkit-search-cancel-button,
   &::-webkit-search-decoration {
@@ -102,40 +101,47 @@ export const DivSpanStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 95%;
-  width: 40px;
-  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border-radius: 6px;
   box-sizing: border-box;
   padding-bottom: 2px;
   user-select: none;
   position: absolute;
-  bottom: 0px;
-  right: 8px;
+  bottom: 5px;
+  right: 5px;
   cursor: pointer;
+  background-color: #56458F;
 
   ${(props) =>
     props.$copy == false &&
     css`
       @media screen and (min-width: 577px) and (max-width: 768px) {
         position: absolute;
-        left: 4px;
-        bottom: -1px;
+        left: 5px;
+        bottom: 5px;
       }
     `}
   @media screen and (min-width: 1201px) {
     position: absolute;
-    left: 4px;
-    bottom: -1px;
+    left: 5px;
+    bottom: 5px;
   }
   ${(props) =>
     props.$copy &&
     css`
       @media screen and (min-width: 577px) {
         position: absolute;
-        left: 4px;
-        bottom: -1px;
+        left: 5px;
+        bottom: 5px;
       }
     `}
+`;
+
+export const SpanSearchStyled = styled.span`
+  color: white;
+  font-size: 1.4em;
+  font-weight: 500;
 `;
 
 export const DivMsgStyled = styled.div`

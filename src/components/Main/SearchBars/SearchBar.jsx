@@ -10,6 +10,7 @@ import {
   FormStyled,
   InputStyled,
   DivSpanStyled,
+  SpanSearchStyled,
   DivMsgStyled,
   PointedShapeStyed,
   PMsgStyled,
@@ -244,12 +245,7 @@ function SearchBar({ copy }) {
             handleClickSearch();
           }}
         >
-          <span
-            className="material-symbols-rounded"
-            style={{ color: "rgb(50, 50, 50)" }}
-          >
-            search
-          </span>
+          <SpanSearchStyled className="material-symbols-outlined">search</SpanSearchStyled>
         </DivSpanStyled>
 
         {tipForRecruiter && (

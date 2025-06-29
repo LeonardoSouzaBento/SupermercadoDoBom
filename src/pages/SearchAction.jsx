@@ -12,11 +12,13 @@ const DivStyled = styled.div`
   box-sizing: border-box;
   background-color: #f5faff;
   opacity: ${props => props.$opacityState};
-  transition: opacity 0.2s ease;
+  filter: ${props => props.$applyBlur ? 'blur(2.5px)' : 'blur(0px)'};
+  transition: opacity 0.2s ease, filter 1s ease;
 `;
 
 const SearchAction = () => {
   const [opacityState, setOpacityState] = useState(0);
+  const [applyBlur, setApplyBlur] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -25,10 +27,10 @@ const SearchAction = () => {
   }, [])
 
   return (
-    <DivStyled $opacityState={opacityState}>
+    <DivStyled $opacityState={opacityState} $applyBlur={applyBlur}>
       <SearchBar copy={true}></SearchBar>
       <ProductList variant={'inSearch'} categoryKey={13}/>
-      <Footer setOpacityState={setOpacityState}></Footer>
+      <Footer setApllyBlur={setApllyBlur}></Footer>
     </DivStyled>
   )
 }

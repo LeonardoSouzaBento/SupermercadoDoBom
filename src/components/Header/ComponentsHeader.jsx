@@ -22,8 +22,8 @@ const LogoDivStyled = styled.div`
   align-items: center;
   background-color: hsl(210, 100%, 98%);
   border-radius: 50%;
-  box-shadow: 6px 6px 6px -4px rgba(0, 0, 0, 0.2),
-    -3px -3px 3px -1.5px rgb(255, 255, 255);
+  box-shadow: 6px 6px 6px -4px rgba(0, 0, 0, 0.25),
+    -6px -6px 6px -4px rgb(255, 255, 255);
   transform: scaleX(-1);
   box-sizing: border-box;
   padding-top: 1px;
@@ -141,14 +141,14 @@ export const Divlogo = () => {
 
 //botão de mais opções
 //div para ajuste de padding
-const DivMoreOptionsStyled = styled.div`
+const ContainerOptionsStyled = styled.div`
   z-index: 3;
   @media screen and (min-width: 769px) {
     padding-left: 5px;
   }
 `;
 
-const DivStyled = styled.div`
+const DivMoreOptionsStyled = styled.div`
   width: 37px;
   height: 37px;
   display: flex;
@@ -158,10 +158,10 @@ const DivStyled = styled.div`
   cursor: pointer;
   background-color: #56458F;
   transition: all 100ms linear;
-  border-radius: 8px;
+  border-radius: 7px;
 
   &:hover {
-    background-color: #332955;
+    background-color: #6753AC;
   }
 
   @media screen and (max-width: 768px) {
@@ -230,7 +230,6 @@ const SpanStyled = styled.span`
 `;
 
 export const MoreOptionsButton = ({
-  changeBackground,
   setViewOptions,
   viewOptions,
 }) => {
@@ -243,10 +242,9 @@ export const MoreOptionsButton = ({
   }
 
   return (
-    <DivMoreOptionsStyled>
-      <DivStyled
+    <ContainerOptionsStyled>
+      <DivMoreOptionsStyled
         data-ignore-click
-        $changeBackground={changeBackground}
         onPointerDown={handleClick}
         onMouseEnter={() => {
           setViewOptions(true);
@@ -254,7 +252,7 @@ export const MoreOptionsButton = ({
       >
         <SpanStyled className="material-symbols-outlined">menu</SpanStyled>
         <PStyled>Mais opções</PStyled>
-      </DivStyled>
-    </DivMoreOptionsStyled>
+      </DivMoreOptionsStyled>
+    </ContainerOptionsStyled>
   );
 };

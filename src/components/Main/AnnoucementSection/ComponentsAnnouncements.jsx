@@ -1,25 +1,16 @@
 import styled, {css} from "styled-components";
 
 export const Div = styled.div`
-  width:100%;
+  width: calc(100% - 40px);
   position: relative;
-  overflow-x: hidden;
+  overflow-x: hidden;  
+  padding-top: 12px;
+  padding-bottom: 24px;
   margin: auto;
-  padding-top: 16px;
-  padding-bottom: 48px;
-  border-radius: 5px;
-  @media screen and (max-width:576px){
-    width: 100%;
-  }
-  @media screen and (min-width: 577px) and (max-width:768px){
-    width: calc(100% - 15px);
-  }
-  @media screen and (min-width: 769px) and (max-width:992px){
-    width: calc(100% - 20px);
-  }
-  @media screen and (min-width: 993px) and (max-width:1200px){
-    width: calc(100% - 20px);
-  }
+  margin-top: 18px;
+  border-radius: 8px;
+  box-shadow: inset 0px 3px 3px 0px rgba(255, 255, 255, 0.92), inset 0px -4px 10px -3px rgba(0, 0, 0, 0.2);
+  
   @media screen and (min-width: 1201px){
     width: calc(100% - 50px);
   }
@@ -32,7 +23,7 @@ export const P = styled.p`
   font-size: 1.15em;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  color: #78070B;
+  color: #211B37;
 
   @media screen and (max-width:374px){
     font-size: 1.14em;
