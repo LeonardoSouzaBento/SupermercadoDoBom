@@ -30,22 +30,21 @@ const CartDescStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #C90C12;
-  border-radius: 4px;
+  background-color: #443772;
+  border-radius: 8px;
   cursor: pointer;
   user-select: none;
   overflow: hidden;
   position: relative;
 
+  &:hover{
+    background-color: #332955;
+  }
+
   @media screen and (max-width: 576px) {
     margin-right: 0px;
   }
-  @media screen and (min-width: 577px) and (max-width: 992px) {
-    max-width: 440px;
-  }
-  @media screen and (min-width: 993px) {
-    max-width: 470px;
-  }
+  
 `;
 
 const DivCancelECart = styled.div`
@@ -71,10 +70,10 @@ const DivCancelStyled = styled(DivCartStyled)`
   height: 36px;
   width: 36px;
   border-radius: 4px;
-  background-color: #630609;
+  background-color: #211B37;
 `;
 
-const SpanCancelStyled = styled.span`
+const SpanDeleteStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 12, "opsz" 30;
   color: rgb(255, 255, 255);
   font-size: 1.45em;
@@ -95,30 +94,11 @@ const DivCartSetaStyled = styled.div`
   gap: 0px;
 `;
 
-const SpanCartStyled = styled.span`
-  color: white;
-  font-size: 1.74em;
-  font-weight: 500;
+const SpanCartSetaStyled = styled.span`
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.65em;
+  font-weight: 300;
   font-variation-settings: "FILL" 1;
-
-  @media screen and (max-width: 374px) {
-    font-size: 1.6em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.7em;
-  }
-`;
-
-const SpanSetaStyled = styled(SpanCartStyled)`
-  @media screen and (max-width: 374px) {
-    font-size: 1.5em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.6em;
-  }
-  @media screen and (min-width: 577px) {
-    font-size: 1.7em;
-  }
 `;
 
 //Divs dos ps
@@ -131,20 +111,20 @@ const DivPStyled = styled.div`
 `;
 
 const PPrecoStyled = styled.p`
-  font-family: "Lato", Arial, Helvetica, sans-serif;
-  font-weight: 700;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 500;
   letter-spacing: 0.71px;
   padding-bottom: 2px;
   color: white;
 
   @media screen and (max-width: 374px) {
-    font-size: 1.14em;
+    font-size: 1em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.15em;
+    font-size: 1.05em;
   }
   @media screen and (min-width: 577px) {
-    font-size: 1.18em;
+    font-size: 1.1em;
   }
 `;
 
@@ -187,21 +167,21 @@ export default function Footer({setApllyBlur}) {
                 setViewConfirm(true);
               }}
             >
-              <SpanCancelStyled className="material-symbols-outlined">
+              <SpanDeleteStyled className="material-symbols-outlined">
                 delete
-              </SpanCancelStyled>
+              </SpanDeleteStyled>
             </DivCancelStyled>
 
             <DivCartSetaStyled>
               <DivCartStyled>
-                <SpanCartStyled className="material-symbols-outlined">
+                <SpanCartSetaStyled className="material-symbols-outlined">
                   shopping_cart
-                </SpanCartStyled>
+                </SpanCartSetaStyled>
               </DivCartStyled>
               <DivSetaStyled>
-                <SpanSetaStyled className="material-symbols-outlined">
+                <SpanCartSetaStyled className="material-symbols-outlined">
                   chevron_right
-                </SpanSetaStyled>
+                </SpanCartSetaStyled>
               </DivSetaStyled>
             </DivCartSetaStyled>
           </DivCancelECart>

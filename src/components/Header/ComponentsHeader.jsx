@@ -20,11 +20,13 @@ const LogoDivStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  border-radius: 47%;
-  box-shadow: 0px 4px 12px -2px rgba(0, 0, 0, 0.22);
-  border: 1px solid rgba(0, 0, 0, 0.22);
+  background-color: hsl(210, 100%, 98%);
+  border-radius: 50%;
+  box-shadow: 6px 6px 6px -4px rgba(0, 0, 0, 0.2),
+    -3px -3px 3px -1.5px rgb(255, 255, 255);
   transform: scaleX(-1);
+  box-sizing: border-box;
+  padding-top: 1px;
   @media (max-width: 374px) {
     height: 54px;
     width: 54px;
@@ -97,7 +99,7 @@ const PBemVindoStyled = styled(PNomeSupStyled)`
   }
 `;
 
-const SpaceMoreOptions = styled.div`
+const SpaceSearchBar = styled.div`
   width: 44px;
   height: 44px;
 
@@ -132,13 +134,12 @@ export const Divlogo = () => {
           <PBemVindoStyled> Seja bem vindo!</PBemVindoStyled>
         </DivPsStyled>
       </ContainerStyled>
-      <SpaceMoreOptions></SpaceMoreOptions>
+      <SpaceSearchBar />
     </ContainerStyled>
   );
 };
 
 //botão de mais opções
-
 //div para ajuste de padding
 const DivMoreOptionsStyled = styled.div`
   z-index: 3;
@@ -155,8 +156,13 @@ const DivStyled = styled.div`
   justify-content: center;
   color: white;
   cursor: pointer;
+  background-color: #56458F;
   transition: all 100ms linear;
-  border-radius: 4px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #332955;
+  }
 
   @media screen and (max-width: 768px) {
     position: absolute;
@@ -179,8 +185,6 @@ const DivStyled = styled.div`
   @media screen and (min-width: 769px) {
     position: relative;
   }
-  background-color: ${(props) =>
-    props.$changeBackground ? " #3F0404" : " #E20E15"};
 
   @media screen and (min-width: 1201px) {
     width: max-content;

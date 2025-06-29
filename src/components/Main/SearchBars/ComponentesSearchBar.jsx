@@ -57,7 +57,7 @@ export const InputStyled = styled.input`
   height: 40px;
   width: 100%;
   touch-action: auto;
-  border-radius: 4px;
+  border-radius: 7px;
   text-indent: 20px;
   font-weight: 400;
   font-size: 1em;
@@ -65,8 +65,9 @@ export const InputStyled = styled.input`
   color: black;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 4px 10px -2px rgba(170, 174, 177, 0.76);
+  border: none;
+  box-shadow: 0px 6px 6px -4px rgba(0, 0, 0, 0.2),
+    -2px -2px 2px -1px rgba(0, 0, 0, 0.08), 2px 0px 2px -1px rgba(0, 0, 0, 0.08);
 
   &:focus {
     outline: none;

@@ -128,8 +128,7 @@ export const DivCat = styled.div`
   ${(props) =>
     props.$selected &&
     `background-color: rgb(255, 255, 255);
-     box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.28);
-     border: 1px solid rgba(0, 0, 0, 0.22);
+     box-shadow: 0 3px 3px -1.5px rgba(0, 0, 0, 0.3);
     `}
 `;
 
