@@ -132,7 +132,6 @@ export const DivCat = styled.div`
     props.$selected &&
     css`
       background-color: white;
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.07), 0px 2px 4px rgba(0, 0, 0, 0.03);
     `}
 `;
 
@@ -141,6 +140,7 @@ export const ImgStyled = styled.img`
   width: 40px;
   background-color: rgb(255, 83, 83);
   border-radius: 50%;
+  ${props => props.$selected && 'border-radius: 46%;'}
   filter: contrast(1.7) saturate(1.8);
   transition: all 0.32s ease;
   padding: 4px;
@@ -178,5 +178,5 @@ export const PStyled = styled.p`
   font-size: 1em;
   letter-spacing: 0.5px;
   margin: 0;
-  color: #630609;
+  color:hsl(255, 36.40%, 8.60%);
 `;

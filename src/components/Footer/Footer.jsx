@@ -30,7 +30,7 @@ const CartDescStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #56458F;
+  background-color: #281f42;
   border-radius: 8px;
   cursor: pointer;
   user-select: none;
@@ -38,7 +38,7 @@ const CartDescStyled = styled.div`
   position: relative;
 
   &:hover {
-    background-color: #6753AC;
+    background-color: #151023;
   }
 
   @media screen and (max-width: 576px) {

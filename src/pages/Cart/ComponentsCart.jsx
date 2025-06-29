@@ -1,27 +1,21 @@
 import styled from "styled-components";
 
 export const MainStyled = styled.div`
+  width: 100%;
+  height: 100%;
   margin: auto;
   position: relative;
-  width: 100%;
-  padding-top: 0px;
+  background-color: #ebeff4;
+  filter: ${(props) => (props.$applyBlur ? "blur(2.5px)" : "blur(0px)")};
 
-  @media screen and (max-width: 375px) {
-    width: calc(100% - 20px);
+  @media screen and (max-width: 768px) {
+    padding-top: 16px;
   }
-  @media screen and (min-width: 375px) and (max-width: 414px) {
-    width: calc(100% - 20px);
-  }
-  @media screen and (min-width: 414px) and (max-width: 768px) {
-    width: calc(100% - 36px);
-  }
-
   @media screen and (min-width: 769px) {
     display: grid;
     grid-template-columns: auto 330px;
     grid-template-rows: 100vh;
     align-items: center;
-    padding-top: 0px;
   }
   @media screen and (min-width: 1201px) {
     grid-template-columns: 950px 330px;
@@ -30,6 +24,17 @@ export const MainStyled = styled.div`
 
   opacity: ${(props) => props.$opacity};
   transition: opacity 0.5s ease;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 74px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, #f5faff, #ebeff4);
+    z-index: -1;
+  }
 `;
 
 export const CartSectionStyed = styled.div`
@@ -39,11 +44,12 @@ export const CartSectionStyed = styled.div`
   border-radius: 4px 4px 20px 20px;
   background-color: white;
   box-sizing: border-box;
-  background-color: #ECF1F6;
-  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 4px 10px -5px rgba(0, 0, 0, 0.4);
+  background-color: #ecf1f6;
+  box-shadow: 0px 6px 6px -6px rgba(0, 0, 0, 0.6),
+    6px 0px 6px -6px rgba(0, 0, 0, 0.1), -6px 0px 6px -6px rgba(0, 0, 0, 0.1),
+    inset 0px 3px 3px -1.5px rgba(255, 255, 255, 0.6);
   position: relative;
-  overflow-y: hidden;
+  overflow: hidden;
 
   @media screen and (min-width: 414px) and (max-width: 596px) {
     max-width: 392px;
@@ -72,15 +78,15 @@ export const CartSectionStyed = styled.div`
   @media screen and (min-width: 993px) {
     max-width: 894px;
     &::-webkit-scrollbar-track {
-      background-color: #f5faff;
+      background-color: #ecf1f6;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #ABAFB3; /* cor botão */
+      background: #abafb3; /* cor botão */
       border-radius: 6px;
     }
     scrollbar-width: thin; /* Opções: auto | thin | none */
-    scrollbar-color: #ABAFB3 #f5faff; /* botão | fundo */
+    scrollbar-color: #abafb3 #ecf1f6; /* botão | fundo */
   }
 `;
 
@@ -95,7 +101,7 @@ export const DivSpanStyled = styled.div`
   top: 6px;
   right: 9px;
   border-radius: 4px;
-  background-color:hsl(207, 33%, 90%);
+  background-color: hsl(207, 33%, 90%);
   cursor: pointer;
 `;
 
@@ -134,10 +140,9 @@ export const BoxConfirmCancel = styled.div`
   top: 0px;
   right: 0px;
   border-radius: 8px 8px 0px 0px;
-  background-color: #DB2C32;
+  background-color: #db2c32;
   ${(props) => props.$viewFeedback && "background-color: rgb(21, 128, 0);"};
   ${(props) => props.$viewFeedback && "padding-right: 16px;"};
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 `;
 
 export const DivSpanStyled2 = styled(DivSpanStyled)`
@@ -152,7 +157,7 @@ export const DivSpanStyled2 = styled(DivSpanStyled)`
 `;
 
 export const PConfirmCancelStyled = styled.p`
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   text-align: center;
   font-weight: 500;
   color: white;
@@ -206,16 +211,15 @@ export const DivHeadStyled = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   position: relative;
-  border-radius: 12px 12px 0px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   color: #212223;
 `;
 
 export const PHeadStyled = styled.p`
   width: 100%;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   text-align: center;
   font-weight: 500;
   padding-bottom: 2px;
@@ -329,8 +333,7 @@ export const ContainerStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.15),
-    0px 4px 4px -2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 4px -3px rgba(0, 0, 0, 0.6);
 
   @media screen and (min-width: 769px) {
     display: block;
@@ -400,7 +403,8 @@ export const DivStyled = styled.div`
 `;
 
 export const PValueStyled = styled.p`
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
   cursor: default;
 
   @media screen and (max-width: 374px) {
@@ -470,8 +474,7 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.15),
-    0px 4px 4px -2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 4px -3px rgba(0, 0, 0, 0.6);
 
   @media screen and (min-width: 769px) {
     order: 2;

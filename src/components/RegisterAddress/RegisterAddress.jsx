@@ -79,7 +79,6 @@ const RegisterAddress = ({ setSeeAddressForm, setApplyBlur }) => {
             onChange={handleChange}
             style={{
               marginBottom: "12px",
-              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
               border: "1px solid rgba(0, 0, 0, 0.28)",
               padding: "12px",
               borderRadius: "4px",
@@ -93,7 +92,7 @@ const RegisterAddress = ({ setSeeAddressForm, setApplyBlur }) => {
               borderRadius: "4px",
               paddingBottom: "4px",
               backgroundColor: "white",
-              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.33)",
+              boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
             }}
           >
             <InputStyled

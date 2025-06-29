@@ -66,11 +66,12 @@ export const InputStyled = styled.input`
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   background-color: white;
   border: none;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.18);
 
   &:focus {
     outline: none;
-    background-color: #faf5ff;
+    background-color: white;
   }
   &::-webkit-search-cancel-button,
   &::-webkit-search-decoration {
@@ -79,22 +80,10 @@ export const InputStyled = styled.input`
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.03em;
-    text-indent: 48px;
   }
   @media screen and (min-width: 769px) {
     font-size: 1.04em;
   }
-  @media screen and (min-width: 1201px) {
-    text-indent: 48px;
-  }
-  ${(props) =>
-    props.$copy &&
-    css`
-      height: 44px;
-      @media screen and (min-width: 577px) {
-        text-indent: 48px;
-      }
-    `}
 `;
 
 export const DivSpanStyled = styled.div`
@@ -108,7 +97,7 @@ export const DivSpanStyled = styled.div`
   padding-bottom: 2px;
   user-select: none;
   cursor: pointer;
-  background-color: #56458f;
+  background-color: #281f42;
 
   ${(props) =>
     props.$copy === false &&
@@ -116,29 +105,14 @@ export const DivSpanStyled = styled.div`
       position: absolute;
       bottom: 5px;
       right: 5px;
-      @media screen and (min-width: 577px) {
-        position: absolute;
-        left: 5px;
-        bottom: 5px;
-      }
-      @media screen and (min-width: 1201px) {
-        position: absolute;
-        left: 5px;
-        bottom: 5px;
-      }
     `}
 
   ${(props) =>
     props.$copy === true &&
     css`
       position: absolute;
-      bottom: 7.5px;
-      right: 7.5px;
-      @media screen and (min-width: 577px) and (max-width: 768px) {
-        position: absolute;
-        left: 7.5px;
-        bottom: 7.5px;
-      }
+      bottom: 5px;
+      right: 5px;
     `}
 `;
 
@@ -230,20 +204,18 @@ export const CompletionsDivStyled = styled.div`
 export const PStyled = styled.p`
   width: max-content;
   padding: 9px 16px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 4px;
+  border-radius: 18px;
   text-transform: uppercase;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
   font-weight: 600;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.65);
+  background-color: hsl(255, 35.50%, 19%);
+  color: white;
 
-  ${(props) =>
-    props.$copy === false && "box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.7);"}
   flex: none;
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(249, 249, 249);
+    background-color: #151023;
   }
   @media screen and (max-width: 374px) {
     font-size: 0.86em;

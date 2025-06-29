@@ -87,10 +87,10 @@ export const DivNomeStyled = styled.div`
 `;
 export const PnomeStyled = styled.p`
   text-transform: uppercase;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   margin: auto;
   padding-left: 4px;
-  font-weight: 500;
+  font-weight: 600;
 
   @media screen and (max-width: 374px) {
     font-size: 0.86em;
@@ -134,8 +134,9 @@ export const DivPesoStyled = styled.div`
 `;
 export const PpesoStyled = styled.p`
   font-size: 0.845em;
+  font-weight: 500;
   letter-spacing: 0.5px;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
   background-color: rgb(232, 232, 232);
   padding: 0px 10px;
   padding-bottom: 4px;
@@ -185,7 +186,7 @@ export const DivPrecoStyled = styled.div`
 
 export const PprecoStyled = styled.p`
   width: max-content;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   text-indent: 4px;
   padding: 2px 0px;
@@ -261,7 +262,7 @@ export const DivOffStyled = styled.div`
 
 export const PoffStyled = styled.p`
   color: white;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
 
   @media screen and (max-width: 374px) {

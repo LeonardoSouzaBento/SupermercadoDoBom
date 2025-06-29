@@ -20,13 +20,12 @@ const LogoDivStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: hsl(210, 100%, 98%);
+  background-color: white;
   border-radius: 50%;
-  box-shadow: 6px 6px 6px -4px rgba(0, 0, 0, 0.25),
-    -6px -6px 6px -4px rgb(255, 255, 255);
   transform: scaleX(-1);
   box-sizing: border-box;
   padding-top: 1px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.18);
   @media (max-width: 374px) {
     height: 54px;
     width: 54px;
@@ -80,8 +79,8 @@ const PNomeSupStyled = styled.p`
 `;
 
 const PBemVindoStyled = styled(PNomeSupStyled)`
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-weight: 600;
   color: #d00c13;
 
   @media (min-width: 320px) and (max-width: 374px) {
@@ -158,12 +157,12 @@ const DivMoreOptionsStyled = styled.div`
   justify-content: center;
   color: white;
   cursor: pointer;
-  background-color: #56458F;
+  background-color: #281f42;
   transition: all 100ms linear;
   border-radius: 7px;
 
   &:hover {
-    background-color: #6753AC;
+    background-color: #151023;
   }
 
   @media screen and (max-width: 768px) {

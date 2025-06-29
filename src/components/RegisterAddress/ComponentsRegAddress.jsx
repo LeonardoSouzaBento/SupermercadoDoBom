@@ -10,7 +10,7 @@ export const Box0Styled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.32);
   transition: opacity 0.5s ease;
   opacity: ${(props) => props.$opacity};
 `;
@@ -21,12 +21,14 @@ export const BoxStyled = styled.div`
   width: calc(100% - 30px);
   max-width: 400px;
   box-sizing: border-box;
-  border-radius: 4px;
-  background-color: rgb(255, 255, 255);
+  border-radius: 7px;
+  background-color: #ECF1F6;
   padding: 16px;
   padding-bottom: 28px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0px 6px 6px -6px rgba(0, 0, 0, 0.8),
+    6px 0px 6px -6px rgba(0, 0, 0, 0.3), -6px 0px 6px -6px rgba(0, 0, 0, 0.3);
   @media screen and (max-width: 768px) {
     margin-bottom: 18px;
   }
@@ -38,10 +40,7 @@ export const BoxStyled = styled.div`
   }
   @media screen and (min-width: 769px) {
     padding: 24px;
-    margin-right: 10px;
-  }
-  @media screen and (min-width: 993px) {
-    margin-right: 32px;
+    padding-bottom: 32px;
   }
 `;
 
@@ -54,10 +53,10 @@ export const DivSpanStyled = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: #ECF1F6;
   cursor: pointer;
   &:hover {
-    background-color: hsl(0, 0%, 95%);
+    background-color: hsl(0, 0.00%, 88%)
   }
 `;
 
@@ -72,7 +71,7 @@ export const TitleStyled = styled.h1`
   font-size: 24px;
   margin-bottom: 24px;
   user-select: none;
-  font-family: "Roboto Flex", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 1.34em;
 
@@ -137,7 +136,9 @@ export const InputStyled = styled.input`
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  font-size: 1.025em;
+  font-size: 1.06em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
   color: black;
   &:focus {
     outline: none;

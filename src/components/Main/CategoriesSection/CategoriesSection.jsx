@@ -28,7 +28,7 @@ const CategoryItem = React.forwardRef(({ category, isSelected, setSelectedCatego
       onPointerUp={handlePointerUp} 
       $selected={isSelected} 
       ref={ref}>
-      <ImgStyled src={category.icon} alt={category.label}/>
+      <ImgStyled src={category.icon} alt={category.label} $selected={isSelected} />
       <DivNameSection>
         <PStyled>{category.label}</PStyled>
       </DivNameSection>

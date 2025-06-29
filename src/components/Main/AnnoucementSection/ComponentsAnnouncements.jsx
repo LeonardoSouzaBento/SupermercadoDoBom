@@ -9,7 +9,7 @@ export const Div = styled.div`
   margin: auto;
   margin-top: 36px;
   border-radius: 4px;
-  box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.2);
+
   @media screen and (max-width: 576px) {
     width: 100%;
   }
@@ -17,7 +17,7 @@ export const Div = styled.div`
     margin-top: 12px;
   }
   @media screen and (min-width: 1201px) {
-    width: calc(100% - 50px);
+    width: calc(100% - 100px);
   }
 `;
 
@@ -111,7 +111,7 @@ export const Fundo = styled.div`
     background-size: cover;
     background-position: center;
     border-radius: 8px;
-    filter: blur(5px) brightness(0.7);
+    filter: blur(5px) brightness(0.8);
     z-index: 0;
   }
 `;
