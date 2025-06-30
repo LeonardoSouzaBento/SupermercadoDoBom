@@ -31,7 +31,7 @@ const CartDescStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #332854;
-  border-radius: 8px;
+  border-radius: 22px;
   cursor: pointer;
   user-select: none;
   overflow: hidden;
@@ -55,7 +55,6 @@ const DivCancelECart = styled.div`
   height: 100%;
   width: auto;
   gap: 10px;
-  padding-left: 4px;
 `;
 
 const DivCartStyled = styled.div`
@@ -68,9 +67,11 @@ const DivCartStyled = styled.div`
 `;
 
 const DivDeleteStyled = styled(DivCartStyled)`
-  height: 36px;
-  width: 36px;
-  border-radius: 4px;
+  height: 44px;
+  width: 44px;
+  box-sizing: border-box;
+  padding-left: 4px;
+  border-radius: 0px;
   background-color: #151023;
 
   @media screen and (min-width: 993px) {

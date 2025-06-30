@@ -24,7 +24,8 @@ export const PaiProdStyled = styled.div`
     flex-direction: column;
     min-width: 170px;
     max-width: 170px;
-    min-height: 296px;
+    min-height: 290px;
+    max-height: 290px;
   }
 
   //paisagem
@@ -35,12 +36,6 @@ export const PaiProdStyled = styled.div`
     height: 180px;
     border-radius: 7px;
   }
-
-  ${(props) =>
-    props.$variant === "cart" &&
-    css`
-      /* box-shadow: 0px 2px 2px  rgba(197, 202, 205, 0.57); */
-    `}
 `;
 
 //Descrição da Oferta: nome, desconto e peso
@@ -50,7 +45,7 @@ export const DescOfertaStyled = styled.div`
   justify-content: center;
   box-sizing: border-box;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     padding: 11px;
   }
   //paisagem
@@ -77,7 +72,7 @@ export const DescOfertaStyled = styled.div`
 `;
 
 export const DivNomeStyled = styled.div`
-  max-height: 80px;
+  max-height: 76px;
   display: flex;
   justify-items: center;
   width: 100%;
@@ -115,43 +110,52 @@ export const PnomeStyled = styled.p`
 `;
 //peso
 export const DivPesoStyled = styled.div`
-  min-width: 52px;
   height: auto;
   width: max-content;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  overflow: hidden;
-
-  ${(props) =>
-    (props.$variant === "cart" || props.$variant === "inSearch") &&
-    css`
-      @media screen and (min-width: 375px) and (max-width: 992px) {
-        align-items: center;
-      }
-    `}
   ${(props) => props.$exist === false && "display: none;"}
+
+  //retrato
+  @media screen and (min-width: 375px) and (max-width: 992px) {
+    display: none;
+  }
 `;
+
 export const PpesoStyled = styled.p`
   font-size: 0.845em;
   font-weight: 500;
   letter-spacing: 0.5px;
   font-family: "Open Sans", Arial, sans-serif;
-  background-color: rgb(232, 232, 232);
+  background-color: #ebeff4;
+  color: rgb(50, 50, 50);
   padding: 0px 10px;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
+  border-radius: 11px;
   @media screen and (max-width: 374px) {
     font-size: 0.87em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 0.94em;
+    font-size: 0.89em;
   }
   @media screen and (min-width: 577px) {
-    font-size: 0.96em;
+    font-size: 0.9em;
   }
 `;
 
-// Preco
+export const PPeso2Styled = styled(PpesoStyled)`
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  background-color:hsl(213, 29.00%, 95.90%);
+  color: rgb(50, 50, 50);
+  @media screen and (max-width: 375px) {
+    display: none;
+  }
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
+`;
+
+// Preco e peso
 export const PaiPrecoStyled = styled.div`
   height: auto;
   width: 100%;
@@ -163,8 +167,7 @@ export const PaiPrecoStyled = styled.div`
 
   @media screen and (min-width: 375px) and (max-width: 992px) {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -172,16 +175,13 @@ export const DivPrecoStyled = styled.div`
   height: auto;
   display: flex;
   align-items: center;
-  ${(props) =>
-    (props.$variant === "cart" || props.$variant === "inSearch") &&
-    css`
-      @media screen and (min-width: 375px) and (max-width: 992px) {
-        padding-right: 4px;
-        box-sizing: border-box;
-        order: 1;
-        padding-right: 8px;
-      }
-    `}
+
+  @media screen and (min-width: 375px) and (max-width: 992px) {
+    padding-right: 4px;
+    box-sizing: border-box;
+    order: 1;
+    padding-right: 4px;
+  }
 `;
 
 export const PprecoStyled = styled.p`
@@ -247,17 +247,24 @@ export const ImgOfertaStyed = styled.img`
 `;
 
 export const DivOffStyled = styled.div`
+  width: max-content;
+  height: 20px;
   position: absolute;
   top: 7px;
   right: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20px;
   padding: 0px 8px;
-  padding-bottom: 2px;
+  padding-bottom: 1px;
   background-color: #db2c32;
   border-radius: 10px;
+
+  /* @media screen and (min-width: 375px) and (max-width: 992px) {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+  } */
 `;
 
 export const PoffStyled = styled.p`
@@ -269,10 +276,10 @@ export const PoffStyled = styled.p`
     font-size: 0.87em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 0.94em;
+    font-size: 0.89em;
   }
   @media screen and (min-width: 577px) {
-    font-size: 0.96em;
+    font-size: 0.9em;
   }
 `;
 
@@ -320,19 +327,9 @@ export const DivQuantStyled = styled.div`
   right: 5%;
 
   @media screen and (min-width: 375px) and (max-width: 992px) {
-    width: 116px;
+    width: 90%;
     right: 8px;
   }
-
-  /* ${(props) =>
-    props.$variant === "home" &&
-    css`
-      //retrato
-      @media screen and (min-width: 375px) and (max-width: 992px) {
-        width: 116px;
-        right: 8px;
-      }
-    `} */
 `;
 
 export const DivPStyled = styled.div`

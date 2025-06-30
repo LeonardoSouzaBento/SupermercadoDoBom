@@ -4,6 +4,7 @@ import { ViewContext } from "../../viewContext";
 import {
   PaiProdStyled,
   PpesoStyled,
+  PPeso2Styled,
   PoffStyled,
   DivOfertaStyled,
   PaiImgOfertaStyled,
@@ -25,13 +26,7 @@ import {
   PnomeStyled,
 } from "./ComponentsProductItem";
 
-const Oferta = ({
-  product,
-  quantity,
-  setQuantity,
-  handleQuantityChange,
-  variant,
-}) => {
+const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
   const divMaisRef = useRef(null);
   let toqueInicio = null;
 
@@ -76,14 +71,17 @@ const Oferta = ({
   };
 
   return (
-    <DivOfertaStyled $variant={variant}>
+    <DivOfertaStyled>
       <PaiImgOfertaStyled>
         {product.discount != "" && product.discount != null && (
-          <DivOffStyled $variant={variant}>
+          <DivOffStyled>
             <PoffStyled>-{product.discount}%</PoffStyled>
           </DivOffStyled>
         )}
-        <ImgOfertaStyed src={product.url} $variant={variant}></ImgOfertaStyed>
+        {product.weight != "" && product.weight != "1 kg" && (
+          <PPeso2Styled>{product.weight}</PPeso2Styled>
+        )}
+        <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
 
         {quantity === 0 && (
           <DivMaisStyled onClick={handleClick} ref={divMaisRef}>
@@ -96,7 +94,6 @@ const Oferta = ({
             setQuantity={setQuantity}
             handleQuantityChange={handleQuantityChange}
             product={product}
-            variant={variant}
           />
         )}
       </PaiImgOfertaStyled>
@@ -104,13 +101,7 @@ const Oferta = ({
   );
 };
 
-const Botoes = ({
-  quantity,
-  product,
-  setQuantity,
-  handleQuantityChange,
-  variant,
-}) => {
+const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
   function handleMore() {
     setQuantity(quantity + 1);
     handleQuantityChange(product, true);
@@ -127,7 +118,7 @@ const Botoes = ({
   }
 
   return (
-    <DivQuantStyled $variant={variant}>
+    <DivQuantStyled>
       <DivPStyled onPointerDown={handleFewer}>
         <PMenosStyled>-</PMenosStyled>
       </DivPStyled>
@@ -141,15 +132,17 @@ const Botoes = ({
   );
 };
 
-const Preco = ({ product, variant }) => {
+const Preco = ({ product }) => {
   const existWeight = product.weight != "" && product.weight != null;
   return (
-    <PaiPrecoStyled $variant={variant}>
-      <DivPesoStyled $exist={existWeight} $variant={variant}>
-        <PpesoStyled>{product.weight}</PpesoStyled>
-      </DivPesoStyled>
+    <PaiPrecoStyled>
+      {product.weight != "" && product.weight != "1 kg" && (
+        <DivPesoStyled $exist={existWeight}>
+          <PpesoStyled>{product.weight}</PpesoStyled>
+        </DivPesoStyled>
+      )}
 
-      <DivPrecoStyled $variant={variant}>
+      <DivPrecoStyled>
         <PSifraStyled>R$</PSifraStyled>
         <PprecoStyled>{product.price}</PprecoStyled>
       </DivPrecoStyled>
@@ -157,18 +150,18 @@ const Preco = ({ product, variant }) => {
   );
 };
 
-const DescOferta = ({ product, variant }) => {
+const DescOferta = ({ product }) => {
   return (
-    <DescOfertaStyled $variant={variant}>
+    <DescOfertaStyled>
       <DivNomeStyled>
         <PnomeStyled>{product.name}</PnomeStyled>
       </DivNomeStyled>
-      <Preco price={product.price} variant={variant} product={product}></Preco>
+      <Preco price={product.price} product={product}></Preco>
     </DescOfertaStyled>
   );
 };
 
-function ProductItem({ product, handleQuantityChange, variant }) {
+function ProductItem({ product, handleQuantityChange }) {
   const { cartProducts, totalAddedValue } = useContext(CartContext);
   const [quantity, setQuantity] = useState(product.quant);
   const { viewFeedback } = useContext(ViewContext);
@@ -191,14 +184,13 @@ function ProductItem({ product, handleQuantityChange, variant }) {
   }, [viewFeedback]);
 
   return (
-    <PaiProdStyled $variant={variant}>
-      <DescOferta product={product} variant={variant} />
+    <PaiProdStyled>
+      <DescOferta product={product} />
       <Oferta
         product={product}
         setQuantity={setQuantity}
         quantity={quantity}
         handleQuantityChange={handleQuantityChange}
-        variant={variant}
       />
     </PaiProdStyled>
   );
