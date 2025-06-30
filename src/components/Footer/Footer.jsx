@@ -30,21 +30,22 @@ const CartDescStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #281f42;
+  background-color: #332854;
   border-radius: 8px;
   cursor: pointer;
   user-select: none;
   overflow: hidden;
   position: relative;
 
-  &:hover {
-    background-color: #151023;
+  @media screen and (min-width: 993px) {
+    &:hover {
+      background-color:hsl(256, 37.30%, 28%);
+    }    
   }
 
   @media screen and (max-width: 576px) {
     margin-right: 0px;
   }
-  
 `;
 
 const DivCancelECart = styled.div`
@@ -70,10 +71,12 @@ const DivDeleteStyled = styled(DivCartStyled)`
   height: 36px;
   width: 36px;
   border-radius: 4px;
-  background-color: #332854;
+  background-color: #151023;
 
-  &:hover {
-    background-color: hsl(255, 35.50%, 18%)
+  @media screen and (min-width: 993px) {
+    &:hover {
+      background-color: hsl(255, 35.5%, 18%);
+    }
   }
 `;
 
@@ -136,7 +139,7 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer({setApplyBlur}) {
+export default function Footer({ setApplyBlur }) {
   const { totalQuantity, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);

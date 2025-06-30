@@ -111,7 +111,7 @@ export const Fundo = styled.div`
     background-size: cover;
     background-position: center;
     border-radius: 8px;
-    filter: blur(5px) brightness(0.8);
+    filter: blur(5px) brightness(0.72);
     z-index: 0;
   }
 `;

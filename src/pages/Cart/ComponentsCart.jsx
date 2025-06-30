@@ -8,6 +8,10 @@ export const MainStyled = styled.div`
   background-color: #ebeff4;
   filter: ${(props) => (props.$applyBlur ? "blur(2.5px)" : "blur(0px)")};
 
+  @media screen and (max-width: 414px) {
+    width: calc(100% - 24px);
+  }
+
   @media screen and (max-width: 768px) {
     padding-top: 16px;
   }
@@ -25,7 +29,7 @@ export const MainStyled = styled.div`
   opacity: ${(props) => props.$opacity};
   transition: opacity 0.5s ease;
 
-  &::after {
+  /* &::after {
     content: "";
     width: 100%;
     height: 74px;
@@ -34,20 +38,21 @@ export const MainStyled = styled.div`
     left: 0;
     background-image: linear-gradient(to bottom, #f5faff, #ebeff4);
     z-index: -1;
-  }
+  } */
 `;
 
 export const CartSectionStyed = styled.div`
   width: 100%;
   height: 460px;
   margin: auto;
-  border-radius: 4px 4px 20px 20px;
+  border-radius: 7px 7px 20px 20px;
   background-color: white;
   box-sizing: border-box;
   background-color: #ecf1f6;
-  box-shadow: 0px 6px 6px -6px rgba(0, 0, 0, 0.6),
-    6px 0px 6px -6px rgba(0, 0, 0, 0.1), -6px 0px 6px -6px rgba(0, 0, 0, 0.1),
-    inset 0px 3px 3px -1.5px rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 6px 6px -6px rgba(41, 46, 117, 0.89),
+    6px 0px 6px -6px rgba(41, 46, 117, 0.44),
+    -6px 0px 6px -6px rgba(41, 46, 117, 0.44),
+    0px -3px 3px -2px rgba(41, 46, 117, 0.14);
   position: relative;
   overflow: hidden;
 
@@ -261,8 +266,8 @@ export const DivSeeAllStyled = styled.div`
   position: absolute;
   bottom: -1px;
   left: 0;
-  background-color: white;
-  box-shadow: 0px -1.5px 4px rgba(0, 0, 0, 0.2);
+  background-color: #ECF1F6;
+  box-shadow: 0px -1.5px 4px rgba(41, 46, 117, 0.16);
   border: 1px solid rgb(191, 191, 191);
   border-top: none;
   z-index: 2;
@@ -333,7 +338,7 @@ export const ContainerStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 4px 4px -3px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6);
 
   @media screen and (min-width: 769px) {
     display: block;
@@ -474,7 +479,7 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 4px 4px -3px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.89);
 
   @media screen and (min-width: 769px) {
     order: 2;
@@ -517,7 +522,7 @@ export const DivMsgVoidCart = styled.div`
   gap: 4px;
   background-color: rgb(245, 245, 245);
   color: black;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 3px 6px rgba(41, 46, 117, 0.28);
   border-radius: 9px;
 `;
 

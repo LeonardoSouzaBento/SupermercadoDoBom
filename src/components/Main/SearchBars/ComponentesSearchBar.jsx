@@ -21,6 +21,7 @@ export const ContainerForFormStyled = styled.div`
     props.$copy &&
     css`
       padding-top: 18px;
+      padding-bottom: 24px;
       position: sticky;
       top: 0px;
       left: 0px;
@@ -47,7 +48,7 @@ export const FormStyled = styled.form`
   ${(props) =>
     props.$copy &&
     css`
-      width: 90%;
+      width: 95%;
       max-width: 684px;
       margin: 0;
     `}
@@ -64,10 +65,8 @@ export const InputStyled = styled.input`
   letter-spacing: 0.71px;
   color: black;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  background-color: white;
   border: none;
-  background-color: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.18);
+  box-shadow: 0px 0px 3px 0px rgba(41, 46, 117, 0.65);
 
   &:focus {
     outline: none;
@@ -84,6 +83,10 @@ export const InputStyled = styled.input`
   @media screen and (min-width: 769px) {
     font-size: 1.04em;
   }
+  ${(props) => props.$copy && css`
+    background-color: white;
+    box-shadow: 0px 3px 7px rgba(41, 46, 117, 0.28);
+  `}
 `;
 
 export const DivSpanStyled = styled.div`
@@ -97,7 +100,7 @@ export const DivSpanStyled = styled.div`
   padding-bottom: 2px;
   user-select: none;
   cursor: pointer;
-  background-color: #281f42;
+  background-color: #332854;
 
   ${(props) =>
     props.$copy === false &&
@@ -208,15 +211,11 @@ export const PStyled = styled.p`
   text-transform: uppercase;
   font-family: "Open Sans", Arial, sans-serif;
   font-weight: 600;
-  background-color: hsl(255, 35.50%, 19%);
+  background-color: #281f42;
   color: white;
-
   flex: none;
   cursor: pointer;
 
-  &:hover {
-    background-color: #151023;
-  }
   @media screen and (max-width: 374px) {
     font-size: 0.86em;
     line-height: 18px;

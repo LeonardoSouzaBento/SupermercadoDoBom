@@ -25,7 +25,7 @@ const LogoDivStyled = styled.div`
   transform: scaleX(-1);
   box-sizing: border-box;
   padding-top: 1px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.18);
+  box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.47);
   @media (max-width: 374px) {
     height: 54px;
     width: 54px;
@@ -157,13 +157,9 @@ const DivMoreOptionsStyled = styled.div`
   justify-content: center;
   color: white;
   cursor: pointer;
-  background-color: #281f42;
+  background-color: #332854;
   transition: all 100ms linear;
   border-radius: 7px;
-
-  &:hover {
-    background-color: #151023;
-  }
 
   @media screen and (max-width: 768px) {
     position: absolute;
@@ -230,10 +226,7 @@ const SpanStyled = styled.span`
   }
 `;
 
-export const MoreOptionsButton = ({
-  setViewOptions,
-  viewOptions,
-}) => {
+export const MoreOptionsButton = ({ setViewOptions, viewOptions }) => {
   function handleClick() {
     if (viewOptions === false) {
       setViewOptions(true);
