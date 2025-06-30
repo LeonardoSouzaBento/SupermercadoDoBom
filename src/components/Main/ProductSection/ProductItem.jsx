@@ -78,7 +78,7 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
             <PoffStyled>-{product.discount}%</PoffStyled>
           </DivOffStyled>
         )}
-        {product.weight != "" && product.weight != "1 kg" && (
+        {product.weight != "" && product.weight != null && (
           <PPeso2Styled>{product.weight}</PPeso2Styled>
         )}
         <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
@@ -136,7 +136,7 @@ const Preco = ({ product }) => {
   const existWeight = product.weight != "" && product.weight != null;
   return (
     <PaiPrecoStyled>
-      {product.weight != "" && product.weight != "1 kg" && (
+      {product.weight != "" && product.weight != null && (
         <DivPesoStyled $exist={existWeight}>
           <PpesoStyled>{product.weight}</PpesoStyled>
         </DivPesoStyled>
@@ -161,7 +161,7 @@ const DescOferta = ({ product }) => {
   );
 };
 
-function ProductItem({ product, handleQuantityChange }) {
+function ProductItem({ product, handleQuantityChange, variant }) {
   const { cartProducts, totalAddedValue } = useContext(CartContext);
   const [quantity, setQuantity] = useState(product.quant);
   const { viewFeedback } = useContext(ViewContext);
@@ -184,7 +184,7 @@ function ProductItem({ product, handleQuantityChange }) {
   }, [viewFeedback]);
 
   return (
-    <PaiProdStyled>
+    <PaiProdStyled $variant={variant}>
       <DescOferta product={product} />
       <Oferta
         product={product}

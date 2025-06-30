@@ -25,7 +25,7 @@ const LogoDivStyled = styled.div`
   transform: scaleX(-1);
   box-sizing: border-box;
   padding-top: 1px;
-  box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.47);
+  box-shadow: 0px 4px 10px -5.5px rgb(41, 46, 117);
   @media (max-width: 374px) {
     height: 54px;
     width: 54px;
@@ -157,7 +157,7 @@ const DivMoreOptionsStyled = styled.div`
   justify-content: center;
   color: white;
   cursor: pointer;
-  background-color: #332854;
+  background-color: #292E4E;
   transition: all 100ms linear;
   border-radius: 7px;
 

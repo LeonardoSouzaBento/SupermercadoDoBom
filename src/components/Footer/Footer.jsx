@@ -30,7 +30,7 @@ const CartDescStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #332854;
+  background-color: #383D6A;
   border-radius: 22px;
   cursor: pointer;
   user-select: none;
@@ -39,7 +39,7 @@ const CartDescStyled = styled.div`
 
   @media screen and (min-width: 993px) {
     &:hover {
-      background-color:hsl(256, 37.30%, 28%);
+      background-color:#292E4E;
     }    
   }
 
@@ -72,7 +72,7 @@ const DivDeleteStyled = styled(DivCartStyled)`
   box-sizing: border-box;
   padding-left: 4px;
   border-radius: 0px;
-  background-color: #151023;
+  background-color: #292E4E;
 
   @media screen and (min-width: 993px) {
     &:hover {

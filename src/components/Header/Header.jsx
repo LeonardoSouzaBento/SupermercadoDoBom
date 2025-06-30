@@ -9,7 +9,6 @@ export const HeaderStyled = styled.header `
     height: 180px;
     max-height: 181px;
     position: relative;
-    background-color: #EBEFF4;
     //modo paisagem
     @media screen and (min-width: 769px){
       height: 140px;

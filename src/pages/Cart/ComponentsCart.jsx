@@ -5,15 +5,14 @@ export const MainStyled = styled.div`
   height: 100%;
   margin: auto;
   position: relative;
-  background-color: #ebeff4;
   filter: ${(props) => (props.$applyBlur ? "blur(2.5px)" : "blur(0px)")};
 
-  @media screen and (max-width: 414px) {
+  @media screen and (min-width: 385px) and (max-width: 414px) {
     width: calc(100% - 24px);
   }
 
   @media screen and (max-width: 768px) {
-    padding-top: 16px;
+    padding-top: 18px;
   }
   @media screen and (min-width: 769px) {
     display: grid;
@@ -28,24 +27,13 @@ export const MainStyled = styled.div`
 
   opacity: ${(props) => props.$opacity};
   transition: opacity 0.5s ease;
-
-  /* &::after {
-    content: "";
-    width: 100%;
-    height: 74px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(to bottom, #f5faff, #ebeff4);
-    z-index: -1;
-  } */
 `;
 
 export const CartSectionStyed = styled.div`
   width: 100%;
   height: 460px;
   margin: auto;
-  border-radius: 7px 7px 20px 20px;
+  border-radius: 12px 12px 20px 20px;
   background-color: white;
   box-sizing: border-box;
   background-color: #ecf1f6;
@@ -55,12 +43,16 @@ export const CartSectionStyed = styled.div`
     0px -3px 3px -2px rgba(41, 46, 117, 0.14);
   position: relative;
   overflow: hidden;
+  transition: height 0.2s ease;
 
+  @media screen and (max-width: 385px) {
+    width: calc(100% - 16px);
+  }
   @media screen and (min-width: 414px) and (max-width: 596px) {
-    max-width: 392px;
+    max-width: 400px;
   }
   @media screen and (min-width: 596px) and (max-width: 768px) {
-    max-width: 560px;
+    max-width: 575px;
   }
   @media screen and (max-width: 768px) {
     margin-bottom: 24px;
@@ -78,6 +70,7 @@ export const CartSectionStyed = styled.div`
     margin: auto;
     overflow-y: scroll;
     border-radius: 14px;
+    padding-bottom: 18px;
   }
   /*Estilo da barra*/
   @media screen and (min-width: 993px) {
@@ -96,8 +89,8 @@ export const CartSectionStyed = styled.div`
 `;
 
 export const DivSpanStyled = styled.div`
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -106,27 +99,28 @@ export const DivSpanStyled = styled.div`
   top: 6px;
   right: 9px;
   border-radius: 4px;
-  background-color: hsl(207, 33%, 90%);
+  background-color: hsl(207, 33%, 91%);
+  color: #383d6a;
   cursor: pointer;
 `;
 
 export const SpanStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
 
-  @media screen and (max-width: 374px) {
-    font-size: 1.67em;
+  @media screen and (max-width: 385px) {
+    font-size: 1.55em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.71em;
+  @media screen and (min-width: 385px) and (max-width: 576px) {
+    font-size: 1.59em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.72em;
+    font-size: 1.63em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.73em;
+    font-size: 1.67em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.74em;
+    font-size: 1.71em;
   }
   @media screen and (min-width: 1201px) {
     font-size: 1.75em;
@@ -168,10 +162,10 @@ export const PConfirmCancelStyled = styled.p`
   color: white;
   padding-right: 8px;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 1.23em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.285em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -220,6 +214,13 @@ export const DivHeadStyled = styled.div`
   position: relative;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   color: #212223;
+  background-color: #ecf1f6;
+  z-index: 1;
+  @media screen and (min-width: 769px) {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
 `;
 
 export const PHeadStyled = styled.p`
@@ -228,11 +229,12 @@ export const PHeadStyled = styled.p`
   text-align: center;
   font-weight: 500;
   padding-bottom: 2px;
+  color: #292e4e;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 1.22em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.24em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -266,10 +268,8 @@ export const DivSeeAllStyled = styled.div`
   position: absolute;
   bottom: -1px;
   left: 0;
-  background-color: #ECF1F6;
-  box-shadow: 0px -1.5px 4px rgba(41, 46, 117, 0.16);
-  border: 1px solid rgb(191, 191, 191);
-  border-top: none;
+  background-color: #ecf1f6;
+  box-shadow: 0px -1.5px 4px rgba(41, 46, 117, 0.15);
   z-index: 2;
   cursor: pointer;
   @media screen and (min-width: 769px) {
@@ -281,14 +281,14 @@ export const PSeeAllStyled = styled.p`
   font-weight: 500;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
-  font-size: 0.9em;
+  font-size: 0.93em;
   user-select: none;
 
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 0.92em;
+  @media screen and (min-width: 385px) and (max-width: 576px) {
+    font-size: 0.94em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 0.94em;
+    font-size: 0.95em;
   }
 `;
 
@@ -297,7 +297,7 @@ export const SpanSeeAllStyled = styled.span`
   font-size: 1.65em;
   padding-top: 2px;
 
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.68em;
     padding-top: 2.5px;
   }
@@ -325,10 +325,9 @@ export const FinishSectionStyled = styled.div`
   }
 `;
 
-export const ContainerStyled = styled.div`
+export const DivContinueStyled = styled.div`
   height: auto;
   width: 100%;
-  max-width: 392px;
   padding: 18px 12px;
   margin: auto;
   display: flex;
@@ -340,6 +339,18 @@ export const ContainerStyled = styled.div`
   border-radius: 8px;
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6);
 
+  @media screen and (max-width: 385px) {
+    width: calc(100% - 36px);
+  }
+  @media screen and (min-width: 385px) and (max-width: 414px) {
+    width: calc(100% - 20px);
+  }
+  @media screen and (min-width: 414px) and (max-width: 596px) {
+    max-width: 370px;
+  }
+  @media screen and (min-width: 596px) and (max-width: 768px) {
+    max-width: 400px;
+  }
   @media screen and (min-width: 769px) {
     display: block;
     margin: 0;
@@ -358,18 +369,24 @@ export const DivAvisoStyled = styled.div`
   border-radius: 3px;
   padding: 15px 18px;
   box-sizing: border-box;
-  background-color: #c90c12;
+  background-color: hsl(358, 71.5%, 49%);
+  position: relative;
+  overflow: hidden;
+  scale: ${(props) => props.$scale};
+  transition: scale 0.3s ease;
+  will-change: transform;
 `;
 
 export const PAvisoStyled = styled.p`
   font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
   font-weight: 500;
   color: white;
+  z-index: 1;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 1.09em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.115em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -412,10 +429,10 @@ export const PValueStyled = styled.p`
   font-weight: 500;
   cursor: default;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 1.08em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.09em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -432,7 +449,7 @@ export const PValueStyled = styled.p`
   }
 `;
 
-export const DivContinueStyled = styled.div`
+export const DivPContinueStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -442,9 +459,9 @@ export const DivContinueStyled = styled.div`
   cursor: pointer;
   transition: background-color 0.08s ease;
   background-color: ${(props) =>
-    props.$nocontinue ? " #39EDAC" : "rgb(21, 128, 0)"};
+    props.$nocontinue ? "hsl(158, 83.30%, 57.60%)" : "rgb(21, 128, 0)"};
   &:hover {
-    background-color: ${(props) => !props.$nocontinue && "rgb(17, 103, 0)"};
+    background-color: ${(props) => !props.$nocontinue ? "rgb(17, 103, 0)": "hsl(158, 100.00%, 62.20%)"};
   }
 `;
 
@@ -454,10 +471,10 @@ export const PContinueStyled = styled.p`
   padding-bottom: 2px;
   cursor: pointer;
   color: white;
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 1.15em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.18em;
   }
   @media screen and (min-width: 577px) {
@@ -470,7 +487,7 @@ export const DivAddStyled = styled.div`
   width: 100%;
   max-width: 392px;
   margin: auto;
-  height: 44px;
+  height: 42px;
   margin-top: 26px;
   padding-bottom: 2px;
   display: flex;
@@ -479,22 +496,37 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.89);
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6);
+  cursor: pointer;
 
+  &:hover {
+    outline: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  @media screen and (max-width: 385px) {
+    width: calc(100% - 36px);
+  }
+  @media screen and (min-width: 385px) and (max-width: 414px) {
+    width: calc(100% - 20px);
+  }
+  @media screen and (min-width: 414px) and (max-width: 596px) {
+    max-width: 370px;
+  }
+  @media screen and (min-width: 596px) and (max-width: 768px) {
+    max-width: 400px;
+  }
   @media screen and (min-width: 769px) {
     order: 2;
     margin: 0;
-    height: 44px;
   }
 `;
 
 export const PAddStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 1.15em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.16em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {

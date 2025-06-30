@@ -6,7 +6,6 @@ import { ProductList } from "../../components/Main/ProductSection/ProductList.js
 import {
   MainStyled,
   CartSectionStyed,
-  ShadowStyled,
   DivSpanStyled,
   SpanStyled,
   BoxConfirmCancel,
@@ -16,17 +15,14 @@ import {
   PHeadStyled,
   ContainerProductList,
   FinishSectionStyled,
-  ContainerStyled,
+  DivContinueStyled,
   DivAvisoStyled,
   PAvisoStyled,
   DivValueStyled,
   DivStyled,
   PValueStyled,
-  DivContinueStyled,
+  DivPContinueStyled,
   PContinueStyled,
-  DivMsgVoidCart,
-  BlurDivStyled,
-  ImgVoidCartStyled,
   DivSeeAllStyled,
   PSeeAllStyled,
   SpanSeeAllStyled,
@@ -36,7 +32,7 @@ import {
 import RegisterAddress from "../../components/RegisterAddress/RegisterAddress.jsx";
 
 //altura - o cabeçalho 'sua compra'
-const heightCartSection = 398;
+const heightCartSection = 398; //para comparar
 const totalHeightCartSection = 460;
 
 const Cart = () => {
@@ -48,9 +44,11 @@ const Cart = () => {
   const { viewFeedback, setViewFeedback } = useContext(ViewContext);
   const [seeAddressForm, setSeeAddressForm] = useState(false);
   const [applyBlur, setApplyBlur] = useState(0);
-  const [viewButtonSeeAll, setViewButtonsetSeeAll] = useState(true);
+  const [scaleWarnnig, setScaleWarnnig] = useState(1);
 
   //estados para botão ver todos
+  const [viewButtonSeeAll, setViewButtonsetSeeAll] = useState(true);
+  const windowWidthRef = useRef(0);
   const [newHeight, setNewHeight] = useState(0);
   const [applyNewHeight, setApplyNewHeight] = useState(true);
 
@@ -58,6 +56,83 @@ const Cart = () => {
   const ProductListRef = useRef(null);
   const CartSectionRef = useRef(null);
 
+  // funções para o botão ver todos
+  function handleClickSeeAll() {
+    if (applyNewHeight) {
+      setApplyNewHeight(false);
+      setViewButtonsetSeeAll(false);
+      CartSectionRef.current.style.height = `${newHeight}px`;
+    }
+  }
+
+  // decide se mostra o botão
+  function checkHiddenProducts() {
+    const productListHeight = ProductListRef.current.offsetHeight;
+
+    if (heightCartSection - productListHeight < 0) {
+      setViewButtonsetSeeAll(true);
+      setNewHeight(productListHeight + 120);
+      setApplyNewHeight(true);
+    } else {
+      setViewButtonsetSeeAll(false);
+      setApplyNewHeight(false);
+    }
+  }
+
+  // resize p reamostrar botão
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacityState(1);
+    }, 300);
+    windowWidthRef.current = window.innerWidth;
+    // Espera a próxima pintura do navegador (após o layout completo)
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+
+    if (ProductListRef.current) {
+      checkHiddenProducts();
+    }
+
+    function handleResize() {
+      if (resizeDowntime.current) {
+        clearTimeout(resizeDowntime.current);
+      }
+      resizeDowntime.current = setTimeout(() => {
+        checkHiddenProducts();
+
+        let widthOfWindow = window.innerWidth;
+
+        if (widthOfWindow !== windowWidthRef.current) {
+          const div = CartSectionRef.current;
+          if (widthOfWindow >= 769) {
+            const newHeight = "calc(100vh - 48px)";
+            if (div.style.height !== newHeight) {
+              div.style.height = newHeight;
+            }
+          } else {
+            const newHeight = "460px";
+            if (div.style.height !== newHeight) {
+              div.style.height = newHeight;
+            }
+          }
+        }
+      }, 300);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (resizeDowntime.current) {
+        clearTimeout(resizeDowntime.current);
+      }
+    };
+  }, []);
+
+  //funções para quantidade de produtos
   const handleConfirmCancel = () => {
     setViewFeedback(true);
     setTimeout(() => {
@@ -94,242 +169,149 @@ const Cart = () => {
     maximumFractionDigits: 2,
   });
 
-  // função para ver todos
-  function handleClickSeeAll() {
-    if (applyNewHeight) {
-      setApplyNewHeight(false);
-      CartSectionRef.current.style.height = `${newHeight}px`;
-    } else {
-      setApplyNewHeight(true);
-      CartSectionRef.current.style.height = `${totalHeightCartSection}px`;
+  function handleClickContinue(params) {
+    if (falta <= 0) {
+      setSeeAddressForm(true);
+      setApplyBlur(true);
+    } else{
+      setScaleWarnnig(1.045);
+      setTimeout(() => {
+        setScaleWarnnig(1);
+      }, 350);
     }
   }
 
-  // decide se mostra o botão 'ver todos'
-  function checkHiddenProducts() {
-    const productListHeight = ProductListRef.current.offsetHeight;
-
-    if (heightCartSection - productListHeight < 0) {
-      setViewButtonsetSeeAll(true);
-      setNewHeight(productListHeight + 124);
-      setApplyNewHeight(true);
-    } else {
-      setViewButtonsetSeeAll(false);
-      setApplyNewHeight(false);
-    }
-  }
-
-  // resize p reamostrar botão 'ver todos'
-  useEffect(() => {
-    setTimeout(() => {
-      setOpacityState(1);
-    }, 300);
-    // Espera a próxima pintura do navegador (após o layout completo)
-    requestAnimationFrame(() => {
-      window.scrollTo(0, 0);
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    });
-
-    if (ProductListRef.current) {
-      checkHiddenProducts();
-    }
-
-    function handleResize() {
-      if (resizeDowntime.current) {
-        clearTimeout(resizeDowntime.current);
-      }
-      resizeDowntime.current = setTimeout(() => {
-        checkHiddenProducts();
-
-        const div = CartSectionRef.current;
-        if (window.innerWidth >= 769) {
-          const newHeight = "calc(100vh - 48px)";
-          if (div.style.height !== newHeight) {
-            div.style.height = newHeight;
-          }
-        } else {
-          const newHeight = "460px";
-          if (div.style.height !== newHeight) {
-            div.style.height = newHeight;
-          }
-        }
-      }, 300);
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      if (resizeDowntime.current) {
-        clearTimeout(resizeDowntime.current);
-      }
-    };
-  }, []);
-
-  if (totalAddedValue != 0) {
-    return (
-      <>
-        <MainStyled
-          $seeAddressForm={seeAddressForm}
-          $opacity={opacityState}
-          $applyBlur={applyBlur}
-        >
-          <div style={{ position: "relative" }}>
-            <CartSectionStyed ref={CartSectionRef}>
-              <DivHeadStyled>
-                <DivSpanStyled
-                  onClick={() => {
-                    setSeeCancelDialog(true);
-                  }}
-                >
-                  <SpanStyled className="material-symbols-outlined">
-                    delete
-                  </SpanStyled>
-                </DivSpanStyled>
-
-                {seeCancelDialog && (
-                  <BoxConfirmCancel>
-                    <PConfirmCancelStyled>
-                      Cancelar a compra?
-                    </PConfirmCancelStyled>
-
-                    <DivSpanStyled2
-                      onClick={handleConfirmCancel}
-                      $uniqueBorderRadius={true}
-                    >
-                      <SpanStyled className="material-symbols-outlined">
-                        check
-                      </SpanStyled>
-                    </DivSpanStyled2>
-
-                    <DivSpanStyled2
-                      onClick={() => {
-                        setSeeCancelDialog(false);
-                      }}
-                    >
-                      <SpanStyled className="material-symbols-outlined">
-                        close
-                      </SpanStyled>
-                    </DivSpanStyled2>
-                  </BoxConfirmCancel>
-                )}
-                {viewFeedback && (
-                  <BoxConfirmCancel $viewFeedback={viewFeedback}>
-                    <PConfirmCancelStyled>
-                      Compra Cancelada!
-                    </PConfirmCancelStyled>
-                  </BoxConfirmCancel>
-                )}
-
-                <PHeadStyled>Sua Compra</PHeadStyled>
-              </DivHeadStyled>
-
-              <ContainerProductList>
-                <ProductList
-                  variant={"cart"}
-                  categoryKey={12}
-                  ref={ProductListRef}
-                ></ProductList>
-              </ContainerProductList>
-              {viewButtonSeeAll && (
-                <DivSeeAllStyled onClick={handleClickSeeAll}>
-                  <PSeeAllStyled>
-                    {applyNewHeight ? "Ver todos" : "Ver menos"}
-                  </PSeeAllStyled>
-                  <SpanSeeAllStyled className="material-symbols-rounded">
-                    keyboard_arrow_down
-                  </SpanSeeAllStyled>
-                </DivSeeAllStyled>
-              )}
-            </CartSectionStyed>
-            <ShadowStyled />
-          </div>
-
-          <FinishSectionStyled>
-            <ContainerStyled>
-              {falta > 0 && (
-                <DivAvisoStyled>
-                  <PAvisoStyled>
-                    Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
-                  </PAvisoStyled>
-                </DivAvisoStyled>
-              )}
-
-              <DivValueStyled>
-                <DivStyled>
-                  <PValueStyled>Valor da compra:</PValueStyled>
-                  <PValueStyled>R$ {totalValue}</PValueStyled>
-                </DivStyled>
-
-                <DivStyled>
-                  <PValueStyled>Valor da entrega:</PValueStyled>
-                  <PValueStyled>R$ 4,00</PValueStyled>
-                </DivStyled>
-
-                <DivStyled>
-                  <PValueStyled>
-                    <strong>Total </strong>(com entrega):
-                  </PValueStyled>
-                  <PValueStyled>
-                    <strong>R$ {totalFormatted}</strong>
-                  </PValueStyled>
-                </DivStyled>
-              </DivValueStyled>
-
-              <DivContinueStyled
-                $nocontinue={falta > 0}
+  return (
+    <>
+      <MainStyled
+        $seeAddressForm={seeAddressForm}
+        $opacity={opacityState}
+        $applyBlur={applyBlur}
+      >
+        <div style={{ position: "relative" }}>
+          <CartSectionStyed ref={CartSectionRef}>
+            <DivHeadStyled>
+              <DivSpanStyled
                 onClick={() => {
-                  if (falta <= 0) {
-                    setSeeAddressForm(true);
-                    setApplyBlur(true);
-                  }
+                  setSeeCancelDialog(true);
                 }}
               >
-                <PContinueStyled>Continuar</PContinueStyled>
-              </DivContinueStyled>
-            </ContainerStyled>
+                <SpanStyled className="material-symbols-outlined">
+                  delete
+                </SpanStyled>
+              </DivSpanStyled>
 
-            <DivAddStyled>
-              <PAddStyled>
-                {falta == 40 ? "Adicionar produtos" : "Adicionar mais produtos"}
-              </PAddStyled>
-            </DivAddStyled>
-          </FinishSectionStyled>
-        </MainStyled>
+              {seeCancelDialog && (
+                <BoxConfirmCancel>
+                  <PConfirmCancelStyled>
+                    Cancelar a compra?
+                  </PConfirmCancelStyled>
 
-        {seeAddressForm && (
-          <RegisterAddress
-            setSeeAddressForm={setSeeAddressForm}
-            applyBlur={applyBlur}
-            setApplyBlur={setApplyBlur}
-          />
-        )}
-      </>
-    );
-  } else {
-    return (
-      <div
-        style={{
-          minHeight: "100vh",
-          minWidth: "100vw",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "rgb(235, 235, 235)",
-        }}
-      >
-        <DivMsgVoidCart>
-          <BlurDivStyled>
-            <ImgVoidCartStyled src="/void-cart-background.png"></ImgVoidCartStyled>
-          </BlurDivStyled>
-          <PHeadStyled>
-            <strong>Carrinho vazio!</strong>
-          </PHeadStyled>
-        </DivMsgVoidCart>
-      </div>
-    );
-  }
+                  <DivSpanStyled2
+                    onClick={handleConfirmCancel}
+                    $uniqueBorderRadius={true}
+                  >
+                    <SpanStyled className="material-symbols-outlined">
+                      check
+                    </SpanStyled>
+                  </DivSpanStyled2>
+
+                  <DivSpanStyled2
+                    onClick={() => {
+                      setSeeCancelDialog(false);
+                    }}
+                  >
+                    <SpanStyled className="material-symbols-outlined">
+                      close
+                    </SpanStyled>
+                  </DivSpanStyled2>
+                </BoxConfirmCancel>
+              )}
+              {viewFeedback && (
+                <BoxConfirmCancel $viewFeedback={viewFeedback}>
+                  <PConfirmCancelStyled>Compra Cancelada!</PConfirmCancelStyled>
+                </BoxConfirmCancel>
+              )}
+
+              <PHeadStyled>Sua Compra</PHeadStyled>
+            </DivHeadStyled>
+
+            <ContainerProductList>
+              <ProductList
+                variant={"cart"}
+                categoryKey={12}
+                ref={ProductListRef}
+              ></ProductList>
+            </ContainerProductList>
+            {viewButtonSeeAll && (
+              <DivSeeAllStyled onClick={handleClickSeeAll}>
+                <PSeeAllStyled>Ver Todos</PSeeAllStyled>
+                <SpanSeeAllStyled className="material-symbols-rounded">
+                  keyboard_arrow_down
+                </SpanSeeAllStyled>
+              </DivSeeAllStyled>
+            )}
+          </CartSectionStyed>
+        </div>
+
+        <FinishSectionStyled>
+          <DivContinueStyled>
+            {falta > 0 && (
+              <DivAvisoStyled $scale={scaleWarnnig}>
+                <PAvisoStyled>
+                  Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
+                </PAvisoStyled>
+              </DivAvisoStyled>
+            )}
+
+            <DivValueStyled>
+              <DivStyled>
+                <PValueStyled>Valor da compra:</PValueStyled>
+                <PValueStyled>R$ {totalValue}</PValueStyled>
+              </DivStyled>
+
+              <DivStyled>
+                <PValueStyled>Valor da entrega:</PValueStyled>
+                <PValueStyled>R$ 4,00</PValueStyled>
+              </DivStyled>
+
+              <DivStyled>
+                <PValueStyled>
+                  <strong>Total </strong>(com entrega):
+                </PValueStyled>
+                <PValueStyled>
+                  <strong>R$ {totalFormatted}</strong>
+                </PValueStyled>
+              </DivStyled>
+            </DivValueStyled>
+
+            <DivPContinueStyled
+              $nocontinue={falta > 0}
+              onClick={handleClickContinue}
+            >
+              <PContinueStyled>Continuar</PContinueStyled>
+            </DivPContinueStyled>
+          </DivContinueStyled>
+
+          <DivAddStyled
+            onClick={() => {
+              navigate("/buscar-produtos");
+            }}
+          >
+            <PAddStyled>Adicionar mais produtos</PAddStyled>
+          </DivAddStyled>
+        </FinishSectionStyled>
+      </MainStyled>
+
+      {seeAddressForm && (
+        <RegisterAddress
+          setSeeAddressForm={setSeeAddressForm}
+          applyBlur={applyBlur}
+          setApplyBlur={setApplyBlur}
+        />
+      )}
+    </>
+  );
 };
 
 export default Cart;

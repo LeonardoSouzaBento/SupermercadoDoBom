@@ -232,7 +232,7 @@ function SearchBar({ copy }) {
           $copy={copy}
           type="text"
           name="query"
-          placeholder="O que você quer? Digite aqui"
+          placeholder="O que queres? Digite aqui"
           value={thisInput}
           onChange={(e) => whenTyping(e)}
           onClick={preventClick ? null : viewTip}

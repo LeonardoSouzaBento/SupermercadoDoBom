@@ -13,26 +13,29 @@ export const PaiProdStyled = styled.div`
   border-radius: 7px;
 
   //paisagem
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 385px) {
     flex-direction: row;
-    height: 170px;
-    min-width: 295px;
-    max-width: 295px;
+    height: 180px;
+    min-width: 270px;
+    max-width: 270px;
   }
   //retrato
-  @media screen and (min-width: 375px) and (max-width: 992px) {
+  @media screen and (min-width: 385px) and (max-width: 414px) {
+    gap: 0px;
+    ${(props) => props.$variant !== "home" && "margin-bottom: 12px;"};
+  }
+  @media screen and (min-width: 385px) and (max-width: 992px) {
     flex-direction: column;
     min-width: 170px;
     max-width: 170px;
     min-height: 290px;
     max-height: 290px;
   }
-
   //paisagem
   @media screen and (min-width: 993px) {
     flex-direction: row;
-    min-width: 280px;
-    max-width: 280px;
+    min-width: 275px;
+    max-width: 275px;
     height: 180px;
     border-radius: 7px;
   }
@@ -45,20 +48,18 @@ export const DescOfertaStyled = styled.div`
   justify-content: center;
   box-sizing: border-box;
 
-  @media screen and (max-width: 375px) {
-    padding: 11px;
-  }
   //paisagem
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 385px) {
     height: 100%;
     width: 48%;
+    padding: 11px;
     padding-right: 0px;
   }
-  @media screen and (min-width: 375px) {
+  //retrato
+  @media screen and (min-width: 385px) {
     padding: 8px;
   }
-  //retrato
-  @media screen and (min-width: 375px) and (max-width: 992px) {
+  @media screen and (min-width: 385px) and (max-width: 992px) {
     height: 46%;
     width: 100%;
     order: 2;
@@ -87,12 +88,12 @@ export const PnomeStyled = styled.p`
   padding-left: 4px;
   font-weight: 600;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 0.86em;
     line-height: 16px;
     letter-spacing: 1.01px;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 0.89em;
     line-height: 17px;
     letter-spacing: 1.05px;
@@ -115,7 +116,7 @@ export const DivPesoStyled = styled.div`
   ${(props) => props.$exist === false && "display: none;"}
 
   //retrato
-  @media screen and (min-width: 375px) and (max-width: 992px) {
+  @media screen and (min-width: 385px) and (max-width: 992px) {
     display: none;
   }
 `;
@@ -130,10 +131,10 @@ export const PpesoStyled = styled.p`
   padding: 0px 10px;
   padding-bottom: 2px;
   border-radius: 11px;
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 0.87em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 0.89em;
   }
   @media screen and (min-width: 577px) {
@@ -143,11 +144,11 @@ export const PpesoStyled = styled.p`
 
 export const PPeso2Styled = styled(PpesoStyled)`
   position: absolute;
-  top: 7px;
-  left: 7px;
-  background-color:hsl(213, 29.00%, 95.90%);
+  bottom: 38px;
+  right: 7px;
+  background-color: hsl(213, 29%, 95.9%);
   color: rgb(50, 50, 50);
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 385px) {
     display: none;
   }
   @media screen and (min-width: 992px) {
@@ -165,7 +166,7 @@ export const PaiPrecoStyled = styled.div`
   align-items: flex-start;
   gap: 8px;
 
-  @media screen and (min-width: 375px) and (max-width: 992px) {
+  @media screen and (min-width: 385px) and (max-width: 992px) {
     flex-direction: row;
     justify-content: center;
   }
@@ -176,7 +177,7 @@ export const DivPrecoStyled = styled.div`
   display: flex;
   align-items: center;
 
-  @media screen and (min-width: 375px) and (max-width: 992px) {
+  @media screen and (min-width: 385px) and (max-width: 992px) {
     padding-right: 4px;
     box-sizing: border-box;
     order: 1;
@@ -190,11 +191,11 @@ export const PprecoStyled = styled.p`
   font-weight: 700;
   text-indent: 4px;
   padding: 2px 0px;
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 0.96em;
     letter-spacing: 1px;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.031em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -224,7 +225,7 @@ export const DivOfertaStyled = styled.div`
   overflow: hidden;
   position: relative;
 
-  @media screen and (min-width: 375px) and (max-width: 992px) {
+  @media screen and (min-width: 385px) and (max-width: 992px) {
     height: 54%;
     width: 100%;
   }
@@ -272,10 +273,10 @@ export const PoffStyled = styled.p`
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 385px) {
     font-size: 0.87em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 0.89em;
   }
   @media screen and (min-width: 577px) {
@@ -296,6 +297,11 @@ export const DivMaisStyled = styled.div`
   background-color: #dc2c32;
   border-radius: 16px;
   cursor: pointer;
+
+  @media screen and (min-width: 385px) and (max-width: 992px) {
+    right: 12px;
+    bottom: 0px;
+  }
 `;
 
 export const PMaisStyled = styled.p`
@@ -326,9 +332,10 @@ export const DivQuantStyled = styled.div`
   bottom: 8px;
   right: 5%;
 
-  @media screen and (min-width: 375px) and (max-width: 992px) {
-    width: 90%;
-    right: 8px;
+  @media screen and (min-width: 385px) and (max-width: 992px) {
+    width: 85%;
+    right: 12px;
+    bottom: 0px;
   }
 `;
 

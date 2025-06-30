@@ -110,7 +110,6 @@ export const Fundo = styled.div`
     background-image: url(${(props) => props.$bg});
     background-size: cover;
     background-position: center;
-    border-radius: 8px;
     filter: blur(5px) brightness(0.72);
     z-index: 0;
   }
@@ -126,7 +125,6 @@ export const Img = styled.img`
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
-  border-radius: 4px;
 `;
 
 export const Pagination = styled.div`
@@ -149,7 +147,7 @@ export const Span = styled.span.attrs(() => ({
     `
     padding: 1px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 2px 6px -1px rgb(41, 46, 117);
   `}
 
   @media screen and (max-width: 374px) {

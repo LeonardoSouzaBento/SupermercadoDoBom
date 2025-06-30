@@ -2,15 +2,15 @@ import styled, { css } from "styled-components";
 
 export const Div = styled.div`
   width: calc(100% - 20px);
+  margin-left: 20px;
   overflow-x: hidden;
-  margin-left: 16px;
   position: relative;
   z-index: 2;
   padding-top: 40px;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     width: calc(100% - 15px);
-    margin-left: 11px;
+    margin-left: 12px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     width: calc(100% - 20px);
@@ -64,11 +64,11 @@ export const PLabelStyled = styled.p`
 export const Divf = styled.div`
   width: auto;
   margin: auto;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   padding: 4px;
   padding-bottom: 8px;
   padding-right: 20px;
-  padding-left: 8px;
+  padding-left: 0px;
   display: flex;
   flex-flow: row nowrap;
   gap: 10px;
@@ -86,6 +86,9 @@ export const Divf = styled.div`
 
   @media screen and (max-width: 374px) {
     gap: 15px;
+  }
+  @media screen and (min-width: 385px) and (max-width: 576px){
+    margin-bottom: 24px;
   }
   @media screen and (min-width: 1201px) {
     padding-right: 6px;
@@ -126,12 +129,13 @@ export const DivCat = styled.div`
   justify-content: flex-start;
   gap: 10px;
   flex: auto;
-  border-radius: 6px;
+  border-radius: 7px;
   padding-top: 7px;
   ${(props) =>
     props.$selected &&
     css`
       background-color: white;
+      box-shadow: 0px 5px 10px -9.2px rgb(41, 46, 117);
     `}
 `;
 

@@ -5,7 +5,6 @@ export const BodyStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #faf5ff;
 
   @media screen and (min-width: 577px) {
     padding-top: 8px;
@@ -79,16 +78,6 @@ export const DivNameSpanStyled = styled.div`
   }
   @media screen and (min-width: 577px) {
     padding-left: 8px;
-  }
-`;
-
-export const DivNameSpanFalseStyled = styled.div`
-  visibility: hidden;
-  height: 40px;
-  min-width: calc(50% - 14px);
-
-  @media screen and (max-width: 426px) {
-    display: none;
   }
 `;
 

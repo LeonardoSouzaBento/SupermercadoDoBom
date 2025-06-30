@@ -6,22 +6,19 @@ import {useScrollX} from '../../hooks/useScrollX'
 
 const PaiAllProductsStyled = styled.div`
   overflow-x: hidden;
-  margin-left: 10px;
-  padding-top: 8px;
-  padding-bottom: 40px;
+  padding-bottom: 42px;
   position: relative;
   z-index: 2;
-  @media screen and (max-width: 374px){
-    width: calc(100% - 15px);
-    margin-left: 19px;
+  @media screen and (max-width: 375px){
+    width: calc(100% - 12px);
+    margin-left: 12px;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px){
-    width: calc(100% - 20px);
-    margin-left: 24px;
+  @media screen and (min-width: 385px) and (max-width: 993px){
+    padding-bottom: 70px;
   }
-  @media screen and (min-width: 577px) and (max-width: 1200px){
+  @media screen and (min-width: 375px) and (max-width: 1200px){
     width: calc(100% - 20px);
-    margin-left: 24px;
+    margin-left: 20px;
   }
   @media screen and (min-width: 1201px){
     width: calc(100% - 52px);

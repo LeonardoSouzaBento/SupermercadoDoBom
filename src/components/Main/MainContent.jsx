@@ -14,9 +14,7 @@ const Main = styled.main`
   margin: auto;
   padding: 0px;
   position: relative;
-  background-color: #EBEFF4;
 `;
-
 
 function MainContent() {
   const [viewOptions, setViewOptions] = useState(false);

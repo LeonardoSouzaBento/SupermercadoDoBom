@@ -8,10 +8,6 @@ const DivStyled = styled.div`
   width: auto;
   min-height: 400px;
   height: auto;
-  padding-top: 2px;
-  padding-left: 2px;
-  padding-bottom: 36px;
-  padding-right: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -27,8 +23,31 @@ const DivStyled = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  @media screen and (max-width: 375px) {
+    padding-right: 13px;
+  }
+  @media screen and (min-width: 375px) and (max-width: 1201px){
+    padding-right: 20px;
+  }
+  @media screen and (min-width: 385px) and (max-width: 993px){
+    gap: 20px;
+  }
   @media screen and (min-width: 993px) {
-    gap: 8px;
+    gap: 14px;
+  }
+`;
+
+const DivHalfList = styled.div`
+  height: auto;
+  width: auto;
+  display: flex;
+  gap: 12px;
+
+  @media screen and (min-width: 385px) and (max-width: 993px){
+    gap: 16px;
+  }
+  @media screen and (min-width: 993px) {
+    gap: 14px;
   }
 `;
 
@@ -50,17 +69,6 @@ const PNoneStyled = styled.p`
   width: 100%;
   text-align: center;
   padding: 16px 0px;
-`;
-
-const DivHalfList = styled.div`
-  height: auto;
-  width: auto;
-  display: flex;
-  gap: 12px;
-
-  @media screen and (min-width: 993px) {
-    gap: 8px;
-  }
 `;
 
 export const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {

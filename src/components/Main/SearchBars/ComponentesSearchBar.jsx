@@ -36,14 +36,17 @@ export const ContainerForFormStyled = styled.div`
 `;
 
 export const FormStyled = styled.form`
+  width: 90%;
+  height: auto;
+  margin: auto;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
-  margin: auto;
+  border-radius: 7px;
+  overflow: hidden;
   position: relative;
-  max-width: 1180px;
+  box-shadow: 0px 6px 6px -6px rgba(41, 46, 117, 0.65);
 
   ${(props) =>
     props.$copy &&
@@ -51,22 +54,23 @@ export const FormStyled = styled.form`
       width: 95%;
       max-width: 684px;
       margin: 0;
+      box-shadow: 0px 3px 7px rgba(41, 46, 117, 0.28);
     `}
 `;
 
 export const InputStyled = styled.input`
-  height: 40px;
   width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  padding-bottom: 2px;
   touch-action: auto;
-  border-radius: 7px;
-  text-indent: 20px;
+  text-indent: 10px;
   font-weight: 400;
-  font-size: 1em;
   letter-spacing: 0.71px;
   color: black;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
   border: none;
-  box-shadow: 0px 0px 3px 0px rgba(41, 46, 117, 0.65);
 
   &:focus {
     outline: none;
@@ -77,46 +81,40 @@ export const InputStyled = styled.input`
     -webkit-appearance: none;
     appearance: none;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.03em;
+  @media screen and (max-width: 375px) {
+    font-size: 1.01em;
   }
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.04em;
   }
-  ${(props) => props.$copy && css`
-    background-color: white;
-    box-shadow: 0px 3px 7px rgba(41, 46, 117, 0.28);
-  `}
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.05em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.06em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.07em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.08em;
+  }
 `;
 
 export const DivSpanStyled = styled.div`
+  height: 100%;
+  width: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
-  width: 30px;
-  border-radius: 6px;
+  position: absolute;
+  bottom: 0;
+  right: -1px;
   box-sizing: border-box;
   padding-bottom: 2px;
   user-select: none;
   cursor: pointer;
-  background-color: #332854;
-
-  ${(props) =>
-    props.$copy === false &&
-    css`
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-    `}
-
-  ${(props) =>
-    props.$copy === true &&
-    css`
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-    `}
+  background-color: #383D6A;
 `;
 
 export const SpanSearchStyled = styled.span`

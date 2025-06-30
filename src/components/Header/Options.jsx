@@ -42,10 +42,14 @@ export const DivNameSpanStyled = styled.div`
 `;
 
 const ContainerPStyled = styled.div`
-  background-color: #332854;
+  background-color: #383D6A;
   display: flex;
-  border-radius: 7px; //para não sobrepor o border radius filho
+  border-radius: 7px;
   margin-right: -10px;
+
+  /* &:hover{
+    background-color: #292E4E;
+  } */
 `;
 
 const DivPStyled = styled.div`
@@ -69,11 +73,15 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 7px;
-  background-color: #332854;
+  background-color: #383D6A;
   flex: none;
   cursor: pointer;
   width: 44px;
   height: 44px;
+
+  /* &:hover{
+    background-color: #292E4E;
+  } */
 `;
 
 export const SpanOptionsStyled = styled.span`
@@ -124,7 +132,7 @@ const Options = () => {
       {contents.map((content, i) => (
         <DivNameSpanStyled
           key={i}
-          onMouseEnter={() => { 
+          onMouseEnter={() => {
             setViewNameOption(i);
           }}
           onMouseLeave={() => {

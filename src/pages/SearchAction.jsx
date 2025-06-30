@@ -10,7 +10,6 @@ const DivStyled = styled.div`
   min-width: 100vw;
   padding-bottom: 59px;
   box-sizing: border-box;
-  background-color: #ebeff4;
   opacity: ${(props) => props.$opacityState};
   filter: ${(props) => (props.$applyBlur ? "blur(2.5px)" : "blur(0px)")};
   transition: opacity 0.2s ease, filter 1s ease;
