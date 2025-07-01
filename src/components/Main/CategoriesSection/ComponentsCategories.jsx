@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Div = styled.div`
+export const DivStyled = styled.div`
   width: calc(100% - 20px);
   margin-left: 20px;
   overflow-x: hidden;
@@ -61,10 +61,10 @@ export const PLabelStyled = styled.p`
   }
 `;
 
-export const Divf = styled.div`
+export const DivfStyled = styled.div`
   width: auto;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   padding: 4px;
   padding-bottom: 8px;
   padding-right: 20px;
@@ -87,8 +87,8 @@ export const Divf = styled.div`
   @media screen and (max-width: 374px) {
     gap: 15px;
   }
-  @media screen and (min-width: 385px) and (max-width: 576px){
-    margin-bottom: 24px;
+  @media screen and (min-width: 577px) {
+    margin-bottom: 28px;
   }
   @media screen and (min-width: 1201px) {
     padding-right: 6px;
@@ -97,7 +97,7 @@ export const Divf = styled.div`
 `;
 
 //span para animação
-export const Span = styled.span`
+export const SpanStyled = styled.span`
   position: absolute;
   top: 20%;
   right: 20px;
@@ -119,7 +119,7 @@ export const Span = styled.span`
   display: none;
 `;
 
-export const DivCat = styled.div`
+export const DivCatStyled = styled.div`
   min-width: 101px;
   max-width: 101px;
   height: 110px;
@@ -169,7 +169,7 @@ export const ImgStyled = styled.img`
   }
 `;
 
-export const DivNameSection = styled.div`
+export const DivNameCatStyled = styled.div`
   display: flex;
   align-items: center;
   height: 45px;
@@ -177,10 +177,10 @@ export const DivNameSection = styled.div`
 
 export const PStyled = styled.p`
   font-family: "Lato", Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
-  font-size: 1em;
+  font-size: 1.02em;
   letter-spacing: 0.5px;
   margin: 0;
-  color:hsl(255, 36.40%, 8.60%);
+  /* color:hsl(255, 36.40%, 8.60%); */
 `;

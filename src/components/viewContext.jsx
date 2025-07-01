@@ -31,7 +31,7 @@ export const ViewContextProvider = ({ children }) => {
   }, [noSkipLogin]);
 
   const [preventClick, setPreventClick] = useState(false);
-  const [viewFeedback, setViewFeedback] = useState(false);
+  const [seeFeedback, setSeeFeedback] = useState(false);
 
   //estado para opacidade
 
@@ -42,10 +42,10 @@ export const ViewContextProvider = ({ children }) => {
         setTipForRecruiter,
         preventClick,
         setPreventClick,
-        viewFeedback,
-        setViewFeedback,
+        seeFeedback,
+        setSeeFeedback,
         noSkipLogin,
-        setNoSkipLogin
+        setNoSkipLogin,
       }}
     >
       {children}

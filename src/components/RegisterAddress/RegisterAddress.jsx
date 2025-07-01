@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import {
-  Box0Styled,
-  BoxStyled,
-  DivSpanStyled,
+  DivBodyStyled,
+  MainDivStyled,
+  SubDivStyled,
+  DivSpanCloseStyled,
   SpanCloseStyled,
-  TitleStyled,
+  H1Styled,
   LocationButtonStyled,
   InputStyled,
-  SubmitButtonStyled,
+  RegisterButtonStyled,
 } from "./ComponentsRegAddress";
 import { useNavigate } from "react-router-dom";
 
@@ -47,9 +48,9 @@ const RegisterAddress = ({ setSeeAddressForm, setApplyBlur }) => {
   }, []);
 
   return (
-    <Box0Styled $opacity={opacityState}>
-      <BoxStyled>
-        <DivSpanStyled>
+    <DivBodyStyled $opacity={opacityState}>
+      <MainDivStyled>
+        <DivSpanCloseStyled>
           <SpanCloseStyled
             className="material-symbols-outlined"
             onClick={() => {
@@ -62,9 +63,9 @@ const RegisterAddress = ({ setSeeAddressForm, setApplyBlur }) => {
           >
             close
           </SpanCloseStyled>
-        </DivSpanStyled>
+        </DivSpanCloseStyled>
 
-        <TitleStyled>Cadastrar endereço</TitleStyled>
+        <H1Styled>Cadastrar endereço</H1Styled>
 
         <LocationButtonStyled onClick={handleLocationClick}>
           Pegue minha localização
@@ -79,22 +80,16 @@ const RegisterAddress = ({ setSeeAddressForm, setApplyBlur }) => {
             onChange={handleChange}
             style={{
               marginBottom: "12px",
-              border: "1px solid rgba(0, 0, 0, 0.28)",
-              padding: "12px",
-              borderRadius: "4px",
+              border: "1px solid rgba(41, 46, 117, 0.4)",
+              padding: "8px",
+              paddingTop: "11px",
+              paddingBottom: "13px",
+              borderRadius: "5px",
+              backgroundColor: " #E9EFF5"
             }}
           />
 
-          <div
-            style={{
-              overflow: "hidden",
-              marginBottom: "20px",
-              borderRadius: "4px",
-              paddingBottom: "4px",
-              backgroundColor: "white",
-              boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
-            }}
-          >
+          <SubDivStyled>
             <InputStyled
               type="text"
               name="cidade"
@@ -148,18 +143,18 @@ const RegisterAddress = ({ setSeeAddressForm, setApplyBlur }) => {
               onChange={handleChange}
               style={{ borderBottom: "none" }}
             />
-          </div>
-          <SubmitButtonStyled
+          </SubDivStyled>
+          <RegisterButtonStyled
             type="submit"
             onClick={() => {
               navigate("/");
             }}
           >
             Salvar Endereço
-          </SubmitButtonStyled>
+          </RegisterButtonStyled>
         </form>
-      </BoxStyled>
-    </Box0Styled>
+      </MainDivStyled>
+    </DivBodyStyled>
   );
 };
 

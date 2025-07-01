@@ -62,7 +62,7 @@ export function useScrollX() {
     const deslocamento = (variables.toc_ini - x)*0.7;
     const velocidade = deslocamento / dt;
 
-    if(Math.abs(velocidade) > 1.7){variables.velocidade = 1.7 * Math.sign(velocidade)}
+    if(Math.abs(velocidade) > 1.4){variables.velocidade = 1.4 * Math.sign(velocidade)}
     
     variables.time_touch = now;
     variables.toc_ini = x;
@@ -96,7 +96,7 @@ export function useScrollX() {
     const maxScroll = -limitsScrollRefs[i].current;
 
     const decel = () => {
-      if (Math.abs(variables.velocidade) > 0.12) {
+      if (Math.abs(variables.velocidade) > 0.17) {
         variables.velocidade *= 0.95;
         let proximo = div.scrollLeft + variables.velocidade * 16;
 

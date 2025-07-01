@@ -164,7 +164,7 @@ const DescOferta = ({ product }) => {
 function ProductItem({ product, handleQuantityChange, variant }) {
   const { cartProducts, totalAddedValue } = useContext(CartContext);
   const [quantity, setQuantity] = useState(product.quant);
-  const { viewFeedback } = useContext(ViewContext);
+  const { seeFeedback } = useContext(ViewContext);
 
   useEffect(() => {
     cartProducts.map((item) => {
@@ -178,10 +178,10 @@ function ProductItem({ product, handleQuantityChange, variant }) {
   }, []);
 
   useEffect(() => {
-    if (viewFeedback == true) {
+    if (seeFeedback == true) {
       setQuantity(0);
     }
-  }, [viewFeedback]);
+  }, [seeFeedback]);
 
   return (
     <PaiProdStyled $variant={variant}>

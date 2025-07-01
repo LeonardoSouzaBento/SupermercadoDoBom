@@ -12,7 +12,7 @@ export const MainStyled = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    padding-top: 18px;
+    padding-top: 10px;
   }
   @media screen and (min-width: 769px) {
     display: grid;
@@ -26,7 +26,7 @@ export const MainStyled = styled.div`
   }
 
   opacity: ${(props) => props.$opacity};
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, filter 0.2s ease;
 `;
 
 export const CartSectionStyed = styled.div`
@@ -37,13 +37,15 @@ export const CartSectionStyed = styled.div`
   background-color: white;
   box-sizing: border-box;
   background-color: #ecf1f6;
-  box-shadow: 0px 6px 6px -6px rgba(41, 46, 117, 0.89),
-    6px 0px 6px -6px rgba(41, 46, 117, 0.44),
-    -6px 0px 6px -6px rgba(41, 46, 117, 0.44),
-    0px -3px 3px -2px rgba(41, 46, 117, 0.14);
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
   position: relative;
   overflow: hidden;
-  transition: height 0.2s ease;
+  transition: height 0.15s ease;
+  /* box-shadow: 0px 6px 6px -6px rgba(41, 46, 117, 0.89),
+    6px 0px 6px -6px rgba(41, 46, 117, 0.44),
+    -6px 0px 6px -6px rgba(41, 46, 117, 0.44); */
 
   @media screen and (max-width: 385px) {
     width: calc(100% - 16px);
@@ -78,6 +80,16 @@ export const CartSectionStyed = styled.div`
   }
   scrollbar-width: none; /* esconde a barra */
   -ms-overflow-style: none;
+`;
+
+export const DivToCoverStyled = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #ecf1f6;
 `;
 
 export const DivSpanStyled = styled.div`
@@ -119,7 +131,7 @@ export const SpanStyled = styled.span`
   }
 `;
 
-export const BoxConfirmCancel = styled.div`
+export const DivCancelDialog = styled.div`
   width: 100%;
   height: 50px;
   padding-right: 2px;
@@ -132,8 +144,8 @@ export const BoxConfirmCancel = styled.div`
   right: 0px;
   border-radius: 8px 8px 0px 0px;
   background-color: #db2c32;
-  ${(props) => props.$viewFeedback && "background-color: rgb(21, 128, 0);"};
-  ${(props) => props.$viewFeedback && "padding-right: 16px;"};
+  opacity: ${(props) => props.$opacity};
+  transition: opacity 0.36s ease, background-color 0.36s ease;
 `;
 
 export const DivSpanStyled2 = styled(DivSpanStyled)`
@@ -202,12 +214,12 @@ export const DivHeadStyled = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   position: relative;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(41, 46, 117, 0.15);
   color: #212223;
   background-color: #ecf1f6;
-  z-index: 1;
+  z-index: 2;
   @media screen and (min-width: 769px) {
     position: sticky;
     top: 0;
@@ -329,7 +341,9 @@ export const DivContinueStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6);
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
 
   @media screen and (max-width: 385px) {
     width: calc(100% - 36px);
@@ -373,25 +387,24 @@ export const PAvisoStyled = styled.p`
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-weight: 500;
   color: white;
-  z-index: 1;
 
-  @media screen and (max-width: 385px) {
-    font-size: 1.09em;
+  @media screen and (max-width: 375px) {
+    font-size: 1.18em;
   }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.115em;
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.19em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.16em;
+    font-size: 1.195em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.165em;
+    font-size: 1.2em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.17em;
+    font-size: 1.21em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.17em;
+    font-size: 1.22em;
   }
 `;
 
@@ -489,11 +502,13 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6);
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
   cursor: pointer;
 
   &:hover {
-    outline: 1px solid rgba(0, 0, 0, 0.12);
+    outline: 1px solid rgba(41, 46, 117, 0.3);
   }
   @media screen and (max-width: 385px) {
     width: calc(100% - 36px);
@@ -534,38 +549,4 @@ export const PAddStyled = styled.p`
   @media screen and (min-width: 1201px) {
     font-size: 1.2em;
   }
-`;
-
-export const DivMsgVoidCart = styled.div`
-  width: 340px;
-  padding: 9px;
-  padding-bottom: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  background-color: rgb(245, 245, 245);
-  color: black;
-  box-shadow: 0px 3px 6px rgba(41, 46, 117, 0.28);
-  border-radius: 9px;
-`;
-
-export const BlurDivStyled = styled.div`
-  height: 340px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  border-radius: 4px;
-`;
-
-export const ImgVoidCartStyled = styled.img`
-  width: 290px;
-  height: 290px;
-  position: relative;
-  z-index: 2;
-  border-radius: 4px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.23);
 `;

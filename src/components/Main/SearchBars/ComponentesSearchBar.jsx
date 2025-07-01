@@ -46,7 +46,7 @@ export const FormStyled = styled.form`
   border-radius: 7px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 6px 6px -5px rgba(41, 46, 117, 0.57);
+  box-shadow: -5px 5px 10px -9.2px rgb(41, 46, 117);
   border: none;
   
   ${(props) =>

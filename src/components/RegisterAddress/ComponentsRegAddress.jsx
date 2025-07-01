@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Box0Styled = styled.div`
+export const DivBodyStyled = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -10,25 +10,27 @@ export const Box0Styled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  background-color: rgba(255, 255, 255, 0.32);
+  background-color: rgba(233, 238, 246, 0.85);
   transition: opacity 0.5s ease;
   opacity: ${(props) => props.$opacity};
 `;
 
 // Caixa central onde ficam os inputs
-export const BoxStyled = styled.div`
+export const MainDivStyled = styled.div`
   height: auto;
   width: calc(100% - 30px);
   max-width: 400px;
   box-sizing: border-box;
-  border-radius: 7px;
-  background-color: #ECF1F6;
+  border-radius: 12px;
+  background-color: white;
   padding: 16px;
   padding-bottom: 28px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 6px 6px -6px rgba(0, 0, 0, 0.8),
-    6px 0px 6px -6px rgba(0, 0, 0, 0.3), -6px 0px 6px -6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.7),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.14),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.14);
+
   @media screen and (max-width: 768px) {
     margin-bottom: 18px;
   }
@@ -44,7 +46,15 @@ export const BoxStyled = styled.div`
   }
 `;
 
-export const DivSpanStyled = styled.div`
+export const SubDivStyled = styled.div`
+  overflow: hidden;
+  margin-bottom: 18px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid rgba(41, 46, 117, 0.4);
+`;
+
+export const DivSpanCloseStyled = styled.div`
   width: 40px;
   height: 40px;
   display: flex;
@@ -53,20 +63,22 @@ export const DivSpanStyled = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #ECF1F6;
+  background-color: white;
+  border-bottom-left-radius: 4px;
   cursor: pointer;
   &:hover {
-    background-color: hsl(0, 0.00%, 88%)
+    background-color: rgb(240, 240, 240);
   }
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 1.7em;
+  font-size: 1.65em;
   font-weight: 600;
+  color: #db2c32;
 `;
 
 // Título
-export const TitleStyled = styled.h1`
+export const H1Styled = styled.h1`
   text-align: center;
   font-size: 24px;
   margin-bottom: 24px;
@@ -104,10 +116,9 @@ export const LocationButtonStyled = styled.button`
   justify-content: center;
   align-items: center;
   background-color: #16814d;
-  box-shadow: inset 0px -2px 5px rgba(0, 0, 0, 0.2);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 1.12em;
@@ -132,14 +143,16 @@ export const LocationButtonStyled = styled.button`
 // Estilo dos inputs
 export const InputStyled = styled.input`
   width: 100%;
-  padding: 15px 10px;
+  padding: 14px 10px;
+  padding-bottom: 16px;
   box-sizing: border-box;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(41, 46, 117, 0.4);
   font-size: 1.06em;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
   color: black;
+
   &:focus {
     outline: none;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
@@ -147,11 +160,11 @@ export const InputStyled = styled.input`
 `;
 
 // Botão de envio
-export const SubmitButtonStyled = styled(LocationButtonStyled)`
+export const RegisterButtonStyled = styled(LocationButtonStyled)`
   height: 46px;
   margin-bottom: 0px;
-  background-color: hsl(11, 90%, 61.4%);
+  background-color:hsl(358, 70.90%, 51.60%);
   &:hover {
-    background-color: hsl(11, 90%, 51.4%);
+    background-color:hsl(358, 70.90%, 48%);
   }
 `;

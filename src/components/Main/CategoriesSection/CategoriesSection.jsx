@@ -1,59 +1,75 @@
-import React, { useCallback } from 'react';
-import { useState, useRef, useEffect} from 'react';
-import { Div, DivLabelPromosStyled, PLabelStyled, Divf, DivCat, Span, ImgStyled,DivNameSection, PStyled} from './ComponentsCategories';
-import { useContext } from 'react';
-import { CartContext } from '../../CartContext';
-import {useScrollX} from '../../../hooks/useScrollX'
+import React, { useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
+import {
+  DivStyled,
+  DivLabelPromosStyled,
+  PLabelStyled,
+  DivfStyled,
+  DivCatStyled,
+  SpanStyled,
+  ImgStyled,
+  DivNameCatStyled,
+  PStyled,
+} from "./ComponentsCategories";
+import { useContext } from "react";
+import { CartContext } from "../../CartContext";
+import { useScrollX } from "../../../hooks/useScrollX";
 
-const CategoryItem = React.forwardRef(({ category, isSelected, setSelectedCategoryId}, ref) => {
+const CategoryItem = React.forwardRef(
+  ({ category, isSelected, setSelectedCategoryId }, ref) => {
+    const { setCurrentCategory } = useContext(CartContext);
+    let touchStartTime = null;
 
-  const {setCurrentCategory} = useContext(CartContext);
-  let touchStartTime = null;
+    const handlePointerDown = () => {
+      touchStartTime = Date.now();
+    };
 
-  const handlePointerDown = () => {
-    touchStartTime = Date.now();
-  };
+    const handlePointerUp = () => {
+      const duration = Date.now() - touchStartTime;
+      if (duration < 100) {
+        setCurrentCategory(category.id);
+        setSelectedCategoryId(category.id);
+      }
+    };
 
-  const handlePointerUp = () => {
-    const duration = Date.now() - touchStartTime;
-    if (duration < 100 ) {
-      setCurrentCategory(category.id);
-      setSelectedCategoryId(category.id);
-    }
-  };
-
-  return (
-    <DivCat 
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp} 
-      $selected={isSelected} 
-      ref={ref}>
-      <ImgStyled src={category.icon} alt={category.label} $selected={isSelected} />
-      <DivNameSection>
-        <PStyled>{category.label}</PStyled>
-      </DivNameSection>
-    </DivCat>
-  );
-});
+    return (
+      <DivCatStyled
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        $selected={isSelected}
+        ref={ref}
+      >
+        <ImgStyled
+          src={category.icon}
+          alt={category.label}
+          $selected={isSelected}
+        />
+        <DivNameCatStyled>
+          <PStyled>{category.label}</PStyled>
+        </DivNameCatStyled>
+      </DivCatStyled>
+    );
+  }
+);
 
 function CategoriesSection() {
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
-  const {setLimitCategories, categoriesRef} = useContext(CartContext);
+  const { setLimitCategories, categoriesRef } = useContext(CartContext);
   useScrollX();
 
   const category = [
-    { id: 0, icon: 'icons/iconePromo.png', label: 'Promoções' },
-    { id: 1, icon: 'icons/cafe.png', label: 'Mercearia' },
-    { id: 2, icon: 'icons/choco.png', label: 'Doces e Biscoitos' },
-    { id: 3, icon: 'icons/maca.png', label: 'Hortifruit' },
-    { id: 4, icon: 'icons/croisant.png', label: 'Padaria' },
-    { id: 5, icon: 'icons/frangoc.png', label: 'Açougue' },
-    { id: 6, icon: 'icons/queijo.png', label: 'Frios e Congelados' },
-    { id: 7, icon: 'icons/botijão.png', label: 'Casa e Cozinha' },
-    { id: 8, icon: 'icons/rodo.png', label: 'Limpeza Doméstica' },
-    { id: 9, icon: 'icons/papel.png', label: 'Higiene pessoal' },
-    { id: 10, icon: 'icons/esqua.png', label: 'Papelaria' },
-    { id: 11, icon: 'icons/pata.png', label: 'PetShop' }
+    { id: 0, icon: "icons/iconePromo.png", label: "Promoções" },
+    { id: 1, icon: "icons/cafe.png", label: "Mercearia" },
+    { id: 2, icon: "icons/choco.png", label: "Doces e Biscoitos" },
+    { id: 3, icon: "icons/maca.png", label: "Hortifruit" },
+    { id: 4, icon: "icons/croisant.png", label: "Padaria" },
+    { id: 5, icon: "icons/frangoc.png", label: "Açougue" },
+    { id: 6, icon: "icons/queijo.png", label: "Frios e Congelados" },
+    { id: 7, icon: "icons/botijão.png", label: "Casa e Cozinha" },
+    { id: 8, icon: "icons/rodo.png", label: "Limpeza Doméstica" },
+    { id: 9, icon: "icons/papel.png", label: "Higiene pessoal" },
+    { id: 10, icon: "icons/esqua.png", label: "Papelaria" },
+    { id: 11, icon: "icons/pata.png", label: "PetShop" },
   ];
 
   const DivRef = useRef(null);
@@ -65,13 +81,20 @@ function CategoriesSection() {
       const itemWidth = CategoryItemRef.current.offsetWidth;
       const divWidth = DivRef.current.offsetWidth;
       const gap = parseFloat(getComputedStyle(categoriesRef.current).gap) || 0;
-      const paddingRight = parseFloat(getComputedStyle(categoriesRef.current).paddingRight);
-      const totalWidth = category.length * itemWidth + (category.length - 1) * gap + paddingRight;
+      const paddingRight = parseFloat(
+        getComputedStyle(categoriesRef.current).paddingRight
+      );
+      const totalWidth =
+        category.length * itemWidth +
+        (category.length - 1) * gap +
+        paddingRight;
       const limit = divWidth - totalWidth;
-      window.innerWidth >= 1375?setLimitCategories(0):setLimitCategories(limit);
+      window.innerWidth >= 1375
+        ? setLimitCategories(0)
+        : setLimitCategories(limit);
     }
-  },[])
-  
+  }, []);
+
   const handleResize = useCallback(() => {
     if (resizeTimeoutId.current) {
       clearTimeout(resizeTimeoutId.current);
@@ -80,15 +103,14 @@ function CategoriesSection() {
       updateLimitCategories();
       resizeTimeoutId.current = null;
     }, 300);
-  },[])
-  
+  }, []);
 
   useEffect(() => {
     updateLimitCategories();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       if (resizeTimeoutId.current) {
         clearTimeout(resizeTimeoutId.current);
       }
@@ -96,24 +118,26 @@ function CategoriesSection() {
   }, [category.length, setLimitCategories]);
 
   return (
-    <Div ref={DivRef}>
-      <Span className="material-symbols-outlined">swipe_left</Span>{/*Para tutorial de como usar a tela*/}
+    <DivStyled ref={DivRef}>
+      <SpanStyled className="material-symbols-outlined">swipe_left</SpanStyled>
+      {/*Para tutorial de como usar a tela*/}
       <DivLabelPromosStyled>
         <PLabelStyled id="strong">Mais vendidos por categoria,</PLabelStyled>
         <PLabelStyled>os produtos básicos ficam aqui.</PLabelStyled>
       </DivLabelPromosStyled>
 
-      <Divf ref={categoriesRef}>
+      <DivfStyled ref={categoriesRef}>
         {category.map((cat, index) => (
-          <CategoryItem 
+          <CategoryItem
             ref={index === 0 ? CategoryItemRef : null}
-            category={cat}  
+            category={cat}
             key={cat.id}
             setSelectedCategoryId={setSelectedCategoryId}
-            isSelected={cat.id === selectedCategoryId}/>
+            isSelected={cat.id === selectedCategoryId}
+          />
         ))}
-      </Divf>
-    </Div>
+      </DivfStyled>
+    </DivStyled>
   );
 }
 

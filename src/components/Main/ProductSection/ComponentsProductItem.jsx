@@ -28,15 +28,15 @@ export const PaiProdStyled = styled.div`
     flex-direction: column;
     min-width: 170px;
     max-width: 170px;
-    min-height: 290px;
-    max-height: 290px;
+    min-height: 286px;
+    max-height: 286px;
   }
   //paisagem
   @media screen and (min-width: 993px) {
     flex-direction: row;
     min-width: 275px;
     max-width: 275px;
-    height: 180px;
+    height: 177px;
     border-radius: 7px;
   }
 `;
