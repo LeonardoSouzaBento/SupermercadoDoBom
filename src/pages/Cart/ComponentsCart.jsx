@@ -69,23 +69,15 @@ export const CartSectionStyed = styled.div`
     max-height: 810px;
     margin: auto;
     overflow-y: scroll;
-    border-radius: 14px;
+    border-radius: 12px;
     padding-bottom: 18px;
   }
-  /*Estilo da barra*/
-  @media screen and (min-width: 993px) {
-    max-width: 894px;
-    &::-webkit-scrollbar-track {
-      background-color: #ecf1f6;
-    }
 
-    &::-webkit-scrollbar-thumb {
-      background: #abafb3; /* cor botão */
-      border-radius: 6px;
-    }
-    scrollbar-width: thin; /* Opções: auto | thin | none */
-    scrollbar-color: #abafb3 #ecf1f6; /* botão | fundo */
+  &::-webkit-scrollbar {
+    display: none;
   }
+  scrollbar-width: none; /* esconde a barra */
+  -ms-overflow-style: none;
 `;
 
 export const DivSpanStyled = styled.div`
@@ -96,9 +88,9 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 6px;
-  right: 9px;
-  border-radius: 4px;
+  top: 5.5px;
+  right: 5.5px;
+  border-radius: 4px 7px 4px 4px;
   background-color: hsl(207, 33%, 91%);
   color: #383d6a;
   cursor: pointer;
@@ -378,7 +370,7 @@ export const DivAvisoStyled = styled.div`
 `;
 
 export const PAvisoStyled = styled.p`
-  font-family: "Roboto Flex", Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-weight: 500;
   color: white;
   z-index: 1;
@@ -461,7 +453,8 @@ export const DivPContinueStyled = styled.div`
   background-color: ${(props) =>
     props.$nocontinue ? "hsl(158, 83.30%, 57.60%)" : "rgb(21, 128, 0)"};
   &:hover {
-    background-color: ${(props) => !props.$nocontinue ? "rgb(17, 103, 0)": "hsl(158, 100.00%, 62.20%)"};
+    background-color: ${(props) =>
+      !props.$nocontinue ? "rgb(17, 103, 0)" : "hsl(158, 100%, 62%)"};
   }
 `;
 

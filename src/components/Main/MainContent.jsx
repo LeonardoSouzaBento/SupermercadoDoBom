@@ -29,6 +29,23 @@ function MainContent() {
     setTimeout(() => {
       setOpacityState(1);
     }, 300);
+
+    const handleTouch = (e) => {
+      const active = document.activeElement;
+      if (
+        active &&
+        (active.tagName === "INPUT" || active.tagName === "TEXTAREA") &&
+        !e.target.closest("input") &&
+        !e.target.closest("textarea")
+      ) {
+        active.blur(); // tira o foco do input
+      }
+    };
+    document.addEventListener("touchstart", handleTouch);
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouch);
+    };
   }, []);
 
   //Esconder mais opções com toque fora
@@ -66,9 +83,9 @@ function MainContent() {
 
       <div
         style={{
-          filter: (noSkipLogin || applyBlur) ? "blur(2.5px)" : "blur(0px)",
+          filter: noSkipLogin || applyBlur ? "blur(2.5px)" : "blur(0px)",
           opacity: !noSkipLogin ? opacityState : 1,
-          transition: 'filter 1s ease, opacity 0.2s ease'
+          transition: "filter 1s ease, opacity 0.2s ease",
         }}
       >
         <Header viewOptions={viewOptions} setViewOptions={setViewOptions} />
@@ -78,7 +95,7 @@ function MainContent() {
           <PromoSection categoryKey={currentCategory} />
         </Main>
       </div>
-      <Footer setOpacityState={setOpacityState} setApplyBlur={setApplyBlur}/>
+      <Footer setOpacityState={setOpacityState} setApplyBlur={setApplyBlur} />
     </div>
   );
 }

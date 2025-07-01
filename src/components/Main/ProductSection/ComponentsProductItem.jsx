@@ -22,7 +22,7 @@ export const PaiProdStyled = styled.div`
   //retrato
   @media screen and (min-width: 385px) and (max-width: 414px) {
     gap: 0px;
-    ${(props) => props.$variant !== "home" && "margin-bottom: 12px;"};
+    ${(props) => props.$variant == "cart" && "margin-bottom: 12px;"};
   }
   @media screen and (min-width: 385px) and (max-width: 992px) {
     flex-direction: column;

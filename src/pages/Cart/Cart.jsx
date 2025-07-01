@@ -32,8 +32,7 @@ import {
 import RegisterAddress from "../../components/RegisterAddress/RegisterAddress.jsx";
 
 //altura - o cabeçalho 'sua compra'
-const heightCartSection = 398; //para comparar
-const totalHeightCartSection = 460;
+const heightCartSection = 393; //para comparar
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -91,21 +90,17 @@ const Cart = () => {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     });
-
-    if (ProductListRef.current) {
-      checkHiddenProducts();
-    }
+    checkHiddenProducts();
 
     function handleResize() {
       if (resizeDowntime.current) {
         clearTimeout(resizeDowntime.current);
       }
       resizeDowntime.current = setTimeout(() => {
-        checkHiddenProducts();
-
         let widthOfWindow = window.innerWidth;
 
         if (widthOfWindow !== windowWidthRef.current) {
+          checkHiddenProducts();
           const div = CartSectionRef.current;
           if (widthOfWindow >= 769) {
             const newHeight = "calc(100vh - 48px)";
@@ -173,7 +168,7 @@ const Cart = () => {
     if (falta <= 0) {
       setSeeAddressForm(true);
       setApplyBlur(true);
-    } else{
+    } else {
       setScaleWarnnig(1.045);
       setTimeout(() => {
         setScaleWarnnig(1);

@@ -23,13 +23,29 @@ const SearchAction = () => {
     setTimeout(() => {
       setOpacityState(1);
     }, 200);
+    const handleTouch = (e) => {
+      const active = document.activeElement;
+      if (
+        active &&
+        (active.tagName === "INPUT" || active.tagName === "TEXTAREA") &&
+        !e.target.closest("input") &&
+        !e.target.closest("textarea")
+      ) {
+        active.blur(); // tira o foco do input
+      }
+    };
+    document.addEventListener("touchstart", handleTouch);
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouch);
+    };
   }, []);
 
   return (
     <>
       <DivStyled $opacityState={opacityState} $applyBlur={applyBlur}>
         <SearchBar copy={true}></SearchBar>
-        <ProductList variant={"inSearch"} categoryKey={13} />
+        <ProductList variant={"search"} categoryKey={13} />
       </DivStyled>
       <Footer setApplyBlur={setApplyBlur}></Footer>
     </>

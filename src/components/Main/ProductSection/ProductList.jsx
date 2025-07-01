@@ -32,6 +32,30 @@ const DivStyled = styled.div`
     justify-content: space-evenly;
     gap: 0px;
   }
+
+  ${(props) =>
+    props.$variant == "search" &&
+    css`
+      @media screen and (min-width: 385px) and (max-width: 414px) {
+        justify-content: center;
+        gap: 12px;
+      }
+      @media screen and (min-width: 414px) and (max-width: 577px) {
+        width: 414px;
+        margin: auto;
+      }
+      @media screen and (min-width: 577px) and (max-width: 768px) {
+        max-width: 90%;
+        margin: auto;
+      }
+      @media screen and (min-width: 768px) {
+        justify-content: flex-start;
+        padding-left: 24px;
+      }
+      @media screen and (min-width: 768px) and (max-width: 993px){
+        max-width: 95%;
+      }
+    `}
 `;
 
 export const ProductList = React.forwardRef(({ variant, categoryKey }, ref) => {

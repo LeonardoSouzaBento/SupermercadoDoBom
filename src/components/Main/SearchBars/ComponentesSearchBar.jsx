@@ -46,8 +46,9 @@ export const FormStyled = styled.form`
   border-radius: 7px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 6px 6px -6px rgba(41, 46, 117, 0.65);
-
+  box-shadow: 0px 6px 6px -5px rgba(41, 46, 117, 0.57);
+  border: none;
+  
   ${(props) =>
     props.$copy &&
     css`
@@ -103,15 +104,15 @@ export const InputStyled = styled.input`
 
 export const DivSpanStyled = styled.div`
   height: 100%;
-  width: 36px;
+  width: 40px;
+  padding-bottom: 2px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   bottom: 0;
-  right: -1px;
-  box-sizing: border-box;
-  padding-bottom: 2px;
+  right: 0px;
   user-select: none;
   cursor: pointer;
   background-color: #383D6A;

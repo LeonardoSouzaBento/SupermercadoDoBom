@@ -30,7 +30,7 @@ const DivStyled = styled.div`
     padding-right: 20px;
   }
   @media screen and (min-width: 385px) and (max-width: 993px){
-    gap: 20px;
+    gap: 16px;
   }
   @media screen and (min-width: 993px) {
     gap: 14px;
