@@ -137,6 +137,13 @@ export const DivCatStyled = styled.div`
       background-color: white;
       box-shadow: 0px 5px 10px -9.2px rgb(41, 46, 117);
     `}
+  ${(props) =>
+    !props.$selected &&
+    css`
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.33);
+      }
+    `}
 `;
 
 export const ImgStyled = styled.img`
@@ -144,7 +151,7 @@ export const ImgStyled = styled.img`
   width: 40px;
   background-color: rgb(255, 83, 83);
   border-radius: 50%;
-  ${props => props.$selected && 'border-radius: 46%;'}
+  ${(props) => props.$selected && "border-radius: 18px;"}
   filter: contrast(1.7) saturate(1.8);
   transition: all 0.32s ease;
   padding: 4px;

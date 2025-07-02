@@ -30,17 +30,15 @@ const CartDescStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #383D6A;
+  background-color: #383d6a;
   border-radius: 22px;
   cursor: pointer;
   user-select: none;
   overflow: hidden;
   position: relative;
 
-  @media screen and (min-width: 993px) {
-    &:hover {
-      background-color:#292E4E;
-    }    
+  &:hover {
+    background-color:hsl(234, 30.90%, 28%);
   }
 
   @media screen and (max-width: 576px) {
@@ -48,7 +46,7 @@ const CartDescStyled = styled.div`
   }
 `;
 
-const DivCancelECart = styled.div`
+const DivDeleteAndCart = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,55 +56,35 @@ const DivCancelECart = styled.div`
 `;
 
 const DivCartStyled = styled.div`
-  border-radius: 50%;
   height: 100%;
-  width: 38px;
+  width: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
+const SpanCartStyled = styled.span`
+  color: white;
+  font-size: 1.65em;
+  font-weight: 300;
+  font-variation-settings: "FILL" 1;
+`;
+
 const DivDeleteStyled = styled(DivCartStyled)`
-  height: 44px;
-  width: 44px;
   box-sizing: border-box;
   padding-left: 4px;
-  border-radius: 0px;
-  background-color: #292E4E;
+  background-color: #292e4e;
 
-  @media screen and (min-width: 993px) {
-    &:hover {
-      background-color: hsl(255, 35.5%, 18%);
-    }
+  &:hover {
+    background-color: hsl(255, 35.5%, 18%);
   }
 `;
 
 const SpanDeleteStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 12, "opsz" 30;
   color: rgb(255, 255, 255);
-  font-size: 1.45em;
+  font-size: 1.43em;
   font-weight: 500;
-`;
-
-const DivSetaStyled = styled(DivCartStyled)`
-  width: fit-content;
-  margin-left: -4px;
-`;
-
-const DivCartSetaStyled = styled.div`
-  width: max-content;
-  height: 100%;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  gap: 0px;
-`;
-
-const SpanCartSetaStyled = styled.span`
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.65em;
-  font-weight: 300;
-  font-variation-settings: "FILL" 1;
 `;
 
 //Divs dos ps
@@ -166,7 +144,7 @@ export default function Footer({ setApplyBlur }) {
             }
           }}
         >
-          <DivCancelECart>
+          <DivDeleteAndCart>
             <DivDeleteStyled
               onPointerDown={(e) => {
                 e.stopPropagation(e);
@@ -181,19 +159,12 @@ export default function Footer({ setApplyBlur }) {
               </SpanDeleteStyled>
             </DivDeleteStyled>
 
-            <DivCartSetaStyled>
-              <DivCartStyled>
-                <SpanCartSetaStyled className="material-symbols-outlined">
-                  shopping_cart
-                </SpanCartSetaStyled>
-              </DivCartStyled>
-              <DivSetaStyled>
-                <SpanCartSetaStyled className="material-symbols-outlined">
-                  chevron_right
-                </SpanCartSetaStyled>
-              </DivSetaStyled>
-            </DivCartSetaStyled>
-          </DivCancelECart>
+            <DivCartStyled>
+              <SpanCartStyled className="material-symbols-outlined">
+                shopping_cart
+              </SpanCartStyled>
+            </DivCartStyled>
+          </DivDeleteAndCart>
 
           <DivPStyled>
             <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>

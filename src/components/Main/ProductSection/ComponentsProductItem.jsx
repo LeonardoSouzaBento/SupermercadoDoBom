@@ -355,7 +355,7 @@ export const PMenosStyled = styled(PMaisStyled)`
 
 export const PQuantStyled = styled.p`
   font-size: 1.3em;
-  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-weight: 500;
   padding-bottom: 2px;
   color: white;

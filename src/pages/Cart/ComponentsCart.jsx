@@ -97,10 +97,10 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 5.5px;
-  right: 5.5px;
+  top: 5.1px;
+  right: 5.1px;
   border-radius: 4px 7px 4px 4px;
-  background-color: hsl(207, 33%, 91%);
+  background-color: rgba(255, 255, 255, 0.41);
   color: #383d6a;
   cursor: pointer;
 `;
@@ -159,7 +159,7 @@ export const DivSpanStyled2 = styled(DivSpanStyled)`
 export const PConfirmCancelStyled = styled.p`
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   color: white;
   padding-right: 8px;
 
@@ -228,7 +228,7 @@ export const PHeadStyled = styled.p`
   width: 100%;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   padding-bottom: 2px;
   color: #292e4e;
 
@@ -330,6 +330,7 @@ export const DivContinueStyled = styled.div`
   height: auto;
   width: 100%;
   padding: 18px 12px;
+  padding-bottom: 20px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -357,8 +358,6 @@ export const DivContinueStyled = styled.div`
   @media screen and (min-width: 769px) {
     display: block;
     margin: 0;
-    padding-top: 24px;
-    padding-bottom: 28px;
   }
 `;
 
@@ -487,11 +486,11 @@ export const PContinueStyled = styled.p`
 //botão adicionar
 export const DivAddStyled = styled.div`
   width: 100%;
-  max-width: 392px;
   margin: auto;
-  height: 42px;
+  height: 40px;
   margin-top: 20px;
-  padding-bottom: 2px;
+  padding-bottom: 1.5px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -501,6 +500,10 @@ export const DivAddStyled = styled.div`
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
+
+  /* box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.3),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.06),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.06); */
   cursor: pointer;
 
   &:hover {
@@ -526,23 +529,15 @@ export const DivAddStyled = styled.div`
 
 export const PAddStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
+  color: #292e4e;
   @media screen and (max-width: 385px) {
     font-size: 1.15em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.16em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
     font-size: 1.18em;
   }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.19em;
-  }
-  @media screen and (min-width: 1201px) {
+  @media screen and (min-width: 577px) {
     font-size: 1.2em;
   }
 `;
