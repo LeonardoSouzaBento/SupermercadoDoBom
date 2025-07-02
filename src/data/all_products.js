@@ -331,5 +331,4 @@ export const all_products = [
 
 all_products.forEach((product, index) => {
   product.id = index + 1;
-  product.quant = 0;
 });

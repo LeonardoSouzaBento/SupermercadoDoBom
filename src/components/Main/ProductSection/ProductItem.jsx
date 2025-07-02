@@ -41,7 +41,6 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
       const duracao = Date.now() - toqueInicio;
       if (duracao < 100) {
         setQuantity(1);
-        product.quant = 1;
         handleQuantityChange(product, true);
       }
       toqueInicio = null;
@@ -65,7 +64,6 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
   const handleClick = (e) => {
     if (e.type === "click") {
       setQuantity(1);
-      product.quant = 1;
       handleQuantityChange(product, true);
     }
   };
@@ -162,8 +160,8 @@ const DescOferta = ({ product }) => {
 };
 
 function ProductItem({ product, handleQuantityChange, variant }) {
-  const { cartProducts, totalAddedValue } = useContext(CartContext);
-  const [quantity, setQuantity] = useState(product.quant);
+  const { totalAddedValue, cartProducts } = useContext(CartContext);
+  const [quantity, setQuantity] = useState(0);
   const { seeFeedback } = useContext(ViewContext);
 
   useEffect(() => {

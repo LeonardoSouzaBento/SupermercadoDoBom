@@ -39,7 +39,7 @@ export function CartProvider({ children }) {
           updatedCart[existingItemIndex].quant += 1;
         } else {
           // Adiciona o produto
-          updatedCart.push(product);
+          updatedCart.push({ ...product, quant: 1 });
         }
       } else {
         if (existingItemIndex !== -1) {

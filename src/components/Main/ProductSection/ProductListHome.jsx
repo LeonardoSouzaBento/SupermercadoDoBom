@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styled, { css } from "styled-components";
 import ProductItem from "./ProductItem";
 import { CartContext } from "../../CartContext";
@@ -74,7 +74,7 @@ const PNoneStyled = styled.p`
 `;
 
 export const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {
-  const { allProductsInCat, handleQuantityChange } = useContext(CartContext);
+  const { allProductsInCat, handleQuantityChange, cartProducts } = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
 
@@ -82,6 +82,10 @@ export const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {
   const firstHalf = products.slice(0, middleIndex);
   const secondHalf = products.slice(middleIndex);
 
+  useEffect(() => {
+    console.log(cartProducts);
+  }, [])
+  
   return (
     <DivStyled ref={ref}>
       <DivHalfList>

@@ -493,12 +493,6 @@ const allProducts2 = [
   productsCatId9,
 ];
 
-allProducts2.forEach((products) => {
-  products.forEach((product) => {
-    product.quant = 0;
-  });
-});
-
 //corrigir os ids
 let currentId = 1;
 
