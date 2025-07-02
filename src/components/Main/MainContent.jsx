@@ -54,8 +54,10 @@ function MainContent() {
       resizeDowntime.current = setTimeout(() => {
         let widthOfWindow = window.innerWidth;
 
-        setWasResize((prev) => prev + 1);
-        windowWidthInitialRef.current = widthOfWindow;
+        if (widthOfWindow !== windowWidthInitialRef.current) {
+          setWasResize((prev) => prev + 1);
+          windowWidthInitialRef.current = widthOfWindow;
+        }
       }, 300);
     }
 
@@ -113,8 +115,8 @@ function MainContent() {
       >
         <Header viewOptions={viewOptions} setViewOptions={setViewOptions} />
         <Main>
-          <AnnouncementSection/>
-          <CategoriesSection wasResize={wasResize}/>
+          <AnnouncementSection />
+          <CategoriesSection wasResize={wasResize} />
           <PromoSection categoryKey={currentCategory} wasResize={wasResize} />
         </Main>
       </div>

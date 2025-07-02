@@ -51,7 +51,7 @@ const Cart = () => {
 
   //estados para botão ver todos
   const [viewButtonSeeAll, setViewButtonsetSeeAll] = useState(true);
-  const windowWidthRef = useRef(0);
+  const currentWindowWidthRef = useRef(0);
   const [newHeight, setNewHeight] = useState(0);
   const [applyNewHeight, setApplyNewHeight] = useState(true);
   const [wasClicked, setwasClicked] = useState(false);
@@ -91,7 +91,7 @@ const Cart = () => {
       setOpacityState(1);
     }, 300);
     initialTotalValue.current = totalAddedValue;
-    windowWidthRef.current = window.innerWidth;
+    currentWindowWidthRef.current = window.innerWidth;
     // Espera a próxima pintura do navegador (após o layout completo)
     requestAnimationFrame(() => {
       window.scrollTo(0, 0);
@@ -107,7 +107,8 @@ const Cart = () => {
       resizeDowntime.current = setTimeout(() => {
         let widthOfWindow = window.innerWidth;
 
-        if (widthOfWindow !== windowWidthRef.current) {
+        if (widthOfWindow !== currentWindowWidthRef.current) {
+          currentWindowWidthRef.current = widthOfWindow;
           checkHiddenProducts();
           const div = CartSectionRef.current;
           if (widthOfWindow >= 769) {
