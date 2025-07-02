@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import Header from "../Header/Header";
 import AnnouncementSection from "./AnnoucementSection/AnnouncementSection";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
-import PromoSection from "./PromoSection";
+import PromoSection from "./ProductSection/PromoSection";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import styled from "styled-components";
@@ -22,6 +22,9 @@ function MainContent() {
   const { currentCategory } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
   const [applyBlur, setApplyBlur] = useState(false);
+  const resizeDowntime = useRef(null);
+  const windowWidthInitialRef = useRef(0);
+  const [wasResize, setWasResize] = useState(0);
 
   const divRef = useRef(null);
 
@@ -29,7 +32,7 @@ function MainContent() {
     setTimeout(() => {
       setOpacityState(1);
     }, 300);
-
+    //remover foco do input no mobile
     const handleTouch = (e) => {
       const active = document.activeElement;
       if (
@@ -41,10 +44,30 @@ function MainContent() {
         active.blur(); // tira o foco do input
       }
     };
+
+    //resize para avisar mudanças de largura
+    windowWidthInitialRef.current = window.innerWidth;
+    function handleResize() {
+      if (resizeDowntime.current) {
+        clearTimeout(resizeDowntime.current);
+      }
+      resizeDowntime.current = setTimeout(() => {
+        let widthOfWindow = window.innerWidth;
+
+        setWasResize((prev) => prev + 1);
+        windowWidthInitialRef.current = widthOfWindow;
+      }, 300);
+    }
+
     document.addEventListener("touchstart", handleTouch);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       document.removeEventListener("touchstart", handleTouch);
+      window.removeEventListener("resize", handleResize);
+      if (resizeDowntime.current) {
+        clearTimeout(resizeDowntime.current);
+      }
     };
   }, []);
 
@@ -90,9 +113,9 @@ function MainContent() {
       >
         <Header viewOptions={viewOptions} setViewOptions={setViewOptions} />
         <Main>
-          <AnnouncementSection />
-          <CategoriesSection />
-          <PromoSection categoryKey={currentCategory} />
+          <AnnouncementSection/>
+          <CategoriesSection wasResize={wasResize}/>
+          <PromoSection categoryKey={currentCategory} wasResize={wasResize} />
         </Main>
       </div>
       <Footer setOpacityState={setOpacityState} setApplyBlur={setApplyBlur} />

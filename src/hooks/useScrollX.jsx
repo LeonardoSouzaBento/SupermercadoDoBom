@@ -5,13 +5,13 @@ export function useScrollX() {
   const {
     advertisementsRef,
     categoriesRef,
-    promotionsRef,
+    productListHomeRef,
     limitAdvertisements,
     limitCategories,
     limitProductList
   } = useContext(CartContext);
 
-  const refs = [advertisementsRef, categoriesRef, promotionsRef];
+  const refs = [advertisementsRef, categoriesRef, productListHomeRef];
 
   const variablesRef = useRef(
     refs.map(() => ({

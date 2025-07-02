@@ -1,8 +1,31 @@
 import React from "react";
-import { useContext, useEffect } from "react";
+import { useRef, useContext, useEffect, useCallback } from 'react';
 import styled, { css } from "styled-components";
+import { CartContext } from '../../CartContext';
 import ProductItem from "./ProductItem";
-import { CartContext } from "../../CartContext";
+import {useScrollX} from '../../../hooks/useScrollX'
+
+const ContainerStyled = styled.div`
+  overflow-x: hidden;
+  padding-bottom: 42px;
+  position: relative;
+  z-index: 2;
+  @media screen and (max-width: 375px){
+    width: calc(100% - 12px);
+    margin-left: 12px;
+  }
+  @media screen and (min-width: 385px) and (max-width: 993px){
+    padding-bottom: 70px;
+  }
+  @media screen and (min-width: 375px) and (max-width: 1200px){
+    width: calc(100% - 20px);
+    margin-left: 20px;
+  }
+  @media screen and (min-width: 1201px){
+    width: calc(100% - 52px);
+    margin: auto;
+  }
+`;
 
 const DivStyled = styled.div`
   width: auto;
@@ -73,8 +96,8 @@ const PNoneStyled = styled.p`
   font-size: 1.04em;
 `;
 
-export const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {
-  const { allProductsInCat, handleQuantityChange, cartProducts } = useContext(CartContext);
+const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {
+  const { allProductsInCat, handleQuantityChange } = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
 
@@ -82,10 +105,6 @@ export const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {
   const firstHalf = products.slice(0, middleIndex);
   const secondHalf = products.slice(middleIndex);
 
-  useEffect(() => {
-    console.log(cartProducts);
-  }, [])
-  
   return (
     <DivStyled ref={ref}>
       <DivHalfList>
@@ -122,3 +141,49 @@ export const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {
     </DivStyled>
   );
 });
+
+
+function PromoSection({categoryKey, wasResize}) {
+  
+  const {setLimitProductList, currentCategory, allProductsInCat, productListHomeRef} = useContext(CartContext);
+  const paiAllProductsRef=useRef(null);
+  useScrollX();
+
+  const calcLimit = useCallback(() => {
+    if (!productListHomeRef.current || !paiAllProductsRef.current) {
+      return;
+    }
+    const firstItem = productListHomeRef.current.querySelector(':first-child');
+    if (!firstItem) {
+      return;
+    }
+    const widthProductItem = firstItem.offsetWidth;
+    const quantProdsInLine = Math.ceil(allProductsInCat[currentCategory]?.length / 2) || 0;
+    const gap = parseFloat(getComputedStyle(productListHomeRef.current).gap) || 0;
+    const widthProdsLine = quantProdsInLine * widthProductItem + (quantProdsInLine > 0 ? (quantProdsInLine - 1) * gap : 0);
+    const widthPaiAll = paiAllProductsRef.current.offsetWidth;
+    const marginleft = parseFloat(getComputedStyle(paiAllProductsRef.current).marginLeft);
+    const calculatedLimit = widthPaiAll - widthProdsLine - marginleft;
+    const calculatedLimit2 = calculatedLimit + marginleft;
+    window.innerWidth<1201?setLimitProductList(calculatedLimit): setLimitProductList(calculatedLimit2);
+  }, [currentCategory, allProductsInCat]);
+
+  useEffect(() => {
+    calcLimit();
+  }, []);
+
+   useEffect(() => {
+    calcLimit();
+  }, [wasResize]);
+  
+  return (
+    <ContainerStyled ref={paiAllProductsRef}>
+      <ProductListHome
+      categoryKey={categoryKey}  
+      ref={productListHomeRef}
+      />
+    </ContainerStyled>
+  );
+}
+
+export default PromoSection;

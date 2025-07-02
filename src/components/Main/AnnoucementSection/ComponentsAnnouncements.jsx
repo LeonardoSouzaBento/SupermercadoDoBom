@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Div = styled.div`
+export const ContainerStyled = styled.div`
   width: calc(100% - 20px);
   position: relative;
   overflow-x: hidden;
@@ -21,7 +21,7 @@ export const Div = styled.div`
   }
 `;
 
-export const P = styled.p`
+export const PStyled = styled.p`
   width: 100%;
   text-align: center;
   margin-bottom: 12px;
@@ -50,7 +50,7 @@ export const P = styled.p`
   }
 `;
 
-export const Advertisements = styled.div`
+export const DivStyled = styled.div`
   width: 100%;
   margin: auto;
   will-change: transform;
@@ -61,7 +61,6 @@ export const Advertisements = styled.div`
   overflow-x: scroll;
   box-sizing: border-box;
   padding: 12px 20px;
-  padding-left: 15px;
   padding-bottom: 24px;
   margin-bottom: 12px;
 
@@ -82,7 +81,7 @@ export const Advertisements = styled.div`
   }
 `;
 
-export const Fundo = styled.div`
+export const DivFundoImgStyled = styled.div`
   position: relative;
   height: 170px;
   min-width: 265px;
@@ -115,7 +114,7 @@ export const Fundo = styled.div`
   }
 `;
 
-export const Img = styled.img`
+export const ImgStyled = styled.img`
   height: 100%;
   width: auto;
   display: block;
@@ -127,7 +126,7 @@ export const Img = styled.img`
   user-select: none;
 `;
 
-export const Pagination = styled.div`
+export const DivPaginationStyled = styled.div`
   height: max-content;
   width: 50%;
   margin: auto;
@@ -137,7 +136,7 @@ export const Pagination = styled.div`
   padding: 5px 0px;
 `;
 
-export const Span = styled.span.attrs(() => ({
+export const SpanStyled = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
   background-color: rgb(108, 108, 108);

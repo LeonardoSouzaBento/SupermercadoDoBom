@@ -52,7 +52,7 @@ const CategoryItem = React.forwardRef(
   }
 );
 
-function CategoriesSection() {
+function CategoriesSection({ wasResize }) {
   const [selectedCategoryId, setSelectedCategoryId] = useState(0);
   const { setLimitCategories, categoriesRef } = useContext(CartContext);
   useScrollX();
@@ -74,7 +74,6 @@ function CategoriesSection() {
 
   const DivRef = useRef(null);
   const CategoryItemRef = useRef(null);
-  const resizeTimeoutId = useRef(null);
 
   const updateLimitCategories = useCallback(() => {
     if (CategoryItemRef.current && DivRef.current && categoriesRef.current) {
@@ -95,27 +94,13 @@ function CategoriesSection() {
     }
   }, []);
 
-  const handleResize = useCallback(() => {
-    if (resizeTimeoutId.current) {
-      clearTimeout(resizeTimeoutId.current);
-    }
-    resizeTimeoutId.current = setTimeout(() => {
-      updateLimitCategories();
-      resizeTimeoutId.current = null;
-    }, 300);
-  }, []);
+  useEffect(() => {
+    updateLimitCategories();
+  }, [category.length, setLimitCategories]);
 
   useEffect(() => {
     updateLimitCategories();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      if (resizeTimeoutId.current) {
-        clearTimeout(resizeTimeoutId.current);
-      }
-    };
-  }, [category.length, setLimitCategories]);
+  }, [wasResize]);
 
   return (
     <DivStyled ref={DivRef}>

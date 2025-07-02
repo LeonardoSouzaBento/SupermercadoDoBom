@@ -12,7 +12,7 @@ export function CartProvider({ children }) {
   
   const advertisementsRef = useRef();
   const categoriesRef = useRef();
-  const promotionsRef = useRef();
+  const productListHomeRef = useRef();
 
   const [cartProducts, setCartProducts] = useState(() => {
     // Lê do localStorage ao iniciar
@@ -71,7 +71,7 @@ export function CartProvider({ children }) {
   const totalValueFormatted = totalAddedValue.toFixed(2).replace('.', ',');
 
   return (
-    <CartContext.Provider value={{advertisementsRef, categoriesRef, promotionsRef, setLimitProductList, 
+    <CartContext.Provider value={{advertisementsRef, categoriesRef, productListHomeRef, setLimitProductList, 
     limitProductList, setLimitCategories, limitCategories, setLimitAdvertisements, limitAdvertisements, 
     handleQuantityChange, totalQuantity, currentCategory, setCurrentCategory,
     totalAddedValue,totalValueFormatted, allProductsInCat, setCartProducts, cartProducts,
