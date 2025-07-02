@@ -54,16 +54,18 @@ const Cart = () => {
   const windowWidthRef = useRef(0);
   const [newHeight, setNewHeight] = useState(0);
   const [applyNewHeight, setApplyNewHeight] = useState(true);
-
+  const [wasClicked, setwasClicked] = useState(false);
   const resizeDowntime = useRef(null);
   const ProductListRef = useRef(null);
   const CartSectionRef = useRef(null);
+  const initialTotalValue = useRef(0);
 
   // funções para o botão ver todos
   function handleClickSeeAll() {
     if (applyNewHeight) {
       setApplyNewHeight(false);
       setViewButtonsetSeeAll(false);
+      setwasClicked(true);
       CartSectionRef.current.style.height = `${newHeight}px`;
     }
   }
@@ -76,6 +78,7 @@ const Cart = () => {
       setViewButtonsetSeeAll(true);
       setNewHeight(productListHeight + 120);
       setApplyNewHeight(true);
+      setwasClicked(false);
     } else {
       setViewButtonsetSeeAll(false);
       setApplyNewHeight(false);
@@ -87,6 +90,7 @@ const Cart = () => {
     setTimeout(() => {
       setOpacityState(1);
     }, 300);
+    initialTotalValue.current = totalAddedValue;
     windowWidthRef.current = window.innerWidth;
     // Espera a próxima pintura do navegador (após o layout completo)
     requestAnimationFrame(() => {
@@ -147,7 +151,12 @@ const Cart = () => {
         navigate("/");
       }, 1100);
     }
-    if (totalAddedValue !== 0) {
+    const shouldCheckHiddenProducts =
+      totalAddedValue !== 0 &&
+      totalAddedValue < initialTotalValue.current &&
+      wasClicked === false;
+
+    if (shouldCheckHiddenProducts) {
       checkHiddenProducts();
     }
   }, [totalAddedValue]);
@@ -190,7 +199,9 @@ const Cart = () => {
       >
         <div style={{ position: "relative" }}>
           <CartSectionStyed ref={CartSectionRef}>
-            <DivToCoverStyled style={{ display: seeFeedback ? "block" : "none" }} />
+            <DivToCoverStyled
+              style={{ display: seeFeedback ? "block" : "none" }}
+            />
             <DivHeadStyled>
               <DivSpanStyled
                 onClick={() => {

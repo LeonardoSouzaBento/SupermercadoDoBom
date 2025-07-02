@@ -16,8 +16,10 @@ export const WrapperStyled = styled.div`
   max-width: 470px;
   padding: 35px 36px;
   border-radius: 8px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.37);
+  background-color: white;
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
   position: relative;
   z-index: 1;
 
@@ -57,14 +59,12 @@ export const DivNameSpanStyled = styled.div`
   gap: 4px;
   border-radius: 5px;
   flex: 1 0 auto;
-  background-color: white;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.34);
+  background-color: #dbfff4;
 
   ${(props) =>
     props.$buttonSelected &&
     css`
-      background-color: rgb(63, 4, 4);
-      border: 1px solid #3f0404;
+      background-color: #342654;
       color: white;
     `}
 
@@ -83,7 +83,7 @@ export const DivNameSpanStyled = styled.div`
 
 export const POptionStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   padding-right: 19px;
   cursor: pointer;
   user-select: none;
@@ -119,7 +119,7 @@ export const DivContentStyled = styled.div``;
 export const PStyled = styled.p`
   width: 100%;
   max-width: 400px;
-  font-family: "Roboto";
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   text-align: justify;
   margin-bottom: 10px;
@@ -128,23 +128,23 @@ export const PStyled = styled.p`
     line-height: 1.4em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.13em;
+    font-size: 1.11em;
     line-height: 1.4em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.15em;
+    font-size: 1.13em;
     line-height: 1.405em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.155em;
-    line-height: 1.41em;
+    font-size: 1.135em;
+    line-height: 1.39em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.158em;
+    font-size: 1.138em;
     line-height: 1.415em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.16em;
+    font-size: 1.14em;
     line-height: 1.42em;
   }
   ${(props) => props.$mb && "margin-bottom: 13px;"};
@@ -155,8 +155,7 @@ export const PButtonStyled = styled(PStyled)`
   min-width: 100%;
   height: max-content;
   padding: 6px 14px;
-  background-color: rgb(226, 226, 226);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  background-color: #dbfff4;
   margin-bottom: 0px;
   border-radius: 5px;
   letter-spacing: 0.7px;
@@ -168,60 +167,59 @@ export const PButtonStyled = styled(PStyled)`
   ${(props) =>
     props.$buttonSelected &&
     css`
-      background-color: rgb(35, 35, 35);
+      background-color: #342654;
       color: white;
       box-shadow: none;
-      border: 1px solid rgb(35, 35, 35);
     `}
 `;
 
 export const H1Styled = styled.h1`
-  font-family: "Roboto", sans-serif;
-  font-weight: 200;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
   margin-bottom: 20px;
 
   @media screen and (max-width: 374px) {
-    font-size: 1.75em;
+    font-size: 1.5em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.8em;
+    font-size: 1.53em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.85em;
+    font-size: 1.55em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.9em;
+    font-size: 1.57em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 2em;
+    font-size: 1.585em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 2.05em;
+    font-size: 1.6em;
   }
 `;
 
 export const H2Styled = styled.h2`
   font-size: 1.1em;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
   margin-bottom: 15px;
 
   @media screen and (max-width: 374px) {
-    font-size: 1.25em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.3em;
   }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.32em;
+  }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.35em;
+    font-size: 1.33em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.4em;
+    font-size: 1.34em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.45em;
+    font-size: 1.345em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.5em;
+    font-size: 1.35em;
   }
 `;

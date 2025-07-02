@@ -69,9 +69,8 @@ const PQuestionStyled = styled.p`
   padding-bottom: 14px;
   margin-top: 10px;
   border-radius: 5px;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 1.15em;
   text-align: center;
   cursor: default;
   color: white;
@@ -159,18 +158,18 @@ const PFeedBackStyled = styled(PQuestionStyled)`
 
 export default function ConfirmDialog({ setViewConfirm, canHandleClick, setApplyBlur }) {
   const { setCartProducts } = useContext(CartContext);
-  const { viewFeedback, setViewFeedback } = useContext(ViewContext);
+  const { seeFeedback, setSeeFeedback } = useContext(ViewContext);
   const [heightDiv, setHeightDiv] = useState("163px");
 
   const handleConfirmCancel = (action) => {
     if (action === 1 && canHandleClick) {
       setHeightDiv("105px");
-      setViewFeedback(true);
+      setSeeFeedback(true);
       setCartProducts([]);
 
       setTimeout(() => {
         setViewConfirm(false);
-        setViewFeedback(false);
+        setSeeFeedback(false);
         setApplyBlur(false);
         setHeightDiv("163px");
       }, 2100);
@@ -182,22 +181,22 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick, setApply
 
   return (
     <ContainerStyled>
-      <DivStyled $feedback={viewFeedback} $heightDiv={heightDiv}>
+      <DivStyled $feedback={seeFeedback} $heightDiv={heightDiv}>
         <DivSpanStyled>
           <SpanStyled
             className="material-symbols-outlined"
-            $feedback={viewFeedback}
+            $feedback={seeFeedback}
           >
-            {viewFeedback ? "check" : "exclamation"}
+            {seeFeedback ? "check" : "exclamation"}
           </SpanStyled>
 
-          {viewFeedback == false && (
+          {seeFeedback == false && (
             <PQuestionStyled>Cancelar a compra?</PQuestionStyled>
           )}
         </DivSpanStyled>
 
         {/*Botoes de sim ou não*/}
-        {viewFeedback === false && (
+        {seeFeedback === false && (
           <DivSimNaoStyled>
             <PSimStyled
               onPointerDown={() => {
@@ -217,7 +216,7 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick, setApply
           </DivSimNaoStyled>
         )}
 
-        {viewFeedback && (
+        {seeFeedback && (
           <DivFeedBackStyled>
             <PFeedBackStyled>Cancelada!</PFeedBackStyled>
           </DivFeedBackStyled>

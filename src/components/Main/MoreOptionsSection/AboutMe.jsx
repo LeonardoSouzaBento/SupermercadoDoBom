@@ -29,12 +29,12 @@ const PLineStyled = styled.p`
 
 const DivReferentMidea = styled.div`
   width: 100%;
-  border-radius: 7px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 20px;
   overflow: hidden;
   position: relative;
 `;
@@ -42,29 +42,10 @@ const DivReferentMidea = styled.div`
 const DivImgStyled = styled.div`
   width: 100%;
   height: 310px;
-  border-radius: 5px;
-
   position: relative;
+  background-color: #dbfff4;
+  border-radius: 6px;
   ${(props) => props.$painting && "max-height: 290px;"};
-
-  @media screen and (min-width: 400px) {
-    &::before {
-      content: "";
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 8px;
-      background-color: red;
-      background: url(${(props) => `"${props.$src}"`});
-      background-size: cover;
-      filter: blur(3.5px) brightness(0.95);
-      ${(props) =>
-        props.$hue && "filter: blur(3.5px) grayscale(0.2) contrast(1.1);"};
-      z-index: -1;
-    }
-  }
 `;
 
 const ImgStyled = styled.img`
@@ -75,7 +56,6 @@ const ImgStyled = styled.img`
   margin: auto;
   object-fit: cover;
   object-position: center;
-  border-radius: 7px;
   ${(props) => props.$hue && "filter: grayscale(0.2) contrast(1.1);"}
 
   @media screen and (max-width: 374px) {
@@ -113,7 +93,7 @@ const AboutMe = () => {
         procurando um trabalho como desenvolvedor front-end junior (apenas
         trabalho remoto).
       </PStyled>
-      <PLineStyled>____________________________________</PLineStyled>
+
       <br />
       <H2Styled>Contato</H2Styled>
 
@@ -122,7 +102,7 @@ const AboutMe = () => {
         Cidade: Frutal (MG) <br />
         Email: bentosouzaleonardo@gmail.com <br />
       </PStyled>
-      <PLineStyled>____________________________________</PLineStyled>
+
       <br />
 
       <H2Styled>Conhecimentos futuros</H2Styled>
@@ -136,9 +116,6 @@ const AboutMe = () => {
         React • StyledComponents • HTML • CSS • Javascript
         <br />
       </PStyled>
-      <PLineStyled $final={true}>
-        _____________________________________
-      </PLineStyled>
       <br />
       <H2Styled $cv={true}>Historico proffisional (relacionado)</H2Styled>
 
@@ -159,12 +136,12 @@ const AboutMe = () => {
       <DivReferentMidea>
         {buttonSelected == 0 && (
           <>
-            <DivImgStyled $painting={true} $src={"sobre_mim/pintando1.gif"}>
-              <ImgStyled src="sobre_mim/pintando1.gif" $hue={true} />
-            </DivImgStyled>
-
             <DivImgStyled $painting={true} $src={"sobre_mim/pintando2.gif"}>
               <ImgStyled src="sobre_mim/pintando2.gif" $hue={true} />
+            </DivImgStyled>
+
+            <DivImgStyled $painting={true} $src={"sobre_mim/pintando1.gif"}>
+              <ImgStyled src="sobre_mim/pintando1.gif" $hue={true} />
             </DivImgStyled>
           </>
         )}

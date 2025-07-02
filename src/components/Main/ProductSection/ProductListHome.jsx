@@ -57,18 +57,20 @@ const NoProcutsStyed = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 4px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.32);
   border-radius: 8px;
+  background-color: white;
 `;
 const PNoneStyled = styled.p`
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-weight: 600;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-weight: 500;
   width: 100%;
   text-align: center;
   padding: 16px 0px;
+  color: #292E4E;
+  font-size: 1.04em;
 `;
 
 export const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {

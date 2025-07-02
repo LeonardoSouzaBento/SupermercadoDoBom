@@ -12,7 +12,7 @@ export const MainStyled = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    padding-top: 10px;
+    padding-top: 12px;
   }
   @media screen and (min-width: 769px) {
     display: grid;
@@ -43,9 +43,6 @@ export const CartSectionStyed = styled.div`
   position: relative;
   overflow: hidden;
   transition: height 0.15s ease;
-  /* box-shadow: 0px 6px 6px -6px rgba(41, 46, 117, 0.89),
-    6px 0px 6px -6px rgba(41, 46, 117, 0.44),
-    -6px 0px 6px -6px rgba(41, 46, 117, 0.44); */
 
   @media screen and (max-width: 385px) {
     width: calc(100% - 16px);
@@ -57,7 +54,7 @@ export const CartSectionStyed = styled.div`
     max-width: 575px;
   }
   @media screen and (max-width: 768px) {
-    margin-bottom: 24px;
+    margin-bottom: 19px;
   }
 
   @media screen and (max-width: 992px) {
@@ -340,7 +337,7 @@ export const DivContinueStyled = styled.div`
   align-items: flex-end;
   box-sizing: border-box;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
@@ -362,7 +359,6 @@ export const DivContinueStyled = styled.div`
     margin: 0;
     padding-top: 24px;
     padding-bottom: 28px;
-    border-radius: 7px;
   }
 `;
 
@@ -494,13 +490,13 @@ export const DivAddStyled = styled.div`
   max-width: 392px;
   margin: auto;
   height: 42px;
-  margin-top: 26px;
+  margin-top: 20px;
   padding-bottom: 2px;
   display: flex;
   justify-content: center;
   gap: 12px;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 7px;
   background-color: white;
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
