@@ -7,7 +7,7 @@ import {
   MainStyled,
   CartSectionStyed,
   DivToCoverStyled,
-  DivSpanStyled,
+  DivSpanDeleteStyled,
   SpanStyled,
   DivCancelDialog,
   PConfirmCancelStyled,
@@ -204,7 +204,9 @@ const Cart = () => {
               style={{ display: seeFeedback ? "block" : "none" }}
             />
             <DivHeadStyled>
-              <DivSpanStyled
+              <PHeadStyled>Sua Compra</PHeadStyled>
+              <DivSpanDeleteStyled
+                $delete={true}
                 onClick={() => {
                   setSeeCancelDialog(true);
                   setTimeout(() => {
@@ -212,11 +214,10 @@ const Cart = () => {
                   }, 50);
                 }}
               >
-                <SpanStyled className="material-symbols-outlined">
+                <SpanStyled className="material-symbols-outlined" $delete={true}>
                   delete
                 </SpanStyled>
-              </DivSpanStyled>
-
+              </DivSpanDeleteStyled>
               {seeCancelDialog && (
                 <DivCancelDialog $opacity={opacityCancel}>
                   <PConfirmCancelStyled>
@@ -227,7 +228,7 @@ const Cart = () => {
                     onClick={handleConfirmCancel}
                     $uniqueBorderRadius={true}
                   >
-                    <SpanStyled className="material-symbols-outlined">
+                    <SpanStyled className="material-symbols-outlined" style={{color: "black"}}>
                       check
                     </SpanStyled>
                   </DivSpanStyled2>
@@ -240,13 +241,12 @@ const Cart = () => {
                       }, 360);
                     }}
                   >
-                    <SpanStyled className="material-symbols-outlined">
+                    <SpanStyled className="material-symbols-outlined" style={{color: "black"}}>
                       close
                     </SpanStyled>
                   </DivSpanStyled2>
                 </DivCancelDialog>
               )}
-              <PHeadStyled>Sua Compra</PHeadStyled>
             </DivHeadStyled>
 
             <ContainerProductList>
@@ -258,8 +258,8 @@ const Cart = () => {
             </ContainerProductList>
             {viewButtonSeeAll && (
               <DivSeeAllStyled onClick={handleClickSeeAll}>
-                <PSeeAllStyled>Ver Todos</PSeeAllStyled>
-                <SpanSeeAllStyled className="material-symbols-rounded">
+                <PSeeAllStyled>Ver Tudo</PSeeAllStyled>
+                <SpanSeeAllStyled className="material-symbols-outlined">
                   keyboard_arrow_down
                 </SpanSeeAllStyled>
               </DivSeeAllStyled>

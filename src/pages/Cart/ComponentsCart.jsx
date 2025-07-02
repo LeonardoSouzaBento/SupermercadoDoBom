@@ -89,53 +89,64 @@ export const DivToCoverStyled = styled.div`
   background-color: #ecf1f6;
 `;
 
-export const DivSpanStyled = styled.div`
+export const DivSpanDeleteStyled = styled.div`
   width: 40px;
   height: 40px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 5.1px;
-  right: 5.1px;
   border-radius: 4px 7px 4px 4px;
-  background-color: rgba(255, 255, 255, 0.41);
-  color: #383d6a;
   cursor: pointer;
+  background-color: rgb(230, 236, 240);
+
+  &:hover{
+    background-color:rgb(230, 236, 240);
+  }
 `;
 
 export const SpanStyled = styled.span`
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 22;
+  color: #383d6a;
+  /* ${(props) => props.$ && "color: #292e4e;"}; */
 
   @media screen and (max-width: 385px) {
     font-size: 1.55em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.59em;
+    font-size: 1.58em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.63em;
+    font-size: 1.59em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.67em;
+    font-size: 1.60em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.71em;
+    font-size: 1.61em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.75em;
+    font-size: 1.62em;
   }
 `;
+
+export const DivSpanStyled2 = styled(DivSpanDeleteStyled)`
+  height: 35px;
+  width: 35px;
+  background-color: white;
+  ${(props) => props.$uniqueBorderRadius && "border-radius: 4px;"};
+`;
+
 
 export const DivCancelDialog = styled.div`
   width: 100%;
   height: 50px;
-  padding-right: 2px;
+  padding-right: 7px;
+  box-sizing: border-box;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -145,41 +156,30 @@ export const DivCancelDialog = styled.div`
   transition: opacity 0.36s ease, background-color 0.36s ease;
 `;
 
-export const DivSpanStyled2 = styled(DivSpanStyled)`
-  height: 35px;
-  width: 35px;
-  position: relative;
-  padding-bottom: 0px;
-  margin-bottom: 12px;
-  background-color: white;
-  ${(props) => props.$uniqueBorderRadius && "border-radius: 4px;"};
-  color: black;
-`;
-
 export const PConfirmCancelStyled = styled.p`
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   color: white;
-  padding-right: 8px;
+  padding-right: 4px;
 
-  @media screen and (max-width: 385px) {
-    font-size: 1.23em;
+   @media screen and (max-width: 385px) {
+    font-size: 1.22em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.285em;
+    font-size: 1.24em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.305em;
+    font-size: 1.26em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.315em;
+    font-size: 1.28em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.335em;
+    font-size: 1.31em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.355em;
+    font-size: 1.33em;
   }
 `;
 
@@ -211,10 +211,11 @@ export const DivHeadStyled = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  padding-right: 7px;
+  box-sizing: border-box;
   margin-bottom: 18px;
   position: relative;
   border-bottom: 1px solid rgba(41, 46, 117, 0.15);
-  color: #212223;
   background-color: #ecf1f6;
   z-index: 2;
   @media screen and (min-width: 769px) {
@@ -228,9 +229,10 @@ export const PHeadStyled = styled.p`
   width: 100%;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   padding-bottom: 2px;
-  color: #292e4e;
+  padding-left: 37px;
+  color: #383d6a;
 
   @media screen and (max-width: 385px) {
     font-size: 1.22em;
@@ -279,7 +281,7 @@ export const DivSeeAllStyled = styled.div`
 `;
 
 export const PSeeAllStyled = styled.p`
-  font-weight: 500;
+  font-weight: 600;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   font-size: 0.93em;
@@ -294,7 +296,7 @@ export const PSeeAllStyled = styled.p`
 `;
 
 export const SpanSeeAllStyled = styled.span`
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.65em;
   padding-top: 2px;
 
@@ -500,10 +502,6 @@ export const DivAddStyled = styled.div`
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
-
-  /* box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.3),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.06),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.06); */
   cursor: pointer;
 
   &:hover {
@@ -530,7 +528,7 @@ export const DivAddStyled = styled.div`
 export const PAddStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 600;
-  color: #292e4e;
+  color: #383d6a;
   @media screen and (max-width: 385px) {
     font-size: 1.15em;
   }

@@ -10,7 +10,7 @@ export const DivBodyStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  background-color: rgba(233, 238, 246, 0.85);
+  background-color: rgba(233, 238, 246, 0.87);
   transition: opacity 0.5s ease;
   opacity: ${(props) => props.$opacity};
 `;
@@ -30,9 +30,10 @@ export const MainDivStyled = styled.div`
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.7),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.14),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.14);
+  transition: transform 0.2s ease;
 
   @media screen and (max-width: 768px) {
-    margin-bottom: 18px;
+    transform: translateY(${(props)=> props.$translate});
   }
   @media screen and (max-width: 374px) {
     width: calc(100% - 16px);
@@ -42,7 +43,6 @@ export const MainDivStyled = styled.div`
   }
   @media screen and (min-width: 769px) {
     padding: 24px;
-    padding-bottom: 32px;
   }
 `;
 
@@ -72,8 +72,8 @@ export const DivSpanCloseStyled = styled.div`
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 1.65em;
-  font-weight: 600;
+  font-size: 1.64em;
+  font-weight: 700;
   color: #db2c32;
 `;
 
@@ -84,8 +84,9 @@ export const H1Styled = styled.h1`
   margin-bottom: 24px;
   user-select: none;
   font-family: "Open Sans", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.34em;
+  color: #383d6a;
 
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.35em;
