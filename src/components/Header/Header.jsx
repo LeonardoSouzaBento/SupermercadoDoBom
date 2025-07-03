@@ -29,7 +29,7 @@ export const HeaderStyled = styled.header `
 `;
 
 
-const Header = ({viewOptions, setViewOptions}) => {
+const Header = ({viewOptions, setViewOptions, setOpacityState}) => {
   return (
     <HeaderStyled>
       <Divlogo></Divlogo>
@@ -38,7 +38,7 @@ const Header = ({viewOptions, setViewOptions}) => {
         setViewOptions={setViewOptions}
         viewOptions={viewOptions}
       />
-      {viewOptions && (<Options/>)}
+      {viewOptions && (<Options setOpacityState={setOpacityState}/>)}
     </HeaderStyled>
   )
 }

@@ -6,7 +6,8 @@ const ContainerStyled = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  margin-top: -12px;
 `;
 
 const ContainerStyled2 = styled.div`
@@ -23,8 +24,8 @@ const InputTextStyled = styled.textarea`
   padding-top: 12px;
   box-sizing: border-box;
   border-radius: 6px;
-  border: none;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(41, 46, 117, 0.4);
+  box-shadow: inset 0px -2px 4px rgba(41, 46, 117, 0.1);
   font-family: "Open Sans", sans-serif;
   overflow-wrap: break-word;
   

@@ -26,7 +26,7 @@ let imageUrls = [
   "https://i.pinimg.com/736x/03/a4/75/03a475aaf5e64c564e7906a14c11a477.jpg", //fanta
 ];
 
-function AnnouncementSection() {
+function AnnouncementSection({wasResize}) {
   const { setLimitAdvertisements, advertisementsRef } = useContext(CartContext);
 
   useScrollX();
@@ -34,11 +34,11 @@ function AnnouncementSection() {
   //Caucular os índices centrais
   const divRef = useRef(null);
   const fundoRefs = useRef([]);
-  const timeoutId = useRef(null);
+  // const timeoutId = useRef(null);
   const [centralIndices, setCentralIndices] = useState([]);
   const windowWidthRef = useRef(null);
 
-  //calcular centro com resize obter o limite/ iniciar a paginação
+  //calcular centro com resize obter o limite / iniciar a paginação
   const recalcularCenter = useCallback(() => {
     //centro e limite
     windowWidthRef.current = window.innerWidth;
@@ -82,30 +82,15 @@ function AnnouncementSection() {
     }
   }, []);
 
-  //evento de resize
-  const handleResize = useCallback(() => {
-    //limpa timeout anteiores pendentes
-    if (timeoutId.current) {
-      clearTimeout(timeoutId.current);
-    }
-    timeoutId.current = setTimeout(() => {
-      recalcularCenter();
-      timeoutId.current = null;
-    }, 300);
-  }, [recalcularCenter]);
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [handleResize]);
-
-  // Cálculo inicial na montagem
   useEffect(() => {
     recalcularCenter();
-  }, [recalcularCenter]);
+    updatePagination();
+  }, []);
+
+  useEffect(() => {
+    recalcularCenter();
+    updatePagination();
+  }, [wasResize]);
 
   //atualizar paginação
   const updatePagination = useCallback(() => {

@@ -32,6 +32,7 @@ export const MainStyled = styled.div`
 export const CartSectionStyed = styled.div`
   width: 100%;
   height: 460px;
+  padding-bottom: 18px;
   margin: auto;
   border-radius: 12px 12px 20px 20px;
   background-color: white;
@@ -69,7 +70,6 @@ export const CartSectionStyed = styled.div`
     margin: auto;
     overflow-y: scroll;
     border-radius: 12px;
-    padding-bottom: 18px;
   }
 
   &::-webkit-scrollbar {

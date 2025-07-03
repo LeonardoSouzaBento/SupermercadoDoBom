@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart/Cart";
 import SearchAction from "./pages/SearchAction";
-import MoreOptionsSection from "./pages/MoreOptionsSection";
+import MoreOptionsSection from "./pages/MoreOptionsSection/MoreOptionsSection";
 
 const AppRoutes = () => {
   return (

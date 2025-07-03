@@ -20,7 +20,7 @@ export const ContainerForFormStyled = styled.div`
   ${(props) =>
     props.$copy &&
     css`
-      padding-top: 18px;
+      padding-top: 20px;
       padding-bottom: 24px;
       position: sticky;
       top: 0px;
@@ -46,16 +46,19 @@ export const FormStyled = styled.form`
   border-radius: 7px;
   overflow: hidden;
   position: relative;
-  box-shadow: -5px 5px 10px -9.2px rgb(41, 46, 117);
+  /* box-shadow: -5px 5px 10px -9.2px rgb(41, 46, 117); */
+  box-shadow: -3px 3px 3px -1.5px rgba(41, 46, 117, 0.17);
+  outline: 1px solid rgba(41, 46, 117, 0.1);
   border: none;
   
   ${(props) =>
     props.$copy &&
     css`
-      width: 95%;
+      width: 91.5%;
       max-width: 684px;
       margin: 0;
       box-shadow: 0px 3px 7px rgba(41, 46, 117, 0.28);
+      outline: 1px solid rgba(41, 46, 117, 0.05);
     `}
 `;
 

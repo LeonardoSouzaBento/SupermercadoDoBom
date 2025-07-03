@@ -42,7 +42,7 @@ export const DivNameSpanStyled = styled.div`
 `;
 
 const ContainerPStyled = styled.div`
-  background-color: #383D6A;
+  background-color: #383d6a;
   display: flex;
   border-radius: 7px;
   margin-right: -10px;
@@ -73,7 +73,7 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 7px;
-  background-color: #383D6A;
+  background-color: #383d6a;
   flex: none;
   cursor: pointer;
   width: 44px;
@@ -98,7 +98,7 @@ const contents = [
   { p: "Sobre o site", icon: "description", navigateTo: "sobre-o-site" },
 ];
 
-const Options = () => {
+const Options = ({ setOpacityState }) => {
   const navigate = useNavigate();
 
   const [viewNameOption, setViewNameOption] = useState(null);
@@ -107,7 +107,10 @@ const Options = () => {
   function openContent(e, index) {
     if (e.pointerType === "mouse") {
       const option = contents[index].navigateTo;
-      navigate(`/secao-mais-opcoes?option=${option}`);
+      setOpacityState(0);
+      setTimeout(() => {
+        navigate(`/secao-mais-opcoes?option=${option}`);
+      }, 200);
     } else if (e.pointerType === "touch") {
       setViewNameOption(index);
       setNumberClicks(
@@ -123,7 +126,10 @@ const Options = () => {
     if (index != -1) {
       const option = contents[index].navigateTo;
       setNumberClicks([0, 0, 0]);
-      navigate(`/secao-mais-opcoes?option=${option}`);
+      setOpacityState(0);
+      setTimeout(() => {
+        navigate(`/secao-mais-opcoes?option=${option}`);
+      }, 200);
     }
   }, [numberClicks]);
 

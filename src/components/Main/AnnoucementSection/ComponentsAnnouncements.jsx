@@ -146,8 +146,8 @@ export const SpanStyled = styled.span.attrs(() => ({
     `
     padding: 1px;
     background-color: rgb(255, 255, 255);
-    outline: 1px solid rgba(41, 46, 117, 0.38);
-    // box-shadow: 0px 2px 6px -1px rgb(41, 46, 117);
+    outline: 1px solid rgba(41, 46, 117, 0.4);
+    box-shadow: 0px 2px 2px -1px rgba(41, 46, 117, 0.59);
   `}
 
   @media screen and (max-width: 374px) {

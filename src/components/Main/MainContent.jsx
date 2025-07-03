@@ -110,12 +110,16 @@ function MainContent() {
         style={{
           filter: noSkipLogin || applyBlur ? "blur(2.5px)" : "blur(0px)",
           opacity: !noSkipLogin ? opacityState : 1,
-          transition: "filter 1s ease, opacity 0.2s ease",
+          transition: "filter 1s ease, opacity 0.3s ease",
         }}
       >
-        <Header viewOptions={viewOptions} setViewOptions={setViewOptions} />
+        <Header
+          viewOptions={viewOptions}
+          setViewOptions={setViewOptions}
+          setOpacityState={setOpacityState}
+        />
         <Main>
-          <AnnouncementSection />
+          <AnnouncementSection wasResize={wasResize} />
           <CategoriesSection wasResize={wasResize} />
           <PromoSection categoryKey={currentCategory} wasResize={wasResize} />
         </Main>

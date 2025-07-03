@@ -30,7 +30,7 @@ import {
   DivAddStyled,
   PAddStyled,
 } from "./ComponentsCart.jsx";
-import RegisterAddress from "../../components/RegisterAddress/RegisterAddress.jsx";
+import RegisterAddress from "./RegisterAddress/RegisterAddress.jsx";
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar
@@ -67,6 +67,9 @@ const Cart = () => {
       setViewButtonsetSeeAll(false);
       setwasClicked(true);
       CartSectionRef.current.style.height = `${newHeight}px`;
+      setTimeout(() => {
+        CartSectionRef.current.style.height = "auto";
+      }, 160);
     }
   }
 
@@ -204,7 +207,7 @@ const Cart = () => {
               style={{ display: seeFeedback ? "block" : "none" }}
             />
             <DivHeadStyled>
-              <PHeadStyled>Sua Compra</PHeadStyled>
+              <PHeadStyled>Sua compra</PHeadStyled>
               <DivSpanDeleteStyled
                 $delete={true}
                 onClick={() => {

@@ -5,9 +5,16 @@ export const BodyStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 14px 0px;
+  padding-bottom: 24px;
 
-  @media screen and (min-width: 577px) {
-    padding-top: 8px;
+  @media screen and (max-width: 375px) {
+    padding: 10px 0px;
+    padding-bottom: 20px;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    padding: 12px 0px;
+    padding-bottom: 22px;
   }
 `;
 
@@ -15,25 +22,26 @@ export const WrapperStyled = styled.div`
   width: calc(100% - 30px);
   max-width: 470px;
   padding: 35px 36px;
-  border-radius: 8px;
+  border-radius: 7px;
   background-color: white;
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
   position: relative;
   z-index: 1;
-
+  
+  @media screen and (max-width: 375px) {
+    width: calc(100% - 20px);
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    width: calc(100% - 24px);
+  }
   @media screen and (max-width: 450px) {
     padding: 30px 31px;
     padding-bottom: 36px;
   }
   @media screen and (max-width: 576px) {
-    width: 100%;
     box-sizing: border-box;
-    border-radius: 0px;
-  }
-  @media screen and (min-width: 577px) {
-    margin-bottom: 24px;
   }
 `;
 
@@ -109,8 +117,8 @@ export const DivSpanStyled = styled.div`
 
 export const SpanStyled = styled.span`
   color: ${(props) => (props.$buttonSelected ? "white" : "#3f0404")};
-  font-size: ${(props) => (props.$buttonSelected ? "1.6em" : "1.5em")};
-  font-weight: 300;
+  font-size: ${(props) => (props.$buttonSelected ? "1.45em" : "1.4em")};
+  font-weight: 400;
   font-variation-settings: "FILL" 1;
 `;
 

@@ -2,25 +2,20 @@ import styled, { css } from "styled-components";
 
 export const DivStyled = styled.div`
   width: calc(100% - 20px);
-  margin-left: 20px;
+  padding-top: 36px;
+  padding-left: 20px;
   overflow-x: hidden;
   position: relative;
   z-index: 2;
-  padding-top: 40px;
-
+  border-top: 1px solid rgba(41, 46, 117, 0.3);
   @media screen and (max-width: 375px) {
     width: calc(100% - 15px);
-    margin-left: 12px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: calc(100% - 20px);
-  }
-  @media screen and (min-width: 577px) and (max-width: 1200px) {
-    width: calc(100% - 20px);
+    padding-left: 12px;
   }
   @media screen and (min-width: 1201px) {
     width: calc(100% - 52px);
     margin: auto;
+    padding-left: 0px;
   }
 `;
 
@@ -28,7 +23,7 @@ export const DivLabelPromosStyled = styled.div`
   width: 90%;
   max-width: 800px;
   margin: auto;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
@@ -186,7 +181,7 @@ export const PStyled = styled.p`
   font-family: "Lato", Arial, sans-serif;
   font-weight: 400;
   text-align: center;
-  font-size: 1.02em;
+  font-size: 1.05em;
   letter-spacing: 0.5px;
   margin: 0;
   /* color:hsl(255, 36.40%, 8.60%); */

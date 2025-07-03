@@ -10,6 +10,7 @@ const ContainerStyled = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: 4;
+  background-color:rgba(0, 0, 0, 0.03);
 `;
 
 const DivStyled = styled.div`
@@ -28,7 +29,9 @@ const DivStyled = styled.div`
   right: 8px;
   bottom: 8px;
   background-color: #DB2C32;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.65),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.14),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.14);
   transition: height 0.15s ease;
   ${(props) => props.$feedback && "background-size: 0% 0%;"};
 
@@ -51,12 +54,12 @@ const SpanStyled = styled.span`
   font-size: 3.7em;
   padding: 5px;
   color: #C2272C;
-  font-weight: 600;
+  font-weight: 700;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
   position: absolute;
-  transform: translateY(-90%);
+  transform: translateY(-85%);
   z-index: 1;
   cursor: default;
   ${(props) => props.$feedback && "color: rgb(99, 154, 48);"};
@@ -135,7 +138,7 @@ const PVoltarStyled = styled(PSimStyled)`
   color: black;
   background-color: rgb(255, 255, 255);
   &:hover {
-    background-color: rgb(230, 230, 230);
+    background-color: #ebeff4;
   }
 `;
 
