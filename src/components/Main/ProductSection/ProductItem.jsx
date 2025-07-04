@@ -35,6 +35,7 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
 
     const handleTouchStart = (e) => {
       clickStartTimeRef.current = Date.now();
+      e.stopPropagation();
     };
 
     const handleTouchEnd = (e) => {
