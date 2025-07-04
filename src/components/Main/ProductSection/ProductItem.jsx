@@ -109,13 +109,13 @@ const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
   }
 
   const handleClickMore = (e) => {
-    if (e.type === "click") {
+    if (clickStartTimeRef.current === null) {
       changeQuantity(quantity + 1, true);
     }
   };
 
   const handleClickFewer = (e) => {
-    if (e.type === "click") {
+    if (clickStartTimeRef.current === null) {
       changeQuantity(Math.max(0, quantity - 1), false);
     }
   };

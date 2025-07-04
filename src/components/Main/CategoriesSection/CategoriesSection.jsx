@@ -27,7 +27,7 @@ const CategoryItem = React.forwardRef(
     }
 
     const handleClick = (e) => {
-      if (e.type === "click") {
+      if (clickStartTimeRef.current === null) {
         changeCategory();
       }
     };
