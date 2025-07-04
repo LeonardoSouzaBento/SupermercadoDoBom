@@ -331,7 +331,7 @@ export const DivQuantStyled = styled.div`
   position: absolute;
   bottom: 8px;
   right: 5%;
-
+  z-index: 2;
   @media screen and (min-width: 385px) and (max-width: 992px) {
     width: 85%;
     right: 12px;
