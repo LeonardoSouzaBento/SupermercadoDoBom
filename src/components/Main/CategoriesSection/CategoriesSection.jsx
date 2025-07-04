@@ -29,7 +29,6 @@ const CategoryItem = React.forwardRef(
     function handlePointerDown(e) {
       if (e.pointerType === "touch") {
         clickStartTimeRef.current = Date.now();
-        console.log("Sim");
       } else {
         changeCategory();
       }
