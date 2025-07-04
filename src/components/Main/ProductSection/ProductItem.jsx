@@ -28,22 +28,22 @@ import {
 
 const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
   const divMaisRef = useRef(null);
-  let toqueInicio = null;
+  const clickStartTimeRef = useRef(null);
 
   useEffect(() => {
     const element = divMaisRef.current;
 
     const handleTouchStart = (e) => {
-      toqueInicio = Date.now();
+      clickStartTimeRef.current = Date.now();
     };
 
     const handleTouchEnd = (e) => {
-      const duracao = Date.now() - toqueInicio;
+      const duracao = Date.now() - clickStartTimeRef.current;
       if (duracao < 100) {
         setQuantity(1);
         handleQuantityChange(product, true);
       }
-      toqueInicio = null;
+      clickStartTimeRef.current = null;
     };
 
     if (element) {
@@ -100,30 +100,62 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
 };
 
 const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
-  function handleMore() {
-    setQuantity(quantity + 1);
-    handleQuantityChange(product, true);
+  const clickStartTimeRef = useRef(null);
+
+  function changeQuantity(newQty, isIncrement) {
+    setQuantity(newQty);
+    handleQuantityChange(product, isIncrement);
   }
 
-  function handleFewer() {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-      handleQuantityChange(product, false);
-    } else {
-      setQuantity(0);
-      handleQuantityChange(product, false);
+  const handleClickMore = (e) => {
+    if (e.type === "click") {
+      changeQuantity(quantity + 1, true);
     }
+  };
+
+  const handleClickFewer = (e) => {
+    if (e.type === "click") {
+      changeQuantity(Math.max(0, quantity - 1), false);
+    }
+  };
+
+  function handleTouchMore() {
+    const duration = Date.now() - clickStartTimeRef.current;
+    if (duration < 100) {
+      changeQuantity(quantity + 1, true);
+    }
+    clickStartTimeRef.current = null;
+  }
+
+  function handleTouchFewer() {
+    const duration = Date.now() - clickStartTimeRef.current;
+    if (duration < 100) {
+      changeQuantity(Math.max(0, quantity - 1), false);
+    }
+    clickStartTimeRef.current = null;
   }
 
   return (
     <DivQuantStyled>
-      <DivPStyled onPointerDown={handleFewer}>
+      <DivPStyled
+        onTouchStart={() => {
+          clickStartTimeRef.current = Date.now();
+        }}
+        onTouchEnd={handleTouchFewer}
+        onClick={handleClickFewer}
+      >
         <PMenosStyled>-</PMenosStyled>
       </DivPStyled>
       <DivPStyled>
         <PQuantStyled>{quantity}</PQuantStyled>
       </DivPStyled>
-      <DivPStyled onPointerDown={handleMore}>
+      <DivPStyled
+        onTouchStart={() => {
+          clickStartTimeRef.current = Date.now();
+        }}
+        onTouchEnd={handleTouchMore}
+        onClick={handleClickMore}
+      >
         <PMaisStyled>+</PMaisStyled>
       </DivPStyled>
     </DivQuantStyled>

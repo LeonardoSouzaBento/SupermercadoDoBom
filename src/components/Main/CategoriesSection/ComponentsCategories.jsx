@@ -75,9 +75,6 @@ export const DivfStyled = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  &:active {
-    cursor: grabbing;
-  }
 
   @media screen and (max-width: 374px) {
     gap: 15px;
@@ -126,6 +123,8 @@ export const DivCatStyled = styled.div`
   flex: auto;
   border-radius: 7px;
   padding-top: 7px;
+  cursor: pointer;
+  
   ${(props) =>
     props.$selected &&
     css`
@@ -136,7 +135,7 @@ export const DivCatStyled = styled.div`
     !props.$selected &&
     css`
       &:hover {
-        background-color: rgba(255, 255, 255, 0.33);
+        background-color: rgba(255, 255, 255, 0.28);
       }
     `}
 `;

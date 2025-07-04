@@ -128,7 +128,8 @@ export const ImgStyled = styled.img`
 
 export const DivPaginationStyled = styled.div`
   height: max-content;
-  width: 50%;
+  width: 44%;
+  max-width: 240px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -139,23 +140,17 @@ export const DivPaginationStyled = styled.div`
 export const SpanStyled = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
-  background-color: rgb(108, 108, 108);
   border-radius: 5px;
-  ${(props) =>
-    props.$atual &&
-    `
-    padding: 1px;
-    background-color: rgb(255, 255, 255);
-    outline: 1px solid rgba(41, 46, 117, 0.4);
-    box-shadow: 0px 2px 2px -1px rgba(41, 46, 117, 0.59);
-  `}
+  background-color: rgb(176, 176, 176);
+
+  ${(props) => props.$atual && "background-color: rgb(126, 126, 126);"}
 
   @media screen and (max-width: 374px) {
-    height: 7px;
-    width: 7px;
+    height: 9.5px;
+    width: 9.5px;
   }
   @media screen and (min-width: 375px) {
-    height: 7.5px;
-    width: 7.5px;
+    height: 10px;
+    width: 10px;
   }
 `;

@@ -20,13 +20,6 @@ const DivPButtons = styled.div`
   }
 `;
 
-const PLineStyled = styled.p`
-  margin-bottom: 9px;
-  color: rgb(152, 152, 152);
-  ${(props) => props.$final && "margin-bottom: 12px;"}
-  ${(props) => props.$final && "color: rgb(117, 117, 117);"}
-`;
-
 const DivReferentMidea = styled.div`
   width: 100%;
   border-radius: 4px;

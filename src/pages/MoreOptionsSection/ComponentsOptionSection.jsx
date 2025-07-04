@@ -167,6 +167,7 @@ export const PButtonStyled = styled(PStyled)`
   margin-bottom: 0px;
   border-radius: 5px;
   letter-spacing: 0.7px;
+  font-weight: 500;
   user-select: none;
   cursor: pointer;
   flex: auto;

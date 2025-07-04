@@ -18,24 +18,35 @@ import { useScrollX } from "../../../hooks/useScrollX";
 const CategoryItem = React.forwardRef(
   ({ category, isSelected, setSelectedCategoryId }, ref) => {
     const { setCurrentCategory } = useContext(CartContext);
-    let touchStartTime = null;
 
-    const handlePointerDown = () => {
-      touchStartTime = Date.now();
-    };
+    const clickStartTimeRef = useRef(null);
 
-    const handlePointerUp = () => {
-      const duration = Date.now() - touchStartTime;
-      if (duration < 100) {
-        setCurrentCategory(category.id);
-        setSelectedCategoryId(category.id);
+    function changeCategory() {
+      setCurrentCategory(category.id);
+      setSelectedCategoryId(category.id);
+    }
+
+    const handleClick = (e) => {
+      if (e.type === "click") {
+        changeCategory();
       }
     };
 
+    function handleTouchEnd() {
+      const duration = Date.now() - clickStartTimeRef.current;
+      if (duration < 100) {
+        changeCategory();
+      }
+      clickStartTimeRef.current = null;
+    }
+
     return (
       <DivCatStyled
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
+        onClick={handleClick}
+        onTouchStart={() => {
+          clickStartTimeRef.current = Date.now();
+        }}
+        onTouchEnd={handleTouchEnd}
         $selected={isSelected}
         ref={ref}
       >
