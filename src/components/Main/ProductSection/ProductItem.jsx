@@ -108,42 +108,47 @@ const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
     handleQuantityChange(product, isIncrement);
   }
 
-  const handleClickMore = (e) => {
-    if (clickStartTimeRef.current === null) {
+  function handlePointerDownMore(e) {
+    if (e.pointerType === "touch") {
+      clickStartTimeRef.current = Date.now();
+    } else {
       changeQuantity(quantity + 1, true);
     }
-  };
-
-  const handleClickFewer = (e) => {
-    if (clickStartTimeRef.current === null) {
-      changeQuantity(Math.max(0, quantity - 1), false);
-    }
-  };
-
-  function handleTouchMore() {
-    const duration = Date.now() - clickStartTimeRef.current;
-    if (duration < 100) {
-      changeQuantity(quantity + 1, true);
-    }
-    clickStartTimeRef.current = null;
   }
 
-  function handleTouchFewer() {
-    const duration = Date.now() - clickStartTimeRef.current;
-    if (duration < 100) {
+  function handlePointerUpMore(e) {
+    if (e.pointerType === "touch") {
+      const duration = Date.now() - clickStartTimeRef.current;
+      if (duration < 100) {
+        changeQuantity(quantity + 1, true);
+      }
+      clickStartTimeRef.current = null;
+    }
+  }
+
+  function handlePointerDownFewer(e) {
+    if (e.pointerType === "touch") {
+      clickStartTimeRef.current = Date.now();
+    } else {
       changeQuantity(Math.max(0, quantity - 1), false);
     }
-    clickStartTimeRef.current = null;
+  }
+
+  function handlePointerUpFewer(e) {
+    if (e.pointerType === "touch") {
+      const duration = Date.now() - clickStartTimeRef.current;
+      if (duration < 100) {
+        changeQuantity(Math.max(0, quantity - 1), false);
+      }
+      clickStartTimeRef.current = null;
+    }
   }
 
   return (
     <DivQuantStyled>
       <DivPStyled
-        onTouchStart={() => {
-          clickStartTimeRef.current = Date.now();
-        }}
-        onTouchEnd={handleTouchFewer}
-        onClick={handleClickFewer}
+        onPointerDown={handlePointerDownFewer}
+        onPointerUp={handlePointerUpFewer}
       >
         <PMenosStyled>-</PMenosStyled>
       </DivPStyled>
@@ -151,11 +156,8 @@ const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
         <PQuantStyled>{quantity}</PQuantStyled>
       </DivPStyled>
       <DivPStyled
-        onTouchStart={() => {
-          clickStartTimeRef.current = Date.now();
-        }}
-        onTouchEnd={handleTouchMore}
-        onClick={handleClickMore}
+        onPointerDown={handlePointerDownMore}
+        onPointerUp={handlePointerUpMore}
       >
         <PMaisStyled>+</PMaisStyled>
       </DivPStyled>

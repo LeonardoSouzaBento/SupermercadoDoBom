@@ -26,27 +26,29 @@ const CategoryItem = React.forwardRef(
       setSelectedCategoryId(category.id);
     }
 
-    const handleClick = (e) => {
-      if (clickStartTimeRef.current === null) {
+    function handlePointerDown(e) {
+      if (e.pointerType === "touch") {
+        clickStartTimeRef.current = Date.now();
+        console.log("Sim");
+      } else {
         changeCategory();
       }
-    };
+    }
 
-    function handleTouchEnd() {
-      const duration = Date.now() - clickStartTimeRef.current;
-      if (duration < 100) {
-        changeCategory();
+    function handlePointerUp(e) {
+      if (e.pointerType === "touch") {
+        const duration = Date.now() - clickStartTimeRef.current;
+        if (duration < 100) {
+          changeCategory();
+        }
+        clickStartTimeRef.current = null;
       }
-      clickStartTimeRef.current = null;
     }
 
     return (
       <DivCatStyled
-        onClick={handleClick}
-        onTouchStart={() => {
-          clickStartTimeRef.current = Date.now();
-        }}
-        onTouchEnd={handleTouchEnd}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
         $selected={isSelected}
         ref={ref}
       >
