@@ -42,14 +42,10 @@ export const DivNameSpanStyled = styled.div`
 `;
 
 const ContainerPStyled = styled.div`
-  background-color: #383d6a;
+  background-color: #292E4E;
   display: flex;
   border-radius: 7px;
   margin-right: -10px;
-
-  /* &:hover{
-    background-color: #292E4E;
-  } */
 `;
 
 const DivPStyled = styled.div`
@@ -73,15 +69,11 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 7px;
-  background-color: #383d6a;
+  background-color: #292E4E;
   flex: none;
   cursor: pointer;
   width: 44px;
   height: 44px;
-
-  /* &:hover{
-    background-color: #292E4E;
-  } */
 `;
 
 export const SpanOptionsStyled = styled.span`

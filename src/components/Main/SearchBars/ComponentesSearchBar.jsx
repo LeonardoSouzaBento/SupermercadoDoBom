@@ -46,11 +46,13 @@ export const FormStyled = styled.form`
   border-radius: 7px;
   overflow: hidden;
   position: relative;
-  /* box-shadow: -5px 5px 10px -9.2px rgb(41, 46, 117); */
-  box-shadow: -3px 3px 3px -1.5px rgba(41, 46, 117, 0.17);
-  outline: 1px solid rgba(41, 46, 117, 0.1);
+  box-shadow: 0px 3px 3px -1.5px rgba(41, 46, 117, 0.17),
+    -2px 0px 2px 0px rgba(41, 46, 117, 0.07),
+     2px 0px 2px 0px rgba(41, 46, 117, 0.07);
+  /* box-shadow: -3px 3px 3px -1.5px rgba(41, 46, 117, 0.17); */
+  /* outline: 1px solid rgba(41, 46, 117, 0.1); */
   border: none;
-  
+
   ${(props) =>
     props.$copy &&
     css`
@@ -118,7 +120,7 @@ export const DivSpanStyled = styled.div`
   right: 0px;
   user-select: none;
   cursor: pointer;
-  background-color: #383D6A;
+  background-color: #383d6a;
 `;
 
 export const SpanSearchStyled = styled.span`

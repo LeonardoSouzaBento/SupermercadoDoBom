@@ -16,14 +16,13 @@ import { CartContext } from "../../CartContext";
 import { useScrollX } from "../../../hooks/useScrollX";
 
 const CategoryItem = React.forwardRef(
-  ({ category, isSelected, setSelectedCategoryId }, ref) => {
+  ({ category, isSelected }, ref) => {
     const { setCurrentCategory } = useContext(CartContext);
 
     const clickStartTimeRef = useRef(null);
 
     function changeCategory() {
       setCurrentCategory(category.id);
-      setSelectedCategoryId(category.id);
     }
 
     function handlePointerDown(e) {
@@ -65,8 +64,7 @@ const CategoryItem = React.forwardRef(
 );
 
 function CategoriesSection({ wasResize }) {
-  const [selectedCategoryId, setSelectedCategoryId] = useState(0);
-  const { setLimitCategories, categoriesRef } = useContext(CartContext);
+  const { setLimitCategories, categoriesRef, currentCategory } = useContext(CartContext);
   useScrollX();
 
   const category = [
@@ -129,8 +127,7 @@ function CategoriesSection({ wasResize }) {
             ref={index === 0 ? CategoryItemRef : null}
             category={cat}
             key={cat.id}
-            setSelectedCategoryId={setSelectedCategoryId}
-            isSelected={cat.id === selectedCategoryId}
+            isSelected={cat.id === currentCategory}
           />
         ))}
       </DivfStyled>

@@ -26,6 +26,7 @@ const LogoDivStyled = styled.div`
   box-sizing: border-box;
   padding-top: 1px;
   box-shadow: 0px 4px 10px -5.5px rgb(41, 46, 117);
+  outline: 1px solid rgba(41, 46, 117, 0.1);
   @media (max-width: 374px) {
     height: 54px;
     width: 54px;
