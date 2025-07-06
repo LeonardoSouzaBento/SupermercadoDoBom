@@ -90,13 +90,13 @@ export const DivFundoImgStyled = styled.div`
     min-width: 225px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    min-width: 250px;
+    min-width: 230px;
   }
   @media screen and (min-width: 576px) and (max-width: 768px) {
-    min-width: 280px;
+    min-width: 240px;
   }
   @media screen and (min-width: 769px) {
-    min-width: 300px;
+    min-width: 250px;
   }
 
   &::before {
@@ -109,7 +109,8 @@ export const DivFundoImgStyled = styled.div`
     background-image: url(${(props) => props.$bg});
     background-size: cover;
     background-position: center;
-    filter: blur(5px) brightness(0.72);
+    filter: blur(2.7px) brightness(0.7);
+    border-radius: 4px;
     z-index: 0;
   }
 `;

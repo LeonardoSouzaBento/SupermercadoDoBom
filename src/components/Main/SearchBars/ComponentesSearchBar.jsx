@@ -49,8 +49,6 @@ export const FormStyled = styled.form`
   box-shadow: 0px 3px 3px -1.5px rgba(41, 46, 117, 0.17),
     -2px 0px 2px 0px rgba(41, 46, 117, 0.07),
      2px 0px 2px 0px rgba(41, 46, 117, 0.07);
-  /* box-shadow: -3px 3px 3px -1.5px rgba(41, 46, 117, 0.17); */
-  /* outline: 1px solid rgba(41, 46, 117, 0.1); */
   border: none;
 
   ${(props) =>
@@ -59,7 +57,7 @@ export const FormStyled = styled.form`
       width: 91.5%;
       max-width: 684px;
       margin: 0;
-      box-shadow: 0px 3px 7px rgba(41, 46, 117, 0.28);
+      box-shadow: 0px 2.5px 7px rgba(41, 46, 117, 0.28);
       outline: 1px solid rgba(41, 46, 117, 0.05);
     `}
 `;
