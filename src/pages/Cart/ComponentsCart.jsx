@@ -344,6 +344,8 @@ export const DivContinueStyled = styled.div`
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
+  overflow: hidden;
+  position: relative;
 
   @media screen and (max-width: 385px) {
     width: calc(100% - 36px);
@@ -361,6 +363,15 @@ export const DivContinueStyled = styled.div`
     display: block;
     margin: 0;
   }
+`;
+
+export const DivCoverStyled = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 export const DivAvisoStyled = styled.div`

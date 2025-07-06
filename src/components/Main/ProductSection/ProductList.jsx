@@ -52,7 +52,7 @@ const DivStyled = styled.div`
         justify-content: flex-start;
         padding-left: 24px;
       }
-      @media screen and (min-width: 768px) and (max-width: 993px){
+      @media screen and (min-width: 768px) and (max-width: 993px) {
         max-width: 95%;
       }
     `}
@@ -64,17 +64,19 @@ export const ProductList = React.forwardRef(({ variant, categoryKey }, ref) => {
   const products = allProductsInCat[categoryKey];
 
   return (
-    <DivStyled $variant={variant} ref={ref}>
-      {products.map((product) => (
-        <ProductItem
-          variant={variant}
-          key={`${product.id}-${product.cat_id}`}
-          product={product}
-          handleQuantityChange={(product, isAdding) =>
-            handleQuantityChange(product, isAdding)
-          }
-        />
-      ))}
-    </DivStyled>
+    <>
+      <DivStyled $variant={variant} ref={ref}>
+        {products.map((product) => (
+          <ProductItem
+            variant={variant}
+            key={`${product.id}-${product.cat_id}`}
+            product={product}
+            handleQuantityChange={(product, isAdding) =>
+              handleQuantityChange(product, isAdding)
+            }
+          />
+        ))}
+      </DivStyled>
+    </>
   );
 });

@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import { CartContext } from "../../CartContext";
 import ProductItem from "./ProductItem";
 import { useScrollX } from "../../../hooks/useScrollX";
+import ProductInFull from "./ProductInFull";
 
 const ContainerStyled = styled.div`
   overflow-x: hidden;
@@ -96,7 +97,7 @@ const PNoneStyled = styled.p`
   font-size: 1.04em;
 `;
 
-const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {
+const ProductList = React.forwardRef(({ categoryKey }, ref) => {
   const { allProductsInCat, handleQuantityChange } = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
@@ -142,7 +143,7 @@ const ProductListHome = React.forwardRef(({ categoryKey }, ref) => {
   );
 });
 
-function PromoSection({ categoryKey, wasResize }) {
+function ProductListHome({ categoryKey, wasResize }) {
   const {
     setLimitProductList,
     currentCategory,
@@ -195,9 +196,9 @@ function PromoSection({ categoryKey, wasResize }) {
 
   return (
     <ContainerStyled ref={paiAllProductsRef}>
-      <ProductListHome categoryKey={categoryKey} ref={productListHomeRef} />
+      <ProductList categoryKey={categoryKey} ref={productListHomeRef} />
     </ContainerStyled>
   );
 }
 
-export default PromoSection;
+export default ProductListHome;

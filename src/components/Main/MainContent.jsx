@@ -2,7 +2,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import Header from "../Header/Header";
 import AnnouncementSection from "./AnnoucementSection/AnnouncementSection";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
-import PromoSection from "./ProductSection/PromoSection";
+import ProductListHome from "./ProductSection/ProductListHome";
+// import ProductInFull from "./ProductSection/ProductInFull";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import styled from "styled-components";
@@ -121,9 +122,10 @@ function MainContent() {
         <Main>
           <AnnouncementSection wasResize={wasResize} />
           <CategoriesSection wasResize={wasResize} />
-          <PromoSection categoryKey={currentCategory} wasResize={wasResize} />
+          <ProductListHome categoryKey={currentCategory} wasResize={wasResize} />
         </Main>
       </div>
+      {/* <ProductInFull></ProductInFull> */}
       <Footer setOpacityState={setOpacityState} setApplyBlur={setApplyBlur} />
     </div>
   );

@@ -17,6 +17,7 @@ import {
   ContainerProductList,
   FinishSectionStyled,
   DivContinueStyled,
+  DivCoverStyled,
   DivAvisoStyled,
   PAvisoStyled,
   DivValueStyled,
@@ -307,6 +308,10 @@ const Cart = () => {
             >
               <PContinueStyled>Continuar</PContinueStyled>
             </DivPContinueStyled>
+
+            {(totalAddedValue == 0 || seeFeedback) && (
+              <DivCoverStyled/>
+            )}
           </DivContinueStyled>
 
           <DivAddStyled

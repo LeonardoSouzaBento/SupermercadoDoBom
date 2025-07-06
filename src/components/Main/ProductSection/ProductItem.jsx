@@ -87,14 +87,13 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
             <PMaisStyled>+</PMaisStyled>
           </DivMaisStyled>
         )}
-        {quantity >= 1 && (
-          <Botoes
-            quantity={quantity}
-            setQuantity={setQuantity}
-            handleQuantityChange={handleQuantityChange}
-            product={product}
-          />
-        )}
+
+        <Botoes
+          quantity={quantity}
+          setQuantity={setQuantity}
+          handleQuantityChange={handleQuantityChange}
+          product={product}
+        />
       </PaiImgOfertaStyled>
     </DivOfertaStyled>
   );
@@ -145,7 +144,7 @@ const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
   }
 
   return (
-    <DivQuantStyled>
+    <DivQuantStyled $display={quantity > 0}>
       <DivPStyled
         onPointerDown={handlePointerDownFewer}
         onPointerUp={handlePointerUpFewer}

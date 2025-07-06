@@ -322,7 +322,7 @@ export const DivQuantStyled = styled.div`
   width: 90%;
   height: 32px;
   background-color: #db2c32;
-  display: flex;
+  display: ${(props) => (props.$display ? "flex" : "none")};
   justify-content: space-between;
   border-radius: 7.5px;
   cursor: pointer;
@@ -337,6 +337,7 @@ export const DivQuantStyled = styled.div`
     right: 12px;
     bottom: 0px;
   }
+  transition: opacity 0.4s ease;
 `;
 
 export const DivPStyled = styled.div`
