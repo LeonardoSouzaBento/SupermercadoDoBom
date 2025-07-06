@@ -7,7 +7,8 @@ export const DivStyled = styled.div`
   overflow-x: hidden;
   position: relative;
   z-index: 2;
-  border-top: 1px solid rgba(41, 46, 117, 0.3);
+  border-top: 2px solid #d7dbdf;
+  /* border-top: 2px solid rgba(41, 46, 117, 0.3); */
   @media screen and (max-width: 375px) {
     width: calc(100% - 15px);
     padding-left: 12px;
@@ -183,5 +184,5 @@ export const PStyled = styled.p`
   font-size: 1.05em;
   letter-spacing: 0.5px;
   margin: 0;
-  /* color:hsl(255, 36.40%, 8.60%); */
+  color: #221B39;
 `;

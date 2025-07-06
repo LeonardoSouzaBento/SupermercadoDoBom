@@ -128,7 +128,7 @@ export const ImgStyled = styled.img`
 
 export const DivPaginationStyled = styled.div`
   height: max-content;
-  width: 44%;
+  width: 43%;
   max-width: 240px;
   margin: auto;
   display: flex;
@@ -141,9 +141,9 @@ export const SpanStyled = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
   border-radius: 5px;
-  background-color: rgb(176, 176, 176);
+  background-color:rgba(56, 61, 106, 0.42);
 
-  ${(props) => props.$atual && "background-color: rgb(126, 126, 126);"}
+  ${(props) => props.$atual && "background-color: rgba(56, 61, 106, 0.84);"}
 
   @media screen and (max-width: 374px) {
     height: 9.5px;

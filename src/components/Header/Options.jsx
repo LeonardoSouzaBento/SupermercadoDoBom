@@ -59,7 +59,7 @@ export const POptionStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 600;
   color: white;
-  padding-right: 40px;
+  padding-right: 28px;
   padding-left: 24px;
   user-select: none;
 `;
