@@ -84,34 +84,43 @@ const InputSubmitStyled = styled.input`
 `;
 
 const InsertComment = () => {
-  const [sent, setSent] = useState(false);
-  const [maxComments, setMaxComments] = useState(0);
-  const [stateName, setStateName] = useState("Enviar");
+  // const [sent, setSent] = useState(false);
+  // const [maxComments, setMaxComments] = useState(0);
+  // const [stateName, setStateName] = useState("Enviar");
 
-  function handleClickSent() {
-    if (maxComments < 3 && sent === false) {
-      setSent(true);
-      setStateName("Enviado");
-      setTimeout(() => {
-        setSent(false);
-        setStateName("Enviar");
-      }, 1300);
-      setMaxComments(maxComments + 1);
-    }
-  }
+  // function handleClickSent() {
+  //   if (maxComments < 3 && sent === false) {
+  //     setSent(true);
+  //     setStateName("Enviado");
+  //     setTimeout(() => {
+  //       setSent(false);
+  //       setStateName("Enviar");
+  //     }, 1300);
+  //     setMaxComments(maxComments + 1);
+  //   }
+  // }
+  const [message, setMessage] = useState("");
+
+  const sendToWhatsApp = () => {
+    const numero = "5534984125832";
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  };
 
   return (
     <ContainerStyled>
       <InputTextStyled
-        placeholder="Seu comentário vai cair no meu whatsapp"
+        placeholder="Digite sua mensagem"
         type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
       />
       <ContainerStyled2>
         <InputSubmitStyled
+          // value={stateName}
           type="submit"
-          value={stateName}
-          $sent={sent}
-          onClick={handleClickSent}
+          value={"Abrir Whatsapp"}
+          onClick={sendToWhatsApp}
         />
       </ContainerStyled2>
     </ContainerStyled>
