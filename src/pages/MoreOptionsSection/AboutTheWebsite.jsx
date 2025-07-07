@@ -24,15 +24,14 @@ export default function AboutTheWebsite() {
       <br />
       <H2Styled>Repósitorio</H2Styled>
       <LocalPStyled>
-        A cópia está aqui:{" "}
+        Link do repositório:{" "}
         <a
           target="_blank"
-          href="https://github.com/LeonardoSouzaBento/supermercado-do-bom"
+          href="https://github.com/LeonardoSouzaBento/sup-online-react"
           style={{ textDecoration: "none" }}
         >
-          ver no GitHub.{" "}
+          acessar GitHub.{" "}
         </a>{" "}
-        O repósitorio original é privado.{" "}
       </LocalPStyled>
       <br />
 
@@ -46,19 +45,16 @@ export default function AboutTheWebsite() {
       <H2Styled>Tecnologias usadas</H2Styled>
       <LocalPStyled>
         <strong style={{ fontWeight: 600 }}>
-          Styled Components, useContext e useNavigate,
+          Styled Components, useContext e useNavigate, que
         </strong>{" "}
-        levando a Cart e a SearchAction, as duas "páginas" do site.
+        leva à página do Carrinho, à página de pesquisa e à página de Mais
+        Opções.
       </LocalPStyled>
       <br />
 
       <H2Styled>Detalhes</H2Styled>
-      <LocalPStyled>
-        O BackEnd ainda é inexistente.
-      </LocalPStyled>
-      <LocalPStyled>
-        As imagens vem de links da internet.
-      </LocalPStyled>
+      <LocalPStyled>O BackEnd ainda é inexistente.</LocalPStyled>
+      <LocalPStyled>As imagens vem de links da internet.</LocalPStyled>
     </>
   );
 }

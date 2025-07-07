@@ -26,6 +26,7 @@ function MainContent() {
   const resizeDowntime = useRef(null);
   const windowWidthInitialRef = useRef(0);
   const [wasResize, setWasResize] = useState(0);
+  const [viewProductInFull, setViewProductInFull] = useState(false);
 
   const divRef = useRef(null);
 
@@ -129,7 +130,9 @@ function MainContent() {
           />
         </Main>
       </div>
-      {/* <ProductInFull></ProductInFull> */}
+      {viewProductInFull && (
+        <ProductInFull setViewProductInFull={setViewProductInFull}/>
+      )}
       <Footer setOpacityState={setOpacityState} setApplyBlur={setApplyBlur} />
     </div>
   );

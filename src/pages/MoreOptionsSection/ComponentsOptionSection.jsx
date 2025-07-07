@@ -132,29 +132,25 @@ export const PStyled = styled.p`
   font-weight: 400;
   text-align: justify;
   margin-bottom: 10px;
+  line-height: 1.27;
+  
   @media screen and (max-width: 374px) {
     font-size: 1.13em;
-    line-height: 1.4em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.11em;
-    line-height: 1.4em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.13em;
-    line-height: 1.405em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
     font-size: 1.135em;
-    line-height: 1.39em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
     font-size: 1.138em;
-    line-height: 1.415em;
   }
   @media screen and (min-width: 1201px) {
     font-size: 1.14em;
-    line-height: 1.42em;
   }
   ${(props) => props.$mb && "margin-bottom: 13px;"};
   ${(props) => props.$moreWidth && "max-width: 100%;"};

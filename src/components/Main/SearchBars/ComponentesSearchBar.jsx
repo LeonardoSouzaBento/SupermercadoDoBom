@@ -222,24 +222,20 @@ export const PStyled = styled.p`
 
   @media screen and (max-width: 374px) {
     font-size: 0.86em;
-    line-height: 18px;
     letter-spacing: 1.01px;
     padding: 9px 12px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 0.89em;
-    line-height: 18px;
     letter-spacing: 1.05px;
     padding: 9px 12px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 0.9em;
-    line-height: 19px;
     letter-spacing: 1.06px;
   }
   @media screen and (min-width: 769px) {
     font-size: 0.91em;
-    line-height: 20px;
     letter-spacing: 1.06px;
   }
 `;

@@ -87,25 +87,22 @@ export const PnomeStyled = styled.p`
   margin: auto;
   padding-left: 4px;
   font-weight: 600;
+  line-height: 1.2;
 
   @media screen and (max-width: 385px) {
     font-size: 0.86em;
-    line-height: 16px;
     letter-spacing: 1.01px;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 0.89em;
-    line-height: 17px;
     letter-spacing: 1.05px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 0.9em;
-    line-height: 18px;
     letter-spacing: 1.06px;
   }
   @media screen and (min-width: 769px) {
     font-size: 0.91em;
-    line-height: 19px;
     letter-spacing: 1.06px;
   }
 `;

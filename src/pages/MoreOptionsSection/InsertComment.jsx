@@ -27,33 +27,28 @@ const InputTextStyled = styled.textarea`
   border: 1px solid rgba(41, 46, 117, 0.4);
   font-family: "Open Sans", sans-serif;
   overflow-wrap: break-word;
+  line-height: 1.24;
   
   &:focus {
     outline: none;
   }
     @media screen and (max-width: 374px) {
     font-size: 1.13em;
-    line-height: 1.4em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.1em;
-    line-height: 1.4em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.12em;
-    line-height: 1.405em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
     font-size: 1.152em;
-    line-height: 1.41em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
     font-size: 1.155em;
-    line-height: 1.415em;
   }
   @media screen and (min-width: 1201px) {
     font-size: 1.157em;
-    line-height: 1.42em;
   }
 `;
 

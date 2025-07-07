@@ -32,7 +32,6 @@ const Divfp = styled.p`
     border-radius: 7px;
     font-family: "Fira Sans", serif;
     letter-spacing: 1px;
-    line-height: 25px;
 `;
 
 function OrientatiosSection() {

@@ -37,7 +37,6 @@ const Img = styled.img`
 const P = styled.p`
     width: 200px;
     text-align: center;
-    line-height: 22px;
     color: white;
     font-family: "Fira Sans", sans-serif;
     font-size: 1.15em;
