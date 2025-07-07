@@ -20,8 +20,8 @@ export const ContainerForFormStyled = styled.div`
   ${(props) =>
     props.$copy &&
     css`
-      padding-top: 20px;
-      padding-bottom: 24px;
+      padding-top: 16px;
+      padding-bottom: 20px;
       position: sticky;
       top: 0px;
       left: 0px;

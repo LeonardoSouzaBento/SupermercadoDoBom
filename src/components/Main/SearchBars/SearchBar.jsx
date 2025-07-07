@@ -184,6 +184,10 @@ function SearchBar({ copy }) {
     setCompletions([...newCompletions]);
 
     setCountCompletes(countComplete + 1);
+
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 50);
   }
 
   useEffect(() => {
@@ -261,6 +265,7 @@ function SearchBar({ copy }) {
           {completions.map((suggestion, i) => (
             <PStyled
               key={i}
+              data-suggestion
               onPointerDown={() => {
                 handleClickComplete(suggestion);
               }}

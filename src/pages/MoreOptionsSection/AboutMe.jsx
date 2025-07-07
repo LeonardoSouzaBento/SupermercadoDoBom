@@ -12,7 +12,7 @@ const DivPButtons = styled.div`
   flex-wrap: wrap;
   gap: 18px;
   margin-top: 22px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 
   @media screen and (max-width: 387px) {
     flex-direction: column;
@@ -30,6 +30,10 @@ const DivReferentMidea = styled.div`
   gap: 20px;
   overflow: hidden;
   position: relative;
+
+  @media screen and (max-width: 430px) {
+    border-radius: 0px;
+  }
 `;
 
 const DivImgStyled = styled.div`
@@ -39,6 +43,10 @@ const DivImgStyled = styled.div`
   background-color: #dbfff4;
   border-radius: 6px;
   ${(props) => props.$painting && "max-height: 290px;"};
+
+  @media screen and (max-width: 430px) {
+    border-radius: 0px;
+  }
 `;
 
 const ImgStyled = styled.img`

@@ -22,7 +22,8 @@ export const WrapperStyled = styled.div`
   width: calc(100% - 30px);
   max-width: 470px;
   padding: 35px 36px;
-  border-radius: 7px;
+  padding-bottom: 38px;
+  border-radius: 12px;
   background-color: white;
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),

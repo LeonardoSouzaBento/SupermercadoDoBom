@@ -33,16 +33,17 @@ function MainContent() {
     setTimeout(() => {
       setOpacityState(1);
     }, 300);
-    //remover foco do input no mobile
+    //remover foco do input em telas touch, manter no caso de click na sugestão
     const handleTouch = (e) => {
       const active = document.activeElement;
-      if (
-        active &&
-        (active.tagName === "INPUT" || active.tagName === "TEXTAREA") &&
-        !e.target.closest("input") &&
-        !e.target.closest("textarea")
-      ) {
-        active.blur(); // tira o foco do input
+      const isInputOrTextarea =
+        active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA");
+      const clickedInsideInput =
+        e.target.closest("input") || e.target.closest("textarea");
+      const clickedOnSuggestion = e.target.closest("[data-suggestion]");
+
+      if (isInputOrTextarea && !clickedInsideInput && !clickedOnSuggestion) {
+        active.blur();
       }
     };
 
@@ -122,7 +123,10 @@ function MainContent() {
         <Main>
           <AnnouncementSection wasResize={wasResize} />
           <CategoriesSection wasResize={wasResize} />
-          <ProductListHome categoryKey={currentCategory} wasResize={wasResize} />
+          <ProductListHome
+            categoryKey={currentCategory}
+            wasResize={wasResize}
+          />
         </Main>
       </div>
       {/* <ProductInFull></ProductInFull> */}

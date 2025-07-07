@@ -25,7 +25,6 @@ const InputTextStyled = styled.textarea`
   box-sizing: border-box;
   border-radius: 6px;
   border: 1px solid rgba(41, 46, 117, 0.4);
-  box-shadow: inset 0px -2px 4px rgba(41, 46, 117, 0.1);
   font-family: "Open Sans", sans-serif;
   overflow-wrap: break-word;
   
@@ -64,7 +63,7 @@ const InputSubmitStyled = styled.input`
   margin-right: 0px;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 600;
-  border-radius: 4px;
+  border-radius: 6px;
   background-color: #545126;
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: white;

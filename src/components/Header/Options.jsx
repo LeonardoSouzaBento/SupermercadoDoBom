@@ -97,13 +97,13 @@ const Options = ({ setOpacityState }) => {
   const [numberClicks, setNumberClicks] = useState([0, 0, 0]);
 
   function openContent(e, index) {
-    if (e.pointerType === "mouse") {
+    if (e.pointerType !== "touch") {
       const option = contents[index].navigateTo;
       setOpacityState(0);
       setTimeout(() => {
         navigate(`/secao-mais-opcoes?option=${option}`);
       }, 200);
-    } else if (e.pointerType === "touch") {
+    } else {
       setViewNameOption(index);
       setNumberClicks(
         numberClicks.map((_, i) => {
