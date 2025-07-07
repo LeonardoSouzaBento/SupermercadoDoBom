@@ -1,5 +1,5 @@
-#Descrição:
 Acesse o site pelo link: supermercadodobom.netlify.app
-Este é site de supermercado simulado feito em React. Para o CSS, usei Styled Components. 
+Este é um site de supermercado simulado feito em React.
 Tem três páginas: o carrinho, a página de pesquisa e a seção de mais opções.
+Para o CSS, usei Styled Components. 
  
