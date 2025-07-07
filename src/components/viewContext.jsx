@@ -6,7 +6,7 @@ export const ViewContextProvider = ({ children }) => {
   //dica para recrutador
   const [tipForRecruiter, setTipForRecruiter] = useState(() => {
     const stored = localStorage.getItem("tipForRecruiter");
-    return stored ? JSON.parse(stored) : true; // valor padrão: false
+    return stored ? JSON.parse(stored) : true;
   });
   useEffect(() => {
     const stored = localStorage.getItem("tipForRecruiter");

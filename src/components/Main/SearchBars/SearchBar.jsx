@@ -89,18 +89,21 @@ function SearchBar({ copy }) {
   const [sixUniqueSuggestions, setSixUniqueSuggestions] = useState([""]);
   const [countComplete, setCountCompletes] = useState(2);
 
-  const [textOfTip, setTextOfTip] = useState(0);
+  const [textOfTip, setTextOfTip] = useState("");
   const tip = "Digite 'Biscoito'";
   const inputRef = useRef(null);
 
+  const [viewTipState, setViewTipState] = useState(false);
+
   const viewTip = () => {
+    setViewTipState(true);
     setPreventClick(true);
 
     animateMessage(tip, setTextOfTip);
 
     setTimeout(() => {
       setTipForRecruiter(false);
-    }, 3400);
+    }, 3500);
   };
 
   function whenTyping(e) {
@@ -246,26 +249,35 @@ function SearchBar({ copy }) {
             handleClickSearch();
           }}
         >
-          <SpanSearchStyled className="material-symbols-outlined">search</SpanSearchStyled>
+          <SpanSearchStyled className="material-symbols-outlined">
+            search
+          </SpanSearchStyled>
         </DivSpanStyled>
-
-        {tipForRecruiter && (
-          <DivMsgStyled>
-            <PointedShapeStyed />
-            <PMsgStyled>{textOfTip}</PMsgStyled>
-          </DivMsgStyled>
-        )}
       </FormStyled>
 
+      {tipForRecruiter && viewTipState && (
+        <DivMsgStyled>
+          <PointedShapeStyed />
+          <PMsgStyled>{textOfTip}</PMsgStyled>
+        </DivMsgStyled>
+      )}
+      
       {completions != "" && (
-        <CompletionsDivStyled $copy={copy} onPointerDown={()=>{inputRef.current.focus()}}>
+        <CompletionsDivStyled
+          $copy={copy}
+          onPointerDown={() => {
+            inputRef.current.focus();
+          }}
+        >
           {completions.map((suggestion, i) => (
             <PStyled
               key={i}
               data-suggestion
               onPointerDown={() => {
                 handleClickComplete(suggestion);
-                setTimeout(()=>{inputRef.current.focus()}, 0);
+                setTimeout(() => {
+                  inputRef.current.focus();
+                }, 0);
               }}
               $copy={copy}
             >

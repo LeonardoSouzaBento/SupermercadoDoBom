@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import AnnouncementSection from "./AnnoucementSection/AnnouncementSection";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import ProductListHome from "./ProductSection/ProductListHome";
-// import ProductInFull from "./ProductSection/ProductInFull";
+import ProductInFull from "./ProductSection/ProductInFull";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import styled from "styled-components";

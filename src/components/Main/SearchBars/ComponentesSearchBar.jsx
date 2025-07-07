@@ -131,39 +131,41 @@ export const DivMsgStyled = styled.div`
   background-color: blue;
   height: max-content;
   width: max-content;
-  border-radius: 6px;
+  border-radius: 7px;
   padding: 0px 16px;
   position: absolute;
-  bottom: -52px;
-  left: 0px;
+  bottom: -32px;
+  left: 4%;
   z-index: 4;
 
   @media screen and (max-width: 374px) {
     max-width: 260px;
-    bottom: -72px;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
+  @media screen and (max-width: 768px) {
     max-width: 308px;
-    bottom: -72px;
+  }
+  @media screen and (min-width: 993px) {
+    left: 4.2%;
   }
 `;
 
 export const PointedShapeStyed = styled.div`
-  height: 12px;
-  width: 12px;
+  height: 10px;
+  width: 10px;
   background-color: blue;
   rotate: 45deg;
   border: 4px;
   position: absolute;
-  top: -6px;
+  top: -5px;
   left: 16px;
 `;
 
 export const PMsgStyled = styled.p`
   color: white;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  padding: 12px 0px;
-
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  padding: 6px 0px;
+  padding-bottom: 8px;
+  
   @media screen and (max-width: 374px) {
     font-size: 1.055em;
   }

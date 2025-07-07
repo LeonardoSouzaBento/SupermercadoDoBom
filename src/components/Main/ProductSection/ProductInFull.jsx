@@ -161,6 +161,7 @@ const PSubStyled = styled(PNameProdStyled)`
 `;
 
 const SimilarDivStyled = styled.div`
+  width: 100%;
   @media screen and (min-width: 578px) {
     order: 1;
   }
@@ -173,14 +174,18 @@ const DivTitleStyled = styled.div`
   top: 0;
   left: 0;
   background-color: #ebeff4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const H1Styled = styled.h1`
   width: 100%;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 500;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
   text-align: center;
   font-size: 1.5em;
+  color: #292E4E;
 `;
 
 const ProductInFull = () => {
