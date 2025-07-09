@@ -6,7 +6,7 @@ export const BodyDivStyled = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 3;
+  z-index: 2;
 `;
 
 export const MainDivStyled = styled.div`
@@ -42,11 +42,13 @@ export const MainDivStyled = styled.div`
 export const DivSpanCloseStyled = styled.div`
   width: 36px;
   height: 36px;
+  margin-left: calc(100% - 42px);
+  margin-bottom: -36px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  top: calc(15% + 6px);
+  position: sticky;
+  top: 6px;
   right: 6px;
   cursor: pointer;
   z-index: 3;
@@ -57,7 +59,8 @@ export const DivSpanCloseStyled = styled.div`
   @media screen and (min-width: 578px) {
     width: auto;
     height: 24px;
-    top: 15%;
+    position: absolute;
+    top: 0px;
     right: 50%;
     transform: translateX(50%);
     background-color: transparent;

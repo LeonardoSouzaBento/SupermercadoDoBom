@@ -258,12 +258,6 @@ export const DivOffStyled = styled.div`
   padding-bottom: 1px;
   background-color: #db2c32;
   border-radius: 10px;
-
-  /* @media screen and (min-width: 375px) and (max-width: 992px) {
-    position: absolute;
-    top: 7px;
-    left: 7px;
-  } */
 `;
 
 export const PoffStyled = styled.p`

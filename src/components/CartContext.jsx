@@ -93,7 +93,7 @@ export function CartProvider({ children }) {
   }, 0); //valor inicial do acumulador
 
   const totalValueFormatted = totalAddedValue.toFixed(2).replace(".", ",");
-  const [updateProduct, setUpdateProduct] = useState(0);
+  const [updateProduct, setUpdateProduct] = useState(null);
 
   return (
     <CartContext.Provider

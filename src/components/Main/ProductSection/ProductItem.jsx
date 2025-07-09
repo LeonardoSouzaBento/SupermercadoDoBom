@@ -36,6 +36,9 @@ const Oferta = ({ product, quantity, setQuantity }) => {
   const { handleQuantityChange, isDraggingRef } = useContext(CartContext);
 
   function handlePointerUpOpen(e) {
+    if (e.button === 2) {
+      return;
+    }
     if (!viewProductInFull && !isDraggingRef.current) {
       setDataProductFull({ ...product, quantity: quantity });
       setViewProductInFull(true);
@@ -46,6 +49,9 @@ const Oferta = ({ product, quantity, setQuantity }) => {
   //adicionar
   function handlePointerUpAdd(e) {
     e.stopPropagation();
+    if (e.button === 2) {
+      return;
+    }
     if (!isDraggingRef.current) {
       setQuantity(1);
       handleQuantityChange(product, true);
@@ -61,6 +67,9 @@ const Oferta = ({ product, quantity, setQuantity }) => {
 
   function handlePointerUpButtons(e, action) {
     e.stopPropagation();
+    if (e.button === 2) {
+      return;
+    }
     if (!isDraggingRef.current) {
       if (action == "fewer") {
         changeQuantity(Math.max(0, quantity - 1), false);
@@ -165,11 +174,9 @@ function ProductItem({ product, variant }) {
   }, [seeFeedback]);
 
   useEffect(() => {
-    cartProducts.map((item) => {
-      if (item.id == product.id) {
-        setQuantity(item.quant);
-      }
-    });
+    if (updateProduct?.id === product.id) {
+      setQuantity(updateProduct.quant);
+    }
   }, [updateProduct]);
 
   return (

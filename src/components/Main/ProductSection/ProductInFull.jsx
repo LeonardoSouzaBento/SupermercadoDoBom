@@ -29,7 +29,7 @@ import {
   DivTitleStyled,
   H1Styled,
   ListSimilarProductsStyled,
-  PAlertStyled
+  PAlertStyled,
 } from "./ComponentsProductInFull.jsx";
 
 const ProductInFull = () => {
@@ -37,7 +37,8 @@ const ProductInFull = () => {
   const [seeSpanClose, setSeeSpanClose] = useState(false);
   const { dataProductFull, setViewProductInFull, setApplyBlur } =
     useContext(ViewContext);
-  const { handleQuantityChange, updateProduct, setUpdateProduct } = useContext(CartContext);
+  const { handleQuantityChange, updateProduct, setUpdateProduct } =
+    useContext(CartContext);
   const initialQuant = dataProductFull.quantity;
   const [quantity, setQuantity] = useState(initialQuant);
   const isDragging = useRef(false);
@@ -45,6 +46,7 @@ const ProductInFull = () => {
   const rawPrice = dataProductFull.price || "0";
   const priceNumber = parseFloat(rawPrice.replace(",", ".")) || 0;
   const subtotal = (priceNumber * quantity).toFixed(2).replace(".", ",");
+  const MainDivRef = useRef(null);
 
   function handlePointerDownDiv(e) {
     isDragging.current = false;
@@ -86,6 +88,16 @@ const ProductInFull = () => {
     }
   }
 
+  function handleClickClose() {
+    setSeeSpanClose(false);
+    setTranslateYState("100%");
+    setApplyBlur(false);
+    setUpdateProduct({ id: dataProductFull.id, quant: quantity });
+    setTimeout(() => {
+      setViewProductInFull(false);
+    }, 300);
+  }
+
   useEffect(() => {
     setApplyBlur(true);
     setTimeout(() => {
@@ -105,29 +117,23 @@ const ProductInFull = () => {
         transition: "background-color 0.3s ease",
       }}
     >
-      <DivSpanCloseStyled
-        onClick={() => {
-          setSeeSpanClose(false);
-          setTranslateYState("100%");
-          setApplyBlur(false);
-          setUpdateProduct(updateProduct + 1);
-          setTimeout(() => {
-            setViewProductInFull(false);
-          }, 300);
-        }}
-        style={{ display: seeSpanClose ? "flex" : "none" }}
-      >
-        <SpanCloseStyled className="material-symbols-outlined">
-          close
-        </SpanCloseStyled>
+      <MainDivStyled $translate={translateYState} ref={MainDivRef}>
+        <DivSpanCloseStyled
+          onClick={handleClickClose}
+          style={{ display: seeSpanClose ? "flex" : "none" }}
+        >
+          <SpanCloseStyled className="material-symbols-outlined">
+            close
+          </SpanCloseStyled>
 
-        <SpanDropDownStyled />
-      </DivSpanCloseStyled>
+          <SpanDropDownStyled />
+        </DivSpanCloseStyled>
 
-      <MainDivStyled $translate={translateYState}>
         <ProductDivStyled>
           <DivImgStyled>
-            <PAlertStyled>Atenção: função em fase de implementação</PAlertStyled>
+            <PAlertStyled>
+              Atenção: função em desenvolvimento
+            </PAlertStyled>
             <ImgStyled src={dataProductFull.url} alt="Imagem do Produto" />
 
             {dataProductFull.weight != "" && (
