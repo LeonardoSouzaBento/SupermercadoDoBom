@@ -26,52 +26,54 @@ import {
   PnomeStyled,
 } from "./ComponentsProductItem";
 
-const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
-  const divMaisRef = useRef(null);
-  const clickStartTimeRef = useRef(null);
+const Oferta = ({ product, quantity, setQuantity }) => {
+  const {
+    setDataProductFull,
+    viewProductInFull,
+    setViewProductInFull,
+    setApplyBlur,
+  } = useContext(ViewContext);
+  const { handleQuantityChange, isDraggingRef } = useContext(CartContext);
 
-  useEffect(() => {
-    const element = divMaisRef.current;
-
-    const handleTouchStart = (e) => {
-      clickStartTimeRef.current = Date.now();
-      e.stopPropagation();
-    };
-
-    const handleTouchEnd = (e) => {
-      const duracao = Date.now() - clickStartTimeRef.current;
-      if (duracao < 100) {
-        setQuantity(1);
-        handleQuantityChange(product, true);
-      }
-      clickStartTimeRef.current = null;
-    };
-
-    if (element) {
-      element.addEventListener("touchstart", handleTouchStart, {
-        passive: true,
-      });
-      element.addEventListener("touchend", handleTouchEnd, { passive: true });
+  function handlePointerUpOpen(e) {
+    if (!viewProductInFull && !isDraggingRef.current) {
+      setDataProductFull({ ...product, quantity: quantity });
+      setViewProductInFull(true);
     }
+    isDraggingRef.current = false;
+  }
 
-    return () => {
-      if (element) {
-        element.removeEventListener("touchstart", handleTouchStart);
-        element.removeEventListener("touchend", handleTouchEnd);
-      }
-    };
-  }, []);
-
-  const handleClick = (e) => {
-    if (e.type === "click") {
+  //adicionar
+  function handlePointerUpAdd(e) {
+    e.stopPropagation();
+    if (!isDraggingRef.current) {
       setQuantity(1);
       handleQuantityChange(product, true);
+      isDraggingRef.current = false;
     }
-  };
+  }
+
+  //botões de mais e de menos
+  function changeQuantity(newQty, isIncrement) {
+    setQuantity(newQty);
+    handleQuantityChange(product, isIncrement);
+  }
+
+  function handlePointerUpButtons(e, action) {
+    e.stopPropagation();
+    if (!isDraggingRef.current) {
+      if (action == "fewer") {
+        changeQuantity(Math.max(0, quantity - 1), false);
+      } else {
+        changeQuantity(quantity + 1, true);
+      }
+      isDraggingRef.current = false;
+    }
+  }
 
   return (
     <DivOfertaStyled>
-      <PaiImgOfertaStyled>
+      <PaiImgOfertaStyled onPointerUp={handlePointerUpOpen}>
         {product.discount != "" && product.discount != null && (
           <DivOffStyled>
             <PoffStyled>-{product.discount}%</PoffStyled>
@@ -82,85 +84,31 @@ const Oferta = ({ product, quantity, setQuantity, handleQuantityChange }) => {
         )}
         <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
 
-        {quantity === 0 && (
-          <DivMaisStyled onClick={handleClick} ref={divMaisRef}>
+        {/*Botão de adicionar*/}
+        {quantity == 0 && (
+          <DivMaisStyled onPointerUp={handlePointerUpAdd}>
             <PMaisStyled>+</PMaisStyled>
           </DivMaisStyled>
         )}
 
-        <Botoes
-          quantity={quantity}
-          setQuantity={setQuantity}
-          handleQuantityChange={handleQuantityChange}
-          product={product}
-        />
+        {/*Botões de mais e menos*/}
+        <DivQuantStyled $display={quantity > 0}>
+          <DivPStyled
+            onPointerUp={(e) => {
+              handlePointerUpButtons(e, "fewer");
+            }}
+          >
+            <PMenosStyled>-</PMenosStyled>
+          </DivPStyled>
+          <DivPStyled>
+            <PQuantStyled>{quantity}</PQuantStyled>
+          </DivPStyled>
+          <DivPStyled onPointerUp={handlePointerUpButtons}>
+            <PMaisStyled>+</PMaisStyled>
+          </DivPStyled>
+        </DivQuantStyled>
       </PaiImgOfertaStyled>
     </DivOfertaStyled>
-  );
-};
-
-const Botoes = ({ quantity, product, setQuantity, handleQuantityChange }) => {
-  const clickStartTimeRef = useRef(null);
-
-  function changeQuantity(newQty, isIncrement) {
-    setQuantity(newQty);
-    handleQuantityChange(product, isIncrement);
-  }
-
-  function handlePointerDownMore(e) {
-    if (e.pointerType === "touch") {
-      clickStartTimeRef.current = Date.now();
-    } else {
-      changeQuantity(quantity + 1, true);
-    }
-  }
-
-  function handlePointerUpMore(e) {
-    if (e.pointerType === "touch") {
-      const duration = Date.now() - clickStartTimeRef.current;
-      if (duration < 100) {
-        changeQuantity(quantity + 1, true);
-      }
-      clickStartTimeRef.current = null;
-    }
-  }
-
-  function handlePointerDownFewer(e) {
-    if (e.pointerType === "touch") {
-      clickStartTimeRef.current = Date.now();
-    } else {
-      changeQuantity(Math.max(0, quantity - 1), false);
-    }
-  }
-
-  function handlePointerUpFewer(e) {
-    if (e.pointerType === "touch") {
-      const duration = Date.now() - clickStartTimeRef.current;
-      if (duration < 100) {
-        changeQuantity(Math.max(0, quantity - 1), false);
-      }
-      clickStartTimeRef.current = null;
-    }
-  }
-
-  return (
-    <DivQuantStyled $display={quantity > 0}>
-      <DivPStyled
-        onPointerDown={handlePointerDownFewer}
-        onPointerUp={handlePointerUpFewer}
-      >
-        <PMenosStyled>-</PMenosStyled>
-      </DivPStyled>
-      <DivPStyled>
-        <PQuantStyled>{quantity}</PQuantStyled>
-      </DivPStyled>
-      <DivPStyled
-        onPointerDown={handlePointerDownMore}
-        onPointerUp={handlePointerUpMore}
-      >
-        <PMaisStyled>+</PMaisStyled>
-      </DivPStyled>
-    </DivQuantStyled>
   );
 };
 
@@ -193,8 +141,9 @@ const DescOferta = ({ product }) => {
   );
 };
 
-function ProductItem({ product, handleQuantityChange, variant }) {
-  const { totalAddedValue, cartProducts } = useContext(CartContext);
+function ProductItem({ product, variant }) {
+  const { totalAddedValue, cartProducts, updateProduct } =
+    useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
   const { seeFeedback } = useContext(ViewContext);
 
@@ -215,15 +164,18 @@ function ProductItem({ product, handleQuantityChange, variant }) {
     }
   }, [seeFeedback]);
 
+  useEffect(() => {
+    cartProducts.map((item) => {
+      if (item.id == product.id) {
+        setQuantity(item.quant);
+      }
+    });
+  }, [updateProduct]);
+
   return (
     <PaiProdStyled $variant={variant}>
       <DescOferta product={product} />
-      <Oferta
-        product={product}
-        setQuantity={setQuantity}
-        quantity={quantity}
-        handleQuantityChange={handleQuantityChange}
-      />
+      <Oferta product={product} setQuantity={setQuantity} quantity={quantity} />
     </PaiProdStyled>
   );
 }

@@ -33,7 +33,10 @@ export const ViewContextProvider = ({ children }) => {
   const [preventClick, setPreventClick] = useState(false);
   const [seeFeedback, setSeeFeedback] = useState(false);
 
-  //estado para opacidade
+  const [dataProductFull, setDataProductFull] = useState(null);
+  const [viewProductInFull, setViewProductInFull] = useState(false);
+  const [applyBlur, setApplyBlur] = useState(false);
+  const [updatedProduct, setUpdatedProduct] = useState(0);
 
   return (
     <ViewContext.Provider
@@ -46,6 +49,14 @@ export const ViewContextProvider = ({ children }) => {
         setSeeFeedback,
         noSkipLogin,
         setNoSkipLogin,
+        dataProductFull,
+        setDataProductFull,
+        viewProductInFull,
+        setViewProductInFull,
+        applyBlur,
+        setApplyBlur,
+        updatedProduct,
+        setUpdatedProduct,
       }}
     >
       {children}

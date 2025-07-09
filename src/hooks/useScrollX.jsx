@@ -8,7 +8,9 @@ export function useScrollX() {
     productListHomeRef,
     limitAdvertisements,
     limitCategories,
-    limitProductList
+    limitProductList,
+    isDraggingRef,
+    pointerPositionRef,
   } = useContext(CartContext);
 
   const refs = [advertisementsRef, categoriesRef, productListHomeRef];
@@ -19,14 +21,14 @@ export function useScrollX() {
       toc_ini: 0,
       time_touch: 0,
       velocidade: 0,
-      animacao: null
+      animacao: null,
     }))
   );
 
   const limitsScrollRefs = [
     useRef(limitAdvertisements),
     useRef(limitCategories),
-    useRef(limitProductList)
+    useRef(limitProductList),
   ];
 
   useEffect(() => {
@@ -34,6 +36,23 @@ export function useScrollX() {
     limitsScrollRefs[1].current = limitCategories;
     limitsScrollRefs[2].current = limitProductList;
   }, [limitAdvertisements, limitCategories, limitProductList]);
+
+  const handlePointerDown = useCallback((e) => {
+    isDraggingRef.current = false;
+    pointerPositionRef.current = { x: e.clientX, y: e.clientY };
+  }, []);
+
+  const handlePointerMove = useCallback((e) => {
+    if (!pointerPositionRef.current) return;
+    const deltaX = Math.abs(e.clientX - pointerPositionRef.current.x);
+    const deltaY = Math.abs(e.clientY - pointerPositionRef.current.y);
+
+    if (deltaX > 5 || deltaY > 5) {
+      isDraggingRef.current = true;
+    } else {
+      isDraggingRef.current = false;
+    }
+  }, []);
 
   const iniciarArraste = useCallback((e, i) => {
     e.preventDefault();
@@ -59,14 +78,16 @@ export function useScrollX() {
     const now = Date.now();
     const dt = Math.max(1, now - variables.time_touch);
     const x = e.clientX;
-    const deslocamento = (variables.toc_ini - x)*0.7;
+    const deslocamento = (variables.toc_ini - x) * 0.7;
     const velocidade = deslocamento / dt;
 
-    if(Math.abs(velocidade) > 1.4){variables.velocidade = 1.4 * Math.sign(velocidade)}
-    
+    if (Math.abs(velocidade) > 1.4) {
+      variables.velocidade = 1.4 * Math.sign(velocidade);
+    }
+
     variables.time_touch = now;
     variables.toc_ini = x;
-    
+
     const div = refs[i].current;
     let proximo = div.scrollLeft + deslocamento;
     const maxScroll = -limitsScrollRefs[i].current;
@@ -117,33 +138,51 @@ export function useScrollX() {
     variables.animacao = null;
   }, []);
 
-  const listeners = useRef([[], [], []]);
+  const listeners = useRef([]);
 
   useEffect(() => {
     refs.forEach((refWrapper, i) => {
       const el = refWrapper?.current;
       if (!el) return;
 
-      const start = e => iniciarArraste(e, i);
-      const move = e => aoMover(e, i);
-      const end = e => finalizarArraste(e, i);
+      // Mouse listeners
+      const start = (e) => iniciarArraste(e, i);
+      const move = (e) => aoMover(e, i);
+      const end = (e) => finalizarArraste(e, i);
 
-      listeners.current[i] = [start, move, end];
+      el.addEventListener("mousedown", start, { passive: false });
+      el.addEventListener("mousemove", move, { passive: false });
+      el.addEventListener("mouseup", end);
 
-      el.addEventListener('mousedown', start, { passive: false });
-      el.addEventListener('mousemove', move, { passive: false });
-      el.addEventListener('mouseup', end);
+      // Pointer listeners
+      const pointerDown = (e) => handlePointerDown(e);
+      const pointerMove = (e) => handlePointerMove(e);
+
+      el.addEventListener("pointerdown", pointerDown);
+      el.addEventListener("pointermove", pointerMove);
+
+      // Salva tudo no listeners
+      listeners.current[i] = {
+        mouse: [start, move, end],
+        pointer: [pointerDown, pointerMove],
+      };
     });
 
     return () => {
       refs.forEach((refWrapper, i) => {
         const el = refWrapper?.current;
-        if (!el || !listeners.current[i]) return;
+        const refListeners = listeners.current[i];
+        if (!el || !refListeners) return;
 
-        const [start, move, end] = listeners.current[i];
-        el.removeEventListener('mousedown', start);
-        el.removeEventListener('mousemove', move);
-        el.removeEventListener('mouseup', end);
+        const [start, move, end] = refListeners.mouse || [];
+        const [pointerDown, pointerMove] = refListeners.pointer || [];
+
+        if (start) el.removeEventListener("mousedown", start);
+        if (move) el.removeEventListener("mousemove", move);
+        if (end) el.removeEventListener("mouseup", end);
+
+        if (pointerDown) el.removeEventListener("pointerdown", pointerDown);
+        if (pointerMove) el.removeEventListener("pointermove", pointerMove);
       });
     };
   }, []);

@@ -3,12 +3,12 @@ import Header from "../Header/Header";
 import AnnouncementSection from "./AnnoucementSection/AnnouncementSection";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import ProductListHome from "./ProductSection/ProductListHome";
-import ProductInFull from "./ProductSection/ProductInFull";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import styled from "styled-components";
 import { CartContext } from "../CartContext";
 import { ViewContext } from "../viewContext";
+import ProductInFull from "./ProductSection/ProductInFull";
 
 const Main = styled.main`
   max-width: 1390px;
@@ -19,14 +19,18 @@ const Main = styled.main`
 
 function MainContent() {
   const [viewOptions, setViewOptions] = useState(false);
-  const { noSkipLogin, setNoSkipLogin } = useContext(ViewContext);
+  const {
+    noSkipLogin,
+    setNoSkipLogin,
+    applyBlur,
+    setApplyBlur,
+    viewProductInFull,
+  } = useContext(ViewContext);
   const { currentCategory } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
-  const [applyBlur, setApplyBlur] = useState(false);
   const resizeDowntime = useRef(null);
   const windowWidthInitialRef = useRef(0);
   const [wasResize, setWasResize] = useState(0);
-  const [viewProductInFull, setViewProductInFull] = useState(false);
 
   const divRef = useRef(null);
 
@@ -130,9 +134,7 @@ function MainContent() {
           />
         </Main>
       </div>
-      {viewProductInFull && (
-        <ProductInFull setViewProductInFull={setViewProductInFull}/>
-      )}
+      {viewProductInFull && <ProductInFull setApplyBlur={setApplyBlur} />}
       <Footer setOpacityState={setOpacityState} setApplyBlur={setApplyBlur} />
     </div>
   );

@@ -59,7 +59,7 @@ const DivStyled = styled.div`
 `;
 
 export const ProductList = React.forwardRef(({ variant, categoryKey }, ref) => {
-  const { allProductsInCat, handleQuantityChange } = useContext(CartContext);
+  const { allProductsInCat } = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
 
@@ -71,9 +71,6 @@ export const ProductList = React.forwardRef(({ variant, categoryKey }, ref) => {
             variant={variant}
             key={`${product.id}-${product.cat_id}`}
             product={product}
-            handleQuantityChange={(product, isAdding) =>
-              handleQuantityChange(product, isAdding)
-            }
           />
         ))}
       </DivStyled>

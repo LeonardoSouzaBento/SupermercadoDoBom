@@ -1,10 +1,9 @@
 import React from "react";
 import { useRef, useContext, useEffect, useCallback } from "react";
 import styled, { css } from "styled-components";
-import { CartContext } from "../../CartContext";
+import { CartContext } from "../../cartContext";
 import ProductItem from "./ProductItem";
 import { useScrollX } from "../../../hooks/useScrollX";
-import ProductInFull from "./ProductInFull";
 
 const ContainerStyled = styled.div`
   overflow-x: hidden;
@@ -76,16 +75,20 @@ const DivHalfList = styled.div`
 `;
 
 const NoProcutsStyed = styled.div`
-  width: 90%;
+  width: calc(90% - 20px);
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   top: 10px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-52%);
   border-radius: 8px;
   background-color: white;
+
+  @media screen and (min-width: 1201px) {
+     transform: translateX(-50%);
+  }
 `;
 const PNoneStyled = styled.p`
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -98,7 +101,7 @@ const PNoneStyled = styled.p`
 `;
 
 const ProductList = React.forwardRef(({ categoryKey }, ref) => {
-  const { allProductsInCat, handleQuantityChange } = useContext(CartContext);
+  const { allProductsInCat } = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
 
@@ -114,9 +117,6 @@ const ProductList = React.forwardRef(({ categoryKey }, ref) => {
             variant={"home"}
             key={`${product.id}-${product.cat_id}`}
             product={product}
-            handleQuantityChange={(product, isAdding) =>
-              handleQuantityChange(product, isAdding)
-            }
           />
         ))}
       </DivHalfList>
@@ -127,9 +127,6 @@ const ProductList = React.forwardRef(({ categoryKey }, ref) => {
             variant={"home"}
             key={`${product.id}-${product.cat_id}`}
             product={product}
-            handleQuantityChange={(product, isAdding) =>
-              handleQuantityChange(product, isAdding)
-            }
           />
         ))}
       </DivHalfList>

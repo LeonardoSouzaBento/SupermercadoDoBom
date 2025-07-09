@@ -62,8 +62,8 @@ export const DivfStyled = styled.div`
   margin-bottom: 24px;
   padding: 4px;
   padding-bottom: 8px;
-  padding-right: 20px;
   padding-left: 0px;
+  box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
   gap: 10px;
@@ -76,8 +76,9 @@ export const DivfStyled = styled.div`
     display: none;
   }
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     gap: 15px;
+    padding-right: 12px;
   }
   @media screen and (min-width: 577px) {
     margin-bottom: 28px;
@@ -85,6 +86,9 @@ export const DivfStyled = styled.div`
   @media screen and (min-width: 1201px) {
     padding-right: 6px;
     justify-content: space-between;
+  }
+  @media screen and (min-width: 375px) and (max-width: 1200px) {
+    padding-right: 20px;
   }
 `;
 

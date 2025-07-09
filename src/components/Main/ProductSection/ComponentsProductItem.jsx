@@ -220,19 +220,20 @@ export const DivOfertaStyled = styled.div`
   width: 52%;
   box-sizing: border-box;
   overflow: hidden;
-  position: relative;
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
     height: 54%;
     width: 100%;
   }
 `;
+
 export const PaiImgOfertaStyled = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 6px;
   -webkit-user-select: none;
   user-select: none;
+  position: relative;
 `;
 export const ImgOfertaStyed = styled.img`
   height: 100%;
