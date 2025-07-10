@@ -33,13 +33,13 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
     setViewProductInFull,
     setApplyBlur,
   } = useContext(ViewContext);
-  const { handleQuantityChange, isDraggingRef } = useContext(CartContext);
+  const { handleQuantityChange, isDraggingRef, isInHome} = useContext(CartContext);
 
   function handlePointerUpOpen(e) {
     if (e.button === 2) {
       return;
     }
-    if (!viewProductInFull && !isDraggingRef.current) {
+    if (!viewProductInFull && !isDraggingRef.current && isInHome) {
       setDataProductFull({ ...product, quantity: quantity });
       setViewProductInFull(true);
     }
@@ -174,10 +174,18 @@ function ProductItem({ product, variant }) {
   }, [seeFeedback]);
 
   useEffect(() => {
-    if (updateProduct?.id === product.id) {
-      setQuantity(updateProduct.quant);
-    }
+    cartProducts.map((item) => {
+      if (item.id == product.id) {
+        setQuantity(item.quant);
+      }
+    });
   }, [updateProduct]);
+
+  // useEffect(() => {
+  //   if (updateProduct?.id === product.id) {
+  //     setQuantity(updateProduct.quant);
+  //   }
+  // }, [updateProduct]);
 
   return (
     <PaiProdStyled $variant={variant}>

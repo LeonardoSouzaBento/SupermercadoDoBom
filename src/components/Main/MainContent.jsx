@@ -26,7 +26,7 @@ function MainContent() {
     setApplyBlur,
     viewProductInFull,
   } = useContext(ViewContext);
-  const { currentCategory } = useContext(CartContext);
+  const { currentCategory, setIsInHome } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
   const resizeDowntime = useRef(null);
   const windowWidthInitialRef = useRef(0);
@@ -35,6 +35,7 @@ function MainContent() {
   const divRef = useRef(null);
 
   useEffect(() => {
+    setIsInHome(true);
     setTimeout(() => {
       setOpacityState(1);
     }, 300);
@@ -72,6 +73,7 @@ function MainContent() {
     window.addEventListener("resize", handleResize);
 
     return () => {
+      setIsInHome(false);
       document.removeEventListener("touchstart", handleTouch);
       window.removeEventListener("resize", handleResize);
       if (resizeDowntime.current) {
