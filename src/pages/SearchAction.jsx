@@ -11,13 +11,11 @@ const DivStyled = styled.div`
   padding-bottom: 59px;
   box-sizing: border-box;
   opacity: ${(props) => props.$opacityState};
-  filter: ${(props) => (props.$applyBlur ? "blur(2.5px)" : "blur(0px)")};
-  transition: opacity 0.2s ease, filter 1s ease;
+  transition: opacity 0.2s ease;
 `;
 
 const SearchAction = () => {
   const [opacityState, setOpacityState] = useState(0);
-  const [applyBlur, setApplyBlur] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,11 +41,11 @@ const SearchAction = () => {
 
   return (
     <>
-      <DivStyled $opacityState={opacityState} $applyBlur={applyBlur}>
+      <DivStyled $opacityState={opacityState}>
         <SearchBar copy={true}></SearchBar>
         <ProductList variant={"search"} categoryKey={13} />
       </DivStyled>
-      <Footer setApplyBlur={setApplyBlur}></Footer>
+      <Footer/>
     </>
   );
 };

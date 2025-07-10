@@ -258,7 +258,7 @@ const Login = ({ noSkipLogin, setNoSkipLogin }) => {
     <ContainerStyled $opacity={opacity}>
       <DivMainStyled>
         <DivSpanCloseStyled onClick={handleClickClose}>
-          <SpanCloseStyled className="material-symbols-outlined">
+          <SpanCloseStyled className="material-symbols-rounded">
             close
           </SpanCloseStyled>
         </DivSpanCloseStyled>

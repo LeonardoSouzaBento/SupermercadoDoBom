@@ -11,7 +11,6 @@ export const BodyDivStyled = styled.div`
 
 export const MainDivStyled = styled.div`
   width: 100%;
-  /* width: calc(100% - 16px); */
   height: 88%;
   box-sizing: border-box;
   display: block;
@@ -20,13 +19,10 @@ export const MainDivStyled = styled.div`
   left: 0;
   overflow-y: scroll;
   background-color: #ebeff4;
-  border-radius: 16px 16px 0px 0px;
+  border-radius: 24px 24px 0px 0px;
   transform: translateY(${(props) => props.$translate});
   transition: transform 0.3s ease;
-  box-shadow: 0px -4px 8px -4px rgba(41, 46, 117, 0.2);
-  /* box-shadow: 0px -4px 8px -4px rgba(41, 46, 117, 0.18),
-    3px 0px 3px 0px rgba(41, 46, 117, 0.12),
-    -3px 0px 3px 0px rgba(41, 46, 117, 0.12); */
+  box-shadow: 0px -4px 8px -2px rgba(41, 46, 117, 0.08);
 
   @media screen and (max-width: 577px) {
     padding-bottom: 62px;
@@ -59,9 +55,7 @@ export const DivSpanCloseStyled = styled.div`
   cursor: pointer;
   z-index: 3;
   color: #db2c32;
-  border-radius: 6px 12px 6px 6px;
-  background-color: white;
-  box-shadow: 0px 2px 4px -2px rgba(56, 61, 106, 0.4);
+  border-radius: 4px 22px 4px 4px;
 
   @media screen and (min-width: 578px) {
     width: auto;
@@ -77,8 +71,8 @@ export const DivSpanCloseStyled = styled.div`
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 1.45em;
-  font-weight: 800;
+  font-size: 1.5em;
+  font-weight: 600;
   cursor: pointer;
   /* color: white; */
 
@@ -114,7 +108,7 @@ export const ProductDivStyled = styled.div`
     z-index: 3;
     padding-bottom: 40px;
     margin-bottom: 12px;
-    box-shadow: 0px 4px 10px rgba(56, 61, 106, 0.1);
+    border-bottom: 1px solid rgba(41, 46, 117, 0.3);
   }
   @media screen and (min-width: 577px) {
     min-width: 320px;
@@ -216,8 +210,8 @@ export const PWeightStyled = styled.p`
 export const DivNameProdStyled = styled.div`
   padding: 18px 0px;
   padding-bottom: 20px;
-  border-top: 1px solid rgb(227, 227, 227);
-  border-bottom: 1px solid rgb(227, 227, 227);
+  border-top: 1px solid rgba(41, 46, 117, 0.19);
+  border-bottom: 1px solid rgba(41, 46, 117, 0.19);
   display: flex;
   justify-content: center;
 `;

@@ -46,7 +46,6 @@ const Cart = () => {
   const { seeFeedback, setSeeFeedback } = useContext(ViewContext);
   const { setCartProducts } = useContext(CartContext);
   const [seeAddressForm, setSeeAddressForm] = useState(false);
-  // const [applyBlur, setApplyBlur] = useState(0);
   const [scaleWarnnig, setScaleWarnnig] = useState(1);
 
   //estados para botão ver todos
@@ -185,7 +184,6 @@ const Cart = () => {
   function handleClickContinue(params) {
     if (falta <= 0) {
       setSeeAddressForm(true);
-      // setApplyBlur(true);
     } else {
       setScaleWarnnig(1.045);
       setTimeout(() => {
@@ -196,11 +194,7 @@ const Cart = () => {
 
   return (
     <>
-      <MainStyled
-        $seeAddressForm={seeAddressForm}
-        $opacity={opacityState}
-        // $applyBlur={applyBlur}
-      >
+      <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
         <div style={{ position: "relative" }}>
           <CartSectionStyed ref={CartSectionRef}>
             <DivToCoverStyled
@@ -217,7 +211,7 @@ const Cart = () => {
                   }, 50);
                 }}
               >
-                <SpanStyled className="material-symbols-outlined" $delete={true}>
+                <SpanStyled className="material-symbols-rounded" $delete={true}>
                   delete
                 </SpanStyled>
               </DivSpanDeleteStyled>
@@ -231,7 +225,10 @@ const Cart = () => {
                     onClick={handleConfirmCancel}
                     $uniqueBorderRadius={true}
                   >
-                    <SpanStyled className="material-symbols-outlined" style={{color: "black"}}>
+                    <SpanStyled
+                      className="material-symbols-rounded"
+                      style={{ color: "black" }}
+                    >
                       check
                     </SpanStyled>
                   </DivSpanStyled2>
@@ -244,7 +241,10 @@ const Cart = () => {
                       }, 360);
                     }}
                   >
-                    <SpanStyled className="material-symbols-outlined" style={{color: "black"}}>
+                    <SpanStyled
+                      className="material-symbols-rounded"
+                      style={{ color: "black" }}
+                    >
                       close
                     </SpanStyled>
                   </DivSpanStyled2>
@@ -262,7 +262,7 @@ const Cart = () => {
             {viewButtonSeeAll && (
               <DivSeeAllStyled onClick={handleClickSeeAll}>
                 <PSeeAllStyled>Ver Tudo</PSeeAllStyled>
-                <SpanSeeAllStyled className="material-symbols-outlined">
+                <SpanSeeAllStyled className="material-symbols-rounded">
                   keyboard_arrow_down
                 </SpanSeeAllStyled>
               </DivSeeAllStyled>
@@ -308,9 +308,7 @@ const Cart = () => {
               <PContinueStyled>Continuar</PContinueStyled>
             </DivPContinueStyled>
 
-            {(totalAddedValue == 0 || seeFeedback) && (
-              <DivCoverStyled/>
-            )}
+            {(totalAddedValue == 0 || seeFeedback) && <DivCoverStyled />}
           </DivContinueStyled>
 
           <DivAddStyled
@@ -324,10 +322,7 @@ const Cart = () => {
       </MainStyled>
 
       {seeAddressForm && (
-        <RegisterAddress
-          setSeeAddressForm={setSeeAddressForm}
-          // setApplyBlur={setApplyBlur}
-        />
+        <RegisterAddress setSeeAddressForm={setSeeAddressForm} />
       )}
     </>
   );

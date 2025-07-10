@@ -22,8 +22,6 @@ function MainContent() {
   const {
     noSkipLogin,
     setNoSkipLogin,
-    applyBlur,
-    setApplyBlur,
     viewProductInFull,
   } = useContext(ViewContext);
   const { currentCategory, setIsInHome } = useContext(CartContext);
@@ -117,9 +115,8 @@ function MainContent() {
 
       <div
         style={{
-          filter: noSkipLogin || applyBlur ? "blur(2.5px)" : "blur(0px)",
           opacity: !noSkipLogin ? opacityState : 1,
-          transition: "filter 1s ease, opacity 0.3s ease",
+          transition: "opacity 0.3s ease",
         }}
       >
         <Header
@@ -137,7 +134,7 @@ function MainContent() {
         </Main>
       </div>
       {viewProductInFull && <ProductInFull />}
-      <Footer setOpacityState={setOpacityState} setApplyBlur={setApplyBlur} />
+      <Footer setOpacityState={setOpacityState} />
     </div>
   );
 }

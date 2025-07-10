@@ -80,7 +80,7 @@ export default function MoreOptionsSection() {
                   <DivSpanStyled>
                     <SpanStyled
                       $buttonSelected={isSelected}
-                      className="material-symbols-outlined"
+                      className="material-symbols-rounded"
                     >
                       {content.icon}
                     </SpanStyled>

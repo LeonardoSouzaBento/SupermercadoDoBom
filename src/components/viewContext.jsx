@@ -35,7 +35,6 @@ export const ViewContextProvider = ({ children }) => {
 
   const [dataProductFull, setDataProductFull] = useState(null);
   const [viewProductInFull, setViewProductInFull] = useState(false);
-  const [applyBlur, setApplyBlur] = useState(false);
   const [updatedProduct, setUpdatedProduct] = useState(0);
 
   return (
@@ -53,8 +52,6 @@ export const ViewContextProvider = ({ children }) => {
         setDataProductFull,
         viewProductInFull,
         setViewProductInFull,
-        applyBlur,
-        setApplyBlur,
         updatedProduct,
         setUpdatedProduct,
       }}

@@ -118,7 +118,7 @@ const ProductInFull = () => {
     <BodyDivStyled
       style={{
         backgroundColor: seeSpanClose
-          ? "rgba(233, 238, 246, 0.98)"
+          ? "rgba(0, 0, 0, 0.1)"
           : "rgba(0, 0, 0, 0)",
         transition: "background-color 0.3s ease",
       }}
@@ -128,7 +128,7 @@ const ProductInFull = () => {
           onClick={handleClickClose}
           style={{ display: seeSpanClose ? "flex" : "none" }}
         >
-          <SpanCloseStyled className="material-symbols-outlined">
+          <SpanCloseStyled className="material-symbols-rounded">
             close
           </SpanCloseStyled>
 

@@ -118,7 +118,7 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer({ setApplyBlur }) {
+export default function Footer() {
   const { totalQuantity, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
@@ -151,16 +151,15 @@ export default function Footer({ setApplyBlur }) {
                 setCanHandleClick(false);
                 setTimeout(() => setCanHandleClick(true), 200);
                 setViewConfirm(true);
-                setApplyBlur(true);
               }}
             >
-              <SpanDeleteStyled className="material-symbols-outlined">
+              <SpanDeleteStyled className="material-symbols-rounded">
                 delete
               </SpanDeleteStyled>
             </DivDeleteStyled>
 
             <DivCartStyled>
-              <SpanCartStyled className="material-symbols-outlined">
+              <SpanCartStyled className="material-symbols-rounded">
                 shopping_cart
               </SpanCartStyled>
             </DivCartStyled>
@@ -181,7 +180,6 @@ export default function Footer({ setApplyBlur }) {
       <ConfirmDialog
         setViewConfirm={setViewConfirm}
         canHandleClick={canHandleClick}
-        setApplyBlur={setApplyBlur}
       ></ConfirmDialog>
     );
   }

@@ -56,12 +56,11 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       <MainDivStyled $translate={translateMainDiv}>
         <DivSpanCloseStyled>
           <SpanCloseStyled
-            className="material-symbols-outlined"
+            className="material-symbols-rounded"
             onClick={() => {
               setOpacityState(0);
               setTimeout(() => {
                 setSeeAddressForm(false);
-                // setApplyBlur(false);
               }, 420);
             }}
           >
@@ -89,7 +88,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               paddingTop: "11px",
               paddingBottom: "13px",
               borderRadius: "5px",
-              backgroundColor: " #E9EFF5"
+              backgroundColor: " #E9EFF5",
             }}
           />
 

@@ -10,7 +10,8 @@ export const DivBodyStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  background-color: rgba(233, 238, 246, 0.975);
+  /* background-color: rgba(233, 238, 246, 0.975); */
+  background-color: rgba(0, 0, 0, 0.1);
   transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
 `;
@@ -21,15 +22,15 @@ export const MainDivStyled = styled.div`
   width: calc(100% - 30px);
   max-width: 400px;
   box-sizing: border-box;
-  border-radius: 12px;
+  border-radius: 13px;
   background-color: white;
   padding: 16px;
   padding-bottom: 28px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.7),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.18),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.18);
+  box-shadow: 0px 4px 4px -2.5px rgba(41, 46, 117, 0.45),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.15),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.15);
   transition: transform 0.2s ease;
 
   @media screen and (max-width: 768px) {
@@ -64,7 +65,7 @@ export const DivSpanCloseStyled = styled.div`
   top: 0;
   right: 0;
   background-color: white;
-  border-bottom-left-radius: 4px;
+  /* border-bottom-left-radius: 4px; */
   cursor: pointer;
   &:hover {
     background-color: rgb(240, 240, 240);
@@ -72,8 +73,8 @@ export const DivSpanCloseStyled = styled.div`
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 1.64em;
-  font-weight: 700;
+  font-size: 1.7em;
+  font-weight: 600;
   color: #db2c32;
 `;
 

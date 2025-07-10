@@ -81,7 +81,7 @@ function CategoriesSection({ wasResize }) {
 
   return (
     <DivStyled ref={DivRef}>
-      <SpanStyled className="material-symbols-outlined">swipe_left</SpanStyled>
+      <SpanStyled className="material-symbols-rounded">swipe_left</SpanStyled>
       {/*Para tutorial de como usar a tela*/}
       <DivLabelPromosStyled>
         <PLabelStyled id="strong">Mais vendidos por categoria,</PLabelStyled>

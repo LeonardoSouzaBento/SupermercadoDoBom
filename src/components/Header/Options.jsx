@@ -148,7 +148,7 @@ const Options = ({ setOpacityState }) => {
           )}
 
           <DivSpanStyled>
-            <SpanOptionsStyled className="material-symbols-outlined">
+            <SpanOptionsStyled className="material-symbols-rounded">
               {content.icon}
             </SpanOptionsStyled>
           </DivSpanStyled>

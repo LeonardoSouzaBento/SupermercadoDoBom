@@ -10,7 +10,7 @@ const ContainerStyled = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: 4;
-  background-color:rgba(0, 0, 0, 0.03);
+  background-color:rgba(0, 0, 0, 0.1);
 `;
 
 const DivStyled = styled.div`
@@ -159,7 +159,7 @@ const PFeedBackStyled = styled(PQuestionStyled)`
 `;
 
 
-export default function ConfirmDialog({ setViewConfirm, canHandleClick, setApplyBlur }) {
+export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
   const { setCartProducts } = useContext(CartContext);
   const { seeFeedback, setSeeFeedback } = useContext(ViewContext);
   const [heightDiv, setHeightDiv] = useState("163px");
@@ -173,12 +173,10 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick, setApply
       setTimeout(() => {
         setViewConfirm(false);
         setSeeFeedback(false);
-        setApplyBlur(false);
         setHeightDiv("163px");
       }, 2100);
     } else if (action === 0 && canHandleClick) {
       setViewConfirm(false);
-      setApplyBlur(false);
     }
   };
 
@@ -187,7 +185,7 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick, setApply
       <DivStyled $feedback={seeFeedback} $heightDiv={heightDiv}>
         <DivSpanStyled>
           <SpanStyled
-            className="material-symbols-outlined"
+            className="material-symbols-rounded"
             $feedback={seeFeedback}
           >
             {seeFeedback ? "check" : "exclamation"}

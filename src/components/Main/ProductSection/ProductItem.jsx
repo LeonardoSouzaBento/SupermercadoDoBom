@@ -5,7 +5,7 @@ import {
   PaiProdStyled,
   PpesoStyled,
   PPeso2Styled,
-  PoffStyled,
+  POffStyled,
   DivOfertaStyled,
   PaiImgOfertaStyled,
   ImgOfertaStyed,
@@ -15,12 +15,12 @@ import {
   DivPrecoStyled,
   PprecoStyled,
   PSifraStyled,
-  DivMaisStyled,
+  DivAddStyled,
   DivQuantStyled,
-  DivPStyled,
+  DivButtonsStyled,
   PQuantStyled,
-  PMenosStyled,
-  PMaisStyled,
+  SpanMoreStyled,
+  SpanFewerStyled,
   DescOfertaStyled,
   DivNomeStyled,
   PnomeStyled,
@@ -31,9 +31,9 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
     setDataProductFull,
     viewProductInFull,
     setViewProductInFull,
-    setApplyBlur,
   } = useContext(ViewContext);
-  const { handleQuantityChange, isDraggingRef, isInHome} = useContext(CartContext);
+  const { handleQuantityChange, isDraggingRef, isInHome } =
+    useContext(CartContext);
 
   function handlePointerUpOpen(e) {
     if (e.button === 2) {
@@ -85,7 +85,7 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
       <PaiImgOfertaStyled onPointerUp={handlePointerUpOpen}>
         {product.discount != "" && product.discount != null && (
           <DivOffStyled>
-            <PoffStyled>-{product.discount}%</PoffStyled>
+            <POffStyled>-{product.discount}%</POffStyled>
           </DivOffStyled>
         )}
         {product.weight != "" && product.weight != null && (
@@ -95,26 +95,34 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
 
         {/*Botão de adicionar*/}
         {quantity == 0 && (
-          <DivMaisStyled onPointerUp={handlePointerUpAdd} $variant={variant}>
-            <PMaisStyled>+</PMaisStyled>
-          </DivMaisStyled>
+          <DivAddStyled onPointerUp={handlePointerUpAdd} $variant={variant}>
+            <SpanMoreStyled className="material-symbols-rounded">
+              add
+            </SpanMoreStyled>
+          </DivAddStyled>
         )}
 
         {/*Botões de mais e menos*/}
         <DivQuantStyled $display={quantity > 0} $variant={variant}>
-          <DivPStyled
+          <DivButtonsStyled
             onPointerUp={(e) => {
               handlePointerUpButtons(e, "fewer");
             }}
           >
-            <PMenosStyled>-</PMenosStyled>
-          </DivPStyled>
-          <DivPStyled>
+            <SpanFewerStyled className="material-symbols-rounded">
+              remove
+            </SpanFewerStyled>
+          </DivButtonsStyled>
+
+          <DivButtonsStyled>
             <PQuantStyled>{quantity}</PQuantStyled>
-          </DivPStyled>
-          <DivPStyled onPointerUp={handlePointerUpButtons}>
-            <PMaisStyled>+</PMaisStyled>
-          </DivPStyled>
+          </DivButtonsStyled>
+
+          <DivButtonsStyled onPointerUp={handlePointerUpButtons}>
+            <SpanMoreStyled className="material-symbols-rounded">
+              add
+            </SpanMoreStyled>
+          </DivButtonsStyled>
         </DivQuantStyled>
       </PaiImgOfertaStyled>
     </DivOfertaStyled>

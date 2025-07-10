@@ -249,7 +249,7 @@ function SearchBar({ copy }) {
             handleClickSearch();
           }}
         >
-          <SpanSearchStyled className="material-symbols-outlined">
+          <SpanSearchStyled className="material-symbols-rounded">
             search
           </SpanSearchStyled>
         </DivSpanStyled>

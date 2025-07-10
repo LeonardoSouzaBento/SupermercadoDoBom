@@ -245,7 +245,7 @@ export const MoreOptionsButton = ({ setViewOptions, viewOptions }) => {
           setViewOptions(true);
         }}
       >
-        <SpanStyled className="material-symbols-outlined">menu</SpanStyled>
+        <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
         <PStyled>Mais opções</PStyled>
       </DivMoreOptionsStyled>
     </ContainerOptionsStyled>

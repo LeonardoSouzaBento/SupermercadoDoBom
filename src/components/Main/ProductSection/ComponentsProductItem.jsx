@@ -260,7 +260,7 @@ export const DivOffStyled = styled.div`
   border-radius: 10px;
 `;
 
-export const PoffStyled = styled.p`
+export const POffStyled = styled.p`
   color: white;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
@@ -277,7 +277,7 @@ export const PoffStyled = styled.p`
 `;
 
 //botão de mais
-export const DivMaisStyled = styled.div`
+export const DivAddStyled = styled.div`
   width: 32px;
   height: 32px;
   position: absolute;
@@ -297,17 +297,18 @@ export const DivMaisStyled = styled.div`
   ${(props) => props.$variant === "similarList" && "display: none;"}
 `;
 
-export const PMaisStyled = styled.p`
-  font-size: 1.75em;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+export const SpanMoreStyled = styled.span`
+  font-size: 1.48em;
   font-weight: 500;
   color: white;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
-  color: white;
-  padding-bottom: 1.6px;
-  user-select: none;
+`;
+
+export const SpanFewerStyled = styled(SpanMoreStyled)`
+  font-size: 1.37em;
+  font-weight: 600;
 `;
 
 //Botão p selecionar a quantidade
@@ -334,18 +335,13 @@ export const DivQuantStyled = styled.div`
   ${(props) => props.$variant === "similarList" && "display: none;"}
 `;
 
-export const DivPStyled = styled.div`
+export const DivButtonsStyled = styled.div`
   height: 100%;
   width: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
-`;
-
-export const PMenosStyled = styled(PMaisStyled)`
-  padding-bottom: 5px;
-  font-size: 1.9em;
 `;
 
 export const PQuantStyled = styled.p`

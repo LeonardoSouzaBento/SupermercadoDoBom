@@ -5,7 +5,6 @@ export const MainStyled = styled.div`
   height: 100%;
   margin: auto;
   position: relative;
-  /* filter: ${(props) => (props.$applyBlur ? "blur(2.5px)" : "blur(0px)")}; */
 
   @media screen and (min-width: 385px) and (max-width: 414px) {
     width: calc(100% - 24px);
@@ -38,9 +37,9 @@ export const CartSectionStyed = styled.div`
   background-color: white;
   box-sizing: border-box;
   background-color: #ecf1f6;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
+  box-shadow: 0px 4px 4px -2.5px rgba(41, 46, 117, 0.4),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.13),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   position: relative;
   overflow: hidden;
   transition: height 0.15s ease;
@@ -93,7 +92,7 @@ export const DivSpanDeleteStyled = styled.div`
   align-items: center;
   border-radius: 4px 7px 4px 4px;
   cursor: pointer;
-  background-color: rgb(230, 236, 240);
+  /* background-color: rgb(230, 236, 240); */
 
   &:hover {
     background-color: rgb(230, 236, 240);
@@ -335,9 +334,9 @@ export const DivContinueStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
+  box-shadow: 0px 4px 4px -2.5px rgba(41, 46, 117, 0.4),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.13),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   overflow: hidden;
   position: relative;
 
@@ -504,9 +503,9 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 7px;
   background-color: white;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.12),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
+  box-shadow: 0px 4px 4px -2.5px rgba(41, 46, 117, 0.4),
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.13),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   cursor: pointer;
 
   &:hover {
