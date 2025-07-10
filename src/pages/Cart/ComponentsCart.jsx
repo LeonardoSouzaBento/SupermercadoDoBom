@@ -5,7 +5,7 @@ export const MainStyled = styled.div`
   height: 100%;
   margin: auto;
   position: relative;
-  filter: ${(props) => (props.$applyBlur ? "blur(2.5px)" : "blur(0px)")};
+  /* filter: ${(props) => (props.$applyBlur ? "blur(2.5px)" : "blur(0px)")}; */
 
   @media screen and (min-width: 385px) and (max-width: 414px) {
     width: calc(100% - 24px);
@@ -26,7 +26,7 @@ export const MainStyled = styled.div`
   }
 
   opacity: ${(props) => props.$opacity};
-  transition: opacity 0.5s ease, filter 0.2s ease;
+  transition: opacity 0.5s ease;
 `;
 
 export const CartSectionStyed = styled.div`

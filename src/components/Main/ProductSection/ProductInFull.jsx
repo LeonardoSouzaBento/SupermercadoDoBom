@@ -73,7 +73,7 @@ const ProductInFull = () => {
   const [seeSpanClose, setSeeSpanClose] = useState(false);
   const { dataProductFull, setViewProductInFull, setApplyBlur } =
     useContext(ViewContext);
-  const { handleQuantityChange, updateProduct, setUpdateProduct } =
+  const { handleQuantityChange, setUpdateProduct, isDraggingRef } =
     useContext(CartContext);
   const initialQuant = dataProductFull.quantity;
   const [quantity, setQuantity] = useState(initialQuant);
@@ -142,6 +142,10 @@ const ProductInFull = () => {
     setTimeout(() => {
       setSeeSpanClose(true);
     }, 550);
+
+    return () => {
+      isDraggingRef.current = false;
+    };
   }, []);
 
   return (
@@ -172,13 +176,17 @@ const ProductInFull = () => {
 
             {dataProductFull.weight != "" && (
               <DivWeightStyled>
-                <PWeightStyled style={{color: '#292e4e', fontWeight: '500'}}>{dataProductFull.weight}</PWeightStyled>
+                <PWeightStyled style={{ color: "#292e4e", fontWeight: "500" }}>
+                  {dataProductFull.weight}
+                </PWeightStyled>
               </DivWeightStyled>
             )}
 
             {dataProductFull.weight != " " && (
               <DivDiscountStyled>
-                <PWeightStyled style={{fontWeight: '400'}}>-{dataProductFull.discount}%</PWeightStyled>
+                <PWeightStyled style={{ fontWeight: "400" }}>
+                  -{dataProductFull.discount}%
+                </PWeightStyled>
               </DivDiscountStyled>
             )}
           </DivImgStyled>

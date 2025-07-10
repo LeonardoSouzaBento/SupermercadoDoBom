@@ -46,7 +46,7 @@ const Cart = () => {
   const { seeFeedback, setSeeFeedback, isDraggingRef } = useContext(ViewContext);
   const { setCartProducts } = useContext(CartContext);
   const [seeAddressForm, setSeeAddressForm] = useState(false);
-  const [applyBlur, setApplyBlur] = useState(0);
+  // const [applyBlur, setApplyBlur] = useState(0);
   const [scaleWarnnig, setScaleWarnnig] = useState(1);
 
   //estados para botão ver todos
@@ -185,7 +185,7 @@ const Cart = () => {
   function handleClickContinue(params) {
     if (falta <= 0) {
       setSeeAddressForm(true);
-      setApplyBlur(true);
+      // setApplyBlur(true);
     } else {
       setScaleWarnnig(1.045);
       setTimeout(() => {
@@ -199,7 +199,7 @@ const Cart = () => {
       <MainStyled
         $seeAddressForm={seeAddressForm}
         $opacity={opacityState}
-        $applyBlur={applyBlur}
+        // $applyBlur={applyBlur}
       >
         <div style={{ position: "relative" }}>
           <CartSectionStyed ref={CartSectionRef}>
@@ -326,8 +326,7 @@ const Cart = () => {
       {seeAddressForm && (
         <RegisterAddress
           setSeeAddressForm={setSeeAddressForm}
-          applyBlur={applyBlur}
-          setApplyBlur={setApplyBlur}
+          // setApplyBlur={setApplyBlur}
         />
       )}
     </>

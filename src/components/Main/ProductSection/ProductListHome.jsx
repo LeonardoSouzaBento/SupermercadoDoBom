@@ -87,7 +87,7 @@ const NoProcutsStyed = styled.div`
   background-color: white;
 
   @media screen and (min-width: 1201px) {
-     transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 `;
 const PNoneStyled = styled.p`
@@ -146,6 +146,7 @@ function ProductListHome({ categoryKey, wasResize }) {
     currentCategory,
     allProductsInCat,
     productListHomeRef,
+    isDraggingRef
   } = useContext(CartContext);
 
   const paiAllProductsRef = useRef(null);
@@ -181,6 +182,9 @@ function ProductListHome({ categoryKey, wasResize }) {
 
   useEffect(() => {
     calcLimit();
+    return () => {
+      isDraggingRef.current = false;
+    };
   }, []);
 
   useEffect(() => {

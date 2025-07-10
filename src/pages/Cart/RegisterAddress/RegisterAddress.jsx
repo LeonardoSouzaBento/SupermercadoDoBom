@@ -12,7 +12,7 @@ import {
 } from "./ComponentsRegAddress";
 import { useNavigate } from "react-router-dom";
 
-const RegisterAddress = ({ setSeeAddressForm, setApplyBlur }) => {
+const RegisterAddress = ({ setSeeAddressForm }) => {
   const navigate = useNavigate();
   const [opacityState, setOpacityState] = useState(0);
   const [translateMainDiv, setTranslateMainDiv] = useState("100%");
@@ -61,8 +61,8 @@ const RegisterAddress = ({ setSeeAddressForm, setApplyBlur }) => {
               setOpacityState(0);
               setTimeout(() => {
                 setSeeAddressForm(false);
-                setApplyBlur(false);
-              }, 520);
+                // setApplyBlur(false);
+              }, 420);
             }}
           >
             close

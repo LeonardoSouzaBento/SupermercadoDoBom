@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styled, { css } from "styled-components";
 import ProductItem from "./ProductItem";
 import { CartContext } from "../../CartContext";
@@ -59,9 +59,15 @@ const DivStyled = styled.div`
 `;
 
 export const ProductList = React.forwardRef(({ variant, categoryKey }, ref) => {
-  const { allProductsInCat } = useContext(CartContext);
+  const { allProductsInCat, isDraggingRef} = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
+
+  useEffect(() => {
+    return () => {
+      isDraggingRef.current = false;
+    };
+  }, []);
 
   return (
     <>

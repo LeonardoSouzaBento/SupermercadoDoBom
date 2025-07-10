@@ -165,11 +165,7 @@ function ProductItem({ product, variant }) {
     if (totalAddedValue == 0) {
       setQuantity(0);
     }
-    return () => {
-      isDraggingRef.current = false;
-    }
   }, []);
-
 
   useEffect(() => {
     if (seeFeedback == true) {

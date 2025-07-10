@@ -10,8 +10,8 @@ export const DivBodyStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  background-color: rgba(233, 238, 246, 0.96);
-  transition: opacity 0.5s ease;
+  background-color: rgba(233, 238, 246, 0.975);
+  transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
 `;
 
@@ -28,8 +28,8 @@ export const MainDivStyled = styled.div`
   position: relative;
   overflow: hidden;
   box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.7),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.14),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.14);
+    3px 0px 3px -1.5px rgba(41, 46, 117, 0.18),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.18);
   transition: transform 0.2s ease;
 
   @media screen and (max-width: 768px) {
