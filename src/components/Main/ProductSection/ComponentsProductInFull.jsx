@@ -10,18 +10,23 @@ export const BodyDivStyled = styled.div`
 `;
 
 export const MainDivStyled = styled.div`
-  width: calc(100% - 16px);
+  width: 100%;
+  /* width: calc(100% - 16px); */
   height: 88%;
   box-sizing: border-box;
   display: block;
   position: absolute;
   bottom: 0;
-  left: 8px;
+  left: 0;
   overflow-y: scroll;
-  background-color: white;
-  border-radius: 8px 8px 0px 0px;
+  background-color: #ebeff4;
+  border-radius: 16px 16px 0px 0px;
   transform: translateY(${(props) => props.$translate});
   transition: transform 0.3s ease;
+  box-shadow: 0px -4px 8px -4px rgba(41, 46, 117, 0.2);
+  /* box-shadow: 0px -4px 8px -4px rgba(41, 46, 117, 0.18),
+    3px 0px 3px 0px rgba(41, 46, 117, 0.12),
+    -3px 0px 3px 0px rgba(41, 46, 117, 0.12); */
 
   @media screen and (max-width: 577px) {
     padding-bottom: 62px;
@@ -31,6 +36,8 @@ export const MainDivStyled = styled.div`
     display: flex;
     overflow-y: hidden;
   }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -39,22 +46,22 @@ export const MainDivStyled = styled.div`
 `;
 
 export const DivSpanCloseStyled = styled.div`
-  width: 34px;
-  height: 34px;
-  margin-left: calc(100% - 40px);
-  margin-bottom: -36px;
+  width: 35px;
+  height: 35px;
+  margin-left: calc(100% - 39px);
+  margin-bottom: -35px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: sticky;
-  top: 6px;
+  top: 4px;
   right: 0px;
   cursor: pointer;
   z-index: 3;
   color: #db2c32;
-  border-radius: 4px;
-  background-color: #ebeff4;
-  box-shadow: 0px 2px 4px -1px rgba(56, 61, 106, 0.2);
+  border-radius: 6px 12px 6px 6px;
+  background-color: white;
+  box-shadow: 0px 2px 4px -2px rgba(56, 61, 106, 0.4);
 
   @media screen and (min-width: 578px) {
     width: auto;
@@ -104,8 +111,10 @@ export const ProductDivStyled = styled.div`
     padding: 0px;
   }
   @media screen and (max-width: 577px) {
+    z-index: 3;
     padding-bottom: 40px;
-    box-shadow: 0px 2px 4px 0px rgba(56, 61, 106, 0.2);
+    margin-bottom: 12px;
+    box-shadow: 0px 4px 10px rgba(56, 61, 106, 0.1);
   }
   @media screen and (min-width: 577px) {
     min-width: 320px;
@@ -117,6 +126,8 @@ export const ProductDivStyled = styled.div`
   @media screen and (min-width: 768px) {
     padding: 0;
   }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -286,18 +297,6 @@ export const PPriceStyled = styled.p`
   }
 `;
 
-export const PAlertStyled = styled(PPriceStyled)`
-  width: 100%;
-  position: absolute;
-  top: 8px;
-  right: 50%;
-  transform: translateX(50%);
-  z-index: 2;
-  color:rgb(0, 0, 0);
-  font-weight: 500;
-  text-transform: uppercase;
-`;
-
 export const ContainerQuantStyled = styled.div`
   display: flex;
   justify-content: space-between;
@@ -430,15 +429,19 @@ export const PSubStyled = styled(PNameProdStyled)`
   }
 `;
 
-export const SimilarDivStyled = styled.div`
+export const SimilarSectionDivStyled = styled.div`
   width: 100%;
+  height: max-content;
   background-color: #ebeff4;
+  position: relative;
   @media screen and (min-width: 578px) {
     order: 1;
     overflow-y: scroll;
-    margin: 12px;
     border-radius: 7px;
+    height: 100%;
   }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -468,6 +471,7 @@ export const H1Styled = styled.h1`
   font-weight: 700;
   text-align: center;
   color: #292e4e;
+  padding-bottom: 4px;
 
   @media screen and (max-width: 374px) {
     font-size: 1.25em;
@@ -489,42 +493,39 @@ export const H1Styled = styled.h1`
   }
 `;
 
-export const ListSimilarProductsStyled = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
+export const ContainerListStyled = styled.div`
+  overflow-x: scroll;
+  padding-left: 20px;
 
-  @media screen and (max-width: 385px) {
+  @media screen and (max-width: 375px) {
+    padding-left: 15px;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media screen and (min-width: 577px) and (max-width: 720px){
+    padding-left: 0px;
+    max-height: 100%;
+    overflow: scroll;
+  }
+`;
+
+export const DivHalfList = styled.div`
+  height: auto;
+  width: auto;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  justify-items: flex-start;
+  padding-right: 12px;
+
+  @media screen and (min-width: 577px) and (max-width: 720px){
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-  }
-  @media screen and (min-width: 385px) and (max-width: 577px) {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    justify-content: center;
-    max-width: 364px;
+    padding-right: 0px;
     margin: auto;
-    row-gap: 12px;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-  @media screen and (min-width: 768px) and (max-width: 992px) {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    justify-content: center;
-    max-width: 364px;
-    margin: auto;
-    row-gap: 12px;
-  }
-  @media screen and (min-width: 993px) {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    justify-content: center;
-    margin: auto;
-    row-gap: 12px;
+    margin-bottom: 12px;
   }
 `;

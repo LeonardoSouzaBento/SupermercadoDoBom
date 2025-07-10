@@ -58,11 +58,6 @@ export const CartSectionStyed = styled.div`
     margin-bottom: 19px;
   }
 
-  @media screen and (max-width: 992px) {
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
   @media screen and (min-width: 769px) {
     width: calc(100% - 32px);
     height: calc(100vh - 48px);
@@ -72,11 +67,11 @@ export const CartSectionStyed = styled.div`
     border-radius: 12px;
   }
 
+  scrollbar-width: none; /* esconde a barra */
+  -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;
   }
-  scrollbar-width: none; /* esconde a barra */
-  -ms-overflow-style: none;
 `;
 
 export const DivToCoverStyled = styled.div`
@@ -100,8 +95,8 @@ export const DivSpanDeleteStyled = styled.div`
   cursor: pointer;
   background-color: rgb(230, 236, 240);
 
-  &:hover{
-    background-color:rgb(230, 236, 240);
+  &:hover {
+    background-color: rgb(230, 236, 240);
   }
 `;
 
@@ -120,7 +115,7 @@ export const SpanStyled = styled.span`
     font-size: 1.59em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.60em;
+    font-size: 1.6em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
     font-size: 1.61em;
@@ -136,7 +131,6 @@ export const DivSpanStyled2 = styled(DivSpanDeleteStyled)`
   background-color: white;
   ${(props) => props.$uniqueBorderRadius && "border-radius: 4px;"};
 `;
-
 
 export const DivCancelDialog = styled.div`
   width: 100%;
@@ -163,7 +157,7 @@ export const PConfirmCancelStyled = styled.p`
   color: white;
   padding-right: 4px;
 
-   @media screen and (max-width: 385px) {
+  @media screen and (max-width: 385px) {
     font-size: 1.22em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {

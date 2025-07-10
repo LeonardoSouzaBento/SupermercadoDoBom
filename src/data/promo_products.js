@@ -8,14 +8,6 @@ export const promo_products = [
       price: '1,70'
     },
     {
-      id: 2,
-      discount: 20,
-      url: 'https://i.pinimg.com/736x/d1/73/4c/d1734c8aab4b0b07b6b1474757db5954.jpg',
-      weight: '100 g',
-      name: 'Biscoito recheado sabor chocolate nestle passatempo ', /*Nome grande inverte a ordem*/
-      price: '3,00'
-    },
-    {
       id: 5,
       discount: 12,
       url: 'https://i.pinimg.com/736x/82/8c/9d/828c9df9391929f798d8e4ecdc02f327.jpg',

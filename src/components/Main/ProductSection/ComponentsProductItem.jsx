@@ -39,7 +39,6 @@ export const PaiProdStyled = styled.div`
     height: 177px;
     border-radius: 7px;
   }
-  ${(props) => props.$variant === "similarList" && "justify-self: center;"}
 `;
 
 //Descrição da Oferta: nome, desconto e peso

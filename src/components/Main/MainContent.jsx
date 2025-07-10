@@ -134,7 +134,7 @@ function MainContent() {
           />
         </Main>
       </div>
-      {viewProductInFull && <ProductInFull setApplyBlur={setApplyBlur} />}
+      {viewProductInFull && <ProductInFull />}
       <Footer setOpacityState={setOpacityState} setApplyBlur={setApplyBlur} />
     </div>
   );
