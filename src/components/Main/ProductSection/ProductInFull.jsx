@@ -118,7 +118,7 @@ const ProductInFull = () => {
     <BodyDivStyled
       style={{
         backgroundColor: seeSpanClose
-          ? "rgba(0, 0, 0, 0.1)"
+          ? "rgba(0, 0, 0, 0.15)"
           : "rgba(0, 0, 0, 0)",
         transition: "background-color 0.3s ease",
       }}

@@ -6,7 +6,7 @@ export const ContainerForFormStyled = styled.div`
   padding-top: 2px;
   padding-bottom: 14px;
   position: relative;
-  z-index: 2;
+  z-index: 4;
   box-sizing: border-box;
 
   ${(props) =>

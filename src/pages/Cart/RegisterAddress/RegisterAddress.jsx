@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 const RegisterAddress = ({ setSeeAddressForm }) => {
   const navigate = useNavigate();
   const [opacityState, setOpacityState] = useState(0);
-  const [translateMainDiv, setTranslateMainDiv] = useState("100%");
 
   const [formData, setFormData] = useState({
     rua: "",
@@ -46,14 +45,11 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     setTimeout(() => {
       setOpacityState(1);
     }, 200);
-    setTimeout(() => {
-      setTranslateMainDiv("0%");
-    }, 700);
   }, []);
 
   return (
     <DivBodyStyled $opacity={opacityState}>
-      <MainDivStyled $translate={translateMainDiv}>
+      <MainDivStyled>
         <DivSpanCloseStyled>
           <SpanCloseStyled
             className="material-symbols-rounded"

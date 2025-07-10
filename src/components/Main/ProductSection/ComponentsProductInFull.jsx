@@ -108,7 +108,6 @@ export const ProductDivStyled = styled.div`
     z-index: 3;
     padding-bottom: 40px;
     margin-bottom: 12px;
-    border-bottom: 1px solid rgba(41, 46, 117, 0.3);
   }
   @media screen and (min-width: 577px) {
     min-width: 320px;

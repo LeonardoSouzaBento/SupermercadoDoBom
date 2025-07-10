@@ -10,8 +10,7 @@ export const DivBodyStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  /* background-color: rgba(233, 238, 246, 0.975); */
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.15);
   transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
 `;
@@ -32,10 +31,7 @@ export const MainDivStyled = styled.div`
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.15),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.15);
   transition: transform 0.2s ease;
-
-  @media screen and (max-width: 768px) {
-    transform: translateY(${(props)=> props.$translate});
-  }
+  
   @media screen and (max-width: 374px) {
     width: calc(100% - 16px);
   }
