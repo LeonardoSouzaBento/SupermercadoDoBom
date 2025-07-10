@@ -32,7 +32,6 @@ import {
   DivHalfList,
 } from "./ComponentsProductInFull.jsx";
 import ProductItem from "./ProductItem.jsx";
-import { exampleProducts } from "../../../data/exampleProducts.js";
 
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
@@ -111,9 +110,9 @@ const ProductInFull = () => {
     };
   }, []);
 
-  const middleIndex = Math.ceil(exampleProducts.length / 2);
-  const firstHalf = exampleProducts.slice(0, middleIndex);
-  const secondHalf = exampleProducts.slice(middleIndex);
+  // const middleIndex = Math.ceil(exampleProducts.length / 2);
+  // const firstHalf = exampleProducts.slice(0, middleIndex);
+  // const secondHalf = exampleProducts.slice(middleIndex);
 
   return (
     <BodyDivStyled
@@ -214,25 +213,9 @@ const ProductInFull = () => {
           </DivTitleStyled>
 
           <ContainerListStyled>
-            <DivHalfList>
-              {firstHalf.map((product) => (
-                <ProductItem
-                  variant={"similarList"}
-                  key={`${product.id}-${product.cat_id}`}
-                  product={product}
-                />
-              ))}
-            </DivHalfList>
+            <DivHalfList></DivHalfList>
 
-            <DivHalfList>
-              {secondHalf.map((product) => (
-                <ProductItem
-                  variant={"similarList"}
-                  key={`${product.id}-${product.cat_id}`}
-                  product={product}
-                />
-              ))}
-            </DivHalfList>
+            <DivHalfList></DivHalfList>
           </ContainerListStyled>
         </SimilarSectionDivStyled>
       </MainDivStyled>
