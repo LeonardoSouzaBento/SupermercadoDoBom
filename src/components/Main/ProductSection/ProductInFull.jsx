@@ -31,6 +31,42 @@ import {
   ListSimilarProductsStyled,
   PAlertStyled,
 } from "./ComponentsProductInFull.jsx";
+import ProductItem from "./ProductItem.jsx";
+
+const exampleProducts = [
+  {
+    id: 1,
+    discount: 28,
+    url: "https://i.pinimg.com/736x/d6/68/01/d668015898a52f2390f8f52837f7b60a.jpg",
+    weight: "50 g",
+    name: "Bolinho Bauduco Sabor Duplo chocolate",
+    price: "1,70",
+  },
+  {
+    id: 2,
+    discount: 20,
+    url: "https://i.pinimg.com/736x/d1/73/4c/d1734c8aab4b0b07b6b1474757db5954.jpg",
+    weight: "100 g",
+    name: "Biscoito recheado sabor chocolate nestle passatempo " /*Nome grande inverte a ordem*/,
+    price: "3,00",
+  },
+  {
+    id: 5,
+    discount: 12,
+    url: "https://i.pinimg.com/736x/82/8c/9d/828c9df9391929f798d8e4ecdc02f327.jpg",
+    weight: "",
+    name: "Bandeja com 30 ovos de galinha vermelhos",
+    price: "17,00",
+  },
+  {
+    id: 3,
+    discount: 10,
+    url: "https://i.pinimg.com/736x/6b/09/35/6b09351ec3178f69e2663b6569a4b69d.jpg",
+    weight: "1 L",
+    name: "Leite uth integral piracanjuba",
+    price: "7,00",
+  },
+];
 
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
@@ -112,7 +148,7 @@ const ProductInFull = () => {
     <BodyDivStyled
       style={{
         backgroundColor: seeSpanClose
-          ? "rgba(0, 0, 0, 0.15)"
+          ? "rgba(0, 0, 0, 0.2)"
           : "rgba(0, 0, 0, 0)",
         transition: "background-color 0.3s ease",
       }}
@@ -131,20 +167,18 @@ const ProductInFull = () => {
 
         <ProductDivStyled>
           <DivImgStyled>
-            <PAlertStyled>
-              Atenção: função em desenvolvimento
-            </PAlertStyled>
+            <PAlertStyled>Atenção: função em desenvolvimento</PAlertStyled>
             <ImgStyled src={dataProductFull.url} alt="Imagem do Produto" />
 
             {dataProductFull.weight != "" && (
               <DivWeightStyled>
-                <PWeightStyled>{dataProductFull.weight}</PWeightStyled>
+                <PWeightStyled style={{color: '#292e4e', fontWeight: '500'}}>{dataProductFull.weight}</PWeightStyled>
               </DivWeightStyled>
             )}
 
             {dataProductFull.weight != " " && (
               <DivDiscountStyled>
-                <PWeightStyled>-{dataProductFull.discount}%</PWeightStyled>
+                <PWeightStyled style={{fontWeight: '400'}}>-{dataProductFull.discount}%</PWeightStyled>
               </DivDiscountStyled>
             )}
           </DivImgStyled>
@@ -154,11 +188,17 @@ const ProductInFull = () => {
           </DivNameProdStyled>
 
           <DivPriceStyled>
-            <PPriceStyled>R$ </PPriceStyled>
-            <PPriceStyled>{dataProductFull.price}</PPriceStyled>
+            <PPriceStyled>R$ {dataProductFull.price}</PPriceStyled>
           </DivPriceStyled>
 
           <ContainerQuantStyled>
+            <DivSubStyled>
+              <PSubStyled>Subtotal:</PSubStyled>
+              <PSubStyled>
+                {subtotal === "0,00" ? "" : `R$ ${subtotal}`}
+              </PSubStyled>
+            </DivSubStyled>
+
             <DivQuantFullStyled
               onPointerDown={handlePointerDownDiv}
               onPointerMove={handlePointerMoveDiv}
@@ -191,13 +231,6 @@ const ProductInFull = () => {
                 </DivButtonsStyled>
               )}
             </DivQuantFullStyled>
-
-            <DivSubStyled>
-              <PSubStyled>Subtotal:</PSubStyled>
-              <PSubStyled>
-                {subtotal === "0,00" ? "" : `R$ ${subtotal}`}
-              </PSubStyled>
-            </DivSubStyled>
           </ContainerQuantStyled>
         </ProductDivStyled>
 
@@ -206,7 +239,15 @@ const ProductInFull = () => {
             <H1Styled>Produtos Similares</H1Styled>
           </DivTitleStyled>
 
-          <ListSimilarProductsStyled></ListSimilarProductsStyled>
+          <ListSimilarProductsStyled>
+            {exampleProducts.map((product) => (
+              <ProductItem
+                variant={"similarList"}
+                key={`${product.id}-${product.cat_id}`}
+                product={product}
+              />
+            ))}
+          </ListSimilarProductsStyled>
         </SimilarDivStyled>
       </MainDivStyled>
     </BodyDivStyled>

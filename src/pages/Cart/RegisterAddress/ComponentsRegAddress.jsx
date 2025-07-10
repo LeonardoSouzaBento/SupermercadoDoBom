@@ -10,7 +10,7 @@ export const DivBodyStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
-  background-color: rgba(233, 238, 246, 0.87);
+  background-color: rgba(233, 238, 246, 0.96);
   transition: opacity 0.5s ease;
   opacity: ${(props) => props.$opacity};
 `;

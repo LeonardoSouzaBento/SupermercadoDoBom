@@ -10,22 +10,21 @@ export const BodyDivStyled = styled.div`
 `;
 
 export const MainDivStyled = styled.div`
-  width: 100%;
-  height: 85%;
+  width: calc(100% - 16px);
+  height: 88%;
   box-sizing: border-box;
   display: block;
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 8px;
   overflow-y: scroll;
-  background-color: #ebeff4;
-  border-radius: 20px 20px 0px 0px;
-  box-shadow: 0px -4px 8px -4px rgba(41, 46, 117, 0.3);
+  background-color: white;
+  border-radius: 8px 8px 0px 0px;
   transform: translateY(${(props) => props.$translate});
   transition: transform 0.3s ease;
 
   @media screen and (max-width: 577px) {
-    padding-bottom: 60px;
+    padding-bottom: 62px;
   }
 
   @media screen and (min-width: 578px) {
@@ -40,21 +39,22 @@ export const MainDivStyled = styled.div`
 `;
 
 export const DivSpanCloseStyled = styled.div`
-  width: 36px;
-  height: 36px;
-  margin-left: calc(100% - 42px);
+  width: 34px;
+  height: 34px;
+  margin-left: calc(100% - 40px);
   margin-bottom: -36px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: sticky;
   top: 6px;
-  right: 6px;
+  right: 0px;
   cursor: pointer;
   z-index: 3;
-  color: #292e4e;
-  border-radius: 50%;
+  color: #db2c32;
+  border-radius: 4px;
   background-color: #ebeff4;
+  box-shadow: 0px 2px 4px -1px rgba(56, 61, 106, 0.2);
 
   @media screen and (min-width: 578px) {
     width: auto;
@@ -85,8 +85,7 @@ export const SpanDropDownStyled = styled.span`
   @media screen and (min-width: 578px) {
     display: block;
     width: 64px;
-    height: 4px;
-    box-shadow: 0px 2px 2px rgba(41, 46, 117, 0.2);
+    height: 5px;
     border-radius: 3px;
     background-color: #292e4e;
     border-bottom: 1px solid rgb(0, 0, 0);
@@ -105,7 +104,8 @@ export const ProductDivStyled = styled.div`
     padding: 0px;
   }
   @media screen and (max-width: 577px) {
-    padding-bottom: 38px;
+    padding-bottom: 40px;
+    box-shadow: 0px 2px 4px 0px rgba(56, 61, 106, 0.2);
   }
   @media screen and (min-width: 577px) {
     min-width: 320px;
@@ -113,7 +113,6 @@ export const ProductDivStyled = styled.div`
     padding-bottom: 60px;
     box-sizing: content-box;
     overflow-y: scroll;
-    box-shadow: 2px 0px 2px 0px rgba(41, 46, 117, 0.1);
   }
   @media screen and (min-width: 768px) {
     padding: 0;
@@ -171,7 +170,7 @@ export const DivDiscountStyled = styled.div`
 
 export const DivWeightStyled = styled(DivDiscountStyled)`
   position: absolute;
-  bottom: 36px;
+  bottom: 38px;
   background-color: #ebeff4;
   color: black;
 `;
@@ -204,7 +203,7 @@ export const PWeightStyled = styled.p`
 `;
 
 export const DivNameProdStyled = styled.div`
-  padding: 16px 0px;
+  padding: 18px 0px;
   padding-bottom: 20px;
   border-top: 1px solid rgb(227, 227, 227);
   border-bottom: 1px solid rgb(227, 227, 227);
@@ -255,8 +254,8 @@ export const DivPriceStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 42px;
-  margin-bottom: 8px;
+  height: 44px;
+  margin-bottom: 12px;
 `;
 
 export const PPriceStyled = styled.p`
@@ -294,7 +293,9 @@ export const PAlertStyled = styled(PPriceStyled)`
   right: 50%;
   transform: translateX(50%);
   z-index: 2;
-  color: #db2c32;
+  color:rgb(0, 0, 0);
+  font-weight: 500;
+  text-transform: uppercase;
 `;
 
 export const ContainerQuantStyled = styled.div`
@@ -315,7 +316,7 @@ export const DivQuantFullStyled = styled.div`
   align-items: center;
   width: 37.5%;
   background-color: #db2c32;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
 `;
 
@@ -398,7 +399,7 @@ export const DivSubStyled = styled.div`
   align-items: center;
   gap: 12px;
   background-color: #ebeff4;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: default;
 `;
 
@@ -410,30 +411,33 @@ export const PSubStyled = styled(PNameProdStyled)`
   width: max-content;
 
   @media screen and (max-width: 374px) {
-    font-size: 1.07em;
+    font-size: 1.1em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.08em;
+    font-size: 1.13em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.085em;
+    font-size: 1.135em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.09em;
+    font-size: 1.14em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.095em;
+    font-size: 1.145em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.1em;
+    font-size: 1.15em;
   }
 `;
 
 export const SimilarDivStyled = styled.div`
   width: 100%;
+  background-color: #ebeff4;
   @media screen and (min-width: 578px) {
     order: 1;
     overflow-y: scroll;
+    margin: 12px;
+    border-radius: 7px;
   }
   &::-webkit-scrollbar {
     display: none;
@@ -443,6 +447,7 @@ export const SimilarDivStyled = styled.div`
 export const DivTitleStyled = styled.div`
   width: 100%;
   height: 54px;
+  margin-bottom: 16px;
   position: sticky;
   top: 0;
   left: 0;
@@ -450,6 +455,11 @@ export const DivTitleStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+
+  @media screen and (min-width: 577px) {
+    margin-bottom: 12px;
+  }
 `;
 
 export const H1Styled = styled.h1`
@@ -483,4 +493,38 @@ export const ListSimilarProductsStyled = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+
+  @media screen and (max-width: 385px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  @media screen and (min-width: 385px) and (max-width: 577px) {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+    max-width: 364px;
+    margin: auto;
+    row-gap: 12px;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+    max-width: 364px;
+    margin: auto;
+    row-gap: 12px;
+  }
+  @media screen and (min-width: 993px) {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+    margin: auto;
+    row-gap: 12px;
+  }
 `;

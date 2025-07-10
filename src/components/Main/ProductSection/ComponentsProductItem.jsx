@@ -39,6 +39,7 @@ export const PaiProdStyled = styled.div`
     height: 177px;
     border-radius: 7px;
   }
+  ${(props) => props.$variant === "similarList" && "justify-self: center;"}
 `;
 
 //Descrição da Oferta: nome, desconto e peso
@@ -294,6 +295,7 @@ export const DivMaisStyled = styled.div`
     right: 12px;
     bottom: 0px;
   }
+  ${(props) => props.$variant === "similarList" && "display: none;"}
 `;
 
 export const PMaisStyled = styled.p`
@@ -330,6 +332,7 @@ export const DivQuantStyled = styled.div`
     bottom: 0px;
   }
   transition: opacity 0.4s ease;
+  ${(props) => props.$variant === "similarList" && "display: none;"}
 `;
 
 export const DivPStyled = styled.div`

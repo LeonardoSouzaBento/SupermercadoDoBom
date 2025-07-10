@@ -26,7 +26,7 @@ import {
   PnomeStyled,
 } from "./ComponentsProductItem";
 
-const Oferta = ({ product, quantity, setQuantity }) => {
+const Oferta = ({ product, quantity, setQuantity, variant }) => {
   const {
     setDataProductFull,
     viewProductInFull,
@@ -95,13 +95,13 @@ const Oferta = ({ product, quantity, setQuantity }) => {
 
         {/*Botão de adicionar*/}
         {quantity == 0 && (
-          <DivMaisStyled onPointerUp={handlePointerUpAdd}>
+          <DivMaisStyled onPointerUp={handlePointerUpAdd} $variant={variant}>
             <PMaisStyled>+</PMaisStyled>
           </DivMaisStyled>
         )}
 
         {/*Botões de mais e menos*/}
-        <DivQuantStyled $display={quantity > 0}>
+        <DivQuantStyled $display={quantity > 0} $variant={variant}>
           <DivPStyled
             onPointerUp={(e) => {
               handlePointerUpButtons(e, "fewer");
@@ -151,7 +151,7 @@ const DescOferta = ({ product }) => {
 };
 
 function ProductItem({ product, variant }) {
-  const { totalAddedValue, cartProducts, updateProduct } =
+  const { totalAddedValue, cartProducts, updateProduct, isDraggingRef } =
     useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
   const { seeFeedback } = useContext(ViewContext);
@@ -165,7 +165,11 @@ function ProductItem({ product, variant }) {
     if (totalAddedValue == 0) {
       setQuantity(0);
     }
+    return () => {
+      isDraggingRef.current = false;
+    }
   }, []);
+
 
   useEffect(() => {
     if (seeFeedback == true) {
@@ -182,7 +186,12 @@ function ProductItem({ product, variant }) {
   return (
     <PaiProdStyled $variant={variant}>
       <DescOferta product={product} />
-      <Oferta product={product} setQuantity={setQuantity} quantity={quantity} />
+      <Oferta
+        product={product}
+        setQuantity={setQuantity}
+        quantity={quantity}
+        variant={variant}
+      />
     </PaiProdStyled>
   );
 }

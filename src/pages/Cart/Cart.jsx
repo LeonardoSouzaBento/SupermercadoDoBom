@@ -43,8 +43,7 @@ const Cart = () => {
 
   const [opacityCancel, setOpacityCancel] = useState(0);
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
-  const { seeFeedback, setSeeFeedback } = useContext(ViewContext);
-
+  const { seeFeedback, setSeeFeedback, isDraggingRef } = useContext(ViewContext);
   const { setCartProducts } = useContext(CartContext);
   const [seeAddressForm, setSeeAddressForm] = useState(false);
   const [applyBlur, setApplyBlur] = useState(0);
