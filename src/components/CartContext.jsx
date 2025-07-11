@@ -94,7 +94,7 @@ export function CartProvider({ children }) {
 
   const totalValueFormatted = totalAddedValue.toFixed(2).replace(".", ",");
   const [updateProduct, setUpdateProduct] = useState(null);
-  const [isInHome, setIsInHome] = useState(true);
+  
   return (
     <CartContext.Provider
       value={{
@@ -121,9 +121,7 @@ export function CartProvider({ children }) {
         searchProducts,
         setSearchProducts,
         updateProduct,
-        setUpdateProduct,
-        isInHome,
-        setIsInHome,
+        setUpdateProduct
       }}
     >
       {children}

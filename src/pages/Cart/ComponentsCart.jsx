@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const MainStyled = styled.div`
   width: 100%;
@@ -37,7 +37,7 @@ export const CartSectionStyed = styled.div`
   background-color: white;
   box-sizing: border-box;
   background-color: #ecf1f6;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.5),
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   position: relative;
@@ -73,36 +73,24 @@ export const CartSectionStyed = styled.div`
   }
 `;
 
-export const DivToCoverStyled = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background-color: #ecf1f6;
-`;
-
 export const DivSpanDeleteStyled = styled.div`
-  width: 40px;
-  height: 40px;
+  min-width: 44px;
+  height: 44px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 4px 7px 4px 4px;
   cursor: pointer;
-  /* background-color: rgb(230, 236, 240); */
 
   &:hover {
-    background-color: rgb(230, 236, 240);
+    background-color: rgba(236, 242, 246, 1);
   }
 `;
 
 export const SpanStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 22;
-  color: #383d6a;
-  /* ${(props) => props.$ && "color: #292e4e;"}; */
+  color: #292e4e;
 
   @media screen and (max-width: 385px) {
     font-size: 1.55em;
@@ -124,55 +112,145 @@ export const SpanStyled = styled.span`
   }
 `;
 
-export const DivSpanStyled2 = styled(DivSpanDeleteStyled)`
-  height: 35px;
-  width: 35px;
-  background-color: white;
-  ${(props) => props.$uniqueBorderRadius && "border-radius: 4px;"};
-`;
-
-export const DivCancelDialog = styled.div`
-  width: 100%;
-  height: 50px;
-  padding-right: 7px;
-  box-sizing: border-box;
+export const ContainerDialogStyled = styled.div`
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  border-radius: 8px 8px 0px 0px;
-  background-color: #db2c32;
-  opacity: ${(props) => props.$opacity};
-  transition: opacity 0.36s ease, background-color 0.36s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: 4;
 `;
 
-export const PConfirmCancelStyled = styled.p`
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+export const DivDialogStyled = styled.div`
+  width: calc(100% - 16px);
+  height: 220px;
+  max-width: 244px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  z-index: 4;
+  background-color: #db2c32;
+  ${(props) => props.$feedback && "background-color: rgba(18, 111, 0, 1);"};
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+  transition: height 0.15s ease;
+  position: relative;
+`;
+
+export const SpanDialogStyled = styled.span`
+  font-size: 4.5em;
+  padding: 5px;
+  margin-bottom: 12px;
+  color: #c2272c;
+  font-weight: 700;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px -15px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  cursor: default;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  ${(props) => props.$feedback && "color: rgb(99, 154, 48);"};
+  ${(props) => props.$feedback && "scale: 0.9;"};
+`;
+
+export const PQuestionStyled = styled.p`
+  width: 100%;
+  margin-bottom: 24px;
+  margin-top: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
   text-align: center;
-  font-weight: 500;
+  cursor: default;
   color: white;
-  padding-right: 4px;
 
   @media screen and (max-width: 385px) {
-    font-size: 1.22em;
+    font-size: 1.27em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.24em;
+    font-size: 1.28em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.26em;
+    font-size: 1.296em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.28em;
+    font-size: 1.3em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
     font-size: 1.31em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.33em;
+    font-size: 1.32em;
+  }
+`;
+
+export const DivSimNaoStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: max-content;
+`;
+
+export const DivPYesNoStyled = styled.div`
+  height: 48px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+  background-color: #8f1d20;
+
+  &:hover {
+    background-color: #75171b;
+  }
+
+  ${(props) =>
+    props.$voltar &&
+    css`
+      margin-top: 16px;
+      color: black;
+      background-color: rgb(255, 255, 255);
+      &:hover {
+        background-color: #ebeff4;
+      }
+    `};
+`;
+
+export const PYesNoStyled = styled.p`
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  padding-bottom: 2px;
+  text-align: center;
+  letter-spacing: 0.72px;
+  border-radius: 4px;
+
+  @media screen and (max-width: 385px) {
+    font-size: 1.17em;
+  }
+  @media screen and (min-width: 385px) and (max-width: 576px) {
+    font-size: 1.19em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.22em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.225em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.227em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.23em;
   }
 `;
 
@@ -200,15 +278,15 @@ export const ShadowStyled = styled.div`
 `;
 
 export const DivHeadStyled = styled.div`
-  height: 50px;
+  height: 56px;
   width: 100%;
   display: flex;
   align-items: center;
   padding-right: 7px;
   box-sizing: border-box;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   position: relative;
-  border-bottom: 1px solid rgba(41, 46, 117, 0.15);
+  border-bottom: 1px solid rgba(41, 46, 117, 0.3);
   background-color: #ecf1f6;
   z-index: 2;
   @media screen and (min-width: 769px) {
@@ -218,32 +296,32 @@ export const DivHeadStyled = styled.div`
   }
 `;
 
-export const PHeadStyled = styled.p`
+export const HHeadStyled = styled.h1`
   width: 100%;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   padding-bottom: 2px;
   padding-left: 37px;
-  color: #383d6a;
+  color: #292e4e;
 
   @media screen and (max-width: 385px) {
-    font-size: 1.22em;
+    font-size: 1.27em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.24em;
+    font-size: 1.28em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.26em;
+    font-size: 1.296em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.28em;
+    font-size: 1.3em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
     font-size: 1.31em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.33em;
+    font-size: 1.32em;
   }
 `;
 
@@ -325,7 +403,7 @@ export const DivContinueStyled = styled.div`
   height: auto;
   width: 100%;
   padding: 18px 12px;
-  padding-bottom: 20px;
+  padding-bottom: 24px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -334,7 +412,7 @@ export const DivContinueStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.5),
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
     3px 0px 3px -1.5px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   overflow: hidden;
@@ -356,15 +434,6 @@ export const DivContinueStyled = styled.div`
     display: block;
     margin: 0;
   }
-`;
-
-export const DivCoverStyled = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  position: absolute;
-  top: 0;
-  left: 0;
 `;
 
 export const DivAvisoStyled = styled.div`
@@ -460,32 +529,41 @@ export const DivPContinueStyled = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 40px;
-  border-radius: 5px;
+  height: 48px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.08s ease;
   background-color: ${(props) =>
     props.$nocontinue ? "hsl(158, 83.30%, 57.60%)" : "rgb(21, 128, 0)"};
   &:hover {
     background-color: ${(props) =>
-      !props.$nocontinue ? "rgb(17, 103, 0)" : "hsl(158, 100%, 62%)"};
+      !props.$nocontinue ? "rgba(18, 111, 0, 1)" : "hsl(158, 100%, 62%)"};
   }
 `;
 
 export const PContinueStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   padding-bottom: 2px;
   cursor: pointer;
   color: white;
   @media screen and (max-width: 385px) {
-    font-size: 1.15em;
+    font-size: 1.17em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.18em;
+    font-size: 1.19em;
   }
-  @media screen and (min-width: 577px) {
-    font-size: 1.2em;
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.22em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.225em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.227em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.23em;
   }
 `;
 
@@ -501,10 +579,10 @@ export const DivAddStyled = styled.div`
   justify-content: center;
   gap: 12px;
   align-items: center;
-  border-radius: 7px;
+  border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.5),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.13),
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
+    3px -3px 3px -1.5px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   cursor: pointer;
 
@@ -532,14 +610,23 @@ export const DivAddStyled = styled.div`
 export const PAddStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 600;
-  color: #383d6a;
+  color: #292e4e;
   @media screen and (max-width: 385px) {
     font-size: 1.15em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.18em;
   }
-  @media screen and (min-width: 577px) {
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.2em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.205em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.206em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.207em;
   }
 `;

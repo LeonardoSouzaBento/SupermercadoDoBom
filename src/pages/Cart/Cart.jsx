@@ -1,23 +1,18 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../components/CartContext";
+import { CartContext } from "../../components/CartContext.jsx";
 import { ViewContext } from "../../components/viewContext.jsx";
 import { ProductList } from "../../components/Main/ProductSection/ProductList.jsx";
 import {
   MainStyled,
   CartSectionStyed,
-  DivToCoverStyled,
   DivSpanDeleteStyled,
   SpanStyled,
-  DivCancelDialog,
-  PConfirmCancelStyled,
-  DivSpanStyled2,
   DivHeadStyled,
-  PHeadStyled,
+  HHeadStyled,
   ContainerProductList,
   FinishSectionStyled,
   DivContinueStyled,
-  DivCoverStyled,
   DivAvisoStyled,
   PAvisoStyled,
   DivValueStyled,
@@ -30,21 +25,26 @@ import {
   SpanSeeAllStyled,
   DivAddStyled,
   PAddStyled,
+  ContainerDialogStyled,
+  DivDialogStyled,
+  SpanDialogStyled,
+  PQuestionStyled,
+  PYesNoStyled,
+  DivPYesNoStyled,
 } from "./ComponentsCart.jsx";
-import RegisterAddress from "./RegisterAddress/RegisterAddress.jsx";
+import ProductInFull from "../../components/Main/ProductSection/ProductInFull.jsx";
+import RegisterAddress from "./RegisterAddress.jsx";
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { totalAddedValue } = useContext(CartContext);
-  const [opacityState, setOpacityState] = useState(0.03);
-
-  const [opacityCancel, setOpacityCancel] = useState(0);
+  const { totalAddedValue, setCartProducts } = useContext(CartContext);
+  const [opacityState, setOpacityState] = useState(0.03); //opacidade do main ao entrar
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
-  const { seeFeedback, setSeeFeedback } = useContext(ViewContext);
-  const { setCartProducts } = useContext(CartContext);
+  const { seeFeedback, setSeeFeedback, viewProductInFull } =
+    useContext(ViewContext);
   const [seeAddressForm, setSeeAddressForm] = useState(false);
   const [scaleWarnnig, setScaleWarnnig] = useState(1);
 
@@ -131,6 +131,7 @@ const Cart = () => {
     window.addEventListener("resize", handleResize);
 
     return () => {
+      setSeeFeedback(false);
       window.removeEventListener("resize", handleResize);
       if (resizeDowntime.current) {
         clearTimeout(resizeDowntime.current);
@@ -138,16 +139,7 @@ const Cart = () => {
     };
   }, []);
 
-  //funções para quantidade de produtos
-  const handleConfirmCancel = () => {
-    setSeeFeedback(true);
-    setTimeout(() => {
-      setCartProducts([]);
-      setSeeFeedback(false);
-      setSeeCancelDialog(false);
-    }, 1400);
-  };
-
+  //
   useEffect(() => {
     if (totalAddedValue == 0) {
       setTimeout(() => {
@@ -197,59 +189,17 @@ const Cart = () => {
       <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
         <div style={{ position: "relative" }}>
           <CartSectionStyed ref={CartSectionRef}>
-            <DivToCoverStyled
-              style={{ display: seeFeedback ? "block" : "none" }}
-            />
             <DivHeadStyled>
-              <PHeadStyled>Sua compra</PHeadStyled>
+              <HHeadStyled>Sua compra</HHeadStyled>
               <DivSpanDeleteStyled
-                $delete={true}
-                onClick={() => {
+                onClick={(e) => {
                   setSeeCancelDialog(true);
-                  setTimeout(() => {
-                    setOpacityCancel(1);
-                  }, 50);
                 }}
               >
-                <SpanStyled className="material-symbols-rounded" $delete={true}>
+                <SpanStyled className="material-symbols-rounded">
                   delete
                 </SpanStyled>
               </DivSpanDeleteStyled>
-              {seeCancelDialog && (
-                <DivCancelDialog $opacity={opacityCancel}>
-                  <PConfirmCancelStyled>
-                    {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}
-                  </PConfirmCancelStyled>
-
-                  <DivSpanStyled2
-                    onClick={handleConfirmCancel}
-                    $uniqueBorderRadius={true}
-                  >
-                    <SpanStyled
-                      className="material-symbols-rounded"
-                      style={{ color: "black" }}
-                    >
-                      check
-                    </SpanStyled>
-                  </DivSpanStyled2>
-
-                  <DivSpanStyled2
-                    onClick={() => {
-                      setOpacityCancel(0);
-                      setTimeout(() => {
-                        setSeeCancelDialog(false);
-                      }, 360);
-                    }}
-                  >
-                    <SpanStyled
-                      className="material-symbols-rounded"
-                      style={{ color: "black" }}
-                    >
-                      close
-                    </SpanStyled>
-                  </DivSpanStyled2>
-                </DivCancelDialog>
-              )}
             </DivHeadStyled>
 
             <ContainerProductList>
@@ -272,7 +222,7 @@ const Cart = () => {
 
         <FinishSectionStyled>
           <DivContinueStyled>
-            {falta > 0 && (
+            {falta > 0 && totalAddedValue != 0 && (
               <DivAvisoStyled $scale={scaleWarnnig}>
                 <PAvisoStyled>
                   Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
@@ -307,8 +257,6 @@ const Cart = () => {
             >
               <PContinueStyled>Continuar</PContinueStyled>
             </DivPContinueStyled>
-
-            {(totalAddedValue == 0 || seeFeedback) && <DivCoverStyled />}
           </DivContinueStyled>
 
           <DivAddStyled
@@ -321,6 +269,16 @@ const Cart = () => {
         </FinishSectionStyled>
       </MainStyled>
 
+      {seeCancelDialog && (
+        <DivCancelDialog
+          seeFeedback={seeFeedback}
+          setSeeFeedback={setSeeFeedback}
+          setSeeCancelDialog={setSeeCancelDialog}
+          setCartProducts={setCartProducts}
+        />
+      )}
+
+      {viewProductInFull && <ProductInFull />}
       {seeAddressForm && (
         <RegisterAddress setSeeAddressForm={setSeeAddressForm} />
       )}
@@ -329,3 +287,66 @@ const Cart = () => {
 };
 
 export default Cart;
+
+const DivCancelDialog = ({
+  seeFeedback,
+  setSeeFeedback,
+  setSeeCancelDialog,
+  setCartProducts,
+}) => {
+  const [opacityDialog, setOpacityDialog] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacityDialog(true);
+    }, 200);
+  }, []);
+
+  return (
+    <ContainerDialogStyled
+      style={{
+        opacity: opacityDialog ? 1 : 0,
+        transition: "opacity 0.3s ease",
+      }}
+    >
+      <DivDialogStyled $feedback={seeFeedback}>
+        {/*Botoes de sim ou não*/}
+
+        <SpanDialogStyled
+          className="material-symbols-rounded"
+          $feedback={seeFeedback}
+        >
+          {seeFeedback ? "check" : "exclamation"}
+        </SpanDialogStyled>
+
+        <PQuestionStyled>
+          {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}
+        </PQuestionStyled>
+
+        {seeFeedback === false && (
+          <>
+            <DivPYesNoStyled
+              onClick={() => {
+                setSeeFeedback(true);
+                setCartProducts([]);
+              }}
+            >
+              <PYesNoStyled>Sim, cancelar</PYesNoStyled>
+            </DivPYesNoStyled>
+
+            <DivPYesNoStyled
+              $voltar={true}
+              onClick={() => {
+                setOpacityDialog(false);
+                setTimeout(() => {
+                  setSeeCancelDialog(false);
+                }, 300);
+              }}
+            >
+              <PYesNoStyled>Voltar</PYesNoStyled>
+            </DivPYesNoStyled>
+          </>
+        )}
+      </DivDialogStyled>
+    </ContainerDialogStyled>
+  );
+};

@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useContext ,useState, useEffect } from "react";
 import SearchBar from "../components/Main/SearchBars/SearchBar";
 import { ProductList } from "../components/Main/ProductSection/ProductList";
+import ProductInFull from "../components/Main/ProductSection/ProductInFull";
 import Footer from "../components/Footer/Footer";
+import { ViewContext } from "../components/viewContext";
 import styled from "styled-components";
 
 const DivStyled = styled.div`
@@ -16,6 +18,7 @@ const DivStyled = styled.div`
 
 const SearchAction = () => {
   const [opacityState, setOpacityState] = useState(0);
+  const { viewProductInFull } = useContext(ViewContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -45,7 +48,8 @@ const SearchAction = () => {
         <SearchBar copy={true}></SearchBar>
         <ProductList variant={"search"} categoryKey={13} />
       </DivStyled>
-      <Footer/>
+      {viewProductInFull && <ProductInFull />}
+      <Footer />
     </>
   );
 };

@@ -5,6 +5,7 @@ import {
   SubDivStyled,
   DivSpanCloseStyled,
   SpanCloseStyled,
+  DivTitleStyled,
   H1Styled,
   LocationButtonStyled,
   InputStyled,
@@ -64,7 +65,9 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
           </SpanCloseStyled>
         </DivSpanCloseStyled>
 
-        <H1Styled>Cadastrar endereço</H1Styled>
+        <DivTitleStyled>
+          <H1Styled>Cadastrar endereço</H1Styled>
+        </DivTitleStyled>
 
         <LocationButtonStyled onClick={handleLocationClick}>
           Pegue minha localização
@@ -79,12 +82,9 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
             onChange={handleChange}
             style={{
               marginBottom: "12px",
-              border: "1px solid rgba(41, 46, 117, 0.4)",
-              padding: "8px",
-              paddingTop: "11px",
-              paddingBottom: "13px",
-              borderRadius: "5px",
+              borderRadius: "4px",
               backgroundColor: " #E9EFF5",
+              borderBottom: "none"
             }}
           />
 
@@ -140,7 +140,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               required
               maxLength={50}
               onChange={handleChange}
-              style={{ borderBottom: "none" }}
+              style={{ paddingBottom: "2px" }}
             />
           </SubDivStyled>
           <RegisterButtonStyled

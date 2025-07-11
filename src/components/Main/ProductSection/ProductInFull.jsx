@@ -98,6 +98,7 @@ const ProductInFull = () => {
   }
 
   useEffect(() => {
+    document.body.style.overflowY = 'hidden';
     setTimeout(() => {
       setTranslateYState("0%");
     }, 200);
@@ -106,6 +107,7 @@ const ProductInFull = () => {
     }, 550);
 
     return () => {
+      document.body.style.overflowY = 'auto';
       isDraggingRef.current = false;
     };
   }, []);
@@ -139,7 +141,7 @@ const ProductInFull = () => {
           <DivImgStyled>
             <ImgStyled src={dataProductFull.url} alt="Imagem do Produto" />
 
-            {dataProductFull.weight != "" && (
+            {dataProductFull.weight != "" && dataProductFull.weight != null && (
               <DivWeightStyled>
                 <PWeightStyled style={{ color: "#292e4e", fontWeight: "500" }}>
                   {dataProductFull.weight}
@@ -147,7 +149,7 @@ const ProductInFull = () => {
               </DivWeightStyled>
             )}
 
-            {dataProductFull.weight != " " && (
+            {dataProductFull.discount != "" && dataProductFull.discount != null &&(
               <DivDiscountStyled>
                 <PWeightStyled style={{ fontWeight: "400" }}>
                   -{dataProductFull.discount}%

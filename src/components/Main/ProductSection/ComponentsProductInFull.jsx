@@ -6,12 +6,12 @@ export const BodyDivStyled = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 2;
+  z-index: 4;
 `;
 
 export const MainDivStyled = styled.div`
   width: 100%;
-  height: 88%;
+  height: 580px;
   box-sizing: border-box;
   display: block;
   position: absolute;

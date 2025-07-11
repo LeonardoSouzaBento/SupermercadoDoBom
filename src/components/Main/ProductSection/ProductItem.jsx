@@ -32,14 +32,14 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
     viewProductInFull,
     setViewProductInFull,
   } = useContext(ViewContext);
-  const { handleQuantityChange, isDraggingRef, isInHome } =
+  const { handleQuantityChange, isDraggingRef } =
     useContext(CartContext);
 
   function handlePointerUpOpen(e) {
     if (e.button === 2) {
       return;
     }
-    if (!viewProductInFull && !isDraggingRef.current && isInHome) {
+    if (!viewProductInFull && !isDraggingRef.current) {
       setDataProductFull({ ...product, quantity: quantity });
       setViewProductInFull(true);
     }

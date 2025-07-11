@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../CartContext";
 import { ViewContext } from "../viewContext";
 
@@ -10,7 +10,7 @@ const ContainerStyled = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: 4;
-  background-color:rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.15);
 `;
 
 const DivStyled = styled.div`
@@ -24,14 +24,12 @@ const DivStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  border-radius: 8px;
+  border-radius: 12px;
   position: absolute;
   right: 8px;
   bottom: 8px;
-  background-color: #DB2C32;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.65),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.14),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.14);
+  background-color: #db2c32;
+  /* box-shadow: 0px -10px 30px rgba(41, 46, 117, 0.24); */
   transition: height 0.15s ease;
   ${(props) => props.$feedback && "background-size: 0% 0%;"};
 
@@ -53,11 +51,11 @@ const DivSpanStyled = styled.div`
 const SpanStyled = styled.span`
   font-size: 3.7em;
   padding: 5px;
-  color: #C2272C;
+  color: #c2272c;
   font-weight: 700;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 15px 30px rgba(41, 46, 117, 0.09);
   position: absolute;
   transform: translateY(-85%);
   z-index: 1;
@@ -91,7 +89,7 @@ const PQuestionStyled = styled.p`
     font-size: 1.39em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.40em;
+    font-size: 1.4em;
   }
   @media screen and (min-width: 1201px) {
     font-size: 1.41em;
@@ -108,19 +106,19 @@ const DivSimNaoStyled = styled.div`
 const PSimStyled = styled.p`
   width: 100%;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 600;
-  padding: 11px 0px;
-  padding-bottom: 13px;
+  font-weight: 500;
+  padding: 12.5px 0px;
+  padding-bottom: 14.5px;
   box-sizing: border-box;
   text-align: center;
   letter-spacing: 0.72px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: default;
-  background-color: #8F1D20;
+  background-color: #8f1d20;
   color: white;
 
   &:hover {
-    background-color: #75171B;
+    background-color: #75171b;
   }
   transition: background-color 0.1s ease;
   @media screen and (max-width: 374px) {
@@ -158,11 +156,11 @@ const PFeedBackStyled = styled(PQuestionStyled)`
   padding-top: 8px;
 `;
 
-
 export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
   const { setCartProducts } = useContext(CartContext);
   const { seeFeedback, setSeeFeedback } = useContext(ViewContext);
   const [heightDiv, setHeightDiv] = useState("163px");
+  const [opacityDialog, setOpacityDialog] = useState(false);
 
   const handleConfirmCancel = (action) => {
     if (action === 1 && canHandleClick) {
@@ -176,12 +174,26 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
         setHeightDiv("163px");
       }, 2100);
     } else if (action === 0 && canHandleClick) {
-      setViewConfirm(false);
+      setOpacityDialog(false);
+      setTimeout(() => {
+        setViewConfirm(false);
+      }, 300);
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacityDialog(true);
+    }, 200);
+  }, []);
+
   return (
-    <ContainerStyled>
+    <ContainerStyled
+      style={{
+        opacity: opacityDialog ? 1 : 0,
+        transition: "opacity 0.3s ease",
+      }}
+    >
       <DivStyled $feedback={seeFeedback} $heightDiv={heightDiv}>
         <DivSpanStyled>
           <SpanStyled
