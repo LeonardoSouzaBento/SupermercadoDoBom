@@ -2,7 +2,7 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { all_products } from "../../../data/all_products";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../CartContext";
-import { ViewContext } from "../../viewContext";
+import { VisibilityContext } from "../../VisibilityContext";
 import { sequentialPrefixSearch } from "./sequentialPrefixSearch";
 import animateMessage from "../../../functions/AnimationOfWrite";
 import {
@@ -81,7 +81,7 @@ function SearchBar({ copy }) {
   const [returnedProducts, setReturnedproducts] = useState([]);
 
   const { preventClick, setPreventClick, tipForRecruiter, setTipForRecruiter } =
-    useContext(ViewContext);
+    useContext(VisibilityContext);
   const { setSearchProducts } = useContext(CartContext);
 
   const [searchInitiated, setSearchInitiated] = useState(false);
@@ -145,7 +145,10 @@ function SearchBar({ copy }) {
     }
   }
 
-  function handleClickComplete(suggestion) {
+  function handleClickComplete(e, suggestion) {
+    if (e.button === 2) {
+      return;
+    }
     let newSuggestion = "";
     let normalizedInput = normalize2(thisInput);
     suggestion = normalize2(suggestion);
@@ -223,13 +226,43 @@ function SearchBar({ copy }) {
     }
   }, [searchInitiated, returnedProducts]);
 
+  useEffect(() => {
+    //remover foco do input com toque fora em telas touch
+    // manter no caso de click na sugestão
+    const handleClickOutsideSearchBar = (e) => {
+      const active = document.activeElement;
+      const isInputOrTextarea =
+        active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA");
+      const clickedInsideInput =
+        e.target.closest("input") || e.target.closest("textarea");
+      const clickedOnSuggestion = e.target.closest("[data-suggestion]");
+      const clickedOnSpan = e.target.closest("[data-span]");
+
+      if (
+        isInputOrTextarea &&
+        !clickedInsideInput &&
+        !clickedOnSuggestion &&
+        !clickedOnSpan
+      ) {
+        active.blur();
+        setThisInput("");
+        setCompletions([""]);
+      }
+    };
+    document.addEventListener("pointerdown", handleClickOutsideSearchBar);
+
+    return () => {
+      document.removeEventListener("pointerdown", handleClickOutsideSearchBar);
+    };
+  }, []);
+
   return (
     <ContainerForFormStyled $copy={copy}>
       <FormStyled
         $copy={copy}
         onSubmit={(e) => {
           e.preventDefault();
-          handleClickSearch(0);
+          handleClickSearch();
         }}
       >
         <InputStyled
@@ -245,6 +278,7 @@ function SearchBar({ copy }) {
         />
         <DivSpanStyled
           $copy={copy}
+          data-span
           onPointerDown={(e) => {
             handleClickSearch();
           }}
@@ -261,11 +295,14 @@ function SearchBar({ copy }) {
           <PMsgStyled>{textOfTip}</PMsgStyled>
         </DivMsgStyled>
       )}
-      
+
       {completions != "" && (
         <CompletionsDivStyled
           $copy={copy}
-          onPointerDown={() => {
+          onPointerDown={(e) => {
+            if (e.button === 2) {
+              return;
+            }
             inputRef.current.focus();
           }}
         >
@@ -273,8 +310,8 @@ function SearchBar({ copy }) {
             <PStyled
               key={i}
               data-suggestion
-              onPointerDown={() => {
-                handleClickComplete(suggestion);
+              onPointerDown={(e) => {
+                handleClickComplete(e, suggestion);
                 setTimeout(() => {
                   inputRef.current.focus();
                 }, 0);

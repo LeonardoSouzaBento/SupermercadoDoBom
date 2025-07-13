@@ -71,10 +71,10 @@ export const DivSpanCloseStyled = styled.div`
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 1.5em;
+  font-size: 1.7em;
   font-weight: 600;
   cursor: pointer;
-  /* color: white; */
+  /* color: #292e4e; */
 
   @media screen and (min-width: 578px) {
     display: none;
@@ -100,7 +100,10 @@ export const ProductDivStyled = styled.div`
   padding-left: 16px;
   padding-right: 16px;
   z-index: 2;
-
+  @media screen and (max-width: 374px) {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
   @media screen and (min-width: 430px) and (max-width: 577px) {
     padding: 0px;
   }
@@ -291,15 +294,10 @@ export const PPriceStyled = styled.p`
 `;
 
 export const ContainerQuantStyled = styled.div`
+  max-width: 370px;
   display: flex;
   justify-content: space-between;
   margin: auto;
-  @media screen and (max-width: 577px) {
-    max-width: 350px;
-  }
-  @media screen and (min-width: 577px) {
-    max-width: 330px;
-  }
 `;
 
 export const DivQuantFullStyled = styled.div`
@@ -389,7 +387,7 @@ export const DivSubStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   background-color: #ebeff4;
   border-radius: 4px;
   cursor: default;

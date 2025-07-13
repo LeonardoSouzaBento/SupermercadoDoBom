@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 
-export const ViewContext = createContext();
+export const VisibilityContext = createContext();
 
-export const ViewContextProvider = ({ children }) => {
+export const VisibilityProvider = ({ children }) => {
   //dica para recrutador
   const [tipForRecruiter, setTipForRecruiter] = useState(() => {
     const stored = localStorage.getItem("tipForRecruiter");
@@ -36,9 +36,9 @@ export const ViewContextProvider = ({ children }) => {
   const [dataProductFull, setDataProductFull] = useState(null);
   const [viewProductInFull, setViewProductInFull] = useState(false);
   const [updatedProduct, setUpdatedProduct] = useState(0);
-
+  
   return (
-    <ViewContext.Provider
+    <VisibilityContext.Provider
       value={{
         tipForRecruiter,
         setTipForRecruiter,
@@ -57,6 +57,6 @@ export const ViewContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </ViewContext.Provider>
+    </VisibilityContext.Provider>
   );
 };

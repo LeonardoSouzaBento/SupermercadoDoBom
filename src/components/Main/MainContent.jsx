@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import styled from "styled-components";
 import { CartContext } from "../CartContext";
-import { ViewContext } from "../viewContext";
+import { VisibilityContext } from "../VisibilityContext";
 import ProductInFull from "./ProductSection/ProductInFull";
 
 const Main = styled.main`
@@ -23,32 +23,18 @@ function MainContent() {
     noSkipLogin,
     setNoSkipLogin,
     viewProductInFull,
-  } = useContext(ViewContext);
+  } = useContext(VisibilityContext);
   const { currentCategory } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
   const resizeDowntime = useRef(null);
   const windowWidthInitialRef = useRef(0);
   const [wasResize, setWasResize] = useState(0);
-
   const divRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
       setOpacityState(1);
     }, 300);
-    //remover foco do input em telas touch, manter no caso de click na sugestão
-    const handleTouch = (e) => {
-      const active = document.activeElement;
-      const isInputOrTextarea =
-        active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA");
-      const clickedInsideInput =
-        e.target.closest("input") || e.target.closest("textarea");
-      const clickedOnSuggestion = e.target.closest("[data-suggestion]");
-
-      if (isInputOrTextarea && !clickedInsideInput && !clickedOnSuggestion) {
-        active.blur();
-      }
-    };
 
     //resize para avisar mudanças de largura
     windowWidthInitialRef.current = window.innerWidth;
@@ -66,11 +52,9 @@ function MainContent() {
       }, 300);
     }
 
-    document.addEventListener("touchstart", handleTouch);
     window.addEventListener("resize", handleResize);
 
     return () => {
-      document.removeEventListener("touchstart", handleTouch);
       window.removeEventListener("resize", handleResize);
       if (resizeDowntime.current) {
         clearTimeout(resizeDowntime.current);

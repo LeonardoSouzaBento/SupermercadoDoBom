@@ -1,4 +1,4 @@
-import { PStyled, H1Styled, H2Styled } from "./ComponentsOptionSection";
+import { PStyled, H2Styled } from "./ComponentsOptionSection";
 import styled from "styled-components";
 
 const LocalPStyled = styled(PStyled)`
@@ -10,8 +10,7 @@ const LocalPStyled = styled(PStyled)`
 export default function AboutTheWebsite() {
   return (
     <>
-      <H1Styled>Resumo</H1Styled>
-      <H2Styled>Funções importantes para conferir no repósitorio</H2Styled>
+      <H2Styled style={{marginBottom: '18px'}}>Funções importantes para conferir no repósitorio</H2Styled>
       <LocalPStyled>
         <strong style={{ fontWeight: 600 }}>CartContext.jsx:</strong> tem a
         função principal: anotar no carrinho os produtos que o cliente
@@ -25,7 +24,7 @@ export default function AboutTheWebsite() {
         feita por ele aplicando scrollLeft dinamicamente.
       </LocalPStyled>
       <br />
-      <H2Styled>Repósitorio</H2Styled>
+      <H2Styled style={{marginBottom: '18px'}}>Repósitorio</H2Styled>
       <LocalPStyled>
         Link do repositório:{" "}
         <a
@@ -38,14 +37,14 @@ export default function AboutTheWebsite() {
       </LocalPStyled>
       <br />
 
-      <H2Styled>Descrição</H2Styled>
+      <H2Styled style={{marginBottom: '18px'}}>Descrição</H2Styled>
       <LocalPStyled>
         Este é um site de e-commerce simulado feito em React que iniciou em
         08/04/2025.
       </LocalPStyled>
       <br />
 
-      <H2Styled>Tecnologias usadas</H2Styled>
+      <H2Styled style={{marginBottom: '18px'}}>Tecnologias usadas</H2Styled>
       <LocalPStyled>
         <strong style={{ fontWeight: 600 }}>
           Styled Components, useContext e useNavigate, que
@@ -55,7 +54,7 @@ export default function AboutTheWebsite() {
       </LocalPStyled>
       <br />
 
-      <H2Styled>Detalhes</H2Styled>
+      <H2Styled style={{marginBottom: '18px'}}>Detalhes</H2Styled>
       <LocalPStyled>
         Os produtos do carrinho ficam armazenados no localStorage. Desse modo,
         para o componente ProductItem atualizar seu estado de quantidade, que é

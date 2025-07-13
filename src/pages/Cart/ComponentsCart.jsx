@@ -33,7 +33,7 @@ export const CartSectionStyed = styled.div`
   height: 460px;
   padding-bottom: 18px;
   margin: auto;
-  border-radius: 12px 12px 20px 20px;
+  border-radius: 12px;
   background-color: white;
   box-sizing: border-box;
   background-color: #ecf1f6;
@@ -84,7 +84,7 @@ export const DivSpanDeleteStyled = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(236, 242, 246, 1);
+    background-color: #e7ecf1;
   }
 `;
 
@@ -127,7 +127,7 @@ export const ContainerDialogStyled = styled.div`
 
 export const DivDialogStyled = styled.div`
   width: calc(100% - 16px);
-  height: 220px;
+  height: 180px;
   max-width: 244px;
   padding: 24px;
   display: flex;
@@ -143,22 +143,25 @@ export const DivDialogStyled = styled.div`
   position: relative;
 `;
 
+export const DivToCoverStyled = styled.div`
+  width: 100vw;
+  height: 100vw;
+  background-color: #ebeff4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+`;
+
 export const SpanDialogStyled = styled.span`
-  font-size: 4.5em;
+  font-size: 4.05em;
   padding: 5px;
   margin-bottom: 12px;
-  color: #c2272c;
+  color: rgb(99, 154, 48);
   font-weight: 700;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0px -15px 30px rgba(0, 0, 0, 0.15);
   border-radius: 50%;
   cursor: default;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  ${(props) => props.$feedback && "color: rgb(99, 154, 48);"};
-  ${(props) => props.$feedback && "scale: 0.9;"};
 `;
 
 export const PQuestionStyled = styled.p`
@@ -217,7 +220,7 @@ export const DivPYesNoStyled = styled.div`
   ${(props) =>
     props.$voltar &&
     css`
-      margin-top: 16px;
+      margin-top: 12px;
       color: black;
       background-color: rgb(255, 255, 255);
       &:hover {
@@ -333,7 +336,7 @@ export const ContainerProductList = styled.div`
 `;
 
 export const DivSeeAllStyled = styled.div`
-  height: 44px;
+  height: 40px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -573,7 +576,6 @@ export const DivAddStyled = styled.div`
   margin: auto;
   height: 40px;
   margin-top: 20px;
-  padding-bottom: 1.5px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;

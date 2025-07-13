@@ -158,9 +158,9 @@ const DivMoreOptionsStyled = styled.div`
   justify-content: center;
   color: white;
   cursor: pointer;
-  background-color: #292E4E;
+  background-color: #292e4e;
   transition: all 100ms linear;
-  border-radius: 7px;
+  border-radius: 8px;
 
   @media screen and (max-width: 768px) {
     position: absolute;
@@ -206,7 +206,7 @@ const PStyled = styled.p`
 
 const SpanStyled = styled.span`
   font-size: 1.45em;
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 28;
+  font-weight: 400;
   cursor: pointer;
   user-select: none;
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -228,7 +228,10 @@ const SpanStyled = styled.span`
 `;
 
 export const MoreOptionsButton = ({ setViewOptions, viewOptions }) => {
-  function handleClick() {
+  function handleClick(e) {
+    if (e.button === 2) {
+      return;
+    }
     if (viewOptions === false) {
       setViewOptions(true);
     } else {

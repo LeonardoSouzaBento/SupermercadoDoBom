@@ -72,7 +72,10 @@ function CategoriesSection({ wasResize }) {
     updateLimitCategories();
   }, [wasResize]);
 
-  function handlePointerUpCat(catId) {
+  function handlePointerUpCat(e, catId) {
+     if (e.button === 2) {
+      return;
+    }
     if (!isDraggingRef.current) {
       setCurrentCategory(catId);
       isDraggingRef.current = false;
@@ -94,8 +97,8 @@ function CategoriesSection({ wasResize }) {
             key={cat.id}
             $selected={cat.id === currentCategory}
             ref={index === 0 ? CategoryItemRef : undefined}
-            onPointerUp={() => {
-              handlePointerUpCat(cat.id);
+            onPointerUp={(e) => {
+              handlePointerUpCat(e, cat.id);
             }}
           >
             <ImgStyled

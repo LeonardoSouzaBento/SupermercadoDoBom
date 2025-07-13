@@ -13,7 +13,7 @@ const FooterStyled = styled.footer`
   background-color: transparent;
   position: fixed;
   left: 0;
-  bottom: 8px;
+  bottom: 6px;
   z-index: 2;
 
   @media screen and (max-width: 576px) {
@@ -24,8 +24,7 @@ const FooterStyled = styled.footer`
 const CartDescStyled = styled.div`
   width: 90%;
   max-width: 400px;
-  height: 44px;
-  min-height: 44px;
+  height: 48px;
   margin-right: 8px;
   display: flex;
   justify-content: space-between;
@@ -38,7 +37,7 @@ const CartDescStyled = styled.div`
   position: relative;
 
   &:hover {
-    background-color:hsl(234, 30.90%, 28%);
+    background-color: hsl(234, 30.9%, 28%);
   }
 
   @media screen and (max-width: 576px) {
@@ -132,10 +131,16 @@ export default function Footer() {
     return (
       <FooterStyled>
         <CartDescStyled
-          onPointerDown={() => {
+          onPointerDown={(e) => {
+            if (e.button === 2) {
+              return;
+            }
             window.startClickTime = Date.now();
           }}
           onPointerUp={(e) => {
+            if (e.button === 2) {
+              return;
+            }
             const duration = Date.now() - window.startClickTime;
             if (duration < 300) {
               setTimeout(() => {
@@ -147,6 +152,9 @@ export default function Footer() {
           <DivDeleteAndCart>
             <DivDeleteStyled
               onPointerDown={(e) => {
+                if (e.button === 2) {
+                  return;
+                }
                 e.stopPropagation(e);
                 setCanHandleClick(false);
                 setTimeout(() => setCanHandleClick(true), 200);

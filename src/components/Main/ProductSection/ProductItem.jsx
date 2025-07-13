@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { CartContext } from "../../CartContext";
-import { ViewContext } from "../../viewContext";
+import { VisibilityContext } from "../../VisibilityContext";
 import {
   PaiProdStyled,
   PpesoStyled,
@@ -27,13 +27,9 @@ import {
 } from "./ComponentsProductItem";
 
 const Oferta = ({ product, quantity, setQuantity, variant }) => {
-  const {
-    setDataProductFull,
-    viewProductInFull,
-    setViewProductInFull,
-  } = useContext(ViewContext);
-  const { handleQuantityChange, isDraggingRef } =
-    useContext(CartContext);
+  const { setDataProductFull, viewProductInFull, setViewProductInFull } =
+    useContext(VisibilityContext);
+  const { handleQuantityChange, isDraggingRef } = useContext(CartContext);
 
   function handlePointerUpOpen(e) {
     if (e.button === 2) {
@@ -162,7 +158,7 @@ function ProductItem({ product, variant }) {
   const { totalAddedValue, cartProducts, updateProduct, isDraggingRef } =
     useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
-  const { seeFeedback } = useContext(ViewContext);
+  const { seeFeedback } = useContext(VisibilityContext);
 
   useEffect(() => {
     cartProducts.map((item) => {

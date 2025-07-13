@@ -234,7 +234,13 @@ export const PaiImgOfertaStyled = styled.div`
   -webkit-user-select: none;
   user-select: none;
   position: relative;
+
+  @media screen and (min-width: 993px) {
+    display: flex;
+    align-items: center;
+  }
 `;
+
 export const ImgOfertaStyed = styled.img`
   height: 100%;
   width: 100%;
@@ -243,6 +249,11 @@ export const ImgOfertaStyed = styled.img`
   box-sizing: border-box;
   -webkit-user-select: none;
   user-select: none;
+
+  @media screen and (min-width: 993px) {
+    height: auto;
+    padding: 4px;
+  }
 `;
 
 export const DivOffStyled = styled.div`
@@ -318,7 +329,7 @@ export const DivQuantStyled = styled.div`
   background-color: #db2c32;
   display: ${(props) => (props.$display ? "flex" : "none")};
   justify-content: space-between;
-  border-radius: 7.5px;
+  border-radius: 8px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
@@ -326,6 +337,7 @@ export const DivQuantStyled = styled.div`
   bottom: 8px;
   right: 5%;
   z-index: 2;
+
   @media screen and (min-width: 385px) and (max-width: 992px) {
     width: 85%;
     right: 12px;

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { CartContext } from "../../CartContext.jsx";
-import { ViewContext } from "../../viewContext";
+import { VisibilityContext } from "../../VisibilityContext.jsx";
 
 import {
   BodyDivStyled,
@@ -36,7 +36,7 @@ import ProductItem from "./ProductItem.jsx";
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
   const [seeSpanClose, setSeeSpanClose] = useState(false);
-  const { dataProductFull, setViewProductInFull } = useContext(ViewContext);
+  const { dataProductFull, setViewProductInFull } = useContext(VisibilityContext);
   const { handleQuantityChange, setUpdateProduct, isDraggingRef } =
     useContext(CartContext);
   const initialQuant = dataProductFull.quantity;
@@ -49,6 +49,9 @@ const ProductInFull = () => {
   const MainDivRef = useRef(null);
 
   function handlePointerDownDiv(e) {
+    if (e.button === 2) {
+      return;
+    }
     isDragging.current = false;
     initialPointerPosition.current = { x: e.clientX, y: e.clientY };
   }
@@ -98,7 +101,7 @@ const ProductInFull = () => {
   }
 
   useEffect(() => {
-    document.body.style.overflowY = 'hidden';
+    document.body.style.overflowY = "hidden";
     setTimeout(() => {
       setTranslateYState("0%");
     }, 200);
@@ -107,7 +110,7 @@ const ProductInFull = () => {
     }, 550);
 
     return () => {
-      document.body.style.overflowY = 'auto';
+      document.body.style.overflowY = "auto";
       isDraggingRef.current = false;
     };
   }, []);
@@ -149,13 +152,14 @@ const ProductInFull = () => {
               </DivWeightStyled>
             )}
 
-            {dataProductFull.discount != "" && dataProductFull.discount != null &&(
-              <DivDiscountStyled>
-                <PWeightStyled style={{ fontWeight: "400" }}>
-                  -{dataProductFull.discount}%
-                </PWeightStyled>
-              </DivDiscountStyled>
-            )}
+            {dataProductFull.discount != "" &&
+              dataProductFull.discount != null && (
+                <DivDiscountStyled>
+                  <PWeightStyled style={{ fontWeight: "400" }}>
+                    -{dataProductFull.discount}%
+                  </PWeightStyled>
+                </DivDiscountStyled>
+              )}
           </DivImgStyled>
 
           <DivNameProdStyled>

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../CartContext";
-import { ViewContext } from "../viewContext";
+import { VisibilityContext } from "../VisibilityContext";
 
 const ContainerStyled = styled.div`
   position: fixed;
@@ -158,11 +158,14 @@ const PFeedBackStyled = styled(PQuestionStyled)`
 
 export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
   const { setCartProducts } = useContext(CartContext);
-  const { seeFeedback, setSeeFeedback } = useContext(ViewContext);
+  const { seeFeedback, setSeeFeedback } = useContext(VisibilityContext);
   const [heightDiv, setHeightDiv] = useState("163px");
   const [opacityDialog, setOpacityDialog] = useState(false);
 
-  const handleConfirmCancel = (action) => {
+  const handleConfirmCancel = (e, action) => {
+    if (e.button === 2) {
+      return;
+    }
     if (action === 1 && canHandleClick) {
       setHeightDiv("105px");
       setSeeFeedback(true);
@@ -212,16 +215,16 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
         {seeFeedback === false && (
           <DivSimNaoStyled>
             <PSimStyled
-              onPointerDown={() => {
-                handleConfirmCancel(1);
+              onPointerDown={(e) => {
+                handleConfirmCancel(e, 1);
               }}
             >
               Sim, cancelar
             </PSimStyled>
 
             <PVoltarStyled
-              onPointerDown={() => {
-                handleConfirmCancel(0);
+              onPointerDown={(e) => {
+                handleConfirmCancel(e, 0);
               }}
             >
               Voltar

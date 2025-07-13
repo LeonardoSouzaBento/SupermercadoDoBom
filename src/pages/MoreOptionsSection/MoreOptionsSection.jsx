@@ -73,7 +73,10 @@ export default function MoreOptionsSection() {
                 <DivNameSpanStyled
                   key={i}
                   $buttonSelected={isSelected}
-                  onPointerDown={() => {
+                  onPointerDown={(e) => {
+                    if (e.button === 2) {
+                      return;
+                    }
                     handleClick(i);
                   }}
                 >

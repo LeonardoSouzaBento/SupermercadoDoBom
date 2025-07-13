@@ -7,26 +7,22 @@ export const ContainerStyled = styled.div`
   height: auto;
   position: fixed;
   right: 4.7%;
-  top: 120px;
+  top: 130px;
   background-color: transparent;
   z-index: 6;
-  @media screen and (max-width: 374px) {
-    top: 124px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    top: 123px;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    top: 121px;
+
+  @media screen and (min-width: 768px) {
+    top: 126px;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    right: 3.5%;
+    right: 3.4%;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    right: 5%;
+    right: 4.9%;
+    top: 120px;
   }
   @media screen and (min-width: 1201px) {
-    top: 110px;
+    top: 112px;
     right: 5.5%;
   }
 `;
@@ -42,38 +38,57 @@ export const DivNameSpanStyled = styled.div`
 `;
 
 const ContainerPStyled = styled.div`
-  background-color: #292E4E;
+  background-color: #292e4e;
   display: flex;
-  border-radius: 7px;
-  margin-right: -10px;
+  border-radius: 8px;
+  margin-right: -12px;
 `;
 
 const DivPStyled = styled.div`
   display: flex;
   align-items: center;
   width: max-content;
-  height: 44px;
+  height: 48px;
 `;
 
 export const POptionStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   color: white;
   padding-right: 28px;
   padding-left: 24px;
   user-select: none;
+
+  @media screen and (max-width: 374px) {
+    font-size: 1.05em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.07em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.08em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.09em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.12em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.15em;
+  }
 `;
 
 export const DivSpanStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 7px;
-  background-color: #292E4E;
+  border-radius: 8px;
+  background-color: #292e4e;
   flex: none;
   cursor: pointer;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
 `;
 
 export const SpanOptionsStyled = styled.span`
@@ -97,6 +112,9 @@ const Options = ({ setOpacityState }) => {
   const [numberClicks, setNumberClicks] = useState([0, 0, 0]);
 
   function openContent(e, index) {
+    if (e.button === 2) {
+      return;
+    }
     if (e.pointerType !== "touch") {
       const option = contents[index].navigateTo;
       setOpacityState(0);

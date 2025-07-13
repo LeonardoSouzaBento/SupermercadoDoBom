@@ -150,7 +150,7 @@ const InputEmailStyled = styled.input`
   height: 40px;
   background-color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   text-indent: 10px;
   font-family: "Open Sans", sans-serif;
   font-size: 1.1em;
@@ -182,7 +182,7 @@ const DivLoginGoogle = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: white;
   box-sizing: border-box;
   position: relative;

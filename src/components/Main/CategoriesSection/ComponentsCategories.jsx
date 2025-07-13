@@ -125,7 +125,7 @@ export const DivCatStyled = styled.div`
   justify-content: flex-start;
   gap: 10px;
   flex: auto;
-  border-radius: 7px;
+  border-radius: 8px;
   padding-top: 7px;
   cursor: pointer;
   

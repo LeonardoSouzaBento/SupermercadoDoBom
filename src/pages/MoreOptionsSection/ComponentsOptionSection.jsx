@@ -21,8 +21,8 @@ export const BodyStyled = styled.div`
 export const WrapperStyled = styled.div`
   width: calc(100% - 30px);
   max-width: 470px;
-  padding: 35px 36px;
-  padding-bottom: 38px;
+  padding: 36px;
+  padding-bottom: 40px;
   border-radius: 12px;
   background-color: white;
   box-shadow: 0px 4px 4px -2.5px rgba(41, 46, 117, 0.53),
@@ -30,16 +30,12 @@ export const WrapperStyled = styled.div`
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   position: relative;
   z-index: 1;
-  
+
   @media screen and (max-width: 375px) {
     width: calc(100% - 20px);
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     width: calc(100% - 24px);
-  }
-  @media screen and (max-width: 450px) {
-    padding: 30px 31px;
-    padding-bottom: 36px;
   }
   @media screen and (max-width: 576px) {
     box-sizing: border-box;
@@ -52,7 +48,7 @@ export const NavOptionsStyled = styled.nav`
   flex-wrap: wrap;
   min-height: 40px;
   gap: 12px;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 
   @media screen and (max-width: 430px) {
     flex-direction: column;
@@ -60,13 +56,15 @@ export const NavOptionsStyled = styled.nav`
 `;
 
 export const DivNameSpanStyled = styled.div`
-  height: 40px;
+  height: 48px;
   width: max-content;
+  padding: 0px 16px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  border-radius: 5px;
+  gap: 10px;
+  border-radius: 8px;
   flex: 1 0 auto;
   background-color: #dbfff4;
 
@@ -79,21 +77,17 @@ export const DivNameSpanStyled = styled.div`
 
   cursor: pointer;
 
-  @media screen and (max-width: 430px) {
+  @media screen and (max-width: 480px) {
     width: 100%;
   }
-  @media screen and (min-width: 430px) {
+  @media screen and (min-width: 480px) {
     max-width: 48%;
-  }
-  @media screen and (min-width: 577px) {
-    padding-left: 8px;
   }
 `;
 
 export const POptionStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 600;
-  padding-right: 19px;
   cursor: pointer;
   user-select: none;
 
@@ -110,7 +104,7 @@ export const POptionStyled = styled.p`
 
 export const DivSpanStyled = styled.div`
   height: 40px;
-  width: 40px;
+  width: max-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,6 +115,7 @@ export const SpanStyled = styled.span`
   font-size: ${(props) => (props.$buttonSelected ? "1.45em" : "1.4em")};
   font-weight: 400;
   font-variation-settings: "FILL" 1;
+  user-select: none;
 `;
 
 export const DivContentStyled = styled.div``;
@@ -131,9 +126,9 @@ export const PStyled = styled.p`
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   text-align: justify;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   line-height: 1.27;
-  
+
   @media screen and (max-width: 374px) {
     font-size: 1.13em;
   }
@@ -156,32 +151,9 @@ export const PStyled = styled.p`
   ${(props) => props.$moreWidth && "max-width: 100%;"};
 `;
 
-export const PButtonStyled = styled(PStyled)`
-  min-width: 100%;
-  height: max-content;
-  padding: 6px 14px;
-  background-color: #dbfff4;
-  margin-bottom: 0px;
-  border-radius: 5px;
-  letter-spacing: 0.7px;
-  font-weight: 500;
-  user-select: none;
-  cursor: pointer;
-  flex: auto;
-  box-sizing: border-box;
-
-  ${(props) =>
-    props.$buttonSelected &&
-    css`
-      background-color: #342654;
-      color: white;
-      box-shadow: none;
-    `}
-`;
-
 export const H1Styled = styled.h1`
   font-family: "Open Sans", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 20px;
 
   @media screen and (max-width: 374px) {
@@ -207,8 +179,8 @@ export const H1Styled = styled.h1`
 export const H2Styled = styled.h2`
   font-size: 1.1em;
   font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  margin-bottom: 15px;
+  font-weight: 500;
+  margin-bottom: 16px;
 
   @media screen and (max-width: 374px) {
     font-size: 1.3em;

@@ -8,7 +8,7 @@ export const ContainerForFormStyled = styled.div`
   position: relative;
   z-index: 4;
   box-sizing: border-box;
-
+  
   ${(props) =>
     props.$copy === false &&
     css`

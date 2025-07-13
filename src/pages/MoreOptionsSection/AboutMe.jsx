@@ -1,13 +1,12 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {
   PStyled,
   H1Styled,
   H2Styled,
-  PButtonStyled,
 } from "./ComponentsOptionSection";
 
-const DivPButtons = styled.div`
+const ContainerDivPButtons = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
@@ -20,20 +19,48 @@ const DivPButtons = styled.div`
   }
 `;
 
+const DivPButtons = styled.div`
+  min-width: 100%;
+  height: 40px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background-color: #dbfff4;
+  cursor: pointer;
+
+  ${(props) =>
+    props.$buttonSelected &&
+    css`
+      background-color: #342654;
+      color: white;
+      box-shadow: none;
+    `}
+  @media screen and (max-width: 430px) {
+    height: max-content;
+    padding: 9px 16px;
+  }  
+`;
+
+const PButtonStyled = styled(PStyled)`
+  width: max-content;
+  letter-spacing: 0.7px;
+  text-align: left;
+  font-weight: 500;
+  user-select: none;
+  margin-bottom: 0px;
+`;
+
 const DivReferentMidea = styled.div`
   width: 100%;
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  overflow: hidden;
   position: relative;
-
-  @media screen and (max-width: 430px) {
-    border-radius: 0px;
-  }
 `;
 
 const DivImgStyled = styled.div`
@@ -41,12 +68,9 @@ const DivImgStyled = styled.div`
   height: 310px;
   position: relative;
   background-color: #dbfff4;
-  border-radius: 6px;
+  border-radius: 4px;
+  overflow: hidden;
   ${(props) => props.$painting && "max-height: 290px;"};
-
-  @media screen and (max-width: 430px) {
-    border-radius: 0px;
-  }
 `;
 
 const ImgStyled = styled.img`
@@ -120,19 +144,19 @@ const AboutMe = () => {
       <br />
       <H2Styled $cv={true}>Historico proffisional (relacionado)</H2Styled>
 
-      <DivPButtons>
+      <ContainerDivPButtons>
         {previousWork.map((e, i) => (
-          <PButtonStyled
+          <DivPButtons
             key={i}
             onClick={() => {
               setButtonSelected(i);
             }}
             $buttonSelected={buttonSelected == i}
           >
-            {e}
-          </PButtonStyled>
+            <PButtonStyled>{e}</PButtonStyled>
+          </DivPButtons>
         ))}
-      </DivPButtons>
+      </ContainerDivPButtons>
 
       <DivReferentMidea>
         {buttonSelected == 0 && (

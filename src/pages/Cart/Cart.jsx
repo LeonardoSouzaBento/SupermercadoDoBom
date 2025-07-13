@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../components/CartContext.jsx";
-import { ViewContext } from "../../components/viewContext.jsx";
+import { VisibilityContext } from "../../components/VisibilityContext.jsx";
 import { ProductList } from "../../components/Main/ProductSection/ProductList.jsx";
 import {
   MainStyled,
@@ -31,6 +31,7 @@ import {
   PQuestionStyled,
   PYesNoStyled,
   DivPYesNoStyled,
+  DivToCoverStyled,
 } from "./ComponentsCart.jsx";
 import ProductInFull from "../../components/Main/ProductSection/ProductInFull.jsx";
 import RegisterAddress from "./RegisterAddress.jsx";
@@ -44,7 +45,7 @@ const Cart = () => {
   const [opacityState, setOpacityState] = useState(0.03); //opacidade do main ao entrar
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
   const { seeFeedback, setSeeFeedback, viewProductInFull } =
-    useContext(ViewContext);
+    useContext(VisibilityContext);
   const [seeAddressForm, setSeeAddressForm] = useState(false);
   const [scaleWarnnig, setScaleWarnnig] = useState(1);
 
@@ -144,7 +145,7 @@ const Cart = () => {
     if (totalAddedValue == 0) {
       setTimeout(() => {
         navigate("/");
-      }, 1100);
+      }, 1500);
     }
     const shouldCheckHiddenProducts =
       totalAddedValue !== 0 &&
@@ -277,7 +278,7 @@ const Cart = () => {
           setCartProducts={setCartProducts}
         />
       )}
-
+      {seeFeedback && <DivToCoverStyled />}
       {viewProductInFull && <ProductInFull />}
       {seeAddressForm && (
         <RegisterAddress setSeeAddressForm={setSeeAddressForm} />
@@ -310,24 +311,18 @@ const DivCancelDialog = ({
     >
       <DivDialogStyled $feedback={seeFeedback}>
         {/*Botoes de sim ou não*/}
-
-        <SpanDialogStyled
-          className="material-symbols-rounded"
-          $feedback={seeFeedback}
-        >
-          {seeFeedback ? "check" : "exclamation"}
-        </SpanDialogStyled>
-
         <PQuestionStyled>
           {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}
         </PQuestionStyled>
 
-        {seeFeedback === false && (
+        {seeFeedback === false ? (
           <>
             <DivPYesNoStyled
               onClick={() => {
                 setSeeFeedback(true);
-                setCartProducts([]);
+                setTimeout(() => {
+                  setCartProducts([]);
+                }, 700);
               }}
             >
               <PYesNoStyled>Sim, cancelar</PYesNoStyled>
@@ -345,6 +340,10 @@ const DivCancelDialog = ({
               <PYesNoStyled>Voltar</PYesNoStyled>
             </DivPYesNoStyled>
           </>
+        ) : (
+          <SpanDialogStyled className="material-symbols-rounded">
+            check
+          </SpanDialogStyled>
         )}
       </DivDialogStyled>
     </ContainerDialogStyled>
