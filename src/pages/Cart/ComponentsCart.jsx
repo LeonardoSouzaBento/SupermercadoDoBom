@@ -34,12 +34,11 @@ export const CartSectionStyed = styled.div`
   padding-bottom: 18px;
   margin: auto;
   border-radius: 12px;
-  background-color: white;
   box-sizing: border-box;
-  background-color: #ecf1f6;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.45),
+  box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.5),
     3px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.13),
+    0px -3px 3px -2px rgba(41, 46, 117, 0.08);
   position: relative;
   overflow: hidden;
   transition: height 0.15s ease;
@@ -54,7 +53,7 @@ export const CartSectionStyed = styled.div`
     max-width: 575px;
   }
   @media screen and (max-width: 768px) {
-    margin-bottom: 19px;
+    margin-bottom: 24px;
   }
 
   @media screen and (min-width: 769px) {
@@ -90,7 +89,7 @@ export const DivSpanDeleteStyled = styled.div`
 
 export const SpanStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 22;
-  color: #292e4e;
+  /* color: #292e4e; */
 
   @media screen and (max-width: 385px) {
     font-size: 1.55em;
@@ -290,7 +289,7 @@ export const DivHeadStyled = styled.div`
   margin-bottom: 16px;
   position: relative;
   border-bottom: 1px solid rgba(41, 46, 117, 0.3);
-  background-color: #ecf1f6;
+  background-color: #ebeff4;
   z-index: 2;
   @media screen and (min-width: 769px) {
     position: sticky;
@@ -303,10 +302,10 @@ export const HHeadStyled = styled.h1`
   width: 100%;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   padding-bottom: 2px;
   padding-left: 37px;
-  color: #292e4e;
+  /* color: #292e4e; */
 
   @media screen and (max-width: 385px) {
     font-size: 1.27em;
@@ -405,8 +404,8 @@ export const FinishSectionStyled = styled.div`
 export const DivContinueStyled = styled.div`
   height: auto;
   width: 100%;
-  padding: 18px 12px;
-  padding-bottom: 24px;
+  padding: 18px;
+  padding-bottom: 20px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -415,7 +414,7 @@ export const DivContinueStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.45),
+  box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.5),
     3px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   overflow: hidden;
@@ -445,7 +444,6 @@ export const DivAvisoStyled = styled.div`
   margin: auto;
   display: flex;
   align-items: center;
-  border-radius: 3px;
   padding: 15px 18px;
   box-sizing: border-box;
   background-color: hsl(358, 71.5%, 49%);
@@ -574,8 +572,8 @@ export const PContinueStyled = styled.p`
 export const DivAddStyled = styled.div`
   width: 100%;
   margin: auto;
-  height: 40px;
-  margin-top: 20px;
+  height: 44px;
+  margin-top: 28px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -583,9 +581,12 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.45),
-    3px -3px 3px -2px rgba(41, 46, 117, 0.13),
+  box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.35),
+    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
+  /* box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
+    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.13); */
   cursor: pointer;
 
   &:hover {
@@ -611,8 +612,8 @@ export const DivAddStyled = styled.div`
 
 export const PAddStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 600;
-  color: #292e4e;
+  font-weight: 500;
+  /* color: #292e4e; */
   @media screen and (max-width: 385px) {
     font-size: 1.15em;
   }

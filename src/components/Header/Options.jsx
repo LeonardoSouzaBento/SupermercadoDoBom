@@ -63,19 +63,19 @@ export const POptionStyled = styled.p`
     font-size: 1.05em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.07em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.08em;
   }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.09em;
   }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.1em;
+  }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.12em;
+    font-size: 1.11em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.15em;
+    font-size: 1.13em;
   }
 `;
 

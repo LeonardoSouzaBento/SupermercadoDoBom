@@ -34,16 +34,16 @@ const LogoDivStyled = styled.div`
     visibility: hidden;
   }
   @media (min-width: 375px) and (max-width: 576px) {
-    height: 70px;
-    width: 70px;
+    height: 62px;
+    width: 62px;
   }
   @media (min-width: 577px) and (max-width: 768px) {
-    height: 73px;
-    width: 73px;
+    height: 68px;
+    width: 68px;
   }
   @media (min-width: 768px) {
-    height: 75px;
-    width: 75px;
+    height: 74px;
+    width: 74px;
   }
 `;
 
@@ -176,7 +176,7 @@ const DivMoreOptionsStyled = styled.div`
   justify-content: center;
   color: white;
   cursor: pointer;
-  background-color: #292e4e;
+  background-color: #383d6a;
   transition: all 100ms linear;
   border-radius: 8px;
 
@@ -197,7 +197,9 @@ const DivMoreOptionsStyled = styled.div`
   @media screen and (min-width: 769px) {
     position: relative;
   }
-
+  @media screen and (max-width: 993px) {
+    border-radius: 50%;
+  }
   @media screen and (min-width: 1201px) {
     width: max-content;
     padding: 0px 16px;
@@ -219,7 +221,7 @@ const PStyled = styled.p`
 
 const SpanStyled = styled.span`
   font-size: 1.45em;
-  font-weight: 400;
+  font-weight: 300;
   cursor: pointer;
   user-select: none;
   @media screen and (min-width: 375px) and (max-width: 576px) {
