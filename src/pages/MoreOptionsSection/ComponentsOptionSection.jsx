@@ -71,7 +71,7 @@ export const DivNameSpanStyled = styled.div`
   ${(props) =>
     props.$buttonSelected &&
     css`
-      background-color: #342654;
+      background-color: #383d6a;
       color: white;
     `}
 
@@ -112,7 +112,7 @@ export const DivSpanStyled = styled.div`
 
 export const SpanStyled = styled.span`
   color: ${(props) => (props.$buttonSelected ? "white" : "#3f0404")};
-  font-size: ${(props) => (props.$buttonSelected ? "1.45em" : "1.4em")};
+  font-size: ${(props) => (props.$buttonSelected ? "1.5em" : "1.4em")};
   font-weight: 400;
   font-variation-settings: "FILL" 1;
   user-select: none;

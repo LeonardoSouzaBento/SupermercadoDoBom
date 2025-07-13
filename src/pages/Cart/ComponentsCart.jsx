@@ -33,12 +33,9 @@ export const CartSectionStyed = styled.div`
   height: 460px;
   padding-bottom: 18px;
   margin: auto;
-  border-radius: 12px;
+  border-radius: 20px;
   box-sizing: border-box;
-  box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.5),
-    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    0px -3px 3px -2px rgba(41, 46, 117, 0.08);
+  box-shadow: 0px 5px 10px -5px rgba(41, 46, 117, 0.6);
   position: relative;
   overflow: hidden;
   transition: height 0.15s ease;
@@ -62,7 +59,6 @@ export const CartSectionStyed = styled.div`
     max-height: 810px;
     margin: auto;
     overflow-y: scroll;
-    border-radius: 12px;
   }
 
   scrollbar-width: none; /* esconde a barra */
@@ -89,7 +85,6 @@ export const DivSpanDeleteStyled = styled.div`
 
 export const SpanStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 22;
-  /* color: #292e4e; */
 
   @media screen and (max-width: 385px) {
     font-size: 1.55em;
@@ -129,15 +124,16 @@ export const DivDialogStyled = styled.div`
   height: 180px;
   max-width: 244px;
   padding: 24px;
+  padding-bottom: 28px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
   z-index: 4;
   background-color: #db2c32;
-  ${(props) => props.$feedback && "background-color: rgba(18, 111, 0, 1);"};
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+  ${(props) => props.$feedback && "background-color: #488658;"};
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.18);
   transition: height 0.15s ease;
   position: relative;
 `;
@@ -156,7 +152,7 @@ export const SpanDialogStyled = styled.span`
   font-size: 4.05em;
   padding: 5px;
   margin-bottom: 12px;
-  color: rgb(99, 154, 48);
+  color: #2cdb5a;
   font-weight: 700;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
@@ -165,31 +161,31 @@ export const SpanDialogStyled = styled.span`
 
 export const PQuestionStyled = styled.p`
   width: 100%;
-  margin-bottom: 24px;
-  margin-top: 18px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
+  margin-bottom: 28px;
+  margin-top: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
   text-align: center;
   cursor: default;
   color: white;
 
   @media screen and (max-width: 385px) {
-    font-size: 1.27em;
+    font-size: 1.4em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.28em;
+    font-size: 1.41em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.296em;
+    font-size: 1.43em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.3em;
+    font-size: 1.44em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.31em;
+    font-size: 1.445em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.32em;
+    font-size: 1.45em;
   }
 `;
 
@@ -230,13 +226,13 @@ export const DivPYesNoStyled = styled.div`
 
 export const PYesNoStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   padding-bottom: 2px;
   text-align: center;
   letter-spacing: 0.72px;
   border-radius: 4px;
 
-  @media screen and (max-width: 385px) {
+   @media screen and (max-width: 385px) {
     font-size: 1.17em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
@@ -286,10 +282,10 @@ export const DivHeadStyled = styled.div`
   align-items: center;
   padding-right: 7px;
   box-sizing: border-box;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   position: relative;
-  border-bottom: 1px solid rgba(41, 46, 117, 0.3);
   background-color: #ebeff4;
+
   z-index: 2;
   @media screen and (min-width: 769px) {
     position: sticky;
@@ -300,21 +296,20 @@ export const DivHeadStyled = styled.div`
 
 export const HHeadStyled = styled.h1`
   width: 100%;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
   padding-bottom: 2px;
   padding-left: 37px;
-  /* color: #292e4e; */
 
   @media screen and (max-width: 385px) {
     font-size: 1.27em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.28em;
+    font-size: 1.285em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.296em;
+    font-size: 1.29em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
     font-size: 1.3em;
@@ -323,7 +318,7 @@ export const HHeadStyled = styled.h1`
     font-size: 1.31em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.32em;
+    font-size: 1.33em;
   }
 `;
 
@@ -535,7 +530,7 @@ export const DivPContinueStyled = styled.div`
   cursor: pointer;
   transition: background-color 0.08s ease;
   background-color: ${(props) =>
-    props.$nocontinue ? "hsl(158, 83.30%, 57.60%)" : "rgb(21, 128, 0)"};
+    props.$nocontinue ? "hsl(158, 83.30%, 57.60%)" : "#1A8437"};
   &:hover {
     background-color: ${(props) =>
       !props.$nocontinue ? "rgba(18, 111, 0, 1)" : "hsl(158, 100%, 62%)"};
@@ -581,12 +576,8 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.35),
-    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
-  /* box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
-    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.13); */
+  box-shadow: 0px 5px 10px -5px rgba(41, 46, 117, 0.66);
+
   cursor: pointer;
 
   &:hover {

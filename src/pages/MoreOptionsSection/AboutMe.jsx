@@ -21,7 +21,7 @@ const ContainerDivPButtons = styled.div`
 
 const DivPButtons = styled.div`
   min-width: 100%;
-  height: 40px;
+  height: 44px;
   padding: 16px;
   box-sizing: border-box;
   display: flex;

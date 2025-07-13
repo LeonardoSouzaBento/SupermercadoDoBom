@@ -38,7 +38,7 @@ export const DivNameSpanStyled = styled.div`
 `;
 
 const ContainerPStyled = styled.div`
-  background-color: #292e4e;
+  background-color: #16192A;
   display: flex;
   border-radius: 8px;
   margin-right: -12px;
@@ -84,7 +84,7 @@ export const DivSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background-color: #292e4e;
+  background-color: #16192A;
   flex: none;
   cursor: pointer;
   width: 48px;

@@ -13,6 +13,10 @@ export const DivBodyStyled = styled.div`
   background-color: rgba(0, 0, 0, 0.15);
   transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
+
+  @media screen and (max-width: 577px) {
+    align-items: flex-end;
+  }
 `;
 
 // Caixa central onde ficam os inputs
@@ -24,25 +28,31 @@ export const MainDivStyled = styled.div`
   border-radius: 13px;
   background-color: white;
   padding: 24px 20px;
-  padding-top: 12px;
+  padding-top: 20px;
   margin-bottom: 4px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 4px 4px -2.5px rgba(41, 46, 117, 0.45),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.15),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.15);
+  box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.1);
   transition: transform 0.2s ease;
-  
+
   @media screen and (max-width: 374px) {
     width: calc(100% - 16px);
   }
   @media screen and (min-width: 375px) and (max-width: 400px) {
     width: calc(100% - 24px);
   }
+  @media screen and (max-width: 577px) {
+    margin-bottom: 0px;
+    width: 100%;
+    max-width: none;
+    border-radius: 24px 24px 0px 0px;
+    box-shadow: 0px -4px 8px -2px rgba(41, 46, 117, 0.08);
+  }
 `;
 
 export const SubDivStyled = styled.div`
   width: calc(100% - 8px);
+  max-width: 400px;
   margin: auto;
   overflow: hidden;
   margin-bottom: 20px;
@@ -86,12 +96,11 @@ export const H1Styled = styled.h1`
   text-align: center;
   font-size: 24px;
   user-select: none;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
   font-size: 1.34em;
-  color: #292e4e;
 
-   @media screen and (max-width: 385px) {
+  @media screen and (max-width: 385px) {
     font-size: 1.27em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
@@ -114,6 +123,9 @@ export const H1Styled = styled.h1`
 // Botão de localização
 export const LocationButtonStyled = styled.button`
   width: 100%;
+  display: block;
+  max-width: 400px;
+  margin: auto;
   height: 44px;
   padding: 0px 16px;
   padding-bottom: 2px;
@@ -122,10 +134,10 @@ export const LocationButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #16814d;
+  background-color: #1a8234;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 1.12em;
@@ -133,7 +145,7 @@ export const LocationButtonStyled = styled.button`
   text-align: center;
 
   &:hover {
-    background-color: rgb(20, 117, 70);
+    background-color: #146528;
   }
 
   @media screen and (max-width: 385px) {
@@ -142,7 +154,7 @@ export const LocationButtonStyled = styled.button`
   @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.18em;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px){
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.2em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
@@ -159,7 +171,10 @@ export const LocationButtonStyled = styled.button`
 // Estilo dos inputs
 export const InputStyled = styled.input`
   width: 100%;
+  display: block;
+  max-width: 400px;
   height: 44px;
+  margin: auto;
   padding-left: 12px;
   box-sizing: border-box;
   border: none;
@@ -179,9 +194,9 @@ export const InputStyled = styled.input`
 export const RegisterButtonStyled = styled(LocationButtonStyled)`
   height: 48px;
   margin-bottom: 0px;
-  background-color:hsl(358, 70.90%, 51.60%);
+  background-color: #db2c32ff;
   &:hover {
-    background-color:hsl(358, 70.90%, 48%);
+    background-color: #d12429ff;
   }
   @media screen and (max-width: 385px) {
     font-size: 1.17em;
@@ -189,7 +204,7 @@ export const RegisterButtonStyled = styled(LocationButtonStyled)`
   @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.19em;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px){
+  @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.22em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {

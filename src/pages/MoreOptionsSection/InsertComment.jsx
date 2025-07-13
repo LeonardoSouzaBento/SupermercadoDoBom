@@ -23,8 +23,10 @@ const InputTextStyled = styled.textarea`
   padding: 0px 12px;
   padding-top: 12px;
   box-sizing: border-box;
-  border-radius: 6px;
-  border: 1px solid rgba(41, 46, 117, 0.4);
+  border-radius: 8px;
+  background-color: #dbfff4;
+  border: none;
+  /* border: 1px solid rgba(41, 46, 117, 0.4); */
   font-family: "Open Sans", sans-serif;
   overflow-wrap: break-word;
   line-height: 1.24;
@@ -53,12 +55,12 @@ const InputTextStyled = styled.textarea`
 `;
 
 const InputSubmitStyled = styled.input`
-  height: 37px;
+  height: 44px;
   width: 200px;
   margin-right: 0px;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: #545126;
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: white;
