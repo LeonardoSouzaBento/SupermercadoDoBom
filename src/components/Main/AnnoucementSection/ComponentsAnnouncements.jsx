@@ -5,9 +5,8 @@ export const ContainerStyled = styled.div`
   position: relative;
   overflow-x: hidden;
   padding-top: 12px;
-  padding-bottom: 32px;
+  padding-bottom: 40px;
   margin: auto;
-  margin-top: 36px;
   border-radius: 4px;
 
   @media screen and (max-width: 576px) {
@@ -24,29 +23,29 @@ export const ContainerStyled = styled.div`
 export const PStyled = styled.p`
   width: 100%;
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   font-size: 1.15em;
   font-family: "Lato", sans-serif;
   font-weight: 700;
   color: #211b37;
 
   @media screen and (max-width: 374px) {
-    font-size: 1.14em;
+    font-size: 1.17em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.22em;
+    font-size: 1.25em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.26em;
+    font-size: 1.29em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.28em;
+    font-size: 1.31em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.3em;
+    font-size: 1.33em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.32em;
+    font-size: 1.35em;
   }
 `;
 
@@ -57,7 +56,6 @@ export const DivStyled = styled.div`
   display: flex;
   flex-flow: row nowrap;
   gap: 16px;
-  margin-top: 12px;
   overflow-x: scroll;
   box-sizing: border-box;
   padding: 12px 20px;
@@ -69,35 +67,16 @@ export const DivStyled = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    gap: 15px;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    gap: 18px;
-  }
+  
   @media screen and (min-width: 769px) {
-    gap: 20px;
+    gap: 16px;
   }
 `;
 
 export const DivFundoImgStyled = styled.div`
   position: relative;
-  height: 170px;
+  height: 220px;
   min-width: 265px;
-
-  @media screen and (max-width: 374px) {
-    min-width: 225px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    min-width: 230px;
-  }
-  @media screen and (min-width: 576px) and (max-width: 768px) {
-    min-width: 240px;
-  }
-  @media screen and (min-width: 769px) {
-    min-width: 250px;
-  }
 
   &::before {
     content: "";
@@ -106,10 +85,7 @@ export const DivFundoImgStyled = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(${(props) => props.$bg});
-    background-size: cover;
-    background-position: center;
-    filter: blur(2.7px) brightness(0.7);
+    background-color: #E3E7EC;
     border-radius: 4px;
     z-index: 0;
   }

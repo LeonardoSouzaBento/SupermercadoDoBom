@@ -56,8 +56,8 @@ export const DivSpanCloseStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 4px;
+  right: 4px;
   background-color: white;
   cursor: pointer;
   &:hover {

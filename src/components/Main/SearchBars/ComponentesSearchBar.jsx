@@ -46,10 +46,11 @@ export const FormStyled = styled.form`
   border-radius: 7px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 3px 3px -1.5px rgba(41, 46, 117, 0.17),
-    -2px 0px 2px 0px rgba(41, 46, 117, 0.07),
-     2px 0px 2px 0px rgba(41, 46, 117, 0.07);
+  box-shadow: 0px 4px 8px -8px rgb(41, 46, 117);
   border: none;
+  /* box-shadow: 0px 3px 3px -1.5px rgba(41, 46, 117, 0.17),
+    -2px 0px 2px 0px rgba(41, 46, 117, 0.07),
+     2px 0px 2px 0px rgba(41, 46, 117, 0.07); */
 
   ${(props) =>
     props.$copy &&
@@ -64,7 +65,7 @@ export const FormStyled = styled.form`
 
 export const InputStyled = styled.input`
   width: 100%;
-  height: 40px;
+  height: 44px;
   box-sizing: border-box;
   padding-bottom: 2px;
   touch-action: auto;
@@ -107,7 +108,7 @@ export const InputStyled = styled.input`
 
 export const DivSpanStyled = styled.div`
   height: 100%;
-  width: 40px;
+  width: 44px;
   padding-bottom: 2px;
   box-sizing: border-box;
   display: flex;
@@ -190,8 +191,8 @@ export const CompletionsDivStyled = styled.div`
   display: flex;
   justify-content: flex-end;
   position: absolute;
-  top: 79px;
-  ${(props) => props.$copy == false && "top:68px;"}
+  top: 72px;
+  ${(props) => props.$copy == false && "top:72px;"}
   left: 5%;
   align-items: center;
   gap: 12px;

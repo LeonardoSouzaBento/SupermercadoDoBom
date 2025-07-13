@@ -12,7 +12,7 @@ import {
   DivFundoImgStyled,
   ImgStyled,
   DivPaginationStyled,
-  SpanStyled
+  SpanStyled,
 } from "./ComponentsAnnouncements";
 import { CartContext } from "../../CartContext";
 import { useScrollX } from "../../../hooks/useScrollX";
@@ -26,7 +26,7 @@ let imageUrls = [
   "https://i.pinimg.com/736x/03/a4/75/03a475aaf5e64c564e7906a14c11a477.jpg", //fanta
 ];
 
-function AnnouncementSection({wasResize}) {
+function AnnouncementSection({ wasResize }) {
   const { setLimitAdvertisements, advertisementsRef } = useContext(CartContext);
 
   useScrollX();
@@ -50,7 +50,7 @@ function AnnouncementSection({wasResize}) {
       const ContainerWidth = divRef.current.offsetWidth; //largura container pai
       const fundoWidth = fundoRefs.current[0]?.offsetWidth || 0; //largura da imagem
       const gap = parseFloat(getComputedStyle(advertisementsRef.current).gap);
-      
+
       let img_center = Math.ceil(imageUrls.length / 2);
 
       const visibleRatio = ContainerWidth / (fundoWidth + gap);
@@ -65,7 +65,7 @@ function AnnouncementSection({wasResize}) {
       }
 
       let widtAllAds =
-        imageUrls.length * fundoWidth + gap * (imageUrls.length) + 24; //largura de tdos os anuncios
+        imageUrls.length * fundoWidth + gap * imageUrls.length + 24; //largura de tdos os anuncios
       let limite = ContainerWidth - widtAllAds;
       setLimitAdvertisements(limite); //Limite de rolagem para anuncios
       let Initialcenter = 0;
@@ -138,7 +138,6 @@ function AnnouncementSection({wasResize}) {
         {imageUrls.map((url, index) => (
           <DivFundoImgStyled
             key={index}
-            $bg={url}
             ref={(el) => (fundoRefs.current[index] = el)}
           >
             <ImgStyled

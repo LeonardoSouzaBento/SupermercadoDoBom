@@ -6,9 +6,10 @@ import Options from "./Options";
 export const HeaderStyled = styled.header`
   width: 100%;
   max-width: 1390px;
-  height: 180px;
-  max-height: 181px;
   position: relative;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 16px;
+  }
   //modo paisagem
   @media screen and (min-width: 769px) {
     height: 140px;

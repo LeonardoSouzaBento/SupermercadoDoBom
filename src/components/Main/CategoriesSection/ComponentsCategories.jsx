@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const DivStyled = styled.div`
   width: calc(100% - 20px);
-  padding-top: 36px;
+  padding-top: 40px;
   padding-left: 20px;
   overflow-x: hidden;
   position: relative;
@@ -37,29 +37,29 @@ export const PLabelStyled = styled.p`
   text-align: center;
 
   @media screen and (max-width: 374px) {
-    font-size: 1.18em;
+    font-size: 1.2em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.25em;
+    font-size: 1.28em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.27em;
+    font-size: 1.32em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.31em;
+    font-size: 1.34em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.33em;
+    font-size: 1.36em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.35em;
+    font-size: 1.38em;
   }
 `;
 
 export const DivfStyled = styled.div`
   width: auto;
   margin: auto;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   padding: 4px;
   padding-bottom: 8px;
   padding-left: 0px;
@@ -128,7 +128,7 @@ export const DivCatStyled = styled.div`
   border-radius: 8px;
   padding-top: 7px;
   cursor: pointer;
-  
+
   ${(props) =>
     props.$selected &&
     css`
@@ -187,5 +187,5 @@ export const PStyled = styled.p`
   font-size: 1.05em;
   letter-spacing: 0.5px;
   margin: 0;
-  color:rgb(21, 16, 35);
+  color: rgb(21, 16, 35);
 `;

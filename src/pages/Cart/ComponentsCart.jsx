@@ -37,8 +37,8 @@ export const CartSectionStyed = styled.div`
   background-color: white;
   box-sizing: border-box;
   background-color: #ecf1f6;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.13),
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.45),
+    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   position: relative;
   overflow: hidden;
@@ -415,8 +415,8 @@ export const DivContinueStyled = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.13),
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.45),
+    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   overflow: hidden;
   position: relative;
@@ -583,8 +583,8 @@ export const DivAddStyled = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.6),
-    3px -3px 3px -1.5px rgba(41, 46, 117, 0.13),
+  box-shadow: 0px 4px 4px -3px rgba(41, 46, 117, 0.45),
+    3px -3px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   cursor: pointer;
 
