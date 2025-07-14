@@ -83,6 +83,8 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
             style={{
               backgroundColor: " #E9EFF5",
               borderBottom: "none",
+              marginBottom: "12px",
+              borderRadius: "4px"
             }}
           />
 

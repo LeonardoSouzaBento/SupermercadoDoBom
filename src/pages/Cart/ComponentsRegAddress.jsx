@@ -13,15 +13,19 @@ export const DivBodyStyled = styled.div`
   background-color: rgba(0, 0, 0, 0.15);
   transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
+
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
+  }
 `;
 
 // Caixa central onde ficam os inputs
 export const MainDivStyled = styled.div`
   height: auto;
-  width: calc(100% - 12px);
+  width: 100%;
   max-width: 416px;
   box-sizing: border-box;
-  border-radius: 20px;
+  border-radius: 12px;
   background-color: white;
   padding: 28px;
   padding-bottom: 36px;
@@ -36,12 +40,22 @@ export const MainDivStyled = styled.div`
     padding: 18px;
     padding-bottom: 24px;
     padding-top: 20px;
-    /* border-radius: 12px; */
   }
   @media screen and (min-width: 374px) and (max-width: 577px) {
     margin-bottom: 0px;
-    border-radius: 24px;
   }
+  @media screen and (max-width: 768px) {
+    margin-top: 12px;
+    padding-bottom: 44px;
+  }
+  /* @media screen and (max-width: 420px) {
+    border-radius: 0px 0px 24px 24px;
+    padding-bottom: 32px;
+    padding-top: 24px;
+  }
+  @media screen and (min-width: 420px) and (max-width: 768px) {
+    margin-top: 12px;
+  } */
 `;
 
 export const SubDivStyled = styled.div`
@@ -69,7 +83,7 @@ export const DivSpanCloseStyled = styled.div`
 
 export const SpanCloseStyled = styled.span`
   font-size: 1.7em;
-  font-weight: 600;
+  font-weight: 500;
   color: #292e4e;
 `;
 
@@ -167,12 +181,12 @@ export const InputStyled = styled.input`
   width: 100%;
   display: block;
   max-width: 400px;
-  height: 44px;
+  height: 46px;
   margin: auto;
   padding-left: 12px;
   box-sizing: border-box;
   border: none;
-  border-bottom: 1px solid rgba(41, 46, 117, 0.3);
+  border-bottom: 1px solid #e9eff5;
   font-size: 1.06em;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;

@@ -343,7 +343,7 @@ const DivCancelDialog = ({
               style={{
                 height: "36px",
                 width: "36px",
-                borderRadius: "8px",
+                borderRadius: "6px",
               }}
             >
               <SpanCloseStyled
@@ -359,7 +359,7 @@ const DivCancelDialog = ({
                 close
               </SpanCloseStyled>
             </DivSpanCloseStyled>
-            
+
             <DivPYesNoStyled
               onClick={() => {
                 setSeeFeedback(true);

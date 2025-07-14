@@ -51,6 +51,7 @@ export const CartSectionStyed = styled.div`
   }
   @media screen and (max-width: 768px) {
     margin-bottom: 24px;
+    border-radius: 8px 8px 24px 24px;
   }
 
   @media screen and (min-width: 769px) {
@@ -126,8 +127,7 @@ export const DivDialogStyled = styled.div`
   padding-bottom: 28px;
   margin-right: 12px;
   margin-top: 12px;
-  border-radius: 8px;
-  border-top-right-radius: 12px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,14 +135,16 @@ export const DivDialogStyled = styled.div`
   z-index: 4;
   background-color: white;
   ${(props) => props.$feedback && "background-color: #488658;"};
-    box-shadow: 0px 3px 3px -1px rgba(41, 46, 117, 0.13),
+  box-shadow: 0px 3px 3px -1px rgba(41, 46, 117, 0.18),
     3px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   transition: height 0.15s ease;
   position: relative;
+/* 
+  @media screen and (max-width: 768px) {
+    border-top-right-radius: 4px;
+  } */
 `;
-
-
 
 export const DivToCoverStyled = styled.div`
   width: 100vw;
@@ -215,7 +217,7 @@ export const DivPYesNoStyled = styled.div`
   background-color: #db2c32;
 
   &:hover {
-    background-color: #75171b;
+    background-color: hsla(358, 71%, 44%, 1);
   }
 
   ${(props) =>
@@ -225,7 +227,7 @@ export const DivPYesNoStyled = styled.div`
       color: black;
       background-color: #ebeff4;
       &:hover {
-        background-color: #ebeff4;
+        background-color: hsla(213, 29%, 86%, 1);
       }
     `};
 `;
@@ -291,8 +293,6 @@ export const DivHeadStyled = styled.div`
   margin-bottom: 12px;
   position: relative;
   background-color: #ebeff4;
-  border-bottom: 1px solid rgba(41, 46, 117, 0.3);
-  /* background-color: hsla(213, 29%, 90%, 1); */
 
   z-index: 2;
   @media screen and (min-width: 769px) {
