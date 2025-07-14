@@ -210,16 +210,17 @@ export const PWeightStyled = styled.p`
 `;
 
 export const DivNameProdStyled = styled.div`
-  padding: 18px 0px;
-  padding-bottom: 20px;
+  min-height: 56px;
   border-top: 1px solid rgba(41, 46, 117, 0.19);
   border-bottom: 1px solid rgba(41, 46, 117, 0.19);
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export const PNameProdStyled = styled.p`
   width: 100%;
+  padding: 16px 0px;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   text-align: left;
@@ -261,8 +262,8 @@ export const DivPriceStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 44px;
-  margin-bottom: 12px;
+  height: 56px;
+  margin-bottom: 4px;
 `;
 
 export const PPriceStyled = styled.p`
@@ -295,18 +296,20 @@ export const PPriceStyled = styled.p`
 
 export const ContainerQuantStyled = styled.div`
   max-width: 370px;
+  height: 48px;
   display: flex;
   justify-content: space-between;
   margin: auto;
 `;
 
 export const DivQuantFullStyled = styled.div`
+  width: 37.5%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 37.5%;
   background-color: #db2c32;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 `;
 
@@ -318,9 +321,7 @@ export const DivButtonsStyled = styled.div`
   align-items: center;
 `;
 
-export const PButtonsStyed = styled.p`
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
+export const SpanButtonsStyled = styled.span`
   color: white;
   padding-bottom: 3px;
   -webkit-user-select: none; /* Safari, Chrome */
@@ -329,22 +330,22 @@ export const PButtonsStyed = styled.p`
   user-select: none; /* Padrão */
 
   @media screen and (max-width: 375px) {
-    font-size: 1.6em;
+    font-size: 1.42em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.65em;
+    font-size: 1.48em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.68em;
+    font-size: 1.53em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.7em;
+    font-size: 1.58em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.72em;
+    font-size: 1.61em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.74em;
+    font-size: 1.64em;
   }
 `;
 
@@ -382,14 +383,14 @@ export const PQuantFullStyled = styled.p`
 `;
 
 export const DivSubStyled = styled.div`
-  height: 42px;
+  height: 100%;
   width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   background-color: #ebeff4;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: default;
 `;
 
@@ -496,7 +497,7 @@ export const ContainerListStyled = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  @media screen and (min-width: 577px) and (max-width: 720px){
+  @media screen and (min-width: 577px) and (max-width: 720px) {
     padding-left: 0px;
     max-height: 100%;
     overflow: scroll;
@@ -512,7 +513,7 @@ export const DivHalfList = styled.div`
   justify-items: flex-start;
   padding-right: 12px;
 
-  @media screen and (min-width: 577px) and (max-width: 720px){
+  @media screen and (min-width: 577px) and (max-width: 720px) {
     flex-direction: column;
     align-items: center;
     padding-right: 0px;

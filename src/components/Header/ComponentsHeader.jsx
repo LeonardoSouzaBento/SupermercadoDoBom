@@ -197,7 +197,7 @@ const DivMoreOptionsStyled = styled.div`
   @media screen and (min-width: 769px) {
     position: relative;
   }
-  @media screen and (max-width: 993px) {
+  @media screen and (max-width: 1201px) {
     border-radius: 50%;
   }
   @media screen and (min-width: 1201px) {

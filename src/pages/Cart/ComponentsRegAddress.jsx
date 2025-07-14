@@ -13,50 +13,42 @@ export const DivBodyStyled = styled.div`
   background-color: rgba(0, 0, 0, 0.15);
   transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
-
-  @media screen and (max-width: 577px) {
-    align-items: flex-end;
-  }
 `;
 
 // Caixa central onde ficam os inputs
 export const MainDivStyled = styled.div`
   height: auto;
-  width: calc(100% - 16px);
+  width: calc(100% - 12px);
   max-width: 416px;
   box-sizing: border-box;
-  border-radius: 13px;
+  border-radius: 20px;
   background-color: white;
-  padding: 24px 20px;
-  padding-top: 20px;
+  padding: 28px;
+  padding-bottom: 36px;
+  padding-top: 26px;
   margin-bottom: 4px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.1);
+  box-shadow: 0px 5px 10px -8px rgba(41, 46, 117, 0.6);
   transition: transform 0.2s ease;
 
   @media screen and (max-width: 374px) {
-    width: calc(100% - 16px);
+    padding: 18px;
+    padding-bottom: 24px;
+    padding-top: 20px;
+    /* border-radius: 12px; */
   }
-  @media screen and (min-width: 375px) and (max-width: 400px) {
-    width: calc(100% - 24px);
-  }
-  @media screen and (max-width: 577px) {
+  @media screen and (min-width: 374px) and (max-width: 577px) {
     margin-bottom: 0px;
-    width: 100%;
-    max-width: none;
-    border-radius: 24px 24px 0px 0px;
-    box-shadow: 0px -4px 8px -2px rgba(41, 46, 117, 0.08);
+    border-radius: 24px;
   }
 `;
 
 export const SubDivStyled = styled.div`
-  width: calc(100% - 8px);
-  max-width: 400px;
+  width: 100%;
   margin: auto;
   overflow: hidden;
   margin-bottom: 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
 `;
 
 export const DivSpanCloseStyled = styled.div`
@@ -104,10 +96,10 @@ export const H1Styled = styled.h1`
     font-size: 1.27em;
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.28em;
+    font-size: 1.285em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.296em;
+    font-size: 1.29em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
     font-size: 1.3em;
@@ -116,7 +108,7 @@ export const H1Styled = styled.h1`
     font-size: 1.31em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.32em;
+    font-size: 1.33em;
   }
 `;
 
@@ -137,7 +129,7 @@ export const LocationButtonStyled = styled.button`
   background-color: #1a8234;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 1.12em;
@@ -147,7 +139,9 @@ export const LocationButtonStyled = styled.button`
   &:hover {
     background-color: #146528;
   }
-
+  &:focus {
+    outline: none;
+  }
   @media screen and (max-width: 385px) {
     font-size: 1.15em;
   }
@@ -178,7 +172,7 @@ export const InputStyled = styled.input`
   padding-left: 12px;
   box-sizing: border-box;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(41, 46, 117, 0.3);
   font-size: 1.06em;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
@@ -186,7 +180,6 @@ export const InputStyled = styled.input`
   background-color: transparent;
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
   }
 `;
 

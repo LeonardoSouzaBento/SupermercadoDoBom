@@ -21,7 +21,7 @@ import {
   ContainerQuantStyled,
   DivQuantFullStyled,
   DivButtonsStyled,
-  PButtonsStyed,
+  SpanButtonsStyled,
   PQuantFullStyled,
   DivSubStyled,
   PSubStyled,
@@ -36,7 +36,8 @@ import ProductItem from "./ProductItem.jsx";
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
   const [seeSpanClose, setSeeSpanClose] = useState(false);
-  const { dataProductFull, setViewProductInFull } = useContext(VisibilityContext);
+  const { dataProductFull, setViewProductInFull } =
+    useContext(VisibilityContext);
   const { handleQuantityChange, setUpdateProduct, isDraggingRef } =
     useContext(CartContext);
   const initialQuant = dataProductFull.quantity;
@@ -189,15 +190,19 @@ const ProductInFull = () => {
                       handlePointerUpButtons(e, "fewer");
                     }}
                   >
-                    <PButtonsStyed style={{ paddingBottom: "8px" }}>
-                      -
-                    </PButtonsStyed>
+                    <SpanButtonsStyled className="material-symbols-rounded">
+                      remove
+                    </SpanButtonsStyled>
                   </DivButtonsStyled>
+
                   <DivButtonsStyled>
                     <PQuantFullStyled>{quantity}</PQuantFullStyled>
                   </DivButtonsStyled>
+
                   <DivButtonsStyled onPointerUp={handlePointerUpButtons}>
-                    <PButtonsStyed>+</PButtonsStyed>
+                    <SpanButtonsStyled className="material-symbols-rounded">
+                      add
+                    </SpanButtonsStyled>
                   </DivButtonsStyled>
                 </>
               )}
@@ -206,7 +211,9 @@ const ProductInFull = () => {
                   style={{ width: "100%" }}
                   onPointerUp={handlePointerUpAdd}
                 >
-                  <PButtonsStyed style={{ scale: 1.07 }}>+</PButtonsStyed>
+                  <SpanButtonsStyled className="material-symbols-rounded">
+                    add
+                  </SpanButtonsStyled>
                 </DivButtonsStyled>
               )}
             </DivQuantFullStyled>

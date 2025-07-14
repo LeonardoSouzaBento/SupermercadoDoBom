@@ -70,7 +70,7 @@ const PQuestionStyled = styled.p`
   padding-bottom: 14px;
   margin-top: 10px;
   border-radius: 5px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   text-align: center;
   cursor: default;
@@ -138,6 +138,7 @@ const PVoltarStyled = styled(PSimStyled)`
   &:hover {
     background-color: #ebeff4;
   }
+  text-shadow: 0.2px 0.2px 0px black;
 `;
 
 const DivFeedBackStyled = styled.div`

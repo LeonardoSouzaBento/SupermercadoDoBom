@@ -15,8 +15,8 @@ import {
   DivContinueStyled,
   DivAvisoStyled,
   PAvisoStyled,
-  DivValueStyled,
-  DivStyled,
+  DivAllValuesStyled,
+  DivOneValueStyled,
   PValueStyled,
   DivPContinueStyled,
   PContinueStyled,
@@ -33,6 +33,10 @@ import {
   DivPYesNoStyled,
   DivToCoverStyled,
 } from "./ComponentsCart.jsx";
+import {
+  DivSpanCloseStyled,
+  SpanCloseStyled,
+} from "./ComponentsRegAddress.jsx";
 import ProductInFull from "../../components/Main/ProductSection/ProductInFull.jsx";
 import RegisterAddress from "./RegisterAddress.jsx";
 
@@ -133,6 +137,7 @@ const Cart = () => {
 
     return () => {
       setSeeFeedback(false);
+      document.body.style.overflow = "auto";
       window.removeEventListener("resize", handleResize);
       if (resizeDowntime.current) {
         clearTimeout(resizeDowntime.current);
@@ -188,38 +193,55 @@ const Cart = () => {
   return (
     <>
       <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
-        <div style={{ position: "relative" }}>
-          <CartSectionStyed ref={CartSectionRef}>
-            <DivHeadStyled>
-              <HHeadStyled>Sua compra</HHeadStyled>
-              <DivSpanDeleteStyled
-                onClick={(e) => {
-                  setSeeCancelDialog(true);
-                }}
-              >
-                <SpanStyled className="material-symbols-rounded">
-                  delete
-                </SpanStyled>
-              </DivSpanDeleteStyled>
-            </DivHeadStyled>
+        <CartSectionStyed ref={CartSectionRef}>
+          <DivHeadStyled>
+            <HHeadStyled>Sua compra</HHeadStyled>
+            <DivSpanDeleteStyled
+              onClick={(e) => {
+                setSeeCancelDialog(true);
+                document.body.style.overflow = "hidden";
+              }}
+            >
+              <SpanStyled className="material-symbols-rounded">
+                delete
+              </SpanStyled>
+            </DivSpanDeleteStyled>
+          </DivHeadStyled>
 
-            <ContainerProductList>
-              <ProductList
-                variant={"cart"}
-                categoryKey={12}
-                ref={ProductListRef}
-              ></ProductList>
-            </ContainerProductList>
-            {viewButtonSeeAll && (
-              <DivSeeAllStyled onClick={handleClickSeeAll}>
-                <PSeeAllStyled>Ver Tudo</PSeeAllStyled>
-                <SpanSeeAllStyled className="material-symbols-rounded">
-                  keyboard_arrow_down
-                </SpanSeeAllStyled>
-              </DivSeeAllStyled>
-            )}
-          </CartSectionStyed>
-        </div>
+          <ContainerProductList>
+            <ProductList
+              variant={"cart"}
+              categoryKey={12}
+              ref={ProductListRef}
+            ></ProductList>
+          </ContainerProductList>
+          {viewButtonSeeAll && (
+            <DivSeeAllStyled onClick={handleClickSeeAll}>
+              <PSeeAllStyled>Ver Tudo</PSeeAllStyled>
+              <SpanSeeAllStyled className="material-symbols-rounded">
+                keyboard_arrow_down
+              </SpanSeeAllStyled>
+            </DivSeeAllStyled>
+          )}
+
+          {seeCancelDialog && (
+            <>
+              <DivToCoverStyled
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.1)",
+                  height: "100%",
+                  overflow: "auto",
+                }}
+              />
+              <DivCancelDialog
+                seeFeedback={seeFeedback}
+                setSeeFeedback={setSeeFeedback}
+                setSeeCancelDialog={setSeeCancelDialog}
+                setCartProducts={setCartProducts}
+              />
+            </>
+          )}
+        </CartSectionStyed>
 
         <FinishSectionStyled>
           <DivContinueStyled>
@@ -231,26 +253,26 @@ const Cart = () => {
               </DivAvisoStyled>
             )}
 
-            <DivValueStyled>
-              <DivStyled>
+            <DivAllValuesStyled>
+              <DivOneValueStyled>
                 <PValueStyled>Valor da compra:</PValueStyled>
                 <PValueStyled>R$ {totalValue}</PValueStyled>
-              </DivStyled>
+              </DivOneValueStyled>
 
-              <DivStyled>
+              <DivOneValueStyled>
                 <PValueStyled>Valor da entrega:</PValueStyled>
                 <PValueStyled>R$ 4,00</PValueStyled>
-              </DivStyled>
+              </DivOneValueStyled>
 
-              <DivStyled>
+              <DivOneValueStyled style={{ borderBottom: "none" }}>
                 <PValueStyled>
                   <strong>Total </strong>(com entrega):
                 </PValueStyled>
                 <PValueStyled>
                   <strong>R$ {totalFormatted}</strong>
                 </PValueStyled>
-              </DivStyled>
-            </DivValueStyled>
+              </DivOneValueStyled>
+            </DivAllValuesStyled>
 
             <DivPContinueStyled
               $nocontinue={falta > 0}
@@ -270,14 +292,6 @@ const Cart = () => {
         </FinishSectionStyled>
       </MainStyled>
 
-      {seeCancelDialog && (
-        <DivCancelDialog
-          seeFeedback={seeFeedback}
-          setSeeFeedback={setSeeFeedback}
-          setSeeCancelDialog={setSeeCancelDialog}
-          setCartProducts={setCartProducts}
-        />
-      )}
       {seeFeedback && <DivToCoverStyled />}
       {viewProductInFull && <ProductInFull />}
       {seeAddressForm && (
@@ -302,6 +316,14 @@ const DivCancelDialog = ({
     }, 200);
   }, []);
 
+  function handleClickClose() {
+    setOpacityDialog(false);
+    setTimeout(() => {
+      setSeeCancelDialog(false);
+      document.body.style.overflow = "auto";
+    }, 300);
+  }
+
   return (
     <ContainerDialogStyled
       style={{
@@ -310,13 +332,34 @@ const DivCancelDialog = ({
       }}
     >
       <DivDialogStyled $feedback={seeFeedback}>
-        {/*Botoes de sim ou não*/}
-        <PQuestionStyled>
+        <PQuestionStyled style={{ color: seeFeedback ? "white" : "black" }}>
           {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}
         </PQuestionStyled>
 
+        {/*Botoes de sim ou não*/}
         {seeFeedback === false ? (
           <>
+            <DivSpanCloseStyled
+              style={{
+                height: "36px",
+                width: "36px",
+                borderRadius: "8px",
+              }}
+            >
+              <SpanCloseStyled
+                className="material-symbols-rounded"
+                onClick={handleClickClose}
+                style={{
+                  fontWeight: 400,
+                  textShadow: "0.3px 0.3px 0px black",
+                  color: "black",
+                  scale: 0.9,
+                }}
+              >
+                close
+              </SpanCloseStyled>
+            </DivSpanCloseStyled>
+            
             <DivPYesNoStyled
               onClick={() => {
                 setSeeFeedback(true);
@@ -328,15 +371,7 @@ const DivCancelDialog = ({
               <PYesNoStyled>Sim, cancelar</PYesNoStyled>
             </DivPYesNoStyled>
 
-            <DivPYesNoStyled
-              $voltar={true}
-              onClick={() => {
-                setOpacityDialog(false);
-                setTimeout(() => {
-                  setSeeCancelDialog(false);
-                }, 300);
-              }}
-            >
+            <DivPYesNoStyled $voltar={true} onClick={handleClickClose}>
               <PYesNoStyled>Voltar</PYesNoStyled>
             </DivPYesNoStyled>
           </>

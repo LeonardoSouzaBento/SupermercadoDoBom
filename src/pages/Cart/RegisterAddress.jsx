@@ -81,10 +81,8 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
             value={formData.cep}
             onChange={handleChange}
             style={{
-              marginBottom: "12px",
-              borderRadius: "4px",
               backgroundColor: " #E9EFF5",
-              borderBottom: "none"
+              borderBottom: "none",
             }}
           />
 
@@ -140,7 +138,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               required
               maxLength={50}
               onChange={handleChange}
-              style={{ paddingBottom: "2px" }}
+              style={{ paddingBottom: "2px", borderBottom: "none"}} 
             />
           </SubDivStyled>
           <RegisterButtonStyled

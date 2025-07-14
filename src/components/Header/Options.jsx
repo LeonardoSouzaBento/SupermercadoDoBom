@@ -31,24 +31,23 @@ export const DivNameSpanStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  height: max-content;
-  border-radius: 24px;
   margin-bottom: 18px;
   cursor: pointer;
 `;
 
 const ContainerPStyled = styled.div`
-  background-color: #16192A;
+  background-color: #383d6a;
   display: flex;
-  border-radius: 8px;
-  margin-right: -12px;
+  border-radius: 28px 0px 0px 28px;
+  padding-right: 18px;
+  margin-right: -28px;
 `;
 
 const DivPStyled = styled.div`
   display: flex;
   align-items: center;
   width: max-content;
-  height: 48px;
+  height: 56px;
 `;
 
 export const POptionStyled = styled.p`
@@ -80,15 +79,16 @@ export const POptionStyled = styled.p`
 `;
 
 export const DivSpanStyled = styled.div`
+  width: 56px;
+  height: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  background-color: #16192A;
+  border-radius: 28px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  background-color: #383d6a;
   flex: none;
   cursor: pointer;
-  width: 48px;
-  height: 48px;
 `;
 
 export const SpanOptionsStyled = styled.span`

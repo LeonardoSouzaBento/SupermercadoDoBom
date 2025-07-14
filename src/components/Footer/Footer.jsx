@@ -72,7 +72,7 @@ const SpanCartStyled = styled.span`
 const DivDeleteStyled = styled(DivCartStyled)`
   box-sizing: border-box;
   padding-left: 4px;
-  background-color: #292e4e;
+  background-color: #292D4E;
 
   &:hover {
     background-color: hsl(255, 35.5%, 18%);
