@@ -293,6 +293,7 @@ export const DivHeadStyled = styled.div`
   margin-bottom: 12px;
   position: relative;
   background-color: #ebeff4;
+  /* background-color: #8589AB; */
 
   z-index: 2;
   @media screen and (min-width: 769px) {
@@ -338,7 +339,7 @@ export const ContainerProductList = styled.div`
 `;
 
 export const DivSeeAllStyled = styled.div`
-  height: 40px;
+  height: 45px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -348,7 +349,7 @@ export const DivSeeAllStyled = styled.div`
   bottom: -1px;
   left: 0;
   background-color: #ecf1f6;
-  box-shadow: 0px -1.5px 4px rgba(41, 46, 117, 0.15);
+  /* box-shadow: 0px -1.5px 4px rgba(41, 46, 117, 0.15); */
   z-index: 2;
   cursor: pointer;
   @media screen and (min-width: 769px) {
@@ -537,10 +538,10 @@ export const DivPContinueStyled = styled.div`
   cursor: pointer;
   transition: background-color 0.08s ease;
   background-color: ${(props) =>
-    props.$nocontinue ? "hsl(158, 83.30%, 57.60%)" : "#1A8437"};
+    props.$nocontinue ? "#A6A8C0" : "#383d6a"};
   &:hover {
     background-color: ${(props) =>
-      !props.$nocontinue ? "rgba(18, 111, 0, 1)" : "hsl(158, 100%, 62%)"};
+      !props.$nocontinue ? "hsla(234, 31%, 28%, 1)" : "hsla(235, 17%, 76%, 1)"};
   }
 `;
 

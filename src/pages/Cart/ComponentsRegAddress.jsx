@@ -22,7 +22,7 @@ export const DivBodyStyled = styled.div`
 // Caixa central onde ficam os inputs
 export const MainDivStyled = styled.div`
   height: auto;
-  width: 100%;
+  width: calc(100% - 18px);
   max-width: 416px;
   box-sizing: border-box;
   border-radius: 12px;
@@ -33,7 +33,7 @@ export const MainDivStyled = styled.div`
   margin-bottom: 4px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 5px 10px -8px rgba(41, 46, 117, 0.6);
+  box-shadow: 0px 5px 10px -5px rgba(41, 46, 117, 0.6);
   transition: transform 0.2s ease;
 
   @media screen and (max-width: 374px) {
@@ -48,14 +48,6 @@ export const MainDivStyled = styled.div`
     margin-top: 12px;
     padding-bottom: 44px;
   }
-  /* @media screen and (max-width: 420px) {
-    border-radius: 0px 0px 24px 24px;
-    padding-bottom: 32px;
-    padding-top: 24px;
-  }
-  @media screen and (min-width: 420px) and (max-width: 768px) {
-    margin-top: 12px;
-  } */
 `;
 
 export const SubDivStyled = styled.div`
@@ -75,6 +67,7 @@ export const DivSpanCloseStyled = styled.div`
   top: 4px;
   right: 4px;
   background-color: white;
+  border-radius: 8px;
   cursor: pointer;
   &:hover {
     background-color: rgb(240, 240, 240);
@@ -140,7 +133,6 @@ export const LocationButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1a8234;
   color: white;
   border: none;
   border-radius: 8px;
@@ -149,10 +141,11 @@ export const LocationButtonStyled = styled.button`
   font-size: 1.12em;
   font-weight: 500;
   text-align: center;
-
+  background-color: #4B6B39;
   &:hover {
-    background-color: #146528;
+    background-color: hsla(98, 31%, 28%, 1);
   }
+
   &:focus {
     outline: none;
   }
@@ -201,10 +194,12 @@ export const InputStyled = styled.input`
 export const RegisterButtonStyled = styled(LocationButtonStyled)`
   height: 48px;
   margin-bottom: 0px;
-  background-color: #db2c32ff;
+  background-color: #383d6a;
+
   &:hover {
-    background-color: #d12429ff;
+    background-color: hsla(234, 31%, 24%, 1);
   }
+
   @media screen and (max-width: 385px) {
     font-size: 1.17em;
   }
