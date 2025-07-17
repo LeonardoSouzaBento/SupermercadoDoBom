@@ -15,6 +15,7 @@ import {
   PointedShapeStyed,
   PMsgStyled,
   CompletionsDivStyled,
+  DivOnePStyled,
   PStyled,
 } from "./ComponentesSearchBar";
 
@@ -190,7 +191,9 @@ function SearchBar({ copy }) {
     setCompletions([...newCompletions]);
 
     setCountCompletes(countComplete + 1);
-    inputRef.current?.focus();
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 50);
   }
 
   useEffect(() => {
@@ -303,23 +306,19 @@ function SearchBar({ copy }) {
             if (e.button === 2) {
               return;
             }
-            inputRef.current.focus();
           }}
         >
           {completions.map((suggestion, i) => (
-            <PStyled
+            <DivOnePStyled
               key={i}
               data-suggestion
               onPointerDown={(e) => {
                 handleClickComplete(e, suggestion);
-                setTimeout(() => {
-                  inputRef.current.focus();
-                }, 0);
+                setTimeout(()=>{inputRef.current.focus();},0)
               }}
-              $copy={copy}
             >
-              {suggestion}...
-            </PStyled>
+              <PStyled>{suggestion}...</PStyled>
+            </DivOnePStyled>
           ))}
         </CompletionsDivStyled>
       )}

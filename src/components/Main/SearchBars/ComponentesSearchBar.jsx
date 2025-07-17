@@ -235,22 +235,24 @@ export const CompletionsDivStyled = styled.div`
   }
 `;
 
-export const PStyled = styled.button`
+export const DivOnePStyled = styled.div`
   width: max-content;
   height: 48px;
+  padding: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 9px 16px;
+  flex: none;
   border-radius: 24px;
+  background-color: #281f42;
+  color: white;
+  cursor: pointer;
+`;
+
+export const PStyled = styled.p`
   text-transform: uppercase;
   font-family: "Open Sans", Arial, sans-serif;
   font-weight: 600;
-  background-color: #281f42;
-  border: none;
-  color: white;
-  flex: none;
-  cursor: pointer;
 
   @media screen and (max-width: 374px) {
     font-size: 0.86em;
