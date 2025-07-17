@@ -1,17 +1,13 @@
 import { useState } from "react";
-import styled, {css} from "styled-components";
-import {
-  PStyled,
-  H1Styled,
-  H2Styled,
-} from "./ComponentsOptionSection";
+import styled, { css } from "styled-components";
+import { PStyled, H1Styled, H2Styled } from "./ComponentsOptionSection";
 
 const ContainerDivPButtons = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  gap: 12px;
+  margin-top: 24px;
+  margin-bottom: 32px;
 
   @media screen and (max-width: 387px) {
     flex-direction: column;
@@ -26,21 +22,21 @@ const DivPButtons = styled.div`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  border-radius: 8px;
-  background-color: #dbfff4;
+  border-radius: 22px;
+  background-color: #383d6a;
+  color: white;
   cursor: pointer;
 
   ${(props) =>
     props.$buttonSelected &&
     css`
-      background-color: #342654;
-      color: white;
+      background-color: #d5343a;
       box-shadow: none;
     `}
   @media screen and (max-width: 430px) {
     height: max-content;
     padding: 9px 16px;
-  }  
+  }
 `;
 
 const PButtonStyled = styled(PStyled)`
@@ -59,33 +55,35 @@ const DivReferentMidea = styled.div`
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 12px;
   position: relative;
+
+  @media screen and (min-width: 577px) {
+    width: 380px;
+    margin: auto;
+  }
 `;
 
 const DivImgStyled = styled.div`
   width: 100%;
-  height: 310px;
+  height: 360px;
   position: relative;
-  background-color: #dbfff4;
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
-  ${(props) => props.$painting && "max-height: 290px;"};
 `;
 
 const ImgStyled = styled.img`
   display: block;
   width: 100%;
-  max-width: 340px;
   height: 100%;
   margin: auto;
   object-fit: cover;
+  border-radius: 16px;
   object-position: center;
-  ${(props) => props.$hue && "filter: grayscale(0.2) contrast(1.1);"}
-
-  @media screen and (max-width: 374px) {
-    width: 320px;
-  }
+  position: relative;
+  ${(props) => props.$hue && css`
+    filter: saturate(1.2) brightness(1.05) contrast(1.05);
+  `}
 `;
 
 const previousWork = [
@@ -160,27 +158,15 @@ const AboutMe = () => {
 
       <DivReferentMidea>
         {buttonSelected == 0 && (
-          <>
-            <DivImgStyled $painting={true} $src={"sobre_mim/pintando2.gif"}>
-              <ImgStyled src="sobre_mim/pintando2.gif" $hue={true} />
-            </DivImgStyled>
-
-            <DivImgStyled $painting={true} $src={"sobre_mim/pintando1.gif"}>
-              <ImgStyled src="sobre_mim/pintando1.gif" $hue={true} />
-            </DivImgStyled>
-          </>
+          <DivImgStyled $painting={true} $src={"sobre_mim/pintando2.gif"}>
+            <ImgStyled src="sobre_mim/pintandoParede.png" $hue={true} />
+          </DivImgStyled>
         )}
 
         {buttonSelected == 1 && (
-          <>
-            <DivImgStyled $src={"sobre_mim/pintura1.jpg"}>
-              <ImgStyled src="sobre_mim/pintura1.jpg" />
-            </DivImgStyled>
-
-            <DivImgStyled $src={"sobre_mim/pintura.jpg"}>
-              <ImgStyled src="sobre_mim/pintura.jpg" />
-            </DivImgStyled>
-          </>
+          <DivImgStyled $src={"sobre_mim/pintura1.jpg"}>
+            <ImgStyled src="sobre_mim/pintura1.jpg" />
+          </DivImgStyled>
         )}
 
         {buttonSelected == 2 && (

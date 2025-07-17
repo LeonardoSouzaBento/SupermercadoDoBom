@@ -8,7 +8,7 @@ export const ContainerForFormStyled = styled.div`
   position: relative;
   z-index: 4;
   box-sizing: border-box;
-  
+
   ${(props) =>
     props.$copy === false &&
     css`
@@ -43,14 +43,11 @@ export const FormStyled = styled.form`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  border-radius: 7px;
+  border-radius: 24px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 4px 8px -8px rgb(41, 46, 117);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
   border: none;
-  /* box-shadow: 0px 3px 3px -1.5px rgba(41, 46, 117, 0.17),
-    -2px 0px 2px 0px rgba(41, 46, 117, 0.07),
-     2px 0px 2px 0px rgba(41, 46, 117, 0.07); */
 
   ${(props) =>
     props.$copy &&
@@ -58,24 +55,32 @@ export const FormStyled = styled.form`
       width: 91.5%;
       max-width: 684px;
       margin: 0;
-      box-shadow: 0px 2.5px 7px rgba(41, 46, 117, 0.28);
-      outline: 1px solid rgba(41, 46, 117, 0.05);
+      box-shadow: 0px 4px 10px -5px rgba(41, 46, 117, 0.6);
+      /* box-shadow: 0px 2.5px 7px rgba(41, 46, 117, 0.28); */
+      border-radius: 8px;
+      /* outline: 1px solid rgba(41, 46, 117, 0.05); */
     `}
 `;
 
 export const InputStyled = styled.input`
   width: 100%;
-  height: 44px;
+  height: 48px;
   box-sizing: border-box;
   padding-bottom: 2px;
   touch-action: auto;
-  text-indent: 10px;
+  text-indent: 16px;
   font-weight: 400;
   letter-spacing: 0.71px;
   color: black;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
   border: none;
+
+  ${(props) =>
+    props.$copy === false &&
+    css`
+      text-indent: 20px;
+    `}
 
   &:focus {
     outline: none;
@@ -108,7 +113,7 @@ export const InputStyled = styled.input`
 
 export const DivSpanStyled = styled.div`
   height: 100%;
-  width: 44px;
+  width: 48px;
   padding-bottom: 2px;
   box-sizing: border-box;
   display: flex;
@@ -119,13 +124,34 @@ export const DivSpanStyled = styled.div`
   right: 0px;
   user-select: none;
   cursor: pointer;
-  background-color: #383d6a;
+
+  ${(props) =>
+    props.$copy === false &&
+    css`
+      height: 40px;
+      width: 40px;
+      box-sizing: border-box;
+      padding-left: 2px;
+      margin-bottom: 4px;
+      margin-right: 8px;
+      border-radius: 50%;
+      &:hover {
+        background-color: #ecf0f5;
+      }
+    `}
+
+  ${(props) =>
+    props.$copy &&
+    css`
+      background-color: #383d6a;
+      color: white;
+      border-radius: 0px;
+    `}
 `;
 
 export const SpanSearchStyled = styled.span`
-  color: white;
-  font-size: 1.4em;
-  font-weight: 500;
+  font-size: 1.7em;
+  font-weight: 600;
 `;
 
 export const DivMsgStyled = styled.div`
@@ -166,7 +192,7 @@ export const PMsgStyled = styled.p`
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   padding: 6px 0px;
   padding-bottom: 8px;
-  
+
   @media screen and (max-width: 374px) {
     font-size: 1.055em;
   }
@@ -209,14 +235,19 @@ export const CompletionsDivStyled = styled.div`
   }
 `;
 
-export const PStyled = styled.p`
+export const PStyled = styled.button`
   width: max-content;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 9px 16px;
-  border-radius: 18px;
+  border-radius: 24px;
   text-transform: uppercase;
   font-family: "Open Sans", Arial, sans-serif;
   font-weight: 600;
   background-color: #281f42;
+  border: none;
   color: white;
   flex: none;
   cursor: pointer;

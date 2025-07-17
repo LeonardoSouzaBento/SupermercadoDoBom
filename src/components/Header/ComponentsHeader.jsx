@@ -1,6 +1,30 @@
 import styled from "styled-components";
 
-const ContainerStyled = styled.div`
+export const HeaderStyled = styled.header`
+  width: 100%;
+  max-width: 1390px;
+  position: relative;
+  background-color: #383d6a;
+
+  //modo paisagem
+  @media screen and (min-width: 769px) {
+    height: 140px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0px 3.5%;
+    padding-top: 12px;
+  }
+  @media screen and (min-width: 992px) and (max-width: 1200px) {
+    padding: 0px 5%;
+  }
+  @media screen and (min-width: 1201px) {
+    padding: 0px 5.5%;
+  }
+`;
+
+export const ContainerStyled = styled.div`
   height: 150px;
   width: ${(props) => (props.$external ? "90%" : "max-content")};
   ${(props) => props.$external && "margin: auto;"};
@@ -9,7 +33,8 @@ const ContainerStyled = styled.div`
   justify-content: space-between;
   gap: 14px;
   @media (max-width: 375px) {
-    gap: 12px;
+    gap: 16px;
+    ${(props) => props.$external && "gap: 0px"};
   }
   @media (min-width: 769px) {
     height: 132px;
@@ -17,109 +42,108 @@ const ContainerStyled = styled.div`
   }
 `;
 
-const LogoDivStyled = styled.div`
+
+export const LogoDivStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #db2c32;
   border-radius: 50%;
   transform: scaleX(-1);
   box-sizing: border-box;
   padding-top: 1px;
-  box-shadow: 0px 4px 10px -8px rgb(41, 46, 117);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
   @media (max-width: 375px) {
-    height: 70px;
-    width: 0px;
+    height: 60px;
+    min-width: 60px;
     margin-right: -9px;
-    visibility: hidden;
+    /* visibility: hidden; */
   }
   @media (min-width: 375px) and (max-width: 576px) {
     height: 62px;
     width: 62px;
   }
-  @media (min-width: 577px) and (max-width: 768px) {
+  @media (min-width: 577px) {
     height: 68px;
     width: 68px;
   }
-  @media (min-width: 768px) {
-    height: 74px;
-    width: 74px;
-  }
 `;
 
-const SpanLogoStyled = styled.span`
-  color: #d00c13;
-  font-size: 2.06em;
-  font-weight: 600;
-
+export const SpanLogoStyled = styled.span`
+  color: white;
+  font-weight: 700;
+  font-size: 2.678em;
+  scale: 0.9;
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 2.12em;
+    font-size: 2.756em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 2.14em;
+    font-size: 2.782em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 2.16em;
+    font-size: 2.808em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 2.18em;
+    font-size: 2.834em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 2.2em;
+    font-size: 2.86em;
   }
 `;
 
-const DivPsStyled = styled.div`
+export const DivPsStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
 `;
 
-const PNomeSupStyled = styled.p`
+export const PNomeSupStyled = styled.p`
   font-family: "Montserrat", serif;
-  font-weight: 700;
-  color: #d00c13;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.45px;
 
   @media (max-width: 375px) {
     font-size: 1.05em;
+    max-width: 200px;
   }
   @media (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.11em;
+    font-size: 1.06em;
   }
   @media (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.12em;
+    font-size: 1.07em;
   }
   @media (min-width: 993px) {
-    font-size: 1.14em;
+    font-size: 1.08em;
   }
 `;
 
-const PBemVindoStyled = styled(PNomeSupStyled)`
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
-  font-weight: 600;
-  color: #d00c13;
-
+export const PBemVindoStyled = styled(PNomeSupStyled)`
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  color: white;
+  letter-spacing: auto;
   @media (max-width: 375px) {
     font-size: 1.12em;
   }
   @media (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.16em;
+    font-size: 1.13em;
   }
   @media (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.19em;
+    font-size: 1.14em;
   }
   @media (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.22em;
+    font-size: 1.15em;
   }
   @media (min-width: 993px) {
-    font-size: 1.25em;
+    font-size: 1.16em;
   }
 `;
 
-const SpaceSearchBar = styled.div`
+export const SpaceSearchBar = styled.div`
   width: 44px;
   height: 44px;
 
@@ -140,45 +164,27 @@ const SpaceSearchBar = styled.div`
   }
 `;
 
-export const Divlogo = () => {
-  return (
-    <ContainerStyled $external={true}>
-      <ContainerStyled>
-        <LogoDivStyled>
-          <SpanLogoStyled className="material-symbols-outlined">
-            handshake
-          </SpanLogoStyled>
-        </LogoDivStyled>
-        <DivPsStyled>
-          <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
-          <PBemVindoStyled> Seja bem vindo!</PBemVindoStyled>
-        </DivPsStyled>
-      </ContainerStyled>
-      <SpaceSearchBar />
-    </ContainerStyled>
-  );
-};
-
 //botão de mais opções
 //div para ajuste de padding
-const ContainerOptionsStyled = styled.div`
+export const ContainerOptionsStyled = styled.div`
   z-index: 3;
   @media screen and (min-width: 769px) {
     padding-left: 5px;
   }
 `;
 
-const DivMoreOptionsStyled = styled.div`
-  width: 44px;
-  height: 44px;
+export const DivMoreOptionsStyled = styled.div`
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   cursor: pointer;
-  background-color: #383d6a;
+  background-color: #db2c32;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
   transition: all 100ms linear;
-  border-radius: 8px;
+  border-radius: 16px;
 
   @media screen and (max-width: 768px) {
     position: absolute;
@@ -207,7 +213,7 @@ const DivMoreOptionsStyled = styled.div`
   }
 `;
 
-const PStyled = styled.p`
+export const PStyled = styled.p`
   font-family: "Montserrat";
   font-weight: 600;
   letter-spacing: 0.8px;
@@ -219,11 +225,12 @@ const PStyled = styled.p`
   cursor: pointer;
 `;
 
-const SpanStyled = styled.span`
+export const SpanStyled = styled.span`
   font-size: 1.45em;
   font-weight: 300;
   cursor: pointer;
   user-select: none;
+  scale: 1.2;
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.55em;
   }
@@ -241,31 +248,3 @@ const SpanStyled = styled.span`
     padding-right: 4px;
   }
 `;
-
-export const MoreOptionsButton = ({ setViewOptions, viewOptions }) => {
-  function handleClick(e) {
-    if (e.button === 2) {
-      return;
-    }
-    if (viewOptions === false) {
-      setViewOptions(true);
-    } else {
-      setViewOptions(false);
-    }
-  }
-
-  return (
-    <ContainerOptionsStyled>
-      <DivMoreOptionsStyled
-        data-ignore-click
-        onPointerDown={handleClick}
-        onMouseEnter={() => {
-          setViewOptions(true);
-        }}
-      >
-        <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
-        <PStyled>Mais opções</PStyled>
-      </DivMoreOptionsStyled>
-    </ContainerOptionsStyled>
-  );
-};

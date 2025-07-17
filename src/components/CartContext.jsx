@@ -84,13 +84,13 @@ export function CartProvider({ children }) {
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   }, [cartProducts]);
 
-  const totalQuantity = cartProducts.reduce((acc, item) => acc + item.quant, 0);
+  const quantityItens = cartProducts.reduce((acc, item) => acc + item.quant, 0);
 
   const totalAddedValue = cartProducts.reduce((acumulador, objeto) => {
     const price = parseFloat(objeto.price?.replace(",", "."));
     const subtotal = objeto.quant * price;
     return acumulador + subtotal;
-  }, 0); //valor inicial do acumulador
+  }, 0); // valor inicial do acumulador
 
   const totalValueFormatted = totalAddedValue.toFixed(2).replace(".", ",");
   const [updateProduct, setUpdateProduct] = useState(null);
@@ -110,7 +110,7 @@ export function CartProvider({ children }) {
         isDraggingRef,
         pointerPositionRef,
         handleQuantityChange,
-        totalQuantity,
+        quantityItens,
         currentCategory,
         setCurrentCategory,
         totalAddedValue,

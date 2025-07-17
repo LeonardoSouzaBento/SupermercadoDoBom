@@ -6,19 +6,18 @@ import { CartContext } from "../../CartContext";
 
 const DivStyled = styled.div`
   width: auto;
-  height: auto;
+  height: max-content;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: flex-start;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 12px;
-  position: relative;
-  overflow-x: scroll;
   box-sizing: border-box;
   border-radius: 7px;
-  gap: 12px;
-
+  overflow-x: scroll;
+  position: relative;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {
@@ -56,10 +55,14 @@ const DivStyled = styled.div`
         max-width: 95%;
       }
     `}
+    ${(props) => props.$variant === "cart" && css`
+      padding-top: 12px;
+      margin-bottom: 0px;
+    `}
 `;
 
 export const ProductList = React.forwardRef(({ variant, categoryKey }, ref) => {
-  const { allProductsInCat, isDraggingRef} = useContext(CartContext);
+  const { allProductsInCat, isDraggingRef } = useContext(CartContext);
 
   const products = allProductsInCat[categoryKey];
 

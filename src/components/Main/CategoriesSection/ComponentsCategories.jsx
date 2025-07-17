@@ -4,10 +4,12 @@ export const DivStyled = styled.div`
   width: calc(100% - 20px);
   padding-top: 40px;
   padding-left: 20px;
+  margin-bottom: 28px;
   overflow-x: hidden;
   position: relative;
   z-index: 2;
   border-top: 1px solid rgba(41, 46, 117, 0.3);
+
   @media screen and (max-width: 375px) {
     width: calc(100% - 15px);
     padding-left: 12px;
@@ -15,6 +17,7 @@ export const DivStyled = styled.div`
   @media screen and (min-width: 1201px) {
     width: calc(100% - 52px);
     margin: auto;
+    margin-bottom: 36px;
     padding-left: 0px;
   }
 `;
@@ -59,14 +62,14 @@ export const PLabelStyled = styled.p`
 export const DivfStyled = styled.div`
   width: auto;
   margin: auto;
-  margin-bottom: 28px;
   padding: 4px;
   padding-bottom: 8px;
+  padding-top: 24px;
   padding-left: 0px;
   box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
-  gap: 10px;
+  gap: 12px;
   position: relative;
   overflow-x: scroll;
   user-select: none;
@@ -80,15 +83,15 @@ export const DivfStyled = styled.div`
     gap: 15px;
     padding-right: 12px;
   }
-  @media screen and (min-width: 577px) {
-    margin-bottom: 28px;
-  }
   @media screen and (min-width: 1201px) {
     padding-right: 6px;
     justify-content: space-between;
   }
   @media screen and (min-width: 375px) and (max-width: 1200px) {
     padding-right: 20px;
+  }
+  @media screen and (min-width: 1201px) {
+    gap: 0;
   }
 `;
 
@@ -116,24 +119,25 @@ export const SpanStyled = styled.span`
 `;
 
 export const DivCatStyled = styled.div`
-  min-width: 101px;
-  max-width: 101px;
-  height: 110px;
+  min-width: 110px;
+  max-width: 110px;
+  height: 84px;
+  padding-bottom: 16px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
+  justify-content: flex-end;
+  gap: 4px;
   flex: auto;
-  border-radius: 8px;
-  padding-top: 7px;
+  border-radius: 16px;
   cursor: pointer;
+  position: relative;
 
   ${(props) =>
     props.$selected &&
     css`
       background-color: white;
-      box-shadow: 0px 5px 10px -9.2px rgb(41, 46, 117);
+      box-shadow: 0px 3px 6px -4px rgba(41, 46, 117, 0.6);
     `}
   ${(props) =>
     !props.$selected &&
@@ -145,33 +149,22 @@ export const DivCatStyled = styled.div`
 `;
 
 export const ImgStyled = styled.img`
-  height: 40px;
-  width: 40px;
+  height: 48px;
+  width: 48px;
   background-color: rgb(255, 83, 83);
   border-radius: 50%;
-  ${(props) => props.$selected && "border-radius: 18px;"}
+  transform: translateY(-24px);
   filter: contrast(1.7) saturate(1.8);
-  transition: all 0.32s ease;
-  padding: 4px;
+  transition: all 0.2s ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -20px);
 
-  @media screen and (max-width: 374px) {
-    width: 39px;
-    height: 39px;
-    padding: 3px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: 41px;
-    height: 41px;
-    padding: 3px;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    width: 42px;
-    height: 42px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 43px;
-    height: 43px;
-  }
+  ${(props) => props.$selected && css`
+    padding: 2px;
+    box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.4);
+  `}
 `;
 
 export const DivNameCatStyled = styled.div`
@@ -187,5 +180,5 @@ export const PStyled = styled.p`
   font-size: 1.05em;
   letter-spacing: 0.5px;
   margin: 0;
-  color: rgb(21, 16, 35);
+  color: #221B39;
 `;

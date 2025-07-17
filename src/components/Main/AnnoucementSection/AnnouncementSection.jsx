@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import {
   ContainerStyled,
-  PStyled,
   DivStyled,
   DivFundoImgStyled,
   ImgStyled,
@@ -133,7 +132,6 @@ function AnnouncementSection({ wasResize }) {
 
   return (
     <ContainerStyled ref={divRef}>
-      <PStyled>Maiores ofertas!</PStyled>
       <DivStyled ref={advertisementsRef}>
         {imageUrls.map((url, index) => (
           <DivFundoImgStyled

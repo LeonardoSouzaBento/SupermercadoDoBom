@@ -24,7 +24,7 @@ const InputTextStyled = styled.textarea`
   padding-top: 12px;
   box-sizing: border-box;
   border-radius: 8px;
-  background-color: #dbfff4;
+  background-color: #ECF0F5;
   border: none;
   /* border: 1px solid rgba(41, 46, 117, 0.4); */
   font-family: "Open Sans", sans-serif;

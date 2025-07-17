@@ -8,44 +8,11 @@ export const ContainerStyled = styled.div`
   padding-bottom: 40px;
   margin: auto;
   border-radius: 4px;
-
   @media screen and (max-width: 576px) {
     width: 100%;
   }
-  @media screen and (min-width: 769px) {
-    margin-top: 12px;
-  }
   @media screen and (min-width: 1201px) {
     width: calc(100% - 100px);
-  }
-`;
-
-export const PStyled = styled.p`
-  width: 100%;
-  text-align: center;
-  margin-bottom: 18px;
-  font-size: 1.15em;
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  color: #211b37;
-
-  @media screen and (max-width: 374px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.25em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.29em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.31em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.33em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.35em;
   }
 `;
 
@@ -74,11 +41,12 @@ export const DivStyled = styled.div`
 `;
 
 export const DivFundoImgStyled = styled.div`
-  position: relative;
+  min-width: 220px;
   height: 220px;
-  min-width: 265px;
-
-  &::before {
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  /* &::before {
     content: "";
     position: absolute;
     top: 0;
@@ -88,14 +56,14 @@ export const DivFundoImgStyled = styled.div`
     background-color: #E3E7EC;
     border-radius: 4px;
     z-index: 0;
-  }
+  } */
 `;
 
 export const ImgStyled = styled.img`
   height: 100%;
-  width: auto;
+  width: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   margin: auto;
   position: relative;
   z-index: 1;

@@ -5,16 +5,21 @@ export const BodyStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 14px 0px;
+  padding: 12px 0px;
   padding-bottom: 24px;
 
-  @media screen and (max-width: 375px) {
-    padding: 10px 0px;
-    padding-bottom: 20px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    padding: 12px 0px;
-    padding-bottom: 22px;
+  &::after {
+    content: "";
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #383d6a, #ecf0f5);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    z-index: -1;
   }
 `;
 
@@ -22,12 +27,12 @@ export const WrapperStyled = styled.div`
   width: calc(100% - 30px);
   max-width: 470px;
   padding: 36px;
-  padding-bottom: 40px;
-  border-radius: 12px;
+  padding-bottom: 37px;
+  border-radius: 16px;
   background-color: white;
-  box-shadow: 0px 4px 4px -2.5px rgba(41, 46, 117, 0.53),
-    3px 0px 3px -1.5px rgba(41, 46, 117, 0.13),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
+  box-shadow: 0px 5px 10px -5px hsla(236, 0%, 31%, 0.7),
+    3px 0px 3px -1.5px hsla(236, 0%, 31%, 0.13),
+    -3px 0px 3px -2px hsla(236, 0%, 31%, 0.13);
   position: relative;
   z-index: 1;
 
@@ -64,16 +69,11 @@ export const DivNameSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  border-radius: 8px;
+  border-radius: 24px;
   flex: 1 0 auto;
-  background-color: #dbfff4;
-
-  ${(props) =>
-    props.$buttonSelected &&
-    css`
-      background-color: #383d6a;
-      color: white;
-    `}
+  color: white;
+  background-color: #383d6a;
+  ${(props) => props.$buttonSelected && "background-color: #d5343a;"};
 
   cursor: pointer;
 
@@ -87,9 +87,10 @@ export const DivNameSpanStyled = styled.div`
 
 export const POptionStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   user-select: none;
+  scale: 1.02;
 
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 1.05em;
@@ -111,7 +112,7 @@ export const DivSpanStyled = styled.div`
 `;
 
 export const SpanStyled = styled.span`
-  color: ${(props) => (props.$buttonSelected ? "white" : "#3f0404")};
+  color: white;
   font-size: ${(props) => (props.$buttonSelected ? "1.5em" : "1.4em")};
   font-weight: 400;
   font-variation-settings: "FILL" 1;

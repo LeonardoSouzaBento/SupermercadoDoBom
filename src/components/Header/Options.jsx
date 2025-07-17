@@ -36,7 +36,7 @@ export const DivNameSpanStyled = styled.div`
 `;
 
 const ContainerPStyled = styled.div`
-  background-color: #383d6a;
+  background-color: #db2c32;
   display: flex;
   border-radius: 28px 0px 0px 28px;
   padding-right: 18px;
@@ -86,7 +86,7 @@ export const DivSpanStyled = styled.div`
   align-items: center;
   border-radius: 28px;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
-  background-color: #383d6a;
+  background-color: #db2c32;
   flex: none;
   cursor: pointer;
 `;

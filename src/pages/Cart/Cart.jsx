@@ -10,7 +10,6 @@ import {
   SpanStyled,
   DivHeadStyled,
   HHeadStyled,
-  ContainerProductList,
   FinishSectionStyled,
   DivContinueStyled,
   DivAvisoStyled,
@@ -28,15 +27,12 @@ import {
   ContainerDialogStyled,
   DivDialogStyled,
   SpanDialogStyled,
+  DivQuestionStyled,
   PQuestionStyled,
   PYesNoStyled,
   DivPYesNoStyled,
   DivToCoverStyled,
 } from "./ComponentsCart.jsx";
-import {
-  DivSpanCloseStyled,
-  SpanCloseStyled,
-} from "./ComponentsRegAddress.jsx";
 import ProductInFull from "../../components/Main/ProductSection/ProductInFull.jsx";
 import RegisterAddress from "./RegisterAddress.jsx";
 
@@ -45,7 +41,8 @@ const heightCartSection = 393; //para comparar
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { totalAddedValue, setCartProducts } = useContext(CartContext);
+  const { totalAddedValue, cartProducts, setCartProducts } =
+    useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0.03); //opacidade do main ao entrar
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
   const { seeFeedback, setSeeFeedback, viewProductInFull } =
@@ -113,7 +110,7 @@ const Cart = () => {
       }
       resizeDowntime.current = setTimeout(() => {
         let widthOfWindow = window.innerWidth;
-
+        let quantProducts = cartProducts.length;
         if (widthOfWindow !== currentWindowWidthRef.current) {
           currentWindowWidthRef.current = widthOfWindow;
           checkHiddenProducts();
@@ -125,8 +122,12 @@ const Cart = () => {
             }
           } else {
             const newHeight = "460px";
-            if (div.style.height !== newHeight) {
-              div.style.height = newHeight;
+            if (quantProducts >= 3) {
+              if (div.style.height !== newHeight) {
+                div.style.height = newHeight;
+              }
+            } else {
+              div.style.height = "auto";
             }
           }
         }
@@ -208,13 +209,12 @@ const Cart = () => {
             </DivSpanDeleteStyled>
           </DivHeadStyled>
 
-          <ContainerProductList>
-            <ProductList
-              variant={"cart"}
-              categoryKey={12}
-              ref={ProductListRef}
-            ></ProductList>
-          </ContainerProductList>
+          <ProductList
+            variant={"cart"}
+            categoryKey={12}
+            ref={ProductListRef}
+          ></ProductList>
+
           {viewButtonSeeAll && (
             <DivSeeAllStyled onClick={handleClickSeeAll}>
               <PSeeAllStyled>Ver Tudo</PSeeAllStyled>
@@ -332,34 +332,17 @@ const DivCancelDialog = ({
       }}
     >
       <DivDialogStyled $feedback={seeFeedback}>
-        <PQuestionStyled style={{ color: seeFeedback ? "white" : "black" }}>
-          {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}
-        </PQuestionStyled>
+        <DivQuestionStyled
+          style={{ backgroundColor: seeFeedback ? "#488658" : "#ebeff4" }}
+        >
+          <PQuestionStyled style={{ color: seeFeedback ? "white" : "black" }}>
+            {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}
+          </PQuestionStyled>
+        </DivQuestionStyled>
 
         {/*Botoes de sim ou não*/}
         {seeFeedback === false ? (
           <>
-            <DivSpanCloseStyled
-              style={{
-                height: "36px",
-                width: "36px",
-                borderRadius: "6px",
-              }}
-            >
-              <SpanCloseStyled
-                className="material-symbols-rounded"
-                onClick={handleClickClose}
-                style={{
-                  fontWeight: 400,
-                  textShadow: "0.3px 0.3px 0px black",
-                  color: "black",
-                  scale: 0.9,
-                }}
-              >
-                close
-              </SpanCloseStyled>
-            </DivSpanCloseStyled>
-
             <DivPYesNoStyled
               onClick={() => {
                 setSeeFeedback(true);

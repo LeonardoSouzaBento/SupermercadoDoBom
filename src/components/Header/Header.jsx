@@ -1,42 +1,64 @@
-import styled from "styled-components";
-import { Divlogo, MoreOptionsButton } from "./ComponentsHeader";
+import {
+  HeaderStyled,
+  ContainerStyled,
+  LogoDivStyled,
+  SpanLogoStyled,
+  DivPsStyled,
+  PNomeSupStyled,
+  PBemVindoStyled,
+  SpaceSearchBar,
+  ContainerOptionsStyled,
+  DivMoreOptionsStyled,
+  SpanStyled,
+  PStyled
+} from "./ComponentsHeader";
 import SearchBar from "../Main/SearchBars/SearchBar";
 import Options from "./Options";
 
-export const HeaderStyled = styled.header`
-  width: 100%;
-  max-width: 1390px;
-  position: relative;
-  @media screen and (max-width: 768px) {
-    margin-bottom: 16px;
-  }
-  //modo paisagem
-  @media screen and (min-width: 769px) {
-    height: 140px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 0px 3.5%;
-    padding-top: 12px;
-  }
-  @media screen and (min-width: 992px) and (max-width: 1200px) {
-    padding: 0px 5%;
-  }
-  @media screen and (min-width: 1201px) {
-    padding: 0px 5.5%;
-  }
-`;
-
 const Header = ({ viewOptions, setViewOptions, setOpacityState }) => {
+  function handleClick(e) {
+    if (e.button === 2) {
+      return;
+    }
+    if (viewOptions === false) {
+      setViewOptions(true);
+    } else {
+      setViewOptions(false);
+    }
+  }
+  
   return (
     <HeaderStyled>
-      <Divlogo></Divlogo>
+      <ContainerStyled $external={true}>
+        <ContainerStyled>
+          <LogoDivStyled>
+            <SpanLogoStyled className="material-symbols-outlined">
+              handshake
+            </SpanLogoStyled>
+          </LogoDivStyled>
+          <DivPsStyled>
+            <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
+            <PBemVindoStyled> Seja bem vindo!</PBemVindoStyled>
+          </DivPsStyled>
+        </ContainerStyled>
+        <SpaceSearchBar />
+      </ContainerStyled>
+
       <SearchBar copy={false}></SearchBar>
-      <MoreOptionsButton
-        setViewOptions={setViewOptions}
-        viewOptions={viewOptions}
-      />
+      
+       <ContainerOptionsStyled>
+      <DivMoreOptionsStyled
+        data-ignore-click
+        onPointerDown={handleClick}
+        onMouseEnter={() => {
+          setViewOptions(true);
+        }}
+      >
+        <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
+        <PStyled>Mais opções</PStyled>
+      </DivMoreOptionsStyled>
+    </ContainerOptionsStyled>
+
       {viewOptions && <Options setOpacityState={setOpacityState} />}
     </HeaderStyled>
   );

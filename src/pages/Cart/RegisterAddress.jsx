@@ -9,6 +9,7 @@ import {
   H1Styled,
   LocationButtonStyled,
   InputStyled,
+  CepInputStyled,
   RegisterButtonStyled,
 } from "./ComponentsRegAddress";
 import { useNavigate } from "react-router-dom";
@@ -51,22 +52,21 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
   return (
     <DivBodyStyled $opacity={opacityState}>
       <MainDivStyled>
-        <DivSpanCloseStyled>
-          <SpanCloseStyled
-            className="material-symbols-rounded"
-            onClick={() => {
-              setOpacityState(0);
-              setTimeout(() => {
-                setSeeAddressForm(false);
-              }, 420);
-            }}
-          >
-            close
-          </SpanCloseStyled>
-        </DivSpanCloseStyled>
-
         <DivTitleStyled>
           <H1Styled>Cadastrar endereço</H1Styled>
+          <DivSpanCloseStyled>
+            <SpanCloseStyled
+              className="material-symbols-rounded"
+              onClick={() => {
+                setOpacityState(0);
+                setTimeout(() => {
+                  setSeeAddressForm(false);
+                }, 420);
+              }}
+            >
+              close
+            </SpanCloseStyled>
+          </DivSpanCloseStyled>
         </DivTitleStyled>
 
         <LocationButtonStyled onClick={handleLocationClick}>
@@ -74,18 +74,12 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
         </LocationButtonStyled>
 
         <form onSubmit={handleSubmit}>
-          <InputStyled
+          <CepInputStyled
             type="text"
             name="cep"
             placeholder="CEP"
             value={formData.cep}
             onChange={handleChange}
-            style={{
-              backgroundColor: " #E9EFF5",
-              borderBottom: "none",
-              marginBottom: "12px",
-              borderRadius: "4px"
-            }}
           />
 
           <SubDivStyled>
@@ -140,7 +134,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               required
               maxLength={50}
               onChange={handleChange}
-              style={{ paddingBottom: "2px", borderBottom: "none"}} 
+              style={{ paddingBottom: "2px", borderBottom: "none" }}
             />
           </SubDivStyled>
           <RegisterButtonStyled

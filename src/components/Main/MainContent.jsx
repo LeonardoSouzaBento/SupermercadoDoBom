@@ -15,15 +15,26 @@ const Main = styled.main`
   margin: auto;
   padding: 0px;
   position: relative;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 280px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #383d6a, #ECF0F5);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
 `;
 
 function MainContent() {
   const [viewOptions, setViewOptions] = useState(false);
-  const {
-    noSkipLogin,
-    setNoSkipLogin,
-    viewProductInFull,
-  } = useContext(VisibilityContext);
+  const { noSkipLogin, setNoSkipLogin, viewProductInFull } =
+    useContext(VisibilityContext);
   const { currentCategory } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
   const resizeDowntime = useRef(null);

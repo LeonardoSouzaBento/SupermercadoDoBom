@@ -30,7 +30,7 @@ const CartDescStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #383d6a;
-  border-radius: 22px;
+  border-radius: 12px;
   cursor: pointer;
   user-select: none;
   overflow: hidden;
@@ -97,11 +97,11 @@ const DivPStyled = styled.div`
 
 const PPrecoStyled = styled.p`
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.71px;
   padding-bottom: 2px;
   color: white;
-
+  scale: 1.02;
   @media screen and (max-width: 374px) {
     font-size: 1em;
   }
@@ -118,12 +118,12 @@ const PItensStyled = styled(PPrecoStyled)`
 `;
 
 export default function Footer() {
-  const { totalQuantity, totalValueFormatted } = useContext(CartContext);
+  const { quantityItens, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);
   const [canHandleClick, setCanHandleClick] = useState(false);
 
-  if (totalQuantity <= 0 && viewConfirm === false) {
+  if (quantityItens <= 0 && viewConfirm === false) {
     return null;
   }
 
@@ -176,7 +176,7 @@ export default function Footer() {
           <DivPStyled>
             <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>
             <PItensStyled>
-              {totalQuantity} {totalQuantity == 1 ? "item" : "itens"}
+              {quantityItens} {quantityItens == 1 ? "item" : "itens"}
             </PItensStyled>
           </DivPStyled>
         </CartDescStyled>

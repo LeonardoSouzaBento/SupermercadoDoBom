@@ -10,7 +10,16 @@ export const PaiProdStyled = styled.div`
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  border-radius: 7px;
+  border-radius: 8px;
+
+  ${(props) => props.$variant == "cart" && css`
+    border: 1px solid rgba(41, 46, 117, 0.3);
+    border-radius: 4px;
+
+    @media screen and (max-width: 768px) {
+      border-radius: 8px;
+    }
+  `};
 
   //paisagem
   @media screen and (max-width: 385px) {
@@ -37,7 +46,7 @@ export const PaiProdStyled = styled.div`
     min-width: 275px;
     max-width: 275px;
     height: 177px;
-    border-radius: 7px;
+    ${(props) => props.$variant == "cart" && "border-radius: 4px;"};
   }
 `;
 
@@ -80,13 +89,14 @@ export const DivNomeStyled = styled.div`
   overflow: hidden;
   box-sizing: border-box;
   padding-bottom: 12px;
+  /* color: #221B39; */
 `;
 export const PnomeStyled = styled.p`
   text-transform: uppercase;
   font-family: "Open Sans", sans-serif;
   margin: auto;
   padding-left: 4px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
 
   @media screen and (max-width: 385px) {
@@ -173,6 +183,7 @@ export const DivPrecoStyled = styled.div`
   height: auto;
   display: flex;
   align-items: center;
+  /* color: #221B39; */
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
     padding-right: 4px;
@@ -185,7 +196,7 @@ export const DivPrecoStyled = styled.div`
 export const PprecoStyled = styled.p`
   width: max-content;
   font-family: "Open Sans", sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   text-indent: 4px;
   padding: 2px 0px;
   @media screen and (max-width: 385px) {
@@ -267,8 +278,8 @@ export const DivOffStyled = styled.div`
   align-items: center;
   padding: 0px 8px;
   padding-bottom: 1px;
-  background-color: #db2c32;
-  border-radius: 10px;
+  background-color: #D5343A;
+  border-radius: 12px;
 `;
 
 export const POffStyled = styled.p`
@@ -297,7 +308,7 @@ export const DivAddStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #dc2c32;
+  background-color: #D5343A;
   border-radius: 16px;
   cursor: pointer;
 
@@ -310,7 +321,7 @@ export const DivAddStyled = styled.div`
 
 export const SpanMoreStyled = styled.span`
   font-size: 1.48em;
-  font-weight: 500;
+  font-weight: 400;
   color: white;
   cursor: pointer;
   -webkit-user-select: none;
@@ -319,14 +330,14 @@ export const SpanMoreStyled = styled.span`
 
 export const SpanFewerStyled = styled(SpanMoreStyled)`
   font-size: 1.37em;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 //Botão p selecionar a quantidade
 export const DivQuantStyled = styled.div`
   width: 90%;
   height: 32px;
-  background-color: #db2c32;
+  background-color: #D5343A;
   display: ${(props) => (props.$display ? "flex" : "none")};
   justify-content: space-between;
   border-radius: 8px;
@@ -336,7 +347,7 @@ export const DivQuantStyled = styled.div`
   position: absolute;
   bottom: 8px;
   right: 5%;
-  z-index: 2;
+  z-index: 1;
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
     width: 85%;

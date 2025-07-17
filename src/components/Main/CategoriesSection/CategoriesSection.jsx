@@ -58,9 +58,7 @@ function CategoriesSection({ wasResize }) {
         paddingRight;
 
       const limit = divWidth - totalWidth;
-      window.innerWidth >= 1375
-        ? setLimitCategories(0)
-        : setLimitCategories(limit);
+      setLimitCategories(limit);
     }
   }, [categories, setLimitCategories]);
 

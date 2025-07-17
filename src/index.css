@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-html, body{
+html, body {
   overflow-x: hidden;
   height: 100%;
   -ms-overflow-style: none;
@@ -23,9 +23,9 @@ body::-webkit-scrollbar {
 }
 
 body {
-  background-color: #ebeff4;
+  background-color: #ECF0F5;
   width: 100%;
   max-width: 1390px;
   margin: auto;
+  position: relative;
 }
-
