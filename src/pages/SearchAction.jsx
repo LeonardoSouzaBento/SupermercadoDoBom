@@ -14,6 +14,21 @@ const DivStyled = styled.div`
   box-sizing: border-box;
   opacity: ${(props) => props.$opacityState};
   transition: opacity 0.2s ease;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 120px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #383d6aff, #ecf0f5);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
 `;
 
 const SearchAction = () => {

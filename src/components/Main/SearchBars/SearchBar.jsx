@@ -191,9 +191,8 @@ function SearchBar({ copy }) {
     setCompletions([...newCompletions]);
 
     setCountCompletes(countComplete + 1);
-    setTimeout(() => {
-      inputRef.current.focus();
-    }, 50);
+
+    inputRef.current.focus();
   }
 
   useEffect(() => {
@@ -303,6 +302,8 @@ function SearchBar({ copy }) {
         <CompletionsDivStyled
           $copy={copy}
           onPointerDown={(e) => {
+            inputRef.current.focus();
+
             if (e.button === 2) {
               return;
             }
@@ -313,8 +314,9 @@ function SearchBar({ copy }) {
               key={i}
               data-suggestion
               onPointerDown={(e) => {
+                e.preventDefault();
+                inputRef.current?.focus();
                 handleClickComplete(e, suggestion);
-                setTimeout(()=>{inputRef.current.focus();},0)
               }}
             >
               <PStyled>{suggestion}...</PStyled>

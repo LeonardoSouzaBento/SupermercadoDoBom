@@ -55,10 +55,9 @@ export const FormStyled = styled.form`
       width: 91.5%;
       max-width: 684px;
       margin: 0;
-      box-shadow: 0px 4px 10px -5px rgba(41, 46, 117, 0.6);
-      /* box-shadow: 0px 2.5px 7px rgba(41, 46, 117, 0.28); */
       border-radius: 8px;
-      /* outline: 1px solid rgba(41, 46, 117, 0.05); */
+      /* border-top: 1px solid #383d6aff; */
+      box-shadow: 0px 4px 10px -5px rgba(41, 46, 117, 0.6), 0px -4px 8px -6px rgba(41, 46, 117, 0.4);
     `}
 `;
 
@@ -211,34 +210,45 @@ export const PMsgStyled = styled.p`
 `;
 
 export const CompletionsDivStyled = styled.div`
-  width: 90%;
+  width: 100%;
   height: auto;
+  padding-right: 16px;
   box-sizing: border-box;
   display: flex;
   justify-content: flex-end;
   position: absolute;
   top: 72px;
-  ${(props) => props.$copy == false && "top:72px;"}
-  left: 5%;
+  ${(props) => props.$copy == true && "top: 82px;"}
+  left: 0%;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-flow: row wrap;
   background-color: white;
-  border-radius: 8px;
   background-color: transparent;
 
+  @media screen and (max-width: 375px) {
+    gap: 4px;
+    padding-right: 8px;
+  }
+  @media screen and (max-width: 768px) {
+    ${(props) => props.$copy == false && "top:62px;"};
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    ${(props) => props.$copy && "padding-right: 28px;"};
+  }
   @media screen and (min-width: 769px) {
     justify-content: flex-start;
+    ${(props) => props.$copy && "padding: 0px 0px 0px 20px;"};
   }
   @media screen and (min-width: 1201px) {
-    left: 7.5%;
+    left: 4.5%;
   }
 `;
 
 export const DivOnePStyled = styled.div`
   width: max-content;
   height: 48px;
-  padding: 0 20px;
+  padding: 0 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -247,6 +257,10 @@ export const DivOnePStyled = styled.div`
   background-color: #281f42;
   color: white;
   cursor: pointer;
+
+  @media screen and (max-width: 375px) {
+    padding: 0 12px;
+  }
 `;
 
 export const PStyled = styled.p`
@@ -257,12 +271,10 @@ export const PStyled = styled.p`
   @media screen and (max-width: 374px) {
     font-size: 0.86em;
     letter-spacing: 1.01px;
-    padding: 9px 12px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 0.89em;
     letter-spacing: 1.05px;
-    padding: 9px 12px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
     font-size: 0.9em;
