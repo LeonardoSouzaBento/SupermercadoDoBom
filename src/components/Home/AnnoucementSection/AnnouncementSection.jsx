@@ -13,7 +13,7 @@ import {
   DivPaginationStyled,
   SpanStyled,
 } from "./ComponentsAnnouncements";
-import { CartContext } from "../../CartContext";
+import { CartContext } from "../../../contexts/CartContext";
 import { useScrollX } from "../../../hooks/useScrollX";
 
 let imageUrls = [

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { CartContext } from "../../CartContext.jsx";
-import { VisibilityContext } from "../../VisibilityContext.jsx";
+import { CartContext } from "../../contexts/CartContext.jsx";
+import { VisibilityContext } from "../../contexts/VisibilityContext.jsx";
 
 import {
   BodyDivStyled,
@@ -23,7 +23,9 @@ import {
   DivButtonsStyled,
   SpanButtonsStyled,
   PQuantFullStyled,
+  PAddStyled,
   DivSubStyled,
+  DivCoverSubStyled,
   PSubStyled,
   SimilarSectionDivStyled,
   DivTitleStyled,
@@ -74,7 +76,11 @@ const ProductInFull = () => {
     handleQuantityChange(dataProductFull, isIncrement);
   }
 
-  function handlePointerUpAdd() {
+  function handlePointerUpAdd(e) {
+    e.stopPropagation();
+    if (e.button === 2) {
+      return;
+    }
     if (!isDragging.current) {
       changeQuantity(quantity + 1, true);
     }
@@ -82,6 +88,10 @@ const ProductInFull = () => {
   }
 
   function handlePointerUpButtons(e, action) {
+    e.stopPropagation();
+    if (e.button === 2) {
+      return;
+    }
     if (!isDragging.current) {
       if (action === "fewer") {
         changeQuantity(Math.max(0, quantity - 1), false);
@@ -92,7 +102,11 @@ const ProductInFull = () => {
     }
   }
 
-  function handleClickClose() {
+  function handleClickClose(e) {
+    e.stopPropagation();
+    if (e.button === 2) {
+      return;
+    }
     setSeeSpanClose(false);
     setTranslateYState("100%");
     setUpdateProduct({ id: dataProductFull.id, quant: quantity });
@@ -128,10 +142,11 @@ const ProductInFull = () => {
           : "rgba(0, 0, 0, 0)",
         transition: "background-color 0.3s ease",
       }}
+      onPointerUp={handleClickClose}
     >
-      <MainDivStyled $translate={translateYState} ref={MainDivRef}>
+      <MainDivStyled $translate={translateYState} ref={MainDivRef} onPointerUp={(e)=>{e.stopPropagation()}}>
         <DivSpanCloseStyled
-          onClick={handleClickClose}
+          onPointerUp={handleClickClose}
           style={{ display: seeSpanClose ? "flex" : "none" }}
         >
           <SpanCloseStyled className="material-symbols-rounded">
@@ -147,16 +162,14 @@ const ProductInFull = () => {
 
             {dataProductFull.weight != "" && dataProductFull.weight != null && (
               <DivWeightStyled>
-                <PWeightStyled style={{ color: "#292e4e", fontWeight: "500" }}>
-                  {dataProductFull.weight}
-                </PWeightStyled>
+                <PWeightStyled>{dataProductFull.weight}</PWeightStyled>
               </DivWeightStyled>
             )}
 
             {dataProductFull.discount != "" &&
               dataProductFull.discount != null && (
                 <DivDiscountStyled>
-                  <PWeightStyled style={{ fontWeight: "400" }}>
+                  <PWeightStyled style={{ color: "white" }}>
                     -{dataProductFull.discount}%
                   </PWeightStyled>
                 </DivDiscountStyled>
@@ -173,10 +186,13 @@ const ProductInFull = () => {
 
           <ContainerQuantStyled>
             <DivSubStyled>
+              {subtotal == "0,00" && (
+                <DivCoverSubStyled>
+                  <PSubStyled>Subtotal:</PSubStyled>
+                </DivCoverSubStyled>
+              )}
               <PSubStyled>Subtotal:</PSubStyled>
-              <PSubStyled>
-                {subtotal === "0,00" ? "" : `R$ ${subtotal}`}
-              </PSubStyled>
+              <PSubStyled>R$ {subtotal}</PSubStyled>
             </DivSubStyled>
 
             <DivQuantFullStyled
@@ -211,9 +227,13 @@ const ProductInFull = () => {
                   style={{ width: "100%" }}
                   onPointerUp={handlePointerUpAdd}
                 >
-                  <SpanButtonsStyled className="material-symbols-rounded">
+                  <SpanButtonsStyled
+                    className="material-symbols-rounded"
+                    $add={true}
+                  >
                     add
                   </SpanButtonsStyled>
+                  <PAddStyled>Adicionar</PAddStyled>
                 </DivButtonsStyled>
               )}
             </DivQuantFullStyled>
@@ -222,12 +242,11 @@ const ProductInFull = () => {
 
         <SimilarSectionDivStyled>
           <DivTitleStyled>
-            <H1Styled>Produtos Similares</H1Styled>
+            <H1Styled>Produtos Similares (Essa parte ainda será desenvolvida)</H1Styled>
           </DivTitleStyled>
 
           <ContainerListStyled>
             <DivHalfList></DivHalfList>
-
             <DivHalfList></DivHalfList>
           </ContainerListStyled>
         </SimilarSectionDivStyled>

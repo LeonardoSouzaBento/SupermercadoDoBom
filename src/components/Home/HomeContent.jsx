@@ -1,14 +1,14 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import Header from "../Header/Header";
+import Header from "./Header/Header";
 import AnnouncementSection from "./AnnoucementSection/AnnouncementSection";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
-import ProductListHome from "./ProductSection/ProductListHome";
+import ProductListHome from "../Product/ProductListHome";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import styled from "styled-components";
-import { CartContext } from "../CartContext";
-import { VisibilityContext } from "../VisibilityContext";
-import ProductInFull from "./ProductSection/ProductInFull";
+import { CartContext } from "../../contexts/CartContext";
+import {VisibilityContext} from "../../contexts/VisibilityContext";
+import ProductInFull from "../Product/ProductInFull";
 
 const Main = styled.main`
   max-width: 1390px;
@@ -31,7 +31,7 @@ const Main = styled.main`
   }
 `;
 
-function MainContent() {
+function HomeContent() {
   const [viewOptions, setViewOptions] = useState(false);
   const { noSkipLogin, setNoSkipLogin, viewProductInFull } =
     useContext(VisibilityContext);
@@ -116,6 +116,7 @@ function MainContent() {
           viewOptions={viewOptions}
           setViewOptions={setViewOptions}
           setOpacityState={setOpacityState}
+          onHome={true}
         />
         <Main>
           <AnnouncementSection wasResize={wasResize} />
@@ -132,4 +133,4 @@ function MainContent() {
   );
 }
 
-export default MainContent;
+export default HomeContent;

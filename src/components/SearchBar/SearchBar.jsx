@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { all_products } from "../../../data/all_products";
+import { all_products } from "../../data/all_products";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../CartContext";
-import { VisibilityContext } from "../../VisibilityContext";
+import { CartContext } from "../../contexts/CartContext";
+import { VisibilityContext } from "../../contexts/VisibilityContext";
 import { sequentialPrefixSearch } from "./sequentialPrefixSearch";
-import animateMessage from "../../../functions/AnimationOfWrite";
+import animateMessage from "../../functions/AnimationOfWrite";
 import {
   ContainerForFormStyled,
   FormStyled,
@@ -74,26 +74,26 @@ function animateInputMessage(message, setState) {
   }, 80); // escrever uma letra a cada 80ms
 }
 
-function SearchBar({ copy }) {
+function SearchBar({ copy, onHome }) {
   const navigate = useNavigate();
   const [thisInput, setThisInput] = useState("");
   const [prevInput, setPrevInput] = useState("");
-
+  const inputRef = useRef(null);
   const [returnedProducts, setReturnedproducts] = useState([]);
 
   const { preventClick, setPreventClick, tipForRecruiter, setTipForRecruiter } =
     useContext(VisibilityContext);
   const { setSearchProducts } = useContext(CartContext);
 
+  //estados para autocompletar
   const [searchInitiated, setSearchInitiated] = useState(false);
   const [completions, setCompletions] = useState([""]);
   const [sixUniqueSuggestions, setSixUniqueSuggestions] = useState([""]);
   const [countComplete, setCountCompletes] = useState(2);
 
+  //dica para recrutador
   const [textOfTip, setTextOfTip] = useState("");
   const tip = "Digite 'Biscoito'";
-  const inputRef = useRef(null);
-
   const [viewTipState, setViewTipState] = useState(false);
 
   const viewTip = () => {
@@ -195,6 +195,23 @@ function SearchBar({ copy }) {
     inputRef.current.focus();
   }
 
+  const handleClickScrollOnMobile = () => {
+    if (onHome) {
+      const el = document.documentElement.scrollTop
+        ? document.documentElement
+        : document.body;
+
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          el.scrollTo({
+            top: 130,
+            behavior: "smooth",
+          });
+        }, 100);
+      }
+    }
+  };
+
   useEffect(() => {
     if (countComplete > 2) {
       const currentWords = thisInput.trim().split(/\s+/).filter(Boolean).length;
@@ -275,6 +292,7 @@ function SearchBar({ copy }) {
           value={thisInput}
           onChange={(e) => whenTyping(e)}
           onClick={preventClick ? null : viewTip}
+          onPointerDown={handleClickScrollOnMobile}
           ref={inputRef}
           autoComplete="off"
         />

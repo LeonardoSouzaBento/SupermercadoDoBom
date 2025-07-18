@@ -1,9 +1,9 @@
 import React from "react";
 import { useRef, useContext, useEffect, useCallback } from "react";
 import styled, { css } from "styled-components";
-import { CartContext } from "../../CartContext";
+import { CartContext } from "../../contexts/CartContext";
 import ProductItem from "./ProductItem";
-import { useScrollX } from "../../../hooks/useScrollX";
+import { useScrollX } from "../../hooks/useScrollX";
 
 const ContainerStyled = styled.div`
   overflow-x: hidden;

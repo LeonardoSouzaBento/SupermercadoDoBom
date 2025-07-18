@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { CartContext } from "../../CartContext";
-import { VisibilityContext } from "../../VisibilityContext";
+import { CartContext } from "../../contexts/CartContext";
+import { VisibilityContext } from "../../contexts/VisibilityContext";
 import {
   PaiProdStyled,
   PpesoStyled,

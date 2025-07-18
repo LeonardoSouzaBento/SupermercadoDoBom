@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../components/CartContext.jsx";
-import { VisibilityContext } from "../../components/VisibilityContext.jsx";
-import { ProductList } from "../../components/Main/ProductSection/ProductList.jsx";
+import { CartContext } from "../../contexts/CartContext.jsx";
+import { VisibilityContext } from "../../contexts/VisibilityContext.jsx";
+import { ProductList } from "../../components/Product/ProductList.jsx";
 import {
   MainStyled,
   CartSectionStyed,
@@ -33,7 +33,7 @@ import {
   DivPYesNoStyled,
   DivToCoverStyled,
 } from "./ComponentsCart.jsx";
-import ProductInFull from "../../components/Main/ProductSection/ProductInFull.jsx";
+import ProductInFull from "../../components/Product/ProductInFull.jsx";
 import RegisterAddress from "./RegisterAddress.jsx";
 
 //altura - o cabeçalho 'sua compra'

@@ -10,12 +10,12 @@ import {
   ContainerOptionsStyled,
   DivMoreOptionsStyled,
   SpanStyled,
-  PStyled
+  PStyled,
 } from "./ComponentsHeader";
-import SearchBar from "../Main/SearchBars/SearchBar";
+import SearchBar from "../../SearchBar/SearchBar";
 import Options from "./Options";
 
-const Header = ({ viewOptions, setViewOptions, setOpacityState }) => {
+const Header = ({ viewOptions, setViewOptions, setOpacityState, onHome }) => {
   function handleClick(e) {
     if (e.button === 2) {
       return;
@@ -26,7 +26,7 @@ const Header = ({ viewOptions, setViewOptions, setOpacityState }) => {
       setViewOptions(false);
     }
   }
-  
+
   return (
     <HeaderStyled>
       <ContainerStyled $external={true}>
@@ -44,20 +44,20 @@ const Header = ({ viewOptions, setViewOptions, setOpacityState }) => {
         <SpaceSearchBar />
       </ContainerStyled>
 
-      <SearchBar copy={false}></SearchBar>
-      
-       <ContainerOptionsStyled>
-      <DivMoreOptionsStyled
-        data-ignore-click
-        onPointerDown={handleClick}
-        onMouseEnter={() => {
-          setViewOptions(true);
-        }}
-      >
-        <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
-        <PStyled>Mais opções</PStyled>
-      </DivMoreOptionsStyled>
-    </ContainerOptionsStyled>
+      <SearchBar copy={false} onHome={onHome}></SearchBar>
+
+      <ContainerOptionsStyled>
+        <DivMoreOptionsStyled
+          data-ignore-click
+          onPointerDown={handleClick}
+          onMouseEnter={() => {
+            setViewOptions(true);
+          }}
+        >
+          <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
+          <PStyled>Mais opções</PStyled>
+        </DivMoreOptionsStyled>
+      </ContainerOptionsStyled>
 
       {viewOptions && <Options setOpacityState={setOpacityState} />}
     </HeaderStyled>

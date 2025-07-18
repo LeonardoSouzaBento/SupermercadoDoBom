@@ -8,23 +8,13 @@ export const BodyStyled = styled.div`
   padding: 12px 0px;
   padding-bottom: 24px;
 
-  &::after {
-    content: "";
-    width: 100%;
-    height: 200px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to bottom, #383d6a, #ecf0f5);
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    z-index: -1;
+  @media screen and (max-width: 470px) {
+    padding: 0;
   }
 `;
 
 export const WrapperStyled = styled.div`
-  width: calc(100% - 30px);
+  width: 100%;
   max-width: 470px;
   padding: 36px;
   padding-bottom: 37px;
@@ -36,12 +26,6 @@ export const WrapperStyled = styled.div`
   position: relative;
   z-index: 1;
 
-  @media screen and (max-width: 375px) {
-    width: calc(100% - 20px);
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: calc(100% - 24px);
-  }
   @media screen and (max-width: 576px) {
     box-sizing: border-box;
   }
@@ -130,7 +114,7 @@ export const PStyled = styled.p`
   margin-bottom: 12px;
   line-height: 1.27;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.13em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -157,7 +141,7 @@ export const H1Styled = styled.h1`
   font-weight: 500;
   margin-bottom: 20px;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.5em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -183,7 +167,7 @@ export const H2Styled = styled.h2`
   font-weight: 500;
   margin-bottom: 16px;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.3em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

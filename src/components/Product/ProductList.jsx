@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useEffect } from "react";
 import styled, { css } from "styled-components";
 import ProductItem from "./ProductItem";
-import { CartContext } from "../../CartContext";
+import { CartContext } from "../../contexts/CartContext";
 
 const DivStyled = styled.div`
   width: auto;
@@ -26,10 +26,6 @@ const DivStyled = styled.div`
 
   @media screen and (max-width: 385px) {
     gap: 11px;
-  }
-  @media screen and (min-width: 385px) and (max-width: 414px) {
-    justify-content: space-evenly;
-    gap: 0px;
   }
 
   ${(props) =>

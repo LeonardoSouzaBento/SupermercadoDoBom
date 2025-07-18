@@ -63,7 +63,7 @@ export const MainDivStyled = styled.div`
     border-radius: 0 0 12px 12px;
   }
 
-  @media screen and (min-width: 374px) and (max-width: 577px) {
+  @media screen and (min-width: 375px) and (max-width: 577px) {
     margin-bottom: 0px;
   }
 `;

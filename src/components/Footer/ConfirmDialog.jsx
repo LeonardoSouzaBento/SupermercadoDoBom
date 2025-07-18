@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useContext, useState, useEffect } from "react";
-import { CartContext } from "../CartContext";
-import { VisibilityContext } from "../VisibilityContext";
+import { CartContext } from "../../contexts/CartContext";
+import { VisibilityContext } from "../../contexts/VisibilityContext";
 
 const ContainerStyled = styled.div`
   position: fixed;
@@ -76,7 +76,7 @@ const PQuestionStyled = styled.p`
   cursor: default;
   color: white;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.35em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -121,7 +121,7 @@ const PSimStyled = styled.p`
     background-color: #75171b;
   }
   transition: background-color 0.1s ease;
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.05em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

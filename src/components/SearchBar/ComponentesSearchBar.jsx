@@ -21,12 +21,14 @@ export const ContainerForFormStyled = styled.div`
     props.$copy &&
     css`
       padding-top: 16px;
-      padding-bottom: 20px;
+      padding-bottom: 16px;
+      margin-bottom: 12px;
       position: sticky;
       top: 0px;
       left: 0px;
       display: flex;
       justify-content: center;
+      /* background-color: #383d6a; */
 
       @media screen and (min-width: 769px) {
         justify-content: flex-start;
@@ -56,7 +58,6 @@ export const FormStyled = styled.form`
       max-width: 684px;
       margin: 0;
       border-radius: 8px;
-      /* border-top: 1px solid #383d6aff; */
       box-shadow: 0px 4px 10px -5px rgba(41, 46, 117, 0.6), 0px -4px 8px -6px rgba(41, 46, 117, 0.4);
     `}
 `;
@@ -164,7 +165,7 @@ export const DivMsgStyled = styled.div`
   left: 4%;
   z-index: 4;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     max-width: 260px;
   }
   @media screen and (max-width: 768px) {
@@ -192,7 +193,7 @@ export const PMsgStyled = styled.p`
   padding: 6px 0px;
   padding-bottom: 8px;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.055em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -268,7 +269,7 @@ export const PStyled = styled.p`
   font-family: "Open Sans", Arial, sans-serif;
   font-weight: 600;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 0.86em;
     letter-spacing: 1.01px;
   }

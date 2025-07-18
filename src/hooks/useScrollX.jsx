@@ -1,5 +1,5 @@
 import { useEffect, useContext, useRef, useCallback } from "react";
-import { CartContext } from "../components/CartContext";
+import { CartContext } from "../contexts/CartContext";
 
 export function useScrollX() {
   const {

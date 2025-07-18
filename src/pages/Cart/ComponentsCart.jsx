@@ -173,7 +173,7 @@ export const ShadowStyled = styled.div`
 `;
 
 export const DivSeeAllStyled = styled.div`
-  height: 45px;
+  height: 49px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -182,9 +182,10 @@ export const DivSeeAllStyled = styled.div`
   position: absolute;
   bottom: -1px;
   left: 0;
-  background-color: #ecf0f5;
+  background-color: white;
   z-index: 2;
   cursor: pointer;
+  box-shadow: 0px -3px 3px -2px rgba(41, 46, 117, 0.13);
   @media screen and (min-width: 769px) {
     display: none;
   }

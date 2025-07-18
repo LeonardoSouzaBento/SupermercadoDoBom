@@ -1,6 +1,6 @@
-import MainContent from "../components/Main/MainContent";
+import HomeContent from "../components/Home/HomeContent"
 
 function Home() {
-  return <MainContent></MainContent>;
+  return <HomeContent/>;
 }
 export default Home;

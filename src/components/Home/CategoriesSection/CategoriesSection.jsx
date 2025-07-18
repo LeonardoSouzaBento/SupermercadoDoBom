@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { useState, useRef, useEffect } from "react";
+import { useCallback } from "react";
+import { useRef, useEffect } from "react";
 import {
   DivStyled,
   DivLabelPromosStyled,
@@ -12,7 +12,7 @@ import {
   PStyled,
 } from "./ComponentsCategories";
 import { useContext } from "react";
-import { CartContext } from "../../CartContext";
+import { CartContext } from "../../../contexts/CartContext";
 import { useScrollX } from "../../../hooks/useScrollX";
 
 const categories = [

@@ -90,7 +90,7 @@ export const SpanStyled = styled.span.attrs(() => ({
 
   ${(props) => props.$atual && "background-color: rgba(56, 61, 106, 0.84);"}
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     height: 9.5px;
     width: 9.5px;
   }

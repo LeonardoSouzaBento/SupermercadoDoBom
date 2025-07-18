@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes";
-import { CartProvider } from "./components/CartContext";
-import { VisibilityProvider } from "./components/VisibilityContext";
+import { CartProvider } from "./contexts/CartContext";
+import { VisibilityProvider } from "./contexts/VisibilityContext";
 import '../src/index.css';
 
 ReactDOM.createRoot(document.getElementById("root")).render(

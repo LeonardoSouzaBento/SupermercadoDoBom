@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { CartContext } from "../CartContext";
+import { CartContext } from "../../contexts/CartContext";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ConfirmDialog from "./ConfirmDialog";
@@ -102,7 +102,7 @@ const PPrecoStyled = styled.p`
   padding-bottom: 2px;
   color: white;
   scale: 1.02;
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

@@ -58,7 +58,7 @@ export const POptionStyled = styled.p`
   padding-left: 24px;
   user-select: none;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.05em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

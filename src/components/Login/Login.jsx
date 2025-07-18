@@ -63,7 +63,7 @@ const SpanCloseStyled = styled.span`
   font-weight: 600;
   color: white;
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.45em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -91,7 +91,7 @@ const H1LoginStyled = styled.h1`
   color: white;
   width: 100%;
   margin-bottom: 16px;
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.3em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -125,7 +125,7 @@ const PEmailStyled = styled.p`
   font-weight: 600;
   color: white;
   letter-spacing: 0.65px;
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.155em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
