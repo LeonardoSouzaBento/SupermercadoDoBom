@@ -55,7 +55,7 @@ export const CartSectionStyed = styled.div`
   @media screen and (min-width: 768px) {
     height: calc(100vh - 48px);
     max-height: 810px;
-    border-radius: 16px;
+    border-radius: 12px 12px 16px 16px;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -498,9 +498,10 @@ export const DivDialogStyled = styled.div`
   background-color: white;
   overflow: hidden;
   ${(props) => props.$feedback && "background-color: #488658;"};
-  box-shadow: 0px 3px 3px -1px rgba(41, 46, 117, 0.18),
+  box-shadow: 0px 3px 3px -1px rgba(41, 46, 117, 0.24),
     3px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
+    /* box-shadow: 0px 8px 20px -8px rgba(0, 0, 0, 0.4); */
   transition: height 0.15s ease;
   position: relative;
 `;

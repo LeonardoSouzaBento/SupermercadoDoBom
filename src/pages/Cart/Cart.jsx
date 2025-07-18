@@ -333,7 +333,7 @@ const DivCancelDialog = ({
     >
       <DivDialogStyled $feedback={seeFeedback}>
         <DivQuestionStyled
-          style={{ backgroundColor: seeFeedback ? "#488658" : "#ebeff4" }}
+          style={{ backgroundColor: seeFeedback ? "#488658" : "#ECF0F5" }}
         >
           <PQuestionStyled style={{ color: seeFeedback ? "white" : "black" }}>
             {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}

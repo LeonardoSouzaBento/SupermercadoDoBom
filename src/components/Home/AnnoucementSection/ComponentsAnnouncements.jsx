@@ -19,7 +19,6 @@ export const ContainerStyled = styled.div`
 export const DivStyled = styled.div`
   width: 100%;
   margin: auto;
-  will-change: transform;
   display: flex;
   flex-flow: row nowrap;
   gap: 16px;
@@ -34,10 +33,9 @@ export const DivStyled = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  
-  @media screen and (min-width: 769px) {
-    gap: 16px;
-  }
+  /* @media screen and (min-width: 1200px) {
+    width: max-content;
+  } */
 `;
 
 export const DivFundoImgStyled = styled.div`
@@ -46,17 +44,6 @@ export const DivFundoImgStyled = styled.div`
   border-radius: 16px;
   position: relative;
   overflow: hidden;
-  /* &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #E3E7EC;
-    border-radius: 4px;
-    z-index: 0;
-  } */
 `;
 
 export const ImgStyled = styled.img`

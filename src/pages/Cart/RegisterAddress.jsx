@@ -8,8 +8,12 @@ import {
   DivTitleStyled,
   H1Styled,
   LocationButtonStyled,
+  DivOrStyled,
+  POrStyled,
   InputStyled,
   CepInputStyled,
+  DivCityStyled,
+  PCityStyled,
   RegisterButtonStyled,
 } from "./ComponentsRegAddress";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +21,8 @@ import { useNavigate } from "react-router-dom";
 const RegisterAddress = ({ setSeeAddressForm }) => {
   const navigate = useNavigate();
   const [opacityState, setOpacityState] = useState(0);
+  const [disable, setDisable] = useState(true);
+  const [canReviewAddress, setCanReviewAddress] = useState(false);
 
   const [formData, setFormData] = useState({
     rua: "",
@@ -25,7 +31,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     bairro: "",
     cidade: "",
     estado: "",
-    cep: "",
+    cep: "Digite seu CEP",
   });
 
   function handleLocationClick() {
@@ -69,19 +75,44 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
           </DivSpanCloseStyled>
         </DivTitleStyled>
 
-        <LocationButtonStyled onClick={handleLocationClick}>
-          Pegue minha localização
-        </LocationButtonStyled>
+        {canReviewAddress === false && (
+          <div>
+            <LocationButtonStyled onClick={handleLocationClick}>
+              Pegue minha localização
+            </LocationButtonStyled>
 
-        <form onSubmit={handleSubmit}>
-          <CepInputStyled
-            type="text"
-            name="cep"
-            placeholder="CEP"
-            value={formData.cep}
-            onChange={handleChange}
-          />
+            <DivOrStyled>
+              <POrStyled>Ou</POrStyled>
+            </DivOrStyled>
 
+            <form onSubmit={handleSubmit}>
+              <CepInputStyled
+                type="text"
+                name="cep"
+                placeholder="Digite seu CEP"
+                value={formData.cep}
+                onChange={handleChange}
+              />
+              <DivCityStyled>
+                <PCityStyled>...</PCityStyled>
+              </DivCityStyled>
+              <RegisterButtonStyled
+                // type="submit"
+                $disable={disable}
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log("Sim");
+                }}
+              >
+                {disable ? "Continuar" : "Salvar Endereço"}
+              </RegisterButtonStyled>
+            </form>
+          </div>
+        )}
+        
+        <H1Styled $alert={true}>Esse componente ainda será desenvolvido</H1Styled>
+
+        {canReviewAddress && (
           <SubDivStyled>
             <InputStyled
               type="text"
@@ -137,15 +168,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               style={{ paddingBottom: "2px", borderBottom: "none" }}
             />
           </SubDivStyled>
-          <RegisterButtonStyled
-            type="submit"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Salvar Endereço
-          </RegisterButtonStyled>
-        </form>
+        )}
       </MainDivStyled>
     </DivBodyStyled>
   );

@@ -271,6 +271,14 @@ function SearchBar({ copy, onHome }) {
     document.addEventListener("pointerdown", handleClickOutsideSearchBar);
 
     return () => {
+      const el = document.documentElement.scrollTop
+        ? document.documentElement
+        : document.body;
+
+      el.scrollTo({
+        top: 0,
+      });
+
       document.removeEventListener("pointerdown", handleClickOutsideSearchBar);
     };
   }, []);

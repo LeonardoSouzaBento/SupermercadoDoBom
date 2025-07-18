@@ -2,20 +2,27 @@ import styled, { css } from "styled-components";
 
 export const BodyStyled = styled.div`
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px 0px;
-  padding-bottom: 24px;
+  padding: 4px 0;
+  padding-bottom: 8px;
+  box-sizing: border-box;
 
   @media screen and (max-width: 470px) {
     padding: 0;
+  }
+  @media screen and (min-width: 577px) {
+    padding-bottom: 0px;
   }
 `;
 
 export const WrapperStyled = styled.div`
   width: 100%;
   max-width: 470px;
+  height: 88vh;
+  overflow-y: scroll;
   padding: 36px;
   padding-bottom: 37px;
   border-radius: 16px;
@@ -25,9 +32,22 @@ export const WrapperStyled = styled.div`
     -3px 0px 3px -2px hsla(236, 0%, 31%, 0.13);
   position: relative;
   z-index: 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
-  @media screen and (max-width: 576px) {
-    box-sizing: border-box;
+  @media screen and (max-width: 577px) {
+    height: auto;
+    overflow-y: visible;
+  }
+  @media screen and (min-width: 577px) {
+    padding-top: 24px;
+  }
+  @media screen and (max-width: 470px) {
+    border-radius: 0px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
 

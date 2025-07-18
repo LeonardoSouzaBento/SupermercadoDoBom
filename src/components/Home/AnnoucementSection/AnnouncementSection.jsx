@@ -69,15 +69,25 @@ function AnnouncementSection({ wasResize }) {
       setLimitAdvertisements(limite); //Limite de rolagem para anuncios
       let Initialcenter = 0;
       function obterLimites() {
-        if (imageUrls.length % 2 === 0) {
+        //numero impar de imagens
+        if (imageUrls.length % 2 !== 0) {
+          Initialcenter = (ContainerWidth - widtAllAds) / 2;
+          if (window.innerWidth < 1370) {
+            advertisementsRef.current.scrollLeft = Initialcenter * -1;
+          } else {
+            advertisementsRef.current.scrollLeft = 0;
+          }
+        } else {
           Initialcenter =
             (ContainerWidth - widtAllAds) / 2 - (fundoWidth / 2 + gap / 2);
-        } else {
-          Initialcenter = (ContainerWidth - widtAllAds) / 2;
+          if (window.innerWidth < 1370) {
+            advertisementsRef.current.scrollLeft = Initialcenter * -1;
+          } else {
+            advertisementsRef.current.scrollLeft = Initialcenter * -1 -110;
+          }
         }
       }
       obterLimites();
-      advertisementsRef.current.scrollLeft = Initialcenter * -1;
     }
   }, []);
 
