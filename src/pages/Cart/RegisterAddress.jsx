@@ -16,7 +16,7 @@ import {
   PCityStyled,
   RegisterButtonStyled,
 } from "./ComponentsRegAddress";
-import Logo from "../../components/logo";
+import Logo from "../../components/MiniLogo";
 import { useNavigate } from "react-router-dom";
 
 const RegisterAddress = ({ setSeeAddressForm }) => {
