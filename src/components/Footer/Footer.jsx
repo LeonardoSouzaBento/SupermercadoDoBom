@@ -3,7 +3,6 @@ import { CartContext } from "../../contexts/CartContext";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ConfirmDialog from "./ConfirmDialog";
-import Logo from "../MiniLogo";
 
 const FooterStyled = styled.footer`
   display: flex;

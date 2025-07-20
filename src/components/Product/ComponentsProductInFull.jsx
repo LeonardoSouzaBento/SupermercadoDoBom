@@ -313,10 +313,10 @@ export const PPriceStyled = styled.p`
 `;
 
 export const ContainerQuantStyled = styled.div`
-  max-width: 370px;
+  max-width: calc(100% - 32px); 
   height: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 8px;
   margin: auto;
@@ -445,7 +445,7 @@ export const DivSubStyled = styled.div`
   @media screen and (min-width: 420px) and (max-width: 577px) {
     width: max-content;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px){
+  @media screen and (min-width: 577px) and (max-width: 850px){
     flex-direction: column;
     gap: 0;
   }

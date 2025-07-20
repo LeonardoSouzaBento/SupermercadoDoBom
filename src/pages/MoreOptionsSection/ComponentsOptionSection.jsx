@@ -27,9 +27,9 @@ export const WrapperStyled = styled.div`
   padding-bottom: 37px;
   border-radius: 16px;
   background-color: white;
-  box-shadow: 0px 5px 10px -5px hsla(236, 0%, 31%, 0.7),
-    3px 0px 3px -1.5px hsla(236, 0%, 31%, 0.13),
-    -3px 0px 3px -2px hsla(236, 0%, 31%, 0.13);
+    box-shadow: 0px 3px 3px -1.2px rgba(41, 46, 117, 0.5),
+    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   position: relative;
   z-index: 1;
   -ms-overflow-style: none;
