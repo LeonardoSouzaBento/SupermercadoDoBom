@@ -38,6 +38,10 @@ export const WrapperStyled = styled.div`
   @media screen and (max-width: 577px) {
     height: auto;
     overflow-y: visible;
+    box-sizing: border-box;
+  }
+  @media screen and (max-width: 470px) {
+    border-radius: 0px;
   }
   @media screen and (min-width: 577px) {
     padding-top: 24px;

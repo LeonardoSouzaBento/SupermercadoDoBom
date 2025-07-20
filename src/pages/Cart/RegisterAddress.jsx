@@ -16,6 +16,7 @@ import {
   PCityStyled,
   RegisterButtonStyled,
 } from "./ComponentsRegAddress";
+import Logo from "../../components/logo";
 import { useNavigate } from "react-router-dom";
 
 const RegisterAddress = ({ setSeeAddressForm }) => {
@@ -59,6 +60,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     <DivBodyStyled $opacity={opacityState}>
       <MainDivStyled>
         <DivTitleStyled>
+          <Logo local={"boxAddress"}/>
           <H1Styled>Cadastrar endereço</H1Styled>
           <DivSpanCloseStyled>
             <SpanCloseStyled

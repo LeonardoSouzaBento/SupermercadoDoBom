@@ -3,6 +3,7 @@ import { CartContext } from "../../contexts/CartContext";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ConfirmDialog from "./ConfirmDialog";
+import Logo from "../logo";
 
 const FooterStyled = styled.footer`
   display: flex;
@@ -117,7 +118,7 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer() {
+export default function Footer({search}) {
   const { quantityItens, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);

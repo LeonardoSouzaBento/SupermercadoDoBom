@@ -12,14 +12,12 @@ export const DivBodyStyled = styled.div`
   align-items: center;
   z-index: 5;
   background-color: hsla(213, 29%, 94%, 0.97);
-  /* background-color: rgba(0, 0, 0, 0.15); */
   transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
 
   @media screen and (max-width: 768px) {
     justify-content: flex-start;
-    background-color: hsla(213, 29%, 94%, 0.97);
-    /* background-color: hsla(213, 29%, 94%, 1); */
+    padding-top: 48px;
   }
 `;
 
@@ -35,12 +33,10 @@ export const MainDivStyled = styled.div`
   background-color: white;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 3px 3px -1px rgba(41, 46, 117, 0.5),
-    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
-  /* box-shadow: 0px 8px 20px -8px rgba(0, 0, 0, 0.4); */
+  box-shadow: 0px 4px 10px -6px rgba(0, 0, 0, 0.6);
   transition: transform 0.2s ease;
-  @media screen and (max-width: 768px) {
+
+  @media screen and (max-width: 416px) {
     border-radius: 0 0 8px 8px;
   }
   @media screen and (min-width: 375px) and (max-width: 577px) {
@@ -53,7 +49,7 @@ export const MainDivStyled = styled.div`
 export const DivTitleStyled = styled.div`
   height: 56px;
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -256,7 +252,7 @@ export const DivCityStyled = styled.div`
   box-sizing: border-box;
   padding-left: 16px;
   margin: auto;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: flex-start;
   align-items: center;

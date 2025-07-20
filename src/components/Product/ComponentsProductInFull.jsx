@@ -324,6 +324,7 @@ export const ContainerQuantStyled = styled.div`
 
 export const DivQuantFullStyled = styled.div`
   width: 100%;
+  min-width: 200px;
   max-width: 200px;
   height: 48px;
   display: flex;
@@ -333,11 +334,8 @@ export const DivQuantFullStyled = styled.div`
   border-radius: 8px;
   cursor: pointer;
 
-  @media screen and (max-width: 420px) and (max-width: 577px) {
-    min-width: 172px;
-  }
-  @media screen and (min-width: 577px) {
-    min-width: 184px;
+  @media screen and (max-width: 350px) {
+    min-width: 180px;
   }
 `;
 
@@ -442,7 +440,7 @@ export const DivSubStyled = styled.div`
     gap: 0;
   }
   @media screen and (min-width: 345px) and (max-width: 420px) {
-    max-width: 120px;
+    max-width: 35%;
   }
   @media screen and (min-width: 420px) and (max-width: 577px) {
     width: max-content;

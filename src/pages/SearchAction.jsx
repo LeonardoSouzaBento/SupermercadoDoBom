@@ -47,7 +47,7 @@ const SearchAction = () => {
         {canClick && <ProductList variant={"search"} categoryKey={13} />}
       </DivStyled>
       {viewProductInFull && <ProductInFull />}
-      <Footer />
+      <Footer search={true}/>
     </>
   );
 };

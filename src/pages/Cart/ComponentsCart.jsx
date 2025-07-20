@@ -13,8 +13,8 @@ export const MainStyled = styled.div`
     align-items: flex-start;
     gap: 16px;
     box-sizing: border-box;
-    padding: 0px 16px;
-    padding-top: 24px;
+    padding: 16px;
+    padding-bottom: 0px;
   }
   @media screen and (min-width: 1201px) {
     grid-template-columns: 950px auto;
@@ -22,6 +22,17 @@ export const MainStyled = styled.div`
 
   opacity: ${(props) => props.$opacity};
   transition: opacity 0.5s ease;
+
+  /* &::after {
+    content: "";
+    width: 100%;
+    height: 56px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #383d6a;
+    z-index: -1;
+  } */
 `;
 
 export const CartSectionStyed = styled.div`
@@ -55,7 +66,7 @@ export const CartSectionStyed = styled.div`
   @media screen and (min-width: 768px) {
     height: calc(100vh - 48px);
     max-height: 810px;
-    border-radius: 12px 12px 16px 16px;
+    border-radius: 8px 8px 16px 16px;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;

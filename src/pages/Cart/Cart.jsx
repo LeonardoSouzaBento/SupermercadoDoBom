@@ -35,6 +35,7 @@ import {
 } from "./ComponentsCart.jsx";
 import ProductInFull from "../../components/Product/ProductInFull.jsx";
 import RegisterAddress from "./RegisterAddress.jsx";
+import Logo from "../../components/logo.jsx";
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar
@@ -196,6 +197,7 @@ const Cart = () => {
       <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
         <CartSectionStyed ref={CartSectionRef}>
           <DivHeadStyled>
+            <Logo local={"cart"}/>
             <HHeadStyled>Sua compra</HHeadStyled>
             <DivSpanDeleteStyled
               onClick={(e) => {
