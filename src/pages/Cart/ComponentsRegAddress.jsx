@@ -12,6 +12,7 @@ export const DivBodyStyled = styled.div`
   align-items: center;
   z-index: 5;
   background-color: hsla(213, 29%, 94%, 1);
+  /* background-color: rgba(0, 0, 0, 0.1); */
   transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
 
@@ -33,9 +34,9 @@ export const MainDivStyled = styled.div`
   background-color: white;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.65),
-    3px 0px 3px -2px rgba(41, 46, 117, 0.12),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
+  box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.35),
+    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   transition: transform 0.2s ease;
 
   @media screen and (max-width: 768px) {
@@ -254,7 +255,7 @@ export const DivCityStyled = styled.div`
   box-sizing: border-box;
   padding-left: 16px;
   margin: auto;
-  margin-bottom: 24px;
+  margin-bottom: 25px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
