@@ -21,7 +21,7 @@ const DivMainStyled = styled.div`
   padding-top: 16px;
   padding-bottom: 24px;
   box-sizing: border-box;
-  background-color: #dc2c32;
+  background-color: #D5343A;
   overflow: hidden;
   border-radius: 12px;
   position: absolute;
@@ -147,7 +147,7 @@ const PEmailStyled = styled.p`
 
 const InputEmailStyled = styled.input`
   width: 100%;
-  height: 40px;
+  height: 44px;
   background-color: white;
   border: none;
   border-radius: 8px;
@@ -177,8 +177,8 @@ const InputEmailStyled = styled.input`
 
 const DivLoginGoogle = styled.div`
   width: 100%;
-  height: 40px;
-  margin-bottom: 12px;
+  height: 44px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   gap: 20px;

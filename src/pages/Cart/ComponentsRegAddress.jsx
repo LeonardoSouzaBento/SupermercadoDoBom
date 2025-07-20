@@ -11,13 +11,13 @@ export const DivBodyStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 5;
-  background-color: hsla(213, 29%, 94%, 0.97);
+  background-color: hsla(213, 29%, 94%, 1);
   transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
 
   @media screen and (max-width: 768px) {
     justify-content: flex-start;
-    padding-top: 48px;
+
   }
 `;
 
@@ -29,15 +29,17 @@ export const MainDivStyled = styled.div`
   margin-bottom: 4px;
   padding-bottom: 25px;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 16px;
   background-color: white;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 4px 10px -6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.65),
+    3px 0px 3px -2px rgba(41, 46, 117, 0.12),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.12);
   transition: transform 0.2s ease;
 
-  @media screen and (max-width: 416px) {
-    border-radius: 0 0 8px 8px;
+  @media screen and (max-width: 768px) {
+    border-radius: 0 0 16px 16px;
   }
   @media screen and (min-width: 375px) and (max-width: 577px) {
     margin-bottom: 0px;
@@ -122,7 +124,7 @@ export const LocationButtonStyled = styled.button`
   align-items: center;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 1.12em;
@@ -243,7 +245,7 @@ export const CepInputStyled = styled(InputStyled)`
   padding-left: 16px;
   background-color: #e9eff5;
   border-bottom: none;
-  border-radius: 4px 4px 0 0;
+  border-radius: 8px 8px 0 0;
 `;
 
 export const DivCityStyled = styled.div`
@@ -257,7 +259,7 @@ export const DivCityStyled = styled.div`
   justify-content: flex-start;
   align-items: center;
   background-color: #e9eff5;
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 0 8px 8px;
   border-top: 1px solid rgba(41, 46, 117, 0.3);
 `;
 
@@ -288,7 +290,7 @@ export const PCityStyled = styled.p`
 
 // Botão de envio
 export const RegisterButtonStyled = styled(LocationButtonStyled)`
-  border-radius: 4px;
+  border-radius: 8px;
   margin-bottom: 0px;
   background-color: #383d6a;
   color: white;
