@@ -191,6 +191,7 @@ function SearchBar({ copy, onHome }) {
     setCompletions([...newCompletions]);
 
     setCountCompletes(countComplete + 1);
+    inputRef.current.focus();
   }
 
   const handleClickScrollOnMobile = () => {
@@ -334,7 +335,6 @@ function SearchBar({ copy, onHome }) {
               onPointerUp={(e) => {
                 e.preventDefault();
                 e.stopPropagation;
-                inputRef.current.focus();
                 setTimeout(() => {
                   inputRef.current.focus();
                 }, 0);
@@ -342,7 +342,6 @@ function SearchBar({ copy, onHome }) {
               }}
               onClick={(e) => {
                 e.stopPropagation();
-                inputRef.current.focus();
               }}
             >
               <PStyled>{suggestion}...</PStyled>
