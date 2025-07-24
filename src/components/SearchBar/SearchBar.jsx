@@ -337,7 +337,7 @@ function SearchBar({ copy, onHome }) {
                 e.stopPropagation;
                 setTimeout(() => {
                   inputRef.current.focus();
-                }, 10);
+                }, 0);
                 handleClickComplete(e, suggestion);
               }}
               onClick={(e) => {
