@@ -78,7 +78,7 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
 
   return (
     <DivOfertaStyled>
-      <PaiImgOfertaStyled onPointerDown={handlePointerUpOpen}>
+      <PaiImgOfertaStyled onPointerUp={handlePointerUpOpen}>
         {product.discount != "" && product.discount != null && (
           <DivOffStyled>
             <POffStyled>-{product.discount}%</POffStyled>
