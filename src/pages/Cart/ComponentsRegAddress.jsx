@@ -33,7 +33,7 @@ export const MainDivStyled = styled.div`
   background-color: white;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.4),
+  box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.5),
     3px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   transition: transform 0.2s ease;

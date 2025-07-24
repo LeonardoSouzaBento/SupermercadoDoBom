@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { all_products } from "../../data/all_products";
+import { all_products } from "../../data/productList";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import { VisibilityContext } from "../../contexts/VisibilityContext";

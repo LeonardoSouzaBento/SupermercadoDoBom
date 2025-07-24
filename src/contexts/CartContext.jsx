@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, useRef } from "react";
 import {
+  promo_products,
   productsCatId1,
   productsCatId2,
   productsCatId3,
@@ -9,8 +10,9 @@ import {
   productsCatId7,
   productsCatId8,
   productsCatId9,
-} from "../data/products_by_category";
-import { promo_products } from "../data/promo_products";
+} from "../data/productList";
+// import { normalizationData } from "../data/normalization";
+// normalizationData();
 
 export const CartContext = createContext();
 

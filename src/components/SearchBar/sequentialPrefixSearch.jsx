@@ -1,4 +1,4 @@
-export function sequentialPrefixSearch(array, prefix) {
+export function sequentialPrefixSearch(productList, prefix) {
   function normalize(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   }
@@ -8,12 +8,29 @@ export function sequentialPrefixSearch(array, prefix) {
   const normalizedPrefix = normalize(prefix);
   const results = [];
 
-  for (let i = 0; i < array.length; i++) {
-    const currentElementNameNormalized = array[i]?.name ? normalize(array[i].name) : '';
-    if (currentElementNameNormalized.startsWith(normalizedPrefix)) {
-      results.push(array[i]);
+  for (let i = 0; i < productList.length; i++) {
+    const subArray = productList[i];
+    if (!Array.isArray(subArray)) continue;
+
+    for (let j = 0; j < subArray.length; j++) {
+      const product = subArray[j];
+      const normalizedName = product?.name ? normalize(product.name) : '';
+      if (normalizedName.startsWith(normalizedPrefix)) {
+        results.push(product);
+      }
     }
   }
 
-  return results;
+  const seenNames = new Set();
+  const uniqueResults = [];
+
+  for (const product of results) {
+    const normalizedName = normalize(product.name);
+    if (!seenNames.has(normalizedName)) {
+      seenNames.add(normalizedName);
+      uniqueResults.push(product);
+    }
+  }
+
+  return uniqueResults;
 }
