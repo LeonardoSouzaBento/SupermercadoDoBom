@@ -17,7 +17,7 @@ import {
   CompletionsDivStyled,
   DivOnePStyled,
   PStyled,
-  InputForFocusStyled
+  InputForFocusStyled,
 } from "./ComponentesSearchBar";
 
 //produtos únicos para sugestão
@@ -192,7 +192,6 @@ function SearchBar({ copy, onHome }) {
     setCompletions([...newCompletions]);
 
     setCountCompletes(countComplete + 1);
-    inputRef.current.focus();
   }
 
   const handleClickScrollOnMobile = () => {
@@ -336,17 +335,17 @@ function SearchBar({ copy, onHome }) {
               onPointerUp={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                inputRef.current.focus();
                 setTimeout(() => {
                   inputRef.current.focus();
                 }, 0);
                 handleClickComplete(e, suggestion);
               }}
               onClick={(e) => {
+                e.stopPropagation();
                 inputRef.current.focus();
               }}
             >
-              <InputForFocusStyled type="text"/>
+              <InputForFocusStyled type="text" />
               <PStyled>{suggestion}...</PStyled>
             </DivOnePStyled>
           ))}
