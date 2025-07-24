@@ -17,6 +17,7 @@ import {
   CompletionsDivStyled,
   DivOnePStyled,
   PStyled,
+  InputForFocusStyled
 } from "./ComponentesSearchBar";
 
 //produtos únicos para sugestão
@@ -334,16 +335,18 @@ function SearchBar({ copy, onHome }) {
               }}
               onPointerUp={(e) => {
                 e.preventDefault();
-                e.stopPropagation;
+                e.stopPropagation();
+                inputRef.current.focus();
                 setTimeout(() => {
                   inputRef.current.focus();
                 }, 0);
                 handleClickComplete(e, suggestion);
               }}
               onClick={(e) => {
-                e.stopPropagation();
+                inputRef.current.focus();
               }}
             >
+              <InputForFocusStyled type="text"/>
               <PStyled>{suggestion}...</PStyled>
             </DivOnePStyled>
           ))}

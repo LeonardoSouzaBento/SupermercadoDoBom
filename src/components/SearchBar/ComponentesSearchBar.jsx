@@ -266,22 +266,22 @@ export const DivOnePStyled = styled.div`
   }
 `;
 
-// export const InputForFocusStyled = styled.input`
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   border: none;
-//   outline: none;
-//   z-index: 2;
-//   background-color: transparent;
-//   cursor: pointer;
+export const InputForFocusStyled = styled.input`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  outline: none;
+  z-index: 2;
+  background-color: transparent;
+  cursor: pointer;
 
-//   &:focus{
-//     outline: none;
-//   }
-// `;
+  &:focus{
+    outline: none;
+  }
+`;
 
 export const PStyled = styled.p`
   text-transform: uppercase;
