@@ -75,7 +75,7 @@ function HomeContent() {
 
   //Esconder mais opções com toque fora
   useEffect(() => {
-    const handlePointerDown = (e) => {
+    const handlePointerUp = (e) => {
       if (e.target.closest("[data-ignore-click]")) return;
       setViewOptions(false);
     };
@@ -85,16 +85,16 @@ function HomeContent() {
     const divElement = divRef.current;
 
     if (viewOptions && divElement) {
-      divElement.addEventListener("pointerdown", handlePointerDown);
+      divElement.addEventListener("pointerup", handlePointerUp);
       divElement.addEventListener("wheel", handleScroll);
     } else if (divElement) {
-      divElement.removeEventListener("pointerdown", handlePointerDown);
+      divElement.removeEventListener("pointerup", handlePointerUp);
       divElement.removeEventListener("wheel", handleScroll);
     }
 
     return () => {
       if (divElement) {
-        divElement.removeEventListener("pointerdown", handlePointerDown);
+        divElement.removeEventListener("pointerup", handlePointerUp);
         divElement.removeEventListener("wheel", handleScroll);
       }
     };

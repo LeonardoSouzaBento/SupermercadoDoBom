@@ -17,7 +17,6 @@ export const DivBodyStyled = styled.div`
 
   @media screen and (max-width: 768px) {
     justify-content: flex-start;
-
   }
 `;
 

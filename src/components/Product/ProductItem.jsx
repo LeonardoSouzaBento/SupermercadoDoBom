@@ -32,7 +32,6 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
   const { handleQuantityChange, isDraggingRef } = useContext(CartContext);
 
   function handlePointerUpOpen(e) {
-    
     if (e.button === 2) {
       return;
     }
@@ -79,7 +78,7 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
 
   return (
     <DivOfertaStyled>
-      <PaiImgOfertaStyled onPointerUp={handlePointerUpOpen}>
+      <PaiImgOfertaStyled onPointerDown={handlePointerUpOpen}>
         {product.discount != "" && product.discount != null && (
           <DivOffStyled>
             <POffStyled>-{product.discount}%</POffStyled>

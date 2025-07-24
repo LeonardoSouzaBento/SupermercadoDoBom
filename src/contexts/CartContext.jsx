@@ -11,8 +11,6 @@ import {
   productsCatId8,
   productsCatId9,
 } from "../data/productList";
-// import { normalizationData } from "../data/normalization";
-// normalizationData();
 
 export const CartContext = createContext();
 

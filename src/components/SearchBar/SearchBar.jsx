@@ -147,7 +147,9 @@ function SearchBar({ copy, onHome }) {
   }
 
   function handleClickComplete(e, suggestion) {
-    e.stopPropagation();
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 50);
     if (e.button === 2) {
       return;
     }
@@ -192,8 +194,6 @@ function SearchBar({ copy, onHome }) {
     setCompletions([...newCompletions]);
 
     setCountCompletes(countComplete + 1);
-
-    inputRef.current.focus();
   }
 
   const handleClickScrollOnMobile = () => {
@@ -326,24 +326,22 @@ function SearchBar({ copy, onHome }) {
       )}
 
       {completions != "" && (
-        <CompletionsDivStyled
-          $copy={copy}
-          onPointerDown={(e) => {
-            inputRef.current.focus();
-
-            if (e.button === 2) {
-              return;
-            }
-          }}
-        >
+        <CompletionsDivStyled $copy={copy}>
           {completions.map((suggestion, i) => (
             <DivOnePStyled
               key={i}
               data-suggestion
+              onPointerDown={(e) => {
+                e.stopPropagation;
+              }}
               onPointerUp={(e) => {
                 e.preventDefault();
-                inputRef.current?.focus();
+                e.stopPropagation;
+                inputRef.current.focus();
                 handleClickComplete(e, suggestion);
+              }}
+              onClick={(e) => {
+                e.stopPropagation;
               }}
             >
               <PStyled>{suggestion}...</PStyled>

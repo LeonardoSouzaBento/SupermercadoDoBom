@@ -258,11 +258,30 @@ export const DivOnePStyled = styled.div`
   background-color: #281f42;
   color: white;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 
   @media screen and (max-width: 375px) {
     padding: 0 12px;
   }
 `;
+
+// export const InputForFocusStyled = styled.input`
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   border: none;
+//   outline: none;
+//   z-index: 2;
+//   background-color: transparent;
+//   cursor: pointer;
+
+//   &:focus{
+//     outline: none;
+//   }
+// `;
 
 export const PStyled = styled.p`
   text-transform: uppercase;
