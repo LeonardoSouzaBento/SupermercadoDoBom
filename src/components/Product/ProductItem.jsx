@@ -32,6 +32,7 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
   const { handleQuantityChange, isDraggingRef } = useContext(CartContext);
 
   function handlePointerUpOpen(e) {
+    
     if (e.button === 2) {
       return;
     }

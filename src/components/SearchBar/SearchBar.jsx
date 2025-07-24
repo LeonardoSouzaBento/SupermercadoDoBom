@@ -147,6 +147,7 @@ function SearchBar({ copy, onHome }) {
   }
 
   function handleClickComplete(e, suggestion) {
+    e.stopPropagation();
     if (e.button === 2) {
       return;
     }
@@ -339,7 +340,7 @@ function SearchBar({ copy, onHome }) {
             <DivOnePStyled
               key={i}
               data-suggestion
-              onPointerDown={(e) => {
+              onPointerUp={(e) => {
                 e.preventDefault();
                 inputRef.current?.focus();
                 handleClickComplete(e, suggestion);
