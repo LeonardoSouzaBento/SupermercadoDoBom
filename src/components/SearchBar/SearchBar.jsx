@@ -147,7 +147,6 @@ function SearchBar({ copy, onHome }) {
   }
 
   function handleClickComplete(e, suggestion) {
-    inputRef.current.focus();
     if (e.button === 2) {
       return;
     }
@@ -330,18 +329,20 @@ function SearchBar({ copy, onHome }) {
               key={i}
               data-suggestion
               onPointerDown={(e) => {
-                e.stopPropagation;
+                e.stopPropagation();
               }}
               onPointerUp={(e) => {
                 e.preventDefault();
                 e.stopPropagation;
+                inputRef.current.focus();
                 setTimeout(() => {
                   inputRef.current.focus();
                 }, 0);
                 handleClickComplete(e, suggestion);
               }}
               onClick={(e) => {
-                e.stopPropagation;
+                e.stopPropagation();
+                inputRef.current.focus();
               }}
             >
               <PStyled>{suggestion}...</PStyled>
