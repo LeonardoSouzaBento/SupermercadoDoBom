@@ -147,9 +147,7 @@ function SearchBar({ copy, onHome }) {
   }
 
   function handleClickComplete(e, suggestion) {
-    setTimeout(() => {
-      inputRef.current.focus();
-    }, 50);
+    inputRef.current.focus();
     if (e.button === 2) {
       return;
     }
@@ -337,7 +335,9 @@ function SearchBar({ copy, onHome }) {
               onPointerUp={(e) => {
                 e.preventDefault();
                 e.stopPropagation;
-                inputRef.current.focus();
+                setTimeout(() => {
+                  inputRef.current.focus();
+                }, 10);
                 handleClickComplete(e, suggestion);
               }}
               onClick={(e) => {
