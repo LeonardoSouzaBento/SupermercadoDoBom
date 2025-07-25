@@ -33,7 +33,6 @@ import {
   ContainerListStyled,
   DivHalfList,
 } from "./ComponentsProductInFull.jsx";
-import ProductItem from "./ProductItem.jsx";
 
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
@@ -186,7 +185,7 @@ const ProductInFull = () => {
 
           <ContainerQuantStyled>
             <DivSubStyled>
-              {subtotal == "0,00" && (
+              {(subtotal == "0,00") && (
                 <DivCoverSubStyled>
                   <PSubStyled>Subtotal:</PSubStyled>
                 </DivCoverSubStyled>

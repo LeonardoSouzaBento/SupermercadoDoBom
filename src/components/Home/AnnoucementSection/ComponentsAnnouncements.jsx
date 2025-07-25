@@ -40,6 +40,7 @@ export const DivStyled = styled.div`
 
 export const DivFundoImgStyled = styled.div`
   min-width: 220px;
+  width: 220px;
   height: 220px;
   border-radius: 16px;
   position: relative;
@@ -53,7 +54,6 @@ export const ImgStyled = styled.img`
   object-fit: cover;
   margin: auto;
   position: relative;
-  z-index: 1;
   -webkit-user-select: none;
   user-select: none;
 `;

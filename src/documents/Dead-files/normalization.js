@@ -9,7 +9,7 @@ import {
   productsCatId7,
   productsCatId8,
   productsCatId9,
-} from "./productList";
+} from "../../data/productList";
 
 const categoryArrays = [
   productsCatId1,

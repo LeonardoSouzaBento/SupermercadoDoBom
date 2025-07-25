@@ -77,8 +77,8 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
   }
 
   return (
-    <DivOfertaStyled>
-      <PaiImgOfertaStyled onPointerUp={handlePointerUpOpen}>
+    <DivOfertaStyled $variant={variant}>
+      <PaiImgOfertaStyled onPointerUp={handlePointerUpOpen} $variant={variant}>
         {product.discount != "" && product.discount != null && (
           <DivOffStyled>
             <POffStyled>-{product.discount}%</POffStyled>
@@ -87,7 +87,7 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
         {product.weight != "" && product.weight != null && (
           <PPeso2Styled>{product.weight}</PPeso2Styled>
         )}
-        <ImgOfertaStyed src={product.url}></ImgOfertaStyed>
+        <ImgOfertaStyed src={product.url} $variant={variant}></ImgOfertaStyed>
 
         {/*Botão de adicionar*/}
         {quantity == 0 && (
@@ -122,35 +122,6 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
         </DivQuantStyled>
       </PaiImgOfertaStyled>
     </DivOfertaStyled>
-  );
-};
-
-const Preco = ({ product }) => {
-  const existWeight = product.weight != "" && product.weight != null;
-  return (
-    <PaiPrecoStyled>
-      {product.weight != "" && product.weight != null && (
-        <DivPesoStyled $exist={existWeight}>
-          <PpesoStyled>{product.weight}</PpesoStyled>
-        </DivPesoStyled>
-      )}
-
-      <DivPrecoStyled>
-        <PSifraStyled>R$</PSifraStyled>
-        <PprecoStyled>{product.price}</PprecoStyled>
-      </DivPrecoStyled>
-    </PaiPrecoStyled>
-  );
-};
-
-const DescOferta = ({ product }) => {
-  return (
-    <DescOfertaStyled>
-      <DivNomeStyled>
-        <PnomeStyled>{product.name}</PnomeStyled>
-      </DivNomeStyled>
-      <Preco price={product.price} product={product}></Preco>
-    </DescOfertaStyled>
   );
 };
 
@@ -193,7 +164,24 @@ function ProductItem({ product, variant }) {
 
   return (
     <PaiProdStyled $variant={variant}>
-      <DescOferta product={product} />
+      <DescOfertaStyled $variant={variant}>
+        <DivNomeStyled>
+          <PnomeStyled>{product.name}</PnomeStyled>
+        </DivNomeStyled>
+
+        <PaiPrecoStyled>
+          {product.weight != "" && product.weight != null && (
+            <DivPesoStyled>
+              <PpesoStyled>{product.weight}</PpesoStyled>
+            </DivPesoStyled>
+          )}
+          <DivPrecoStyled>
+            <PSifraStyled>R$</PSifraStyled>
+            <PprecoStyled>{product.price}</PprecoStyled>
+          </DivPrecoStyled>
+        </PaiPrecoStyled>
+      </DescOfertaStyled>
+
       <Oferta
         product={product}
         setQuantity={setQuantity}

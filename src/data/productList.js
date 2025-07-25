@@ -111,6 +111,54 @@ export const promo_products = [
     name: "Sabão em Pó OMO Lavagem Perfeita",
     price: "26,90",
   },
+  {
+    id: 18,
+    discount: 12,
+    url: "https://ibassets.com.br/ib.item.image.big/b-a8b9f3aba4e141b7b5afbc1eadd69e62.jpeg",
+    weight: "400 g",
+    name: "Mistura para bolos finna sabor chocolate",
+    price: "7,99",
+  },
+  {
+    id: 19,
+    discount: 10,
+    url: "https://lojavirtual.urizun.com.br/image/cache/data/eftr/Img_ftr_rp_136501-580x580.JPG?version=20230512211921",
+    weight: "69 g",
+    name: "Nissin cup nodles galinha caipira",
+    price: "9,90",
+  },
+  {
+    id: 20,
+    discount: 20,
+    url: "https://tiojorge.com.br/wp-content/uploads/2021/05/Arroz-branco-300x300.png",
+    weight: "5 kg",
+    name: "arroz branco tio jorge",
+    price: "19,99",
+  },
+  {
+    id: 21,
+    discount: 30,
+    url: "https://images.tcdn.com.br/img/img_prod/887622/refrigerante_fanta_laranja_lt_350ml_333_1_20201110145812.jpg",
+    weight: "350 ml",
+    name: "Refrigerante fanta laranja",
+    price: "1,55",
+  },
+  {
+    id: 22,
+    discount: 17,
+    url: "https://zaffari.vtexassets.com/arquivos/ids/246321/1078471-00.jpg?v=638422175350930000",
+    weight: "1 kg",
+    name: "Linguiça de frango aurora p/ churraco",
+    price: "15,99",
+  },
+  {
+    id: 23,
+    discount: 18,
+    url: "https://cortedeourocarnes.com.br/wp-content/uploads/2020/05/bife-ancho-1-600x450.jpg",
+    weight: "1kg",
+    name: "Bife Bovino Ancho",
+    price: "78,00",
+  },
 ];
 
 //mercearia
@@ -645,10 +693,10 @@ const additionalProducts = [
   {
     id: 2,
     discount: 20,
-    url: 'https://i.pinimg.com/736x/d1/73/4c/d1734c8aab4b0b07b6b1474757db5954.jpg',
-    weight: '100 g',
-    name: 'Biscoito recheado passatempo sabor chocolate',
-    price: '3,00'
+    url: "https://i.pinimg.com/736x/d1/73/4c/d1734c8aab4b0b07b6b1474757db5954.jpg",
+    weight: "100 g",
+    name: "Biscoito recheado passatempo sabor chocolate",
+    price: "3,00",
   },
   {
     url: "https://i.pinimg.com/736x/c5/7e/a0/c57ea098ba031b807e46e2493d86c32b.jpg",
@@ -748,3 +796,73 @@ all_products.forEach((product) => {
     product.id = existingId;
   }
 });
+
+const AnnouncementProducts = [
+  {
+    id: 19,
+    discount: 10,
+    url: "https://lojavirtual.urizun.com.br/image/cache/data/eftr/Img_ftr_rp_136501-580x580.JPG?version=20230512211921",
+    url2: "https://i.pinimg.com/736x/99/9b/e7/999be7d41a28a1781a49dc5c7ab2a963.jpg",
+    weight: "69 g",
+    name: "Nissin cup nodles galinha caipira",
+    price: "5,75",
+  },
+  {
+    id: 22,
+    discount: 17,
+    url: "https://zaffari.vtexassets.com/arquivos/ids/246321/1078471-00.jpg?v=638422175350930000",
+    url2: "https://i.pinimg.com/736x/91/98/39/919839cad01f2cd3cfe201d8332d98b5.jpg",
+    weight: "1 kg",
+    name: "Linguiça de frango aurora p/ churraco",
+    price: "14,99",
+  },
+  {
+    id: 18,
+    discount: 12,
+    url: "https://ibassets.com.br/ib.item.image.big/b-a8b9f3aba4e141b7b5afbc1eadd69e62.jpeg",
+    url2: "https://i.pinimg.com/736x/63/3b/16/633b16299e2fa1f2223d6bd6ff6cf1eb.jpg",
+    weight: "400 g",
+    name: "Mistura para bolos finna sabor chocolate",
+    price: "6,99",
+  },
+  {
+    id: 20,
+    discount: 20,
+    url: "https://tiojorge.com.br/wp-content/uploads/2021/05/Arroz-branco-300x300.png",
+    url2: "https://i.pinimg.com/736x/69/f1/d3/69f1d3cf3946afdab4edcd4fd98f1597.jpg",
+    weight: "5 kg",
+    name: "arroz branco tio jorge",
+    price: "25,00",
+  },
+  {
+    id: 23,
+    discount: 18,
+    url: "https://megag.com.br/v21/wp-content/uploads/2024/03/15288.jpgg",
+    url2: "https://i.pinimg.com/736x/f6/49/ea/f649ea6e0f7b6ad1ed26d25fa5ff0bf6.jpg",
+    weight: "1kg",
+    name: "Bife Bovino Ancho",
+    price: "78,00",
+  },
+  {
+    id: 21,
+    discount: 30,
+    url: "https://images.tcdn.com.br/img/img_prod/887622/refrigerante_fanta_laranja_lt_350ml_333_1_20201110145812.jpg",
+    url2: "https://i.pinimg.com/736x/03/a4/75/03a475aaf5e64c564e7906a14c11a477.jpg",
+    weight: "350 ml",
+    name: "Refrigerante fanta laranja",
+    price: "2,99",
+  },
+];
+
+export function consultarIds() {
+  promo_products.forEach((product) => {
+    const nameStart = product.name.substring(0, 15).toLowerCase();
+
+    AnnouncementProducts.forEach((el, index) => {
+      const nameOnAdd = el.name.substring(0, 15).toLowerCase();
+      if (nameStart === nameOnAdd) {
+        console.log(`Produto: "${product.name}: ${product.id}"`);
+      }
+    });
+  });
+}

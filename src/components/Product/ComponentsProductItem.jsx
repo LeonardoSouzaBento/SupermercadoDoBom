@@ -12,14 +12,16 @@ export const PaiProdStyled = styled.div`
   overflow: hidden;
   border-radius: 8px;
 
-  ${(props) => props.$variant == "cart" && css`
-    border: 1px solid rgba(41, 46, 117, 0.3);
-    border-radius: 4px;
+  ${(props) =>
+    props.$variant == "cart" &&
+    css`
+      border: 1px solid rgba(41, 46, 117, 0.3);
+      border-radius: 4px;
 
-    @media screen and (max-width: 768px) {
-      border-radius: 8px;
-    }
-  `};
+      @media screen and (max-width: 768px) {
+        border-radius: 8px;
+      }
+    `};
 
   //paisagem
   @media screen and (max-width: 385px) {
@@ -47,6 +49,36 @@ export const PaiProdStyled = styled.div`
     height: 177px;
     ${(props) => props.$variant == "cart" && "border-radius: 4px;"};
   }
+
+  ${(props) =>
+    props.$variant === "announcement" &&
+    css`
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      z-index: 2;
+
+      @media screen and (max-width: 385px) {
+        max-width: none;
+        max-height: none;
+      }
+      @media screen and (min-width: 385px) and (max-width: 992px) {
+        max-width: none;
+        max-height: none;
+        min-height: none;
+        max-height: none;
+      }
+      //paisagem
+      @media screen and (min-width: 993px) {
+        min-width: none;
+        max-width: none;
+        height: 100%;
+      }
+    `}
 `;
 
 //Descrição da Oferta: nome, desconto e peso
@@ -78,6 +110,8 @@ export const DescOfertaStyled = styled.div`
     width: 130px;
     padding-right: 0px;
   }
+  ${(props) =>
+    props.$variant === "announcement" && "display: none !important;"};
 `;
 
 export const DivNomeStyled = styled.div`
@@ -235,6 +269,17 @@ export const DivOfertaStyled = styled.div`
     height: 54%;
     width: 100%;
   }
+
+  ${(props) =>
+    props.$variant === "announcement" &&
+    css`
+      width: 100%;
+      height: 100%;
+      @media screen and (min-width: 385px) and (max-width: 992px) {
+        width: 100%;
+        height: 100%;
+      }
+    `}
 `;
 
 export const PaiImgOfertaStyled = styled.div`
@@ -249,6 +294,14 @@ export const PaiImgOfertaStyled = styled.div`
     display: flex;
     align-items: center;
   }
+
+  ${(props) =>
+    props.$variant === "announcement" &&
+    css`
+      @media screen and (min-width: 993px) {
+        display: block;
+      }
+    `}
 `;
 
 export const ImgOfertaStyed = styled.img`
@@ -264,6 +317,18 @@ export const ImgOfertaStyed = styled.img`
     height: auto;
     padding: 4px;
   }
+
+  ${(props) =>
+    props.$variant === "announcement" &&
+    css`
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+
+      @media screen and (min-width: 993px) {
+        height: 100%;
+      }
+    `}
 `;
 
 export const DivOffStyled = styled.div`
@@ -277,8 +342,10 @@ export const DivOffStyled = styled.div`
   align-items: center;
   padding: 0px 8px;
   padding-bottom: 1px;
-  background-color: #D5343A;
+  background-color: #d5343a;
   border-radius: 12px;
+
+  ${(props) => props.$variant === "announcement" && "display: none;"};
 `;
 
 export const POffStyled = styled.p`
@@ -307,7 +374,7 @@ export const DivAddStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #D5343A;
+  background-color: #d5343a;
   border-radius: 16px;
   cursor: pointer;
 
@@ -315,7 +382,9 @@ export const DivAddStyled = styled.div`
     right: 12px;
     bottom: 0px;
   }
-  ${(props) => props.$variant === "similarList" && "display: none;"}
+  ${(props) =>
+    (props.$variant === "similarList" || props.$variant === "announcement") &&
+    "display: none;"}
 `;
 
 export const SpanMoreStyled = styled.span`
@@ -336,7 +405,7 @@ export const SpanFewerStyled = styled(SpanMoreStyled)`
 export const DivQuantStyled = styled.div`
   width: 90%;
   height: 32px;
-  background-color: #D5343A;
+  background-color: #d5343a;
   display: ${(props) => (props.$display ? "flex" : "none")};
   justify-content: space-between;
   border-radius: 8px;
@@ -354,7 +423,9 @@ export const DivQuantStyled = styled.div`
     bottom: 0px;
   }
   transition: opacity 0.4s ease;
-  ${(props) => props.$variant === "similarList" && "display: none;"}
+  ${(props) =>
+    (props.$variant === "similarList" || props.$variant === "announcement") &&
+    "display: none;"}
 `;
 
 export const DivButtonsStyled = styled.div`
