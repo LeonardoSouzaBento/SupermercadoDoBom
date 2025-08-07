@@ -21,14 +21,19 @@ export const VisibilityProvider = ({ children }) => {
     return stored ? JSON.parse(stored) : true;
   });
 
-  useEffect(() => {
-    if (noSkipLogin === false) {
-      const stored = localStorage.getItem("skipLogin");
-      if (stored !== "false") {
-        localStorage.setItem("skipLogin", JSON.stringify(false));
-      }
-    }
-  }, [noSkipLogin]);
+  const [seeLogin, setSeeLogin] = useState(() => {
+    const stored = localStorage.getItem("skipLogin");
+    return stored ? JSON.parse(stored) : true;
+  });
+
+  // useEffect(() => {
+  //   if (noSkipLogin === false) {
+  //     const stored = localStorage.getItem("skipLogin");
+  //     if (stored !== "false") {
+  //       localStorage.setItem("skipLogin", JSON.stringify(false));
+  //     }
+  //   }
+  // }, [noSkipLogin]);
 
   const [preventClick, setPreventClick] = useState(false);
   const [seeFeedback, setSeeFeedback] = useState(false);
@@ -36,7 +41,7 @@ export const VisibilityProvider = ({ children }) => {
   const [dataProductFull, setDataProductFull] = useState(null);
   const [viewProductInFull, setViewProductInFull] = useState(false);
   const [updatedProduct, setUpdatedProduct] = useState(0);
-  
+
   return (
     <VisibilityContext.Provider
       value={{
@@ -54,6 +59,8 @@ export const VisibilityProvider = ({ children }) => {
         setViewProductInFull,
         updatedProduct,
         setUpdatedProduct,
+        seeLogin,
+        setSeeLogin,
       }}
     >
       {children}

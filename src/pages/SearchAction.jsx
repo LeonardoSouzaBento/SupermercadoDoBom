@@ -15,17 +15,6 @@ const DivStyled = styled.div`
   opacity: ${(props) => props.$opacityState};
   transition: opacity 0.2s ease;
   position: relative;
-
-  /* &::after {
-    content: "";
-    width: 100%;
-    height: 16px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #383d6aff;
-    z-index: 1;
-  } */
 `;
 
 const SearchAction = () => {

@@ -59,7 +59,12 @@ const Header = ({ viewOptions, setViewOptions, setOpacityState, onHome }) => {
         </DivMoreOptionsStyled>
       </ContainerOptionsStyled>
 
-      {viewOptions && <Options setOpacityState={setOpacityState} />}
+      {viewOptions && (
+        <Options
+          setOpacityState={setOpacityState}
+          setViewOptions={setViewOptions}
+        />
+      )}
     </HeaderStyled>
   );
 };

@@ -81,9 +81,11 @@ const ImgStyled = styled.img`
   border-radius: 16px;
   object-position: center;
   position: relative;
-  ${(props) => props.$hue && css`
-    filter: saturate(1.2) brightness(1.05) contrast(1.05);
-  `}
+  ${(props) =>
+    props.$hue &&
+    css`
+      filter: saturate(1.2) brightness(1.05) contrast(1.05);
+    `}
 `;
 
 const previousWork = [
@@ -112,11 +114,25 @@ const AboutMe = () => {
       <H1Styled>{greeting}</H1Styled>
       <PStyled $moreWidth={true}>
         Meu nome é <strong>Leonardo Souza Bento. </strong>
-        Estou cursando Engenharia de Software desde março de 2023. Estou
-        procurando um trabalho como desenvolvedor front-end junior (apenas
-        trabalho remoto).
+        Estou procurando um trabalho como desenvolvedor front-end junior
+        (preferencialmente trabalho remoto). Venho de familia pobre e vivo numa
+        cidade do interior da Bahia, por isso peço essa oportunidade. O curso de
+        Engenharia de Software que faço desde março de 2023 me confere
+        conhecimentos basilares e me habilita a vagas de estágio, e esse site,
+        mostra meu conhecimento em programação.
+      </PStyled>
+      <br />
+      <H2Styled>Conhecimentos</H2Styled>
+      <PStyled>
+        React • StyledComponents • HTML • CSS • Javascript
+        <br />
       </PStyled>
 
+      <PStyled $mb={true}>
+        Typescript • Express • Firebase • Redux • Tailwind <br /> (Estou
+        trabalhando no BackEnd do site nesse momento — para esclarecer, o
+        projeto é fictício)
+      </PStyled>
       <br />
       <H2Styled>Contato</H2Styled>
 
@@ -124,20 +140,6 @@ const AboutMe = () => {
         Celular: 34 98412 5832 <br />
         Cidade: Frutal (MG) <br />
         Email: bentosouzaleonardo@gmail.com <br />
-      </PStyled>
-
-      <br />
-
-      <H2Styled>Conhecimentos futuros</H2Styled>
-      <PStyled $mb={true}>
-        Redux • Tailwind • Typescript • Express • Firebase
-        <br />
-      </PStyled>
-
-      <H2Styled>Conhecimentos atuais</H2Styled>
-      <PStyled>
-        React • StyledComponents • HTML • CSS • Javascript
-        <br />
       </PStyled>
       <br />
       <H2Styled $cv={true}>Historico proffisional (relacionado)</H2Styled>

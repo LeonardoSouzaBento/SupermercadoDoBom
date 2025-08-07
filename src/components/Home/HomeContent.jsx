@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import styled from "styled-components";
 import { CartContext } from "../../contexts/CartContext";
-import {VisibilityContext} from "../../contexts/VisibilityContext";
+import { VisibilityContext } from "../../contexts/VisibilityContext";
 import ProductInFull from "../Product/ProductInFull";
 
 const Main = styled.main`
@@ -23,7 +23,7 @@ const Main = styled.main`
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(to bottom, #383d6a, #ECF0F5);
+    background: linear-gradient(to bottom, #383d6a, #ecf0f5);
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -33,7 +33,7 @@ const Main = styled.main`
 
 function HomeContent() {
   const [viewOptions, setViewOptions] = useState(false);
-  const { noSkipLogin, setNoSkipLogin, viewProductInFull } =
+  const { seeLogin, setSeeLogin, viewProductInFull } =
     useContext(VisibilityContext);
   const { currentCategory } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
@@ -45,6 +45,8 @@ function HomeContent() {
   useEffect(() => {
     setTimeout(() => {
       setOpacityState(1);
+      // setSeeLogin(true);
+      console.log(seeLogin);
     }, 300);
 
     //resize para avisar mudanças de largura
@@ -102,13 +104,13 @@ function HomeContent() {
 
   return (
     <div ref={divRef}>
-      {noSkipLogin && (
-        <Login noSkipLogin={noSkipLogin} setNoSkipLogin={setNoSkipLogin} />
+      {seeLogin && (
+        <Login setSeeLogin={setSeeLogin} />
       )}
 
       <div
         style={{
-          opacity: !noSkipLogin ? opacityState : 1,
+          opacity: !seeLogin ? opacityState : 1,
           transition: "opacity 0.3s ease",
         }}
       >

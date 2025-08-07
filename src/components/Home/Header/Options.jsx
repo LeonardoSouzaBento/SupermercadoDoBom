@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { VisibilityContext } from "../../../contexts/VisibilityContext";
+import { getAuth, signOut } from "firebase/auth";
 
 export const ContainerStyled = styled.div`
   width: auto;
@@ -100,13 +102,53 @@ export const SpanOptionsStyled = styled.span`
 `;
 
 const contents = [
+  { p: "Sobre o site", icon: "description", navigateTo: "sobre-o-site" },
   { p: "Sobre o autor", icon: "person_search", navigateTo: "sobre-mim" },
   { p: "Deixar Comentário", icon: "add_comment", navigateTo: "comentar" },
-  { p: "Sobre o site", icon: "description", navigateTo: "sobre-o-site" },
+  { p: "Sair do site", icon: "logout" },
 ];
+// const loginContent = { p: "Fazer login no site", icon: "login" };
 
-const Options = ({ setOpacityState }) => {
+const Options = ({ setOpacityState, setViewOptions }) => {
   const navigate = useNavigate();
+  const { noSkipLogin, setNoSkipLogin, setSeeLogin } =
+    useContext(VisibilityContext);
+
+  const updateLogoutIcon = useCallback(() => {
+    if (noSkipLogin === true) {
+      contents[3].p = "Fazer login no site";
+      contents[3].icon = "login";
+    } else {
+      contents[3].p = "Sair do site";
+      contents[3].icon = "logout";
+    }
+  }, [noSkipLogin]);
+
+  function handleLoginOrLogout() {
+    function operation() {
+      setNoSkipLogin(true);
+      setSeeLogin(true);
+      setViewOptions(false);
+    }
+
+    if (noSkipLogin === false) {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          console.log("Usuário deslogado com sucesso");
+          operation();
+          // Aqui você pode, por exemplo:
+          // - limpar estados globais
+          // - redirecionar para a tela de login
+          // - esconder seções privadas
+        })
+        .catch((error) => {
+          console.error("Erro ao deslogar:", error);
+        });
+    } else {
+      operation();
+    }
+  }
 
   const [viewNameOption, setViewNameOption] = useState(null);
   const [numberClicks, setNumberClicks] = useState([0, 0, 0]);
@@ -116,18 +158,26 @@ const Options = ({ setOpacityState }) => {
       return;
     }
     if (e.pointerType !== "touch") {
-      const option = contents[index].navigateTo;
-      setOpacityState(0);
-      setTimeout(() => {
-        navigate(`/secao-mais-opcoes?option=${option}`);
-      }, 200);
+      if (index !== 3) {
+        const option = contents[index].navigateTo;
+        setOpacityState(0);
+        setTimeout(() => {
+          navigate(`/secao-mais-opcoes?option=${option}`);
+        }, 200);
+      } else {
+        handleLoginOrLogout();
+      }
     } else {
-      setViewNameOption(index);
-      setNumberClicks(
-        numberClicks.map((_, i) => {
-          return index == i ? numberClicks[index] + 1 : 0;
-        })
-      );
+      if (index !== 3) {
+        setViewNameOption(index);
+        setNumberClicks(
+          numberClicks.map((_, i) => {
+            return index == i ? numberClicks[index] + 1 : 0;
+          })
+        );
+      } else {
+        handleLoginOrLogout();
+      }
     }
   }
 
@@ -141,7 +191,11 @@ const Options = ({ setOpacityState }) => {
         navigate(`/secao-mais-opcoes?option=${option}`);
       }, 200);
     }
-  }, [numberClicks]);
+  }, [numberClicks, navigate, setOpacityState]);
+
+  useEffect(() => {
+    updateLogoutIcon();
+  }, [updateLogoutIcon]);
 
   return (
     <ContainerStyled>

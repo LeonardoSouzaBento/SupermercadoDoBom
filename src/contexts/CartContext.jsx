@@ -11,8 +11,6 @@ import {
   productsCatId8,
   productsCatId9,
 } from "../data/productList";
-import { consultarIds } from "../data/productList";
-consultarIds();
 
 export const CartContext = createContext();
 
