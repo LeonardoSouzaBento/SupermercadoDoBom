@@ -15,8 +15,6 @@ import {
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 /**/
 const firebaseConfig = {
