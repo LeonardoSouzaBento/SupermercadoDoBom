@@ -17,13 +17,13 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDs56ODejOeDx5xYvoBj0_9OhuEV4uBxl0",
-  authDomain: "api-supermercado-do-bom.firebaseapp.com",
-  projectId: "api-supermercado-do-bom",
-  storageBucket: "api-supermercado-do-bom.firebasestorage.app",
-  messagingSenderId: "981543642842",
-  appId: "1:981543642842:web:9b8ac9f046e796d2b367e3",
-  measurementId: "G-SYCDGMXT6G",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
@@ -115,3 +115,4 @@ const Login = ({ setSeeLogin }) => {
 };
 
 export default Login;
+
