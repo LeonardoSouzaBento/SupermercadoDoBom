@@ -13,8 +13,10 @@ import {
   ImgGoogleStyled,
 } from "./ComponentsLogin";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
-// import { initializeApp } from "firebase/app";
-// import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
