@@ -1,14 +1,15 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 import Header from "./Header/Header";
+import OptionsSection from "./OptionsSection/OptionsSection";
 import AnnouncementSection from "./AnnoucementSection/AnnouncementSection";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import ProductListHome from "../Product/ProductListHome";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
-import styled from "styled-components";
+import ProductInFull from "../Product/ProductInFull";
 import { CartContext } from "../../contexts/CartContext";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
-import ProductInFull from "../Product/ProductInFull";
 
 const Main = styled.main`
   max-width: 1390px;
@@ -46,7 +47,6 @@ function HomeContent() {
     setTimeout(() => {
       setOpacityState(1);
       // setSeeLogin(true);
-      console.log(seeLogin);
     }, 300);
 
     //resize para avisar mudanças de largura
@@ -75,37 +75,14 @@ function HomeContent() {
     };
   }, []);
 
-  //Esconder mais opções com toque fora
-  useEffect(() => {
-    const handlePointerUp = (e) => {
-      if (e.target.closest("[data-ignore-click]")) return;
-      setViewOptions(false);
-    };
-    const handleScroll = () => {
-      setViewOptions(false);
-    };
-    const divElement = divRef.current;
-
-    if (viewOptions && divElement) {
-      divElement.addEventListener("pointerup", handlePointerUp);
-      divElement.addEventListener("wheel", handleScroll);
-    } else if (divElement) {
-      divElement.removeEventListener("pointerup", handlePointerUp);
-      divElement.removeEventListener("wheel", handleScroll);
-    }
-
-    return () => {
-      if (divElement) {
-        divElement.removeEventListener("pointerup", handlePointerUp);
-        divElement.removeEventListener("wheel", handleScroll);
-      }
-    };
-  }, [viewOptions, setViewOptions]);
-
   return (
     <div ref={divRef}>
-      {seeLogin && (
-        <Login setSeeLogin={setSeeLogin} />
+      {seeLogin && <Login setSeeLogin={setSeeLogin} />}
+
+      {viewOptions && (
+        <OptionsSection
+          setViewOptions={setViewOptions}
+        />
       )}
 
       <div
@@ -114,12 +91,7 @@ function HomeContent() {
           transition: "opacity 0.3s ease",
         }}
       >
-        <Header
-          viewOptions={viewOptions}
-          setViewOptions={setViewOptions}
-          setOpacityState={setOpacityState}
-          onHome={true}
-        />
+        <Header setViewOptions={setViewOptions} onHome={true} />
         <Main>
           <AnnouncementSection wasResize={wasResize} />
           <CategoriesSection wasResize={wasResize} />

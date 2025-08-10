@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useContext, useEffect, useCallback } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { CartContext } from "../../contexts/CartContext";
 import ProductItem from "./ProductItem";
 import { useScrollX } from "../../hooks/useScrollX";

@@ -185,6 +185,9 @@ export const DivMoreOptionsStyled = styled.div`
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
   transition: all 100ms linear;
   border-radius: 16px;
+  &:hover{
+    background-color: hsla(358, 71%, 48%, 1.00)
+  }
 
   @media screen and (max-width: 768px) {
     position: absolute;

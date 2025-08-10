@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const DivBodyStyled = styled.div`
   width: 100vw;
@@ -26,7 +26,7 @@ export const MainDivStyled = styled.div`
   width: 100%;
   max-width: 416px;
   margin-bottom: 4px;
-  padding-bottom: 25px;
+  padding-bottom: 27px;
   box-sizing: border-box;
   border-radius: 16px;
   background-color: white;
@@ -61,13 +61,10 @@ export const DivTitleStyled = styled.div`
 
 export const H1Styled = styled.h1`
   text-align: center;
-  font-size: 24px;
-  user-select: none;
   font-family: "Lato", sans-serif;
+  user-select: none;
   font-weight: 400;
   font-size: 1.34em;
-  ${(props) => props.$alert && "margin-top: 12px;"}
-  ${(props) => props.$alert && "color: rgba(191, 28, 28, 1);"}
 
   @media screen and (max-width: 385px) {
     font-size: 1.27em;
@@ -100,6 +97,7 @@ export const DivSpanCloseStyled = styled.div`
   right: 0;
   color: white;
   cursor: pointer;
+  transition: background-color 0.15s ease;
   &:hover {
     background-color: hsl(234, 30.9%, 28%);
   }
@@ -111,9 +109,10 @@ export const SpanCloseStyled = styled.span`
 `;
 
 // Botão de localização
-export const LocationButtonStyled = styled.button`
+export const ButtonStyled = styled.button`
   width: calc(100% - 48px);
   margin: auto;
+  margin-bottom: 20px;
   height: 48px;
   padding: 0px 16px;
   padding-bottom: 2px;
@@ -121,26 +120,50 @@ export const LocationButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 1.12em;
-  font-weight: 400;
+  font-weight: 500;
   text-align: center;
-  background-color: #4b6b39;
-  color: white;
+  color: hsla(136, 57%, 89%, 1);
+  transition: background-color 0.15s ease;
 
+  background-color: #396b46;
   &:hover {
-    background-color: #456334;
+    background-color: hsla(136, 31%, 26%, 1);
   }
+  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
+    2px 0px 3px -2px rgba(41, 46, 117, 0.13),
+    -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
+
+  ${(props) =>
+    props.$variant === "digitarTudo" &&
+    css`
+      margin-bottom: 0px;
+      box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
+        2px 0px 3px -2px rgba(41, 46, 117, 0.13),
+        -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
+    `}
+
+  ${(props) =>
+    (props.$variant === "digitarTudo" || props.$variant === "voltar") &&
+    css`
+      background-color: hsla(210, 38%, 96%, 1);
+      color: hsla(234, 31%, 12%, 1);
+      &:hover {
+        background-color: hsla(210, 38%, 91%, 1);
+      }
+    `};
+  ${(props) => props.$variant === "voltar" && "margin-bottom: 12.5px;"};
 
   &:focus {
     outline: none;
   }
   @media screen and (max-width: 385px) {
     font-size: 1.15em;
+    width: calc(100% - 36px);
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.18em;
@@ -157,66 +180,33 @@ export const LocationButtonStyled = styled.button`
   @media screen and (min-width: 1201px) {
     font-size: 1.207em;
   }
-`;
-
-export const DivOrStyled = styled.div`
-  height: 56px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const POrStyled = styled.p`
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-
-  @media screen and (max-width: 385px) {
-    font-size: 1.15em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.205em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.206em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.207em;
-  }
-`;
-
-export const SubDivStyled = styled.div`
-  width: calc(100% - 48px);
-  margin: auto;
-  overflow: hidden;
-  margin-bottom: 20px;
 `;
 
 // Estilo dos inputs
 export const InputStyled = styled.input`
-  width: 100%;
+  width: calc(100% - 48px);
+  margin: auto;
   display: block;
-  height: 46px;
+  height: 48px;
   box-sizing: border-box;
+  padding-left: 12px;
   padding-bottom: 2px;
   border: none;
-  border-bottom: 1px solid #e9eff5;
+  border-bottom: 1px solid hsla(210, 38%, 84%, 1);
+  border-top: none;
   font-size: 1.06em;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   color: black;
   background-color: transparent;
+  box-shadow: 2px 0px 3px -2px rgba(41, 46, 117, 0.26),
+    -2px 0px 3px -2px rgba(41, 46, 117, 0.26);
   &:focus {
     outline: none;
   }
 
-  @media screen and (max-width: 374px) {
+  @media screen and (max-width: 375px) {
+    width: calc(100% - 36px);
     font-size: 1.15em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -234,20 +224,116 @@ export const InputStyled = styled.input`
   @media screen and (min-width: 1201px) {
     font-size: 1.18em;
   }
+  ${(props) =>
+    props.$firstInput &&
+    css`
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0px -2px 4px -2px rgba(41, 46, 117, 0.26),
+        2px 0px 3px -2px rgba(41, 46, 117, 0.13),
+        -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
+    `}
+  ${(props) =>
+    props.$lastInput &&
+    css`
+      border-radius: 0 0 8px 8px;
+      border-bottom: none;
+      padding-bottom: 2px;
+      margin-bottom: 18px;
+      box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
+        2px 0px 3px -2px rgba(41, 46, 117, 0.13),
+        -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
+    `}
+`;
+
+export const DivCepInputStyled = styled.div`
+  width: calc(100% - 48px);
+  height: 48px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  margin: auto;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
+    2px 0px 3px -2px rgba(41, 46, 117, 0.13),
+    -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
+
+  @media screen and (max-width: 385px) {
+    width: calc(100% - 36px);
+  }
 `;
 
 export const CepInputStyled = styled(InputStyled)`
-  width: calc(100% - 48px);
-  height: 48px;
-  margin: auto;
+  min-width: none;
+  width: 150px;
+  height: 100%;
+  margin: 0;
+  margin-bottom: 2px;
   padding-bottom: 0px;
-  padding-left: 16px;
-  background-color: #e9eff5;
+  padding-left: 0px;
+  background-color: white;
+  border: none;
   border-bottom: none;
-  border-radius: 8px 8px 0 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  box-shadow: none;
+
+  @media screen and (max-width: 385px) {
+    font-size: 1.15em;
+    width: 140px;
+  }
+  @media screen and (min-width: 385px) and (max-width: 576px) {
+    font-size: 1.18em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.2em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.205em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.206em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.207em;
+  }
 `;
 
-export const DivCityStyled = styled.div`
+export const PWarnCepStyled = styled.p`
+  min-width: max-content;
+  color: red;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  padding-bottom: 1px;
+  letter-spacing: 0.4px;
+  visibility: ${(props) => (props.$noPassed ? "visibe" : "hidden")};
+  @media screen and (max-width: 375px) {
+    font-size: 1.12em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.15em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.18em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.2em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.23em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.25em;
+  }
+  /* transform: scaleY(1.1);
+  padding-bottom: 2px; */
+`;
+
+export const DivCepErrorStyled = styled.div`
   height: 48px;
   width: calc(100% - 48px);
   box-sizing: border-box;
@@ -257,15 +343,14 @@ export const DivCityStyled = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: #e9eff5;
   border-radius: 0 0 8px 8px;
-  border-top: 1px solid rgba(41, 46, 117, 0.3);
+  box-shadow: 0px 4px 4px 0px #e9eff5;
 `;
 
-export const PCityStyled = styled.p`
+export const PCepErrorStyled = styled.p`
   font-family: "Open Sans", sans-serif;
-  font-weight: 500;
-  /* text-transform: uppercase; */
+  font-weight: 600;
+  color: red;
 
   @media screen and (max-width: 374px) {
     font-size: 1.15em;
@@ -288,13 +373,17 @@ export const PCityStyled = styled.p`
 `;
 
 // Botão de envio
-export const RegisterButtonStyled = styled(LocationButtonStyled)`
+export const RegisterButtonStyled = styled(ButtonStyled)`
   border-radius: 8px;
   margin-bottom: 0px;
-  background-color: #383d6a;
   color: white;
+  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.9),
+    2px 0px 3px -2px rgba(0, 0, 0, 0.6),
+    -2px 0px 3px -2px rgba(0, 0, 0, 0.6);
+  background-color: ${(props) => (props.$enable ? "#383d6a" : "hsla(210, 7%, 62%, 1.00)")};
   &:hover {
-    background-color: hsla(234, 31%, 24%, 1);
+    background-color: ${(props) =>
+      props.$enable ? "hsla(234, 31%, 28%, 1)" : "hsla(210, 7%, 56%, 1.00)"};
   }
 
   @media screen and (max-width: 385px) {
@@ -314,5 +403,12 @@ export const RegisterButtonStyled = styled(LocationButtonStyled)`
   }
   @media screen and (min-width: 1201px) {
     font-size: 1.23em;
+  }
+`;
+
+export const goBackButtonStyled = styled(ButtonStyled)`
+  background-color: hsla(234, 31%, 45%, 1);
+  &:hover {
+    background-color: hsla(234, 31%, 40%, 1);
   }
 `;

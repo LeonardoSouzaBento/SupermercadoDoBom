@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState} from "react";
 import { CartContext } from "../../contexts/CartContext";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -117,7 +117,7 @@ const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
 
-export default function Footer({search}) {
+export default function Footer() {
   const { quantityItens, totalValueFormatted } = useContext(CartContext);
   const navigate = useNavigate();
   const [viewConfirm, setViewConfirm] = useState(false);

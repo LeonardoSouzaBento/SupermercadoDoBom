@@ -180,7 +180,7 @@ const Cart = () => {
     maximumFractionDigits: 2,
   });
 
-  function handleClickContinue(params) {
+  function handleClickContinue() {
     if (falta <= 0) {
       setSeeAddressForm(true);
     } else {
@@ -196,9 +196,9 @@ const Cart = () => {
       <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
         <CartSectionStyed ref={CartSectionRef}>
           <DivHeadStyled>
-            <HHeadStyled>Sua compra</HHeadStyled>
+            <HHeadStyled>Sua Compra</HHeadStyled>
             <DivSpanDeleteStyled
-              onClick={(e) => {
+              onClick={() => {
                 setSeeCancelDialog(true);
                 document.body.style.overflow = "hidden";
               }}
@@ -255,18 +255,18 @@ const Cart = () => {
 
             <DivAllValuesStyled>
               <DivOneValueStyled>
-                <PValueStyled>Valor da compra:</PValueStyled>
+                <PValueStyled>Compra:</PValueStyled>
                 <PValueStyled>R$ {totalValue}</PValueStyled>
               </DivOneValueStyled>
 
               <DivOneValueStyled>
-                <PValueStyled>Valor da entrega:</PValueStyled>
+                <PValueStyled>Entrega:</PValueStyled>
                 <PValueStyled>R$ 4,00</PValueStyled>
               </DivOneValueStyled>
 
               <DivOneValueStyled style={{ borderBottom: "none" }}>
                 <PValueStyled>
-                  <strong>Total </strong>(com entrega):
+                  <strong>Total:</strong>
                 </PValueStyled>
                 <PValueStyled>
                   <strong>R$ {totalFormatted}</strong>

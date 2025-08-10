@@ -858,7 +858,7 @@ export function consultarIds() {
   promo_products.forEach((product) => {
     const nameStart = product.name.substring(0, 15).toLowerCase();
 
-    AnnouncementProducts.forEach((el, index) => {
+    AnnouncementProducts.forEach((el) => {
       const nameOnAdd = el.name.substring(0, 15).toLowerCase();
       if (nameStart === nameOnAdd) {
         console.log(`Produto: "${product.name}: ${product.id}"`);

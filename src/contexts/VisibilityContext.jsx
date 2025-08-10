@@ -42,6 +42,7 @@ export const VisibilityProvider = ({ children }) => {
   const [viewProductInFull, setViewProductInFull] = useState(false);
   const [updatedProduct, setUpdatedProduct] = useState(0);
 
+
   return (
     <VisibilityContext.Provider
       value={{

@@ -347,7 +347,7 @@ export const DivOneValueStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  border-bottom: 1px solid rgba(41, 46, 117, 0.3);
+  border-bottom: 1px solid hsla(213, 31%, 80%, 1.00);
 `;
 
 export const PValueStyled = styled.p`
@@ -384,11 +384,11 @@ export const DivPContinueStyled = styled.div`
   height: 48px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.08s ease;
+  transition: background-color 0.1s ease;
   background-color: ${(props) => (props.$nocontinue ? "#E3E7EC" : "#383d6a")};
   &:hover {
     background-color: ${(props) =>
-      !props.$nocontinue ? "hsla(234, 31%, 28%, 1)" : "#C2C6CA"};
+      !props.$nocontinue ? "hsla(234, 31%, 27%, 1)" : "#C2C6CA"};
   }
 `;
 
@@ -433,11 +433,14 @@ export const DivAddStyled = styled.div`
   box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.5),
     3px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
-
+  transition: all 0.1s ease;
   cursor: pointer;
 
   &:hover {
-    outline: 1px solid rgba(41, 46, 117, 0.3);
+    background-color: rgba(255, 255, 255, 0.73);
+    box-shadow: 0px 3px 3px -1px rgba(41, 46, 117, 0.5),
+    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
+    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   }
   @media screen and (max-width: 385px) {
     width: calc(100% - 36px);

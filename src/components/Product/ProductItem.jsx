@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 import {
@@ -126,7 +126,7 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
 };
 
 function ProductItem({ product, variant }) {
-  const { totalAddedValue, cartProducts, updateProduct, isDraggingRef } =
+  const { totalAddedValue, cartProducts, updateProduct } =
     useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
   const { seeFeedback } = useContext(VisibilityContext);

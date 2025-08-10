@@ -76,16 +76,8 @@ const AnnouncementProducts = [
 ];
 
 function AnnouncementSection({ wasResize }) {
-  const { setLimitAdvertisements, advertisementsRef, isDraggingRef } =
+  const { setLimitAdvertisements, advertisementsRef } =
     useContext(CartContext);
-  const {
-    dataProductFull,
-    setDataProductFull,
-    viewProductInFull,
-    setViewProductInFull,
-    updatedProduct,
-    setUpdatedProduct,
-  } = useContext(VisibilityContext);
 
   useScrollX();
 

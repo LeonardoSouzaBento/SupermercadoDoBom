@@ -67,7 +67,6 @@ const Login = ({ setSeeLogin }) => {
         .then((data) => console.log("Resposta do backend:", data))
         .catch((error) => {
           console.error("Erro ao enviar token para o backend:", error);
-          viewTest();
         });
     } catch (error) {
       // Tratar erros (por exemplo, se o usuário fechar o pop-up)
@@ -75,16 +74,6 @@ const Login = ({ setSeeLogin }) => {
       const errorMessage = error.message;
       console.error("Erro no login com Google:", errorCode, errorMessage);
     }
-  }
-
-  function viewTest() {
-    console.log("Abaixo é o teste");
-    fetch(
-      "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/teste-cors"
-    )
-      .then((res) => res.text())
-      .then((txt) => console.log(txt))
-      .catch(console.error);
   }
 
   return (

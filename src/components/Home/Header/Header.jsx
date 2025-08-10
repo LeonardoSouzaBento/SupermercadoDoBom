@@ -13,18 +13,14 @@ import {
   PStyled,
 } from "./ComponentsHeader";
 import SearchBar from "../../SearchBar/SearchBar";
-import Options from "./Options";
 
-const Header = ({ viewOptions, setViewOptions, setOpacityState, onHome }) => {
+const Header = ({ setViewOptions, onHome }) => {
   function handleClick(e) {
+    e.stopPropagation();
     if (e.button === 2) {
       return;
     }
-    if (viewOptions === false) {
-      setViewOptions(true);
-    } else {
-      setViewOptions(false);
-    }
+    setViewOptions(true);
   }
 
   return (
@@ -48,23 +44,12 @@ const Header = ({ viewOptions, setViewOptions, setOpacityState, onHome }) => {
 
       <ContainerOptionsStyled>
         <DivMoreOptionsStyled
-          data-ignore-click
           onPointerDown={handleClick}
-          onMouseEnter={() => {
-            setViewOptions(true);
-          }}
         >
           <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
           <PStyled>Mais opções</PStyled>
         </DivMoreOptionsStyled>
       </ContainerOptionsStyled>
-
-      {viewOptions && (
-        <Options
-          setOpacityState={setOpacityState}
-          setViewOptions={setViewOptions}
-        />
-      )}
     </HeaderStyled>
   );
 };

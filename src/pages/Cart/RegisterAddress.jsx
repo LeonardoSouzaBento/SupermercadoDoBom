@@ -2,28 +2,27 @@ import { useState, useEffect } from "react";
 import {
   DivBodyStyled,
   MainDivStyled,
-  SubDivStyled,
   DivSpanCloseStyled,
   SpanCloseStyled,
   DivTitleStyled,
   H1Styled,
-  LocationButtonStyled,
-  DivOrStyled,
-  POrStyled,
+  ButtonStyled,
   InputStyled,
+  DivCepInputStyled,
   CepInputStyled,
-  DivCityStyled,
-  PCityStyled,
+  PWarnCepStyled,
+  DivCepErrorStyled,
+  PCepErrorStyled,
   RegisterButtonStyled,
 } from "./ComponentsRegAddress";
-import { useNavigate } from "react-router-dom";
 
 const RegisterAddress = ({ setSeeAddressForm }) => {
-  const navigate = useNavigate();
   const [opacityState, setOpacityState] = useState(0);
-  const [disable, setDisable] = useState(true);
-  const [canReviewAddress, setCanReviewAddress] = useState(false);
-
+  const [cepState, setCepState] = useState("Digite seu CEP");
+  const [clickOnCep, setClickOnCep] = useState(false);
+  const [cepPassed, setCepPassed] = useState(false);
+  const [cepCathError, setCepCathError] = useState("");
+  const [addressComplete, setAddressComplete] = useState(false);
   const [formData, setFormData] = useState({
     rua: "",
     numero: "",
@@ -31,13 +30,48 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     bairro: "",
     cidade: "",
     estado: "",
-    cep: "Digite seu CEP",
   });
 
   function handleLocationClick() {
     console.log("Sim");
   }
 
+  function handleClickOnCep() {
+    if (clickOnCep === false) {
+      setClickOnCep(true);
+      setCepState("");
+    }
+  }
+
+  function handleChangeCepInput(e) {
+    let value = e.target.value;
+    value = value.replace(/\D/g, "");
+
+    // Limitar 8 dígitos
+    if (value.length > 8) {
+      value = value.slice(0, 8);
+    }
+    //Formatar
+    if (value.length > 5) {
+      value = value.slice(0, 5) + "-" + value.slice(5);
+    }
+    setCepState(value);
+  }
+
+  //chamar API viaCEP
+  async function getAddresByCep(cep) {
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
+    try {
+      const response = await fetch(url); //requisição HTTP
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Erro ao buscar o CEP:", error);
+      return null;
+    }
+  }
+
+  //para preenchimento manual
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -45,7 +79,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     });
   };
 
-  function handleSubmit(params) {
+  function handleSubmit() {
     console.log("Sim");
   }
 
@@ -54,6 +88,49 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       setOpacityState(1);
     }, 200);
   }, []);
+
+  //pegar endereço pelo cep
+  useEffect(() => {
+    if (cepState.length === 9) {
+      let cepSemHifen = cepState.replace("-", "");
+
+      getAddresByCep(cepSemHifen)
+        .then((endereco) => {
+          if (endereco && !endereco.erro) {
+            setFormData({
+              rua: endereco.logradouro,
+              numero: "",
+              complemento: "",
+              bairro: endereco.bairro,
+              cidade: endereco.localidade,
+              estado: endereco.uf,
+            });
+            setCepPassed(true);
+          } else {
+            setCepPassed(false);
+            setCepCathError("");
+          }
+        })
+        .catch((err) => {
+          setCepCathError("Erro ao pesquisar CEP:" + err);
+        });
+    }
+  }, [cepState]);
+
+  //verificar completude do endereço
+  useEffect(() => {
+    const isFormValid = Object.keys(formData).every((key) => {
+      if (key === "complemento" || key === "cep") {
+        return true;
+      }
+      return formData[key].trim() !== "";
+    });
+    if (isFormValid) {
+      setAddressComplete(true);
+    } else {
+      setAddressComplete(false);
+    }
+  }, [formData]);
 
   return (
     <DivBodyStyled $opacity={opacityState}>
@@ -75,45 +152,50 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
           </DivSpanCloseStyled>
         </DivTitleStyled>
 
-        {canReviewAddress === false && (
+        {cepPassed === false && (
           <div>
-            <LocationButtonStyled onClick={handleLocationClick}>
+            <ButtonStyled onClick={handleLocationClick}>
               Pegue minha localização
-            </LocationButtonStyled>
-
-            <DivOrStyled>
-              <POrStyled>Ou</POrStyled>
-            </DivOrStyled>
-
+            </ButtonStyled>
             <form onSubmit={handleSubmit}>
-              <CepInputStyled
-                type="text"
-                name="cep"
-                placeholder="Digite seu CEP"
-                value={formData.cep}
-                onChange={handleChange}
-              />
-              <DivCityStyled>
-                <PCityStyled>...</PCityStyled>
-              </DivCityStyled>
-              <RegisterButtonStyled
-                // type="submit"
-                $disable={disable}
-                onClick={(e) => {
-                  e.preventDefault();
-                  console.log("Sim");
+              <DivCepInputStyled>
+                <CepInputStyled
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  name="cep"
+                  maxLength={9}
+                  placeholder="Digite seu CEP"
+                  value={cepState}
+                  onChange={handleChangeCepInput}
+                  onClick={clickOnCep ? null : handleClickOnCep}
+                />
+                <PWarnCepStyled $noPassed={(cepPassed === false && cepState.length === 9)}>
+                  CEP INVÁLIDO
+                </PWarnCepStyled>
+              </DivCepInputStyled>
+              <ButtonStyled
+                $variant={"digitarTudo"}
+                onClick={() => {
+                  setCepPassed(true);
                 }}
               >
-                {disable ? "Continuar" : "Salvar Endereço"}
-              </RegisterButtonStyled>
+                Digitar todos os dados
+              </ButtonStyled>
+              {cepCathError != "" && (
+                <DivCepErrorStyled>
+                  <PCepErrorStyled>{cepCathError}</PCepErrorStyled>
+                </DivCepErrorStyled>
+              )}
             </form>
           </div>
         )}
-        
-        <H1Styled $alert={true}>Esse componente ainda será desenvolvido</H1Styled>
 
-        {canReviewAddress && (
-          <SubDivStyled>
+        {cepPassed && (
+          <form
+            autoComplete="off"
+            style={{ marginTop: "-12px", borderRadius: "8px" }}
+          >
             <InputStyled
               type="text"
               name="cidade"
@@ -121,6 +203,8 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               value={formData.cidade}
               required
               onChange={handleChange}
+              $firstInput={true}
+              autoComplete="off"
             />
             <InputStyled
               type="text"
@@ -129,6 +213,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               value={formData.estado}
               required
               onChange={handleChange}
+              autoComplete="off"
             />
             <InputStyled
               type="text"
@@ -137,6 +222,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               value={formData.rua}
               required
               maxLength={40}
+              autoComplete="off"
               onChange={handleChange}
             />
             <InputStyled
@@ -146,6 +232,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               value={formData.numero}
               required
               maxLength={10}
+              autoComplete="off"
               onChange={handleChange}
             />
             <InputStyled
@@ -153,8 +240,8 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               name="complemento"
               placeholder="Complemento"
               value={formData.complemento}
-              required
               maxLength={50}
+              autoComplete="off"
               onChange={handleChange}
             />
             <InputStyled
@@ -164,10 +251,29 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               value={formData.bairro}
               required
               maxLength={50}
+              autoComplete="off"
               onChange={handleChange}
-              style={{ paddingBottom: "2px", borderBottom: "none" }}
+              $lastInput={true}
             />
-          </SubDivStyled>
+            <ButtonStyled
+              $variant={"voltar"}
+              onClick={() => {
+                setCepPassed(false);
+              }}
+            >
+              Voltar
+            </ButtonStyled>
+            <RegisterButtonStyled
+              $enable={addressComplete && cepPassed}
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log("Sim");
+              }}
+            >
+              Salvar endereço
+            </RegisterButtonStyled>
+          </form>
         )}
       </MainDivStyled>
     </DivBodyStyled>

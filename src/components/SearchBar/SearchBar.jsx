@@ -52,7 +52,7 @@ function animateInputMessage(message, setState) {
   let index = 0;
 
   const writeInterval = setInterval(() => {
-    setState((prev) => message.slice(0, index + 1));
+    setState(() => message.slice(0, index + 1));
     index++;
 
     if (index >= message.length) {
@@ -303,13 +303,7 @@ function SearchBar({ copy, onHome }) {
           ref={inputRef}
           autoComplete="off"
         />
-        <DivSpanStyled
-          $copy={copy}
-          data-span
-          onPointerDown={(e) => {
-            handleClickSearch();
-          }}
-        >
+        <DivSpanStyled $copy={copy} data-span onPointerDown={handleClickSearch}>
           <SpanSearchStyled className="material-symbols-rounded">
             search
           </SpanSearchStyled>
