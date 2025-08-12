@@ -18,6 +18,8 @@ import {
   RegisterButtonStyled,
 } from "./ComponentsRegAddress";
 import { PValueStyled } from "../Cart/ComponentsCart";
+import { getAuth } from "firebase/auth";
+import Login from "../../components/Login/Login";
 
 async function checkLocationPermission() {
   if (!navigator.permissions) {
@@ -65,6 +67,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     lng: "",
   });
   const [coordsState, setCoordsState] = useState({ lat: "", lng: "" });
+  const [seeLogin, setSeeLogin] = useState(true);
 
   function setLocationStatus({
     permissionMsg = false,
@@ -135,16 +138,30 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       const coords = await getCoordinates();
       setCoordsState({ lat: coords.lat, lng: coords.lng });
       setLocationStatus({ getting: true });
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const token = user ? await user.getIdToken() : null;
+      if (token === null) {
+        setLocationStatus({ getting: false, opacity: 0 });
+        setSeeLogin(true);
+        return;
+      }
 
       const resp = await fetch(
         "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/get-address",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            ...(token && { Authorization: `Bearer ${token}` }),
+          },
           body: JSON.stringify(coords),
         }
       );
 
+      if (!resp.ok) {
+        throw new Error(`Erro: ${resp.status}`);
+      }
       const dados = await resp.json();
 
       setFormData((prevFormData) => ({
@@ -155,13 +172,8 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
         cidade: dados.cidade,
         estado: dados.estado,
       }));
-
-      if (!resp.ok) {
-        throw new Error(`Erro: ${resp.status}`);
-      } else {
-        setCepPassed(true);
-        setLocationStatus({ opacity: 0, });
-      }
+      setCepPassed(true);
+      setLocationStatus({ opacity: 0 });
     } catch (error) {
       showErrorLocationMessage();
       console.error("Erro ao buscar endereço:", error);
@@ -275,7 +287,12 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
   //verificar completude do endereço
   useEffect(() => {
     const isFormValid = Object.keys(formData).every((key) => {
-      if (key === "complemento" || key === "cep") {
+      if (
+        key === "complemento" ||
+        key === "cep" ||
+        key === "lat" ||
+        key === "lng"
+      ) {
         return true;
       }
       return formData[key].trim() !== "";
@@ -289,6 +306,9 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
 
   return (
     <DivBodyStyled $opacity={opacityState}>
+      {seeLogin && (
+        <Login setSeeLogin={setSeeLogin}/>
+      )}
       <MainDivStyled>
         <DivTitleStyled>
           <H1Styled>Cadastrar endereço</H1Styled>

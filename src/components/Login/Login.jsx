@@ -37,10 +37,8 @@ const Login = ({ setSeeLogin }) => {
     try {
       const result = await signInWithPopup(auth, provider); // Abre tela pop-up
       const user = result.user;
-      
+
       const idToken = await user.getIdToken();
-      setNoSkipLogin(false);
-      setSeeLogin(false);
       fetch(
         "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth/login-google",
         {
@@ -53,6 +51,8 @@ const Login = ({ setSeeLogin }) => {
       )
         .then((response) => {
           if (!response.ok) {
+            setNoSkipLogin(false);
+            setSeeLogin(false);
             throw new Error("Erro no login: " + response.statusText);
           } else {
             setNoSkipLogin(false);
@@ -102,4 +102,3 @@ const Login = ({ setSeeLogin }) => {
 };
 
 export default Login;
-
