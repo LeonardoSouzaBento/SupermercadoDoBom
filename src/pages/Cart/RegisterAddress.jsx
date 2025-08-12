@@ -7,6 +7,8 @@ import {
   DivTitleStyled,
   H1Styled,
   ButtonStyled,
+  DivGPSResultStyled,
+  SpanGpsReturnStyled,
   InputStyled,
   DivCepInputStyled,
   CepInputStyled,
@@ -15,6 +17,30 @@ import {
   PCepErrorStyled,
   RegisterButtonStyled,
 } from "./ComponentsRegAddress";
+import { PValueStyled } from "../Cart/ComponentsCart";
+
+async function checkLocationPermission() {
+  if (!navigator.permissions) {
+    console.warn("API de permissões não suportada nesse navegador.");
+    return null;
+  }
+
+  try {
+    const result = await navigator.permissions.query({ name: "geolocation" });
+
+    if (result.state === "granted") {
+      return "granted";
+    } else if (result.state === "denied") {
+      return "denied";
+    } else if (result.state === "prompt") {
+      console.log("Usuário ainda não decidiu (vai aparecer o pop-up).");
+      return "prompt";
+    }
+  } catch (err) {
+    console.error("Erro ao verificar permissão:", err);
+    return null;
+  }
+}
 
 const RegisterAddress = ({ setSeeAddressForm }) => {
   const [opacityState, setOpacityState] = useState(0);
@@ -23,6 +49,11 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
   const [cepPassed, setCepPassed] = useState(false);
   const [cepCathError, setCepCathError] = useState("");
   const [addressComplete, setAddressComplete] = useState(false);
+  const [gettingAddress, setGettingAddress] = useState(false);
+  const [errorLocationButton, setErrorLocationButton] = useState(false); //testando
+  const [opacityGpsResult, setOpacityGpsResult] = useState(0);
+  const [showPermissionMessage, setShowPermissionMessage] = useState(false);
+  const [waitMessage, setWaitMessage] = useState(false);
   const [formData, setFormData] = useState({
     rua: "",
     numero: "",
@@ -30,12 +61,114 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     bairro: "",
     cidade: "",
     estado: "",
+    lat: "",
+    lng: "",
   });
+  const [coordsState, setCoordsState] = useState({ lat: "", lng: "" });
 
-  function handleLocationClick() {
-    console.log("Sim");
+  function setLocationStatus({
+    permissionMsg = false,
+    waiting = false,
+    getting = false,
+    error = false,
+    opacity = 1,
+  }) {
+    setShowPermissionMessage(permissionMsg);
+    setWaitMessage(waiting);
+    setGettingAddress(getting);
+    setErrorLocationButton(error);
+    setOpacityGpsResult(opacity);
   }
 
+  //mostrar erro ao capturar local
+  function showErrorLocationMessage() {
+    setCepPassed(false);
+    setGettingAddress(false);
+    setErrorLocationButton(true);
+    setTimeout(() => {
+      setOpacityGpsResult(1);
+    }, 70);
+    setTimeout(() => {
+      setOpacityGpsResult(0);
+      setErrorLocationButton(false);
+    }, 4000);
+  }
+
+  //pegar coordenasdas
+  function getCoordinates() {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          resolve({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          });
+        },
+        (err) => reject(err),
+        { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
+      );
+    });
+  }
+
+  async function handleLocationClick() {
+    const permission = await checkLocationPermission();
+
+    if (permission === "granted") {
+      setLocationStatus({
+        getting: true,
+      });
+      handleConvertCoords();
+    }
+    if (permission === "prompt") {
+      setLocationStatus({ permissionMsg: true });
+      handleConvertCoords();
+    } else if (permission === "denied") {
+      setLocationStatus({ opacity: 0 });
+      alert(
+        "Você bloqueou o acesso à localização. Digite o endereço manualmente ou permita nas configurações do navegador."
+      );
+    }
+  }
+
+  async function handleConvertCoords() {
+    try {
+      const coords = await getCoordinates();
+      setCoordsState({ lat: coords.lat, lng: coords.lng });
+      setLocationStatus({ getting: true });
+
+      const resp = await fetch(
+        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/get-address",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(coords),
+        }
+      );
+
+      const dados = await resp.json();
+
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        rua: dados.rua,
+        numero: dados.numero,
+        bairro: dados.bairro,
+        cidade: dados.cidade,
+        estado: dados.estado,
+      }));
+
+      if (!resp.ok) {
+        throw new Error(`Erro: ${resp.status}`);
+      } else {
+        setCepPassed(true);
+        setLocationStatus({ opacity: 0, });
+      }
+    } catch (error) {
+      showErrorLocationMessage();
+      console.error("Erro ao buscar endereço:", error);
+    }
+  }
+
+  //input de cep
   function handleClickOnCep() {
     if (clickOnCep === false) {
       setClickOnCep(true);
@@ -80,7 +213,27 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
   };
 
   function handleSubmit() {
-    console.log("Sim");
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      lat: coordsState.lat,
+      lng: coordsState.lng,
+    }));
+    console.log(formData);
+  }
+
+  //fechar caixa
+  function handleClickClose() {
+    if (errorLocationButton === true) {
+      setOpacityGpsResult(0);
+      setTimeout(() => {
+        setErrorLocationButton(false);
+      }, 200);
+    } else {
+      setOpacityState(0);
+      setTimeout(() => {
+        setSeeAddressForm(false);
+      }, 420);
+    }
   }
 
   useEffect(() => {
@@ -97,14 +250,13 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       getAddresByCep(cepSemHifen)
         .then((endereco) => {
           if (endereco && !endereco.erro) {
-            setFormData({
+            setFormData((prevFormData) => ({
+              ...prevFormData,
               rua: endereco.logradouro,
-              numero: "",
-              complemento: "",
               bairro: endereco.bairro,
               cidade: endereco.localidade,
               estado: endereco.uf,
-            });
+            }));
             setCepPassed(true);
           } else {
             setCepPassed(false);
@@ -112,7 +264,10 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
           }
         })
         .catch((err) => {
-          setCepCathError("Erro ao pesquisar CEP:" + err);
+          setCepCathError("Houve um erro, tente novamente. Erro: " + err);
+          setTimeout(() => {
+            setCepCathError("");
+          }, 3500);
         });
     }
   }, [cepState]);
@@ -137,25 +292,75 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       <MainDivStyled>
         <DivTitleStyled>
           <H1Styled>Cadastrar endereço</H1Styled>
-          <DivSpanCloseStyled>
-            <SpanCloseStyled
-              className="material-symbols-rounded"
-              onClick={() => {
-                setOpacityState(0);
-                setTimeout(() => {
-                  setSeeAddressForm(false);
-                }, 420);
-              }}
-            >
+          <DivSpanCloseStyled onClick={handleClickClose}>
+            <SpanCloseStyled className="material-symbols-rounded">
               close
             </SpanCloseStyled>
           </DivSpanCloseStyled>
         </DivTitleStyled>
 
+        {waitMessage && (
+          <DivGPSResultStyled $opacityGpsResult={opacityGpsResult}>
+            <SpanGpsReturnStyled
+              className="material-symbols-outlined"
+              $errorLocationButton={errorLocationButton || waitMessage}
+            >
+              progress_activity
+            </SpanGpsReturnStyled>
+
+            <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+              Espere um pouco
+            </PValueStyled>
+          </DivGPSResultStyled>
+        )}
+
+        {showPermissionMessage && (
+          <DivGPSResultStyled $opacityGpsResult={opacityGpsResult}>
+            <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+              <strong>Permita</strong> pegar a sua localização
+            </PValueStyled>
+          </DivGPSResultStyled>
+        )}
+
+        {gettingAddress === true && (
+          <DivGPSResultStyled $opacityGpsResult={opacityGpsResult}>
+            <SpanGpsReturnStyled
+              className="material-symbols-outlined"
+              $errorLocationButton={errorLocationButton}
+            >
+              progress_activity
+            </SpanGpsReturnStyled>
+
+            <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+              Pegando sua localização
+            </PValueStyled>
+          </DivGPSResultStyled>
+        )}
+
+        {errorLocationButton && (
+          <DivGPSResultStyled $opacityGpsResult={opacityGpsResult}>
+            <SpanGpsReturnStyled
+              className="material-symbols-outlined"
+              $errorLocationButton={errorLocationButton}
+            >
+              exclamation
+            </SpanGpsReturnStyled>
+
+            <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+              <strong>Erro: </strong>não conseguimos pegar sua localização
+            </PValueStyled>
+          </DivGPSResultStyled>
+        )}
+
         {cepPassed === false && (
           <div>
-            <ButtonStyled onClick={handleLocationClick}>
-              Pegue minha localização
+            <ButtonStyled
+              onClick={() => {
+                setWaitMessage(true);
+                handleLocationClick();
+              }}
+            >
+              Pegar minha localização
             </ButtonStyled>
             <form onSubmit={handleSubmit}>
               <DivCepInputStyled>
@@ -170,7 +375,9 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
                   onChange={handleChangeCepInput}
                   onClick={clickOnCep ? null : handleClickOnCep}
                 />
-                <PWarnCepStyled $noPassed={(cepPassed === false && cepState.length === 9)}>
+                <PWarnCepStyled
+                  $noPassed={cepPassed === false && cepState.length === 9}
+                >
                   CEP INVÁLIDO
                 </PWarnCepStyled>
               </DivCepInputStyled>
@@ -182,6 +389,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               >
                 Digitar todos os dados
               </ButtonStyled>
+
               {cepCathError != "" && (
                 <DivCepErrorStyled>
                   <PCepErrorStyled>{cepCathError}</PCepErrorStyled>

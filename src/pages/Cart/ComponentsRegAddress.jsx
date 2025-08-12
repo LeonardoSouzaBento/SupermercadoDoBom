@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const DivBodyStyled = styled.div`
   width: 100vw;
@@ -57,6 +57,7 @@ export const DivTitleStyled = styled.div`
   background-color: #383d6a;
   color: white;
   position: relative;
+  z-index: 3;
 `;
 
 export const H1Styled = styled.h1`
@@ -179,6 +180,55 @@ export const ButtonStyled = styled.button`
   }
   @media screen and (min-width: 1201px) {
     font-size: 1.207em;
+  }
+`;
+
+export const DivGPSResultStyled = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: white;
+  z-index: 2;
+  opacity: ${(props) => props.$opacityGpsResult};
+  transition: opacity 0.2s ease;
+  user-select: none;
+`;
+
+export const SpanGpsReturnStyled = styled.span`
+  user-select: none;
+  ${(props) =>
+    props.$errorLocationButton &&
+    css`
+      font-size: 3.2em;
+      color: #d5343a;
+      font-weight: 400;
+      background-color: rgba(255, 0, 0, 0.1);
+      border-radius: 50%;
+      padding: 8px;
+      padding-top: 5px;
+    `}
+  ${(props) =>
+    !props.$errorLocationButton &&
+    css`
+      font-size: 3.2em;
+      color: #383d6a;
+      animation: ${rotate} 2s linear infinite;
+    `}
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 `;
 
@@ -334,12 +384,13 @@ export const PWarnCepStyled = styled.p`
 `;
 
 export const DivCepErrorStyled = styled.div`
-  height: 48px;
+  min-height: 48px;
+  height: auto;
   width: calc(100% - 48px);
   box-sizing: border-box;
   padding-left: 16px;
   margin: auto;
-  margin-bottom: 25px;
+  margin-top: 18px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -350,7 +401,7 @@ export const DivCepErrorStyled = styled.div`
 export const PCepErrorStyled = styled.p`
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  color: red;
+  color: #d5343a;
 
   @media screen and (max-width: 374px) {
     font-size: 1.15em;
@@ -378,9 +429,9 @@ export const RegisterButtonStyled = styled(ButtonStyled)`
   margin-bottom: 0px;
   color: white;
   box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.9),
-    2px 0px 3px -2px rgba(0, 0, 0, 0.6),
-    -2px 0px 3px -2px rgba(0, 0, 0, 0.6);
-  background-color: ${(props) => (props.$enable ? "#383d6a" : "hsla(210, 7%, 62%, 1.00)")};
+    2px 0px 3px -2px rgba(0, 0, 0, 0.6), -2px 0px 3px -2px rgba(0, 0, 0, 0.6);
+  background-color: ${(props) =>
+    props.$enable ? "#383d6a" : "hsla(210, 7%, 62%, 1.00)"};
   &:hover {
     background-color: ${(props) =>
       props.$enable ? "hsla(234, 31%, 28%, 1)" : "hsla(210, 7%, 56%, 1.00)"};

@@ -15,7 +15,6 @@ export const DivSideStyled = styled.div`
   top: 0;
   right: 0;
   background-color: white;
-  border-radius: 16px 0 0 16px;
   box-shadow: -4px 0px 12px -4px rgba(41, 46, 117, 0.5);
   transition: transform 0.4s ease;
   transform: translateX(${(props) => props.$transform});
@@ -42,7 +41,8 @@ export const DivTitleStyed = styled.div`
   align-items: center;
   background-color: #383d6a;
   position: relative;
-  border-top-left-radius: 15px;
+  user-select: none;
+  /* border-top-left-radius: 15px; */
 `;
 
 export const DivNameSpanStyled = styled.div`
