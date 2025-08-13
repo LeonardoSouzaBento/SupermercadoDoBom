@@ -13,12 +13,9 @@ import {
   ImgGoogleStyled,
 } from "./ComponentsLogin";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { firebaseConfig } from "../../firebaseConfig";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../main";
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const Login = ({ setSeeLogin }) => {
