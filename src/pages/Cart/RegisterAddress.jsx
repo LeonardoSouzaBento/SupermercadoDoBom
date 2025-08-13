@@ -142,13 +142,14 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       setLocationStatus({ getting: true });
       const user = auth.currentUser;
       const token = user ? await user.getIdToken() : null;
+      console.log("Token JWT:", token);
       if (token === null) {
         setLocationStatus({ getting: false, opacity: 0 });
         setSeeLogin(true);
         return;
       }
 
-      fetch(
+      const response = await fetch(
         "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/get-address",
         {
           method: "POST",
@@ -158,27 +159,23 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
           },
           body: JSON.stringify(coords),
         }
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`Erro: ${response.status}`);
-          }
-          const dados = response.json();
+      );
 
-          setFormData((prevFormData) => ({
-            ...prevFormData,
-            rua: dados.rua,
-            numero: dados.numero,
-            bairro: dados.bairro,
-            cidade: dados.cidade,
-            estado: dados.estado,
-          }));
-          setCepPassed(true);
-          setLocationStatus({ opacity: 0 });
-        })
-        .catch((error) => {
-          console.error("Error: ", error);
-        });
+      if (!response.ok) {
+        throw new Error(`Erro: ${response.status}`);
+      }
+      const dados = await response.json();
+
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        rua: dados.rua,
+        numero: dados.numero,
+        bairro: dados.bairro,
+        cidade: dados.cidade,
+        estado: dados.estado,
+      }));
+      setCepPassed(true);
+      setLocationStatus({ opacity: 0 });
     } catch (error) {
       showErrorLocationMessage();
       console.error("Erro ao buscar endereço:", error);
