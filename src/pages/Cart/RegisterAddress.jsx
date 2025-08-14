@@ -142,7 +142,6 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       const coords = await getCoordinates();
       setCoordsState({ lat: coords.lat, lng: coords.lng });
       setLocationStatus({ getting: true });
-      console.log("Token JWT:", token);
       if (!token) {
         setLocationStatus({ getting: false, opacity: 0 });
         setSeeLogin(true);
@@ -166,14 +165,16 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       }
       const dados = await response.json();
 
-      setFormData((prevFormData) => ({
-        ...prevFormData,
+      setFormData({
         rua: dados.rua,
         numero: dados.numero,
+        complemento: "",
         bairro: dados.bairro,
         cidade: dados.cidade,
         estado: dados.estado,
-      }));
+        lat: null,
+        lng: null,
+      });
       setCepPassed(true);
       setLocationStatus({ opacity: 0 });
     } catch (error) {
@@ -234,10 +235,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     };
     setFormData(address);
     updateAddres(address);
-    setSavedAddress("saved");
-    setTimeout(() => {
-      setSavedAddress("");
-    }, 2000);
+    setSavedAddress("saving");
   }
 
   async function updateAddres(endereco) {
@@ -250,15 +248,21 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ endereco }),
+          body: JSON.stringify({ endereco: endereco }),
         }
       );
 
       if (!response.ok) {
         setSavedAddress("pending");
         throw new Error(`Erro: ${response.status}`);
+      } else {
+        setSavedAddress("saved");
+        setTimeout(() => {
+          setSavedAddress("");
+        }, 2200);
       }
     } catch (error) {
+      setSavedAddress("pending");
       console.error("Erro ao salvar endereço: ", error);
     }
   }
@@ -460,14 +464,20 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
               <DivGPSResultStyled $opacityGpsResult={opacityGpsResult}>
                 <SpanGpsReturnStyled
                   className="material-symbols-outlined"
-                  $saveState={savedAddress}
+                  $errorLocationButton={savedAddress == "saved"}
                 >
-                  {savedAddress == "saving" ? "progress_activity" : "check"}
+                  {savedAddress == "saved" ? "check" : "progress_activity"}
                 </SpanGpsReturnStyled>
 
-                <PValueStyled style={{ width: "80%", textAlign: "center" }}>
-                  <strong>Sucesso: </strong> endereço salvo!
-                </PValueStyled>
+                {savedAddress === "saved" ? (
+                  <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+                    <strong>Sucesso:</strong> endereço salvo!
+                  </PValueStyled>
+                ) : (
+                  <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+                    Salvando endereço...
+                  </PValueStyled>
+                )}
               </DivGPSResultStyled>
             )}
 
