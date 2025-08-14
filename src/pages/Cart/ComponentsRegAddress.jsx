@@ -46,7 +46,6 @@ export const MainDivStyled = styled.div`
 `;
 
 // Título
-
 export const DivTitleStyled = styled.div`
   height: 56px;
   width: 100%;

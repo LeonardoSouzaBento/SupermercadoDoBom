@@ -11,6 +11,7 @@ export const ContainerStyled = styled.div`
   z-index: 5;
   transition: filter 0.8s ease;
   ${(props) => props.$opacity !== 1 && "filter: opacity(0);"};
+  ${(props) => props.$onRegisterAddress && "background-color: #ECF0F5;"};
 `;
 
 export const DivMainStyled = styled.div`
@@ -30,6 +31,9 @@ export const DivMainStyled = styled.div`
   box-shadow: 0px 3px 3px -1px rgba(41, 46, 117, 0.6),
     3px 0px 3px -2px rgba(41, 46, 117, 0.3),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.3);
+  ${(props) =>
+    props.$onRegisterAddress &&
+    "box-shadow: 0px 3px 6px -3px rgba(0, 0, 0, 0.63);"};
   @media screen and (max-width: 375px) {
     padding: 16px;
     padding-bottom: 18px;
@@ -37,6 +41,20 @@ export const DivMainStyled = styled.div`
   @media screen and (min-width: 375px) and (max-width: 577px) {
     top: 43%;
   }
+`;
+
+export const DivAlertStyled = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  color: black;
 `;
 
 export const DivSpanCloseStyled = styled.div`
@@ -127,6 +145,8 @@ export const PEmailStyled = styled.p`
   font-weight: 400;
   color: white;
   letter-spacing: 0.65px;
+
+  ${(props) => props.$alert && "color: black;"}
 
   @media screen and (max-width: 375px) {
     font-size: 1.259em;

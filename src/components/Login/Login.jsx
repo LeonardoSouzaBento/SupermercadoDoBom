@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   ContainerStyled,
   DivMainStyled,
@@ -11,23 +11,36 @@ import {
   DivLoginGoogle,
   PLoginGoogleStyled,
   ImgGoogleStyled,
+  DivAlertStyled,
 } from "./ComponentsLogin";
+import {DivGPSResultStyled, SpanGpsReturnStyled} from "../../pages/Cart/ComponentsRegAddress"
+import { PValueStyled } from "../../pages/Cart/ComponentsCart";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../main";
 
+
 const provider = new GoogleAuthProvider();
 
-const Login = ({ setSeeLogin }) => {
+const Login = ({ setSeeLogin, onRegisterAddress }) => {
   const [opacity, setOpacity] = useState(1);
+  const [showAlert, setShowAlert] = useState(false);
   const { setNoSkipLogin } = useContext(VisibilityContext);
+  const [inLoginProcess, setInLoginProcess] = useState(false);
 
   function handleClickClose() {
-    setOpacity(0);
-    setTimeout(() => {
-      setSeeLogin(false);
-      setNoSkipLogin(true);
-    }, 800);
+    if (onRegisterAddress !== true) {
+      setOpacity(0);
+      setTimeout(() => {
+        setSeeLogin(false);
+        setNoSkipLogin(true);
+      }, 800);
+    } else {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3400);
+    }
   }
 
   async function handleGoogleLogin() {
@@ -36,6 +49,7 @@ const Login = ({ setSeeLogin }) => {
       const user = result.user;
 
       const idToken = await user.getIdToken();
+      localStorage.setItem("idToken", idToken);
       fetch(
         "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth/login-google",
         {
@@ -50,8 +64,10 @@ const Login = ({ setSeeLogin }) => {
           if (!response.ok) {
             setNoSkipLogin(false);
             setSeeLogin(false);
+            setInLoginProcess(false);
             throw new Error("Erro no login: " + response.statusText);
           } else {
+            setInLoginProcess(true);
             setNoSkipLogin(false);
             setSeeLogin(false);
           }
@@ -69,9 +85,42 @@ const Login = ({ setSeeLogin }) => {
     }
   }
 
+  useEffect(() => {}, []);
+
   return (
-    <ContainerStyled $opacity={opacity}>
-      <DivMainStyled>
+    <ContainerStyled $opacity={opacity} $onRegisterAddress={onRegisterAddress}>
+      <DivMainStyled $onRegisterAddress={onRegisterAddress}>
+        {showAlert && (
+          <DivAlertStyled>
+            <PEmailStyled
+              style={{
+                width: "80%",
+                paddingBottom: "2px",
+                scale: 1.01,
+                fontWeight: 600,
+                color: "#d5343a",
+              }}
+            >
+              <strong>Para acessar o servidor,</strong> entre ou crie uma conta.
+            </PEmailStyled>
+          </DivAlertStyled>
+        )}
+
+        {inLoginProcess && (
+          <DivGPSResultStyled>
+            <SpanGpsReturnStyled
+              className="material-symbols-outlined"
+              $errorLocationButton={false}
+            >
+              progress_activity
+            </SpanGpsReturnStyled>
+
+            <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+              Entrando na sua conta
+            </PValueStyled>
+          </DivGPSResultStyled>
+        )}
+
         <DivSpanCloseStyled onClick={handleClickClose}>
           <SpanCloseStyled className="material-symbols-rounded">
             close

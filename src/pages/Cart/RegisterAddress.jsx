@@ -18,8 +18,8 @@ import {
   RegisterButtonStyled,
 } from "./ComponentsRegAddress";
 import { PValueStyled } from "../Cart/ComponentsCart";
-import { auth } from "../../main";
 import Login from "../../components/Login/Login";
+import { useAuthToken } from "../../hooks/useAuthToken";
 
 async function checkLocationPermission() {
   if (!navigator.permissions) {
@@ -68,6 +68,8 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
   });
   const [coordsState, setCoordsState] = useState({ lat: "", lng: "" });
   const [seeLogin, setSeeLogin] = useState(true);
+  const token = useAuthToken();
+  const [savedAddress, setSavedAddress] = useState("");
 
   //-11.186615346993204, lng: -40.26740712716049
 
@@ -140,10 +142,8 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       const coords = await getCoordinates();
       setCoordsState({ lat: coords.lat, lng: coords.lng });
       setLocationStatus({ getting: true });
-      const user = auth.currentUser;
-      const token = user ? await user.getIdToken() : null;
       console.log("Token JWT:", token);
-      if (token === null) {
+      if (!token) {
         setLocationStatus({ getting: false, opacity: 0 });
         setSeeLogin(true);
         return;
@@ -226,13 +226,41 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     });
   };
 
-  function handleSubmit() {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
+  function handleRegisterAddres() {
+    const address = {
+      ...formData,
       lat: coordsState.lat,
       lng: coordsState.lng,
-    }));
-    console.log(formData);
+    };
+    setFormData(address);
+    updateAddres(address);
+    setSavedAddress("saved");
+    setTimeout(() => {
+      setSavedAddress("");
+    }, 2000);
+  }
+
+  async function updateAddres(endereco) {
+    try {
+      const response = await fetch(
+        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/users/update-address",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ endereco }),
+        }
+      );
+
+      if (!response.ok) {
+        setSavedAddress("pending");
+        throw new Error(`Erro: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Erro ao salvar endereço: ", error);
+    }
   }
 
   //fechar caixa
@@ -308,7 +336,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
 
   return (
     <DivBodyStyled $opacity={opacityState}>
-      {seeLogin && <Login setSeeLogin={setSeeLogin} />}
+      {seeLogin && <Login setSeeLogin={setSeeLogin} onRegisterAddress={true} />}
       <MainDivStyled>
         <DivTitleStyled>
           <H1Styled>Cadastrar endereço</H1Styled>
@@ -382,7 +410,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
             >
               Pegar minha localização
             </ButtonStyled>
-            <form onSubmit={handleSubmit}>
+            <form>
               <DivCepInputStyled>
                 <CepInputStyled
                   type="text"
@@ -422,8 +450,27 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
         {cepPassed && (
           <form
             autoComplete="off"
-            style={{ marginTop: "-12px", borderRadius: "8px" }}
+            style={{
+              marginTop: "-12px",
+              borderRadius: "8px",
+              position: "relative",
+            }}
           >
+            {savedAddress !== "" && (
+              <DivGPSResultStyled $opacityGpsResult={opacityGpsResult}>
+                <SpanGpsReturnStyled
+                  className="material-symbols-outlined"
+                  $saveState={savedAddress}
+                >
+                  {savedAddress == "saving" ? "progress_activity" : "check"}
+                </SpanGpsReturnStyled>
+
+                <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+                  <strong>Sucesso: </strong> endereço salvo!
+                </PValueStyled>
+              </DivGPSResultStyled>
+            )}
+
             <InputStyled
               type="text"
               name="cidade"
@@ -493,10 +540,9 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
             </ButtonStyled>
             <RegisterButtonStyled
               $enable={addressComplete && cepPassed}
-              type="submit"
               onClick={(e) => {
                 e.preventDefault();
-                console.log("Sim");
+                handleRegisterAddres();
               }}
             >
               Salvar endereço
