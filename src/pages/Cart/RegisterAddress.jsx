@@ -243,7 +243,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
   async function updateAddres(endereco) {
     try {
       const response = await fetch(
-        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/users/update-address",
+        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/users-update-address",
         {
           method: "PUT",
           headers: {
