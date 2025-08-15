@@ -118,7 +118,7 @@ const AboutMe = () => {
         (preferencialmente trabalho remoto). Venho de familia pobre e vivo numa
         cidade do interior da Bahia, por isso peço essa oportunidade. O curso de
         Engenharia de Software que faço desde março de 2023 me confere
-        conhecimentos basilares e me habilita a vagas de estágio, e esse site,
+        conhecimentos basilares e me habilita a vagas de estágio. E esse site,
         mostra meu conhecimento em programação.
       </PStyled>
       <br />
@@ -138,7 +138,7 @@ const AboutMe = () => {
 
       <PStyled>
         Celular: 34 98412 5832 <br />
-        Cidade: Frutal (MG) <br />
+        Cidade: Caém (BA) <br />
         Email: bentosouzaleonardo@gmail.com <br />
       </PStyled>
       <br />

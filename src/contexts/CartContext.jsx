@@ -94,7 +94,45 @@ export function CartProvider({ children }) {
 
   const totalValueFormatted = totalAddedValue.toFixed(2).replace(".", ",");
   const [updateProduct, setUpdateProduct] = useState(null);
+
+  const [userAddress, setUserAddress] = useState(() => {
+    try {
+      const userAddress = localStorage.getItem("userAddress");
+      return userAddress ? JSON.parse(userAddress) : {
+        rua: "",
+        numero: "",
+        complemento: "",
+        bairro: "",
+        cidade: "",
+        estado: "",
+        lat: "",
+        lng: "",
+      };
+    } catch (error) {
+      console.error("Erro ao carregar 'formData' do local storage", error);
+      return {
+        rua: "",
+        numero: "",
+        complemento: "",
+        bairro: "",
+        cidade: "",
+        estado: "",
+        lat: "",
+        lng: "",
+      };
+    }
+  });
+
   
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('userAddress', JSON.stringify(userAddress));
+    } catch (error) {
+      console.error("Erro ao salvar 'formData' no local storage", error);
+    }
+  }, [userAddress]);
+
   return (
     <CartContext.Provider
       value={{
@@ -121,7 +159,9 @@ export function CartProvider({ children }) {
         searchProducts,
         setSearchProducts,
         updateProduct,
-        setUpdateProduct
+        setUpdateProduct,
+        userAddress,
+        setUserAddress
       }}
     >
       {children}

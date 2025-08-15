@@ -69,26 +69,33 @@ export default function AboutTheWebsite() {
       <H2Styled style={{ marginBottom: "18px" }}>Descrição</H2Styled>
       <LocalPStyled>
         Este é um site de e-commerce simulado feito em React que iniciou em
-        08/04/2025.
+        08/04/2025. <br /> Tem quantro páginas: a página inicial, a do Carrinho, a de pesquisa e a de Mais
+        Opções.
       </LocalPStyled>
       <br />
 
       <H2Styled style={{ marginBottom: "18px" }}>Tecnologias usadas</H2Styled>
       <LocalPStyled>
+        O site usa{" "}
         <strong style={{ fontWeight: 600 }}>
-          Styled Components, useContext e useNavigate, que
-        </strong>{" "}
-        leva à página do Carrinho, à página de pesquisa e à página de Mais
-        Opções.
+          Styled Components
+        </strong>{" "} para CSS.<br/>
+        E tambem alguns recursos mais avançados de React: <strong style={{ fontWeight: 600 }}>
+          useContext e useNavigate
+        </strong>.
       </LocalPStyled>
       <br />
 
       <H2Styled style={{ marginBottom: "18px" }}>Detalhes</H2Styled>
       <LocalPStyled>
-        Os produtos do carrinho ficam armazenados no localStorage. Desse modo,
-        para o componente ProductItem atualizar seu estado de quantidade, que é
-        local, ele pesquisa no carrinho pela quantidade do produto que está
-        nele. Isso é feito na montagem.
+        Os produtos do carrinho ficam armazenados no localStorage para o
+        componente ProductItem poder atualizar seu estado de quantidade local,
+        que se perde entre renderizações. Sempre que esse componente monta, ele
+        pesquisa no carrinho pela quantidade do seu produto (guardada no
+        localStorage), e assim mantem seu estado local atualizado. Dessa forma,
+        seja ele exibido na página inicial, na página de pesquisa, ou em outra
+        página, o valor da quantidade daquele produto estará correto, em
+        conformidade com a alteração feita pelo usuário.
       </LocalPStyled>
       {/* <LocalPStyled>
         A quantidade do ProductItem corresponde a quantidade local de
@@ -96,8 +103,6 @@ export default function AboutTheWebsite() {
         quantidade de ProductInFull. Essa quantidade é repassada para o
         ProductItem com id corresponde, acionado o useEffect.
       </LocalPStyled> */}
-      <LocalPStyled>O BackEnd ainda é inexistente.</LocalPStyled>
-      <LocalPStyled>As imagens vem de links da internet.</LocalPStyled>
     </>
   );
 }

@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart/Cart";
 import SearchAction from "./pages/SearchAction";
 import MoreOptionsSection from "./pages/MoreOptionsSection/MoreOptionsSection";
+import MyOrders from "./pages/MyOrders"
 
 const AppRoutes = () => {
   return (
@@ -11,6 +12,7 @@ const AppRoutes = () => {
       <Route path="/meu-carrinho" element={<Cart />} />
       <Route path="/buscar-produtos" element={<SearchAction />} />
       <Route path="/secao-mais-opcoes" element={<MoreOptionsSection />} />
+      <Route path="/meus-pedidos" element={<MyOrders />} />
     </Routes>
   );
 };

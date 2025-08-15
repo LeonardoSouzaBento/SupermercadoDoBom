@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   DivBodyStyled,
   MainDivStyled,
@@ -20,6 +20,7 @@ import {
 import { PValueStyled } from "../Cart/ComponentsCart";
 import Login from "../../components/Login/Login";
 import { useAuthToken } from "../../hooks/useAuthToken";
+import { CartContext } from "../../contexts/CartContext";
 
 async function checkLocationPermission() {
   if (!navigator.permissions) {
@@ -70,7 +71,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
   const [seeLogin, setSeeLogin] = useState(true);
   const token = useAuthToken();
   const [savedAddress, setSavedAddress] = useState("");
-
+  const { setUserAddress } = useContext(CartContext);
   //-11.186615346993204, lng: -40.26740712716049
 
   function setLocationStatus({
@@ -235,6 +236,7 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     };
     setFormData(address);
     updateAddres(address);
+    setUserAddress(address);
     setSavedAddress("saving");
   }
 
@@ -251,6 +253,8 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
           body: JSON.stringify({ endereco: endereco }),
         }
       );
+
+      console.log(JSON.stringify({ endereco: endereco }));
 
       if (!response.ok) {
         setSavedAddress("pending");

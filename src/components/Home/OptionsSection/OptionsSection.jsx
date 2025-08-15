@@ -18,9 +18,22 @@ import { VisibilityContext } from "../../../contexts/VisibilityContext";
 import { getAuth, signOut } from "firebase/auth";
 
 const contents = [
-  { p: "Sobre o site", icon: "description", navigateTo: "sobre-o-site" },
-  { p: "Sobre o autor", icon: "person_search", navigateTo: "sobre-mim" },
-  { p: "Deixar Comentário", icon: "add_comment", navigateTo: "comentar" },
+  { p: "Meus pedidos", icon: "local_mall", navigateTo: "/meus-pedidos" },
+  {
+    p: "Sobre o Site",
+    icon: "description",
+    navigateTo: "/secao-mais-opcoes?option=sobre-o-site",
+  },
+  {
+    p: "Sobre o Autor",
+    icon: "person_search",
+    navigateTo: "/secao-mais-opcoes?option=sobre-mim",
+  },
+  {
+    p: "Deixar comentário",
+    icon: "add_comment",
+    navigateTo: "/secao-mais-opcoes?option=comentar",
+  },
   { p: "Sair do site", icon: "logout" },
 ];
 
@@ -31,15 +44,6 @@ const OptionsSection = ({ setViewOptions }) => {
   const navigate = useNavigate();
   const { noSkipLogin, setNoSkipLogin, setSeeLogin } =
     useContext(VisibilityContext);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTransform("0%");
-    }, 200);
-    setTimeout(() => {
-      setCanClick(true);
-    }, 400);
-  }, []);
 
   function handleClickClose(e) {
     if (e.button === 2) {
@@ -83,7 +87,7 @@ const OptionsSection = ({ setViewOptions }) => {
     if (e.button === 2) {
       return;
     }
-    if (index !== 3 && canClick) {
+    if (index !== 4 && canClick) {
       setOption(contents[index].navigateTo);
     } else {
       handleLoginOrLogout();
@@ -92,12 +96,21 @@ const OptionsSection = ({ setViewOptions }) => {
 
   useEffect(() => {
     if (option !== "") {
-      navigate(`/secao-mais-opcoes?option=${option}`);
+      navigate(option);
     }
-    return()=>{
+    return () => {
       setTransform("0%");
-    }
+    };
   }, [option]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTransform("0%");
+    }, 200);
+    setTimeout(() => {
+      setCanClick(true);
+    }, 400);
+  }, []);
 
   return (
     <ContainerStyled onPointerDown={handleClickClose}>
@@ -127,12 +140,12 @@ const OptionsSection = ({ setViewOptions }) => {
             key={i}
             onPointerDown={(e) => handleOpenContent(e, i)}
             data-ignore-click
-            $login={i == 3}
+            $login={i == 4}
           >
             <DivSpanStyled>
               <SpanOptionsStyled
                 className="material-symbols-rounded"
-                $login={i == 3}
+                $login={i == 4}
               >
                 {content.icon}
               </SpanOptionsStyled>
