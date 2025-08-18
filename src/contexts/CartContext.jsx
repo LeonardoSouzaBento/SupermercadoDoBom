@@ -123,7 +123,7 @@ export function CartProvider({ children }) {
     }
   });
 
-  
+  // const [orderInfo, setOrderInfo] = useState({time: "", status: ""});
 
   useEffect(() => {
     try {

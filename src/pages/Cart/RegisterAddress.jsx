@@ -67,7 +67,6 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
     lat: "",
     lng: "",
   });
-  const [coordsState, setCoordsState] = useState({ lat: "", lng: "" });
   const [seeLogin, setSeeLogin] = useState(true);
   const token = useAuthToken();
   const [savedAddress, setSavedAddress] = useState("");
@@ -141,7 +140,6 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
   async function handleConvertCoords() {
     try {
       const coords = await getCoordinates();
-      setCoordsState({ lat: coords.lat, lng: coords.lng });
       setLocationStatus({ getting: true });
       if (!token) {
         setLocationStatus({ getting: false, opacity: 0 });
@@ -167,14 +165,14 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
       const dados = await response.json();
 
       setFormData({
+        ...formData,
         rua: dados.rua,
         numero: dados.numero,
-        complemento: "",
         bairro: dados.bairro,
         cidade: dados.cidade,
         estado: dados.estado,
-        lat: null,
-        lng: null,
+        lat: coords.lat,
+        lng: coords.lng,
       });
       setCepPassed(true);
       setLocationStatus({ opacity: 0 });
@@ -229,21 +227,15 @@ const RegisterAddress = ({ setSeeAddressForm }) => {
   };
 
   function handleRegisterAddres() {
-    const address = {
-      ...formData,
-      lat: coordsState.lat,
-      lng: coordsState.lng,
-    };
-    setFormData(address);
-    updateAddres(address);
-    setUserAddress(address);
+    setUserAddress(formData);
     setSavedAddress("saving");
+    updateAddres(formData);
   }
 
   async function updateAddres(endereco) {
     try {
       const response = await fetch(
-        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/users-update-address",
+        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/user-update-address",
         {
           method: "PUT",
           headers: {

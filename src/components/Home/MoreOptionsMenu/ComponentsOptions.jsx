@@ -58,7 +58,7 @@ export const DivNameSpanStyled = styled.div`
   gap: 12px;
   cursor: pointer;
   border-radius: 4px;
-  ${(props) => props.$login && "margin-top: 25px;"}
+  ${(props) => props.$logout && "margin-top: 25px;"}
 `;
 
 export const DivSpanStyled = styled.div`
@@ -79,7 +79,7 @@ export const SpanOptionsStyled = styled.span`
   color: #383d6a;
   user-select: none;
   padding-top: 1px;
-  ${(props) => props.$login && "font-weight: 500;"}
+  ${(props) => props.$logout && "font-weight: 500;"}
 `;
 
 export const POptionStyled = styled.p`

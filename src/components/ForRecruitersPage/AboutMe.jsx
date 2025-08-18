@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import { PStyled, H1Styled, H2Styled } from "./ComponentsOptionSection";
+import { PStyled, H1Styled, H2Styled } from "./ComponentsForRecruitersPage";
 
 const ContainerDivPButtons = styled.div`
   display: flex;

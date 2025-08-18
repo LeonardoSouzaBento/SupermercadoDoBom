@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Header from "./Header/Header";
-import OptionsSection from "./OptionsSection/OptionsSection";
+import OptionsSection from "./MoreOptionsMenu/OptionsMenu";
 import AnnouncementSection from "./AnnoucementSection/AnnouncementSection";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import ProductListHome from "../Product/ProductListHome";
-import Footer from "../Footer/Footer";
+import Footer from "../BottomNavBar/Footer";
 import Login from "../Login/Login";
 import ProductInFull from "../Product/ProductInFull";
 import { CartContext } from "../../contexts/CartContext";

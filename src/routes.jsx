@@ -2,8 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart/Cart";
 import SearchAction from "./pages/SearchAction";
-import MoreOptionsSection from "./pages/MoreOptionsSection/MoreOptionsSection";
+import ForRecruitersPage from "./pages/ForRecruitersPage";
 import MyOrders from "./pages/MyOrders"
+import MyAccount from "./pages/MyAccount"
 
 const AppRoutes = () => {
   return (
@@ -11,7 +12,8 @@ const AppRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/meu-carrinho" element={<Cart />} />
       <Route path="/buscar-produtos" element={<SearchAction />} />
-      <Route path="/secao-mais-opcoes" element={<MoreOptionsSection />} />
+      <Route path="/sobre" element={<ForRecruitersPage />} />
+      <Route path="/minha-conta" element={<MyAccount />} />
       <Route path="/meus-pedidos" element={<MyOrders />} />
     </Routes>
   );

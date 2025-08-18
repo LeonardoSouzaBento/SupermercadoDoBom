@@ -1,4 +1,4 @@
-import { PStyled, H2Styled } from "./ComponentsOptionSection";
+import { PStyled, H2Styled } from "./ComponentsForRecruitersPage";
 import styled from "styled-components";
 
 const LocalPStyled = styled(PStyled)`

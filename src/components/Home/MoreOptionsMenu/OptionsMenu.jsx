@@ -18,26 +18,27 @@ import { VisibilityContext } from "../../../contexts/VisibilityContext";
 import { getAuth, signOut } from "firebase/auth";
 
 const contents = [
+  { p: "Minha conta", icon: "person_edit", navigateTo: "/minha-conta" },
   { p: "Meus pedidos", icon: "local_mall", navigateTo: "/meus-pedidos" },
   {
     p: "Sobre o Site",
     icon: "description",
-    navigateTo: "/secao-mais-opcoes?option=sobre-o-site",
+    navigateTo: "/sobre?option=sobre-o-site",
   },
   {
     p: "Sobre o Autor",
     icon: "person_search",
-    navigateTo: "/secao-mais-opcoes?option=sobre-mim",
+    navigateTo: "/sobre?option=sobre-mim",
   },
   {
     p: "Deixar comentário",
     icon: "add_comment",
-    navigateTo: "/secao-mais-opcoes?option=comentar",
+    navigateTo: "/sobre?option=comentar",
   },
   { p: "Sair do site", icon: "logout" },
 ];
 
-const OptionsSection = ({ setViewOptions }) => {
+const OptionsMenu = ({ setViewOptions }) => {
   const [transform, setTransform] = useState("100%");
   const [option, setOption] = useState("");
   const [canClick, setCanClick] = useState(false);
@@ -57,7 +58,7 @@ const OptionsSection = ({ setViewOptions }) => {
     }
   }
 
-  function handleLoginOrLogout() {
+  function handleLogout() {
     function operation() {
       setNoSkipLogin(true);
       setSeeLogin(true);
@@ -83,14 +84,14 @@ const OptionsSection = ({ setViewOptions }) => {
     }
   }
 
-  function handleOpenContent(e, index) {
+  function handleOpenContent(e, index, p) {
     if (e.button === 2) {
       return;
     }
-    if (index !== 4 && canClick) {
+    if (p !== "Sair do site" && canClick) {
       setOption(contents[index].navigateTo);
     } else {
-      handleLoginOrLogout();
+      handleLogout();
     }
   }
 
@@ -135,17 +136,17 @@ const OptionsSection = ({ setViewOptions }) => {
             </SpanCloseStyled>
           </DivSpanCloseStyled>
         </DivTitleStyed>
-        {contents.map((content, i) => (
+        {contents.map((content, index) => (
           <DivNameSpanStyled
-            key={i}
-            onPointerDown={(e) => handleOpenContent(e, i)}
+            key={index}
+            onPointerDown={(e) => handleOpenContent(e, index, content.p)}
             data-ignore-click
-            $login={i == 4}
+            $logout={content.p == "Sair do site"}
           >
             <DivSpanStyled>
               <SpanOptionsStyled
                 className="material-symbols-rounded"
-                $login={i == 4}
+                $logout={content.p == "Sair do site"}
               >
                 {content.icon}
               </SpanOptionsStyled>
@@ -158,4 +159,4 @@ const OptionsSection = ({ setViewOptions }) => {
   );
 };
 
-export default OptionsSection;
+export default OptionsMenu;

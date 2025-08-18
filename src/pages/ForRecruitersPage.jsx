@@ -7,11 +7,10 @@ import {
   DivSpanStyled,
   SpanStyled,
   DivContentStyled,
-} from "./ComponentsOptionSection";
-
-import AboutMe from "./AboutMe";
-import AboutTheWebsite from "./AboutTheWebsite";
-import InsertComment from "./InsertComment";
+} from "../components/ForRecruitersPage/ComponentsForRecruitersPage";
+import AboutMe from "../components/ForRecruitersPage/AboutMe";
+import AboutTheWebsite from "../components/ForRecruitersPage/AboutTheWebsite";
+import InsertComment from "../components/ForRecruitersPage/InsertComment";
 
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -27,10 +26,10 @@ const contents = [
 const relations = {
   "sobre-mim": "aboutMe",
   "sobre-o-site": "aboutSite",
-  comentar: "comment",
+  "comentar": "comment",
 };
 
-export default function MoreOptionsSection() {
+export default function ForRecruitersPage() {
   const location = useLocation();
   const option = new URLSearchParams(location.search).get("option");
 
