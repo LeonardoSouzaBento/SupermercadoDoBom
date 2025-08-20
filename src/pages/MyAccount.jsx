@@ -15,12 +15,12 @@ import {
   DivNameStatus,
   NameStatusStyled,
   SpanStatusStyled,
-  SubDivStyled,
+  DivFormStyled,
   DivMeContactStyled,
   DivHeaderStyled,
   DivStyled,
-  DivAddressStyled,
-  DivPStyled,
+  DivHalfAddressStyled,
+  DivZapStyled,
   Pv2Styled,
   StrongStyled,
   DivSpanStyled,
@@ -31,6 +31,7 @@ import {
   DivImgEmailStyled,
   DivButtonStyled,
   PLoginStlyed,
+  DivAddressStyled,
 } from "../components/MyAccountPage/ComponentsMyAccountPage";
 import { useContext } from "react";
 import { VisibilityContext } from "../contexts/VisibilityContext";
@@ -54,6 +55,7 @@ function getNameInitials(name) {
 const MyAccount = () => {
   const { primaryUserInfo, secundaryUserInfo } = useContext(VisibilityContext);
   const abbrev = getNameInitials(primaryUserInfo.name);
+  // const [zapNumber, setZapNumber] = useState("");
 
   return (
     <>
@@ -62,7 +64,7 @@ const MyAccount = () => {
       </DivHeaderStyled>
 
       <ContainerStyled>
-        {/*Contato*/}
+        {/*Minha conta e Contato*/}
         <DivMeContactStyled>
           <DivOneStyled $account={true}>
             <DivImgEmailStyled>
@@ -86,7 +88,7 @@ const MyAccount = () => {
                 </NameStatusStyled>
               </DivNameEmailStyled>
             </DivImgEmailStyled>
-            {/*Aviso de login anonimo*/}
+
             {primaryUserInfo.email === "" && (
               <SubDivOneStyled>
                 <DivStatusStyled $user={true}>
@@ -99,14 +101,13 @@ const MyAccount = () => {
                 </DivStatusStyled>
               </SubDivOneStyled>
             )}
-            
+
             <DivButtonStyled>
               <ButtonLoginStyled>
-              <PLoginStlyed>Entrar ou Criar Conta</PLoginStlyed>
+                <PLoginStlyed>Cadastre-se</PLoginStlyed>
               </ButtonLoginStyled>
             </DivButtonStyled>
           </DivOneStyled>
-
           <DivTwoStyled>
             <DivH2StatusStyled>
               <DivH2Styled>
@@ -134,11 +135,13 @@ const MyAccount = () => {
               )}
             </DivH2StatusStyled>
             <DivStyled>
-              <DivPStyled $variant={"zap"}>
-                <Pv2Styled>
-                  <StrongStyled>Whatsapp ou telefone</StrongStyled> <br />
-                  Não fornecido
-                </Pv2Styled>
+              <DivZapStyled>
+                <DivFormStyled>
+                  <Pv2Styled>
+                    <StrongStyled>Whatsapp ou telefone</StrongStyled> <br />
+                  </Pv2Styled>
+                  <Pv2Styled>Não fornecido</Pv2Styled>
+                </DivFormStyled>
 
                 {/*botão editar*/}
                 <DivSpanStyled>
@@ -146,7 +149,7 @@ const MyAccount = () => {
                     edit
                   </SpanStyled>
                 </DivSpanStyled>
-              </DivPStyled>
+              </DivZapStyled>
             </DivStyled>
           </DivTwoStyled>
         </DivMeContactStyled>
@@ -178,41 +181,43 @@ const MyAccount = () => {
           <DivStyled>
             <div
               style={{
-                borderRadius: "8px",
                 position: "relative",
-                border: "1px solid rgb(188, 188, 188)",
               }}
             >
-              <DivAddressStyled style={{ paddingBottom: "10px" }}>
-                <SubDivStyled style={{ width: "58%" }}>
-                  <Pv2Styled>
-                    <StrongStyled>Rua </StrongStyled>
-                  </Pv2Styled>
-                  <Pv2Styled>Não fornecido</Pv2Styled>
-                </SubDivStyled>
+              <DivAddressStyled>
+                <DivHalfAddressStyled style={{ marginBottom: "16px" }}>
+                  <DivFormStyled style={{ width: "58%" }}>
+                    <Pv2Styled>
+                      <StrongStyled>Rua:</StrongStyled>
+                    </Pv2Styled>
+                    <Pv2Styled>Não fornecido</Pv2Styled>
+                  </DivFormStyled>
 
-                <SubDivStyled>
-                  <Pv2Styled>
-                    <StrongStyled>Número </StrongStyled>
-                  </Pv2Styled>
-                  <Pv2Styled>Não fornecido</Pv2Styled>
-                </SubDivStyled>
-              </DivAddressStyled>
+                  <DivFormStyled>
+                    <Pv2Styled>
+                      <StrongStyled>Número:</StrongStyled>
+                    </Pv2Styled>
+                    <Pv2Styled>Não fornecido</Pv2Styled>
+                  </DivFormStyled>
+                </DivHalfAddressStyled>
 
-              <DivAddressStyled style={{ paddingTop: "10px" }}>
-                <SubDivStyled style={{ width: "58%" }}>
-                  <Pv2Styled>
-                    <StrongStyled> Complemento </StrongStyled> <br />
-                    Não fornecido
-                  </Pv2Styled>
-                </SubDivStyled>
+                <DivHalfAddressStyled>
+                  <DivFormStyled style={{ width: "58%" }}>
+                    <Pv2Styled>
+                      <StrongStyled>Complemento:</StrongStyled>
+                    </Pv2Styled>
+                    <Pv2Styled>Não fornecido</Pv2Styled>
+                  </DivFormStyled>
 
-                <SubDivStyled>
-                  <Pv2Styled>
-                    <StrongStyled> Cidade (UF) </StrongStyled> <br />
-                    Não fornecido
-                  </Pv2Styled>
-                </SubDivStyled>
+                  <DivFormStyled>
+                    <DivFormStyled>
+                      <Pv2Styled>
+                        <StrongStyled>Cidade (UF):</StrongStyled>
+                      </Pv2Styled>
+                      <Pv2Styled>Não fornecido</Pv2Styled>
+                    </DivFormStyled>
+                  </DivFormStyled>
+                </DivHalfAddressStyled>
               </DivAddressStyled>
 
               <DivSpanStyled $address={true}>

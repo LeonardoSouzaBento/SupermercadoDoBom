@@ -1,6 +1,7 @@
 import {
   ContainerStyled,
   DivSideStyled,
+  H1Styled,
   DivTitleStyed,
   DivNameSpanStyled,
   POptionStyled,
@@ -11,7 +12,6 @@ import {
   DivSpanCloseStyled,
   SpanCloseStyled,
 } from "../../../pages/Cart/ComponentsRegAddress";
-import { HHeadStyled } from "../../../pages/Cart/ComponentsCart";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { VisibilityContext } from "../../../contexts/VisibilityContext";
@@ -117,7 +117,7 @@ const OptionsMenu = ({ setViewOptions }) => {
     <ContainerStyled onPointerDown={handleClickClose}>
       <DivSideStyled $transform={transform}>
         <DivTitleStyed>
-          <HHeadStyled
+          <H1Styled
             style={{
               color: "white",
               textAlign: "left",
@@ -126,7 +126,7 @@ const OptionsMenu = ({ setViewOptions }) => {
             }}
           >
             Mais Opções
-          </HHeadStyled>
+          </H1Styled>
           <DivSpanCloseStyled onPointerDown={handleClickClose}>
             <SpanCloseStyled
               className="material-symbols-rounded"

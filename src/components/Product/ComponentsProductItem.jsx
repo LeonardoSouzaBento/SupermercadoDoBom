@@ -15,13 +15,8 @@ export const PaiProdStyled = styled.div`
   ${(props) =>
     props.$variant == "cart" &&
     css`
-      border: 1px solid hsla(213, 31%, 80%, 1.00);
-      /* border: 1px solid hsla(0, 0%, 80%, 1.00); */
-      border-radius: 4px;
-
-      @media screen and (max-width: 768px) {
-        border-radius: 8px;
-      }
+      border: 1px solid #c5c5c5ff;
+      border-radius: 0px !important;
     `};
 
   //paisagem

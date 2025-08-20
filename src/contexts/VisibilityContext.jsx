@@ -16,11 +16,23 @@ export const VisibilityProvider = ({ children }) => {
     }
   }, [tipForRecruiter]);
 
-  //estado de login
+  const [preventClick, setPreventClick] = useState(false);
+  const [seeFeedback, setSeeFeedback] = useState(false);
+
+  const [dataProductFull, setDataProductFull] = useState(null);
+  const [viewProductInFull, setViewProductInFull] = useState(false);
+  const [updatedProduct, setUpdatedProduct] = useState(0);
+
+  //estados relativos ao login
   const [noSkipLogin, setNoSkipLogin] = useState(() => {
     const stored = localStorage.getItem("noSkipLogin");
     return stored ? JSON.parse(stored) : true;
   });
+
+  useEffect(() => {
+    localStorage.setItem("noSkipLogin", JSON.stringify(noSkipLogin));
+  }, [noSkipLogin]);
+
   const [seeLogin, setSeeLogin] = useState(() => {
     const stored = localStorage.getItem("seeLogin");
     return stored ? JSON.parse(stored) : true;
@@ -30,16 +42,14 @@ export const VisibilityProvider = ({ children }) => {
     localStorage.setItem("seeLogin", JSON.stringify(seeLogin));
   }, [seeLogin]);
 
+  const [token, setToken] = useState(() => {
+    const stored = localStorage.getItem("token");
+    return stored ? JSON.parse(stored) : null;
+  });
+
   useEffect(() => {
-    localStorage.setItem("noSkipLogin", JSON.stringify(noSkipLogin));
-  }, [noSkipLogin]);
-
-  const [preventClick, setPreventClick] = useState(false);
-  const [seeFeedback, setSeeFeedback] = useState(false);
-
-  const [dataProductFull, setDataProductFull] = useState(null);
-  const [viewProductInFull, setViewProductInFull] = useState(false);
-  const [updatedProduct, setUpdatedProduct] = useState(0);
+    localStorage.setItem("token", JSON.stringify(token));
+  }, [token]);
 
   const [primaryUserInfo, setPrimaryUserInfo] = useState(() => {
     const storedInfo = localStorage.getItem("primaryUserInfo");
@@ -52,6 +62,10 @@ export const VisibilityProvider = ({ children }) => {
         };
   });
 
+  useEffect(() => {
+    localStorage.setItem("primaryUserInfo", JSON.stringify(primaryUserInfo));
+  }, [primaryUserInfo]);
+
   const [secundaryUserInfo, setSecundaryUserInfo] = useState(() => {
     const storedInfo = localStorage.getItem("secundaryUserInfo");
     return storedInfo
@@ -61,10 +75,6 @@ export const VisibilityProvider = ({ children }) => {
           addressCompleted: false,
         };
   });
-
-  useEffect(() => {
-    localStorage.setItem("primaryUserInfo", JSON.stringify(primaryUserInfo));
-  }, [primaryUserInfo]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -96,6 +106,8 @@ export const VisibilityProvider = ({ children }) => {
         setSecundaryUserInfo,
         primaryUserInfo,
         setPrimaryUserInfo,
+        token,
+        setToken,
       }}
     >
       {children}

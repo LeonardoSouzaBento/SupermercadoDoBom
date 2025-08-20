@@ -6,12 +6,14 @@ import { ProductList } from "../../components/Product/ProductList.jsx";
 import {
   MainStyled,
   CartSectionStyed,
+  DivHeaderMainStyled,
+  HHeaderMainStyled,
   DivSpanDeleteStyled,
   SpanStyled,
-  DivHeadStyled,
-  HHeadStyled,
-  FinishSectionStyled,
-  DivContinueStyled,
+  DivHeaderCartStyled,
+  ContinueSectionStyled,
+  DivStyled,
+  ContainerStyled,
   DivAvisoStyled,
   PAvisoStyled,
   DivAllValuesStyled,
@@ -32,7 +34,12 @@ import {
   PYesNoStyled,
   DivPYesNoStyled,
   DivToCoverStyled,
+  H2Styled,
+  ReceiptOptionStyled,
+  SpanReceiptStyled,
+  DivHeaderStyled,
 } from "./ComponentsCart.jsx";
+// import { DivAlertStyled } from "../../components/Login/ComponentsLogin";
 import ProductInFull from "../../components/Product/ProductInFull.jsx";
 import RegisterAddress from "./RegisterAddress.jsx";
 
@@ -41,7 +48,7 @@ const heightCartSection = 393; //para comparar
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { totalAddedValue, cartProducts, setCartProducts } =
+  const { totalAddedValue, cartProducts, setCartProducts, setOrderInfo } =
     useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0.03); //opacidade do main ao entrar
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
@@ -49,6 +56,7 @@ const Cart = () => {
     useContext(VisibilityContext);
   const [seeAddressForm, setSeeAddressForm] = useState(false);
   const [scaleWarnnig, setScaleWarnnig] = useState(1);
+  const [selected, setSelected] = useState("entregar");
 
   //estados para botão ver todos
   const [viewButtonSeeAll, setViewButtonsetSeeAll] = useState(true);
@@ -116,7 +124,7 @@ const Cart = () => {
           checkHiddenProducts();
           const div = CartSectionRef.current;
           if (widthOfWindow >= 769) {
-            const newHeight = "calc(100vh - 48px)";
+            const newHeight = "500px";
             if (div.style.height !== newHeight) {
               div.style.height = newHeight;
             }
@@ -149,6 +157,7 @@ const Cart = () => {
   //
   useEffect(() => {
     if (totalAddedValue == 0) {
+      setOrderInfo({ time: "", status: "canceled" });
       setTimeout(() => {
         navigate("/");
       }, 1500);
@@ -182,7 +191,13 @@ const Cart = () => {
 
   function handleClickContinue() {
     if (falta <= 0) {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+      const currentTime = `${hours}:${minutes}:${seconds}`;
       setSeeAddressForm(true);
+      setOrderInfo({ time: currentTime, status: "pending" });
     } else {
       setScaleWarnnig(1.045);
       setTimeout(() => {
@@ -193,10 +208,13 @@ const Cart = () => {
 
   return (
     <>
+      <DivHeaderMainStyled>
+        <HHeaderMainStyled>Sua compra</HHeaderMainStyled>
+      </DivHeaderMainStyled>
+
       <MainStyled $seeAddressForm={seeAddressForm} $opacity={opacityState}>
         <CartSectionStyed ref={CartSectionRef}>
-          <DivHeadStyled>
-            <HHeadStyled>Sua Compra</HHeadStyled>
+          <DivHeaderCartStyled>
             <DivSpanDeleteStyled
               onClick={() => {
                 setSeeCancelDialog(true);
@@ -207,7 +225,8 @@ const Cart = () => {
                 delete
               </SpanStyled>
             </DivSpanDeleteStyled>
-          </DivHeadStyled>
+            <H2Styled $products={true}>Produtos</H2Styled>
+          </DivHeaderCartStyled>
 
           <ProductList
             variant={"cart"}
@@ -243,36 +262,102 @@ const Cart = () => {
           )}
         </CartSectionStyed>
 
-        <FinishSectionStyled>
-          <DivContinueStyled>
-            {falta > 0 && totalAddedValue != 0 && (
-              <DivAvisoStyled $scale={scaleWarnnig}>
-                <PAvisoStyled>
-                  Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
-                </PAvisoStyled>
-              </DivAvisoStyled>
-            )}
+        <ContinueSectionStyled>
+          <ContainerStyled>
+            <DivStyled>
+              <DivHeaderStyled>
+                <H2Styled>Detalhes</H2Styled>
+              </DivHeaderStyled>
 
-            <DivAllValuesStyled>
-              <DivOneValueStyled>
-                <PValueStyled>Compra:</PValueStyled>
-                <PValueStyled>R$ {totalValue}</PValueStyled>
-              </DivOneValueStyled>
+              <DivAllValuesStyled>
+                {falta > 0 && totalAddedValue != 0 && (
+                  <DivAvisoStyled $scale={scaleWarnnig}>
+                    <PAvisoStyled>
+                      Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
+                    </PAvisoStyled>
+                  </DivAvisoStyled>
+                )}
+                <DivOneValueStyled $first={true}>
+                  <PValueStyled>Compra:</PValueStyled>
+                  <PValueStyled>R$ {totalValue}</PValueStyled>
+                </DivOneValueStyled>
 
-              <DivOneValueStyled>
-                <PValueStyled>Entrega:</PValueStyled>
-                <PValueStyled>R$ 4,00</PValueStyled>
-              </DivOneValueStyled>
+                <DivOneValueStyled>
+                  <PValueStyled>Taxa de Entrega:</PValueStyled>
+                  <PValueStyled>R$ 4,00</PValueStyled>
+                </DivOneValueStyled>
 
-              <DivOneValueStyled style={{ borderBottom: "none" }}>
-                <PValueStyled>
-                  <strong>Total:</strong>
+                <DivOneValueStyled style={{ borderBottom: "none" }}>
+                  <PValueStyled>
+                    <strong>Total:</strong>
+                  </PValueStyled>
+                  <PValueStyled>
+                    <strong>R$ {totalFormatted}</strong>
+                  </PValueStyled>
+                </DivOneValueStyled>
+              </DivAllValuesStyled>
+            </DivStyled>
+
+            <DivAddStyled
+              onClick={() => {
+                navigate("/buscar-produtos");
+              }}
+            >
+              <PAddStyled>Adicionar mais produtos</PAddStyled>
+            </DivAddStyled>
+          </ContainerStyled>
+          <ContainerStyled>
+            <DivStyled>
+              {/* <DivAlertStyled>
+              <PAddStyled $warn={true}>
+                <strong style={{fontWeight: 600}}>Complete suas informações </strong>
+                para continuar a compra.
+              </PAddStyled>
+            </DivAlertStyled> */}
+              <DivHeaderStyled>
+                <H2Styled>Recebimento</H2Styled>
+              </DivHeaderStyled>
+
+              <ReceiptOptionStyled
+                $variant={"retirar"}
+                $selected={selected == "retirar"}
+                onClick={() => {
+                  setSelected("retirar");
+                }}
+              >
+                <PValueStyled $selected={selected == "retirar"}>
+                  Retirar no estabelecimento
                 </PValueStyled>
-                <PValueStyled>
-                  <strong>R$ {totalFormatted}</strong>
+                <SpanReceiptStyled
+                  className="material-symbols-rounded"
+                  $selected={selected == "retirar"}
+                >
+                  {selected === "retirar"
+                    ? "check_box"
+                    : "check_box_outline_blank"}
+                </SpanReceiptStyled>
+              </ReceiptOptionStyled>
+
+              <ReceiptOptionStyled
+                $variant={"entregar"}
+                $selected={selected == "entregar"}
+                onClick={() => {
+                  setSelected("entregar");
+                }}
+              >
+                <PValueStyled $selected={selected == "entregar"}>
+                  Entregar
                 </PValueStyled>
-              </DivOneValueStyled>
-            </DivAllValuesStyled>
+                <SpanReceiptStyled
+                  className="material-symbols-rounded"
+                  $selected={selected == "entregar"}
+                >
+                  {selected === "entregar"
+                    ? "check_box"
+                    : "check_box_outline_blank"}
+                </SpanReceiptStyled>
+              </ReceiptOptionStyled>
+            </DivStyled>
 
             <DivPContinueStyled
               $nocontinue={falta > 0}
@@ -280,16 +365,8 @@ const Cart = () => {
             >
               <PContinueStyled>Continuar</PContinueStyled>
             </DivPContinueStyled>
-          </DivContinueStyled>
-
-          <DivAddStyled
-            onClick={() => {
-              navigate("/buscar-produtos");
-            }}
-          >
-            <PAddStyled>Adicionar mais produtos</PAddStyled>
-          </DivAddStyled>
-        </FinishSectionStyled>
+          </ContainerStyled>
+        </ContinueSectionStyled>
       </MainStyled>
 
       {seeFeedback && <DivToCoverStyled />}

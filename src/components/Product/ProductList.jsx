@@ -54,7 +54,7 @@ const DivStyled = styled.div`
   ${(props) =>
     props.$variant === "cart" &&
     css`
-      padding-top: 12px;
+      padding-top: 8px;
       margin-bottom: 0px;
     `}
 `;

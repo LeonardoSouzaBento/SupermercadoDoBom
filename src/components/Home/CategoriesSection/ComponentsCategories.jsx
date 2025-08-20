@@ -8,7 +8,7 @@ export const DivStyled = styled.div`
   overflow-x: hidden;
   position: relative;
   z-index: 2;
-  border-top: 1px solid rgba(41, 46, 117, 0.3);
+  border-top: 1px solid #c5c5c5ff;
 
   @media screen and (max-width: 375px) {
     width: calc(100% - 15px);
@@ -129,7 +129,7 @@ export const DivCatStyled = styled.div`
   justify-content: flex-end;
   gap: 4px;
   flex: auto;
-  border-radius: 16px;
+  border-radius: 12px;
   cursor: pointer;
   position: relative;
 

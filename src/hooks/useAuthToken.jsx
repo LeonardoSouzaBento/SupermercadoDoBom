@@ -1,25 +1,21 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { onIdTokenChanged } from "firebase/auth";
 import { auth } from "../main";
+import { VisibilityContext } from "../contexts/VisibilityContext";
 
 export function useAuthToken() {
-  const [token, setToken] = useState(() => localStorage.getItem("idToken") || null);
+  const { setToken } = useContext(VisibilityContext);
 
   useEffect(() => {
-    // Observa mudanças no token do usuário logado
     const unsubscribe = onIdTokenChanged(auth, async (user) => {
       if (user) {
-        const newToken = await user.getIdToken(); //se true como paremetro, força a atualização
-        localStorage.setItem("idToken", newToken);
+        const newToken = await user.getIdToken();
         setToken(newToken);
       } else {
-        localStorage.removeItem("idToken");
         setToken(null);
       }
     });
-
     return () => unsubscribe();
-  }, []);
-
-  return token;
+  }, [setToken]);
+  
 }

@@ -13,12 +13,14 @@ import {
   ImgGoogleStyled,
   DivAlertStyled,
 } from "./ComponentsLogin";
-import {DivGPSResultStyled, SpanGpsReturnStyled} from "../../pages/Cart/ComponentsRegAddress"
+import {
+  DivGPSResultStyled,
+  SpanGpsReturnStyled,
+} from "../../pages/Cart/ComponentsRegAddress";
 import { PValueStyled } from "../../pages/Cart/ComponentsCart";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../main";
-
 
 const provider = new GoogleAuthProvider();
 
@@ -27,6 +29,7 @@ const Login = ({ setSeeLogin, onRegisterAddress }) => {
   const [showAlert, setShowAlert] = useState(false);
   const { setNoSkipLogin } = useContext(VisibilityContext);
   const [inLoginProcess, setInLoginProcess] = useState(false);
+  const { setToken } = useContext(VisibilityContext);
 
   function handleClickClose() {
     if (onRegisterAddress !== true) {
@@ -39,7 +42,7 @@ const Login = ({ setSeeLogin, onRegisterAddress }) => {
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
-      }, 3400);
+      }, 4000);
     }
   }
 
@@ -49,7 +52,8 @@ const Login = ({ setSeeLogin, onRegisterAddress }) => {
       const user = result.user;
 
       const idToken = await user.getIdToken();
-      localStorage.setItem("idToken", idToken);
+      setToken(idToken);
+
       fetch(
         "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth/login-google",
         {
@@ -101,7 +105,8 @@ const Login = ({ setSeeLogin, onRegisterAddress }) => {
                 color: "#d5343a",
               }}
             >
-              <strong>Para acessar o servidor,</strong> entre ou crie uma conta.
+              <strong>Entre com google </strong>e teste a api de geolocoding,
+              seja paciente, pois o backend ainda está sendo feito.
             </PEmailStyled>
           </DivAlertStyled>
         )}

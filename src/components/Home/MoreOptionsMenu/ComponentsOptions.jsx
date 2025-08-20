@@ -8,6 +8,35 @@ export const ContainerStyled = styled.div`
   z-index: 6;
 `;
 
+export const H1Styled = styled.h1`
+  width: 100%;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-weight: 500;
+  padding-bottom: 2px;
+  padding-left: 37px;
+  color: rgba(68, 68, 68, 1);
+
+  @media screen and (max-width: 385px) {
+    font-size: 1.27em;
+  }
+  @media screen and (min-width: 385px) and (max-width: 576px) {
+    font-size: 1.285em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.29em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.3em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.31em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.33em;
+  }
+`;
+
 export const DivSideStyled = styled.div`
   width: 100%;
   height: 100%;

@@ -33,9 +33,6 @@ export const DivStyled = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  /* @media screen and (min-width: 1200px) {
-    width: max-content;
-  } */
 `;
 
 export const DivFundoImgStyled = styled.div`

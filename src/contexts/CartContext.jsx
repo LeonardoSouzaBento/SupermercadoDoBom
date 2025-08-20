@@ -98,16 +98,18 @@ export function CartProvider({ children }) {
   const [userAddress, setUserAddress] = useState(() => {
     try {
       const userAddress = localStorage.getItem("userAddress");
-      return userAddress ? JSON.parse(userAddress) : {
-        rua: "",
-        numero: "",
-        complemento: "",
-        bairro: "",
-        cidade: "",
-        estado: "",
-        lat: "",
-        lng: "",
-      };
+      return userAddress
+        ? JSON.parse(userAddress)
+        : {
+            rua: "",
+            numero: "",
+            complemento: "",
+            bairro: "",
+            cidade: "",
+            estado: "",
+            lat: "",
+            lng: "",
+          };
     } catch (error) {
       console.error("Erro ao carregar 'formData' do local storage", error);
       return {
@@ -123,15 +125,24 @@ export function CartProvider({ children }) {
     }
   });
 
-  // const [orderInfo, setOrderInfo] = useState({time: "", status: ""});
-
   useEffect(() => {
     try {
-      localStorage.setItem('userAddress', JSON.stringify(userAddress));
+      localStorage.setItem("userAddress", JSON.stringify(userAddress));
     } catch (error) {
       console.error("Erro ao salvar 'formData' no local storage", error);
     }
   }, [userAddress]);
+
+  const [orderInfo, setOrderInfo] = useState(() => {
+    const savedOrderInfo = localStorage.getItem("orderInfo");
+    return savedOrderInfo
+      ? JSON.parse(savedOrderInfo)
+      : { time: "", status: "" };
+  });
+  
+  useEffect(() => {
+    localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
+  }, [orderInfo]);
 
   return (
     <CartContext.Provider
@@ -161,7 +172,9 @@ export function CartProvider({ children }) {
         updateProduct,
         setUpdateProduct,
         userAddress,
-        setUserAddress
+        setUserAddress,
+        orderInfo,
+        setOrderInfo,
       }}
     >
       {children}

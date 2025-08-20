@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { HHeadStyled } from "../../pages/Cart/ComponentsCart";
 import { PStyled } from "../ForRecruitersPage/ComponentsForRecruitersPage";
 import { H2Styled } from "../ForRecruitersPage/ComponentsForRecruitersPage";
 
@@ -16,7 +15,9 @@ export const DivHeaderStyled = styled.div`
   }
 `;
 
-export const HHeaderStyled = styled(HHeadStyled)`
+export const HHeaderStyled = styled.h1`
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-weight: 500;
   color: white;
   padding: 0px;
   max-width: 520px;
@@ -37,6 +38,25 @@ export const HHeaderStyled = styled(HHeadStyled)`
   }
   @media screen and (min-width: 1092px) {
     max-width: 1056px;
+  }
+
+  @media screen and (max-width: 385px) {
+    font-size: 1.27em;
+  }
+  @media screen and (min-width: 385px) and (max-width: 576px) {
+    font-size: 1.285em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.29em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.3em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.31em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.33em;
   }
 `;
 
@@ -79,44 +99,46 @@ export const DivOneStyled = styled.div`
 `;
 
 export const DivImgEmailStyled = styled.div`
-  min-width: 100%;
+  width: max-content;
   display: flex;
   gap: 12px;
 `;
 
 export const SubDivOneStyled = styled.div`
+  width: max-content;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 export const DivButtonStyled = styled.div`
-  min-width: 100%;
+  width: 100%;
+  margin-top: 8px;
 `;
 
 export const ButtonLoginStyled = styled.div`
   height: 44px;
-  width: max-content;
+  width: 100%;
   padding: 0 20px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background-color: #ecf0f5;
-  color: #292d4e;
+  background-color: #383d6a;
+  color: white;
   cursor: pointer;
-  transition: background-color 0.15s ease;
-  box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.75);
+  transition: all 0.15s ease;
   border: none;
 
   &:hover {
-    box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 1);
+    background-color: hsla(234, 31%, 26%, 1);
   }
 `;
 
 export const PLoginStlyed = styled.p`
   font-family: "Open Sans", sans-serif;
-  font-weight: 600;
+  font-weight: 500;
 
   @media screen and (max-width: 375px) {
     font-size: 1.137em;
@@ -198,7 +220,7 @@ export const DivEmailUserStyled = styled.div`
 
 export const DivTwoStyled = styled(DivOneStyled)`
   padding: 0;
-  padding-top: 5px;
+  padding-top: 0px;
   height: auto;
   flex-direction: column;
   align-items: flex-start;
@@ -214,7 +236,6 @@ export const DivThreeStyled = styled.div`
   max-width: 520px;
   margin: auto;
   padding: 0;
-  padding-top: 5px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -222,16 +243,17 @@ export const DivThreeStyled = styled.div`
   background-color: white;
   border-radius: 12px;
 
-  @media screen and (max-width: 993px) {
-    margin-bottom: 24px;
-  }
-
   @media screen and (max-width: 554px) {
     border-radius: 4px;
   }
 
+  @media screen and (max-width: 993px) {
+    margin-bottom: 24px;
+  }
+
   @media screen and (min-width: 993px) {
     margin: 0;
+    width: 50%;
   }
 `;
 
@@ -394,6 +416,7 @@ export const H2v2Styled = styled(H2Styled)`
 export const DivStyled = styled.div`
   width: 100%;
   padding: 20px;
+  padding-top: 0px;
   box-sizing: border-box;
 `;
 
@@ -408,32 +431,37 @@ export const StrongStyled = styled.strong`
   ${(props) => props.$pStatus && "font-weight: 400;"}
 `;
 
-export const DivPStyled = styled.div`
+export const DivZapStyled = styled.div`
   max-width: 100%;
   box-sizing: border-box;
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 6px;
   position: relative;
+  border-radius: 8px;
+  border: 1px solid #c5c5c5ff;
+`;
 
-  ${(props) =>
-    props.$variant === "zap" && "border: 1px solid rgb(188, 188, 188);"};
+export const DivFormStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
 `;
 
 export const DivAddressStyled = styled.div`
   padding: 20px;
   border-radius: 8px;
-  display: flex;
-  gap: 20px;
+  border: 1px solid rgba(195, 195, 195, 1);
+  /* background-color: #ECF0F5; */
 `;
 
-export const SubDivStyled = styled.div`
-  width: max-content;
+export const DivHalfAddressStyled = styled.div`
+  border-radius: 8px;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 `;
 
 export const DivSpanStyled = styled.div`
@@ -444,11 +472,13 @@ export const DivSpanStyled = styled.div`
   align-items: center;
   z-index: 2;
   border-radius: 6px;
-  background-color: #ecf0f5;
+  background-color: white;
   cursor: pointer;
   transition: background-color 0.15s ease;
-  box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5);
-  color: #292d4e;
+  /* box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
+    2px 0px 4px -4px rgba(41, 46, 117, 0.5),
+    -2px 0px 4px -4px rgba(41, 46, 117, 0.5); */
+  color: black;
 
   &:hover {
     background-color: hsla(213, 31%, 90%, 1);
