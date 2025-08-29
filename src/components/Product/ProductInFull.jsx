@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { CartContext } from "../../contexts/CartContext.jsx";
-import { VisibilityContext } from "../../contexts/VisibilityContext.jsx";
+import { CartContext } from "../../contexts/CartContext.js";
+import { VisibilityContext } from "../../contexts/VisibilityContext.js";
 
 import {
   BodyDivStyled,
@@ -32,7 +32,7 @@ import {
   H1Styled,
   ContainerListStyled,
   DivHalfList,
-} from "./ComponentsProductInFull.jsx";
+} from "./StylizedTagsProductInFull.jsx";
 
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
@@ -115,7 +115,7 @@ const ProductInFull = () => {
   }
 
   useEffect(() => {
-    document.body.style.overflowY = "hidden";
+    // document.body.style.overflowY = "hidden";
     setTimeout(() => {
       setTranslateYState("0%");
     }, 200);
@@ -125,7 +125,7 @@ const ProductInFull = () => {
 
     return () => {
       document.body.style.overflowY = "auto";
-      isDraggingRef.current = false;
+      // isDraggingRef.current = false;
     };
   }, []);
 

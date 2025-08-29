@@ -11,7 +11,7 @@ import {
   DivMoreOptionsStyled,
   SpanStyled,
   PStyled,
-} from "./ComponentsHeader";
+} from "./StylizedTagsHeader";
 import SearchBar from "../../SearchBar/SearchBar";
 
 const Header = ({ setViewOptions, onHome }) => {

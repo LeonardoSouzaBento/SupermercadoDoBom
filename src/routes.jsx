@@ -4,7 +4,7 @@ import Cart from "./pages/Cart/Cart";
 import SearchAction from "./pages/SearchAction";
 import ForRecruitersPage from "./pages/ForRecruitersPage";
 import MyOrders from "./pages/MyOrders"
-import MyAccount from "./pages/MyAccount"
+import MyAccount from "./pages/MyAccount/MyAccount"
 
 const AppRoutes = () => {
   return (

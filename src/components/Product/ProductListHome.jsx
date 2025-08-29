@@ -91,7 +91,7 @@ const NoProcutsStyed = styled.div`
   }
 `;
 const PNoneStyled = styled.p`
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: var(--p-font);
   font-weight: 600;
   width: 100%;
   text-align: center;

@@ -1,4 +1,4 @@
-import React, {
+import {
   useRef,
   useEffect,
   useState,
@@ -12,10 +12,9 @@ import {
   ImgStyled,
   DivPaginationStyled,
   SpanStyled,
-} from "./ComponentsAnnouncements";
+} from "./StylizedTagsAnnouncements";
 import ProductItem from "../../Product/ProductItem";
 import { CartContext } from "../../../contexts/CartContext";
-import { VisibilityContext } from "../../../contexts/VisibilityContext";
 import { useScrollX } from "../../../hooks/useScrollX";
 
 const AnnouncementProducts = [
@@ -142,17 +141,7 @@ function AnnouncementSection({ wasResize }) {
       }
       obterLimites();
     }
-  }, []);
-
-  useEffect(() => {
-    recalcularCenter();
-    updatePagination();
-  }, []);
-
-  useEffect(() => {
-    recalcularCenter();
-    updatePagination();
-  }, [wasResize]);
+  }, [advertisementsRef, setLimitAdvertisements]);
 
   //atualizar paginação
   const updatePagination = useCallback(() => {
@@ -175,6 +164,16 @@ function AnnouncementSection({ wasResize }) {
     setCentralIndices(visible_indices);
   }, []);
 
+  useEffect(() => {
+    recalcularCenter();
+    updatePagination();
+  }, [recalcularCenter, updatePagination]);
+
+  useEffect(() => {
+    recalcularCenter();
+    updatePagination();
+  }, [wasResize, recalcularCenter, updatePagination]);
+
   //evento de toque para detectar paginação
   useEffect(() => {
     const el = advertisementsRef.current;
@@ -191,7 +190,7 @@ function AnnouncementSection({ wasResize }) {
       el.removeEventListener("touchmove", handleMove);
       el.removeEventListener("mousemove", handleMove);
     };
-  }, [updatePagination]);
+  }, [updatePagination, advertisementsRef]);
 
   return (
     <ContainerStyled ref={divRef}>

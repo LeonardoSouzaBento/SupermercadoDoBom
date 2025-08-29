@@ -4,57 +4,92 @@ import {
   DivMainStyled,
   DivSpanCloseStyled,
   SpanCloseStyled,
-  H1LoginStyled,
-  DivEmailStyled,
-  PEmailStyled,
-  InputEmailStyled,
-  DivLoginGoogle,
-  PLoginGoogleStyled,
+  DivButtonsStyled,
+  ButtonLoginStyled,
+  PLoginStyled,
   ImgGoogleStyled,
-  DivAlertStyled,
-} from "./ComponentsLogin";
+  SpanButtonStyled,
+  DivSpanStyled,
+  DivH1Styled,
+  DivSpanPStyled,
+} from "./StylizedTagsLogin";
 import {
-  DivGPSResultStyled,
-  SpanGpsReturnStyled,
-} from "../../pages/Cart/ComponentsRegAddress";
-import { PValueStyled } from "../../pages/Cart/ComponentsCart";
+  DivApiReturnStyled,
+  SpanApiReturnStyled,
+} from "../MyAccountPage/RegisterAddress/StylizedTags";
+import { H1Styled, PValueStyled } from "../../pages/Cart/StylizedTagsCart";
+import EmailForm from "./EmailForm";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithCustomToken,
+} from "firebase/auth";
 import { auth } from "../../main";
 
 const provider = new GoogleAuthProvider();
 
-const Login = ({ setSeeLogin, onRegisterAddress }) => {
-  const [opacity, setOpacity] = useState(1);
-  const [showAlert, setShowAlert] = useState(false);
-  const { setNoSkipLogin } = useContext(VisibilityContext);
-  const [inLoginProcess, setInLoginProcess] = useState(false);
-  const { setToken } = useContext(VisibilityContext);
+const Login = ({ setSeeLogin, onMyAccount }) => {
+  const [opacity, setOpacity] = useState(0);
+  const [loginState, setLoginState] = useState("");
+  const { setIdToken, userContact, setUserContact } =
+    useContext(VisibilityContext);
+  const [seeEmailForm, setSeeEmailForm] = useState(false);
 
-  function handleClickClose() {
-    if (onRegisterAddress !== true) {
-      setOpacity(0);
-      setTimeout(() => {
-        setSeeLogin(false);
-        setNoSkipLogin(true);
-      }, 800);
-    } else {
-      setShowAlert(true);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 4000);
+  function setLoginSucess() {
+    setLoginState("completed");
+    setSeeLogin(false);
+  }
+
+  async function handleAnonymousLogin() {
+    setLoginState("pending");
+    try {
+      const response = await fetch(
+        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth/login-anonymous",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro no login anônimo");
+      }
+
+      const { token } = await response.json();
+      const userCredential = await signInWithCustomToken(auth, token);
+      const idToken = await userCredential.user.getIdToken();
+
+      setIdToken(idToken);
+      setLoginSucess();
+      console.log("Login bem-sucedido!");
+    } catch (error) {
+      setLoginState("error");
+      console.error(error);
     }
   }
 
   async function handleGoogleLogin() {
+    setLoginState("pending");
     try {
-      const result = await signInWithPopup(auth, provider); // Abre tela pop-up
+      provider.setCustomParameters({
+        prompt: "select_account",
+      });
+
+      const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      setUserContact({
+        name: user.displayName,
+        email: user.email,
+        photoUrl: user.photoURL,
+      });
 
       const idToken = await user.getIdToken();
-      setToken(idToken);
+      setIdToken(idToken);
 
-      fetch(
+      const response = await fetch(
         "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth/login-google",
         {
           method: "POST",
@@ -63,93 +98,146 @@ const Login = ({ setSeeLogin, onRegisterAddress }) => {
             Authorization: `Bearer ${idToken}`,
           },
         }
-      )
-        .then((response) => {
-          if (!response.ok) {
-            setNoSkipLogin(false);
-            setSeeLogin(false);
-            setInLoginProcess(false);
-            throw new Error("Erro no login: " + response.statusText);
-          } else {
-            setInLoginProcess(true);
-            setNoSkipLogin(false);
-            setSeeLogin(false);
-          }
-          return response.json();
-        })
-        .then((data) => console.log("Resposta do backend:", data))
-        .catch((error) => {
-          console.error("Erro ao enviar token para o backend:", error);
-        });
+      );
+
+      if (!response.ok) {
+        setLoginState("Error");
+        throw new Error("Erro no login: " + response.statusText);
+      }
+
+      setLoginSucess();
+      const data = await response.json();
+      console.log("Resposta do backend:", data);
     } catch (error) {
-      // Tratar erros (por exemplo, se o usuário fechar o pop-up)
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error("Erro no login com Google:", errorCode, errorMessage);
+      console.log(error);
+      setLoginState("error");
     }
   }
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacity(1);
+    }, 200);
+  }, []);
+
+  useEffect(() => {
+    if (loginState === "error" || loginState === "completed") {
+      setTimeout(() => {
+        setLoginState("");
+      }, 4200);
+    }
+  }, [loginState]);
 
   return (
-    <ContainerStyled $opacity={opacity} $onRegisterAddress={onRegisterAddress}>
-      <DivMainStyled $onRegisterAddress={onRegisterAddress}>
-        {showAlert && (
-          <DivAlertStyled>
-            <PEmailStyled
-              style={{
-                width: "80%",
-                paddingBottom: "2px",
-                scale: 1.01,
-                fontWeight: 600,
-                color: "#d5343a",
+    <ContainerStyled $opacity={opacity}>
+      <DivMainStyled>
+        {loginState !== "" && <LoginReturn loginState={loginState} />}
+
+        {seeEmailForm ? (
+          <EmailForm
+            loginState={loginState}
+            setLoginState={setLoginState}
+            userContact={userContact}
+            setUserContact={setUserContact}
+            setIdToken={setIdToken}
+            setSeeEmailForm={setSeeEmailForm}
+          />
+        ) : (
+          <>
+            <DivSpanCloseStyled
+              $onMyAccount={onMyAccount}
+              onClick={() => {
+                setSeeLogin(false);
               }}
             >
-              <strong>Entre com google </strong>e teste a api de geolocoding,
-              seja paciente, pois o backend ainda está sendo feito.
-            </PEmailStyled>
-          </DivAlertStyled>
+              <SpanCloseStyled className="material-symbols-rounded">
+                close
+              </SpanCloseStyled>
+            </DivSpanCloseStyled>
+
+            <DivH1Styled>
+              <H1Styled $login={true}>Fazer Login</H1Styled>
+            </DivH1Styled>
+
+            <DivButtonsStyled>
+              <ButtonLoginStyled
+                onClick={handleAnonymousLogin}
+                $onMyAccount={onMyAccount}
+              >
+                <DivSpanPStyled>
+                  <PLoginStyled>Visitante</PLoginStyled>
+                  <DivSpanStyled>
+                    <SpanButtonStyled className="material-symbols-outlined">
+                      mail_off
+                    </SpanButtonStyled>
+                  </DivSpanStyled>
+                </DivSpanPStyled>
+              </ButtonLoginStyled>
+
+              <ButtonLoginStyled
+                onClick={() => {
+                  setSeeEmailForm(true);
+                }}
+              >
+                <DivSpanPStyled>
+                  <PLoginStyled>Login com E-mail</PLoginStyled>
+                  <DivSpanStyled>
+                    <SpanButtonStyled className="material-symbols-rounded">
+                      mail
+                    </SpanButtonStyled>
+                  </DivSpanStyled>
+                </DivSpanPStyled>
+              </ButtonLoginStyled>
+
+              <ButtonLoginStyled onClick={handleGoogleLogin}>
+                <DivSpanPStyled>
+                  <PLoginStyled $google={true}>Login com o Google</PLoginStyled>
+                  <ImgGoogleStyled src="/login/Google-Logo.png" />
+                </DivSpanPStyled>
+              </ButtonLoginStyled>
+            </DivButtonsStyled>
+          </>
         )}
-
-        {inLoginProcess && (
-          <DivGPSResultStyled>
-            <SpanGpsReturnStyled
-              className="material-symbols-outlined"
-              $errorLocationButton={false}
-            >
-              progress_activity
-            </SpanGpsReturnStyled>
-
-            <PValueStyled style={{ width: "80%", textAlign: "center" }}>
-              Entrando na sua conta
-            </PValueStyled>
-          </DivGPSResultStyled>
-        )}
-
-        <DivSpanCloseStyled onClick={handleClickClose}>
-          <SpanCloseStyled className="material-symbols-rounded">
-            close
-          </SpanCloseStyled>
-        </DivSpanCloseStyled>
-
-        <H1LoginStyled>Cadastre-se</H1LoginStyled>
-        <DivEmailStyled>
-          <PEmailStyled>E-mail:</PEmailStyled>
-          <InputEmailStyled></InputEmailStyled>
-        </DivEmailStyled>
-        <DivLoginGoogle onClick={handleGoogleLogin}>
-          <PLoginGoogleStyled>Entre com o Google</PLoginGoogleStyled>
-          <ImgGoogleStyled src="/login/Google-Logo.png" />
-        </DivLoginGoogle>
-        <DivLoginGoogle $whatsapp={true}>
-          <PLoginGoogleStyled $whatsapp={true}>
-            Entre com Whatsapp
-          </PLoginGoogleStyled>
-          <ImgGoogleStyled $whatsapp={true} src="/login/whatsapp-logo.png" />
-        </DivLoginGoogle>
       </DivMainStyled>
     </ContainerStyled>
   );
 };
 
 export default Login;
+
+export const LoginReturn = ({ loginState }) => {
+  return (
+    <>
+      {(loginState === "pending" || loginState === "completed") && (
+        <DivApiReturnStyled>
+          <SpanApiReturnStyled
+            className="material-symbols-outlined"
+            $wait={loginState === "pending"}
+          >
+            {loginState === "pending" ? "progress_activity" : "check"}
+          </SpanApiReturnStyled>
+
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            {loginState === "pending" ? "Fazendo Login..." : "Sucesso!"}
+          </PValueStyled>
+        </DivApiReturnStyled>
+      )}
+
+      {loginState === "error" && (
+        <DivApiReturnStyled>
+          <SpanApiReturnStyled
+            className="material-symbols-outlined"
+            $error={true}
+          >
+            exclamation
+          </SpanApiReturnStyled>
+
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            <strong>Erro: </strong> o login falhou, tente novamente ou tente de
+            outro modo.
+          </PValueStyled>
+        </DivApiReturnStyled>
+      )}
+    </>
+  );
+};

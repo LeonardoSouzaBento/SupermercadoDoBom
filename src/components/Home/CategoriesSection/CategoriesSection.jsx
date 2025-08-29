@@ -10,7 +10,7 @@ import {
   ImgStyled,
   DivNameCatStyled,
   PStyled,
-} from "./ComponentsCategories";
+} from "./StylizedTagsCategories";
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/CartContext";
 import { useScrollX } from "../../../hooks/useScrollX";
@@ -60,15 +60,15 @@ function CategoriesSection({ wasResize }) {
       const limit = divWidth - totalWidth;
       setLimitCategories(limit);
     }
-  }, [categories, setLimitCategories]);
+  }, [setLimitCategories, categoriesRef,]);
 
   useEffect(() => {
     updateLimitCategories();
-  }, [categories.length, setLimitCategories]);
+  }, [setLimitCategories, updateLimitCategories]);
 
   useEffect(() => {
     updateLimitCategories();
-  }, [wasResize]);
+  }, [wasResize, updateLimitCategories]);
 
   function handlePointerUpCat(e, catId) {
      if (e.button === 2) {

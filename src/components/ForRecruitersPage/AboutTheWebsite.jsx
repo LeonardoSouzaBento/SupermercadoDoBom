@@ -1,4 +1,4 @@
-import { PStyled, H2Styled } from "./ComponentsForRecruitersPage";
+import { PStyled, H2Styled } from "./StylizedTagsForRecruitersPage";
 import styled from "styled-components";
 
 const LocalPStyled = styled(PStyled)`
@@ -97,12 +97,6 @@ export default function AboutTheWebsite() {
         página, o valor da quantidade daquele produto estará correto, em
         conformidade com a alteração feita pelo usuário.
       </LocalPStyled>
-      {/* <LocalPStyled>
-        A quantidade do ProductItem corresponde a quantidade local de
-        ProductInFull por meio de um estado global. Ele guarda o id do produto a
-        quantidade de ProductInFull. Essa quantidade é repassada para o
-        ProductItem com id corresponde, acionado o useEffect.
-      </LocalPStyled> */}
     </>
   );
 }

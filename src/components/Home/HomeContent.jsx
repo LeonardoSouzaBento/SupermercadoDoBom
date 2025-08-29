@@ -24,7 +24,7 @@ const Main = styled.main`
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(to bottom, #383d6a, #ecf0f5);
+    background: linear-gradient(to bottom, var(--purple), #ecf0f5);
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -34,7 +34,7 @@ const Main = styled.main`
 
 function HomeContent() {
   const [viewOptions, setViewOptions] = useState(false);
-  const { seeLogin, setSeeLogin, viewProductInFull } =
+  const { viewProductInFull, seeLogin, setSeeLogin } =
     useContext(VisibilityContext);
   const { currentCategory } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
@@ -42,11 +42,10 @@ function HomeContent() {
   const windowWidthInitialRef = useRef(0);
   const [wasResize, setWasResize] = useState(0);
   const divRef = useRef(null);
-
   useEffect(() => {
+    setSeeLogin(false);
     setTimeout(() => {
       setOpacityState(1);
-      // setSeeLogin(true);
     }, 300);
 
     //resize para avisar mudanças de largura
@@ -73,17 +72,15 @@ function HomeContent() {
         clearTimeout(resizeDowntime.current);
       }
     };
-  }, []);
+  }, [setSeeLogin]);
 
   return (
     <div ref={divRef}>
-      {seeLogin && <Login setSeeLogin={setSeeLogin} onRegisterAddress={false}/>}
-
-      {viewOptions && (
-        <OptionsSection
-          setViewOptions={setViewOptions}
-        />
+      {seeLogin && (
+        <Login setSeeLogin={setSeeLogin} />
       )}
+
+      {viewOptions && <OptionsSection setViewOptions={setViewOptions} />}
 
       <div
         style={{

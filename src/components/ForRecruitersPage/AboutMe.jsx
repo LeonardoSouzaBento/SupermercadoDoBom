@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import { PStyled, H1Styled, H2Styled } from "./ComponentsForRecruitersPage";
+import { PStyled, H1Styled, H2Styled } from "./StylizedTagsForRecruitersPage";
 
 const ContainerDivPButtons = styled.div`
   display: flex;
@@ -23,9 +23,8 @@ const DivPButtons = styled.div`
   display: flex;
   align-items: center;
   border-radius: 22px;
-  background-color: #383d6a;
+  background-color: var(--purple);
   color: white;
-  cursor: pointer;
 
   ${(props) =>
     props.$buttonSelected &&

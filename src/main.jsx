@@ -1,8 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from "./routes";
-import { CartProvider } from "./contexts/CartContext";
-import { VisibilityProvider } from "./contexts/VisibilityContext";
+import Root from "./Root";
 import '../src/index.css';
 
 import { initializeApp } from "firebase/app";
@@ -21,13 +18,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <CartProvider>
-    <VisibilityProvider>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
-    </VisibilityProvider>
-  </CartProvider>
-);
+ReactDOM.createRoot(document.getElementById("root")).render(<Root />);

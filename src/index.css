@@ -29,3 +29,30 @@ body {
   margin: auto;
   position: relative;
 }
+
+p{
+  cursor: default;
+}
+
+h1, h2, h3{
+  cursor: default;
+  user-select: none;
+}
+
+:root {
+  /*Cores*/
+  --purple: #383d6a;
+  --purple-hover: #2e3257;
+  --dark-purple: #261e3e;
+  --red: #d5343a;
+  --dark-red: #c3282d;
+  --dark-green: #396B46;
+  --back-color: #ecf0f5;
+  --back-hover: #d7dfea;
+  --disable: #a8adb3ff;
+  --disable-hover: #9299a0ff;
+
+  /*Fontes*/
+  --p-font: "Open Sans", Arial, Helvetica, sans-serif;
+  --bt-font: "Montserrat", Arial, Helvetica, sans-serif;
+}

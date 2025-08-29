@@ -1,3 +1,5 @@
+package_2, data_info_alert, delivery_truck_speed,
+
 Botões secundários ou menores: 36px ou 40px
 
 //Padrão recomendado:

@@ -7,7 +7,7 @@ import {
   DivSpanStyled,
   SpanStyled,
   DivContentStyled,
-} from "../components/ForRecruitersPage/ComponentsForRecruitersPage";
+} from "../components/ForRecruitersPage/StylizedTagsForRecruitersPage";
 import AboutMe from "../components/ForRecruitersPage/AboutMe";
 import AboutTheWebsite from "../components/ForRecruitersPage/AboutTheWebsite";
 import InsertComment from "../components/ForRecruitersPage/InsertComment";

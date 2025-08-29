@@ -18,7 +18,7 @@ import {
   DivOnePStyled,
   PStyled,
   InputForFocusStyled,
-} from "./ComponentesSearchBar";
+} from "./StylizedTagsSearchBar";
 
 //produtos únicos para sugestão
 function getUniqueResults(products, start = 0, end = 14) {

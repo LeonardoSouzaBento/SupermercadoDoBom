@@ -24,7 +24,7 @@ import {
   DescOfertaStyled,
   DivNomeStyled,
   PnomeStyled,
-} from "./ComponentsProductItem";
+} from "./StylizedTagsProductItem";
 
 const Oferta = ({ product, quantity, setQuantity, variant }) => {
   const { setDataProductFull, viewProductInFull, setViewProductInFull } =

@@ -7,11 +7,11 @@ import {
   POptionStyled,
   DivSpanStyled,
   SpanOptionsStyled,
-} from "./ComponentsOptions";
+} from "./StylizedTagsOptions";
 import {
   DivSpanCloseStyled,
   SpanCloseStyled,
-} from "../../../pages/Cart/ComponentsRegAddress";
+} from "../../MyAccountPage/RegisterAddress/StylizedTags";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { VisibilityContext } from "../../../contexts/VisibilityContext";
@@ -43,44 +43,35 @@ const OptionsMenu = ({ setViewOptions }) => {
   const [option, setOption] = useState("");
   const [canClick, setCanClick] = useState(false);
   const navigate = useNavigate();
-  const { noSkipLogin, setNoSkipLogin, setSeeLogin } =
+  const { seeLogin, setSeeLogin } =
     useContext(VisibilityContext);
 
   function handleClickClose(e) {
-    if (e.button === 2) {
+    e.stopPropagation();
+    if (e.button === 2 ) {
       return;
     }
-    if (canClick) {
-      setTransform("100%");
-      setTimeout(() => {
-        setViewOptions(false);
-      }, 400);
-    }
+    setTransform("100%");
+    setTimeout(() => {
+      setViewOptions(false);
+    }, 450);
   }
 
-  function handleLogout() {
-    function operation() {
-      setNoSkipLogin(true);
-      setSeeLogin(true);
-      setViewOptions(false);
-    }
+  async function handleLogout() {
+    if (!seeLogin) {
+      try {
+        const auth = getAuth();
+        await signOut(auth);
 
-    if (noSkipLogin === false) {
-      const auth = getAuth();
-      signOut(auth)
-        .then(() => {
-          console.log("Usuário deslogado com sucesso");
-          operation();
-          // Aqui você pode, por exemplo:
-          // - limpar estados globais
-          // - redirecionar para a tela de login
-          // - esconder seções privadas
-        })
-        .catch((error) => {
-          console.error("Erro ao deslogar:", error);
-        });
-    } else {
-      operation();
+        localStorage.clear();
+        sessionStorage.clear();
+
+        console.log("Usuário deslogado e cache limpo");
+        setSeeLogin(true);
+        setViewOptions(false);
+      } catch (error) {
+        console.error("Erro ao deslogar:", error);
+      }
     }
   }
 
@@ -102,7 +93,7 @@ const OptionsMenu = ({ setViewOptions }) => {
     return () => {
       setTransform("0%");
     };
-  }, [option]);
+  }, [option, navigate]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -139,8 +130,10 @@ const OptionsMenu = ({ setViewOptions }) => {
         {contents.map((content, index) => (
           <DivNameSpanStyled
             key={index}
-            onPointerDown={(e) => handleOpenContent(e, index, content.p)}
-            data-ignore-click
+            onPointerDown={(e) => {
+              e.stopPropagation();
+              handleOpenContent(e, index, content.p);
+            }}
             $logout={content.p == "Sair do site"}
           >
             <DivSpanStyled>
