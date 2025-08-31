@@ -42,8 +42,8 @@ function HomeContent() {
   const windowWidthInitialRef = useRef(0);
   const [wasResize, setWasResize] = useState(0);
   const divRef = useRef(null);
+
   useEffect(() => {
-    setSeeLogin(false);
     setTimeout(() => {
       setOpacityState(1);
     }, 300);

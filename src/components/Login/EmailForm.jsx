@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { signInWithCustomToken } from "firebase/auth";
 import { auth } from "../../main";
@@ -9,8 +9,12 @@ import {
   SpanEmailStyled,
   ButtonDivStyled,
 } from "./StylizedTagsLogin";
-import { PValueStyled, PContinueStyled } from "../../pages/Cart/StylizedTagsCart";
-import { LoginReturn } from "./Login";
+import {
+  PValueStyled,
+  PContinueStyled,
+} from "../../pages/Cart/StylizedTagsCart";
+import { LoginReturn } from "./ComponentsLogin";
+import { VisibilityContext } from "../../contexts/VisibilityContext";
 
 function validatePassword(senha) {
   const requisitos = {
@@ -32,14 +36,9 @@ function validateEmail(email) {
   return regex.test(email);
 }
 
-const EmailForm = ({
-  loginState,
-  setLoginState,
-  userContact,
-  setUserContact,
-  setIdToken,
-  setSeeEmailForm,
-}) => {
+const EmailForm = ({ loginState, setLoginState, setSeeEmailForm }) => {
+  const { setIdToken, userContact, setUserContact } =
+    useContext(VisibilityContext);
   const [emailForm, setEmailForm] = useState({
     email: "",
     senha: "",

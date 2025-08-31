@@ -15,7 +15,7 @@ export const ContainerStyled = styled.div`
 
 export const DivMainStyled = styled.div`
   width: 100%;
-  max-width: 430px;
+  max-width: 375px;
   height: auto;
   box-sizing: border-box;
   overflow: hidden;
@@ -26,7 +26,10 @@ export const DivMainStyled = styled.div`
   box-shadow: 0px 4px 10px -3px rgba(41, 46, 117, 0.5);
   background-color: white;
   transform: translate(-50%, -50%);
-
+  @media screen and (max-width: 407px) {
+    max-width: none;
+    width: calc(100% - 16px);
+  }
   @media screen and (min-width: 375px) and (max-width: 577px) {
     top: 43%;
   }
@@ -99,7 +102,7 @@ export const DivSpanCloseStyled = styled.div`
   cursor: pointer;
   transition: background-color 0.05s linear;
 
-  ${(props) => !props.$onMyAccount && "display: none;"};
+  /* ${(props) => !props.$onMyAccount && "display: none;"}; */
   &:hover {
     background-color: hsla(358, 66%, 43%, 1);
   }

@@ -485,6 +485,7 @@ export const DivZapStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${(props) => props.$seeInput && "align-items: flex-end;"};
   position: relative;
   border: 1px solid #c5c5c5ff;
 `;
@@ -506,6 +507,13 @@ export const DivFormStyled = styled.div`
       @media screen and (min-width: 375px) {
         width: 58%;
       }
+    `}
+  ${(props) =>
+    props.$zap &&
+    css`
+      width: 100% !important;
+      padding-right: 16px;
+      box-sizing: border-box;
     `}
 `;
 
@@ -582,10 +590,14 @@ export const InputZapStyled = styled.input`
   background-color: var(--back-color);
   font-family: var(--p-font);
   font-weight: 400;
+
+  &:focus {
+    border: 1px solid #c5c5c5ff;
+    outline: none;
+  }
   ${(props) => props.$hide && "display: none;"}
-  
+
   @media screen and (max-width: 375px) {
-    width: calc(100% - 36px);
     font-size: 1.15em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {

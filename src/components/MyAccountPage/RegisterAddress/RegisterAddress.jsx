@@ -31,26 +31,36 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
   const { idToken } = useContext(VisibilityContext);
   //-11.186615346993204, lng: -40.26740712716049
 
-  useEffect(() => {
-    setTimeout(() => {
-      setOpacityRegAddress(1);
-    }, 200);
-  }, []);
-
-  useEffect(() => {
-    if (opacityRegAddress === 0) {
+  function showOrHideComponent(option) {
+    if (option === "hide") {
+      setOpacityRegAddress(0);
       setTimeout(() => {
         setSeeRegisterAddress(false);
       }, 300);
+    } else {
+      setSeeRegisterAddress(true);
+      setTimeout(() => {
+        setOpacityRegAddress(1);
+      }, 300);
     }
-  }, [opacityRegAddress, setSeeRegisterAddress]);
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacityRegAddress(1);
+    }, 100);
+  }, []);
 
   return (
     <DivBodyStyled $opacity={opacityRegAddress}>
       <MainDivStyled>
         <DivTitleStyled>
           <H1Styled>Cadastrar endereço</H1Styled>
-          <DivSpanCloseStyled onClick={()=>{setOpacityRegAddress(0)}}>
+          <DivSpanCloseStyled
+            onClick={() => {
+              showOrHideComponent("hide");
+            }}
+          >
             <SpanCloseStyled className="material-symbols-rounded">
               close
             </SpanCloseStyled>
@@ -59,7 +69,7 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
 
         {seeAdressForm ? (
           <AddressForm
-            setOpacityRegAddress={setOpacityRegAddress}
+            showOrHideComponent={showOrHideComponent}
             opacityReturn={opacityReturn}
             formData={formData}
             setFormData={setFormData}

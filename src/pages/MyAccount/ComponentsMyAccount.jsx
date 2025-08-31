@@ -54,6 +54,7 @@ export const Contact = ({ isDataComplete }) => {
     setTimeout(() => {
       inputZapRef.current.focus();
     }, 120);
+    setPhoneNumber("");
   }
 
 //   function validateAndFormatNumber(value, isZap) {
@@ -145,7 +146,7 @@ export const Contact = ({ isDataComplete }) => {
 
       {/*Whatsapp*/}
       <DivStyled>
-        <DivZapStyled>
+        <DivZapStyled $seeInput={seeInput}>
           <DivFormStyled $zap={true}>
             <Pv2Styled>
               <StrongStyled>Whatsapp ou Telefone:</StrongStyled> <br />
@@ -165,6 +166,7 @@ export const Contact = ({ isDataComplete }) => {
           </DivFormStyled>
 
           <DivSpanStyled
+
             onClick={() => {
               handleFocusOnInput();
             }}

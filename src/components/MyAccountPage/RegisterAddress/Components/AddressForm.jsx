@@ -14,7 +14,7 @@ const AddressForm = ({
   formData,
   setFormData,
   setSeeAddressForm,
-  setOpacityRegAddress,
+  showOrHideComponent,
 }) => {
   const [addressSaved, setAddressSaved] = useState("");
   const [addressComplete, setAddressComplete] = useState(false);
@@ -22,6 +22,13 @@ const AddressForm = ({
   const { idToken, isDataComplete, setIsDataComplete } =
     useContext(VisibilityContext);
   const [opacityAddressForm, setOpacityAddressForm] = useState(0);
+
+  function dismountComponent() {
+    setOpacityAddressForm(0);
+    setTimeout(() => {
+      setSeeAddressForm(false);
+    }, 300);
+  }
 
   //para preenchimento manual
   const handleChange = (e) => {
@@ -36,7 +43,7 @@ const AddressForm = ({
       setIsDataComplete({ ...isDataComplete, address: true });
       setUserAddress(formData);
       setOpacityAddressForm(0);
-      setOpacityRegAddress(0);
+      showOrHideComponent("hide");
       updateAddres(formData); //enviar ao servidor
     }
   }
@@ -99,16 +106,8 @@ const AddressForm = ({
   useEffect(() => {
     setTimeout(() => {
       setOpacityAddressForm(1);
-    }, 100);
+    }, 150);
   }, []);
-
-  useEffect(() => {
-    if (opacityAddressForm === 0) {
-      setTimeout(() => {
-        setSeeAddressForm(false);
-      }, 330);
-    }
-  }, [opacityAddressForm, setSeeAddressForm]);
 
   return (
     <form
@@ -189,7 +188,7 @@ const AddressForm = ({
       <ButtonStyled
         $variant={"voltar"}
         onClick={() => {
-          setOpacityAddressForm(0);
+          dismountComponent();
         }}
       >
         Voltar
