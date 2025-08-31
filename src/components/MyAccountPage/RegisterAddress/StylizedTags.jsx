@@ -15,8 +15,8 @@ export const DivBodyStyled = styled.div`
   transition: opacity 0.3s ease;
   opacity: ${(props) => props.$opacity};
 
-  @media screen and (max-width: 768px) {
-    justify-content: flex-start;
+  @media screen and (max-width: 993px) {
+    justify-content: ${(props) => (props.$up ? "flex-start" : "center")};
   }
 `;
 
@@ -32,13 +32,16 @@ export const MainDivStyled = styled.div`
   background-color: white;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 3px 3px -2px rgba(41, 46, 117, 0.5),
-    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
+  /* box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
+    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
+    -2px 0px 4px -3px rgba(41, 46, 117, 0.125); */
+  box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
+    4px 0px 4px -3px rgba(41, 46, 117, 0.1),
+    -4px 0px 4px -3px rgba(41, 46, 117, 0.1);
   transition: transform 0.2s ease;
 
-  @media screen and (max-width: 768px) {
-    border-radius: 0 0 16px 16px;
+  @media screen and (max-width: 993px) {
+    ${(props) => props.$up && "border-radius: 0 0 16px 16px;"};
   }
   @media screen and (min-width: 375px) and (max-width: 577px) {
     margin-bottom: 0px;

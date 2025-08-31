@@ -20,6 +20,7 @@ import {
   DivApiReturnStyled,
   SpanApiReturnStyled,
 } from "../MyAccountPage/RegisterAddress/StylizedTags";
+import { PValueStyled } from "../../pages/Cart/StylizedTagsCart";
 
 const provider = new GoogleAuthProvider();
 

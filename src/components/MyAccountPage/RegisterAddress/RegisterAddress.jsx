@@ -52,8 +52,8 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
   }, []);
 
   return (
-    <DivBodyStyled $opacity={opacityRegAddress}>
-      <MainDivStyled>
+    <DivBodyStyled $opacity={opacityRegAddress} $up={seeAdressForm}>
+      <MainDivStyled $up={seeAdressForm}>
         <DivTitleStyled>
           <H1Styled>Cadastrar endereço</H1Styled>
           <DivSpanCloseStyled

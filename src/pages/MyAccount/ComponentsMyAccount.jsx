@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import {
   DivOneStyled,
   ButtonLoginStyled,
@@ -28,92 +28,135 @@ import {
   DivNameEmailStyled,
   DivButtonStyled,
   InputZapStyled,
+  DivZapAndDivPhone,
+  DivZapOrPhone,
 } from "../../components/MyAccountPage/StylizedTagsMyAccountPage";
 import {
   ButtonContinueStyled,
   PContinueStyled,
+  SpanReceiptStyled,
 } from "../Cart/StylizedTagsCart";
+import { VisibilityContext } from "../../contexts/VisibilityContext";
 
-export const Contact = ({ isDataComplete }) => {
-  const [phoneNumber, setPhoneNumber] = useState("Não fornecido");
+function formatPhone(num, selectedPhoneType) {
+  if (!num) return "";
+
+  // Remove tudo que não é número
+  let digits = num.replace(/\D/g, "");
+  // Remove prefixo do Brasil (+55 ou 55)
+  if (digits.startsWith("55")) {
+    digits = digits.slice(2);
+  }
+  // Se for WhatsApp (zap) e o número tiver 10 dígitos, adiciona o 9
+  if (selectedPhoneType === "zap" && digits.length === 10) {
+    digits = digits.replace(/^(\d{2})(\d{4})(\d{4})$/, "$19$2$3");
+  }
+
+  // Se for fixo (landline) e tiver 11 dígitos (com 9 extra), remove o 9
+  if (selectedPhoneType === "landline" && digits.length === 11) {
+    digits = digits.replace(/^(\d{2})9(\d{4})(\d{4})$/, "$1$2$3");
+  }
+
+  // Só formata se tiver pelo menos 10 dígitos
+  if (digits.length < 10) return num;
+  if (digits.length === 11) {
+    return digits.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+  }
+  if (digits.length === 10) {
+    return digits.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3");
+  }
+  // Caso venha com mais de 11 dígitos, corta e formata como celular
+  return digits.slice(0, 11).replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+}
+
+function validatePhoneNumber(num, selectedPhoneType) {
+  if (!num) return false;
+
+  let digits = num.replace(/\D/g, "");
+
+  // Remove prefixo do Brasil
+  if (digits.startsWith("55")) {
+    digits = digits.slice(2);
+  }
+
+  const ddd = digits.slice(0, 2);
+  const prefix = digits.slice(2, 3);
+
+  // 🔹 Restrição geral: DDD deve estar entre 11 e 99
+  if (Number(ddd) < 11 || Number(ddd) > 99) return false;
+
+  // 🔹 Restrição geral: não pode ser sequência repetida
+  if (/^(\d)\1+$/.test(digits)) return false;
+
+  if (selectedPhoneType === "landline") {
+    // Deve ter 10 dígitos
+    if (digits.length !== 10) return false;
+
+    // Não pode começar com 0,1,8,9 após o DDD
+    if (["0", "1", "8", "9"].includes(prefix)) return false;
+
+    return true;
+  }
+
+  if (selectedPhoneType === "zap") {
+    // Deve ter 11 dígitos
+    if (digits.length !== 11) return false;
+
+    // Deve começar com 9 após o DDD
+    if (prefix !== "9") return false;
+
+    return true;
+  }
+
+  // Tipo desconhecido → inválido
+  return false;
+}
+
+export const Contact = () => {
+  const { userContact, setUserContact, isDataComplete, setIsDataComplete } =
+    useContext(VisibilityContext);
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [seeInput, setSeeInput] = useState(false);
-  // const [isValidNumber, setIsValidNumber] = useState(false);
-  // const [isZap, setIsZap] = useState(true);
+  const [isValidNumber, setIsValidNumber] = useState(false);
+  const [selectedPhoneType, setSelectedPhoneType] = useState("zap");
 
   const inputZapRef = useRef(null);
 
   function handleFocusOnInput() {
     if (!seeInput) {
       setSeeInput(true);
-    } else {
-      setSeeInput(false);
+      setTimeout(() => {
+        inputZapRef.current.focus();
+      }, 100);
+      setTimeout(() => {
+        inputZapRef.current.focus();
+      }, 120);
+      setPhoneNumber("");
     }
-    setTimeout(() => {
-      inputZapRef.current.focus();
-    }, 100);
-    setTimeout(() => {
-      inputZapRef.current.focus();
-    }, 120);
-    setPhoneNumber("");
+    if (seeInput && isValidNumber) {
+      setSeeInput(false);
+      setUserContact({ ...userContact, phone: phoneNumber });
+      setIsDataComplete({ ...isDataComplete, contact: true });
+    }
   }
 
-//   function validateAndFormatNumber(value, isZap) {
-//   // Remove todos os caracteres que não sejam dígitos
-//   const cleanedValue = value.replace(/\D/g, '');
+  useEffect(() => {
+    if (phoneNumber && phoneNumber.replace(/\D/g, "").length >= 10) {
+      const isValid = validatePhoneNumber(phoneNumber, selectedPhoneType);
+      setIsValidNumber(isValid);
 
-//   let regex;
-//   let minLength;
-//   const isCelular = cleanedValue.length === 11;
-//   const isFixo = cleanedValue.length === 10;
+      // Só formata se for válido
+      if (isValid) {
+        const formatted = formatPhone(phoneNumber, selectedPhoneType);
+        if (formatted !== phoneNumber) {
+          setPhoneNumber(formatted);
+        }
+      }
+    } else {
+      setIsValidNumber(false);
+    }
+  }, [phoneNumber, selectedPhoneType]);
 
-//   if (isZap) {
-//     // Padrão para WhatsApp (com ou sem 9)
-//     regex = /^(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579]|8[1-9])9\d{8}$/;
-//     minLength = 11;
-//   } else {
-//     // Padrão para telefone fixo
-//     regex = /^(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579]|8[1-9])\d{8}$/;
-//     minLength = 10;
-//   }
-
-//   const isValid = isZap ? isCelular && regex.test(cleanedValue) : isFixo && regex.test(cleanedValue);
-//   let formattedValue = '';
-
-//   if (isValid) {
-//     if (isZap) {
-//       formattedValue = `(${cleanedValue.slice(0, 2)}) ${cleanedValue.slice(2, 7)}-${cleanedValue.slice(7, 11)}`;
-//     } else {
-//       formattedValue = `(${cleanedValue.slice(0, 2)}) ${cleanedValue.slice(2, 6)}-${cleanedValue.slice(6, 10)}`;
-//     }
-//   } else {
-//     formattedValue = cleanedValue;
-//   }
-
-//   // Impede a adição de mais números que o necessário
-//   if (cleanedValue.length > (isZap ? 11 : 10)) {
-//     return {
-//       formatted: `(${cleanedValue.slice(0, 2)}) ${cleanedValue.slice(2, isZap ? 7 : 6)}-${cleanedValue.slice(isZap ? 7 : 6, isZap ? 11 : 10)}`,
-//       isValid: false
-//     };
-//   }
-
-//   return {
-//     formatted: formattedValue,
-//     isValid: isValid,
-//   };
-// }
-
-//   useEffect(() => {
-//     // Quando o phoneNumber mudar, chame a função de validação e formatação
-//     const { formatted, isValid: newIsValid } = validateAndFormatNumber(phoneNumber, isZap);
-    
-//     // Atualiza o estado para que o input mostre o número formatado
-//     setPhoneNumber(formatted);
-    
-//     // Atualiza o estado de validação
-//     setIsValid(newIsValid);
-//   }, [phoneNumber, isZap]);
-  
   return (
     <DivTwoStyled>
       <DivH2StatusStyled>
@@ -130,56 +173,99 @@ export const Contact = ({ isDataComplete }) => {
         </HeaderH2Styled>
 
         {/*Estado do número*/}
-        {!isDataComplete.contact && (
-          <DivStatusStyled>
-            <DivNameStatus $hide={isDataComplete.contact}>
-              <NameStatusStyled $hide={isDataComplete.contact}>
-                Sem um número
-              </NameStatusStyled>
-              <SpanStatusStyled className="material-symbols-outlined">
-                {isDataComplete.contact ? "check" : "exclamation"}
-              </SpanStatusStyled>
-            </DivNameStatus>
-          </DivStatusStyled>
-        )}
+
+        <DivStatusStyled>
+          <DivNameStatus $hide={isDataComplete.contact}>
+            <NameStatusStyled $hide={isDataComplete.contact}>
+              {isDataComplete.contact ? "Número salvo" : "Sem um número"}
+            </NameStatusStyled>
+            <SpanStatusStyled
+              className="material-symbols-outlined"
+              $check={isDataComplete.contact}
+            >
+              {isDataComplete.contact ? "check" : "exclamation"}
+            </SpanStatusStyled>
+          </DivNameStatus>
+        </DivStatusStyled>
       </DivH2StatusStyled>
 
       {/*Whatsapp*/}
       <DivStyled>
-        <DivZapStyled $seeInput={seeInput}>
-          <DivFormStyled $zap={true}>
-            <Pv2Styled>
-              <StrongStyled>Whatsapp ou Telefone:</StrongStyled> <br />
-            </Pv2Styled>
+        <div style={{ border: "1px solid #c5c5c5ff" }}>
+          <DivZapStyled $seeInput={seeInput}>
+            <DivFormStyled $zap={true}>
+              <Pv2Styled>
+                <StrongStyled>Whatsapp ou Telefone:</StrongStyled> <br />
+              </Pv2Styled>
 
-            <Pv2Styled $hide={seeInput}>{phoneNumber}</Pv2Styled>
+              <Pv2Styled $hide={userContact.phone === ""}>
+                {userContact.phone}
+              </Pv2Styled>
 
-            <InputZapStyled
-              ref={inputZapRef}
-              $hide={!seeInput}
-              type="numeric"
-              value={phoneNumber}
-              onChange={(e) => {
-                setPhoneNumber(e.target.value);
+              <InputZapStyled
+                ref={inputZapRef}
+                $hide={!seeInput}
+                type="numeric"
+                value={phoneNumber}
+                maxLength={15}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
+              />
+            </DivFormStyled>
+
+            <DivSpanStyled
+              $disable={!isValidNumber && seeInput}
+              onClick={() => {
+                handleFocusOnInput();
               }}
-            />
-          </DivFormStyled>
+            >
+              {seeInput ? (
+                <PContinueStyled>OK</PContinueStyled>
+              ) : (
+                <SpanEditStyled className="material-symbols-outlined">
+                  edit
+                </SpanEditStyled>
+              )}
+            </DivSpanStyled>
+          </DivZapStyled>
 
-          <DivSpanStyled
+          <DivZapAndDivPhone $visible={seeInput}>
+            <DivZapOrPhone
+              $selected={selectedPhoneType === "zap"}
+              onClick={() => {
+                setSelectedPhoneType("zap");
+              }}
+            >
+              <SpanReceiptStyled
+                className="material-symbols-rounded"
+                $selected={selectedPhoneType == "zap"}
+              >
+                {selectedPhoneType === "zap"
+                  ? "check_box"
+                  : "check_box_outline_blank"}
+              </SpanReceiptStyled>
+              <Pv2Styled>É whatsApp</Pv2Styled>
+            </DivZapOrPhone>
 
-            onClick={() => {
-              handleFocusOnInput();
-            }}
-          >
-            {seeInput ? (
-              <PContinueStyled>OK</PContinueStyled>
-            ) : (
-              <SpanEditStyled className="material-symbols-outlined">
-                edit
-              </SpanEditStyled>
-            )}
-          </DivSpanStyled>
-        </DivZapStyled>
+            <DivZapOrPhone
+              $selected={selectedPhoneType === "landline"}
+              onClick={() => {
+                setSelectedPhoneType("landline");
+              }}
+            >
+              <SpanReceiptStyled
+                className="material-symbols-rounded"
+                $selected={selectedPhoneType == "landline"}
+              >
+                {selectedPhoneType === "landline"
+                  ? "check_box"
+                  : "check_box_outline_blank"}
+              </SpanReceiptStyled>
+              <Pv2Styled>É telefone fixo</Pv2Styled>
+            </DivZapOrPhone>
+          </DivZapAndDivPhone>
+        </div>
       </DivStyled>
     </DivTwoStyled>
   );
@@ -213,7 +299,7 @@ export const SavedAddress = ({
         <DivStatusStyled>
           <DivNameStatus $hide={isDataComplete.address}>
             <NameStatusStyled $hide={isDataComplete.address}>
-              Sem endereço
+              {isDataComplete.address ? "Endereço salvo" : "Sem endereço"}
             </NameStatusStyled>
             <SpanStatusStyled
               className="material-symbols-rounded"

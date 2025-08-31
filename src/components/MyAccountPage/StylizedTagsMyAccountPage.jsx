@@ -400,7 +400,7 @@ export const DivNameStatus = styled.div`
   gap: 4px;
   background-color: rgb(203, 0, 0);
   border-radius: 14px;
-  ${(props) => props.$hide && "background-color: transparent;"}
+  ${(props) => props.$hide && "background-color: var(--light-green);"}
 `;
 
 export const SpanStatusStyled = styled.span`
@@ -410,7 +410,7 @@ export const SpanStatusStyled = styled.span`
   padding: 2px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  ${(props) => props.$check && "background-color: var(--dark-green);"}
+  ${(props) => props.$check && "background-color: var(--light-green-dark);"}
 
   @media screen and (max-width: 375px) {
     font-size: 1em;
@@ -436,7 +436,6 @@ export const NameStatusStyled = styled.p`
   font-family: "Noto Sans", sans-serif;
   color: white;
   ${(props) => props.$email && "color: black;"}
-  ${(props) => props.$hide && "visibility: hidden;"}
 
   @media screen and (max-width: 375px) {
     font-size: 1em;
@@ -469,7 +468,6 @@ export const Pv2Styled = styled(PStyled)`
   text-align: left;
   margin-bottom: 0px;
   scale: 1.01;
-
   ${(props) => props.$hide && "display: none;"}
 `;
 
@@ -487,7 +485,42 @@ export const DivZapStyled = styled.div`
   align-items: center;
   ${(props) => props.$seeInput && "align-items: flex-end;"};
   position: relative;
+`;
+
+export const DivZapAndDivPhone = styled.div`
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  ${(props) => !props.$visible && "display: none;"}
+
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+    height: 88px;
+    gap: 8px;
+  }
+`;
+
+export const DivZapOrPhone = styled.div`
+  height: 100%;
+  width: calc(100% - 16px);
+  padding: 0 16px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   border: 1px solid #c5c5c5ff;
+  ${(props) => props.$selected && "background-color: var(--back-color);"}
+
+  @media screen and (max-width: 576px) {
+    width: 100%;
+    box-sizing: border-box;
+  }
 `;
 
 export const DivFormStyled = styled.div`
@@ -565,6 +598,14 @@ export const DivSpanStyled = styled.div`
       position: absolute;
       top: 12px;
       right: 12px;
+    `}
+  ${(props) =>
+    props.$disable &&
+    css`
+      background-color: var(--disable);
+      &:hover {
+        background-color: var(--disable-hover);
+      }
     `}
 `;
 

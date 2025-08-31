@@ -47,6 +47,8 @@ h1, h2, h3{
   --red: #d5343a;
   --dark-red: #c3282d;
   --dark-green: #396B46;
+  --light-green: #B5EBC3;
+  --light-green-dark: hsl(136, 57%, 70%);
   --back-color: #ecf0f5;
   --back-hover: #d7dfea;
   --disable: #a8adb3ff;
