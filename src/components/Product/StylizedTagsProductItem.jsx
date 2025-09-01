@@ -15,7 +15,7 @@ export const PaiProdStyled = styled.div`
   ${(props) =>
     props.$variant == "cart" &&
     css`
-      border: 1px solid #c5c5c5ff;
+      border: 1px solid var(--border);
       border-radius: 0px !important;
     `};
 

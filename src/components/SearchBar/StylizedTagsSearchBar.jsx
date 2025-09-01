@@ -44,7 +44,7 @@ export const FormStyled = styled.form`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  border-radius: 24px;
+  border-radius: 8px;
   overflow: hidden;
   position: relative;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
@@ -134,6 +134,7 @@ export const DivSpanStyled = styled.div`
       margin-bottom: 4px;
       margin-right: 8px;
       border-radius: 50%;
+      color: var(--purple);
       &:hover {
         background-color: #ecf0f5;
       }

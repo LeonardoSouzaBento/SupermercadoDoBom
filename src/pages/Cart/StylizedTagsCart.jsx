@@ -23,8 +23,8 @@ export const H1Styled = styled.h1`
   width: max-content;
   margin: auto;
   text-align: left;
-  font-family: var(--p-font);
-  font-weight: 500;
+  font-family: var(--h-font);
+  font-weight: 700;
   color: white;
 
   @media screen and (max-width: 414px) {
@@ -124,7 +124,7 @@ export const HeaderCartStyled = styled.div`
   justify-content: space-between;
   box-sizing: border-box;
   position: relative;
-  border-bottom: 1px solid #c5c5c5ff;
+  border-bottom: 1px solid var(--border);
   z-index: 2;
 
   @media screen and (min-width: 768px) {
@@ -147,12 +147,12 @@ export const DivSpanDeleteStyled = styled.div`
   top: 8px;
   right: 8px;
   border-radius: 8px;
-  background-color: var(--purple);
+  background-color: var(--back-color);
   transition: all 0.15s ease;
-  color: white;
+  color: var(--purple);
 
   &:hover {
-    background-color: var(--purple-hover);
+    background-color: var(--back-hover);
   }
 `;
 
@@ -299,7 +299,7 @@ export const HeaderH2Styled = styled.header`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: 1px solid #c5c5c5ff;
+  border-bottom: 1px solid var(--border);
   ${(props) =>
     props.$cart &&
     css`
@@ -309,9 +309,9 @@ export const HeaderH2Styled = styled.header`
 `;
 
 export const H2Styled = styled.h2`
-  font-family: var(--p-font);
-  font-weight: 500;
-  /* color: rgba(68, 68, 68, 1); */
+  font-family: var(--h-font);
+  font-weight: 700;
+  color: var(--purple);
 
   ${(props) =>
     props.$products &&
@@ -365,7 +365,7 @@ export const ReceiptOptionStyled = styled.div`
 
 export const SpanReceiptStyled = styled.span`
   font-size: 1.75em;
-  font-weight: 500;
+  font-weight: 550;
   ${(props) =>
     !props.$selected &&
     css`
@@ -406,7 +406,7 @@ export const DivAllValuesStyled = styled.div`
   display: flex;
   flex-flow: row wrap;
   box-sizing: border-box;
-  border: 1px solid #c5c5c5ff;
+  border: 1px solid var(--border);
   position: relative;
 `;
 
@@ -419,7 +419,7 @@ export const DivOneValueStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  border-bottom: 1px solid #c5c5c5ff;
+  border-bottom: 1px solid var(--border);
 `;
 
 export const ButtonContinueStyled = styled.div`
@@ -654,7 +654,7 @@ export const PValueStyled = styled.p`
 
 export const PContinueStyled = styled.p`
   font-family: var(--bt-font);
-  font-weight: 500;
+  font-weight: 550;
   padding-bottom: 2px;
   cursor: pointer;
   @media screen and (max-width: 375px) {
@@ -679,7 +679,8 @@ export const PContinueStyled = styled.p`
 
 export const PAddStyled = styled.p`
   font-family: var(--bt-font);
-  font-weight: 500;
+  font-weight: 550;
+  color: var(--dark-purple);
   ${(props) =>
     props.$warn &&
     css`
@@ -773,8 +774,8 @@ export const PSeeAllStyled = styled.p`
   }
 `;
 
-export const PAlertStyled = styled.p`
-  font-family: var(--bt-font);
+export const H1AlertStyled = styled.h1`
+  font-family: var(--h-font);
   font-weight: 500;
 
   @media screen and (max-width: 375px) {

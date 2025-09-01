@@ -28,7 +28,7 @@ const Header = ({ setViewOptions, onHome }) => {
       <ContainerStyled $external={true}>
         <ContainerStyled>
           <LogoDivStyled>
-            <SpanLogoStyled className="material-symbols-rounded">
+            <SpanLogoStyled className="material-symbols-outlined">
               handshake
             </SpanLogoStyled>
           </LogoDivStyled>

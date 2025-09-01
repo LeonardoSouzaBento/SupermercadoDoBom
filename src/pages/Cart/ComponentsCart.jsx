@@ -10,7 +10,7 @@ import {
   PYesNoStyled,
   SpanDialogStyled,
   DivToCoverStyled,
-  PAlertStyled,
+  H1AlertStyled,
   DivAlertStyled,
   BodyAlertStyled,
   ContainerStyled,
@@ -40,12 +40,12 @@ const DataAlert = () => {
   return (
     <BodyAlertStyled>
       <DivAlertStyled>
-        <PAlertStyled $warn={true} style={{ color: "white" }}>
+        <H1AlertStyled $warn={true} style={{ color: "white" }}>
           <strong style={{ fontWeight: 600 }}>
             Complete suas informações{" "}
           </strong>
           para continuar a compra.
-        </PAlertStyled>
+        </H1AlertStyled>
       </DivAlertStyled>
     </BodyAlertStyled>
   );
@@ -133,7 +133,7 @@ export const ReceiptAndContinue = ({
               Entregar
             </PValueStyled>
             <SpanReceiptStyled
-              className="material-symbols-rounded"
+              className="material-symbols-outlined"
               $selected={selected == "entregar"}
             >
               {selected === "entregar"
@@ -269,11 +269,7 @@ export const HeaderCart = ({ setSeeCancelDialog }) => {
   return (
     <>
       <HeaderH2Styled $cart={true}>
-        <SpanH2Styled
-          className="material-symbols-rounded"
-          $variant={"smaller"}
-          $cart={true}
-        >
+        <SpanH2Styled className="material-symbols-rounded" $cart={true}>
           package_2
         </SpanH2Styled>
         <H2Styled $products={true}>Produtos</H2Styled>

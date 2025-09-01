@@ -42,7 +42,6 @@ export const ContainerStyled = styled.div`
   }
 `;
 
-
 export const LogoDivStyled = styled.div`
   display: flex;
   justify-content: center;
@@ -72,22 +71,25 @@ export const LogoDivStyled = styled.div`
 export const SpanLogoStyled = styled.span`
   color: white;
   font-weight: 700;
-  font-size: 2.678em;
   scale: 0.9;
+  
+  @media screen and (max-width: 375px) {
+    font-size: 2.4em;
+  }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 2.756em;
+    font-size: 2.437em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 2.782em;
+    font-size: 2.508em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 2.808em;
+    font-size: 2.584em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 2.834em;
+    font-size: 2.662em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 2.86em;
+    font-size: 2.7em;
   }
 `;
 
@@ -185,8 +187,8 @@ export const DivMoreOptionsStyled = styled.div`
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
   transition: all 100ms linear;
   cursor: pointer;
-  &:hover{
-    background-color: hsla(358, 71%, 48%, 1.00)
+  &:hover {
+    background-color: hsla(358, 71%, 48%, 1);
   }
 
   @media screen and (max-width: 375px) {
@@ -204,15 +206,17 @@ export const DivMoreOptionsStyled = styled.div`
     width: max-content;
     padding: 0px 16px;
     gap: 4px;
-    border-radius: 16px;
+    border-radius: 8px;
   }
 `;
 
 export const PStyled = styled.p`
   font-family: var(--bt-font);
   font-weight: 600;
+  font-size: 1.05em;
   letter-spacing: 0.8px;
   margin: 0px;
+  padding-bottom: 2px;
   @media (max-width: 1201px) {
     display: none;
   }
@@ -222,7 +226,7 @@ export const PStyled = styled.p`
 
 export const SpanStyled = styled.span`
   font-size: 1.45em;
-  font-weight: 300;
+  font-weight: 400;
   cursor: pointer;
   user-select: none;
   scale: 1.2;

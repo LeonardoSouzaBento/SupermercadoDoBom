@@ -198,7 +198,7 @@ export const Contact = () => {
 
       {/*Whatsapp*/}
       <DivStyled>
-        <div style={{ border: "1px solid #c5c5c5ff", borderRadius: "6px" }}>
+        <div style={{ border: "1px solid var(--border)", borderRadius: "6px" }}>
           <DivZapStyled $seeInput={seeInput}>
             <DivFormStyled $zap={true}>
               <Pv2Styled>

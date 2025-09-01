@@ -10,9 +10,9 @@ export const ContainerStyled = styled.div`
 
 export const H1Styled = styled.h1`
   width: 100%;
-  font-family: var(--p-font);
+  font-family: var(--h-font);
   text-align: center;
-  font-weight: 500;
+  font-weight: 700;
   padding-bottom: 2px;
   padding-left: 37px;
   color: rgba(68, 68, 68, 1);
@@ -102,8 +102,8 @@ export const DivSpanStyled = styled.div`
 `;
 
 export const SpanOptionsStyled = styled.span`
-  font-weight: 400;
-  font-size: 1.4em;
+  font-weight: 600;
+  font-size: 1.38em;
   font-variation-settings: "FILL" 1, "GRAD" 12, "opsz" 30;
   color: var(--purple);
   user-select: none;
@@ -114,7 +114,7 @@ export const SpanOptionsStyled = styled.span`
 export const POptionStyled = styled.p`
   padding-right: 12px;
   font-family: var(--bt-font);
-  font-weight: 500;
+  font-weight: 550;
   user-select: none;
   color: #292d4e;
   scale: 1.02;

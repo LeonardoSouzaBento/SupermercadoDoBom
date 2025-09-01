@@ -32,15 +32,17 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
 
   function showOrHideComponent(option) {
     if (option === "hide") {
-      setOpacityRegAddress(0);
-      setTimeout(() => {
-        setSeeRegisterAddress(false);
-      }, 300);
+      setSeeRegisterAddress(false);
+      // setOpacityRegAddress(0);
+      // setTimeout(() => {
+      //   setSeeRegisterAddress(false);
+      // }, 300);
     } else {
       setSeeRegisterAddress(true);
-      setTimeout(() => {
-        setOpacityRegAddress(1);
-      }, 300);
+      setOpacityRegAddress(1);
+      // setTimeout(() => {
+      //   setOpacityRegAddress(1);
+      // }, 300);
     }
   }
 

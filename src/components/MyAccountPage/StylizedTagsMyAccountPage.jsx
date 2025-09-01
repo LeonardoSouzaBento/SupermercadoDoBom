@@ -14,8 +14,8 @@ export const DivHeaderStyled = styled.div`
 export const H1Styled = styled.h1`
   margin: auto;
   text-align: left;
-  font-family: var(--p-font);
-  font-weight: 500;
+  font-family: var(--h-font);
+  font-weight: 700;
   color: white;
 
   @media screen and (max-width: 375px) {
@@ -112,7 +112,7 @@ export const UserHeaderDivStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #c5c5c5ff;
+  border: 1px solid var(--border);
   border-radius: 6px;
   position: relative;
 `;
@@ -300,52 +300,57 @@ export const HeaderH2Styled = styled.header`
 `;
 
 export const SpanH2Styled = styled.span`
-  font-size: 1.55em;
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
+  font-size: 1.53em;
+  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 22;
   cursor: default;
+  color: var(--purple);
   margin-right: 8px;
   @media screen and (max-width: 375px) {
     font-size: 1.5em;
   }
 
-  ${(props) => props.$variant === "smaller" && "scale: 0.9;"};
-  ${(props) => props.$user && "margin-right: 0;"};
+  ${(props) =>
+    props.$user &&
+    css`
+      margin-right: 0px;
+      font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 22;
+    `};
   ${(props) =>
     props.$cart &&
     css`
-      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 22;
+      font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 22;
     `}
 `;
 
 export const H2v2Styled = styled(H2Styled)`
   margin-bottom: 0px;
-  font-weight: 500;
+  font-weight: 700;
+  color: var(--purple);
 
   ${(props) =>
     props.$nameUser &&
     css`
-      font-weight: 600;
       scale: 1.04;
       margin-left: 4px;
       width: 100%;
     `};
   @media screen and (max-width: 375px) {
-    font-size: 1.137em;
+    font-size: 1.17em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.156em;
+    font-size: 1.179em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.166em;
+    font-size: 1.195em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.175em;
+    font-size: 1.213em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.18em;
+    font-size: 1.231em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.184em;
+    font-size: 1.24em;
   }
 `;
 
@@ -393,13 +398,12 @@ export const DivStatusStyled = styled.div`
 
 export const DivNameStatus = styled.div`
   height: 24px;
-  min-width: 150px;
   width: max-content;
-  padding: 0 16px;
+  padding-left: 8px;
   padding-bottom: 3px;
-  padding-right: 3px;
+  padding-right: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 4px;
   background-color: var(--dark-red);
@@ -408,35 +412,19 @@ export const DivNameStatus = styled.div`
 `;
 
 export const SpanStatusStyled = styled.span`
-  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 24;
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 24;
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
-  margin-top: 2.5px;
-  padding: 2px;
+  padding: 4px;
+  margin-top: 1.5px;
   border-radius: 50%;
-
-  @media screen and (max-width: 375px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1em;
-  }
+  font-size: 1.08em;
 `;
 
 export const NameStatusStyled = styled.p`
-  font-family: "Noto Sans", sans-serif;
+  font-family: var(--p-font);
+  font-weight: 400;
+  margin-right: 6px;
   ${(props) => props.$email && "color: black;"}
 
   @media screen and (max-width: 375px) {
@@ -459,17 +447,17 @@ export const NameStatusStyled = styled.p`
   }
 `;
 
-export const SpanCheckStyled= styled.span`
+export const SpanCheckStyled = styled.span`
   position: absolute;
   top: 16px;
   right: 20px;
-  padding: 3px;
+  padding: 4px;
   border-radius: 50%;
   background-color: var(--light-green);
   color: var(--purple);
   z-index: 2;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
 `;
 
 export const DivStyled = styled.div`
@@ -530,7 +518,7 @@ export const DivZapOrPhone = styled.div`
   align-items: center;
   gap: 8px;
   border-radius: 3px;
-  border: 1px solid #c5c5c5ff;
+  border: 1px solid var(--border);
   ${(props) => props.$selected && "background-color: var(--back-color);"}
 
   @media screen and (max-width: 576px) {
@@ -568,7 +556,7 @@ export const DivFormStyled = styled.div`
 
 export const DivAddressStyled = styled.div`
   padding: 16px;
-  border: 1px solid rgba(195, 195, 195, 1);
+  border: 1px solid var(--border);
   border-radius: 6px;
   position: relative;
 `;
@@ -650,7 +638,7 @@ export const InputZapStyled = styled.input`
   border-radius: 3px;
 
   &:focus {
-    border: 1px solid #c5c5c5ff;
+    border: 1px solid var(--border);
     outline: none;
   }
   ${(props) => props.$hide && "display: none;"}

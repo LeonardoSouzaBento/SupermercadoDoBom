@@ -530,7 +530,7 @@ export const DivTitleStyled = styled.div`
 
 export const H1Styled = styled.h1`
   width: 100%;
-  font-family: "Lato", sans-serif;
+  font-family: var(--h-font);
   font-weight: 700;
   text-align: center;
   color: #292e4e;

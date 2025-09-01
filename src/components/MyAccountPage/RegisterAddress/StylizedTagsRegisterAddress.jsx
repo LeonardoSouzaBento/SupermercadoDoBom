@@ -26,7 +26,8 @@ export const MainDivStyled = styled.div`
   width: 100%;
   max-width: 375px;
   margin-bottom: 4px;
-  padding-bottom: 27px;
+  padding-top: 10px;
+  padding-bottom: 20px;
   box-sizing: border-box;
   border-radius: 12px;
   background-color: white;
@@ -53,70 +54,74 @@ export const MainDivStyled = styled.div`
 export const DivTitleStyled = styled.div`
   height: 56px;
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
   margin-bottom: 24px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  background-color: var(--purple);
-  color: white;
+  color: var(--purple);
   position: relative;
+  border-bottom: 1px solid var(--border);
   z-index: 3;
 `;
 
 export const H1Styled = styled.h1`
   text-align: center;
-  font-family: "Lato", sans-serif;
+  font-family: var(--h-font);
   user-select: none;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 1.34em;
 
-  @media screen and (max-width: 385px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.27em;
   }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.285em;
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.28em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.29em;
+    font-size: 1.299em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.3em;
+    font-size: 1.319em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.31em;
+    font-size: 1.34em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.33em;
+    font-size: 1.35em;
   }
 `;
 
 export const DivSpanCloseStyled = styled.div`
-  height: 100%;
-  width: 56px;
+  height: 36px;
+  width: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0;
-  right: 0;
-  color: white;
+  top: 8px;
+  right: 20px;
+  background-color: var(--back-color);
+  color: var(--purple);
+  border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.15s ease;
   &:hover {
-    background-color: hsl(234, 30.9%, 28%);
+    background-color: var(--back-hover);
   }
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 28px;
-  font-weight: 300;
+  font-size: 24px;
+  font-weight: 500;
 `;
 
 // Botão de localização
 export const ButtonStyled = styled.button`
-  width: calc(100% - 48px);
+  width: calc(100% - 40px);
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   height: 48px;
   padding: 0px 16px;
   padding-bottom: 2px;
@@ -134,9 +139,9 @@ export const ButtonStyled = styled.button`
   color: hsla(136, 57%, 89%, 1);
   transition: background-color 0.15s ease;
 
-  background-color: #396b46;
+  background-color: var(--purple);
   &:hover {
-    background-color: hsla(136, 31%, 26%, 1);
+    background-color: var(--purple-hover);
   }
   box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
     2px 0px 3px -2px rgba(41, 46, 117, 0.13),
@@ -154,10 +159,9 @@ export const ButtonStyled = styled.button`
   ${(props) =>
     (props.$variant === "digitarTudo" || props.$variant === "voltar") &&
     css`
-      background-color: hsla(210, 38%, 96%, 1);
-      color: hsla(234, 31%, 12%, 1);
+      background-color: var(--red);
       &:hover {
-        background-color: hsla(210, 38%, 91%, 1);
+        background-color: var(--dark-red);
       }
     `};
   ${(props) => props.$variant === "voltar" && "margin-bottom: 12.5px;"};
@@ -167,7 +171,6 @@ export const ButtonStyled = styled.button`
   }
   @media screen and (max-width: 385px) {
     font-size: 1.15em;
-    width: calc(100% - 36px);
   }
   @media screen and (min-width: 385px) and (max-width: 576px) {
     font-size: 1.18em;
@@ -299,18 +302,19 @@ export const InputStyled = styled.input`
 `;
 
 export const DivCepInputStyled = styled.div`
-  width: calc(100% - 48px);
+  width: calc(100% - 40px);
   height: 48px;
   box-sizing: border-box;
   padding: 0 16px;
   margin: auto;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
   background-color: white;
   border-radius: 8px;
+  border: 1px solid rgba(230, 230, 230, 1);
   box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
     2px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -2px 0px 3px -2px rgba(41, 46, 117, 0.13);

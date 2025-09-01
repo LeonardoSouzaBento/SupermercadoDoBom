@@ -59,8 +59,8 @@ export const H1LoginStyled = styled.h1`
   width: 100%;
   box-sizing: border-box;
   height: max-content;
-  font-family: var(--p-font);
-  font-weight: 400;
+  font-family: var(--h-font);
+  font-weight: 700;
   font-size: 1.3em;
   text-align: center;
   color: white;

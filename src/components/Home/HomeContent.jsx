@@ -76,9 +76,7 @@ function HomeContent() {
 
   return (
     <div ref={divRef}>
-      {seeLogin && (
-        <Login setSeeLogin={setSeeLogin} />
-      )}
+      {seeLogin && <Login setSeeLogin={setSeeLogin} />}
 
       {viewOptions && <OptionsSection setViewOptions={setViewOptions} />}
 

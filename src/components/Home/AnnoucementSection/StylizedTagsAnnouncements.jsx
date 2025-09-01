@@ -70,9 +70,9 @@ export const SpanStyled = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
   border-radius: 5px;
-  background-color:rgba(56, 61, 106, 0.42);
+  background-color: #999DB5;
 
-  ${(props) => props.$atual && "background-color: rgba(56, 61, 106, 0.84);"}
+  ${(props) => props.$atual && "background-color: #737898;"}
 
   @media screen and (max-width: 375px) {
     height: 9.5px;

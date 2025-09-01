@@ -8,8 +8,7 @@ export const DivStyled = styled.div`
   overflow-x: hidden;
   position: relative;
   z-index: 2;
-  border-top: 1px solid #c5c5c5ff;
-
+  border-top: 1px solid hsla(231, 16%, 78%, 1.00);
   @media screen and (max-width: 375px) {
     width: calc(100% - 15px);
     padding-left: 12px;
@@ -33,10 +32,10 @@ export const DivLabelPromosStyled = styled.div`
   gap: 8px;
 `;
 
-export const PLabelStyled = styled.p`
-  font-weight: ${(props) => (props.id ? "700" : "500")};
-  font-family: "Lato", sans-serif;
-  color: ${(props) => (props.id ? " #221B39" : " #332854")};
+export const H2LabelStyled = styled.h2`
+  font-weight: 700;
+  font-family: var(--h-font);
+  color: var(--purple);
   text-align: center;
 
   @media screen and (max-width: 375px) {
@@ -129,7 +128,7 @@ export const DivCatStyled = styled.div`
   justify-content: flex-end;
   gap: 4px;
   flex: auto;
-  border-radius: 16px;
+  border-radius: 12px;
   cursor: pointer;
   position: relative;
 
@@ -163,7 +162,7 @@ export const ImgStyled = styled.img`
 
   ${(props) => props.$selected && css`
     padding: 2px;
-    box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.4);
+    box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5);
   `}
 `;
 
@@ -177,8 +176,8 @@ export const PStyled = styled.p`
   font-family: "Lato", Arial, sans-serif;
   font-weight: 400;
   text-align: center;
-  font-size: 1.05em;
+  font-size: 1.04em;
   letter-spacing: 0.5px;
   margin: 0;
-  color: #221B39;
+  color: var(--dark-purple);
 `;

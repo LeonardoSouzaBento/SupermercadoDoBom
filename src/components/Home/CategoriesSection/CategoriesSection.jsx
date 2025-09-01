@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 import {
   DivStyled,
   DivLabelPromosStyled,
-  PLabelStyled,
+  H2LabelStyled,
   DivfStyled,
   DivCatStyled,
   SpanStyled,
@@ -47,7 +47,7 @@ function CategoriesSection({ wasResize }) {
     if (CategoryItemRef.current && DivRef.current && categoriesRef.current) {
       const itemWidth = CategoryItemRef.current.offsetWidth;
       const divWidth = DivRef.current.offsetWidth;
-      
+
       const gap = parseFloat(getComputedStyle(categoriesRef.current).gap) || 0;
       const paddingRight =
         parseFloat(getComputedStyle(categoriesRef.current).paddingRight) * 2;
@@ -60,7 +60,7 @@ function CategoriesSection({ wasResize }) {
       const limit = divWidth - totalWidth;
       setLimitCategories(limit);
     }
-  }, [setLimitCategories, categoriesRef,]);
+  }, [setLimitCategories, categoriesRef]);
 
   useEffect(() => {
     updateLimitCategories();
@@ -71,7 +71,7 @@ function CategoriesSection({ wasResize }) {
   }, [wasResize, updateLimitCategories]);
 
   function handlePointerUpCat(e, catId) {
-     if (e.button === 2) {
+    if (e.button === 2) {
       return;
     }
     if (!isDraggingRef.current) {
@@ -85,8 +85,11 @@ function CategoriesSection({ wasResize }) {
       <SpanStyled className="material-symbols-rounded">swipe_left</SpanStyled>
       {/*Para tutorial de como usar a tela*/}
       <DivLabelPromosStyled>
-        <PLabelStyled id="strong">Mais vendidos por categoria,</PLabelStyled>
-        <PLabelStyled>os produtos básicos ficam aqui.</PLabelStyled>
+        <H2LabelStyled>
+          Mais vendidos por categoria,
+          <br />
+          os produtos básicos ficam aqui.
+        </H2LabelStyled>
       </DivLabelPromosStyled>
 
       <DivfStyled ref={categoriesRef}>

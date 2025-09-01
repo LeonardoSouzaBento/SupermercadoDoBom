@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
 }
 
 body {
-  background-color: #ECF0F5;
+  background-color: hsl(213, 31%, 95%);
   width: 100%;
   max-width: 1390px;
   margin: auto;
@@ -50,13 +50,15 @@ h1, h2, h3{
   --dark-green: #396B46;
   --light-green: #B5EBC3;
   --light-green-dark: hsl(136, 57%, 70%);
-  --back-color: #ecf0f5;
+  --back-color: #eef2f6;
   --back-hover: #d7dfea;
   --disable: #a8adb3ff;
   --disable-hover: #9299a0ff;
   --yellow: #FFE99A;
+  --border: #ddddddff;
 
   /*Fontes*/
   --p-font: "Open Sans", Arial, Helvetica, sans-serif;
   --bt-font: "Montserrat", Arial, Helvetica, sans-serif;
+  --h-font: "Lato", Arial, Helvetica, sans-serif;
 }

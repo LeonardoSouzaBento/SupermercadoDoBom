@@ -93,7 +93,7 @@ export const DivPStyled = styled.div`
 
 export const PPrecoStyled = styled.p`
   font-family: var(--bt-font);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.71px;
   padding-bottom: 2px;
   color: white;

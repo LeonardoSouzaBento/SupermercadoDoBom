@@ -25,7 +25,7 @@ export const WrapperStyled = styled.div`
   overflow-y: scroll;
   padding: 36px;
   padding-bottom: 37px;
-  border-radius: 16px;
+  border-radius: 12px;
   background-color: white;
     box-shadow: 0px 3px 3px -1.2px rgba(41, 46, 117, 0.5),
     3px 0px 3px -2px rgba(41, 46, 117, 0.13),
@@ -77,7 +77,7 @@ export const DivNameSpanStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  border-radius: 24px;
+  border-radius: 8px;
   flex: 1 0 auto;
   color: white;
   background-color: var(--purple);
@@ -94,7 +94,7 @@ export const DivNameSpanStyled = styled.div`
 
 export const POptionStyled = styled.p`
   font-family: var(--bt-font);
-  font-weight: 500;
+  font-weight: 550;
   cursor: pointer;
   user-select: none;
   scale: 1.02;
@@ -120,8 +120,8 @@ export const DivSpanStyled = styled.div`
 
 export const SpanStyled = styled.span`
   color: white;
-  font-size: ${(props) => (props.$buttonSelected ? "1.5em" : "1.4em")};
-  font-weight: 400;
+  font-size: ${(props) => (props.$buttonSelected ? "1.45em" : "1.38em")};
+  font-weight: 500;
   font-variation-settings: "FILL" 1;
   user-select: none;
 `;
@@ -160,8 +160,8 @@ export const PStyled = styled.p`
 `;
 
 export const H1Styled = styled.h1`
-  font-family: var(--p-font);
-  font-weight: 500;
+  font-family: var(--h-font);
+  font-weight: 700;
   margin-bottom: 20px;
 
   @media screen and (max-width: 375px) {
@@ -186,8 +186,8 @@ export const H1Styled = styled.h1`
 
 export const H2Styled = styled.h2`
   font-size: 1.1em;
-  font-family: var(--p-font);
-  font-weight: 500;
+  font-family: var(--h-font);
+  font-weight: 700;
   margin-bottom: 16px;
 
   @media screen and (max-width: 375px) {
