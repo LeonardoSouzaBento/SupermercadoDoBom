@@ -19,7 +19,7 @@ import {
 import {
   DivApiReturnStyled,
   SpanApiReturnStyled,
-} from "../MyAccountPage/RegisterAddress/StylizedTags";
+} from "../MyAccountPage/RegisterAddress/StylizedTagsRegisterAddress";
 import { PValueStyled } from "../../pages/Cart/StylizedTagsCart";
 
 const provider = new GoogleAuthProvider();

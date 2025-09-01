@@ -1,4 +1,4 @@
-import { DivApiReturnStyled, SpanApiReturnStyled } from "../StylizedTags";
+import { DivApiReturnStyled, SpanApiReturnStyled } from "../StylizedTagsRegisterAddress";
 import { PValueStyled } from "../../../../pages/Cart/StylizedTagsCart";
 
 const GetLocationReturn = ({ getLocationStatus, opacityReturn }) => {

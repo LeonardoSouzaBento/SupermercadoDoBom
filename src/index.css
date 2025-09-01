@@ -46,6 +46,7 @@ h1, h2, h3{
   --dark-purple: #261e3e;
   --red: #d5343a;
   --dark-red: #c3282d;
+  --dark-red2: #6B393A;
   --dark-green: #396B46;
   --light-green: #B5EBC3;
   --light-green-dark: hsl(136, 57%, 70%);
@@ -53,6 +54,7 @@ h1, h2, h3{
   --back-hover: #d7dfea;
   --disable: #a8adb3ff;
   --disable-hover: #9299a0ff;
+  --yellow: #FFE99A;
 
   /*Fontes*/
   --p-font: "Open Sans", Arial, Helvetica, sans-serif;

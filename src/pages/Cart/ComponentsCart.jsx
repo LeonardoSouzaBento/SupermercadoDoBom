@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { VisibilityContext } from "../../contexts/VisibilityContext.js";
 import { useNavigate } from "react-router-dom";
 import {
   ContainerDialogStyled,
@@ -51,14 +52,19 @@ const DataAlert = () => {
 };
 
 export const ReceiptAndContinue = ({
-  falta,
-  isDataComplete,
-  setOrderInfo,
   setScaleWarnnig,
+  setOrderInfo,
+  totalAddedValue,
 }) => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("entregar");
   const [incompleteDataAlert, setIncompleteDataAlert] = useState(false);
+  const { userContact, isDataComplete } = useContext(VisibilityContext);
+
+  const userDataComplete =
+    isDataComplete.contact && isDataComplete.address && userContact.email;
+
+  const falta = 40 - totalAddedValue > 0 ? 40 - totalAddedValue : 0;
 
   function handleClickContinue() {
     if (falta <= 0) {
@@ -68,16 +74,16 @@ export const ReceiptAndContinue = ({
       const seconds = now.getSeconds();
       const currentTime = `${hours}:${minutes}:${seconds}`;
 
-      if (!isDataComplete.contact || !isDataComplete.address) {
+      if (userDataComplete) {
+        setOrderInfo({ time: currentTime, status: "completed" });
+        setIncompleteDataAlert(false);
+        navigate("/meus-pedidos");
+      } else {
         setOrderInfo({ time: currentTime, status: "pending" });
         setIncompleteDataAlert(true);
         setTimeout(() => {
           navigate("/minha-conta");
         }, 4000);
-      } else {
-        setOrderInfo({ time: currentTime, status: "completed" });
-        setIncompleteDataAlert(false);
-        navigate("/meus-pedidos");
       }
     } else {
       setScaleWarnnig(1.045);
@@ -142,9 +148,7 @@ export const ReceiptAndContinue = ({
           onClick={handleClickContinue}
         >
           <PContinueStyled>
-            {isDataComplete.contact && isDataComplete.address
-              ? "Finalizar Compra"
-              : "Continuar"}
+            {userDataComplete ? "Finalizar Compra" : "Continuar"}
           </PContinueStyled>
         </ButtonContinueStyled>
       </ContainerStyled>
@@ -286,15 +290,25 @@ export const HeaderCart = ({ setSeeCancelDialog }) => {
   );
 };
 
-export const DetailAndButtonAdd = (
-  falta,
-  totalAddedValue,
-  scaleWarnnig,
-  faltaFormatada,
-  totalValue,
-  totalFormatted
-) => {
+export const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
   const navigate = useNavigate();
+
+  const totalValue = totalAddedValue.toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  const falta = 40 - totalAddedValue > 0 ? 40 - totalAddedValue : 0;
+  const faltaFormatada = falta.toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  const totalNumerico = totalAddedValue + 4;
+  const totalFormatted = totalNumerico.toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
   return (
     <ContainerStyled>

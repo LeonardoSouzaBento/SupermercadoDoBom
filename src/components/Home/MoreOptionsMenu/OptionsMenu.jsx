@@ -11,7 +11,7 @@ import {
 import {
   DivSpanCloseStyled,
   SpanCloseStyled,
-} from "../../MyAccountPage/RegisterAddress/StylizedTags";
+} from "../../MyAccountPage/RegisterAddress/StylizedTagsRegisterAddress";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { VisibilityContext } from "../../../contexts/VisibilityContext";

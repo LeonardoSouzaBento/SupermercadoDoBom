@@ -337,7 +337,7 @@ export const DivOffStyled = styled.div`
   align-items: center;
   padding: 0px 8px;
   padding-bottom: 1px;
-  background-color: #d5343a;
+  background-color: var(--red);
   border-radius: 12px;
 
   ${(props) => props.$variant === "announcement" && "display: none;"};
@@ -369,7 +369,7 @@ export const DivAddStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d5343a;
+  background-color: var(--red);
   border-radius: 16px;
   cursor: pointer;
 
@@ -400,7 +400,7 @@ export const SpanFewerStyled = styled(SpanMoreStyled)`
 export const DivQuantStyled = styled.div`
   width: 90%;
   height: 32px;
-  background-color: #d5343a;
+  background-color: var(--red);
   display: ${(props) => (props.$display ? "flex" : "none")};
   justify-content: space-between;
   border-radius: 8px;

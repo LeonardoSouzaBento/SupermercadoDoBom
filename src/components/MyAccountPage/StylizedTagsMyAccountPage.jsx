@@ -98,7 +98,7 @@ export const DivOneStyled = styled.div`
   gap: 8px;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
+  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
     2px 0px 4px -3px rgba(41, 46, 117, 0.125),
     -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
   ${(props) => props.$orders && "padding-top: 0px;"}
@@ -113,6 +113,7 @@ export const UserHeaderDivStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   border: 1px solid #c5c5c5ff;
+  border-radius: 6px;
   position: relative;
 `;
 
@@ -217,6 +218,7 @@ export const DivTwoStyled = styled(DivOneStyled)`
   @media screen and (min-width: 993px) {
     margin-bottom: 0px;
   }
+  position: relative;
 `;
 
 export const DivThreeButtonStyled = styled.div`
@@ -249,7 +251,7 @@ export const DivThreeStyled = styled.div`
   position: relative;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
+  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
     2px 0px 4px -3px rgba(41, 46, 117, 0.125),
     -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
 `;
@@ -350,6 +352,7 @@ export const H2v2Styled = styled(H2Styled)`
 export const DivStatusStyled = styled.div`
   width: 100%;
   padding-left: 20px;
+  ${(props) => props.$finish && "padding-left: 0px;"}
   box-sizing: border-box;
   display: flex;
 
@@ -372,6 +375,7 @@ export const DivStatusStyled = styled.div`
       @media screen and (min-width: 520px) and (max-width: 1058px) {
         justify-content: flex-start !important;
         margin-left: 20px;
+        ${(props) => props.$finish && "margin-left: 0px;"}
       }
     `}
   ${(props) =>
@@ -398,19 +402,18 @@ export const DivNameStatus = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 4px;
-  background-color: rgb(203, 0, 0);
+  background-color: var(--dark-red);
+  color: white;
   border-radius: 14px;
-  ${(props) => props.$hide && "background-color: var(--light-green);"}
 `;
 
 export const SpanStatusStyled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 24;
+  background-color: rgba(0, 0, 0, 0.3);
   color: white;
   margin-top: 2.5px;
   padding: 2px;
-  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  ${(props) => props.$check && "background-color: var(--light-green-dark);"}
 
   @media screen and (max-width: 375px) {
     font-size: 1em;
@@ -434,7 +437,6 @@ export const SpanStatusStyled = styled.span`
 
 export const NameStatusStyled = styled.p`
   font-family: "Noto Sans", sans-serif;
-  color: white;
   ${(props) => props.$email && "color: black;"}
 
   @media screen and (max-width: 375px) {
@@ -455,6 +457,19 @@ export const NameStatusStyled = styled.p`
   @media screen and (min-width: 1201px) {
     font-size: 1em;
   }
+`;
+
+export const SpanCheckStyled= styled.span`
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: var(--light-green);
+  color: var(--purple);
+  z-index: 2;
+  font-size: 18px;
+  font-weight: 600;
 `;
 
 export const DivStyled = styled.div`
@@ -514,6 +529,7 @@ export const DivZapOrPhone = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
+  border-radius: 3px;
   border: 1px solid #c5c5c5ff;
   ${(props) => props.$selected && "background-color: var(--back-color);"}
 
@@ -553,6 +569,7 @@ export const DivFormStyled = styled.div`
 export const DivAddressStyled = styled.div`
   padding: 16px;
   border: 1px solid rgba(195, 195, 195, 1);
+  border-radius: 6px;
   position: relative;
 `;
 
@@ -627,10 +644,10 @@ export const InputZapStyled = styled.input`
   padding-bottom: 3px;
   box-sizing: border-box;
   border: none;
-  border-radius: 4px;
   background-color: var(--back-color);
   font-family: var(--p-font);
   font-weight: 400;
+  border-radius: 3px;
 
   &:focus {
     border: 1px solid #c5c5c5ff;

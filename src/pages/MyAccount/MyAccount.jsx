@@ -19,13 +19,8 @@ import { VisibilityContext } from "../../contexts/VisibilityContext";
 import { CartContext } from "../../contexts/CartContext";
 
 const MyAccount = () => {
-  const {
-    userContact,
-    isDataComplete,
-    setIsDataComplete,
-    seeLogin,
-    setSeeLogin,
-  } = useContext(VisibilityContext);
+  const { userContact, isDataComplete, seeLogin, setSeeLogin } =
+    useContext(VisibilityContext);
   const { orderInfo, userAddress } = useContext(CartContext);
   const [seeRegisterAddress, setSeeRegisterAddress] = useState(false);
 
@@ -41,10 +36,7 @@ const MyAccount = () => {
         {/*Minha conta e Contato*/}
         <DivOneTwoStyled>
           <UserProfile userContact={userContact} setSeeLogin={setSeeLogin} />
-          <Contact
-            isDataComplete={isDataComplete}
-            setIsDataComplete={setIsDataComplete}
-          />
+          <Contact />
         </DivOneTwoStyled>
 
         {/*Endereço e Finalizar compra*/}
@@ -55,6 +47,7 @@ const MyAccount = () => {
             userAddress={userAddress}
           />
           <FinishShopping
+            userContact={userContact}
             isDataComplete={isDataComplete}
             orderInfo={orderInfo}
           />

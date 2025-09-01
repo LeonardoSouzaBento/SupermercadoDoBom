@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ButtonStyled } from "../StylizedTags";
+import { ButtonStyled } from "../StylizedTagsRegisterAddress";
 import GetLocationReturn from "./GetLocationReturn";
 
 async function checkLocationPermission() {

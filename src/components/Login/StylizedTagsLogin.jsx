@@ -30,9 +30,6 @@ export const DivMainStyled = styled.div`
     max-width: none;
     width: calc(100% - 16px);
   }
-  @media screen and (min-width: 375px) and (max-width: 577px) {
-    top: 43%;
-  }
 `;
 
 export const DivAlertStyled = styled.div`

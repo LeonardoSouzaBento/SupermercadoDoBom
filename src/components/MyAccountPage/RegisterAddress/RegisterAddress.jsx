@@ -7,8 +7,7 @@ import {
   DivTitleStyled,
   H1Styled,
   ButtonStyled,
-} from "./StylizedTags";
-// import GetLocationReturn from "./GetLocationReturn";
+} from "./StylizedTagsRegisterAddress";
 import CepInput from "./Components/CepInput";
 import { VisibilityContext } from "../../../contexts/VisibilityContext";
 import AddressForm from "./Components/AddressForm";
@@ -49,6 +48,7 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
     setTimeout(() => {
       setOpacityRegAddress(1);
     }, 100);
+    return () => clearTimeout();
   }, []);
 
   return (
@@ -69,6 +69,7 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
 
         {seeAdressForm ? (
           <AddressForm
+            key="form"
             showOrHideComponent={showOrHideComponent}
             opacityReturn={opacityReturn}
             formData={formData}
@@ -76,7 +77,7 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
             setSeeAddressForm={setSeeAddressForm}
           />
         ) : (
-          <>
+          <div key="options">
             {/*3 Opções de preenchimento*/}
             <GetLocationButton
               setOpacityReturn={setOpacityReturn}
@@ -99,7 +100,7 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
             >
               Digitar todos os dados
             </ButtonStyled>
-          </>
+          </div>
         )}
       </MainDivStyled>
     </DivBodyStyled>

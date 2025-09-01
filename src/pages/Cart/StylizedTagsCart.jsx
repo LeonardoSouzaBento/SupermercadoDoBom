@@ -820,7 +820,7 @@ export const DivAlertStyled = styled.div`
   box-sizing: border-box;
   background-color: var(--red);
   position: relative;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   justify-content: center;

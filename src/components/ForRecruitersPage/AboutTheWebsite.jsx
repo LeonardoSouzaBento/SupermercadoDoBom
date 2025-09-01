@@ -69,20 +69,18 @@ export default function AboutTheWebsite() {
       <H2Styled style={{ marginBottom: "18px" }}>Descrição</H2Styled>
       <LocalPStyled>
         Este é um site de e-commerce simulado feito em React que iniciou em
-        08/04/2025. <br /> Tem quantro páginas: a página inicial, a do Carrinho, a de pesquisa e a de Mais
-        Opções.
+        08/04/2025. <br /> Tem seis páginas: a Página Inicial, a página Minha
+        Conta, a página Meus Pedidos, a página do carrinho, a de pesquisa e a
+        página Sobre (para recrutadores).
       </LocalPStyled>
       <br />
 
       <H2Styled style={{ marginBottom: "18px" }}>Tecnologias usadas</H2Styled>
       <LocalPStyled>
         O site usa{" "}
-        <strong style={{ fontWeight: 600 }}>
-          Styled Components
-        </strong>{" "} para CSS.<br/>
-        E tambem alguns recursos mais avançados de React: <strong style={{ fontWeight: 600 }}>
-          useContext e useNavigate
-        </strong>.
+        <strong style={{ fontWeight: 600 }}>Styled Components</strong> para CSS.
+        <br />E tambem alguns recursos mais avançados de React:{" "}
+        <strong style={{ fontWeight: 600 }}>useContext e useNavigate</strong>.
       </LocalPStyled>
       <br />
 

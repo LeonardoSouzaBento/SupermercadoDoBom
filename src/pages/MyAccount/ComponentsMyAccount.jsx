@@ -30,6 +30,7 @@ import {
   InputZapStyled,
   DivZapAndDivPhone,
   DivZapOrPhone,
+  SpanCheckStyled,
 } from "../../components/MyAccountPage/StylizedTagsMyAccountPage";
 import {
   ButtonContinueStyled,
@@ -132,11 +133,14 @@ export const Contact = () => {
         inputZapRef.current.focus();
       }, 120);
       setPhoneNumber("");
-    }
-    if (seeInput && isValidNumber) {
-      setSeeInput(false);
-      setUserContact({ ...userContact, phone: phoneNumber });
-      setIsDataComplete({ ...isDataComplete, contact: true });
+    } else {
+      if (isValidNumber) {
+        setSeeInput(false);
+        setUserContact({ ...userContact, phone: phoneNumber });
+        setIsDataComplete({ ...isDataComplete, contact: true });
+      } else {
+        setSeeInput(false);
+      }
     }
   }
 
@@ -159,6 +163,11 @@ export const Contact = () => {
 
   return (
     <DivTwoStyled>
+      {isDataComplete.contact && (
+        <SpanCheckStyled className="material-symbols-outlined">
+          check
+        </SpanCheckStyled>
+      )}
       <DivH2StatusStyled>
         <HeaderH2Styled>
           <SpanH2Styled
@@ -173,25 +182,23 @@ export const Contact = () => {
         </HeaderH2Styled>
 
         {/*Estado do número*/}
-
-        <DivStatusStyled>
-          <DivNameStatus $hide={isDataComplete.contact}>
-            <NameStatusStyled $hide={isDataComplete.contact}>
-              {isDataComplete.contact ? "Número salvo" : "Sem um número"}
-            </NameStatusStyled>
-            <SpanStatusStyled
-              className="material-symbols-outlined"
-              $check={isDataComplete.contact}
-            >
-              {isDataComplete.contact ? "check" : "exclamation"}
-            </SpanStatusStyled>
-          </DivNameStatus>
-        </DivStatusStyled>
+        {!isDataComplete.contact && (
+          <DivStatusStyled>
+            <DivNameStatus>
+              <NameStatusStyled>
+                {isDataComplete.contact ? "Número salvo" : "Sem um número"}
+              </NameStatusStyled>
+              <SpanStatusStyled className="material-symbols-outlined">
+                {isDataComplete.contact ? "check" : "exclamation"}
+              </SpanStatusStyled>
+            </DivNameStatus>
+          </DivStatusStyled>
+        )}
       </DivH2StatusStyled>
 
       {/*Whatsapp*/}
       <DivStyled>
-        <div style={{ border: "1px solid #c5c5c5ff" }}>
+        <div style={{ border: "1px solid #c5c5c5ff", borderRadius: "6px" }}>
           <DivZapStyled $seeInput={seeInput}>
             <DivFormStyled $zap={true}>
               <Pv2Styled>
@@ -286,6 +293,12 @@ export const SavedAddress = ({
 
   return (
     <DivThreeStyled>
+      {isDataComplete.address && (
+        <SpanCheckStyled className="material-symbols-outlined">
+          check
+        </SpanCheckStyled>
+      )}
+
       <DivH2StatusStyled>
         <HeaderH2Styled>
           <SpanH2Styled className="material-symbols-rounded">
@@ -296,19 +309,18 @@ export const SavedAddress = ({
           </H2v2Styled>
         </HeaderH2Styled>
 
-        <DivStatusStyled>
-          <DivNameStatus $hide={isDataComplete.address}>
-            <NameStatusStyled $hide={isDataComplete.address}>
-              {isDataComplete.address ? "Endereço salvo" : "Sem endereço"}
-            </NameStatusStyled>
-            <SpanStatusStyled
-              className="material-symbols-rounded"
-              $check={isDataComplete.address}
-            >
-              {isDataComplete.address ? "check" : "exclamation"}
-            </SpanStatusStyled>
-          </DivNameStatus>
-        </DivStatusStyled>
+        {!isDataComplete.address && (
+          <DivStatusStyled>
+            <DivNameStatus>
+              <NameStatusStyled>
+                {isDataComplete.address ? "Endereço salvo" : "Sem endereço"}
+              </NameStatusStyled>
+              <SpanStatusStyled className="material-symbols-rounded">
+                {isDataComplete.address ? "check" : "exclamation"}
+              </SpanStatusStyled>
+            </DivNameStatus>
+          </DivStatusStyled>
+        )}
       </DivH2StatusStyled>
 
       <DivStyled>
@@ -378,7 +390,13 @@ export const SavedAddress = ({
   );
 };
 
-export const FinishShopping = ({ isDataComplete, orderInfo }) => {
+export const FinishShopping = ({ isDataComplete, orderInfo, userContact }) => {
+  const enable =
+    isDataComplete.contact &&
+    isDataComplete.address &&
+    userContact.email &&
+    orderInfo.status === "pending";
+
   return (
     <DivOneStyled $orders={true}>
       <DivH2StatusStyled $orders={true}>
@@ -392,8 +410,8 @@ export const FinishShopping = ({ isDataComplete, orderInfo }) => {
         </HeaderH2Styled>
 
         {orderInfo.status === "pending" && (
-          <DivStatusStyled>
-            <DivNameStatus>
+          <DivStatusStyled $finish={true}>
+            <DivNameStatus $finish={true}>
               <NameStatusStyled>Compra não finalizada</NameStatusStyled>
               <SpanStatusStyled className="material-symbols-rounded">
                 exclamation
@@ -403,10 +421,7 @@ export const FinishShopping = ({ isDataComplete, orderInfo }) => {
         )}
       </DivH2StatusStyled>
       {orderInfo.status === "pending" && (
-        <ButtonContinueStyled
-          $myAccount={true}
-          $enable={isDataComplete.contact && isDataComplete.address}
-        >
+        <ButtonContinueStyled $myAccount={true} $enable={enable}>
           <PContinueStyled>Finalizar a compra</PContinueStyled>
         </ButtonContinueStyled>
       )}
@@ -456,10 +471,7 @@ export const UserProfile = ({ userContact, setSeeLogin }) => {
             <NameStatusStyled $hide={userContact.email && userContact.name}>
               {!userContact.email ? "Usúario anônimo" : "Sem seu nome"}
             </NameStatusStyled>
-            <SpanStatusStyled
-              className="material-symbols-outlined"
-              $check={userContact.email && userContact.name}
-            >
+            <SpanStatusStyled className="material-symbols-outlined">
               {!userContact.email || !userContact.name
                 ? "exclamation"
                 : "check"}

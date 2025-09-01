@@ -24,24 +24,25 @@ export const DivBodyStyled = styled.div`
 export const MainDivStyled = styled.div`
   height: auto;
   width: 100%;
-  max-width: 416px;
+  max-width: 375px;
   margin-bottom: 4px;
   padding-bottom: 27px;
   box-sizing: border-box;
-  border-radius: 16px;
+  border-radius: 12px;
   background-color: white;
   position: relative;
   overflow: hidden;
-  /* box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
-    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
-    -2px 0px 4px -3px rgba(41, 46, 117, 0.125); */
   box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
     4px 0px 4px -3px rgba(41, 46, 117, 0.1),
     -4px 0px 4px -3px rgba(41, 46, 117, 0.1);
   transition: transform 0.2s ease;
 
+  @media screen and (max-width: 391px) {
+    width: calc(100% - 16px);
+  }
+
   @media screen and (max-width: 993px) {
-    ${(props) => props.$up && "border-radius: 0 0 16px 16px;"};
+    ${(props) => props.$up && "border-radius: 0 0 12px 12px;"};
   }
   @media screen and (min-width: 375px) and (max-width: 577px) {
     margin-bottom: 0px;
@@ -279,7 +280,7 @@ export const InputStyled = styled.input`
   ${(props) =>
     props.$firstInput &&
     css`
-      border-radius: 8px 8px 0 0;
+      border-radius: 4px 4px 0 0;
       box-shadow: 0px -2px 4px -2px rgba(41, 46, 117, 0.26),
         2px 0px 3px -2px rgba(41, 46, 117, 0.13),
         -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
@@ -287,7 +288,7 @@ export const InputStyled = styled.input`
   ${(props) =>
     props.$lastInput &&
     css`
-      border-radius: 0 0 8px 8px;
+      border-radius: 0 0 4px 4px;
       border-bottom: none;
       padding-bottom: 2px;
       margin-bottom: 18px;

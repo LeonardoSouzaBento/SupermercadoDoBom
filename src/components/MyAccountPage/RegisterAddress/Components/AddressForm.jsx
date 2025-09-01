@@ -6,7 +6,7 @@ import {
   InputStyled,
   ButtonStyled,
   RegisterButtonStyled,
-} from "../StylizedTags";
+} from "../StylizedTagsRegisterAddress";
 
 const AddressForm = ({
   cepConvertedState,

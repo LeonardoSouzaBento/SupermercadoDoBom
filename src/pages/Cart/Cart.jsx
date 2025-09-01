@@ -29,7 +29,7 @@ const Cart = () => {
     useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0.03); //opacidade do main ao entrar
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
-  const { seeFeedback, setSeeFeedback, viewProductInFull, isDataComplete } =
+  const { seeFeedback, setSeeFeedback, viewProductInFull } =
     useContext(VisibilityContext);
   const [scaleWarnnig, setScaleWarnnig] = useState(1);
 
@@ -58,23 +58,6 @@ const Cart = () => {
       setApplyNewHeight(false);
     }
   }
-
-  const totalValue = totalAddedValue.toLocaleString("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-
-  const falta = 40 - totalAddedValue > 0 ? 40 - totalAddedValue : 0;
-  const faltaFormatada = falta.toLocaleString("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-
-  const totalNumerico = totalAddedValue + 4;
-  const totalFormatted = totalNumerico.toLocaleString("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
 
   // resize p reamostrar botão
   useEffect(() => {
@@ -201,18 +184,13 @@ const Cart = () => {
 
         <ContinueSectionStyled>
           <DetailAndButtonAdd
-            falta={falta}
             totalAddedValue={totalAddedValue}
             scaleWarnnig={scaleWarnnig}
-            faltaFormatada={faltaFormatada}
-            totalValue={totalValue}
-            totalFormatted={totalFormatted}
           />
           <ReceiptAndContinue
-            falta={falta}
-            isDataComplete={isDataComplete}
-            setOrderInfo={setOrderInfo}
+            totalAddedValue={totalAddedValue}
             setScaleWarnnig={setScaleWarnnig}
+            setOrderInfo={setOrderInfo}
           />
         </ContinueSectionStyled>
       </MainStyled>

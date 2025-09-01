@@ -3,7 +3,7 @@ import {
   DivCepInputStyled,
   CepInputStyled,
   PWarnCepStyled,
-} from "../StylizedTags";
+} from "../StylizedTagsRegisterAddress";
 import CepConvertedReturn from "./CepConvertedReturn";
 
 const CepInput = ({ setSeeAddressForm, setFormData, opacityReturn }) => {
