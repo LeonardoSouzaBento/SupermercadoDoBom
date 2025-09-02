@@ -12,7 +12,7 @@ import {
   DivFeedBackStyled,
   PFeedBackStyled,
   SpanStyled,
-} from "./StylizedTagsNavBar";
+} from "./StylizedTags";
 
 export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
   const { setCartProducts } = useContext(CartContext);

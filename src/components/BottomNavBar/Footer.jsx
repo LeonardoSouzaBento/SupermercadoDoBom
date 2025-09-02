@@ -13,7 +13,7 @@ import {
   SpanDeleteStyled,
   DivPStyled,
   PItensStyled,
-} from "./StylizedTagsNavBar";
+} from "./StylizedTags";
 
 export default function Footer() {
   const { quantityItens, totalValueFormatted } = useContext(CartContext);

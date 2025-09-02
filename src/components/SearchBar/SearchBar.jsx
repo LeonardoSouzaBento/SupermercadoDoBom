@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 import { sequentialPrefixSearch } from "./sequentialPrefixSearch";
-import animateMessage from "../../functions/AnimationOfWrite";
+import animationOfWrite from "./AnimationOfWrite";
 import {
   ContainerForFormStyled,
   FormStyled,
@@ -101,7 +101,7 @@ function SearchBar({ copy, onHome }) {
     setViewTipState(true);
     setPreventClick(true);
 
-    animateMessage(tip, setTextOfTip);
+    animationOfWrite(tip, setTextOfTip);
 
     setTimeout(() => {
       setTipForRecruiter(false);

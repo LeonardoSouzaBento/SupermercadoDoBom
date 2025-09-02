@@ -8,12 +8,12 @@ import {
   InputStyled,
   SpanEmailStyled,
   ButtonDivStyled,
-} from "./StylizedTagsLogin";
+} from "./StylizedTags";
 import {
   PValueStyled,
   PContinueStyled,
-} from "../../pages/Cart/StylizedTagsCart";
-import { LoginReturn } from "./ComponentsLogin";
+} from "../../pages/Cart/StylizedTags";
+import { LoginReturn } from "./Components";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 
 function validatePassword(senha) {

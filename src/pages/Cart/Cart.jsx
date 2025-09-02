@@ -2,7 +2,7 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext.js";
 import { VisibilityContext } from "../../contexts/VisibilityContext.js";
-import { ProductList } from "../../components/Product/ProductList.jsx";
+import { ProductList } from "../../components/Product/ProductItem&List/ProductList.jsx";
 import {
   MainStyled,
   CartSectionStyed,
@@ -10,15 +10,15 @@ import {
   H1Styled,
   ContinueSectionStyled,
   DivToCoverStyled,
-} from "./StylizedTagsCart.jsx";
+} from "./StylizedTags.jsx";
 import {
   CancelDialog,
   ReceiptAndContinue,
   ButtonSeeAll,
   HeaderCart,
   DetailAndButtonAdd,
-} from "./ComponentsCart.jsx";
-import ProductInFull from "../../components/Product/ProductInFull.jsx";
+} from "./Components.jsx";
+import ProductInFull from "../../components/Product/ProductInFull/ProductInFull.jsx";
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar

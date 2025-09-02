@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar/SearchBar";
-import { ProductList } from "../components/Product/ProductList";
-import ProductInFull from "../components/Product/ProductInFull";
+import { ProductList } from "../components/Product/ProductItem&List/ProductList";
+import ProductInFull from "../components/Product/ProductInFull/ProductInFull";
 import Footer from "../components/BottomNavBar/Footer";
 import { VisibilityContext } from "../contexts/VisibilityContext";
 import styled from "styled-components";

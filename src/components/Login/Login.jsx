@@ -4,8 +4,8 @@ import {
   DivMainStyled,
   DivButtonsStyled,
   DivH1Styled,
-} from "./StylizedTagsLogin";
-import { H1Styled } from "../../pages/Cart/StylizedTagsCart";
+} from "./StylizedTags";
+import { H1Styled } from "../../pages/Cart/StylizedTags";
 import EmailForm from "./EmailForm";
 import {
   LoginReturn,
@@ -13,7 +13,7 @@ import {
   ButtonLoginAnonymous,
   ButtonLoginEmail,
   ButtonLoginGoogle,
-} from "./ComponentsLogin";
+} from "./Components";
 
 const Login = ({ setSeeLogin, onMyAccount }) => {
   const [opacity, setOpacity] = useState(0);

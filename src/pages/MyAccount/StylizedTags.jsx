@@ -1,0 +1,654 @@
+import styled, { css } from "styled-components";
+import { PStyled } from "../ForRecruiters/StylizedTags";
+import { H2Styled } from "../ForRecruiters/StylizedTags";
+import { H1BaseStyled } from "../../components/GenericStylizedTags";
+
+export const HeaderStyled = styled.header`
+  width: 100%;
+  height: 56px;
+  background-color: var(--purple);
+  display: flex;
+  align-items: center;
+`;
+
+export const H1Styled = styled(H1BaseStyled)`
+  margin: auto;
+  text-align: left;
+
+  @media screen and (max-width: 375px) {
+    width: calc(100% - 24px);
+  }
+  @media screen and (min-width: 375px) {
+    width: calc(100% - 32px);
+    max-width: 520px;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1085px) {
+    width: max-content;
+    margin: 0;
+    margin-left: 16px;
+  }
+  @media screen and (min-width: 1085px) {
+    max-width: 1056px;
+  }
+`;
+
+export const MainStyled = styled.main`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+  @media screen and (min-width: 993px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    padding: 0px 17px;
+    box-sizing: border-box;
+  }
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--purple);
+    z-index: -1;
+  }
+`;
+
+export const DivOneTwoStyled = styled.div`
+  height: auto;
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+
+  @media screen and (max-width: 375px) {
+    width: calc(100% - 16px);
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    width: calc(100% - 32px);
+  }
+  @media screen and (min-width: 993px) {
+    width: 50%;
+    margin: 0;
+  }
+`;
+
+export const DivOneStyled = styled.div`
+  width: 100%;
+  height: max-content;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
+    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
+    -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
+  ${(props) => props.$orders && "padding-top: 0px;"}
+`;
+
+export const UserHeaderDivStyled = styled.div`
+  width: 100%;
+  margin: auto;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  position: relative;
+`;
+
+export const DivImgEmailStyled = styled.div`
+  width: max-content;
+  box-sizing: border-box;
+  display: flex;
+  gap: 12px;
+
+  @media screen and (max-width: 512px) {
+    flex-direction: column;
+  }
+`;
+
+export const DivButtonStyled = styled.div`
+  width: 100%;
+`;
+
+export const ButtonLoginStyled = styled.div`
+  height: 48px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--purple);
+  color: white;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+
+  &:hover {
+    background-color: var(--purple-hover);
+  }
+`;
+
+export const PLoginStlyed = styled.p`
+  font-family: var(--p-font);
+  font-weight: 500;
+
+  @media screen and (max-width: 375px) {
+    font-size: 1.137em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.156em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.166em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.175em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.18em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.184em;
+  }
+`;
+
+export const DivImgUserStyled = styled.div`
+  height: 58px;
+  width: 58px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ecf0f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
+export const ImgUserStyled = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  scale: 1.02;
+`;
+
+export const DivNameEmailStyled = styled.header`
+  width: max-content;
+  height: auto;
+`;
+
+export const DivEmailUserStyled = styled.div`
+  display: flex;
+  gap: 4px;
+`;
+
+export const DivTwoStyled = styled(DivOneStyled)`
+  padding: 0;
+  padding-top: 0px;
+  height: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  @media screen and (min-width: 993px) {
+    margin-bottom: 0px;
+  }
+  position: relative;
+`;
+
+export const DivThreeButtonStyled = styled.div`
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+  margin-bottom: 24px;
+
+  @media screen and (max-width: 375px) {
+    width: calc(100% - 16px);
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    width: calc(100% - 32px);
+  }
+  @media screen and (min-width: 993px) {
+    width: 50%;
+    margin: 0;
+  }
+`;
+
+export const DivThreeStyled = styled.div`
+  height: max-content;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
+    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
+    -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
+`;
+
+export const DivH2StatusStyled = styled.div`
+  width: 100%;
+  padding-right: 20px;
+  box-sizing: border-box;
+  display: flex;
+  ${(props) => props.$orders && "padding-right: 0px;"}
+
+  @media screen and (max-width: 520px) {
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+  @media screen and (min-width: 520px) and (max-width: 993px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1058px) {
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+  @media screen and (min-width: 1058px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
+
+export const HeaderH2Styled = styled.header`
+  height: 56px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 16px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  ${(props) => props.$cart && "width: max-content;"};
+  ${(props) => props.$orders && "padding-left: 0px;"}
+  @media screen and (min-width: 520px) {
+    margin-bottom: 0px;
+  }
+`;
+
+export const SpanH2Styled = styled.span`
+  font-size: 1.53em;
+  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 22;
+  cursor: default;
+  color: var(--purple);
+  margin-right: 8px;
+  @media screen and (max-width: 375px) {
+    font-size: 1.5em;
+  }
+
+  ${(props) =>
+    props.$user &&
+    css`
+      margin-right: 0px;
+      font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 22;
+    `};
+  ${(props) =>
+    props.$cart &&
+    css`
+      font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 22;
+    `}
+`;
+
+export const H2v2Styled = styled(H2Styled)`
+  margin-bottom: 0px;
+  font-weight: 700;
+  color: var(--purple);
+
+  ${(props) =>
+    props.$nameUser &&
+    css`
+      scale: 1.04;
+      margin-left: 4px;
+      width: 100%;
+    `};
+  @media screen and (max-width: 375px) {
+    font-size: 1.17em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.179em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.195em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.213em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.231em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.24em;
+  }
+`;
+
+export const DivStatusStyled = styled.div`
+  width: 100%;
+  padding-left: 20px;
+  ${(props) => props.$finish && "padding-left: 0px;"}
+  box-sizing: border-box;
+  display: flex;
+
+  @media screen and (min-width: 520px) and (max-width: 1058px) {
+    width: 50%;
+    padding-left: 0px;
+    justify-content: flex-end;
+    ${(props) => props.$user && "width: 100%;"}
+  }
+  @media screen and (min-width: 1058px) {
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end;
+  }
+  ${(props) => props.$user && "padding-left: 0;"}
+  ${(props) =>
+    !props.$user &&
+    css`
+      @media screen and (min-width: 520px) and (max-width: 1058px) {
+        justify-content: flex-start !important;
+        margin-left: 20px;
+        ${(props) => props.$finish && "margin-left: 0px;"}
+      }
+    `}
+  ${(props) =>
+    props.$user &&
+    css`
+      @media screen and (min-width: 993px) and (max-width: 1058px) {
+        justify-content: flex-start;
+      }
+      @media screen and (min-width: 1058px) {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    `}
+`;
+
+export const DivNameStatus = styled.div`
+  height: 24px;
+  width: max-content;
+  padding-left: 8px;
+  padding-bottom: 3px;
+  padding-right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--dark-red);
+  color: white;
+  border-radius: 14px;
+`;
+
+export const SpanStatusStyled = styled.span`
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 24;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 4px;
+  margin-top: 1.5px;
+  border-radius: 50%;
+  font-size: 1.08em;
+`;
+
+export const NameStatusStyled = styled.p`
+  font-family: var(--p-font);
+  font-weight: 400;
+  margin-right: 6px;
+  ${(props) => props.$email && "color: black;"}
+
+  @media screen and (max-width: 375px) {
+    font-size: 1em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1em;
+  }
+`;
+
+export const SpanCheckStyled = styled.span`
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  padding: 4px;
+  border-radius: 50%;
+  background-color: var(--light-green);
+  color: var(--purple);
+  z-index: 2;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+export const DivStyled = styled.div`
+  width: 100%;
+  padding: 20px;
+  padding-top: 0px;
+  box-sizing: border-box;
+`;
+
+export const Pv2Styled = styled(PStyled)`
+  text-align: left;
+  margin-bottom: 0px;
+  scale: 1.01;
+  ${(props) => props.$hide && "display: none;"}
+`;
+
+export const StrongStyled = styled.strong`
+  font-weight: 600;
+  ${(props) => props.$pStatus && "font-weight: 400;"}
+`;
+
+export const DivZapStyled = styled.div`
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  ${(props) => props.$seeInput && "align-items: flex-end;"};
+  position: relative;
+`;
+
+export const DivZapAndDivPhone = styled.div`
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  ${(props) => !props.$visible && "display: none;"}
+
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+    height: 88px;
+    gap: 8px;
+  }
+`;
+
+export const DivZapOrPhone = styled.div`
+  height: 100%;
+  width: calc(100% - 16px);
+  padding: 0 16px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  ${(props) => props.$selected && "background-color: var(--back-color);"}
+
+  @media screen and (max-width: 576px) {
+    width: 100%;
+    box-sizing: border-box;
+  }
+`;
+
+export const DivFormStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+
+  @media screen and (max-width: 375px) {
+    width: 100%;
+  }
+  ${(props) =>
+    props.$first &&
+    css`
+      @media screen and (min-width: 375px) {
+        width: 58%;
+      }
+    `}
+  ${(props) =>
+    props.$zap &&
+    css`
+      width: 100% !important;
+      padding-right: 16px;
+      box-sizing: border-box;
+    `}
+`;
+
+export const DivAddressStyled = styled.div`
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  position: relative;
+`;
+
+export const DivHalfAddressStyled = styled.div`
+  border-radius: 8px;
+  display: flex;
+  gap: 16px;
+  ${(props) => props.$first && "margin-bottom: 16px;"}
+
+  @media screen and (max-width: 385px) {
+    flex-direction: column;
+    gap: 8px;
+    ${(props) => props.$first && "margin-bottom: 8px;"}
+  }
+`;
+
+export const DivSpanStyled = styled.div`
+  height: 44px;
+  min-width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  border-radius: 8px;
+  background-color: var(--purple);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  color: white;
+
+  &:hover {
+    background-color: hsla(234, 31%, 26%, 1);
+  }
+  ${(props) =>
+    props.$first &&
+    css`
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    `}
+  ${(props) =>
+    props.$address &&
+    css`
+      position: absolute;
+      top: 12px;
+      right: 12px;
+    `}
+  ${(props) =>
+    props.$disable &&
+    css`
+      background-color: var(--disable);
+      &:hover {
+        background-color: var(--disable-hover);
+      }
+    `}
+`;
+
+export const SpanEditStyled = styled.span`
+  font-size: 1.78em;
+  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 20;
+`;
+
+export const SpanEmailWarnStyled = styled.span`
+  color: hsl(213, 11%, 45%);
+  font-size: 2.5em;
+  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 20;
+`;
+
+export const InputZapStyled = styled.input`
+  height: 44px;
+  width: 100%;
+  padding-left: 8px;
+  padding-bottom: 3px;
+  box-sizing: border-box;
+  border: none;
+  background-color: var(--back-color);
+  font-family: var(--p-font);
+  font-weight: 400;
+  border-radius: 3px;
+
+  &:focus {
+    border: 1px solid var(--border);
+    outline: none;
+  }
+  ${(props) => props.$hide && "display: none;"}
+
+  @media screen and (max-width: 375px) {
+    font-size: 1.15em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.163em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.165em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.17em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.175em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.18em;
+  }
+`;

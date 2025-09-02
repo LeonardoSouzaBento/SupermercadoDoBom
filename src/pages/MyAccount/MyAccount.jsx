@@ -1,18 +1,18 @@
 import { useState } from "react";
 import {
-  ContainerStyled,
+  MainStyled,
   H1Styled,
-  DivHeaderStyled,
+  HeaderStyled,
   DivOneTwoStyled,
   DivThreeButtonStyled,
-} from "../../components/MyAccountPage/StylizedTagsMyAccountPage";
+} from "./StylizedTags";
 import {
   SavedAddress,
   UserProfile,
   Contact,
   FinishShopping,
-} from "./ComponentsMyAccount";
-import RegisterAddress from "../../components/MyAccountPage/RegisterAddress/RegisterAddress";
+} from "./Components";
+import RegisterAddress from "./RegisterAddress/RegisterAddress";
 import Login from "../../components/Login/Login";
 import { useContext } from "react";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
@@ -28,11 +28,11 @@ const MyAccount = () => {
     <>
       {seeLogin && <Login setSeeLogin={setSeeLogin} onMyAccount={true} />}
 
-      <DivHeaderStyled>
+      <HeaderStyled>
         <H1Styled>Minha conta</H1Styled>
-      </DivHeaderStyled>
+      </HeaderStyled>
 
-      <ContainerStyled>
+      <MainStyled>
         {/*Minha conta e Contato*/}
         <DivOneTwoStyled>
           <UserProfile userContact={userContact} setSeeLogin={setSeeLogin} />
@@ -52,7 +52,7 @@ const MyAccount = () => {
             orderInfo={orderInfo}
           />
         </DivThreeButtonStyled>
-      </ContainerStyled>
+      </MainStyled>
 
       {seeRegisterAddress && (
         <RegisterAddress setSeeRegisterAddress={setSeeRegisterAddress} />
