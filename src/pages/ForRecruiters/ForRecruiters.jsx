@@ -18,7 +18,7 @@ const contents = [
 ];
 
 export default function ForRecruitersPage() {
-  const [seeTheOption, setSeeTheOption] = useState("");
+  const [seeTheOption, setSeeTheOption] = useState("aboutMe");
   const [selectedOption, setSelectedOption] = useState(0);
   const [selectedButtonCode, setSelectedButtonCode] = useState(0);
   const [opacityState, setOpacityState] = useState(0);

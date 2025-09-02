@@ -29,7 +29,6 @@ const DivH3Buttons = styled.div`
       background-color: rgba(244, 244, 244, 1);
     `}
   @media screen and (max-width: 430px) {
-    height: max-content;
     padding: 9px 16px;
   }
 `;

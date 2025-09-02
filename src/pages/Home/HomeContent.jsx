@@ -20,22 +20,21 @@ const MainStyled = styled.main`
   &::after {
     content: "";
     width: 100%;
-    height: 355px; //340 + 16px
+    height: 280px; //340 + 16px
     position: absolute;
-    top: 0;
+    top: 24px;
     left: 0;
-    background: hsla(223, 19%, 90%, 1);
-    /* background: linear-gradient(to bottom, var(--purple), hsl(213, 31%, 95%)); */
+    background-image: linear-gradient(to bottom, var(--purple), var(--back-color));
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
     z-index: -1;
-  }
+  } 
 
   &::before {
     content: "";
     width: 100%;
-    height: 45px;
+    height: 24px;
     position: absolute;
     top: 0;
     left: 0;
@@ -44,10 +43,8 @@ const MainStyled = styled.main`
   }
 `;
 
-const ProductFeedDivStyled = styled.div`
-  border-radius: 16px 16px 0 0;
+const ProductFeedDivStyled = styled.section`
   background-color: var(--back-color);
-  /* box-shadow: 0px -4px 10px rgba(41, 46, 117, 0.125); */
 `;
 
 function HomeContent() {

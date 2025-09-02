@@ -18,7 +18,7 @@ export const FooterStyled = styled.footer`
 `;
 
 export const CartDescStyled = styled.div`
-  width: 90%;
+  width: calc(100% - 24px);
   max-width: 400px;
   height: 48px;
   margin-right: 8px;
@@ -68,7 +68,7 @@ export const SpanCartStyled = styled.span`
 export const DivDeleteStyled = styled(DivCartStyled)`
   box-sizing: border-box;
   padding-left: 4px;
-  background-color: #292D4E;
+  background-color: #292d4e;
 
   &:hover {
     background-color: hsl(255, 35.5%, 18%);
@@ -93,26 +93,34 @@ export const DivPStyled = styled.div`
 
 export const PPrecoStyled = styled.p`
   font-family: var(--bt-font);
-  font-weight: 500;
+  font-weight: 550;
   letter-spacing: 0.71px;
   padding-bottom: 2px;
   color: white;
   scale: 1.02;
   @media screen and (max-width: 375px) {
-    font-size: 1em;
+    font-size: 1.1em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.05em;
+    font-size: 1.106em;
   }
-  @media screen and (min-width: 577px) {
-    font-size: 1.1em;
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.118em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.131em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.144em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.15em;
   }
 `;
 
 export const PItensStyled = styled(PPrecoStyled)`
   padding-right: 18px;
 `;
-
 
 export const ContainerStyled = styled.div`
   position: fixed;
@@ -264,4 +272,3 @@ export const PFeedBackStyled = styled(PQuestionStyled)`
   padding: 6px 0px;
   padding-top: 8px;
 `;
-

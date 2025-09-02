@@ -172,7 +172,7 @@ export const Contact = () => {
         <HeaderH2Styled>
           <SpanH2Styled
             className="material-symbols-outlined"
-            $variant={"smaller"}
+            $smaller={true}
           >
             call
           </SpanH2Styled>

@@ -46,7 +46,7 @@ export const H1Styled = styled(H1BaseStyled)`
   @media screen and (min-width: 596px) and (max-width: 768px) {
     width: 575px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     width: 724px;
   }
 
@@ -65,7 +65,7 @@ export const CartSectionStyed = styled.section`
   padding: 20px 0;
   padding-top: 10px;
   margin: auto;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   border-radius: 12px;
   box-sizing: border-box;
   box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
@@ -87,7 +87,7 @@ export const CartSectionStyed = styled.section`
     max-width: 575px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     height: 500px;
     width: 724px;
     overflow: scroll;
@@ -228,11 +228,11 @@ export const ContinueSectionStyled = styled.div`
   width: 100%;
   margin: auto;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     width: max-content;
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: 20px;
   }
 `;
 
@@ -242,9 +242,9 @@ export const ContainerStyled = styled.section`
 
   @media screen and (max-width: 768px) {
     width: calc(100% - 24px);
-    max-width: 370px;
+    max-width: 400px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     width: 50%;
     max-width: 370px;
     margin: 0;
@@ -259,7 +259,7 @@ export const DivStyled = styled.div`
   padding: 20px;
   padding-top: 10px;
   margin: auto;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -302,7 +302,7 @@ export const H2Styled = styled.h2`
     props.$products &&
     css`
       padding-left: 0px;
-      @media screen and (min-width: 768px) and (max-width: 993px) {
+      @media screen and (min-width: 769px) and (max-width: 993px) {
         max-width: 724px;
       }
     `}
@@ -313,7 +313,7 @@ export const H2Styled = styled.h2`
   @media screen and (min-width: 375px) and (max-width: 576px) {
     font-size: 1.156em;
   }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
+  @media screen and (min-width: 577px) and (max-width: 769px) {
     font-size: 1.168em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
@@ -326,6 +326,7 @@ export const H2Styled = styled.h2`
     font-size: 1.2em;
   }
 `;
+
 
 export const ReceiptOptionStyled = styled.div`
   width: 100%;
@@ -371,6 +372,7 @@ export const DivAvisoStyled = styled.div`
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  border-radius: 4px;
   background-color: var(--red);
   border: 1px solid var(--red);
   position: relative;
@@ -378,7 +380,7 @@ export const DivAvisoStyled = styled.div`
   scale: ${(props) => props.$scale};
   transition: scale 0.3s ease;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     margin: 0;
     margin-bottom: 12px;
   }
@@ -437,7 +439,7 @@ export const ButtonContinueStyled = styled.div`
       }
     `}
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     margin: 0;
   }
 `;

@@ -1,31 +1,33 @@
 import styled from "styled-components";
 
-export const ContainerStyled = styled.div`
-  width: calc(100% - 20px);
+export const ContainerStyled = styled.section`
+  width: calc(100% - 24px);
   position: relative;
   overflow-x: hidden;
-  padding-top: 12px;
+  padding-top: 20px;
   padding-bottom: 40px;
   margin: auto;
-  border-radius: 4px;
-  @media screen and (max-width: 576px) {
-    width: 100%;
-  }
-  @media screen and (min-width: 1201px) {
-    width: calc(100% - 100px);
-  }
+  border-radius: 24px;
+  background-image: linear-gradient(
+    to bottom,
+    var(--purple),
+    hsla(223, 19%, 92%, 1)
+  );
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 `;
 
 export const DivStyled = styled.div`
   width: 100%;
   margin: auto;
   display: flex;
+  justify-content: center;
   flex-flow: row nowrap;
   gap: 16px;
   overflow-x: scroll;
   box-sizing: border-box;
-  padding: 12px 20px;
-  padding-bottom: 24px;
+  padding: 12px 24px;
   margin-bottom: 12px;
 
   scrollbar-width: none; /* Firefox */
@@ -42,6 +44,7 @@ export const DivFundoImgStyled = styled.div`
   border-radius: 16px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.25);
 `;
 
 export const ImgStyled = styled.img`
@@ -58,7 +61,7 @@ export const ImgStyled = styled.img`
 export const DivPaginationStyled = styled.div`
   height: max-content;
   width: 43%;
-  max-width: 240px;
+  max-width: 230px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -70,9 +73,9 @@ export const SpanStyled = styled.span.attrs(() => ({
   // nada é passado para o DOM
 }))`
   border-radius: 5px;
-  background-color: hsla(231, 16%, 61%, 1.00);
+  background-color: hsla(231, 16%, 61%, 1);
 
-  ${(props) => props.$atual && "background-color: hsla(232, 15%, 47%, 1.00);"}
+  ${(props) => props.$atual && "background-color: hsla(232, 15%, 42%, 1.00);"}
 
   @media screen and (max-width: 375px) {
     height: 9.5px;

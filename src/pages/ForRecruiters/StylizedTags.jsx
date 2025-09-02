@@ -64,13 +64,14 @@ export const NavOptionsStyled = styled.nav`
   gap: 12px;
   margin-bottom: 32px;
 
-  @media screen and (max-width: 430px) {
+  @media screen and (max-width: 577px) {
     flex-direction: column;
+    gap: 0;
   }
 `;
 
 export const DivNameSpanStyled = styled.div`
-  height: 48px;
+  height: 56px;
   width: max-content;
   padding: 0px 16px;
   box-sizing: border-box;
@@ -90,10 +91,10 @@ export const DivNameSpanStyled = styled.div`
     `};
   cursor: pointer;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 577px) {
     width: 100%;
   }
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 577px) {
     max-width: 48%;
   }
 `;

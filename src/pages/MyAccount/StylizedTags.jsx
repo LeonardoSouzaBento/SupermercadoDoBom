@@ -16,10 +16,10 @@ export const H1Styled = styled(H1BaseStyled)`
   text-align: left;
 
   @media screen and (max-width: 375px) {
-    width: calc(100% - 24px);
+    width: calc(100% - 16px);
   }
   @media screen and (min-width: 375px) {
-    width: calc(100% - 32px);
+    width: calc(100% - 24px);
     max-width: 520px;
   }
   @media screen and (min-width: 993px) and (max-width: 1085px) {
@@ -40,7 +40,7 @@ export const MainStyled = styled.main`
   @media screen and (min-width: 993px) {
     flex-direction: row;
     justify-content: center;
-    gap: 16px;
+    gap: 20px;
     padding: 0px 17px;
     box-sizing: border-box;
   }
@@ -67,7 +67,7 @@ export const DivOneTwoStyled = styled.div`
     width: calc(100% - 16px);
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: calc(100% - 32px);
+    width: calc(100% - 24px);
   }
   @media screen and (min-width: 993px) {
     width: 50%;
@@ -81,7 +81,7 @@ export const DivOneStyled = styled.div`
   margin: auto;
   padding: 20px;
   box-sizing: border-box;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -221,7 +221,7 @@ export const DivThreeButtonStyled = styled.div`
     width: calc(100% - 16px);
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: calc(100% - 32px);
+    width: calc(100% - 24px);
   }
   @media screen and (min-width: 993px) {
     width: 50%;
@@ -233,7 +233,7 @@ export const DivThreeStyled = styled.div`
   height: max-content;
   width: 100%;
   margin: auto;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -298,7 +298,8 @@ export const SpanH2Styled = styled.span`
   @media screen and (max-width: 375px) {
     font-size: 1.5em;
   }
-
+  ${(props) => props.$smaller && "font-size: 1.42em;"}
+  ${(props) => props.$bigger && "font-size: 1.65em;"}
   ${(props) =>
     props.$user &&
     css`

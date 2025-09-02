@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { H1BaseStyled } from "../GenericStylizedTags";
 
 export const ContainerStyled = styled.div`
   height: 100vh;
@@ -55,35 +56,11 @@ export const DivH1Styled = styled.div`
   background-color: var(--red);
 `;
 
-export const H1LoginStyled = styled.h1`
+export const H1LoginStyled = styled(H1BaseStyled)`
   width: 100%;
   box-sizing: border-box;
   height: max-content;
-  font-family: var(--h-font);
-  font-weight: 700;
-  font-size: 1.3em;
-  text-align: center;
-  color: white;
   margin-bottom: 16px;
-
-  @media screen and (max-width: 375px) {
-    font-size: 1.391em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.445em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.498em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.552em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.605em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.659em;
-  }
 `;
 
 export const DivSpanCloseStyled = styled.div`

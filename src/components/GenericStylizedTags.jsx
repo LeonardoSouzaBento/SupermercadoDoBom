@@ -4,6 +4,7 @@ export const H1BaseStyled = styled.h1`
   color: white;
   font-weight: 700;
   font-family: var(--h-font);
+  text-align: center;
   user-select: none;
 
   @media screen and (max-width: 375px) {

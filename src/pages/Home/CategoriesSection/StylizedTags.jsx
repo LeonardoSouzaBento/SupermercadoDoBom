@@ -27,17 +27,18 @@ export const DivLabelPromosStyled = styled.div`
   margin: auto;
   margin-bottom: 40px;
   position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  gap: 8px;
 `;
 
 export const H1LabelStyled = styled(H1BaseStyled)`
-  font-weight: 700;
-  font-family: var(--h-font);
-  color: var(--purple);
-  text-align: center;
+  color: var(--dark-purple);
   scale: 1.03;
+  padding-right: 20px;
+  ${(props) => props.$anun && css`
+    padding-right: 0px;
+    margin-bottom: 12px;
+    color: white;
+    font-weight: 400;
+  `}
 `;
 
 export const DivfStyled = styled.div`

@@ -68,8 +68,6 @@ export const DivTitleStyled = styled.div`
 `;
 
 export const H1Styled = styled(H1BaseStyled)`
-  text-align: center;
-  user-select: none;
 `;
 
 export const DivSpanCloseStyled = styled.div`

@@ -531,7 +531,6 @@ export const DivTitleStyled = styled.div`
 
 export const H1Styled = styled(H1BaseStyled)`
   width: 100%;
-  text-align: center;
   color: #292e4e;
   padding-bottom: 4px;
 `;

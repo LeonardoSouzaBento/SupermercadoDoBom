@@ -310,7 +310,7 @@ export const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
     <ContainerStyled>
       <DivStyled>
         <HeaderH2Styled>
-          <SpanH2Styled className="material-symbols-rounded" $cart={true}>
+          <SpanH2Styled className="material-symbols-rounded" $cart={true} $bigger={true}>
             data_info_alert
           </SpanH2Styled>
           <H2Styled>Detalhes</H2Styled>

@@ -1,10 +1,4 @@
-import {
-  useRef,
-  useEffect,
-  useState,
-  useCallback,
-  useContext,
-} from "react";
+import { useRef, useEffect, useState, useCallback, useContext } from "react";
 import {
   ContainerStyled,
   DivStyled,
@@ -16,6 +10,7 @@ import {
 import ProductItem from "../../../components/Product/ProductItem&List/ProductItem";
 import { CartContext } from "../../../contexts/CartContext";
 import { useScrollX } from "../../../hooks/useScrollX";
+import { H1LabelStyled } from "../CategoriesSection/StylizedTags";
 
 const AnnouncementProducts = [
   {
@@ -55,15 +50,6 @@ const AnnouncementProducts = [
     price: "19,00",
   },
   {
-    id: 109,
-    discount: 18,
-    url: "https://cortedeourocarnes.com.br/wp-content/uploads/2020/05/bife-ancho-1-600x450.jpg",
-    url2: "https://i.pinimg.com/736x/f6/49/ea/f649ea6e0f7b6ad1ed26d25fa5ff0bf6.jpg",
-    weight: "1kg",
-    name: "Bife Bovino Ancho",
-    price: "78,00",
-  },
-  {
     id: 107,
     discount: 30,
     url: "https://images.tcdn.com.br/img/img_prod/887622/refrigerante_fanta_laranja_lt_350ml_333_1_20201110145812.jpg",
@@ -75,8 +61,7 @@ const AnnouncementProducts = [
 ];
 
 function AnnouncementSection({ wasResize }) {
-  const { setLimitAdvertisements, advertisementsRef } =
-    useContext(CartContext);
+  const { setLimitAdvertisements, advertisementsRef } = useContext(CartContext);
 
   useScrollX();
 
@@ -96,9 +81,9 @@ function AnnouncementSection({ wasResize }) {
       fundoRefs.current.length > 0 &&
       advertisementsRef.current
     ) {
-      const ContainerWidth = divRef.current.offsetWidth; //largura container pai
+      const ContainerWidth = divRef.current.offsetWidth; //largura container avô
       const fundoWidth = fundoRefs.current[0]?.offsetWidth || 0; //largura da imagem
-      const gap = parseFloat(getComputedStyle(advertisementsRef.current).gap);
+      const gap = parseFloat(getComputedStyle(advertisementsRef.current).gap); //gap do container pai
 
       let img_center = Math.ceil(AnnouncementProducts.length / 2);
 
@@ -115,29 +100,15 @@ function AnnouncementSection({ wasResize }) {
 
       let widtAllAds =
         AnnouncementProducts.length * fundoWidth +
-        gap * AnnouncementProducts.length +
-        24; //largura de tdos os anuncios
+        gap * (AnnouncementProducts.length - 1); //largura de tdos os anuncios
       let limite = ContainerWidth - widtAllAds;
       setLimitAdvertisements(limite); //Limite de rolagem para anuncios
       let Initialcenter = 0;
+
       function obterLimites() {
-        //numero impar de imagens
-        if (AnnouncementProducts.length % 2 !== 0) {
-          Initialcenter = (ContainerWidth - widtAllAds) / 2;
-          if (window.innerWidth < 1370) {
-            advertisementsRef.current.scrollLeft = Initialcenter * -1;
-          } else {
-            advertisementsRef.current.scrollLeft = 0;
-          }
-        } else {
-          Initialcenter =
-            (ContainerWidth - widtAllAds) / 2 - (fundoWidth / 2 + gap / 2);
-          if (window.innerWidth < 1370) {
-            advertisementsRef.current.scrollLeft = Initialcenter * -1;
-          } else {
-            advertisementsRef.current.scrollLeft = Initialcenter * -1 - 110;
-          }
-        }
+        //aplicavel somente a um número impar de imagens
+        Initialcenter = (ContainerWidth - widtAllAds) / 2;
+        advertisementsRef.current.scrollLeft = Initialcenter;
       }
       obterLimites();
     }
@@ -194,6 +165,7 @@ function AnnouncementSection({ wasResize }) {
 
   return (
     <ContainerStyled ref={divRef}>
+      <H1LabelStyled $anun={true}>Maiores promoções!</H1LabelStyled>
       <DivStyled ref={advertisementsRef}>
         {AnnouncementProducts.map((object, index) => (
           <DivFundoImgStyled
