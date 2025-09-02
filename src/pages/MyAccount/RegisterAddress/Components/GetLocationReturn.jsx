@@ -20,33 +20,31 @@ const GetLocationReturn = ({ getLocationStatus, opacityReturn }) => {
         </DivApiReturnStyled>
       )}
 
-      {(getLocationStatus === "catching" || getLocationStatus === "error") && (
+      {getLocationStatus === "pending" && (
         <DivApiReturnStyled $opacityReturn={opacityReturn}>
-          {getLocationStatus === "catching" ? (
-            <>
-              <SpanApiReturnStyled
-                className="material-symbols-outlined"
-                $wait={true}
-              >
-                progress_activity
-              </SpanApiReturnStyled>
-              <PValueStyled style={{ width: "80%", textAlign: "center" }}>
-                Pegando sua localização
-              </PValueStyled>
-            </>
-          ) : (
-            <>
-              <SpanApiReturnStyled
-                className="material-symbols-outlined"
-                $error={true}
-              >
-                exclamation
-              </SpanApiReturnStyled>
-              <PValueStyled style={{ width: "80%", textAlign: "center" }}>
-                <strong>Erro: </strong>não conseguimos pegar sua localização
-              </PValueStyled>
-            </>
-          )}
+          <SpanApiReturnStyled
+            className="material-symbols-outlined"
+            $wait={true}
+          >
+            progress_activity
+          </SpanApiReturnStyled>
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            Pegando sua localização
+          </PValueStyled>
+        </DivApiReturnStyled>
+      )}
+
+      {getLocationStatus === "error" && (
+        <DivApiReturnStyled $opacityReturn={opacityReturn}>
+          <SpanApiReturnStyled
+            className="material-symbols-outlined"
+            $error={true}
+          >
+            exclamation
+          </SpanApiReturnStyled>
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            <strong>Erro: </strong>não conseguimos pegar sua localização
+          </PValueStyled>
         </DivApiReturnStyled>
       )}
     </>

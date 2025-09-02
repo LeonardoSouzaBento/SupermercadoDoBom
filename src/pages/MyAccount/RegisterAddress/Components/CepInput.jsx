@@ -36,7 +36,7 @@ const CepInput = ({ setSeeAddressForm, setFormData, opacityReturn }) => {
 
   //chamar API viaCEP
   async function getAddresByCep(cep) {
-    setCepConvertedState("catching");
+    setCepConvertedState("pending");
     const url = `https://viacep.com.br/ws/${cep}/json/`;
     try {
       const response = await fetch(url); //requisição HTTP
@@ -75,7 +75,7 @@ const CepInput = ({ setSeeAddressForm, setFormData, opacityReturn }) => {
   }, [cepState, setSeeAddressForm, setFormData]);
 
   useEffect(() => {
-    if (cepConvertedState !== "catching") {
+    if (cepConvertedState !== "pending") {
       setTimeout(() => {
         setCepConvertedState("");
       }, 2400);

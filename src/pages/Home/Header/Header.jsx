@@ -1,13 +1,12 @@
 import {
   HeaderStyled,
-  ContainerStyled,
+  DivForLogoStyled,
   LogoDivStyled,
   SpanLogoStyled,
   DivPsStyled,
   PNomeSupStyled,
   PBemVindoStyled,
   SpaceSearchBar,
-  ContainerOptionsStyled,
   DivMoreOptionsStyled,
   SpanStyled,
   PStyled,
@@ -25,8 +24,8 @@ const Header = ({ setViewOptions, onHome }) => {
 
   return (
     <HeaderStyled>
-      <ContainerStyled $external={true}>
-        <ContainerStyled>
+      <DivForLogoStyled $external={true}>
+        <DivForLogoStyled>
           <LogoDivStyled>
             <SpanLogoStyled className="material-symbols-outlined">
               handshake
@@ -36,20 +35,16 @@ const Header = ({ setViewOptions, onHome }) => {
             <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
             <PBemVindoStyled> Seja bem vindo!</PBemVindoStyled>
           </DivPsStyled>
-        </ContainerStyled>
+        </DivForLogoStyled>
         <SpaceSearchBar />
-      </ContainerStyled>
+      </DivForLogoStyled>
 
       <SearchBar copy={false} onHome={onHome}></SearchBar>
 
-      <ContainerOptionsStyled>
-        <DivMoreOptionsStyled
-          onPointerDown={handleClick}
-        >
-          <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
-          <PStyled>Mais opções</PStyled>
-        </DivMoreOptionsStyled>
-      </ContainerOptionsStyled>
+      <DivMoreOptionsStyled onPointerDown={handleClick}>
+        <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
+        <PStyled>Mais opções</PStyled>
+      </DivMoreOptionsStyled>
     </HeaderStyled>
   );
 };

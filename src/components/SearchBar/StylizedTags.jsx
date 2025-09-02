@@ -57,7 +57,8 @@ export const FormStyled = styled.form`
       max-width: 684px;
       margin: 0;
       border-radius: 8px;
-      box-shadow: 0px 4px 10px -5px rgba(41, 46, 117, 0.6), 0px -4px 8px -6px rgba(41, 46, 117, 0.4);
+      box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5),
+        0px -2px 4px -2px rgba(41, 46, 117, 0.125);
     `}
 `;
 
@@ -255,7 +256,8 @@ export const DivOnePStyled = styled.div`
   align-items: center;
   flex: none;
   border-radius: 24px;
-  background-color: #281f42;
+  background-color: var(--purple-hover);
+  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.25);
   color: white;
   cursor: pointer;
   position: relative;
@@ -278,7 +280,7 @@ export const InputForFocusStyled = styled.input`
   background-color: transparent;
   cursor: pointer;
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 `;

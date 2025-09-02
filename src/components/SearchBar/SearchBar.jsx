@@ -4,7 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 import { sequentialPrefixSearch } from "./sequentialPrefixSearch";
-import animationOfWrite from "./AnimationOfWrite";
+import {
+  animationOfWrite,
+  getUniqueResults,
+  normalize,
+  normalize2,
+  animateInputMessage,
+} from "./functions";
 import {
   ContainerForFormStyled,
   FormStyled,
@@ -18,62 +24,9 @@ import {
   DivOnePStyled,
   PStyled,
   InputForFocusStyled,
-} from "./StylizedTagsSearchBar";
+} from "./StylizedTags";
 
 //produtos únicos para sugestão
-function getUniqueResults(products, start = 0, end = 14) {
-  const seen = new Set();
-  return products
-    .map((p) => p.name)
-    .filter((name) => {
-      const prefix = name.slice(start, end).toLowerCase();
-      if (seen.has(prefix)) return false;
-      seen.add(prefix);
-      return true;
-    });
-}
-
-function normalize(str) {
-  return str
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
-}
-
-function normalize2(str) {
-  return str
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
-}
-
-function animateInputMessage(message, setState) {
-  let index = 0;
-
-  const writeInterval = setInterval(() => {
-    setState(() => message.slice(0, index + 1));
-    index++;
-
-    if (index >= message.length) {
-      clearInterval(writeInterval);
-
-      // Depois de um pequeno delay, apaga
-      setTimeout(() => {
-        let eraseIndex = message.length;
-
-        const eraseInterval = setInterval(() => {
-          eraseIndex--;
-          setState(message.slice(0, eraseIndex));
-
-          if (eraseIndex <= 0) {
-            clearInterval(eraseInterval);
-          }
-        }, 40); // apagar mais rápido
-      }, message.length * 100); // tempo de exibição completa
-    }
-  }, 80); // escrever uma letra a cada 80ms
-}
 
 function SearchBar({ copy, onHome }) {
   const navigate = useNavigate();
@@ -257,7 +210,7 @@ function SearchBar({ copy, onHome }) {
       const clickedOnSpan = e.target.closest("[data-span]");
 
       if (
-        isInputOrTextarea &&
+        !isInputOrTextarea &&
         !clickedInsideInput &&
         !clickedOnSuggestion &&
         !clickedOnSpan
@@ -267,7 +220,7 @@ function SearchBar({ copy, onHome }) {
         setCompletions([""]);
       }
     };
-    document.addEventListener("pointerdown", handleClickOutsideSearchBar);
+    document.addEventListener("pointerup", handleClickOutsideSearchBar);
 
     return () => {
       const el = document.documentElement.scrollTop

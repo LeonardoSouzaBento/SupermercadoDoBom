@@ -4,7 +4,7 @@ import { PValueStyled } from "../../../../pages/Cart/StylizedTags";
 const CepConvertedReturn = ({ cepConvertedState, opacityReturn }) => {
   return (
     <>
-      {cepConvertedState === "catching" && (
+      {cepConvertedState === "pending" && (
         <DivApiReturnStyled $opacityReturn={opacityReturn}>
           <SpanApiReturnStyled
             className="material-symbols-outlined"

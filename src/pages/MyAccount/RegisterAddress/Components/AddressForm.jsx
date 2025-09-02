@@ -133,7 +133,6 @@ const AddressForm = ({
         value={formData.cidade}
         required
         onChange={handleChange}
-        $firstInput={true}
         autoComplete="off"
       />
       <InputStyled

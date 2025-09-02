@@ -1,19 +1,29 @@
 const SavedAddressReturn = ({ savedAddress, opacityReturn }) => {
   return (
     <>
-      {(savedAddress === "pending" || savedAddress === "saved") && (
+      {savedAddress === "pending" && (
         <DivApiReturnStyled $opacityReturn={opacityReturn}>
           <SpanApiReturnStyled
             className="material-symbols-outlined"
-            $wait={savedAddress === "pending"}
+            $wait={true}
           >
-            {savedAddress === "pending" ? "progress_activity" : "check"}
+            progress_activity
           </SpanApiReturnStyled>
 
           <PValueStyled style={{ width: "80%", textAlign: "center" }}>
-            {savedAddress === "pending"
-              ? "Salvando seu endereço..."
-              : "Endereço salvo!"}
+            Salvando seu endereço...
+          </PValueStyled>
+        </DivApiReturnStyled>
+      )}
+
+      {savedAddress === "saved" && (
+        <DivApiReturnStyled $opacityReturn={opacityReturn}>
+          <SpanApiReturnStyled className="material-symbols-outlined">
+            check
+          </SpanApiReturnStyled>
+
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            Endereço salvo!
           </PValueStyled>
         </DivApiReturnStyled>
       )}

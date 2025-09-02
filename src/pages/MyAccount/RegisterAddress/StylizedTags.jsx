@@ -12,7 +12,8 @@ export const DivBodyStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 5;
-  background-color: hsla(213, 29%, 94%, 1);
+  /* background-color: hsla(213, 29%, 94%, 1); */
+  background-color: hsla(213, 29%, 94%, 0.95);
   transition: opacity 0.3s ease;
   opacity: ${(props) => props.$opacity};
 
@@ -24,11 +25,11 @@ export const DivBodyStyled = styled.div`
 // Caixa central onde ficam os inputs
 export const MainDivStyled = styled.div`
   height: auto;
-  width: 100%;
-  max-width: 375px;
+  width: calc(100% - 24px);
+  max-width: 400px;
   margin-bottom: 4px;
   padding-top: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 25px;
   box-sizing: border-box;
   border-radius: 12px;
   background-color: white;
@@ -39,13 +40,10 @@ export const MainDivStyled = styled.div`
     -4px 0px 4px -3px rgba(41, 46, 117, 0.1);
   transition: transform 0.2s ease;
 
-  @media screen and (max-width: 391px) {
+  @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }
 
-  @media screen and (max-width: 993px) {
-    ${(props) => props.$up && "border-radius: 0 0 12px 12px;"};
-  }
   @media screen and (min-width: 375px) and (max-width: 577px) {
     margin-bottom: 0px;
   }
@@ -56,8 +54,8 @@ export const DivTitleStyled = styled.div`
   height: 56px;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 20px;
-  margin-bottom: 24px;
+  padding: 0 24px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -68,6 +66,7 @@ export const DivTitleStyled = styled.div`
 `;
 
 export const H1Styled = styled(H1BaseStyled)`
+  color: var(--purple);
 `;
 
 export const DivSpanCloseStyled = styled.div`
@@ -108,9 +107,9 @@ export const SpanCloseStyled = styled.span`
 
 // Botão de localização
 export const ButtonStyled = styled.button`
-  width: calc(100% - 40px);
+  width: calc(100% - 48px);
   margin: auto;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   height: 48px;
   padding: 0px 16px;
   padding-bottom: 2px;
@@ -123,7 +122,7 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   font-family: var(--bt-font);
   font-size: 1.12em;
-  font-weight: 500;
+  font-weight: 550;
   text-align: center;
   color: hsla(136, 57%, 89%, 1);
   transition: background-color 0.15s ease;
@@ -132,9 +131,6 @@ export const ButtonStyled = styled.button`
   &:hover {
     background-color: var(--purple-hover);
   }
-  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
-    2px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
 
   ${(props) =>
     props.$variant === "digitarTudo" &&
@@ -153,7 +149,16 @@ export const ButtonStyled = styled.button`
         background-color: var(--dark-red);
       }
     `};
-  ${(props) => props.$variant === "voltar" && "margin-bottom: 12.5px;"};
+  ${(props) =>
+    props.$variant === "voltar" &&
+    css`
+      margin-bottom: 12.5px;
+      background-color: var(--back-color);
+      color: var(--purple);
+      &:hover {
+        background-color: var(--back-hover);
+      }
+    `};
 
   &:focus {
     outline: none;
@@ -198,12 +203,14 @@ export const DivApiReturnStyled = styled.div`
 
 export const SpanApiReturnStyled = styled.span`
   user-select: none;
+  font-weight: 550;
+
   ${(props) =>
     props.$error &&
     css`
       font-size: 3.2em;
       color: #d5343a;
-      font-weight: 400;
+      font-weight: 600;
       background-color: rgba(255, 0, 0, 0.1);
       border-radius: 50%;
       padding: 8px;
@@ -212,7 +219,7 @@ export const SpanApiReturnStyled = styled.span`
   ${(props) =>
     props.$wait &&
     css`
-      font-size: 3.2em;
+      font-size: 2.5em;
       color: var(--purple);
       animation: ${rotate} 2s linear infinite;
     `}
@@ -230,22 +237,21 @@ const rotate = keyframes`
 // Estilo dos inputs
 export const InputStyled = styled.input`
   width: calc(100% - 48px);
-  margin: auto;
-  display: block;
   height: 48px;
   box-sizing: border-box;
   padding-left: 12px;
   padding-bottom: 2px;
-  border: none;
-  border-bottom: 1px solid hsla(210, 38%, 84%, 1);
-  border-top: none;
+  margin: auto;
+  margin-bottom: 8px;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--light-border);
   font-size: 1.06em;
   font-family: var(--p-font);
   font-weight: 400;
   color: black;
   background-color: transparent;
-  box-shadow: 2px 0px 3px -2px rgba(41, 46, 117, 0.26),
-    -2px 0px 3px -2px rgba(41, 46, 117, 0.26);
+  box-shadow: 0px 2px 3px -2px rgba(41, 46, 117, 0.125);
   &:focus {
     outline: none;
   }
@@ -269,34 +275,22 @@ export const InputStyled = styled.input`
   @media screen and (min-width: 1201px) {
     font-size: 1.18em;
   }
-  ${(props) =>
-    props.$firstInput &&
-    css`
-      border-radius: 4px 4px 0 0;
-      box-shadow: 0px -2px 4px -2px rgba(41, 46, 117, 0.26),
-        2px 0px 3px -2px rgba(41, 46, 117, 0.13),
-        -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
-    `}
+
   ${(props) =>
     props.$lastInput &&
     css`
-      border-radius: 0 0 4px 4px;
-      border-bottom: none;
       padding-bottom: 2px;
-      margin-bottom: 18px;
-      box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
-        2px 0px 3px -2px rgba(41, 46, 117, 0.13),
-        -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
+      margin-bottom: 20px;
     `}
 `;
 
 export const DivCepInputStyled = styled.div`
-  width: calc(100% - 40px);
+  width: calc(100% - 48px);
   height: 48px;
   box-sizing: border-box;
   padding: 0 16px;
   margin: auto;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -322,12 +316,11 @@ export const CepInputStyled = styled(InputStyled)`
   padding-bottom: 0px;
   padding-left: 0px;
   background-color: white;
-  border: none;
-  border-bottom: none;
   font-family: var(--bt-font);
   font-weight: 400;
   box-shadow: none;
-
+  border: none;
+  
   @media screen and (max-width: 385px) {
     font-size: 1.15em;
     width: 140px;
@@ -424,13 +417,12 @@ export const RegisterButtonStyled = styled(ButtonStyled)`
   border-radius: 8px;
   margin-bottom: 0px;
   color: white;
-  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.9),
-    2px 0px 3px -2px rgba(0, 0, 0, 0.6), -2px 0px 3px -2px rgba(0, 0, 0, 0.6);
+  transition: all 0.15 ease;
   background-color: ${(props) =>
-    props.$enable ? "#383d6a" : "hsla(210, 7%, 62%, 1.00)"};
+    props.$enable ? "var(--red)" : "var(--disable)"};
   &:hover {
     background-color: ${(props) =>
-      props.$enable ? "hsla(234, 31%, 28%, 1)" : "hsla(210, 7%, 56%, 1.00)"};
+      props.$enable ? "var(--dark-red)" : "var(--disable-hover)"};
   }
 
   @media screen and (max-width: 385px) {

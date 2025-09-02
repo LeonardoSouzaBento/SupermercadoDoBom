@@ -15,8 +15,8 @@ export const ContainerStyled = styled.div`
 `;
 
 export const DivMainStyled = styled.div`
-  width: 100%;
-  max-width: 375px;
+  width: calc(100% - 24px);
+  max-width: 380px;
   height: auto;
   box-sizing: border-box;
   overflow: hidden;
@@ -27,8 +27,8 @@ export const DivMainStyled = styled.div`
   box-shadow: 0px 4px 10px -3px rgba(41, 46, 117, 0.5);
   background-color: white;
   transform: translate(-50%, -50%);
-  @media screen and (max-width: 407px) {
-    max-width: none;
+  
+  @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }
 `;

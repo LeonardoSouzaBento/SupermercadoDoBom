@@ -60,7 +60,7 @@ export const H1Styled = styled(H1BaseStyled)`
 
 /*container de produtos*/
 export const CartSectionStyed = styled.section`
-  width: 100%;
+  width: calc(100% - 24px);
   height: 460px;
   padding: 20px 0;
   padding-top: 10px;
@@ -77,10 +77,10 @@ export const CartSectionStyed = styled.section`
   overflow: hidden;
   transition: all 0.15s ease;
 
-  @media screen and  (max-width: 414px) {
-    width: calc(100% - 24px);
+  @media screen and  (max-width: 375px) {
+    width: calc(100% - 16px);
   }
-  @media screen and (min-width: 414px) and (max-width: 596px) {
+  @media screen and (max-width: 596px) {
     max-width: 400px;
   }
   @media screen and (min-width: 596px) and (max-width: 768px) {
@@ -239,7 +239,9 @@ export const ContinueSectionStyled = styled.div`
 export const ContainerStyled = styled.section`
   margin: auto;
   width: max-content;
-
+  @media screen and (max-width: 375px) {
+    width: calc(100% - 16px);
+  }
   @media screen and (max-width: 768px) {
     width: calc(100% - 24px);
     max-width: 400px;

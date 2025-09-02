@@ -159,7 +159,7 @@ export const PpesoStyled = styled.p`
   font-weight: 500;
   letter-spacing: 0.5px;
   font-family: var(--p-font);
-  background-color: #ebeff4;
+  background-color: var(--back-color);
   color: rgb(50, 50, 50);
   padding: 0px 10px;
   padding-bottom: 2px;

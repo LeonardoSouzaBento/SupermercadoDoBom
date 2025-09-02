@@ -16,6 +16,10 @@ export const ContainerStyled = styled.section`
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
+
+  @media screen and (max-width: 576px) {
+    width: calc(100% - 16px);
+  }
 `;
 
 export const DivStyled = styled.div`

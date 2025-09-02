@@ -67,7 +67,7 @@ const GetLocationButton = ({
     const permission = await checkLocationPermission();
 
     if (permission === "granted") {
-      setGetLocationStatus("catching");
+      setGetLocationStatus("pending");
       handleConvertCoords();
     } else if (permission === "prompt") {
       setGetLocationStatus("inPermission");
@@ -80,7 +80,7 @@ const GetLocationButton = ({
     }
   }
   async function handleConvertCoords() {
-    setGetLocationStatus("catching");
+    setGetLocationStatus("pending");
     try {
       const coords = await getCoordinates();
       if (!idToken) {
@@ -101,6 +101,7 @@ const GetLocationButton = ({
       );
 
       if (!response.ok) {
+        setGetLocationStatus("error");
         throw new Error(`Erro: ${response.status}`);
       }
       const dados = await response.json();
@@ -116,7 +117,7 @@ const GetLocationButton = ({
         lng: coords.lng,
       });
       setSeeAddressForm(true);
-      setGetLocationStatus("captured");
+      setGetLocationStatus("success");
     } catch (error) {
       setGetLocationStatus("error");
       showErrorLocationMessage();
@@ -125,7 +126,7 @@ const GetLocationButton = ({
   }
 
   useEffect(() => {
-    if (getLocationStatus !== "catching") {
+    if (getLocationStatus !== "pending") {
       setTimeout(() => {
         setGetLocationStatus("");
       }, 3000);

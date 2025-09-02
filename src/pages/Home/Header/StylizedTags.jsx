@@ -1,45 +1,60 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HeaderStyled = styled.header`
   width: 100%;
   max-width: 1390px;
+  height: max-content;
   position: relative;
   background-color: var(--purple);
 
+  @media screen and (max-width: 768px) {
+    padding-bottom: 12px;
+  }
   //modo paisagem
   @media screen and (min-width: 769px) {
-    height: 140px;
     display: flex;
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
     padding: 0px 3.5%;
-    padding-top: 12px;
   }
   @media screen and (min-width: 992px) and (max-width: 1200px) {
     padding: 0px 5%;
   }
   @media screen and (min-width: 1201px) {
-    padding: 0px 5.5%;
+    padding: 0px 8.1%;
   }
 `;
 
-export const ContainerStyled = styled.div`
-  height: 150px;
-  width: ${(props) => (props.$external ? "90%" : "max-content")};
-  ${(props) => props.$external && "margin: auto;"};
+export const DivForLogoStyled = styled.div`
+  height: 100%;
+  width: max-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
   @media (max-width: 375px) {
     gap: 16px;
-    ${(props) => props.$external && "gap: 0px"};
   }
-  @media (min-width: 769px) {
-    height: 132px;
+  @media (min-width: 768px) {
     max-width: 340px;
   }
+
+  ${(props) =>
+    props.$external &&
+    css`
+      width: 90%;
+      height: 136px;
+      margin: auto;
+
+      @media (max-width: 375px) {
+        gap: 0;
+      }
+      @media (min-width: 769px) {
+        width: max-content;
+        height: 144px;
+      }
+    `}
 `;
 
 export const LogoDivStyled = styled.div`
@@ -72,7 +87,7 @@ export const SpanLogoStyled = styled.span`
   color: white;
   font-weight: 700;
   padding-top: 1px;
-  
+
   @media screen and (max-width: 375px) {
     font-size: 2.18em;
   }
@@ -148,7 +163,6 @@ export const PBemVindoStyled = styled(PNomeSupStyled)`
 export const SpaceSearchBar = styled.div`
   width: 44px;
   height: 44px;
-
   @media screen and (max-width: 375px) {
     width: 42px;
     height: 42px;
@@ -167,14 +181,6 @@ export const SpaceSearchBar = styled.div`
 `;
 
 //botão de mais opções
-//div para ajuste de padding
-export const ContainerOptionsStyled = styled.div`
-  z-index: 3;
-  @media screen and (min-width: 769px) {
-    padding-left: 5px;
-  }
-`;
-
 export const DivMoreOptionsStyled = styled.div`
   width: 48px;
   height: 48px;
@@ -192,18 +198,21 @@ export const DivMoreOptionsStyled = styled.div`
   }
 
   @media screen and (max-width: 375px) {
-    top: 45px;
-  }
-  @media screen and (max-width: 768px) {
     position: absolute;
-    top: 45px;
+    top: 47px;
+    right: 4.5%;
+  }
+  @media screen and (min-width: 375px) and (max-width: 768px) {
+    position: absolute;
+    top: 47px;
     right: 5%;
   }
   @media screen and (min-width: 768px) {
     position: relative;
+    min-width: 48px;
   }
   @media screen and (min-width: 1201px) {
-    width: max-content;
+    min-width: max-content;
     padding: 0px 16px;
     gap: 4px;
     border-radius: 12px;
