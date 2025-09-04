@@ -48,7 +48,7 @@ export const MainStyled = styled.main`
   &::after {
     content: "";
     width: 100%;
-    height: 16px;
+    height: 6px;
     position: absolute;
     top: 0;
     left: 0;

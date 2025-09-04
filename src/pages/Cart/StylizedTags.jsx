@@ -13,7 +13,7 @@ export const MainStyled = styled.div`
   &::after {
     content: "";
     width: 100%;
-    height: 16px;
+    height: 6px;
     position: absolute;
     top: 0;
     left: 0;
@@ -65,7 +65,7 @@ export const CartSectionStyed = styled.section`
   padding: 20px 0;
   padding-top: 10px;
   margin: auto;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   border-radius: 12px;
   box-sizing: border-box;
   box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
@@ -96,6 +96,7 @@ export const CartSectionStyed = styled.section`
     &::-webkit-scrollbar {
       display: none;
     }
+    margin-bottom: 16px;
   }
   @media screen and (min-width: 993px) {
     max-width: calc(100% - 64px);
@@ -262,7 +263,7 @@ export const SectionStyled = styled.section`
   padding: 20px;
   padding-top: 10px;
   margin: auto;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -277,6 +278,10 @@ export const SectionStyled = styled.section`
   overflow: hidden;
   position: relative;
   transition: all 0.15s ease;
+
+  @media screen and (min-width: 769px) {
+    margin-bottom: 16px;
+  }
 `;
 
 /*cabeçalho das divs*/
@@ -449,7 +454,7 @@ export const ButtonContinueStyled = styled.div`
 export const DivAddStyled = styled.div`
   width: 100%;
   margin: auto;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   height: 48px;
   box-sizing: border-box;
   display: flex;
