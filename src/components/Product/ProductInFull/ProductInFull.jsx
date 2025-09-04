@@ -6,14 +6,6 @@ import {
   MainDivStyled,
   ProductSectionStyled,
   ContainerQuantStyled,
-  DivQuantFullStyled,
-  DivButtonsStyled,
-  SpanButtonsStyled,
-  PQuantFullStyled,
-  PAddStyled,
-  DivSubStyled,
-  DivCoverSubStyled,
-  PSubStyled,
   SimilarSectionStyled,
   DivTitleStyled,
   H1Styled,
@@ -26,6 +18,7 @@ import {
   ProductData,
   Subtotal,
 } from "./Components.jsx";
+import { PValueStyled } from "../../../pages/Cart/StylizedTags.jsx";
 
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
@@ -147,7 +140,7 @@ const ProductInFull = () => {
           handleClickClose={handleClickClose}
           seeSpanClose={seeSpanClose}
         />
-        
+
         <ProductSectionStyled>
           <ProductData dataProductFull={dataProductFull} />
 
@@ -168,6 +161,17 @@ const ProductInFull = () => {
           <DivTitleStyled>
             <H1Styled>Produtos Similares</H1Styled>
           </DivTitleStyled>
+
+          <PValueStyled
+            style={{
+              color: "var(--dark-red)",
+              width: "calc(100% - 40px)",
+              margin: "auto",
+              textAlign: "center",
+            }}
+          >
+           *Essa parte ainda não foi desenvolvida* 
+          </PValueStyled>
 
           <ContainerListStyled>
             <DivHalfList></DivHalfList>
