@@ -119,7 +119,6 @@ export const DivNomeStyled = styled.div`
 `;
 export const PnomeStyled = styled.p`
   text-transform: uppercase;
-  font-family: var(--p-font);
   margin: auto;
   padding-left: 4px;
   font-weight: 500;
@@ -158,7 +157,6 @@ export const PpesoStyled = styled.p`
   font-size: 0.845em;
   font-weight: 500;
   letter-spacing: 0.5px;
-  font-family: var(--p-font);
   background-color: var(--back-color);
   color: rgb(50, 50, 50);
   padding: 0px 10px;
@@ -221,7 +219,6 @@ export const DivPrecoStyled = styled.div`
 
 export const PprecoStyled = styled.p`
   width: max-content;
-  font-family: var(--p-font);
   font-weight: 600;
   text-indent: 4px;
   padding: 2px 0px;
@@ -343,8 +340,6 @@ export const DivOffStyled = styled.div`
 
 export const POffStyled = styled.p`
   color: white;
-  font-family: var(--p-font);
-  font-weight: 400;
 
   @media screen and (max-width: 385px) {
     font-size: 0.87em;
@@ -376,7 +371,10 @@ export const DivAddStyled = styled.div`
     bottom: 0px;
   }
   ${(props) =>
-    (props.$variant === "similarList" || props.$variant === "announcement") &&
+    (props.$variant === "similarList" ||
+      props.$variant === "announcement" ||
+      props.$variant === "cart" ||
+      props.$displayNone) &&
     "display: none;"}
 `;
 
@@ -417,7 +415,9 @@ export const DivQuantStyled = styled.div`
   }
   transition: opacity 0.4s ease;
   ${(props) =>
-    (props.$variant === "similarList" || props.$variant === "announcement") &&
+    (props.$variant === "similarList" ||
+      props.$variant === "announcement" ||
+      props.$variant === "cart") &&
     "display: none;"}
 `;
 
@@ -432,7 +432,6 @@ export const DivButtonsStyled = styled.div`
 
 export const PQuantStyled = styled.p`
   font-size: 1.3em;
-  font-family: var(--p-font);
   font-weight: 500;
   padding-bottom: 2px;
   color: white;

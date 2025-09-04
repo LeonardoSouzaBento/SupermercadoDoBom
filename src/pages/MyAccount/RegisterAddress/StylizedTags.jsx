@@ -13,7 +13,8 @@ export const DivBodyStyled = styled.div`
   align-items: center;
   z-index: 5;
   /* background-color: hsla(213, 29%, 94%, 1); */
-  background-color: hsla(213, 29%, 94%, 0.95);
+  /* background-color: rgba(56, 61, 106, 0.52); */
+  background-color: rgba(0, 0, 0, 0.3);
   transition: opacity 0.3s ease;
   opacity: ${(props) => props.$opacity};
 
@@ -35,7 +36,10 @@ export const MainDivStyled = styled.div`
   background-color: white;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
+  /* box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
+    4px 0px 4px -3px rgba(41, 46, 117, 0.1),
+    -4px 0px 4px -3px rgba(41, 46, 117, 0.1); */
+  box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.4),
     4px 0px 4px -3px rgba(41, 46, 117, 0.1),
     -4px 0px 4px -3px rgba(41, 46, 117, 0.1);
   transition: transform 0.2s ease;
@@ -320,7 +324,7 @@ export const CepInputStyled = styled(InputStyled)`
   font-weight: 400;
   box-shadow: none;
   border: none;
-  
+
   @media screen and (max-width: 385px) {
     font-size: 1.15em;
     width: 140px;
@@ -388,7 +392,6 @@ export const DivCepErrorStyled = styled.div`
 `;
 
 export const PCepErrorStyled = styled.p`
-  font-family: var(--p-font);
   font-weight: 600;
   color: #d5343a;
 

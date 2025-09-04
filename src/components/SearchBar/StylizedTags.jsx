@@ -47,7 +47,7 @@ export const FormStyled = styled.form`
   border-radius: 24px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
+  box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.4);
   border: none;
 
   ${(props) =>
@@ -190,7 +190,6 @@ export const PointedShapeStyed = styled.div`
 
 export const PMsgStyled = styled.p`
   color: white;
-  font-family: var(--p-font);
   padding: 6px 0px;
   padding-bottom: 8px;
 
@@ -287,7 +286,6 @@ export const InputForFocusStyled = styled.input`
 
 export const PStyled = styled.p`
   text-transform: uppercase;
-  font-family: var(--p-font);
   font-weight: 600;
 
   @media screen and (max-width: 375px) {

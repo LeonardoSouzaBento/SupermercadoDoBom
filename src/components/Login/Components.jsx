@@ -15,8 +15,14 @@ import {
   SpanButtonStyled,
   DivSpanCloseStyled,
   SpanCloseStyled,
+  SpanEmailStyled,
+  DivForReturnStyled,
+  DivRowStyled,
 } from "./StylizedTags";
-import {DivApiReturnStyled, SpanApiReturnStyled} from "../../pages/MyAccount/RegisterAddress/StylizedTags";
+import {
+  DivApiReturnStyled,
+  SpanApiReturnStyled,
+} from "../../pages/MyAccount/RegisterAddress/StylizedTags";
 import { PValueStyled } from "../../pages/Cart/StylizedTags";
 
 const provider = new GoogleAuthProvider();
@@ -175,7 +181,9 @@ export const LoginReturn = ({ loginState }) => {
           </SpanApiReturnStyled>
 
           <PValueStyled style={{ width: "80%", textAlign: "center" }}>
-            {loginState === "pending" ? "Fazendo Login..." : "Sucesso! Usuário logado."}
+            {loginState === "pending"
+              ? "Fazendo Login..."
+              : "Sucesso! Usuário logado."}
           </PValueStyled>
         </DivApiReturnStyled>
       )}
@@ -196,5 +204,74 @@ export const LoginReturn = ({ loginState }) => {
         </DivApiReturnStyled>
       )}
     </>
+  );
+};
+
+export const PasswordValidationReturn = ({ validacao }) => {
+  return (
+    <DivForReturnStyled>
+      <DivRowStyled $first={true}>
+        <PValueStyled $email={true}>
+          <strong style={{ fontWeight: 500 }}>Sua senha deve ter:</strong>
+        </PValueStyled>
+      </DivRowStyled>
+
+      <DivRowStyled>
+        <SpanEmailStyled
+          className="material-symbols-outlined"
+          $check={validacao.tamanhoMinimo}
+        >
+          {validacao.tamanhoMinimo ? "check" : "exclamation"}
+        </SpanEmailStyled>
+        <PValueStyled $email={true}>8 digitos:</PValueStyled>
+      </DivRowStyled>
+
+      <DivRowStyled>
+        <SpanEmailStyled
+          className="material-symbols-outlined"
+          $check={validacao.temMaiuscula}
+        >
+          {validacao.temMaiuscula ? "check" : "exclamation"}
+        </SpanEmailStyled>
+        <PValueStyled $email={true}> 1 Maiúsculo(A-Z)</PValueStyled>
+      </DivRowStyled>
+
+      <DivRowStyled>
+        <SpanEmailStyled
+          className="material-symbols-outlined"
+          $check={validacao.temMinuscula}
+        >
+          {validacao.temMinuscula ? "check" : "exclamation"}
+        </SpanEmailStyled>
+        <PValueStyled $email={true}>1 Minúsculo (a-z)</PValueStyled>
+      </DivRowStyled>
+
+      <DivRowStyled>
+        <SpanEmailStyled
+          className="material-symbols-outlined"
+          $check={validacao.temNumero}
+        >
+          {validacao.temNumero ? "check" : "exclamation"}
+        </SpanEmailStyled>
+        <PValueStyled $email={true}>1 Número (0-9)</PValueStyled>
+      </DivRowStyled>
+
+      <DivRowStyled>
+        <SpanEmailStyled
+          className="material-symbols-outlined"
+          $check={validacao.temSimbolo}
+        >
+          {validacao.temSimbolo ? "check" : "exclamation"}
+        </SpanEmailStyled>
+        <DivRowStyled $last={true}>
+          <PValueStyled $email={true} $last={true}>
+            1 Símbolo especial
+          </PValueStyled>
+           <PValueStyled $email={true} $last={true}>
+            (!@#$%^&*)
+          </PValueStyled>
+        </DivRowStyled>
+      </DivRowStyled>
+    </DivForReturnStyled>
   );
 };

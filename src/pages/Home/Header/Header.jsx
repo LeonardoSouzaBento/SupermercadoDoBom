@@ -6,8 +6,8 @@ import {
   DivPsStyled,
   PNomeSupStyled,
   PBemVindoStyled,
-  SpaceSearchBar,
-  DivMoreOptionsStyled,
+  SpaceButtonStyed,
+  ButtonMoreOptionsStyled,
   SpanStyled,
   PStyled,
 } from "./StylizedTags";
@@ -33,18 +33,18 @@ const Header = ({ setViewOptions, onHome }) => {
           </LogoDivStyled>
           <DivPsStyled>
             <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
-            <PBemVindoStyled> Seja bem vindo!</PBemVindoStyled>
+            <PBemVindoStyled> Seja bem-vindo!</PBemVindoStyled>
           </DivPsStyled>
         </DivForLogoStyled>
-        <SpaceSearchBar />
+        <SpaceButtonStyed />
       </DivForLogoStyled>
 
       <SearchBar copy={false} onHome={onHome}></SearchBar>
-
-      <DivMoreOptionsStyled onPointerDown={handleClick}>
+    
+      <ButtonMoreOptionsStyled onPointerDown={handleClick}>
         <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
         <PStyled>Mais opções</PStyled>
-      </DivMoreOptionsStyled>
+      </ButtonMoreOptionsStyled>
     </HeaderStyled>
   );
 };

@@ -756,7 +756,7 @@ const additionalProducts = [
   },
 ];
 
-export const all_products = [
+export const allProducts = [
   promo_products,
   productsCatId1,
   productsCatId2,
@@ -767,13 +767,14 @@ export const all_products = [
   productsCatId7,
   productsCatId8,
   productsCatId9,
-  additionalProducts,
 ];
+
+export const allProductsForSearch = [...allProducts, additionalProducts];
 
 //corrigir os ids
 let currentId = 1;
 
-all_products.forEach((products) => {
+allProducts.forEach((products) => {
   products.forEach((product) => {
     product.id = currentId++;
   });
@@ -782,7 +783,7 @@ all_products.forEach((products) => {
 //repetir os ids se houver produtos iguais
 const urlToIdMap = new Map();
 
-all_products.forEach((products) => {
+allProducts.forEach((products) => {
   products.forEach((product) => {
     product.id = currentId;
     urlToIdMap.set(product.url, currentId);
@@ -790,7 +791,7 @@ all_products.forEach((products) => {
   });
 });
 
-all_products.forEach((product) => {
+allProducts.forEach((product) => {
   const existingId = urlToIdMap.get(product.url);
   if (existingId !== undefined) {
     product.id = existingId;

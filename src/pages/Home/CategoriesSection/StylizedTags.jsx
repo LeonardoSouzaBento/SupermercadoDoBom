@@ -3,8 +3,7 @@ import { H1BaseStyled } from "../../../components/GenericStylizedTags";
 
 export const DivStyled = styled.div`
   width: calc(100% - 20px);
-  padding-top: 40px;
-  padding-left: 20px;
+  margin-left: 20px;
   margin-bottom: 28px;
   overflow-x: hidden;
   position: relative;
@@ -22,22 +21,27 @@ export const DivStyled = styled.div`
 `;
 
 export const DivLabelPromosStyled = styled.div`
-  width: 90%;
-  max-width: 800px;
-  margin: auto;
-  margin-bottom: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 20px;
+  margin-bottom: 36px;
   position: relative;
+
+  @media screen and (min-width: 1201px) {
+    padding-right: 25px;
+  }
 `;
 
 export const H1LabelStyled = styled(H1BaseStyled)`
   color: var(--dark-purple);
   scale: 1.03;
-  padding-right: 20px;
   ${(props) => props.$anun && css`
-    padding-right: 0px;
-    margin-bottom: 12px;
-    color: white;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 400;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.9);
+    text-underline-offset: 4px;
   `}
 `;
 
@@ -111,7 +115,7 @@ export const DivCatStyled = styled.div`
   justify-content: flex-end;
   gap: 4px;
   flex: auto;
-  border-radius: 12px;
+  border-radius: 16px;
   cursor: pointer;
   position: relative;
 
@@ -156,8 +160,7 @@ export const DivNameCatStyled = styled.div`
 `;
 
 export const PStyled = styled.p`
-  font-family: "Lato", Arial, sans-serif;
-  font-weight: 400;
+  font-family: var(--h-font);
   text-align: center;
   font-size: 1.04em;
   letter-spacing: 0.5px;

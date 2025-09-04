@@ -8,7 +8,7 @@ export const HeaderStyled = styled.header`
   background-color: var(--purple);
 
   @media screen and (max-width: 768px) {
-    padding-bottom: 12px;
+    padding-bottom: 24px;
   }
   //modo paisagem
   @media screen and (min-width: 769px) {
@@ -61,17 +61,17 @@ export const LogoDivStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #db2c32;
+  background-color: var(--red);
   border-radius: 50%;
   transform: scaleX(-1);
   box-sizing: border-box;
   padding-top: 1px;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--red);
+  box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.4);
   @media (max-width: 375px) {
     height: 60px;
     min-width: 60px;
     margin-right: -9px;
-    /* visibility: hidden; */
   }
   @media (min-width: 375px) and (max-width: 576px) {
     height: 62px;
@@ -160,28 +160,15 @@ export const PBemVindoStyled = styled(PNomeSupStyled)`
   }
 `;
 
-export const SpaceSearchBar = styled.div`
-  width: 44px;
-  height: 44px;
-  @media screen and (max-width: 375px) {
-    width: 42px;
-    height: 42px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: 44px;
-    height: 44px;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    width: 47px;
-    height: 47px;
-  }
+export const SpaceButtonStyed = styled.div`
+  width: 48px;
+  height: 48px;
   @media screen and (min-width: 769px) {
     display: none;
   }
 `;
 
-//botão de mais opções
-export const DivMoreOptionsStyled = styled.div`
+export const ButtonMoreOptionsStyled = styled.div`
   width: 48px;
   height: 48px;
   display: flex;
@@ -189,22 +176,22 @@ export const DivMoreOptionsStyled = styled.div`
   justify-content: center;
   border-radius: 50%;
   color: white;
-  background-color: #db2c32;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.18);
+  background-color: var(--red);
+  box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.4);
   transition: all 100ms linear;
   cursor: pointer;
   &:hover {
-    background-color: hsla(358, 71%, 48%, 1);
+    background-color: var(--dark-red);
   }
 
   @media screen and (max-width: 375px) {
     position: absolute;
-    top: 47px;
+    top: 44px;
     right: 4.5%;
   }
   @media screen and (min-width: 375px) and (max-width: 768px) {
     position: absolute;
-    top: 47px;
+    top: 44px;
     right: 5%;
   }
   @media screen and (min-width: 768px) {

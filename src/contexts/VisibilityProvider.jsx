@@ -1,7 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
+import { CartContext } from "./CartContext";
+import {
+  voidUserContact,
+  voidIsDataComplete,
+} from "./voidConsts";
 
 export const VisibilityProvider = ({ children }) => {
+  const { setCartProducts, setOrderInfo, setUserAddress } =
+    useContext(CartContext);
   //dica para recrutador
   const [tipForRecruiter, setTipForRecruiter] = useState(() => {
     const stored = localStorage.getItem("tipForRecruiter");
@@ -44,12 +51,7 @@ export const VisibilityProvider = ({ children }) => {
     const storedInfo = localStorage.getItem("userContact");
     return storedInfo
       ? JSON.parse(storedInfo)
-      : {
-          name: "",
-          email: "",
-          photoUrl: "",
-          phone: ""
-        };
+      : voidUserContact;
   });
 
   useEffect(() => {
@@ -60,18 +62,29 @@ export const VisibilityProvider = ({ children }) => {
     const storedInfo = localStorage.getItem("isDataComplete");
     return storedInfo
       ? JSON.parse(storedInfo)
-      : {
-          contact: false,
-          address: false,
-        };
+      : voidIsDataComplete;
   });
 
   useEffect(() => {
-    localStorage.setItem(
-      "isDataComplete",
-      JSON.stringify(isDataComplete)
-    );
+    localStorage.setItem("isDataComplete", JSON.stringify(isDataComplete));
   }, [isDataComplete]);
+
+  const [userDisconnected, setUserDisconnected] = useState(() => {
+    const stored = localStorage.getItem("userDisconnected");
+    return stored ? JSON.parse(stored) : false;
+  });
+
+  useEffect(() => {
+    // if (userDisconnected) {
+    //   setCartProducts([]);
+    //   setUserAddress(voidUserAddress);
+    //   setOrderInfo(voidOrderInfo);
+    //   setIdToken(null);
+    //   setUserContact(voidUserContact);
+    //   setIsDataComplete(voidIsDataComplete);
+    // }
+    localStorage.setItem("userDisconnected", JSON.stringify(userDisconnected));
+  }, [userDisconnected, setCartProducts, setOrderInfo, setUserAddress]);
 
   return (
     <VisibilityContext.Provider
@@ -92,10 +105,12 @@ export const VisibilityProvider = ({ children }) => {
         setSeeLogin,
         isDataComplete,
         setIsDataComplete,
-        userContact, 
+        userContact,
         setUserContact,
         idToken,
         setIdToken,
+        userDisconnected,
+        setUserDisconnected,
       }}
     >
       {children}

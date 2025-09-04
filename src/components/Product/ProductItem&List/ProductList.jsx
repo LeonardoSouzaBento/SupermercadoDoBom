@@ -54,9 +54,27 @@ const DivStyled = styled.div`
   ${(props) =>
     props.$variant === "cart" &&
     css`
+      justify-content: flex-start !important;
       padding-top: 8px;
       margin-bottom: 0px;
       gap: 0;
+      margin: auto;
+
+      @media screen and (max-width: 385px) {
+        width: 275px;
+      }
+      @media screen and (min-width: 385px) and (max-width: 596px) {
+        width: 346px;
+      }
+      @media screen and (min-width: 596px) and (max-width: 768px) {
+        width: 517px;
+      }
+      @media screen and (min-width: 769px) and (max-width: 992px) {
+        width: 688px;
+      }
+      @media screen and (min-width: 993px) {
+        padding-left: 20px;
+      }
     `}
 `;
 

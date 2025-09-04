@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { all_products } from "../../data/productList";
+import { allProductsForSearch } from "../../data/productList";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
@@ -76,7 +76,7 @@ function SearchBar({ copy, onHome }) {
     } // escrevendo
     else {
       if (term.length % 2 === 0) {
-        const results = sequentialPrefixSearch(all_products, term);
+        const results = sequentialPrefixSearch(allProductsForSearch, term);
         const uniqueResults = getUniqueResults(results, 0, 14).slice(0, 6);
         setSixUniqueSuggestions(uniqueResults);
         const completions = uniqueResults.map((name) => name.slice(0, 13));
@@ -131,7 +131,7 @@ function SearchBar({ copy, onHome }) {
     setThisInput(completeSuggestion);
     setCompletions([""]);
 
-    const results = sequentialPrefixSearch(all_products, completeSuggestion);
+    const results = sequentialPrefixSearch(allProductsForSearch, completeSuggestion);
     let newStart = completeSuggestion.length;
     let newEnd = newStart + 14;
 
@@ -181,7 +181,7 @@ function SearchBar({ copy, onHome }) {
       animateInputMessage("Digite algo", setThisInput);
       return;
     }
-    const results = sequentialPrefixSearch(all_products, term);
+    const results = sequentialPrefixSearch(allProductsForSearch, term);
     setReturnedproducts(results);
     setSearchInitiated(true);
   }

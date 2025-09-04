@@ -5,7 +5,7 @@ import { H1BaseStyled } from "../../components/GenericStylizedTags";
 
 export const HeaderStyled = styled.header`
   width: 100%;
-  height: 56px;
+  height: 60px;
   background-color: var(--purple);
   display: flex;
   align-items: center;
@@ -48,7 +48,7 @@ export const MainStyled = styled.main`
   &::after {
     content: "";
     width: 100%;
-    height: 12px;
+    height: 16px;
     position: absolute;
     top: 0;
     left: 0;
@@ -143,7 +143,6 @@ export const ButtonLoginStyled = styled.div`
 `;
 
 export const PLoginStlyed = styled.p`
-  font-family: var(--p-font);
   font-weight: 500;
 
   @media screen and (max-width: 375px) {
@@ -390,7 +389,6 @@ export const DivStatusStyled = styled.div`
 export const DivNameStatus = styled.div`
   height: 24px;
   width: max-content;
-  padding-left: 8px;
   padding-bottom: 3px;
   padding-right: 0;
   display: flex;
@@ -413,8 +411,6 @@ export const SpanStatusStyled = styled.span`
 `;
 
 export const NameStatusStyled = styled.p`
-  font-family: var(--p-font);
-  font-weight: 400;
   margin-right: 6px;
   ${(props) => props.$email && "color: black;"}
 

@@ -32,7 +32,8 @@ const OptionsMenu = ({ setViewOptions }) => {
   const [transform, setTransform] = useState("100%");
   const [canClick, setCanClick] = useState(false);
   const navigate = useNavigate();
-  const { seeLogin, setSeeLogin } = useContext(VisibilityContext);
+  const { seeLogin, setSeeLogin, setUserDisconnected } =
+    useContext(VisibilityContext);
 
   function handleClickClose(e) {
     e.stopPropagation();
@@ -50,13 +51,11 @@ const OptionsMenu = ({ setViewOptions }) => {
       try {
         const auth = getAuth();
         await signOut(auth);
-
+        setUserDisconnected(true);
+        setSeeLogin(true);
         localStorage.clear();
         sessionStorage.clear();
-
-        console.log("Usuário deslogado e cache limpo");
-        setSeeLogin(true);
-        setViewOptions(false);
+        window.location.reload();
       } catch (error) {
         console.error("Erro ao deslogar:", error);
       }
@@ -94,7 +93,10 @@ const OptionsMenu = ({ setViewOptions }) => {
       <DivSideStyled $transform={transform}>
         <DivTitleStyed>
           <H1Styled>Mais Opções</H1Styled>
-          <DivSpanCloseStyled onPointerDown={handleClickClose} $moreOptions={true}>
+          <DivSpanCloseStyled
+            onPointerDown={handleClickClose}
+            $moreOptions={true}
+          >
             <SpanCloseStyled className="material-symbols-rounded">
               close
             </SpanCloseStyled>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MainStyled,
   H1Styled,
@@ -21,8 +21,18 @@ import { CartContext } from "../../contexts/CartContext";
 const MyAccount = () => {
   const { userContact, isDataComplete, seeLogin, setSeeLogin } =
     useContext(VisibilityContext);
-  const { orderInfo, userAddress } = useContext(CartContext);
+  const { orderInfo, setOrderInfo, userAddress, cartProducts } =
+    useContext(CartContext);
   const [seeRegisterAddress, setSeeRegisterAddress] = useState(false);
+
+  useEffect(() => {
+    if (cartProducts.length !== 0 && !orderInfo.status) {
+      setOrderInfo({ ...orderInfo, status: "pending" });
+    }
+    if (cartProducts.length === 0) {
+      setOrderInfo({ ...orderInfo, status: "" });
+    }
+  }, []);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { H1BaseStyled } from "../../GenericStylizedTags";
+import { H1BaseStyled, H2BaseStyled } from "../../GenericStylizedTags";
 
 export const BodyDivStyled = styled.div`
   width: 100vw;
@@ -19,8 +19,8 @@ export const MainDivStyled = styled.div`
   bottom: 0;
   left: 0;
   overflow-y: scroll;
-  background-color: #ebeff4;
-  border-radius: 16px 16px 0px 0px;
+  background-color: var(--back-color);
+  border-radius: 12px 12px 0px 0px;
   transform: translateY(${(props) => props.$translate});
   transition: transform 0.3s ease;
   box-shadow: 0px -4px 8px -2px rgba(41, 46, 117, 0.08);
@@ -43,22 +43,24 @@ export const MainDivStyled = styled.div`
 `;
 
 export const DivSpanCloseStyled = styled.div`
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   margin-left: calc(100% - 48px);
   margin-bottom: -44px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: sticky;
-  top: 4px;
-  right: 0px;
+  top: 8px;
+  right: -4px;
+  background-color: var(--back-color);
+  color: var(--purple);
   cursor: pointer;
   z-index: 3;
-  border-radius: 4px 12px 4px 4px;
+  border-radius: 50%;
 
   &:hover {
-    background-color: #ecf0f5;
+    background-color: var(--back-hover);
   }
 
   @media screen and (min-width: 578px) {
@@ -75,22 +77,16 @@ export const DivSpanCloseStyled = styled.div`
     border-radius: 16px;
 
     &:hover {
-      background-color: #ecf0f5;
-    }
-
-    @media screen and (min-width: 920px) {
-      &:hover {
-        background-color: hsla(213, 31%, 90%, 1);
-      }
+      box-shadow: 0px 3px 6px -3px rgba(0, 0, 0, 0.5);
+      background-color: transparent;
     }
   }
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   cursor: pointer;
-  /* color: #292e4e; */
 
   @media screen and (min-width: 578px) {
     display: none;
@@ -104,12 +100,12 @@ export const SpanDropDownStyled = styled.span`
     width: 64px;
     height: 5px;
     border-radius: 3px;
-    background-color: #292e4e;
+    background-color: var(--purple);
     border-bottom: 1px solid rgb(0, 0, 0);
   }
 `;
 
-export const ProductDivStyled = styled.div`
+export const ProductSectionStyled = styled.section`
   width: 100%;
   background-color: white;
   box-sizing: border-box;
@@ -126,6 +122,7 @@ export const ProductDivStyled = styled.div`
   @media screen and (max-width: 577px) {
     z-index: 3;
     padding-bottom: 40px;
+    padding-top: 8px;
     margin-bottom: 12px;
   }
   @media screen and (min-width: 577px) {
@@ -143,6 +140,49 @@ export const ProductDivStyled = styled.div`
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+`;
+
+export const HeaderStyled = styled.header`
+  height: 56px;
+  display: flex;
+  box-sizing: border-box;
+  align-items: flex-start;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--light-border);
+
+  @media screen and (max-width: 576px) {
+    padding-left: 20px;
+  }
+`;
+
+export const SpanHeaderStyled = styled.span`
+  color: var(--purple);
+  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 0;
+  font-size: 22px;
+`;
+
+export const H1Styled = styled(H1BaseStyled)`
+  color: var(--purple);
+
+  @media screen and (max-width: 375px) {
+    font-size: 1.196em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.207em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.229em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.252em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.276em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.288em;
   }
 `;
 
@@ -185,7 +225,7 @@ export const DivDiscountStyled = styled.div`
   position: absolute;
   bottom: 4px;
   right: 0px;
-  background-color: #db2c32;
+  background-color: var(--red);
   padding: 0px 14px;
   padding-bottom: 2.5px;
   color: white;
@@ -195,13 +235,11 @@ export const DivDiscountStyled = styled.div`
 export const DivWeightStyled = styled(DivDiscountStyled)`
   position: absolute;
   bottom: 38px;
-  background-color: #ebeff4;
+  background-color: var(--back-color);
   color: rgb(30, 30, 30);
 `;
 
 export const PWeightStyled = styled.p`
-  font-family: var(--p-font);
-  font-weight: 400;
   -webkit-user-select: none; /* Safari, Chrome */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
@@ -230,8 +268,8 @@ export const PWeightStyled = styled.p`
 
 export const DivNameProdStyled = styled.div`
   min-height: 56px;
-  border-top: 1px solid rgba(41, 46, 117, 0.19);
-  border-bottom: 1px solid rgba(41, 46, 117, 0.19);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -240,7 +278,6 @@ export const DivNameProdStyled = styled.div`
 export const PNameProdStyled = styled.p`
   width: 100%;
   padding: 16px 0px;
-  font-family: var(--p-font);
   font-weight: 500;
   text-align: left;
   text-transform: uppercase;
@@ -286,7 +323,6 @@ export const DivPriceStyled = styled.div`
 `;
 
 export const PPriceStyled = styled.p`
-  font-family: var(--p-font);
   font-weight: 600;
   -webkit-user-select: none; /* Safari, Chrome */
   -moz-user-select: none; /* Firefox */
@@ -314,7 +350,7 @@ export const PPriceStyled = styled.p`
 `;
 
 export const ContainerQuantStyled = styled.div`
-  max-width: calc(100% - 32px); 
+  max-width: calc(100% - 32px);
   height: auto;
   display: flex;
   justify-content: center;
@@ -331,7 +367,7 @@ export const DivQuantFullStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #db2c32;
+  background-color: var(--red);
   border-radius: 8px;
   cursor: pointer;
 
@@ -382,7 +418,6 @@ export const SpanButtonsStyled = styled.span`
 export const PQuantFullStyled = styled.p`
   width: 100%;
   color: white;
-  font-family: var(--p-font);
   text-align: center;
   font-weight: 500;
   padding-bottom: 1px;
@@ -394,22 +429,22 @@ export const PQuantFullStyled = styled.p`
   padding-bottom: 3px;
 
   @media screen and (max-width: 375px) {
-    font-size: 1.15em;
+    font-size: 1.28em;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.16em;
+    font-size: 1.289em;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.165em;
+    font-size: 1.307em;
   }
   @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.167em;
+    font-size: 1.327em;
   }
   @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.168em;
+    font-size: 1.346em;
   }
   @media screen and (min-width: 1201px) {
-    font-size: 1.17em;
+    font-size: 1.356em;
   }
 `;
 
@@ -431,7 +466,8 @@ export const DivSubStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  background-color: #ebeff4;
+  border: 1px solid var(--border);
+  /* background-color: rgb(250, 250, 250); */
   border-radius: 8px;
   position: relative;
 
@@ -445,7 +481,7 @@ export const DivSubStyled = styled.div`
   @media screen and (min-width: 420px) and (max-width: 577px) {
     width: max-content;
   }
-  @media screen and (min-width: 577px) and (max-width: 850px){
+  @media screen and (min-width: 577px) and (max-width: 850px) {
     flex-direction: column;
     gap: 0;
   }
@@ -483,7 +519,7 @@ export const DivCoverSubStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ebeff4;
+  background-color: white;
   border-radius: 8px;
   position: absolute;
   top: 0;
@@ -491,10 +527,10 @@ export const DivCoverSubStyled = styled.div`
   z-index: 1;
 `;
 
-export const SimilarSectionDivStyled = styled.div`
+export const SimilarSectionStyled = styled.section`
   width: 100%;
   height: max-content;
-  background-color: #ecf0f5;
+  background-color: var(--back-color);
   position: relative;
   pointer-events: none;
   touch-action: none;
@@ -513,26 +549,27 @@ export const SimilarSectionDivStyled = styled.div`
 
 export const DivTitleStyled = styled.div`
   width: 100%;
-  min-height: 54px;
-  margin-bottom: 16px;
+  min-height: 56px;
   position: sticky;
   top: 0;
   left: 0;
-  background-color: #ebeff4;
+  background-color: var(--back-color);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
+  /* border-bottom: 1px solid var(--border); */
 
   @media screen and (min-width: 577px) {
     margin-bottom: 12px;
   }
 `;
 
-export const H1Styled = styled(H1BaseStyled)`
+export const H2Styled = styled(H2BaseStyled)`
   width: 100%;
-  color: #292e4e;
+  color: var(--dark-purple);
   padding-bottom: 4px;
+  scale: 0.945;
 `;
 
 export const ContainerListStyled = styled.div`

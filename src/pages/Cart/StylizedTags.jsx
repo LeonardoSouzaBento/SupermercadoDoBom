@@ -13,7 +13,7 @@ export const MainStyled = styled.div`
   &::after {
     content: "";
     width: 100%;
-    height: 12px;
+    height: 16px;
     position: absolute;
     top: 0;
     left: 0;
@@ -24,7 +24,7 @@ export const MainStyled = styled.div`
 
 export const DivHeaderMainStyled = styled.div`
   width: 100%;
-  height: 56px;
+  height: 60px;
   margin-bottom: 0;
   background-color: var(--purple);
   display: flex;
@@ -35,7 +35,7 @@ export const H1Styled = styled(H1BaseStyled)`
   width: max-content;
   margin: auto;
   text-align: left;
-  
+
   @media screen and (max-width: 414px) {
     margin: 0;
     padding-left: 20px;
@@ -65,7 +65,7 @@ export const CartSectionStyed = styled.section`
   padding: 20px 0;
   padding-top: 10px;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   border-radius: 12px;
   box-sizing: border-box;
   box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
@@ -77,7 +77,7 @@ export const CartSectionStyed = styled.section`
   overflow: hidden;
   transition: all 0.15s ease;
 
-  @media screen and  (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }
   @media screen and (max-width: 596px) {
@@ -200,6 +200,7 @@ export const DivSeeAllStyled = styled.div`
   bottom: -1px;
   left: 0;
   background-color: white;
+  color: var(--dark-purple);
   z-index: 2;
   cursor: pointer;
   box-shadow: 0px -3px 3px -2px rgba(41, 46, 117, 0.13);
@@ -232,7 +233,7 @@ export const ContinueSectionStyled = styled.div`
     width: max-content;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 16px;
   }
 `;
 
@@ -254,14 +255,14 @@ export const ContainerStyled = styled.section`
   }
 `;
 
-export const DivStyled = styled.div`
+export const SectionStyled = styled.section`
   height: auto;
   width: 100%;
   height: 230px;
   padding: 20px;
   padding-top: 10px;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -328,7 +329,6 @@ export const H2Styled = styled.h2`
     font-size: 1.2em;
   }
 `;
-
 
 export const ReceiptOptionStyled = styled.div`
   width: 100%;
@@ -570,8 +570,6 @@ export const DivPYesNoStyled = styled.div`
 
 /*Ps*/
 export const PAvisoStyled = styled.p`
-  font-family: var(--p-font);
-  font-weight: 400;
   color: white;
 
   @media screen and (max-width: 375px) {
@@ -595,32 +593,22 @@ export const PAvisoStyled = styled.p`
 `;
 
 export const PValueStyled = styled.p`
-  font-family: var(--p-font);
   font-weight: 500;
   cursor: default;
   padding-bottom: 2px;
   ${(props) => props.$selected && "font-weight: 700;"}
   ${(props) =>
-    (props.$email || props.$email1) &&
+    (props.$email) &&
     css`
       width: 100%;
-      box-sizing: border-box;
       color: rgba(0, 0, 0, 0.9);
       font-weight: 400;
+      font-family: var(--h-font);
+      scale: 1.01;
+      ${(props) => props.$last && "width: max-content;"}
+      
     `}
-  ${(props) =>
-    props.$email &&
-    css`
-      line-height: 1.6;
 
-      padding: 8px;
-      padding-top: 6px;
-      padding-bottom: 12px;
-      margin-top: 16px;
-
-      background-color: rgba(255, 0, 0, 0.05);
-    `}
-  
   @media screen and (max-width: 385px) {
     font-size: 1.08em;
   }

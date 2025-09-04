@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const H1BaseStyled = styled.h1`
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 700;
   font-family: var(--h-font);
   text-align: center;
@@ -24,5 +24,32 @@ export const H1BaseStyled = styled.h1`
   }
   @media screen and (min-width: 1201px) {
     font-size: 1.4em;
+  }
+`;
+
+export const H2BaseStyled = styled.h2`
+  color: var(--dark-purple);
+  font-family: var(--h-font);
+  text-align: center;
+  user-select: none;
+  font-weight: 700;
+
+  @media screen and (max-width: 375px) {
+    font-size: 1.196em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.207em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.229em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.252em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.276em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.288em;
   }
 `;

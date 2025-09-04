@@ -90,11 +90,20 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
         <ImgOfertaStyed src={product.url} $variant={variant}></ImgOfertaStyed>
 
         {/*Botão de adicionar*/}
-        {quantity == 0 && (
-          <DivAddStyled onPointerUp={handlePointerUpAdd} $variant={variant}>
-            <SpanMoreStyled className="material-symbols-rounded">
-              add
-            </SpanMoreStyled>
+
+        <DivAddStyled
+          onPointerUp={handlePointerUpAdd}
+          $variant={variant}
+          $displayNone={quantity >= 1}
+        >
+          <SpanMoreStyled className="material-symbols-rounded">
+            add
+          </SpanMoreStyled>
+        </DivAddStyled>
+
+        {variant == "cart" && (
+          <DivAddStyled>
+            <PQuantStyled>{quantity}</PQuantStyled>
           </DivAddStyled>
         )}
 

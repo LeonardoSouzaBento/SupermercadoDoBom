@@ -38,6 +38,7 @@ import {
   SpanReceiptStyled,
 } from "../Cart/StylizedTags";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
+import { useNavigate } from "react-router-dom";
 
 function formatPhone(num, selectedPhoneType) {
   if (!num) return "";
@@ -185,12 +186,12 @@ export const Contact = () => {
         {!isDataComplete.contact && (
           <DivStatusStyled>
             <DivNameStatus>
-              <NameStatusStyled>
-                {isDataComplete.contact ? "Número salvo" : "Sem um número"}
-              </NameStatusStyled>
               <SpanStatusStyled className="material-symbols-outlined">
                 {isDataComplete.contact ? "check" : "exclamation"}
               </SpanStatusStyled>
+              <NameStatusStyled>
+                {isDataComplete.contact ? "Número salvo" : "Sem um número"}
+              </NameStatusStyled>
             </DivNameStatus>
           </DivStatusStyled>
         )}
@@ -312,12 +313,12 @@ export const SavedAddress = ({
         {!isDataComplete.address && (
           <DivStatusStyled>
             <DivNameStatus>
-              <NameStatusStyled>
-                {isDataComplete.address ? "Endereço salvo" : "Sem endereço"}
-              </NameStatusStyled>
               <SpanStatusStyled className="material-symbols-rounded">
                 {isDataComplete.address ? "check" : "exclamation"}
               </SpanStatusStyled>
+              <NameStatusStyled>
+                {isDataComplete.address ? "Endereço salvo" : "Sem endereço"}
+              </NameStatusStyled>
             </DivNameStatus>
           </DivStatusStyled>
         )}
@@ -396,6 +397,15 @@ export const FinishShopping = ({ isDataComplete, orderInfo, userContact }) => {
     isDataComplete.address &&
     userContact.email &&
     orderInfo.status === "pending";
+  const navigate = useNavigate();
+
+  function handleClickFinish() {
+    if (!orderInfo.time) {
+      navigate("/meu-carrinho")
+    } else {
+      navigate("/meus-pedidos")
+    }
+  }
 
   return (
     <DivOneStyled $orders={true}>
@@ -412,16 +422,16 @@ export const FinishShopping = ({ isDataComplete, orderInfo, userContact }) => {
         {orderInfo.status === "pending" && (
           <DivStatusStyled $finish={true}>
             <DivNameStatus $finish={true}>
-              <NameStatusStyled>Compra não finalizada</NameStatusStyled>
               <SpanStatusStyled className="material-symbols-rounded">
                 exclamation
               </SpanStatusStyled>
+              <NameStatusStyled>Compra não finalizada</NameStatusStyled>
             </DivNameStatus>
           </DivStatusStyled>
         )}
       </DivH2StatusStyled>
       {orderInfo.status === "pending" && (
-        <ButtonContinueStyled $myAccount={true} $enable={enable}>
+        <ButtonContinueStyled $myAccount={true} $enable={enable} onClick={handleClickFinish}>
           <PContinueStyled>Finalizar a compra</PContinueStyled>
         </ButtonContinueStyled>
       )}
@@ -468,14 +478,14 @@ export const UserProfile = ({ userContact, setSeeLogin }) => {
             $user={true}
             $hide={userContact.email && userContact.name}
           >
-            <NameStatusStyled $hide={userContact.email && userContact.name}>
-              {!userContact.email ? "Usúario anônimo" : "Sem seu nome"}
-            </NameStatusStyled>
             <SpanStatusStyled className="material-symbols-outlined">
               {!userContact.email || !userContact.name
                 ? "exclamation"
                 : "check"}
             </SpanStatusStyled>
+            <NameStatusStyled $hide={userContact.email && userContact.name}>
+              {!userContact.email ? "Usúario anônimo" : "Sem seu nome"}
+            </NameStatusStyled>
           </DivNameStatus>
         </DivStatusStyled>
       )}

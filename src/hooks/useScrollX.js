@@ -35,7 +35,12 @@ export function useScrollX() {
     limitsScrollRefs[0].current = limitAdvertisements;
     limitsScrollRefs[1].current = limitCategories;
     limitsScrollRefs[2].current = limitProductList;
-  }, [limitAdvertisements, limitCategories, limitProductList]);
+  }, [
+    limitAdvertisements,
+    limitCategories,
+    limitProductList,
+    limitsScrollRefs,
+  ]);
 
   const handlePointerDown = useCallback((e) => {
     isDraggingRef.current = false;
@@ -90,16 +95,14 @@ export function useScrollX() {
 
     const div = refs[i].current;
     let proximo = div.scrollLeft + deslocamento;
-    const maxScroll = -limitsScrollRefs[i].current;
 
     if (proximo < 0) {
       proximo = 0;
       variables.velocidade = 0;
-    } else if (proximo > maxScroll) {
-      proximo = maxScroll;
+    } else if (proximo > -limitsScrollRefs[i].current) {
+      proximo = -limitsScrollRefs[i].current;
       variables.velocidade = 0;
     }
-
     div.scrollLeft = proximo;
   }, []);
 

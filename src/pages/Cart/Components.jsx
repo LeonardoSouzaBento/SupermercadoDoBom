@@ -14,7 +14,7 @@ import {
   DivAlertStyled,
   BodyAlertStyled,
   ContainerStyled,
-  DivStyled,
+  SectionStyled,
   HeaderH2Styled,
   H2Styled,
   ReceiptOptionStyled,
@@ -96,7 +96,7 @@ export const ReceiptAndContinue = ({
   return (
     <>
       <ContainerStyled>
-        <DivStyled>
+        <SectionStyled>
           <HeaderH2Styled>
             <SpanH2Styled className="material-symbols-rounded" $cart={true}>
               delivery_truck_speed
@@ -141,7 +141,7 @@ export const ReceiptAndContinue = ({
                 : "check_box_outline_blank"}
             </SpanReceiptStyled>
           </ReceiptOptionStyled>
-        </DivStyled>
+        </SectionStyled>
 
         <ButtonContinueStyled
           $nocontinue={falta > 0}
@@ -308,7 +308,7 @@ export const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
 
   return (
     <ContainerStyled>
-      <DivStyled>
+      <SectionStyled>
         <HeaderH2Styled>
           <SpanH2Styled className="material-symbols-rounded" $cart={true} $bigger={true}>
             data_info_alert
@@ -343,7 +343,7 @@ export const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
             </PValueStyled>
           </DivOneValueStyled>
         </DivAllValuesStyled>
-      </DivStyled>
+      </SectionStyled>
 
       <DivAddStyled
         onClick={() => {

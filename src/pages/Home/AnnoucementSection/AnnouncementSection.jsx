@@ -12,7 +12,7 @@ import { CartContext } from "../../../contexts/CartContext";
 import { useScrollX } from "../../../hooks/useScrollX";
 import { H1LabelStyled } from "../CategoriesSection/StylizedTags";
 
-const AnnouncementProducts = [
+const announcementProducts = [
   {
     id: 105,
     discount: 10,
@@ -81,13 +81,16 @@ function AnnouncementSection({ wasResize }) {
       fundoRefs.current.length > 0 &&
       advertisementsRef.current
     ) {
-      const ContainerWidth = divRef.current.offsetWidth; //largura container avô
+      const containerWidth = divRef.current.offsetWidth; //largura container pai
+      const marginContainer =
+        parseFloat(getComputedStyle(divRef.current).marginLeft) * 2;
+
       const fundoWidth = fundoRefs.current[0]?.offsetWidth || 0; //largura da imagem
-      const gap = parseFloat(getComputedStyle(advertisementsRef.current).gap); //gap do container pai
+      const gap = parseFloat(getComputedStyle(advertisementsRef.current).gap);
 
-      let img_center = Math.ceil(AnnouncementProducts.length / 2);
+      let img_center = Math.ceil(announcementProducts.length / 2);
 
-      const visibleRatio = ContainerWidth / (fundoWidth + gap);
+      const visibleRatio = containerWidth / (fundoWidth + gap);
       const anun_visible = visibleRatio > 2.6 ? 3 : 1;
 
       let indices = [img_center];
@@ -99,24 +102,43 @@ function AnnouncementSection({ wasResize }) {
       }
 
       let widtAllAds =
-        AnnouncementProducts.length * fundoWidth +
-        gap * (AnnouncementProducts.length - 1); //largura de tdos os anuncios
-      let limite = ContainerWidth - widtAllAds;
-      setLimitAdvertisements(limite); //Limite de rolagem para anuncios
-      let Initialcenter = 0;
+        announcementProducts.length * fundoWidth +
+        gap * (announcementProducts.length - 1) +
+        24 +
+        marginContainer; // 24 de paddings laterais da div rolavel
 
-      function obterLimites() {
-        //aplicavel somente a um número impar de imagens
-        Initialcenter = (ContainerWidth - widtAllAds) / 2;
-        advertisementsRef.current.scrollLeft = Initialcenter;
+      let limite = containerWidth - widtAllAds;
+      setLimitAdvertisements(limite); //Limite de rolagem para anuncios
+      let initialcenter = 0;
+      function centralize() {
+        //numero impar de imagens
+        if (announcementProducts.length % 2 !== 0) {
+          initialcenter = (widtAllAds - containerWidth) / 2;
+          if (window.innerWidth < 1201) {
+            //imagens ainda escondidas
+            advertisementsRef.current.scrollLeft = initialcenter;
+          } else {
+            advertisementsRef.current.scrollLeft = 0;
+          }
+        }
+        //numero par de imagens
+        else {
+          initialcenter =
+            (containerWidth - widtAllAds) / 2 - (fundoWidth / 2 + gap / 2);
+          if (window.innerWidth < 1201) {
+            advertisementsRef.current.scrollLeft = initialcenter;
+          } else {
+            advertisementsRef.current.scrollLeft = initialcenter - fundoWidth; //metade da imagem
+          }
+        }
       }
-      obterLimites();
+      centralize();
     }
   }, [advertisementsRef, setLimitAdvertisements]);
 
   //atualizar paginação
   const updatePagination = useCallback(() => {
-    const images = AnnouncementProducts.map((_, i) =>
+    const images = announcementProducts.map((_, i) =>
       document.getElementById(`anun ${i}`)
     );
     let with_img = images[0].offsetWidth;
@@ -166,8 +188,11 @@ function AnnouncementSection({ wasResize }) {
   return (
     <ContainerStyled ref={divRef}>
       <H1LabelStyled $anun={true}>Maiores promoções!</H1LabelStyled>
-      <DivStyled ref={advertisementsRef}>
-        {AnnouncementProducts.map((object, index) => (
+      <DivStyled
+        ref={advertisementsRef}
+        $odd={announcementProducts.length % 2 !== 0}
+      >
+        {announcementProducts.map((object, index) => (
           <DivFundoImgStyled
             key={index}
             ref={(el) => (fundoRefs.current[index] = el)}
@@ -186,7 +211,7 @@ function AnnouncementSection({ wasResize }) {
         ))}
       </DivStyled>
       <DivPaginationStyled>
-        {AnnouncementProducts.map((_, i) => (
+        {announcementProducts.map((_, i) => (
           <SpanStyled key={i} $atual={centralIndices.includes(i)}></SpanStyled>
         ))}
       </DivPaginationStyled>

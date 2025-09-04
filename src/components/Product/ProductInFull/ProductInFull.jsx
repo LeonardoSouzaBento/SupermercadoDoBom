@@ -3,20 +3,8 @@ import { CartContext } from "../../../contexts/CartContext.js";
 import { VisibilityContext } from "../../../contexts/VisibilityContext.js";
 import {
   BodyDivStyled,
-  DivSpanCloseStyled,
-  SpanCloseStyled,
-  SpanDropDownStyled,
   MainDivStyled,
-  ProductDivStyled,
-  DivImgStyled,
-  ImgStyled,
-  DivWeightStyled,
-  PWeightStyled,
-  DivDiscountStyled,
-  DivNameProdStyled,
-  PNameProdStyled,
-  DivPriceStyled,
-  PPriceStyled,
+  ProductSectionStyled,
   ContainerQuantStyled,
   DivQuantFullStyled,
   DivButtonsStyled,
@@ -26,12 +14,18 @@ import {
   DivSubStyled,
   DivCoverSubStyled,
   PSubStyled,
-  SimilarSectionDivStyled,
+  SimilarSectionStyled,
   DivTitleStyled,
   H1Styled,
   ContainerListStyled,
   DivHalfList,
 } from "./StylizedTags.jsx";
+import {
+  ButtonAdd,
+  ButtonClose,
+  ProductData,
+  Subtotal,
+} from "./Components.jsx";
 
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
@@ -114,7 +108,7 @@ const ProductInFull = () => {
   }
 
   useEffect(() => {
-    // document.body.style.overflowY = "hidden";
+    document.body.style.overflowY = "hidden";
     setTimeout(() => {
       setTranslateYState("0%");
     }, 200);
@@ -124,7 +118,7 @@ const ProductInFull = () => {
 
     return () => {
       document.body.style.overflowY = "auto";
-      // isDraggingRef.current = false;
+      isDraggingRef.current = false;
     };
   }, []);
 
@@ -142,112 +136,44 @@ const ProductInFull = () => {
       }}
       onPointerUp={handleClickClose}
     >
-      <MainDivStyled $translate={translateYState} ref={MainDivRef} onPointerUp={(e)=>{e.stopPropagation()}}>
-        <DivSpanCloseStyled
-          onPointerUp={handleClickClose}
-          style={{ display: seeSpanClose ? "flex" : "none" }}
-        >
-          <SpanCloseStyled className="material-symbols-rounded">
-            close
-          </SpanCloseStyled>
-
-          <SpanDropDownStyled />
-        </DivSpanCloseStyled>
-
-        <ProductDivStyled>
-          <DivImgStyled>
-            <ImgStyled src={dataProductFull.url} alt="Imagem do Produto" />
-
-            {dataProductFull.weight != "" && dataProductFull.weight != null && (
-              <DivWeightStyled>
-                <PWeightStyled>{dataProductFull.weight}</PWeightStyled>
-              </DivWeightStyled>
-            )}
-
-            {dataProductFull.discount != "" &&
-              dataProductFull.discount != null && (
-                <DivDiscountStyled>
-                  <PWeightStyled style={{ color: "white" }}>
-                    -{dataProductFull.discount}%
-                  </PWeightStyled>
-                </DivDiscountStyled>
-              )}
-          </DivImgStyled>
-
-          <DivNameProdStyled>
-            <PNameProdStyled>{dataProductFull.name}</PNameProdStyled>
-          </DivNameProdStyled>
-
-          <DivPriceStyled>
-            <PPriceStyled>R$ {dataProductFull.price}</PPriceStyled>
-          </DivPriceStyled>
+      <MainDivStyled
+        $translate={translateYState}
+        ref={MainDivRef}
+        onPointerUp={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <ButtonClose
+          handleClickClose={handleClickClose}
+          seeSpanClose={seeSpanClose}
+        />
+        
+        <ProductSectionStyled>
+          <ProductData dataProductFull={dataProductFull} />
 
           <ContainerQuantStyled>
-            <DivSubStyled>
-              {(subtotal == "0,00") && (
-                <DivCoverSubStyled>
-                  <PSubStyled>Subtotal:</PSubStyled>
-                </DivCoverSubStyled>
-              )}
-              <PSubStyled>Subtotal:</PSubStyled>
-              <PSubStyled>R$ {subtotal}</PSubStyled>
-            </DivSubStyled>
+            <Subtotal subtotal={subtotal} />
 
-            <DivQuantFullStyled
-              onPointerDown={handlePointerDownDiv}
-              onPointerMove={handlePointerMoveDiv}
-            >
-              {quantity > 0 && (
-                <>
-                  <DivButtonsStyled
-                    onPointerUp={(e) => {
-                      handlePointerUpButtons(e, "fewer");
-                    }}
-                  >
-                    <SpanButtonsStyled className="material-symbols-rounded">
-                      remove
-                    </SpanButtonsStyled>
-                  </DivButtonsStyled>
-
-                  <DivButtonsStyled>
-                    <PQuantFullStyled>{quantity}</PQuantFullStyled>
-                  </DivButtonsStyled>
-
-                  <DivButtonsStyled onPointerUp={handlePointerUpButtons}>
-                    <SpanButtonsStyled className="material-symbols-rounded">
-                      add
-                    </SpanButtonsStyled>
-                  </DivButtonsStyled>
-                </>
-              )}
-              {quantity == 0 && (
-                <DivButtonsStyled
-                  style={{ width: "100%" }}
-                  onPointerUp={handlePointerUpAdd}
-                >
-                  <SpanButtonsStyled
-                    className="material-symbols-rounded"
-                    $add={true}
-                  >
-                    add
-                  </SpanButtonsStyled>
-                  <PAddStyled>Adicionar</PAddStyled>
-                </DivButtonsStyled>
-              )}
-            </DivQuantFullStyled>
+            <ButtonAdd
+              quantity={quantity}
+              handlePointerDownDiv={handlePointerDownDiv}
+              handlePointerMoveDiv={handlePointerMoveDiv}
+              handlePointerUpAdd={handlePointerUpAdd}
+              handlePointerUpButtons={handlePointerUpButtons}
+            />
           </ContainerQuantStyled>
-        </ProductDivStyled>
+        </ProductSectionStyled>
 
-        <SimilarSectionDivStyled>
+        <SimilarSectionStyled>
           <DivTitleStyled>
-            <H1Styled>Produtos Similares (Essa parte ainda será desenvolvida)</H1Styled>
+            <H1Styled>Produtos Similares</H1Styled>
           </DivTitleStyled>
 
           <ContainerListStyled>
             <DivHalfList></DivHalfList>
             <DivHalfList></DivHalfList>
           </ContainerListStyled>
-        </SimilarSectionDivStyled>
+        </SimilarSectionStyled>
       </MainDivStyled>
     </BodyDivStyled>
   );

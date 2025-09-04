@@ -2,30 +2,23 @@ import styled, { css } from "styled-components";
 import { H1BaseStyled } from "../../components/GenericStylizedTags";
 
 export const BodyStyled = styled.div`
-  min-height: 100vh;
-  max-height: 100vh;
+  height: auto;
+  padding: 4px 0;
+  margin-bottom: 4px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4px 0;
-  padding-bottom: 8px;
-  box-sizing: border-box;
-
-  @media screen and (max-width: 470px) {
-    padding: 0;
-  }
-  @media screen and (min-width: 577px) {
-    padding-bottom: 0px;
-  }
 `;
 
 export const WrapperStyled = styled.div`
   width: 100%;
-  max-width: 470px;
-  height: 88vh;
-  overflow-y: scroll;
+  max-width: 530px;
+  height: 98vh;
   padding: 36px;
-  padding-bottom: 37px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  overflow-y: scroll;
   border-radius: 8px;
   background-color: white;
   box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
@@ -35,20 +28,15 @@ export const WrapperStyled = styled.div`
   z-index: 1;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  
+  @media screen and (max-width: 530px) {
+    border-radius: 0px;
+  }
 
   @media screen and (max-width: 577px) {
     height: auto;
     overflow-y: visible;
     box-sizing: border-box;
-  }
-  @media screen and (max-width: 470px) {
-    border-radius: 0px;
-  }
-  @media screen and (min-width: 577px) {
-    padding-top: 24px;
-  }
-  @media screen and (max-width: 470px) {
-    border-radius: 0px;
   }
 
   &::-webkit-scrollbar {
@@ -125,8 +113,6 @@ export const DivContentStyled = styled.div``;
 export const PStyled = styled.p`
   width: 100%;
   max-width: 400px;
-  font-family: var(--p-font);
-  font-weight: 400;
   text-align: justify;
   margin-bottom: 12px;
   line-height: 1.27;

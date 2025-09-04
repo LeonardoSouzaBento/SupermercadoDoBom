@@ -1,17 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { CartContext } from "./CartContext";
-import {
-  promo_products,
-  productsCatId1,
-  productsCatId2,
-  productsCatId3,
-  productsCatId4,
-  productsCatId5,
-  productsCatId6,
-  productsCatId7,
-  productsCatId8,
-  productsCatId9,
-} from "../data/productList";
+import { voidOrderInfo, voidUserAddress } from "./voidConsts";
+import { allProducts } from "../data/productList";
 
 export function CartProvider({ children }) {
   const [limitProductList, setLimitProductList] = useState(0);
@@ -42,16 +32,7 @@ export function CartProvider({ children }) {
   const [currentCategory, setCurrentCategory] = useState(0); //Seleção de categorias
 
   const allProductsInCat = [
-    promo_products,
-    productsCatId1,
-    productsCatId2,
-    productsCatId3,
-    productsCatId4,
-    productsCatId5,
-    productsCatId6,
-    productsCatId7,
-    productsCatId8,
-    productsCatId9,
+    ...allProducts,
     [],
     [],
     cartProducts,
@@ -101,30 +82,10 @@ export function CartProvider({ children }) {
   const [userAddress, setUserAddress] = useState(() => {
     try {
       const userAddress = localStorage.getItem("userAddress");
-      return userAddress
-        ? JSON.parse(userAddress)
-        : {
-            rua: "",
-            numero: "",
-            complemento: "",
-            bairro: "",
-            cidade: "",
-            estado: "",
-            lat: "",
-            lng: "",
-          };
+      return userAddress ? JSON.parse(userAddress) : voidUserAddress;
     } catch (error) {
       console.error("Erro ao carregar 'formData' do local storage", error);
-      return {
-        rua: "",
-        numero: "",
-        complemento: "",
-        bairro: "",
-        cidade: "",
-        estado: "",
-        lat: "",
-        lng: "",
-      };
+      return voidUserAddress;
     }
   });
 
@@ -138,9 +99,7 @@ export function CartProvider({ children }) {
 
   const [orderInfo, setOrderInfo] = useState(() => {
     const savedOrderInfo = localStorage.getItem("orderInfo");
-    return savedOrderInfo
-      ? JSON.parse(savedOrderInfo)
-      : { time: "", status: "" };
+    return savedOrderInfo ? JSON.parse(savedOrderInfo) : voidOrderInfo;
   });
 
   useEffect(() => {

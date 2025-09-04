@@ -22,11 +22,13 @@ const DivH3Buttons = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--border);
+  border-radius: 4px;
 
   ${(props) =>
     props.$buttonSelected &&
     css`
       background-color: rgba(244, 244, 244, 1);
+      border: 1px solid var(--border);
     `}
   @media screen and (max-width: 430px) {
     padding: 9px 16px;

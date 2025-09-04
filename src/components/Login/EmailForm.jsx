@@ -9,11 +9,8 @@ import {
   SpanEmailStyled,
   ButtonDivStyled,
 } from "./StylizedTags";
-import {
-  PValueStyled,
-  PContinueStyled,
-} from "../../pages/Cart/StylizedTags";
-import { LoginReturn } from "./Components";
+import { PValueStyled, PContinueStyled } from "../../pages/Cart/StylizedTags";
+import { LoginReturn, PasswordValidationReturn } from "./Components";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 
 function validatePassword(senha) {
@@ -113,7 +110,6 @@ const EmailForm = ({ loginState, setLoginState, setSeeEmailForm }) => {
   return (
     <ContainerEmailStyled>
       {loginState !== "" && <LoginReturn loginState={loginState} />}
-
       <LabelStyled htmlFor="email">E-mail</LabelStyled>
       <InputStyled
         type="email"
@@ -123,7 +119,6 @@ const EmailForm = ({ loginState, setLoginState, setSeeEmailForm }) => {
         required
         onChange={handleTyping}
       />
-
       <LabelStyled htmlFor="senha">Senha</LabelStyled>
       <InputStyled
         type="password"
@@ -133,50 +128,12 @@ const EmailForm = ({ loginState, setLoginState, setSeeEmailForm }) => {
         required
         onChange={handleTyping}
       />
-      <PValueStyled $email1={true}>
+
+      <PValueStyled $email={true}>
         Exemplo de senha recomendada:{" "}
         <strong style={{ fontWeight: 600 }}>J@iro450Love</strong>
       </PValueStyled>
-
-      <PValueStyled $email={true}>
-        Sua senha deve ter:
-        <br />
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.tamanhoMinimo}
-        >
-          {validacao.tamanhoMinimo ? "check" : "exclamation"}
-        </SpanEmailStyled>
-        8 digitos: <br />
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.temMaiuscula}
-        >
-          {validacao.temMaiuscula ? "check" : "exclamation"}
-        </SpanEmailStyled>
-        1 Maiúsculo(A-Z) <br />
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.temMinuscula}
-        >
-          {validacao.temMinuscula ? "check" : "exclamation"}
-        </SpanEmailStyled>
-        1 Minúsculo (a-z) <br />
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.temNumero}
-        >
-          {validacao.temNumero ? "check" : "exclamation"}
-        </SpanEmailStyled>
-        1 Número (0-9) <br />
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.temSimbolo}
-        >
-          {validacao.temSimbolo ? "check" : "exclamation"}
-        </SpanEmailStyled>
-        1 Símbolo especial (!@#$%^&*){" "}
-      </PValueStyled>
+      <PasswordValidationReturn validacao={validacao}/>
 
       <ButtonDivStyled
         $register={true}
@@ -185,7 +142,6 @@ const EmailForm = ({ loginState, setLoginState, setSeeEmailForm }) => {
       >
         <PContinueStyled>Entrar</PContinueStyled>
       </ButtonDivStyled>
-
       <ButtonDivStyled
         onClick={() => {
           setTimeout(() => {

@@ -4,9 +4,10 @@ export const ContainerStyled = styled.section`
   width: calc(100% - 24px);
   position: relative;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 16px;
   padding-bottom: 40px;
   margin: auto;
+  margin-bottom: 40px;
   border-radius: 24px;
   background-image: linear-gradient(
     to bottom,
@@ -26,7 +27,6 @@ export const DivStyled = styled.div`
   width: 100%;
   margin: auto;
   display: flex;
-  justify-content: center;
   flex-flow: row nowrap;
   gap: 16px;
   overflow-x: scroll;
@@ -38,6 +38,10 @@ export const DivStyled = styled.div`
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media screen and (min-width: 1201px) {
+    ${(props) => props.$odd && "justify-content: center;"}
   }
 `;
 

@@ -51,8 +51,9 @@ export const DivDeleteAndCart = styled.div`
 `;
 
 export const DivCartStyled = styled.div`
-  height: 100%;
-  width: 44px;
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,7 +68,7 @@ export const SpanCartStyled = styled.span`
 
 export const DivDeleteStyled = styled(DivCartStyled)`
   box-sizing: border-box;
-  padding-left: 4px;
+  margin-left: 4px;
   background-color: #292d4e;
 
   &:hover {
@@ -188,7 +189,7 @@ export const PQuestionStyled = styled.p`
   padding-bottom: 14px;
   margin-top: 10px;
   border-radius: 5px;
-  font-family: "Lato", sans-serif;
+  font-family: var(--h-font);
   font-weight: 400;
   text-align: center;
   color: white;

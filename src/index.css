@@ -3,6 +3,31 @@
   padding: 0;
 }
 
+:root {
+  /*Cores*/
+  --purple: #383d6a;
+  --purple-hover: #2e3257;
+  --dark-purple: #261e3e;
+  --red: #d5343a;
+  --dark-red: #c3282d;
+  --dark-red2: #6B393A;
+  --dark-green: #396B46;
+  --light-green: #B5EBC3;
+  --light-green-dark: hsl(136, 57%, 70%);
+  --back-color: #eef2f6;
+  --back-hover: #d7dfea;
+  --disable: #a8adb3ff;
+  --disable-hover: #9299a0ff;
+  --yellow: #FFE99A;
+  --border: #ddddddff;
+  --light-border: #e6e6e6;
+  --pink: #FFD9D9;
+  /*Fontes*/
+  --p-font: "Open Sans", Arial, Helvetica, sans-serif;
+  --bt-font: "Montserrat", Arial, Helvetica, sans-serif;
+  --h-font: "Lato", Arial, Helvetica, sans-serif;
+}
+
 html, body {
   overflow-x: hidden;
   height: 100%;
@@ -23,7 +48,7 @@ body::-webkit-scrollbar {
 }
 
 body {
-  background-color: hsl(213, 31%, 95%);
+  background-color: var(--back-color);
   width: 100%;
   max-width: 1390px;
   margin: auto;
@@ -32,34 +57,11 @@ body {
 
 p{
   cursor: default;
+  font-family: var(--p-font);
+  font-weight: 400;
 }
 
 h1, h2, h3{
   cursor: default;
   user-select: none;
-}
-
-:root {
-  /*Cores*/
-  --purple: #383d6a;
-  --purple-hover: #2e3257;
-  --dark-purple: #261e3e;
-  --red: #d5343a;
-  --dark-red: #c3282d;
-  --dark-red2: #6B393A;
-  --dark-green: #396B46;
-  --light-green: #B5EBC3;
-  --light-green-dark: hsl(136, 57%, 70%);
-  --back-color: hsl(213, 31%, 95%);
-  --back-hover: hsl(215, 31%, 88%);
-  --disable: #a8adb3ff;
-  --disable-hover: #9299a0ff;
-  --yellow: #FFE99A;
-  --border: #ddddddff;
-  --light-border: #e6e6e6;
-  
-  /*Fontes*/
-  --p-font: "Open Sans", Arial, Helvetica, sans-serif;
-  --bt-font: "Montserrat", Arial, Helvetica, sans-serif;
-  --h-font: "Lato", Arial, Helvetica, sans-serif;
 }

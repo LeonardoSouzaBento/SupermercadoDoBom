@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   ContainerStyled,
   DivMainStyled,
@@ -14,12 +14,14 @@ import {
   ButtonLoginEmail,
   ButtonLoginGoogle,
 } from "./Components";
+import { VisibilityContext } from "../../contexts/VisibilityContext";
 
 const Login = ({ setSeeLogin, onMyAccount }) => {
   const [opacity, setOpacity] = useState(0);
   const [loginState, setLoginState] = useState("");
   const [seeEmailForm, setSeeEmailForm] = useState(false);
   const [hasSuccessMessage, setHasSuccessMessage] = useState(false);
+  const { setUserDisconnected } = useContext(VisibilityContext);
 
   function setLoginSucess() {
     setHasSuccessMessage(true);
@@ -40,6 +42,7 @@ const Login = ({ setSeeLogin, onMyAccount }) => {
       }, 4200);
     }
     if (loginState === "completed") {
+      setUserDisconnected(false);
       setTimeout(() => {
         setLoginState("");
         setSeeLogin(false);

@@ -24,10 +24,13 @@ export const DivMainStyled = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  box-shadow: 0px 4px 10px -3px rgba(41, 46, 117, 0.5);
+  /* box-shadow: 0px 4px 10px -3px rgba(41, 46, 117, 0.5); */
+  box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.4),
+    4px 0px 4px -3px rgba(41, 46, 117, 0.1),
+    -4px 0px 4px -3px rgba(41, 46, 117, 0.1);
   background-color: white;
   transform: translate(-50%, -50%);
-  
+
   @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }
@@ -69,14 +72,13 @@ export const DivSpanCloseStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 50%;
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 8px;
+  right: 20px;
   cursor: pointer;
   transition: background-color 0.05s linear;
 
-  /* ${(props) => !props.$onMyAccount && "display: none;"}; */
   &:hover {
     background-color: hsla(358, 66%, 43%, 1);
   }
@@ -117,8 +119,6 @@ export const DivEmailStyled = styled.div`
 `;
 
 export const PEmailStyled = styled.p`
-  font-family: var(--p-font);
-  font-weight: 400;
   color: white;
   letter-spacing: 0.65px;
 
@@ -176,7 +176,7 @@ export const InputEmailStyled = styled.input`
 `;
 
 export const DivButtonsStyled = styled.div`
-  padding: 20px;
+  padding: 24px;
   display: flex;
   gap: 16px;
   flex-direction: column;
@@ -215,7 +215,7 @@ export const DivSpanPStyled = styled.div`
 
 export const DivSpanStyled = styled.div`
   height: 40px;
-  width: 40px;
+  width: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -288,6 +288,7 @@ export const PContinueStyled = styled.p`
 export const ImgGoogleStyled = styled.img`
   height: 40px;
   width: 40px;
+  margin-right: 4px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -298,7 +299,7 @@ export const ImgGoogleStyled = styled.img`
 
 export const ContainerEmailStyled = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 24px;
   border-radius: 6px;
   box-sizing: border-box;
   display: flex;
@@ -309,8 +310,8 @@ export const ContainerEmailStyled = styled.div`
 `;
 
 export const LabelStyled = styled.label`
-  font-family: var(--p-font);
-  font-weight: 500;
+  font-family: var(--h-font);
+  font-weight: 400;
   margin-bottom: 8px;
 
   @media screen and (max-width: 375px) {
@@ -407,11 +408,47 @@ export const ButtonDivStyled = styled.div`
 `;
 
 export const SpanEmailStyled = styled.span`
-  margin-right: 8px;
-  background-color: rgba(255, 0, 0, 0.2);
-  font-size: 1.1em;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.9);
+  background-color: var(--pink);
+  font-size: 1.15em;
+  font-weight: 600;
+  color: var(--dark-red);
+  box-shadow: 0px 2px 4px -3px rgba(56, 61, 106, 0.3);
   border-radius: 50%;
-  ${(props) => props.$check && "background-color: #b2ff59ce;"}
+  ${(props) =>
+    props.$check &&
+    css`
+      background-color: var(--light-green);
+      color: var(--dark-green);
+    `}
+`;
+
+export const DivForReturnStyled = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(255, 0, 0, 0.05);
+  padding: 16px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-radius: 4px;
+`;
+
+export const DivRowStyled = styled.div`
+  min-height: 32px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  ${(props) => props.$first && "margin-bottom: 4px;"}
+
+  @media screen and (max-width: 375px) {
+    align-items: flex-start;
+  }
+  ${(props) =>
+    props.$last &&
+    css`
+      @media screen and (max-width: 375px) {
+        flex-direction: column;
+        gap: 4px;
+      }
+    `}
 `;
