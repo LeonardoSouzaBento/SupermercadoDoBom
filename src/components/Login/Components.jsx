@@ -49,7 +49,7 @@ export const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
       setIdToken(idToken);
 
       const response = await fetch(
-        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth/login-google",
+        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-google",
         {
           method: "POST",
           headers: {
@@ -111,7 +111,7 @@ export const ButtonLoginAnonymous = ({
     setLoginState("pending");
     try {
       const response = await fetch(
-        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth/login-anonymous",
+        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-anonymous",
         {
           method: "POST",
           headers: {
@@ -121,6 +121,7 @@ export const ButtonLoginAnonymous = ({
       );
 
       if (!response.ok) {
+        setLoginState("error");
         throw new Error("Erro no login anônimo");
       }
 
@@ -171,19 +172,30 @@ export const ButtonClose = ({ setSeeLogin }) => {
 export const LoginReturn = ({ loginState }) => {
   return (
     <>
-      {(loginState === "pending" || loginState === "completed") && (
+      {loginState === "pending" && (
         <DivApiReturnStyled>
           <SpanApiReturnStyled
             className="material-symbols-outlined"
-            $wait={loginState === "pending"}
+            $wait={true}
           >
-            {loginState === "pending" ? "progress_activity" : "check"}
+            progress_activity
           </SpanApiReturnStyled>
-
           <PValueStyled style={{ width: "80%", textAlign: "center" }}>
-            {loginState === "pending"
-              ? "Fazendo Login..."
-              : "Sucesso! Usuário logado."}
+            Fazendo Login...
+          </PValueStyled>
+        </DivApiReturnStyled>
+      )}
+
+      {loginState === "completed" && (
+        <DivApiReturnStyled>
+          <SpanApiReturnStyled
+            className="material-symbols-outlined"
+            $wait={false}
+          >
+            check
+          </SpanApiReturnStyled>
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            Sucesso! Usuário logado.
           </PValueStyled>
         </DivApiReturnStyled>
       )}
@@ -267,7 +279,7 @@ export const PasswordValidationReturn = ({ validacao }) => {
           <PValueStyled $email={true} $last={true}>
             1 Símbolo especial
           </PValueStyled>
-           <PValueStyled $email={true} $last={true}>
+          <PValueStyled $email={true} $last={true}>
             (!@#$%^&*)
           </PValueStyled>
         </DivRowStyled>

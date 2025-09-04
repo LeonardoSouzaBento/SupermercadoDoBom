@@ -37,18 +37,16 @@ const Login = ({ setSeeLogin, onMyAccount }) => {
   useEffect(() => {
     if (loginState === "error" && !hasSuccessMessage) {
       setTimeout(() => {
-        setLoginState("");
         setSeeLogin(false);
       }, 4200);
     }
     if (loginState === "completed") {
       setUserDisconnected(false);
       setTimeout(() => {
-        setLoginState("");
         setSeeLogin(false);
-      }, 2100);
+      }, 2000);
     }
-  }, [loginState, hasSuccessMessage, setSeeLogin]);
+  }, [loginState, hasSuccessMessage, setSeeLogin, setUserDisconnected]);
 
   return (
     <ContainerStyled $opacity={opacity}>
@@ -60,6 +58,7 @@ const Login = ({ setSeeLogin, onMyAccount }) => {
             loginState={loginState}
             setLoginState={setLoginState}
             setSeeEmailForm={setSeeEmailForm}
+            setLoginSucess={setLoginSucess}
           />
         ) : (
           <>

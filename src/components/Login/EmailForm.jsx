@@ -33,7 +33,7 @@ function validateEmail(email) {
   return regex.test(email);
 }
 
-const EmailForm = ({ loginState, setLoginState, setSeeEmailForm }) => {
+const EmailForm = ({ loginState, setLoginState, setSeeEmailForm, setLoginSucess }) => {
   const { setIdToken, userContact, setUserContact } =
     useContext(VisibilityContext);
   const [emailForm, setEmailForm] = useState({
@@ -72,7 +72,7 @@ const EmailForm = ({ loginState, setLoginState, setSeeEmailForm }) => {
       });
       try {
         const response = await axios.post(
-          "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth/login",
+          "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-email",
           {
             email: emailForm.email,
             senha: emailForm.senha,
@@ -84,6 +84,7 @@ const EmailForm = ({ loginState, setLoginState, setSeeEmailForm }) => {
         const idToken = await userCredential.user.getIdToken();
 
         setIdToken(idToken);
+        setLoginSucess();
         console.log("Login bem-sucedido!");
       } catch (error) {
         setLoginState("error");
