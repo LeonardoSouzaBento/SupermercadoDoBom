@@ -6,12 +6,10 @@ import {
   DivOneTwoStyled,
   DivThreeButtonStyled,
 } from "./StylizedTags";
-import {
-  SavedAddress,
-  UserProfile,
-  Contact,
-  FinishShopping,
-} from "./Components";
+import Contact from "./Components/Contact";
+import SavedAddress from "./Components/SavedAddress";
+import FinishShopping from "./Components/FinishShopping";
+import UserProfile from "./Components/UserProfile";
 import RegisterAddress from "./RegisterAddress/RegisterAddress";
 import Login from "../../components/Login/Login";
 import { useContext } from "react";

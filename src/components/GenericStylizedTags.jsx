@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const H1BaseStyled = styled.h1`
-  color: rgba(255, 255, 255, 0.9);
+  color: white;
   font-weight: 700;
   font-family: var(--h-font);
   text-align: center;

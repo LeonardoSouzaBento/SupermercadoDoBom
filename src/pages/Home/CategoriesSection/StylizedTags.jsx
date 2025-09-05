@@ -35,14 +35,16 @@ export const DivLabelPromosStyled = styled.div`
 export const H1LabelStyled = styled(H1BaseStyled)`
   color: var(--dark-purple);
   scale: 1.03;
-  ${(props) => props.$anun && css`
-    margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 400;
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.9);
-    text-underline-offset: 4px;
-  `}
+  ${(props) =>
+    props.$anun &&
+    css`
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 400;
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, 0.9);
+      text-underline-offset: 4px;
+    `}
 `;
 
 export const DivfStyled = styled.div`
@@ -132,38 +134,40 @@ export const DivCatStyled = styled.div`
         background-color: rgba(255, 255, 255, 0.28);
       }
     `}
-`;
 
-export const ImgStyled = styled.img`
-  height: 48px;
-  width: 48px;
-  background-color: rgb(255, 83, 83);
-  border-radius: 50%;
-  transform: translateY(-24px);
-  filter: contrast(1.7) saturate(1.8);
-  transition: all 0.2s ease;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -20px);
+  & div {
+    display: flex;
+    align-items: center;
+    height: 45px;
+  }
 
-  ${(props) => props.$selected && css`
-    padding: 2px;
-    box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5);
-  `}
-`;
+  & p {
+    font-family: var(--h-font);
+    text-align: center;
+    font-size: 1.04em;
+    letter-spacing: 0.5px;
+    margin: 0;
+    color: var(--dark-purple);
+  }
 
-export const DivNameCatStyled = styled.div`
-  display: flex;
-  align-items: center;
-  height: 45px;
-`;
+  & img {
+    height: 48px;
+    width: 48px;
+    background-color: rgb(255, 83, 83);
+    border-radius: 50%;
+    transform: translateY(-24px);
+    filter: contrast(1.7) saturate(1.8);
+    transition: all 0.2s ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -20px);
 
-export const PStyled = styled.p`
-  font-family: var(--h-font);
-  text-align: center;
-  font-size: 1.04em;
-  letter-spacing: 0.5px;
-  margin: 0;
-  color: var(--dark-purple);
+    ${(props) =>
+      props.$selected &&
+      css`
+        padding: 2px;
+        box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5);
+      `}
+  }
 `;

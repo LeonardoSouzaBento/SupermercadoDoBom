@@ -60,7 +60,7 @@ export const H1Styled = styled(H1BaseStyled)`
 
 /*container de produtos*/
 export const CartSectionStyed = styled.section`
-  width: calc(100% - 24px);
+  width: calc(100% - 28px);
   height: 460px;
   padding: 20px 0;
   padding-top: 10px;
@@ -142,30 +142,30 @@ export const DivSpanDeleteStyled = styled.div`
   &:hover {
     background-color: var(--back-hover);
   }
+
+  & span {
+    font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 22;
+    @media screen and (max-width: 385px) {
+      font-size: 1.55em;
+    }
+    @media screen and (min-width: 385px) and (max-width: 576px) {
+      font-size: 1.58em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.59em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.6em;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      font-size: 1.61em;
+    }
+    @media screen and (min-width: 1201px) {
+      font-size: 1.62em;
+    }
+  }
 `;
 
-export const SpanStyled = styled.span`
-  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 22;
-
-  @media screen and (max-width: 385px) {
-    font-size: 1.55em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.58em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.59em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.6em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.61em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.62em;
-  }
-`;
 
 export const ShadowStyled = styled.div`
   width: 100%;
@@ -208,20 +208,35 @@ export const DivSeeAllStyled = styled.div`
   @media screen and (min-width: 769px) {
     display: none;
   }
-`;
 
-export const SpanSeeAllStyled = styled.span`
-  font-weight: 400;
-  font-size: 1.65em;
-  padding-top: 2px;
+  & p {
+    font-weight: 600;
+    font-family: var(--bt-font);
+    text-transform: uppercase;
+    font-size: 0.93em;
+    user-select: none;
 
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.68em;
-    padding-top: 2.5px;
+    @media screen and (min-width: 385px) and (max-width: 576px) {
+      font-size: 0.94em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 0.95em;
+    }
   }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.7em;
-    padding-top: 3px;
+
+  & span {
+    font-weight: 400;
+    font-size: 1.65em;
+    padding-top: 2px;
+
+    @media screen and (min-width: 385px) and (max-width: 576px) {
+      font-size: 1.68em;
+      padding-top: 2.5px;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.7em;
+      padding-top: 3px;
+    }
   }
 `;
 
@@ -245,7 +260,7 @@ export const ContainerStyled = styled.section`
     width: calc(100% - 16px);
   }
   @media screen and (max-width: 768px) {
-    width: calc(100% - 24px);
+    width: calc(100% - 28px);
     max-width: 400px;
   }
   @media screen and (min-width: 769px) {
@@ -306,15 +321,6 @@ export const H2Styled = styled.h2`
   font-weight: 700;
   color: var(--purple);
 
-  ${(props) =>
-    props.$products &&
-    css`
-      padding-left: 0px;
-      @media screen and (min-width: 769px) and (max-width: 993px) {
-        max-width: 724px;
-      }
-    `}
-
   @media screen and (max-width: 375px) {
     font-size: 1.15em;
   }
@@ -359,6 +365,7 @@ export const ReceiptOptionStyled = styled.div`
 export const SpanReceiptStyled = styled.span`
   font-size: 1.75em;
   font-weight: 550;
+  color: var(--purple);
   ${(props) =>
     !props.$selected &&
     css`
@@ -402,18 +409,18 @@ export const DivAllValuesStyled = styled.div`
   box-sizing: border-box;
   border: 1px solid var(--border);
   position: relative;
-`;
 
-export const DivOneValueStyled = styled.div`
-  width: 100%;
-  height: 44px;
-  box-sizing: border-box;
-  padding: 0 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  border-bottom: 1px solid var(--border);
+  & div {
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--border);
+  }
 `;
 
 export const ButtonContinueStyled = styled.div`
@@ -492,7 +499,7 @@ export const DivDialogStyled = styled.div`
   padding-bottom: 16px;
   margin-right: 12px;
   margin-top: 12px;
-  border-radius: 8px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -500,12 +507,23 @@ export const DivDialogStyled = styled.div`
   z-index: 4;
   background-color: white;
   overflow: hidden;
-  ${(props) => props.$feedback && "background-color: #488658;"};
+  ${(props) => props.$feedback && "background-color: var(--dark-green);"};
   box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.24),
     3px 0px 3px -2px rgba(41, 46, 117, 0.13),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
   transition: height 0.15s ease;
   position: relative;
+
+  & span {
+    font-size: 40px;
+    padding: 5px;
+    margin-bottom: 12px;
+    color: var(--dark-purple);
+    font-weight: 700;
+    background-color: var(--light-green);
+    border-radius: 50%;
+    cursor: default;
+  }
 `;
 
 export const DivToCoverStyled = styled.div`
@@ -518,17 +536,6 @@ export const DivToCoverStyled = styled.div`
   z-index: 3;
 `;
 
-export const SpanDialogStyled = styled.span`
-  font-size: 4.05em;
-  padding: 5px;
-  margin-bottom: 12px;
-  color: #2cdb5a;
-  font-weight: 700;
-  background-color: rgb(255, 255, 255);
-  border-radius: 50%;
-  cursor: default;
-`;
-
 export const DivQuestionStyled = styled.div`
   width: 100%;
   height: 56px;
@@ -536,6 +543,34 @@ export const DivQuestionStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  ${(props) =>
+    !props.$feedback && "border-bottom: 1px solid var(--light-border);"}
+  ${(props) => props.$feedback && "background-color: var(--dark-green);"}
+
+  & h1 {
+    font-family: var(--h-font);
+    font-weight: 700;
+    scale: 0.9;
+    @media screen and (max-width: 385px) {
+      font-size: 1.4em;
+    }
+    @media screen and (min-width: 385px) and (max-width: 576px) {
+      font-size: 1.41em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.43em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.44em;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      font-size: 1.445em;
+    }
+    @media screen and (min-width: 1201px) {
+      font-size: 1.45em;
+    }
+  }
 `;
 
 export const DivSimNaoStyled = styled.div`
@@ -545,20 +580,21 @@ export const DivSimNaoStyled = styled.div`
   height: max-content;
 `;
 
-export const DivPYesNoStyled = styled.div`
+export const ButtonStyled = styled.div`
   height: 48px;
   width: calc(100% - 32px);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
   color: white;
-  background-color: #db2c32;
+  transition: all 0.15 ease;
+  background-color: var(--red);
 
   &:hover {
-    background-color: hsla(358, 71%, 44%, 1);
+    background-color: var(--dark-red);
   }
 
   ${(props) =>
@@ -566,11 +602,39 @@ export const DivPYesNoStyled = styled.div`
     css`
       margin-top: 12px;
       color: black;
-      background-color: #ebeff4;
+      background-color: var(--back-color);
       &:hover {
-        background-color: hsla(213, 29%, 86%, 1);
+        background-color: var(--back-hover);
       }
     `};
+
+  & p {
+    font-family: var(--bt-font);
+    font-weight: 550;
+    padding-bottom: 2px;
+    text-align: center;
+    letter-spacing: 0.72px;
+    border-radius: 4px;
+
+    @media screen and (max-width: 385px) {
+      font-size: 1.15em;
+    }
+    @media screen and (min-width: 385px) and (max-width: 576px) {
+      font-size: 1.18em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.2em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.205em;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      font-size: 1.206em;
+    }
+    @media screen and (min-width: 1201px) {
+      font-size: 1.207em;
+    }
+  }
 `;
 
 /*Ps*/
@@ -603,7 +667,7 @@ export const PValueStyled = styled.p`
   padding-bottom: 2px;
   ${(props) => props.$selected && "font-weight: 700;"}
   ${(props) =>
-    (props.$email) &&
+    props.$email &&
     css`
       width: 100%;
       color: rgba(0, 0, 0, 0.9);
@@ -611,7 +675,6 @@ export const PValueStyled = styled.p`
       font-family: var(--h-font);
       scale: 1.01;
       ${(props) => props.$last && "width: max-content;"}
-      
     `}
 
   @media screen and (max-width: 385px) {
@@ -689,73 +752,6 @@ export const PAddStyled = styled.p`
   }
 `;
 
-export const PQuestionStyled = styled.p`
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  scale: 0.9;
-  @media screen and (max-width: 385px) {
-    font-size: 1.4em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.41em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.43em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.44em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.445em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.45em;
-  }
-`;
-
-export const PYesNoStyled = styled.p`
-  font-family: var(--bt-font);
-  font-weight: 500;
-  padding-bottom: 2px;
-  text-align: center;
-  letter-spacing: 0.72px;
-  border-radius: 4px;
-
-  @media screen and (max-width: 385px) {
-    font-size: 1.15em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.205em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.206em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.207em;
-  }
-`;
-
-export const PSeeAllStyled = styled.p`
-  font-weight: 600;
-  font-family: var(--bt-font);
-  text-transform: uppercase;
-  font-size: 0.93em;
-  user-select: none;
-
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 0.94em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 0.95em;
-  }
-`;
-
 export const H1AlertStyled = styled.h1`
   font-family: var(--h-font);
   font-weight: 500;
@@ -794,18 +790,42 @@ export const BodyAlertStyled = styled.div`
   background-color: hsla(213, 29%, 94%, 1);
   transition: opacity 0.4s ease;
   opacity: ${(props) => props.$opacity};
-`;
 
-export const DivAlertStyled = styled.div`
-  height: 230px;
-  width: 350px;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: var(--red);
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  & div {
+    height: 230px;
+    width: 350px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--red);
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & h1 {
+    font-family: var(--h-font);
+    font-weight: 500;
+
+    @media screen and (max-width: 375px) {
+      font-size: 1.18em;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      font-size: 1.192em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.216em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.241em;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      font-size: 1.267em;
+    }
+    @media screen and (min-width: 1201px) {
+      font-size: 1.28em;
+    }
+  }
 `;

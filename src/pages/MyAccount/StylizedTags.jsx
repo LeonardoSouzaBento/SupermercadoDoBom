@@ -19,7 +19,7 @@ export const H1Styled = styled(H1BaseStyled)`
     width: calc(100% - 16px);
   }
   @media screen and (min-width: 375px) {
-    width: calc(100% - 24px);
+    width: calc(100% - 28px);
     max-width: 520px;
   }
   @media screen and (min-width: 993px) and (max-width: 1085px) {
@@ -36,7 +36,7 @@ export const MainStyled = styled.main`
   display: flex;
   flex-direction: column;
   position: relative;
-  
+
   @media screen and (min-width: 993px) {
     flex-direction: row;
     justify-content: center;
@@ -67,7 +67,7 @@ export const DivOneTwoStyled = styled.div`
     width: calc(100% - 16px);
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: calc(100% - 24px);
+    width: calc(100% - 28px);
   }
   @media screen and (min-width: 993px) {
     width: 50%;
@@ -220,7 +220,7 @@ export const DivThreeButtonStyled = styled.div`
     width: calc(100% - 16px);
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: calc(100% - 24px);
+    width: calc(100% - 28px);
   }
   @media screen and (min-width: 993px) {
     width: 50%;
@@ -289,16 +289,14 @@ export const HeaderH2Styled = styled.header`
 `;
 
 export const SpanH2Styled = styled.span`
-  font-size: 1.53em;
+  font-size: 24px;
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 22;
   cursor: default;
   color: var(--purple);
   margin-right: 8px;
-  @media screen and (max-width: 375px) {
-    font-size: 1.5em;
-  }
-  ${(props) => props.$smaller && "font-size: 1.42em;"}
-  ${(props) => props.$bigger && "font-size: 1.65em;"}
+
+  ${(props) => props.$smaller && "font-size: 21px;"}
+  ${(props) => props.$bigger && "font-size: 26px;"}
   ${(props) =>
     props.$user &&
     css`
@@ -390,7 +388,7 @@ export const DivNameStatus = styled.div`
   height: 24px;
   width: max-content;
   padding-bottom: 3px;
-  padding-right: 0;
+  padding-left: 2px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -405,9 +403,9 @@ export const SpanStatusStyled = styled.span`
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
   padding: 4px;
-  margin-top: 1.5px;
+  margin-top: 2px;
   border-radius: 50%;
-  font-size: 1.08em;
+  font-size: 16px;
 `;
 
 export const NameStatusStyled = styled.p`
@@ -455,10 +453,19 @@ export const DivStyled = styled.div`
 `;
 
 export const Pv2Styled = styled(PStyled)`
+  width: 100%;
   text-align: left;
   margin-bottom: 0px;
   scale: 1.01;
+
   ${(props) => props.$hide && "display: none;"}
+  ${(props) =>
+    props.$contact &&
+    css`
+      font-family: var(--bt-font);
+      text-align: center;
+      padding-right: 26px;
+    `}
 `;
 
 export const StrongStyled = styled.strong`
@@ -498,14 +505,13 @@ export const DivZapAndDivPhone = styled.div`
 export const DivZapOrPhone = styled.div`
   height: 100%;
   width: calc(100% - 16px);
-  padding: 0 16px;
+  padding-left: 12px;
+  padding-right: 6px;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  border-radius: 3px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--light-border);
   ${(props) => props.$selected && "background-color: var(--back-color);"}
 
   @media screen and (max-width: 576px) {
@@ -578,25 +584,28 @@ export const DivSpanStyled = styled.div`
     background-color: hsla(234, 31%, 26%, 1);
   }
   ${(props) =>
-    props.$first &&
+    (props.$first || props.$address) &&
     css`
       position: absolute;
       top: 16px;
       right: 16px;
     `}
   ${(props) =>
-    props.$address &&
-    css`
-      position: absolute;
-      top: 12px;
-      right: 12px;
-    `}
-  ${(props) =>
     props.$disable &&
     css`
+      border-radius: 4px;
       background-color: var(--disable);
       &:hover {
         background-color: var(--disable-hover);
+      }
+    `}
+  ${(props) =>
+    props.$editUser &&
+    css`
+      @media screen and (max-width: 520px) {
+        position: absolute;
+        top: 12px;
+        right: 12px;
       }
     `}
 `;
@@ -622,10 +631,9 @@ export const InputZapStyled = styled.input`
   background-color: var(--back-color);
   font-family: var(--p-font);
   font-weight: 400;
-  border-radius: 3px;
+  border-radius: 4px;
 
   &:focus {
-    border: 1px solid var(--border);
     outline: none;
   }
   ${(props) => props.$hide && "display: none;"}

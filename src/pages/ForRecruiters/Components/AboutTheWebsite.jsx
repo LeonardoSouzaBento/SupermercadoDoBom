@@ -1,4 +1,4 @@
-import { PStyled, H2Styled } from "./StylizedTags";
+import { PStyled, H2Styled } from "../StylizedTags";
 import styled from "styled-components";
 
 const LocalPStyled = styled(PStyled)`

@@ -1,17 +1,17 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { signInWithCustomToken } from "firebase/auth";
-import { auth } from "../../main";
+import { auth } from "../../../main";
 import {
   ContainerEmailStyled,
   LabelStyled,
   InputStyled,
-  SpanEmailStyled,
   ButtonDivStyled,
-} from "./StylizedTags";
-import { PValueStyled, PContinueStyled } from "../../pages/Cart/StylizedTags";
-import { LoginReturn, PasswordValidationReturn } from "./Components";
-import { VisibilityContext } from "../../contexts/VisibilityContext";
+} from "../StylizedTags";
+import { PValueStyled, PContinueStyled } from "../../../pages/Cart/StylizedTags";
+import LoginReturn from "./LoginReturn";
+import PasswordValidationReturn from "./PasswordValidationReturn";
+import { VisibilityContext } from "../../../contexts/VisibilityContext";
 
 function validatePassword(senha) {
   const requisitos = {

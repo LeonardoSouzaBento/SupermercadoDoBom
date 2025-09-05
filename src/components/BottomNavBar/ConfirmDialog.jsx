@@ -5,13 +5,10 @@ import {
   ContainerStyled,
   DivStyled,
   DivSpanStyled,
-  PQuestionStyled,
   DivSimNaoStyled,
-  PSimStyled,
-  PVoltarStyled,
   DivFeedBackStyled,
   PFeedBackStyled,
-  SpanStyled,
+  PQuestionStyled,
 } from "./StylizedTags";
 
 export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
@@ -56,13 +53,10 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
       }}
     >
       <DivStyled $feedback={seeFeedback} $heightDiv={heightDiv}>
-        <DivSpanStyled>
-          <SpanStyled
-            className="material-symbols-rounded"
-            $feedback={seeFeedback}
-          >
+        <DivSpanStyled $feedback={seeFeedback}>
+          <span className="material-symbols-rounded">
             {seeFeedback ? "check" : "exclamation"}
-          </SpanStyled>
+          </span>
 
           {seeFeedback == false && (
             <PQuestionStyled>Cancelar a compra?</PQuestionStyled>
@@ -72,21 +66,21 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
         {/*Botoes de sim ou não*/}
         {seeFeedback === false && (
           <DivSimNaoStyled>
-            <PSimStyled
+            <p
               onPointerDown={(e) => {
                 handleConfirmCancel(e, 1);
               }}
             >
               Sim, cancelar
-            </PSimStyled>
+            </p>
 
-            <PVoltarStyled
+            <p
               onPointerDown={(e) => {
                 handleConfirmCancel(e, 0);
               }}
             >
               Voltar
-            </PVoltarStyled>
+            </p>
           </DivSimNaoStyled>
         )}
 

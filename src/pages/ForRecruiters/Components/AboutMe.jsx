@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import { PStyled, H2Styled } from "./StylizedTags";
+import { PStyled, H2Styled } from "../StylizedTags";
 
 const ContainerDivPButtons = styled.div`
   display: flex;

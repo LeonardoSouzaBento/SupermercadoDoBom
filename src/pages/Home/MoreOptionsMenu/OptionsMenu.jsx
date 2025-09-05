@@ -21,7 +21,7 @@ const contents = [
   { p: "Minha conta", icon: "person_edit", navigateTo: "/minha-conta" },
   { p: "Meus pedidos", icon: "local_mall", navigateTo: "/meus-pedidos" },
   {
-    p: "Sobre o Autor / Sobre o Site",
+    p: "Sobre o Autor E Sobre o Site",
     icon: "description",
     navigateTo: "/sobre",
   },
@@ -51,10 +51,10 @@ const OptionsMenu = ({ setViewOptions }) => {
       try {
         const auth = getAuth();
         await signOut(auth);
-        setUserDisconnected(true);
-        setSeeLogin(true);
         localStorage.clear();
         sessionStorage.clear();
+        setUserDisconnected(true);
+        setSeeLogin(true);
         window.location.reload();
       } catch (error) {
         console.error("Erro ao deslogar:", error);

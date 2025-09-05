@@ -2,14 +2,9 @@ import {
   HeaderStyled,
   DivForLogoStyled,
   LogoDivStyled,
-  SpanLogoStyled,
   DivPsStyled,
-  PNomeSupStyled,
-  PBemVindoStyled,
   SpaceButtonStyed,
   ButtonMoreOptionsStyled,
-  SpanStyled,
-  PStyled,
 } from "./StylizedTags";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 
@@ -27,23 +22,21 @@ const Header = ({ setViewOptions, onHome }) => {
       <DivForLogoStyled $external={true}>
         <DivForLogoStyled>
           <LogoDivStyled>
-            <SpanLogoStyled className="material-symbols-outlined">
-              handshake
-            </SpanLogoStyled>
+            <span className="material-symbols-outlined">handshake</span>
           </LogoDivStyled>
           <DivPsStyled>
-            <PNomeSupStyled>SUPERMERCADO UNIÃO</PNomeSupStyled>
-            <PBemVindoStyled> Seja bem-vindo!</PBemVindoStyled>
+            <p>SUPERMERCADO UNIÃO</p>
+            <p> Seja bem-vindo!</p>
           </DivPsStyled>
         </DivForLogoStyled>
         <SpaceButtonStyed />
       </DivForLogoStyled>
 
       <SearchBar copy={false} onHome={onHome}></SearchBar>
-    
+
       <ButtonMoreOptionsStyled onPointerDown={handleClick}>
-        <SpanStyled className="material-symbols-rounded">menu</SpanStyled>
-        <PStyled>Mais opções</PStyled>
+        <span className="material-symbols-rounded">menu</span>
+        <p>Mais opções</p>
       </ButtonMoreOptionsStyled>
     </HeaderStyled>
   );

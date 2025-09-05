@@ -6,14 +6,12 @@ import {
   DivH1Styled,
 } from "./StylizedTags";
 import { H1Styled } from "../../pages/Cart/StylizedTags";
-import EmailForm from "./EmailForm";
-import {
-  LoginReturn,
-  ButtonClose,
-  ButtonLoginAnonymous,
-  ButtonLoginEmail,
-  ButtonLoginGoogle,
-} from "./Components";
+import EmailForm from "./Components/EmailForm";
+import LoginReturn from "./Components/LoginReturn";
+import ButtonClose from "./Components/ButtonClose";
+import ButtonLoginAnonymous from "./Components/ButtonLoginAnonymous";
+import ButtonLoginEmail from "./Components/ButtonLoginEmail";
+import ButtonLoginGoogle from "./Components/ButtonLoginGoogle";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 
 const Login = ({ setSeeLogin, onMyAccount }) => {
@@ -37,14 +35,14 @@ const Login = ({ setSeeLogin, onMyAccount }) => {
   useEffect(() => {
     if (loginState === "error" && !hasSuccessMessage) {
       setTimeout(() => {
-        setSeeLogin(false);
+        setLoginState("");
       }, 4200);
     }
     if (loginState === "completed") {
       setUserDisconnected(false);
       setTimeout(() => {
         setSeeLogin(false);
-      }, 2000);
+      }, 1800);
     }
   }, [loginState, hasSuccessMessage, setSeeLogin, setUserDisconnected]);
 

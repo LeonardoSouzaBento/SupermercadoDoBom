@@ -7,9 +7,6 @@ import {
   DivfStyled,
   DivCatStyled,
   SpanStyled,
-  ImgStyled,
-  DivNameCatStyled,
-  PStyled,
 } from "./StylizedTags";
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/CartContext";
@@ -88,7 +85,9 @@ function CategoriesSection({ wasResize }) {
         <H1LabelStyled>
           Mais vendidos por categoria,
           <br />
-          <strong style={{fontWeight: 400}}>os produtos básicos ficam aqui.</strong>
+          <strong style={{ fontWeight: 400 }}>
+            os produtos básicos ficam aqui.
+          </strong>
         </H1LabelStyled>
       </DivLabelPromosStyled>
 
@@ -102,14 +101,10 @@ function CategoriesSection({ wasResize }) {
               handlePointerUpCat(e, cat.id);
             }}
           >
-            <ImgStyled
-              src={cat.icon}
-              alt={cat.label}
-              $selected={cat.id === currentCategory}
-            />
-            <DivNameCatStyled>
-              <PStyled>{cat.label}</PStyled>
-            </DivNameCatStyled>
+            <img src={cat.icon} alt={cat.label} />
+            <div>
+              <p>{cat.label}</p>
+            </div>
           </DivCatStyled>
         ))}
       </DivfStyled>

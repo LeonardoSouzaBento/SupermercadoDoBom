@@ -11,13 +11,12 @@ import {
   ContinueSectionStyled,
   DivToCoverStyled,
 } from "./StylizedTags.jsx";
-import {
-  CancelDialog,
-  ReceiptAndContinue,
-  ButtonSeeAll,
-  HeaderCart,
-  DetailAndButtonAdd,
-} from "./Components.jsx";
+import CancelDialog from "./Components/CancelDialog.jsx";
+import ButtonSeeAll from "./Components/ButtonSeeAll.jsx";
+import DetailAndButtonAdd from "./Components/DetailAndButtonAdd.jsx";
+import HeaderCart from "./Components/HeaderCart.jsx";
+import ReceiptAndContinueSection from "./Components/ReceiptAndContinueSection.jsx";
+
 import ProductInFull from "../../components/Product/ProductInFull/ProductInFull.jsx";
 
 //altura - o cabeçalho 'sua compra'
@@ -187,7 +186,7 @@ const Cart = () => {
             totalAddedValue={totalAddedValue}
             scaleWarnnig={scaleWarnnig}
           />
-          <ReceiptAndContinue
+          <ReceiptAndContinueSection
             totalAddedValue={totalAddedValue}
             setScaleWarnnig={setScaleWarnnig}
             setOrderInfo={setOrderInfo}

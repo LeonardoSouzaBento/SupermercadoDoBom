@@ -57,13 +57,13 @@ export const DivCartStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
 
-export const SpanCartStyled = styled.span`
-  color: white;
-  font-size: 1.65em;
-  font-weight: 300;
-  font-variation-settings: "FILL" 1;
+  & span {
+    color: white;
+    font-size: 1.65em;
+    font-weight: 300;
+    font-variation-settings: "FILL" 1;
+  }
 `;
 
 export const DivDeleteStyled = styled(DivCartStyled)`
@@ -74,13 +74,13 @@ export const DivDeleteStyled = styled(DivCartStyled)`
   &:hover {
     background-color: hsl(255, 35.5%, 18%);
   }
-`;
 
-export const SpanDeleteStyled = styled.span`
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 12, "opsz" 30;
-  color: rgb(255, 255, 255);
-  font-size: 1.43em;
-  font-weight: 500;
+  & > span {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 12, "opsz" 30;
+    color: rgb(255, 255, 255);
+    font-size: 1.43em;
+    font-weight: 500;
+  }
 `;
 
 //Divs dos ps
@@ -90,37 +90,65 @@ export const DivPStyled = styled.div`
   align-items: center;
   height: 100%;
   width: 100%;
-`;
 
-export const PPrecoStyled = styled.p`
-  font-family: var(--bt-font);
-  font-weight: 500;
-  letter-spacing: 0.71px;
-  padding-bottom: 2px;
-  color: white;
-  scale: 1.02;
-  @media screen and (max-width: 375px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.106em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.118em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.131em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.144em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.15em;
-  }
-`;
+  /* Estilos para PPrecoStyled */
+  & > p:first-child {
+    font-family: var(--bt-font);
+    font-weight: 500;
+    letter-spacing: 0.71px;
+    padding-bottom: 2px;
+    color: white;
+    scale: 1.02;
 
-export const PItensStyled = styled(PPrecoStyled)`
-  padding-right: 18px;
+    @media screen and (max-width: 375px) {
+      font-size: 1.1em;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      font-size: 1.106em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.118em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.131em;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      font-size: 1.144em;
+    }
+    @media screen and (min-width: 1201px) {
+      font-size: 1.15em;
+    }
+  }
+
+  /* Estilos para PItensStyled */
+  & > p:last-child {
+    font-family: var(--bt-font);
+    font-weight: 500;
+    letter-spacing: 0.71px;
+    padding-bottom: 2px;
+    color: white;
+    scale: 1.02;
+    padding-right: 18px;
+
+    @media screen and (max-width: 375px) {
+      font-size: 1.1em;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      font-size: 1.106em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.118em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.131em;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      font-size: 1.144em;
+    }
+    @media screen and (min-width: 1201px) {
+      font-size: 1.15em;
+    }
+  }
 `;
 
 export const ContainerStyled = styled.div`
@@ -166,21 +194,22 @@ export const DivSpanStyled = styled.div`
   width: 100%;
   gap: 8px;
   position: relative;
-`;
 
-export const SpanStyled = styled.span`
-  font-size: 3.7em;
-  padding: 5px;
-  color: #c2272c;
-  font-weight: 700;
-  background-color: rgb(255, 255, 255);
-  border-radius: 50%;
-  box-shadow: 0px 15px 30px rgba(41, 46, 117, 0.09);
-  position: absolute;
-  transform: translateY(-85%);
-  z-index: 1;
-  ${(props) => props.$feedback && "color: rgb(99, 154, 48);"};
-  ${(props) => props.$feedback && "scale: 0.9;"};
+  /* Estilos para SpanStyled */
+  & > span {
+    font-size: 3.7em;
+    padding: 5px;
+    color: #c2272c;
+    font-weight: 700;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    box-shadow: 0px 15px 30px rgba(41, 46, 117, 0.09);
+    position: absolute;
+    transform: translateY(-85%);
+    z-index: 1;
+    ${(props) => props.$feedback && "color: rgb(99, 154, 48);"};
+    ${(props) => props.$feedback && "scale: 0.9;"};
+  }
 `;
 
 export const PQuestionStyled = styled.p`
@@ -219,6 +248,46 @@ export const DivSimNaoStyled = styled.div`
   width: 100%;
   height: max-content;
   gap: 12px;
+  background-color: transparent;
+
+  /* Estilos para PSimStyled */
+  & p {
+    width: 100%;
+    font-family: var(--bt-font);
+    font-weight: 500;
+    padding: 12.5px 0px;
+    padding-bottom: 14.5px;
+    box-sizing: border-box;
+    text-align: center;
+    letter-spacing: 0.72px;
+    border-radius: 8px;
+    background-color: #8f1d20;
+    color: white;
+
+    &:hover {
+      background-color: #75171b;
+    }
+    transition: background-color 0.1s ease;
+    @media screen and (max-width: 375px) {
+      font-size: 1.05em;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      font-size: 1.06em;
+    }
+    @media screen and (min-width: 577px) {
+      font-size: 1.07em;
+    }
+  }
+
+  /* Estilos para PVoltarStyled */
+  &>p:last-child {
+    color: black;
+    background-color: rgb(255, 255, 255);
+    &:hover {
+      background-color: #ebeff4;
+    }
+    text-shadow: 0.2px 0.2px 0px black;
+  }
 `;
 
 export const PSimStyled = styled.p`

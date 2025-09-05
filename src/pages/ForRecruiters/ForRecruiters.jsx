@@ -8,8 +8,8 @@ import {
   SpanStyled,
   DivContentStyled,
 } from "./StylizedTags";
-import AboutMe from "./AboutMe";
-import AboutTheWebsite from "./AboutTheWebsite";
+import AboutMe from "./Components/AboutMe";
+import AboutTheWebsite from "./Components/AboutTheWebsite";
 import { useEffect, useState } from "react";
 
 const contents = [

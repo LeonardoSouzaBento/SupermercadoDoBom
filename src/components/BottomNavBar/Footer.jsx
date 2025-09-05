@@ -3,16 +3,12 @@ import { CartContext } from "../../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
 import ConfirmDialog from "./ConfirmDialog";
 import {
-  PPrecoStyled,
   FooterStyled,
   CartDescStyled,
   DivDeleteAndCart,
   DivCartStyled,
-  SpanCartStyled,
   DivDeleteStyled,
-  SpanDeleteStyled,
   DivPStyled,
-  PItensStyled,
 } from "./StylizedTags";
 
 export default function Footer() {
@@ -59,23 +55,23 @@ export default function Footer() {
                 setViewConfirm(true);
               }}
             >
-              <SpanDeleteStyled className="material-symbols-rounded">
+              <span className="material-symbols-rounded">
                 delete
-              </SpanDeleteStyled>
+              </span>
             </DivDeleteStyled>
 
             <DivCartStyled>
-              <SpanCartStyled className="material-symbols-rounded">
+              <span className="material-symbols-rounded">
                 shopping_cart
-              </SpanCartStyled>
+              </span>
             </DivCartStyled>
           </DivDeleteAndCart>
 
           <DivPStyled>
-            <PPrecoStyled>R$ {totalValueFormatted}</PPrecoStyled>
-            <PItensStyled>
+            <p>R$ {totalValueFormatted}</p>
+            <p>
               {quantityItens} {quantityItens == 1 ? "item" : "itens"}
-            </PItensStyled>
+            </p>
           </DivPStyled>
         </CartDescStyled>
       </FooterStyled>

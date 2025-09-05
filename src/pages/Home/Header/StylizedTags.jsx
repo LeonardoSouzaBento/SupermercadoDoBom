@@ -81,30 +81,30 @@ export const LogoDivStyled = styled.div`
     height: 68px;
     width: 68px;
   }
-`;
 
-export const SpanLogoStyled = styled.span`
-  color: white;
-  font-weight: 700;
-  padding-top: 1px;
+  & span {
+    color: white;
+    font-weight: 700;
+    padding-top: 1px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 2.18em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 2.207em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 2.259em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 2.315em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 2.372em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 2.4em;
+    @media screen and (max-width: 375px) {
+      font-size: 2.18em;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      font-size: 2.207em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 2.259em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 2.315em;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      font-size: 2.372em;
+    }
+    @media screen and (min-width: 1201px) {
+      font-size: 2.4em;
+    }
   }
 `;
 
@@ -112,51 +112,54 @@ export const DivPsStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-`;
 
-export const PNomeSupStyled = styled.p`
-  font-family: var(--bt-font);
-  font-weight: 800;
-  color: white;
-  letter-spacing: 0.45px;
+  p {
+    color: white;
+    letter-spacing: 0.45px;
+  }
 
-  @media (max-width: 375px) {
-    font-size: 1.05em;
-    max-width: 200px;
-  }
-  @media (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.05em;
-  }
-  @media (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.06em;
-  }
-  @media (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.07em;
-  }
-  @media (min-width: 993px) {
-    font-size: 1.08em;
-  }
-`;
+  p:first-child {
+    font-family: var(--bt-font);
+    font-weight: 800;
 
-export const PBemVindoStyled = styled(PNomeSupStyled)`
-  font-family: "Lato", Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  color: white;
-  letter-spacing: auto;
-  @media (max-width: 375px) {
-    font-size: 1.12em;
+    @media (max-width: 375px) {
+      font-size: 1.05em;
+      max-width: 200px;
+    }
+    @media (min-width: 375px) and (max-width: 576px) {
+      font-size: 1.05em;
+    }
+    @media (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.06em;
+    }
+    @media (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.07em;
+    }
+    @media (min-width: 993px) {
+      font-size: 1.08em;
+    }
   }
-  @media (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.13em;
-  }
-  @media (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.14em;
-  }
-  @media (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.15em;
-  }
-  @media (min-width: 993px) {
-    font-size: 1.16em;
+
+  p:last-child {
+    font-family: var(h-font);
+    font-weight: 400;
+    letter-spacing: auto;
+
+    @media (max-width: 375px) {
+      font-size: 1.12em;
+    }
+    @media (min-width: 375px) and (max-width: 576px) {
+      font-size: 1.13em;
+    }
+    @media (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.14em;
+    }
+    @media (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.15em;
+    }
+    @media (min-width: 993px) {
+      font-size: 1.16em;
+    }
   }
 `;
 
@@ -203,6 +206,43 @@ export const ButtonMoreOptionsStyled = styled.div`
     padding: 0px 16px;
     gap: 4px;
     border-radius: 12px;
+  }
+
+  & span {
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      font-size: 1.55em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.6em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.65em;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      font-size: 1.7em;
+    }
+    @media screen and (min-width: 1201px) {
+      font-size: 1.45em;
+      padding-right: 4px;
+    }
+  }
+
+  & p {
+    font-family: var(--bt-font);
+    font-weight: 600;
+    font-size: 1.05em;
+    letter-spacing: 0.8px;
+    margin: 0px;
+    padding-bottom: 2px;
+    @media (max-width: 1201px) {
+      display: none;
+    }
+    user-select: none;
+    cursor: pointer;
   }
 `;
 
