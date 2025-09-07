@@ -1,10 +1,12 @@
 import styled, { css } from "styled-components";
-import { H1BaseStyled } from "../GenericStylizedTags";
+import { DivToCoverStyled, H1BaseStyled } from "../GenericStylizedTags";
 
 export const ContainerStyled = styled.div`
   height: 100vh;
   width: 100%;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0px;
@@ -21,27 +23,17 @@ export const DivMainStyled = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   border-radius: 12px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* box-shadow: 0px 4px 10px -3px rgba(41, 46, 117, 0.5); */
   box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.4),
     4px 0px 4px -3px rgba(41, 46, 117, 0.1),
     -4px 0px 4px -3px rgba(41, 46, 117, 0.1);
   background-color: white;
-  transform: translate(-50%, -50%);
 
   @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }
 `;
 
-export const DivAlertStyled = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+export const DivAlertStyled = styled(DivToCoverStyled)`
   background-color: var(--red);
   display: flex;
   justify-content: center;
@@ -57,6 +49,7 @@ export const DivH1Styled = styled.div`
   justify-content: center;
   align-items: center;
   background-color: var(--red);
+  position: relative;
 `;
 
 export const H1LoginStyled = styled(H1BaseStyled)`

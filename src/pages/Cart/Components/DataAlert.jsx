@@ -4,7 +4,7 @@ const DataAlert = () => {
   return (
     <BodyAlertStyled>
       <div>
-        <h1 $warn={true} style={{ color: "white" }}>
+        <h1 style={{ color: "white" }}>
           <strong style={{ fontWeight: 600 }}>
             Complete suas informações{" "}
           </strong>

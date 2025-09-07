@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { H1BaseStyled, H2BaseStyled } from "../../GenericStylizedTags";
+import { DivToCoverStyled, H1BaseStyled, H2BaseStyled } from "../../GenericStylizedTags";
 
 export const BodyDivStyled = styled.div`
   width: 100vw;
@@ -513,18 +513,12 @@ export const PSubStyled = styled(PNameProdStyled)`
   }
 `;
 
-export const DivCoverSubStyled = styled.div`
-  width: 100%;
-  height: 100%;
+export const DivCoverSubStyled = styled(DivToCoverStyled)`
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
   border-radius: 8px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
 `;
 
 export const SimilarSectionStyled = styled.section`

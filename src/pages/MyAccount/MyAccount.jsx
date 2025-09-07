@@ -30,6 +30,11 @@ const MyAccount = () => {
     if (cartProducts.length === 0) {
       setOrderInfo({ ...orderInfo, status: "" });
     }
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
   }, []);
 
   return (
@@ -53,6 +58,8 @@ const MyAccount = () => {
             setSeeRegisterAddress={setSeeRegisterAddress}
             isDataComplete={isDataComplete}
             userAddress={userAddress}
+            userContact={userContact}
+            setSeeLogin={setSeeLogin}
           />
           <FinishShopping
             userContact={userContact}

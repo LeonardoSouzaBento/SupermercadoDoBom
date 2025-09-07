@@ -345,43 +345,49 @@ export const H2v2Styled = styled(H2Styled)`
 export const DivStatusStyled = styled.div`
   width: 100%;
   padding-left: 20px;
-  ${(props) => props.$finish && "padding-left: 0px;"}
   box-sizing: border-box;
   display: flex;
 
-  @media screen and (min-width: 520px) and (max-width: 1058px) {
+  ${(props) => (props.$finish || props.$user) && "padding-left: 0px;"}
+
+  @media screen and (min-width: 520px) and (max-width: 993px) {
     width: 50%;
     padding-left: 0px;
     justify-content: flex-end;
     ${(props) => props.$user && "width: 100%;"}
+
+    ${(props) =>
+      (props.$finish || props.$contact) &&
+      css`
+        justify-content: flex-start;
+        margin-left: 20px;
+        ${(props) => props.$finish && "margin-left: 0px;"}
+      `}
   }
+
+  @media screen and (min-width: 993px) and (max-width: 1058px) {
+    justify-content: flex-start;
+
+    ${(props) =>
+      props.$user &&
+      css`
+        justify-content: flex-start;
+      `}
+  }
+
   @media screen and (min-width: 1058px) {
     width: 50%;
     margin: 0;
     padding: 0;
     justify-content: flex-end;
-  }
-  ${(props) => props.$user && "padding-left: 0;"}
-  ${(props) =>
-    !props.$user &&
-    css`
-      @media screen and (min-width: 520px) and (max-width: 1058px) {
-        justify-content: flex-start !important;
-        margin-left: 20px;
-        ${(props) => props.$finish && "margin-left: 0px;"}
-      }
-    `}
-  ${(props) =>
-    props.$user &&
-    css`
-      @media screen and (min-width: 993px) and (max-width: 1058px) {
-        justify-content: flex-start;
-      }
-      @media screen and (min-width: 1058px) {
+
+    ${(props) =>
+      props.$user &&
+      css`
         width: 100%;
         justify-content: flex-end;
-      }
-    `}
+      `}
+  }
 `;
 
 export const DivNameStatus = styled.div`
@@ -452,11 +458,31 @@ export const DivStyled = styled.div`
   box-sizing: border-box;
 `;
 
-export const Pv2Styled = styled(PStyled)`
+export const H3Styled = styled.h3`
   width: 100%;
   text-align: left;
-  margin-bottom: 0px;
   scale: 1.01;
+  font-weight: 600;
+  font-family: var(--p-font);
+
+  @media screen and (max-width: 375px) {
+    font-size: 1.13em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.11em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.13em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.135em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.138em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.14em;
+  }
 
   ${(props) => props.$hide && "display: none;"}
   ${(props) =>
@@ -468,9 +494,31 @@ export const Pv2Styled = styled(PStyled)`
     `}
 `;
 
-export const StrongStyled = styled.strong`
-  font-weight: 600;
-  ${(props) => props.$pStatus && "font-weight: 400;"}
+export const Pv2Styled = styled(PStyled)`
+  width: 100%;
+  text-align: left;
+  scale: 1.01;
+  margin-bottom: 0px;
+
+  ${(props) => props.$hide && "display: none;"}
+  ${(props) =>
+    props.$contact &&
+    css`
+      font-family: var(--bt-font);
+      text-align: center;
+      padding-right: 26px;
+    `}
+`;
+
+export const DivInvalidWarnStyled = styled.div`
+  width: calc(100% - 32px);
+  height: auto;
+  padding: 8px 20px;
+  background-color: var(--dark-red);
+  border-radius: 4px;
+  margin: auto;
+  margin-bottom: 8px;
+  box-sizing: border-box;
 `;
 
 export const DivZapStyled = styled.div`
@@ -482,6 +530,7 @@ export const DivZapStyled = styled.div`
   align-items: center;
   ${(props) => props.$seeInput && "align-items: flex-end;"};
   position: relative;
+  overflow: hidden;
 `;
 
 export const DivZapAndDivPhone = styled.div`

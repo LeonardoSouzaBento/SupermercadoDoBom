@@ -60,10 +60,9 @@ const Login = ({ setSeeLogin, onMyAccount }) => {
           />
         ) : (
           <>
-            <ButtonClose setSeeLogin={setSeeLogin} />
-
             <DivH1Styled>
               <H1Styled $login={true}>Fazer Login</H1Styled>
+              <ButtonClose setSeeLogin={setSeeLogin} />
             </DivH1Styled>
 
             <DivButtonsStyled>

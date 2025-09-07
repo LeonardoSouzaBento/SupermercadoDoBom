@@ -13,15 +13,17 @@ import {
   DivZapStyled,
   DivFormStyled,
   Pv2Styled,
-  StrongStyled,
   InputZapStyled,
   DivSpanStyled,
   SpanEditStyled,
   DivZapAndDivPhone,
   DivZapOrPhone,
-  SpanCheckStyled
+  SpanCheckStyled,
+  H3Styled,
+  DivInvalidWarnStyled,
 } from "../StylizedTags";
-import { PContinueStyled, SpanReceiptStyled} from "../../Cart/StylizedTags";
+import { PContinueStyled, SpanReceiptStyled } from "../../Cart/StylizedTags";
+import { DivToCoverStyled } from "../../../components/GenericStylizedTags";
 import { VisibilityContext } from "../../../contexts/VisibilityContext";
 
 function formatPhone(num, selectedPhoneType) {
@@ -99,32 +101,64 @@ function validatePhoneNumber(num, selectedPhoneType) {
 }
 
 export const Contact = () => {
-  const { userContact, setUserContact, isDataComplete, setIsDataComplete } =
-    useContext(VisibilityContext);
+  const {
+    userContact,
+    setUserContact,
+    isDataComplete,
+    setIsDataComplete,
+    setSeeLogin,
+  } = useContext(VisibilityContext);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [seeInput, setSeeInput] = useState(false);
   const [isValidNumber, setIsValidNumber] = useState(false);
   const [selectedPhoneType, setSelectedPhoneType] = useState("zap");
+  const [clickCount, setClickCount] = useState(0);
+  const [seeLoginWarn, setSeeLoginWarn] = useState(false);
+  const [seeInvalidWarn, setSeeInvalidWarn] = useState(false);
 
   const inputZapRef = useRef(null);
 
-  function handleFocusOnInput() {
-    if (!seeInput) {
-      setSeeInput(true);
-      setTimeout(() => {
-        inputZapRef.current.focus();
-      }, 100);
-      setTimeout(() => {
-        inputZapRef.current.focus();
-      }, 120);
-      setPhoneNumber("");
+  function showLoginWarn() {
+    setSeeLoginWarn(true);
+    setTimeout(() => {
+      setSeeLoginWarn(false);
+      setSeeLogin(true);
+    }, 3000);
+  }
+
+  function showInvalidWarn() {
+    setSeeInvalidWarn(true);
+    setTimeout(() => {
+      setSeeInvalidWarn(false);
+    }, 2000);
+  }
+
+  function handleClickSavePhone() {
+    if (!userContact.email) {
+      showLoginWarn();
     } else {
-      if (isValidNumber) {
-        setSeeInput(false);
-        setUserContact({ ...userContact, phone: phoneNumber });
-        setIsDataComplete({ ...isDataComplete, contact: true });
+      if (!seeInput) {
+        setSeeInput(true);
+        setTimeout(() => {
+          inputZapRef.current.focus();
+        }, 100);
+        setTimeout(() => {
+          inputZapRef.current.focus();
+        }, 120);
+        setPhoneNumber("");
       } else {
-        setSeeInput(false);
+        if (isValidNumber) {
+          setSeeInput(false);
+          setUserContact({ ...userContact, phone: phoneNumber });
+          setIsDataComplete({ ...isDataComplete, contact: true });
+        } else {
+          setClickCount((prev) => prev + 1);
+          if (clickCount % 2 == 0) {
+            setSeeInput(false);
+          } else {
+            showInvalidWarn();
+          }
+        }
       }
     }
   }
@@ -155,10 +189,7 @@ export const Contact = () => {
       )}
       <DivH2StatusStyled>
         <HeaderH2Styled>
-          <SpanH2Styled
-            className="material-symbols-outlined"
-            $smaller={true}
-          >
+          <SpanH2Styled className="material-symbols-outlined" $smaller={true}>
             call
           </SpanH2Styled>
           <H2v2Styled style={{ marginBottom: "0px" }}>
@@ -168,7 +199,7 @@ export const Contact = () => {
 
         {/*Estado do número*/}
         {!isDataComplete.contact && (
-          <DivStatusStyled>
+          <DivStatusStyled $contact={true}>
             <DivNameStatus>
               <SpanStatusStyled className="material-symbols-outlined">
                 {isDataComplete.contact ? "check" : "exclamation"}
@@ -183,12 +214,15 @@ export const Contact = () => {
 
       {/*Whatsapp*/}
       <DivStyled>
-        <div style={{ border: "1px solid var(--border)", borderRadius: "6px" }}>
+        <div
+          style={{
+            border: "1px solid var(--border)",
+            borderRadius: "6px",
+          }}
+        >
           <DivZapStyled $seeInput={seeInput}>
             <DivFormStyled $zap={true}>
-              <Pv2Styled>
-                <StrongStyled>Whatsapp ou Telefone:</StrongStyled> <br />
-              </Pv2Styled>
+              <H3Styled>Whatsapp ou Telefone:</H3Styled>
 
               <Pv2Styled $hide={userContact.phone === ""}>
                 {userContact.phone}
@@ -209,7 +243,7 @@ export const Contact = () => {
             <DivSpanStyled
               $disable={!isValidNumber && seeInput}
               onClick={() => {
-                handleFocusOnInput();
+                handleClickSavePhone();
               }}
             >
               {seeInput ? (
@@ -220,7 +254,30 @@ export const Contact = () => {
                 </SpanEditStyled>
               )}
             </DivSpanStyled>
+
+            {seeLoginWarn && (
+              <DivToCoverStyled>
+                <H2v2Styled
+                  $nameUser={true}
+                  style={{
+                    width: "100%",
+                    textAlign: "center",
+                    color: "var(--dark-red)",
+                    scale: 1.03,
+                  }}
+                >
+                  Faça login primeiro!
+                </H2v2Styled>
+              </DivToCoverStyled>
+            )}
           </DivZapStyled>
+          {seeInvalidWarn && (
+            <DivInvalidWarnStyled>
+              <H3Styled style={{ color: "white" }}>
+                {phoneNumber.length !== 0 ? "Número inválido!" : "Digite um número."}
+              </H3Styled>
+            </DivInvalidWarnStyled>
+          )}
 
           <DivZapAndDivPhone $visible={seeInput}>
             <DivZapOrPhone

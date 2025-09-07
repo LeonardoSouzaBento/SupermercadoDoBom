@@ -166,7 +166,6 @@ export const DivSpanDeleteStyled = styled.div`
   }
 `;
 
-
 export const ShadowStyled = styled.div`
   width: 100%;
   height: 16px;
@@ -376,17 +375,15 @@ export const SpanReceiptStyled = styled.span`
 
 export const DivAvisoStyled = styled.div`
   width: 100%;
-  height: 100%;
+  height: max-content;
   position: absolute;
   top: 0;
   left: 0;
-  padding: 16px 18px;
-  margin: auto;
-  margin-bottom: 12px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  border-radius: 4px;
+
   background-color: var(--red);
   border: 1px solid var(--red);
   position: relative;
@@ -410,7 +407,7 @@ export const DivAllValuesStyled = styled.div`
   border: 1px solid var(--border);
   position: relative;
 
-  & div {
+  & div:not(:first-child) {
     width: 100%;
     height: 44px;
     box-sizing: border-box;

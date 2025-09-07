@@ -116,6 +116,11 @@ export const PStyled = styled.p`
   text-align: justify;
   margin-bottom: 12px;
   line-height: 1.27;
+  color: var(--dark-purple);
+
+  & strong{
+    color: var(--dark-purple);
+  }
 
   @media screen and (max-width: 375px) {
     font-size: 1.13em;
@@ -168,7 +173,7 @@ export const H1Styled = styled.h1`
 export const H2Styled = styled.h2`
   font-size: 1.1em;
   font-family: var(--h-font);
-  color: var(--dark-purple);
+  color: var(--purple);
   font-weight: 700;
   margin-bottom: 20px;
 

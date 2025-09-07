@@ -129,7 +129,10 @@ const AboutMe = () => {
     <>
       <H2Styled>{greeting}</H2Styled>
       <PStyled $moreWidth={true}>
-        Meu nome é <strong>Leonardo Souza Bento. </strong>
+        Meu nome é{" "}
+        <strong style={{ color: "var(--dark-purple)" }}>
+          Leonardo Souza Bento.{" "}
+        </strong>
         Estou procurando um trabalho como desenvolvedor front-end junior
         (preferencialmente trabalho remoto). Venho de familia pobre e vivo numa
         cidade do interior da Bahia, por isso peço essa oportunidade. O curso de

@@ -53,3 +53,17 @@ export const H2BaseStyled = styled.h2`
     font-size: 1.288em;
   }
 `;
+
+export const DivToCoverStyled = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 12px;
+`;

@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import { H1BaseStyled } from "../../../components/GenericStylizedTags";
+import { DivToCoverStyled } from "../../Cart/StylizedTags";
 
 export const DivBodyStyled = styled.div`
   width: 100vw;
@@ -12,8 +13,6 @@ export const DivBodyStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 5;
-  /* background-color: hsla(213, 29%, 94%, 1); */
-  /* background-color: rgba(56, 61, 106, 0.52); */
   background-color: rgba(0, 0, 0, 0.3);
   transition: opacity 0.3s ease;
   opacity: ${(props) => props.$opacity};
@@ -36,9 +35,6 @@ export const MainDivStyled = styled.div`
   background-color: white;
   position: relative;
   overflow: hidden;
-  /* box-shadow: 0px 3px 6px -3px rgba(41, 46, 117, 0.5),
-    4px 0px 4px -3px rgba(41, 46, 117, 0.1),
-    -4px 0px 4px -3px rgba(41, 46, 117, 0.1); */
   box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.4),
     4px 0px 4px -3px rgba(41, 46, 117, 0.1),
     -4px 0px 4px -3px rgba(41, 46, 117, 0.1);
@@ -187,12 +183,7 @@ export const ButtonStyled = styled.button`
   }
 `;
 
-export const DivApiReturnStyled = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+export const DivApiReturnStyled = styled(DivToCoverStyled)`
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -7,7 +7,7 @@ import { ButtonLoginStyled, DivSpanPStyled, PLoginStyled, ImgGoogleStyled } from
 const provider = new GoogleAuthProvider();
 
 const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
-  const { setIdToken, setUserContact } = useContext(VisibilityContext);
+  const { setIdToken, userContact, setUserContact} = useContext(VisibilityContext);
 
   async function handleGoogleLogin() {
     setLoginState("pending");
@@ -19,11 +19,12 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       setUserContact({
+        ...userContact,
         name: user.displayName,
         email: user.email,
         photoUrl: user.photoURL,
       });
-
+      
       const idToken = await user.getIdToken();
       setIdToken(idToken);
 

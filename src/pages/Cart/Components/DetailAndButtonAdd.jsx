@@ -12,6 +12,7 @@ import {
   H2Styled,
 } from "../StylizedTags.jsx";
 import { SpanH2Styled } from "../../../pages/MyAccount/StylizedTags.jsx";
+import { DivToCoverStyled } from "../../../components/GenericStylizedTags.jsx";
 
 const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
   const navigate = useNavigate();
@@ -49,11 +50,13 @@ const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
 
         <DivAllValuesStyled>
           {falta > 0 && totalAddedValue != 0 && (
-            <DivAvisoStyled $scale={scaleWarnnig}>
-              <PAvisoStyled>
-                Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
-              </PAvisoStyled>
-            </DivAvisoStyled>
+            <DivToCoverStyled style={{alignItems: "flex-start", backgroundColor: "transparent"}}>
+              <DivAvisoStyled $scale={scaleWarnnig}>
+                <PAvisoStyled>
+                  Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
+                </PAvisoStyled>
+              </DivAvisoStyled>
+            </DivToCoverStyled>
           )}
           <div>
             <PValueStyled>Compra:</PValueStyled>

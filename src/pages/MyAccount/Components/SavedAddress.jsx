@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   DivThreeStyled,
   DivH2StatusStyled,
@@ -13,15 +14,19 @@ import {
   DivHalfAddressStyled,
   DivFormStyled,
   Pv2Styled,
-  StrongStyled,
   DivSpanStyled,
   SpanEditStyled,
+  SpanCheckStyled,
+  H3Styled,
 } from "../StylizedTags";
+import { DivToCoverStyled } from "../../../components/GenericStylizedTags";
 
 export const SavedAddress = ({
   setSeeRegisterAddress,
   isDataComplete,
   userAddress,
+  userContact,
+  setSeeLogin,
 }) => {
   function GetInitialsNameState() {
     const palavras = userAddress.estado.split(" ");
@@ -30,6 +35,23 @@ export const SavedAddress = ({
     return result;
   }
   const initialNameState = GetInitialsNameState();
+  const [seeLoginWarn, setSeeLoginWarn] = useState(false);
+
+  function showLoginWarn() {
+    setSeeLoginWarn(true);
+    setTimeout(() => {
+      setSeeLoginWarn(false);
+      setSeeLogin(true);
+    }, 3000);
+  }
+
+  function handleRegisterAddress() {
+    if (userContact.email) {
+      setSeeRegisterAddress(true);
+    } else {
+      showLoginWarn();
+    }
+  }
 
   return (
     <DivThreeStyled>
@@ -50,7 +72,7 @@ export const SavedAddress = ({
         </HeaderH2Styled>
 
         {!isDataComplete.address && (
-          <DivStatusStyled>
+          <DivStatusStyled $address={true}>
             <DivNameStatus>
               <SpanStatusStyled className="material-symbols-rounded">
                 {isDataComplete.address ? "check" : "exclamation"}
@@ -67,18 +89,14 @@ export const SavedAddress = ({
         <DivAddressStyled>
           <DivHalfAddressStyled $first={true}>
             <DivFormStyled $first={true}>
-              <Pv2Styled>
-                <StrongStyled>Rua:</StrongStyled>
-              </Pv2Styled>
+              <H3Styled>Rua:</H3Styled>
               <Pv2Styled>
                 {!userAddress.rua ? "Não fornecido" : userAddress.rua}
               </Pv2Styled>
             </DivFormStyled>
 
             <DivFormStyled>
-              <Pv2Styled>
-                <StrongStyled>Número:</StrongStyled>
-              </Pv2Styled>
+              <H3Styled>Número:</H3Styled>
               <Pv2Styled>
                 {!userAddress.numero ? "Não fornecido" : userAddress.numero}
               </Pv2Styled>
@@ -87,9 +105,7 @@ export const SavedAddress = ({
 
           <DivHalfAddressStyled>
             <DivFormStyled $first={true}>
-              <Pv2Styled>
-                <StrongStyled>Complemento:</StrongStyled>
-              </Pv2Styled>
+              <H3Styled>Complemento:</H3Styled>
               <Pv2Styled>
                 {!userAddress.complemento
                   ? "Não fornecido (opcional)"
@@ -99,9 +115,7 @@ export const SavedAddress = ({
 
             <DivFormStyled>
               <DivFormStyled>
-                <Pv2Styled>
-                  <StrongStyled>Cidade (UF):</StrongStyled>
-                </Pv2Styled>
+                <H3Styled>Cidade (UF):</H3Styled>
                 <Pv2Styled>
                   {!userAddress.cidade
                     ? "Não fornecido"
@@ -116,14 +130,28 @@ export const SavedAddress = ({
           <DivSpanStyled
             $address={true}
             $first={true}
-            onClick={() => {
-              setSeeRegisterAddress(true);
-            }}
+            onClick={handleRegisterAddress}
           >
             <SpanEditStyled className="material-symbols-rounded">
               edit
             </SpanEditStyled>
           </DivSpanStyled>
+
+          {seeLoginWarn && (
+            <DivToCoverStyled>
+              <H2v2Styled
+                $nameUser={true}
+                style={{
+                  width: "100%",
+                  textAlign: "center",
+                  color: "var(--dark-red)",
+                  scale: 1.03,
+                }}
+              >
+                Faça login primeiro!
+              </H2v2Styled>
+            </DivToCoverStyled>
+          )}
         </DivAddressStyled>
       </DivStyled>
     </DivThreeStyled>
