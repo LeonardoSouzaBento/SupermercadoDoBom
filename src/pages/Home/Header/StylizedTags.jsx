@@ -65,7 +65,7 @@ export const LogoDivStyled = styled.div`
   border-radius: 50%;
   transform: scaleX(-1);
   box-sizing: border-box;
-  padding-top: 1px;
+  padding-right: 2.2px;
   border: 1px solid var(--red);
   box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.4);
   @media (max-width: 375px) {

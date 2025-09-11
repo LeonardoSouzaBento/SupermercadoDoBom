@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import { H1BaseStyled } from "../../../components/GenericStylizedTags";
-import { DivToCoverStyled } from "../../Cart/StylizedTags";
+import { DivToCoverStyled } from "../../../components/GenericStylizedTags";
 
 export const DivBodyStyled = styled.div`
   width: 100vw;
@@ -26,7 +26,7 @@ export const DivBodyStyled = styled.div`
 export const MainDivStyled = styled.div`
   height: auto;
   width: calc(100% - 24px);
-  max-width: 400px;
+  max-width: 406px;
   margin-bottom: 4px;
   padding-top: 10px;
   padding-bottom: 25px;
@@ -43,7 +43,6 @@ export const MainDivStyled = styled.div`
   @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }
-
   @media screen and (min-width: 375px) and (max-width: 577px) {
     margin-bottom: 0px;
   }
@@ -190,7 +189,7 @@ export const DivApiReturnStyled = styled(DivToCoverStyled)`
   align-items: center;
   gap: 12px;
   background-color: white;
-  z-index: 2;
+  z-index: 4;
   opacity: ${(props) => props.$opacityReturn};
   transition: opacity 0.2s ease;
   user-select: none;
@@ -198,7 +197,7 @@ export const DivApiReturnStyled = styled(DivToCoverStyled)`
 
 export const SpanApiReturnStyled = styled.span`
   user-select: none;
-  font-weight: 550;
+  font-weight: 600;
 
   ${(props) =>
     props.$error &&
@@ -214,8 +213,8 @@ export const SpanApiReturnStyled = styled.span`
   ${(props) =>
     props.$wait &&
     css`
-      font-size: 2.5em;
-      color: var(--purple);
+      font-size: 2.35em;
+      color: var(--red);
       animation: ${rotate} 2s linear infinite;
     `}
 `;

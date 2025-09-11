@@ -12,12 +12,11 @@ export const ContainerStyled = styled.section`
   background-image: linear-gradient(
     to bottom,
     var(--purple),
-    hsla(223, 19%, 92%, 1)
+    hsl(210, 33%, 93%)
   );
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-
   @media screen and (max-width: 576px) {
     width: calc(100% - 16px);
   }
@@ -32,8 +31,7 @@ export const DivStyled = styled.div`
   overflow-x: scroll;
   box-sizing: border-box;
   padding: 12px 24px;
-  margin-bottom: 12px;
-
+  margin-bottom: 16px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {
@@ -68,13 +66,11 @@ export const ImgStyled = styled.img`
 
 export const DivPaginationStyled = styled.div`
   height: max-content;
-  width: 43%;
-  max-width: 230px;
+  width: 200px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 0px;
 `;
 
 export const SpanStyled = styled.span.attrs(() => ({

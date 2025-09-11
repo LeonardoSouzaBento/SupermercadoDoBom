@@ -145,7 +145,8 @@ export const SavedAddress = ({
                   width: "100%",
                   textAlign: "center",
                   color: "var(--dark-red)",
-                  scale: 1.03,
+                  scale: 1.1,
+                  fontWeight: 400
                 }}
               >
                 Faça login primeiro!

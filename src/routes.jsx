@@ -5,6 +5,7 @@ import SearchAction from "./pages/SearchAction";
 import ForRecruitersPage from "./pages/ForRecruiters/ForRecruiters";
 import MyOrders from "./pages/MyOrders/MyOrders"
 import MyAccount from "./pages/MyAccount/MyAccount"
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path="/sobre" element={<ForRecruitersPage />} />
       <Route path="/minha-conta" element={<MyAccount />} />
       <Route path="/meus-pedidos" element={<MyOrders />} />
+      <Route path="/fazer-login" element={<LoginPage />} />
     </Routes>
   );
 };

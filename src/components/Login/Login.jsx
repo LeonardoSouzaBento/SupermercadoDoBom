@@ -17,8 +17,8 @@ import { VisibilityContext } from "../../contexts/VisibilityContext";
 const Login = ({ setSeeLogin, onMyAccount }) => {
   const [opacity, setOpacity] = useState(0);
   const [loginState, setLoginState] = useState("");
-  const [seeEmailForm, setSeeEmailForm] = useState(false);
   const [hasSuccessMessage, setHasSuccessMessage] = useState(false);
+  const [seeEmailForm, setSeeEmailForm] = useState(false);
   const { setUserDisconnected } = useContext(VisibilityContext);
 
   function setLoginSucess() {
@@ -50,7 +50,6 @@ const Login = ({ setSeeLogin, onMyAccount }) => {
     <ContainerStyled $opacity={opacity}>
       <DivMainStyled>
         {loginState !== "" && <LoginReturn loginState={loginState} />}
-
         {seeEmailForm ? (
           <EmailForm
             loginState={loginState}

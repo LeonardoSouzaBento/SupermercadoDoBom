@@ -7,6 +7,7 @@ import {
   ButtonMoreOptionsStyled,
 } from "./StylizedTags";
 import SearchBar from "../../../components/SearchBar/SearchBar";
+import { HeartHandshake } from "lucide-react";
 
 const Header = ({ setViewOptions, onHome }) => {
   function handleClick(e) {
@@ -22,7 +23,7 @@ const Header = ({ setViewOptions, onHome }) => {
       <DivForLogoStyled $external={true}>
         <DivForLogoStyled>
           <LogoDivStyled>
-            <span className="material-symbols-outlined">handshake</span>
+            <HeartHandshake color="white" size={38} strokeWidth={2.55}/>
           </LogoDivStyled>
           <DivPsStyled>
             <p>SUPERMERCADO UNIÃO</p>

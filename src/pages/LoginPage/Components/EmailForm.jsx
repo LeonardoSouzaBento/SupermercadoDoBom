@@ -1,39 +1,22 @@
-import { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import { useState, useContext, useEffect, } from "react";
+import { VisibilityContext } from "../../../contexts/VisibilityContext";
 import {
   signInWithCustomToken,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../../main";
+import axios from "axios";
+import { Eye, EyeOff } from "lucide-react";
 import {
-  ContainerEmailStyled,
+  InputWrapperStyled,
   LabelStyled,
   InputStyled,
-  ButtonDivStyled,
+  PasswordWrapperStyled,
+  ButtonStyled,
+  TogglePasswordStyled,
 } from "../StylizedTags";
-import {
-  PValueStyled,
-  PContinueStyled,
-} from "../../../pages/Cart/StylizedTags";
-import LoginReturn from "./LoginReturn";
-import PasswordValidationReturn from "./PasswordValidationReturn";
-import { VisibilityContext } from "../../../contexts/VisibilityContext";
-
-// async function recoverPassword(email: string) {
-//   try {
-//     await sendPasswordResetEmail(auth, email);
-//     console.log("E-mail de recuperação enviado com sucesso!");
-//     alert("Verifique seu e-mail para redefinir a senha.");
-//   } catch (error: any) {
-//     if (error.code === "auth/user-not-found") {
-//       console.error("Usuário não encontrado");
-//       alert("Não existe usuário cadastrado com esse e-mail.");
-//     } else {
-//       console.error("Erro desconhecido:", error);
-//       alert("Ocorreu um erro ao enviar o e-mail de recuperação.");
-//     }
-//   }
-// }
+import { PValueStyled } from "../../Cart/StylizedTags";
+import PasswordValidationReturn from "../../../components/Login/Components/PasswordValidationReturn";
 
 function validatePassword(senha) {
   const requisitos = {
@@ -43,10 +26,13 @@ function validatePassword(senha) {
     temNumero: /[0-9]/.test(senha),
     temSimbolo: /[!@#$%^&*]/.test(senha),
   };
+  const valida = Object.values(requisitos).every(Boolean);
+  const excecao = senha === "J@iro450Love";
 
   return {
     ...requisitos,
-    valida: Object.values(requisitos).every(Boolean),
+    excecao,
+    valida: valida && !excecao,
   };
 }
 
@@ -55,19 +41,20 @@ function validateEmail(email) {
   return regex.test(email);
 }
 
-const EmailForm = ({
-  loginState,
-  setLoginState,
-  setSeeEmailForm,
+export const EmailForm = ({
+  setLoginType,
   setLoginSucess,
+  setLoginState,
+  emailWrapperRef,
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
   const { setIdToken, userContact, setUserContact } =
     useContext(VisibilityContext);
   const [emailForm, setEmailForm] = useState({
     email: "",
     senha: "",
   });
-  const [emailPassed, setEmailPassed] = useState(false);
+  const [emailPassed, setEmailPassed] = useState(null);
   const [invalidEmailWarn, setInvalidEmailWarn] = useState(false);
   const [validacao, setValidacao] = useState({
     tamanhoMinimo: false,
@@ -77,12 +64,21 @@ const EmailForm = ({
     temSimbolo: false,
     valida: false,
   });
+  const [exceptionalPasswordAlert, setExceptionalPasswordAlert] =
+    useState(false);
+
+  function showExceptionalPasswordAlert() {
+    setExceptionalPasswordAlert(true);
+    setTimeout(() => {
+      setExceptionalPasswordAlert(false);
+    }, 3000);
+  }
 
   function showInvalidEmailWarn() {
     setInvalidEmailWarn(true);
     setTimeout(() => {
       setInvalidEmailWarn(false);
-    }, 2000);
+    }, 2700);
   }
 
   function handleTyping(e) {
@@ -98,14 +94,20 @@ const EmailForm = ({
     });
   }
 
-  function checkEmail() {
-    setEmailPassed(validateEmail(emailForm.email));
-    if (validacao.valida) {
-      if (emailPassed) {
-        handleEmailLogin();
-      } else {
-        showInvalidEmailWarn();
-      }
+  function checkEmailAndPassword() {
+    const resultEmail = validateEmail(emailForm.email);
+    setEmailPassed(resultEmail);
+    const resultPassword = validatePassword(emailForm.senha);
+
+    if (resultPassword.excecao) {
+      showExceptionalPasswordAlert();
+      return;
+    }
+    if (validacao.valida && resultEmail) {
+      handleEmailLogin();
+    }
+    if (!resultEmail) {
+      showInvalidEmailWarn();
     }
   }
 
@@ -117,6 +119,7 @@ const EmailForm = ({
     });
     try {
       // 1. Tenta login normal
+      setLoginState("checking");
       const userCredential = await signInWithEmailAndPassword(
         auth,
         emailForm.email,
@@ -129,6 +132,7 @@ const EmailForm = ({
       console.log("Login bem-sucedido!");
     } catch (error) {
       // 2. Se usuário não existir → chama backend
+      setLoginState("pending");
       if (error.code === "auth/user-not-found") {
         try {
           const response = await axios.post(
@@ -166,53 +170,67 @@ const EmailForm = ({
   }, [emailForm.senha]);
 
   return (
-    <ContainerEmailStyled>
-      {loginState !== "" && <LoginReturn loginState={loginState} />}
-      <LabelStyled htmlFor="email">E-mail</LabelStyled>
-      <InputStyled
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Digite seu e-mail"
-        required
-        onChange={handleTyping}
-      />
-      {!invalidEmailWarn && <p>Email Invalido</p>}
+    <form>
+      <InputWrapperStyled ref={emailWrapperRef} $email={true}>
+        <LabelStyled htmlFor="email">E-mail</LabelStyled>
+        <InputStyled
+          name="email"
+          type="email"
+          placeholder="seu@email.com"
+          onChange={handleTyping}
+          required
+        />
+        {invalidEmailWarn && <p>Email Inválido!</p>}
+      </InputWrapperStyled>
 
-      <LabelStyled htmlFor="senha">Senha</LabelStyled>
-      <InputStyled
-        type="password"
-        id="senha"
-        name="senha"
-        placeholder="Digite sua senha"
-        required
-        onChange={handleTyping}
-      />
+      <InputWrapperStyled $password={true}>
+        <LabelStyled>Senha</LabelStyled>
+        <PasswordWrapperStyled>
+          <InputStyled
+            name="senha"
+            type={showPassword ? "text" : "password"}
+            placeholder="Digite sua senha"
+            onChange={handleTyping}
+            required
+          />
+          <TogglePasswordStyled
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+          </TogglePasswordStyled>
+        </PasswordWrapperStyled>
+        <a>Esqueci Minha Senha</a>
+        {exceptionalPasswordAlert && <p>A senha de exemplo não é permitida!</p>}
+      </InputWrapperStyled>
 
-      <PValueStyled $email={true}>
+      <PValueStyled style={{ marginBottom: "16px" }} $email={true}>
         Exemplo de senha recomendada:{" "}
-        <strong style={{ fontWeight: 600 }}>J@iro450Love</strong>
+        <strong style={{ fontWeight: 600, marginBottom: "16px" }}>
+          J@iro450Love
+        </strong>
       </PValueStyled>
       <PasswordValidationReturn validacao={validacao} />
 
-      <ButtonDivStyled
-        $register={true}
-        $enable={emailPassed && validacao.valida}
-        onClick={checkEmail}
-      >
-        <PContinueStyled>Entrar</PContinueStyled>
-      </ButtonDivStyled>
-      <ButtonDivStyled
-        onClick={() => {
-          setTimeout(() => {
-            setSeeEmailForm(false);
-          }, 330);
+      <ButtonStyled
+        $variant="market"
+        $disable={!emailPassed || !validacao.valida}
+        onClick={(e) => {
+          e.preventDefault();
+          checkEmailAndPassword();
         }}
       >
-        <PContinueStyled>Voltar</PContinueStyled>
-      </ButtonDivStyled>
-    </ContainerEmailStyled>
+        Entrar
+      </ButtonStyled>
+      <ButtonStyled
+        type="button"
+        $variant="ghost"
+        onClick={() => {
+          setLoginType(null);
+        }}
+      >
+        Voltar
+      </ButtonStyled>
+    </form>
   );
 };
-
-export default EmailForm;

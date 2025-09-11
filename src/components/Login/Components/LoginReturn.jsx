@@ -4,6 +4,15 @@ import { PValueStyled } from "../../../pages/Cart/StylizedTags";
 const LoginReturn = ({ loginState }) => {
   return (
     <>
+      {loginState === "checking" && (
+        <DivApiReturnStyled>
+          <SpanApiReturnStyled className="material-symbols-outlined" $wait={true}>
+            progress_activity
+          </SpanApiReturnStyled>
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>Consultando seu cadastro...</PValueStyled>
+        </DivApiReturnStyled>
+      )}
+
       {loginState === "pending" && (
         <DivApiReturnStyled>
           <SpanApiReturnStyled className="material-symbols-outlined" $wait={true}>

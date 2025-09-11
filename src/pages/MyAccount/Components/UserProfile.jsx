@@ -16,9 +16,18 @@ import {
   DivButtonStyled,
   ButtonLoginStyled,
 } from "../StylizedTags";
-import { PContinueStyled} from "../../Cart/StylizedTags";
+import { PContinueStyled } from "../../Cart/StylizedTags";
 
 export const UserProfile = ({ userContact, setSeeLogin }) => {
+
+  const nameUser = userContact.email
+  ? (userContact.name ? userContact.name : "Usuário sem nome")
+  : "Usuário anônimo";
+
+  // function handleEditNameUser() {
+    
+  // }
+
   return (
     <DivOneStyled>
       <UserHeaderDivStyled>
@@ -33,9 +42,7 @@ export const UserProfile = ({ userContact, setSeeLogin }) => {
           </DivImgUserStyled>
 
           <DivNameEmailStyled>
-            <H2v2Styled $nameUser={true}>
-              {!userContact.name ? "Usuário Anônimo" : userContact.name}
-            </H2v2Styled>
+            <H2v2Styled $nameUser={true}>{nameUser}</H2v2Styled>
             <NameStatusStyled $email={true}>
               {!userContact.email
                 ? "usuario_anonimo@email.com"

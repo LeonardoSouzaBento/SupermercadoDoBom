@@ -71,6 +71,9 @@ export const CartSectionStyed = styled.section`
   box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
     2px 0px 4px -3px rgba(41, 46, 117, 0.125),
     -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
+  /* box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5),
+    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
+    -2px 0px 4px -3px rgba(41, 46, 117, 0.125); */
   position: relative;
   transition: height 0.15s ease;
   background-color: white;
@@ -289,6 +292,9 @@ export const SectionStyled = styled.section`
   box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
     2px 0px 4px -3px rgba(41, 46, 117, 0.125),
     -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
+  /* box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5),
+    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
+    -2px 0px 4px -3px rgba(41, 46, 117, 0.125); */
   overflow: hidden;
   position: relative;
   transition: all 0.15s ease;
@@ -300,16 +306,18 @@ export const SectionStyled = styled.section`
 
 /*cabeçalho das divs*/
 export const HeaderH2Styled = styled.header`
-  height: 44px;
+  height: 48px;
   width: 100%;
   margin-bottom: 8px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid var(--border);
+
   ${(props) =>
     props.$cart &&
     css`
+      gap: 8px;
       width: calc(100% - 40px);
       margin: auto;
     `}
@@ -379,13 +387,11 @@ export const DivAvisoStyled = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0 12px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
-  box-sizing: border-box;
-
+  border-radius: 4px;
   background-color: var(--red);
-  border: 1px solid var(--red);
   position: relative;
   overflow: hidden;
   scale: ${(props) => props.$scale};
@@ -404,10 +410,11 @@ export const DivAllValuesStyled = styled.div`
   display: flex;
   flex-flow: row wrap;
   box-sizing: border-box;
+  border-radius: 8px;
   border: 1px solid var(--border);
   position: relative;
 
-  & div:not(:first-child) {
+  & div:not(#warn) {
     width: 100%;
     height: 44px;
     box-sizing: border-box;
@@ -659,21 +666,22 @@ export const PAvisoStyled = styled.p`
 `;
 
 export const PValueStyled = styled.p`
-  font-weight: 500;
+  font-weight: 450;
   cursor: default;
   padding-bottom: 2px;
-  ${(props) => props.$selected && "font-weight: 700;"}
+  ${(props) => props.$selected && "font-weight: 600;"}
   ${(props) =>
     props.$email &&
     css`
       width: 100%;
       color: rgba(0, 0, 0, 0.9);
       font-weight: 400;
-      font-family: var(--h-font);
-      scale: 1.01;
+      scale: 0.94;
       ${(props) => props.$last && "width: max-content;"}
     `}
-
+  & strong {
+    font-weight: 650;
+  }
   @media screen and (max-width: 385px) {
     font-size: 1.08em;
   }

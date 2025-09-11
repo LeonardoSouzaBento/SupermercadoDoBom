@@ -306,7 +306,7 @@ export const SpanH2Styled = styled.span`
   ${(props) =>
     props.$cart &&
     css`
-      font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 22;
+      font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 22;
     `}
 `;
 

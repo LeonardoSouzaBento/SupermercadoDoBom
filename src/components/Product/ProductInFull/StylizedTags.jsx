@@ -23,7 +23,7 @@ export const MainDivStyled = styled.div`
   border-radius: 12px 12px 0px 0px;
   transform: translateY(${(props) => props.$translate});
   transition: transform 0.3s ease;
-  box-shadow: 0px -4px 8px -2px rgba(41, 46, 117, 0.08);
+  box-shadow: 0px -4px 8px -4px rgba(41, 46, 117, 0.08);
 
   @media screen and (max-width: 577px) {
     padding-bottom: 62px;

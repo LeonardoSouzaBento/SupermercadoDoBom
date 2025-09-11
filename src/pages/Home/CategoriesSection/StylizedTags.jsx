@@ -125,7 +125,8 @@ export const DivCatStyled = styled.div`
     props.$selected &&
     css`
       background-color: white;
-      box-shadow: 0px 3px 6px -4px rgba(41, 46, 117, 0.6);
+      box-shadow: 0px 3px 6px -4px rgba(41, 46, 117, 0.5);
+      /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.125); */
     `}
   ${(props) =>
     !props.$selected &&
@@ -134,8 +135,8 @@ export const DivCatStyled = styled.div`
         background-color: rgba(255, 255, 255, 0.28);
       }
     `}
-
-  & div {
+     
+  & div:last-child{
     display: flex;
     align-items: center;
     height: 45px;
@@ -150,13 +151,15 @@ export const DivCatStyled = styled.div`
     color: var(--dark-purple);
   }
 
-  & img {
+  & div:first-child {
     height: 48px;
     width: 48px;
-    background-color: rgb(255, 83, 83);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--red);
     border-radius: 50%;
     transform: translateY(-24px);
-    filter: contrast(1.7) saturate(1.8);
     transition: all 0.2s ease;
     position: absolute;
     top: 0;

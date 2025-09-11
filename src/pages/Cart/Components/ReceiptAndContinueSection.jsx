@@ -97,7 +97,7 @@ const ReceiptAndContinueSection = ({
               Entregar
             </PValueStyled>
             <SpanReceiptStyled
-              className="material-symbols-outlined"
+              className="material-symbols-rounded"
               $selected={selected == "entregar"}
             >
               {selected === "entregar"

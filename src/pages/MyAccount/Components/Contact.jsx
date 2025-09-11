@@ -263,7 +263,8 @@ export const Contact = () => {
                     width: "100%",
                     textAlign: "center",
                     color: "var(--dark-red)",
-                    scale: 1.03,
+                    scale: 1.1,
+                    fontWeight: 400,
                   }}
                 >
                   Faça login primeiro!
@@ -274,7 +275,9 @@ export const Contact = () => {
           {seeInvalidWarn && (
             <DivInvalidWarnStyled>
               <H3Styled style={{ color: "white" }}>
-                {phoneNumber.length !== 0 ? "Número inválido!" : "Digite um número."}
+                {phoneNumber.length !== 0
+                  ? "Número inválido!"
+                  : "Digite um número."}
               </H3Styled>
             </DivInvalidWarnStyled>
           )}

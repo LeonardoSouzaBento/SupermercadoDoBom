@@ -18,7 +18,7 @@ export const ContainerStyled = styled.div`
 
 export const DivMainStyled = styled.div`
   width: calc(100% - 24px);
-  max-width: 380px;
+  max-width: 406px;
   height: auto;
   box-sizing: border-box;
   overflow: hidden;
@@ -31,6 +31,7 @@ export const DivMainStyled = styled.div`
   @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }
+  position: relative;
 `;
 
 export const DivAlertStyled = styled(DivToCoverStyled)`
@@ -175,6 +176,7 @@ export const DivButtonsStyled = styled.div`
   flex-direction: column;
   position: relative;
   background-color: white;
+  position: relative;
 `;
 
 export const ButtonLoginStyled = styled.div`
@@ -400,48 +402,3 @@ export const ButtonDivStyled = styled.div`
     `}
 `;
 
-export const SpanEmailStyled = styled.span`
-  background-color: var(--pink);
-  font-size: 1.15em;
-  font-weight: 600;
-  color: var(--dark-red);
-  box-shadow: 0px 2px 4px -3px rgba(56, 61, 106, 0.3);
-  border-radius: 50%;
-  ${(props) =>
-    props.$check &&
-    css`
-      background-color: var(--light-green);
-      color: var(--dark-green);
-    `}
-`;
-
-export const DivForReturnStyled = styled.div`
-  width: 100%;
-  box-sizing: border-box;
-  background-color: rgba(255, 0, 0, 0.05);
-  padding: 16px;
-  padding-top: 12px;
-  margin-top: 12px;
-  border-radius: 4px;
-`;
-
-export const DivRowStyled = styled.div`
-  min-height: 32px;
-  width: max-content;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  ${(props) => props.$first && "margin-bottom: 4px;"}
-
-  @media screen and (max-width: 375px) {
-    align-items: flex-start;
-  }
-  ${(props) =>
-    props.$last &&
-    css`
-      @media screen and (max-width: 375px) {
-        flex-direction: column;
-        gap: 4px;
-      }
-    `}
-`;

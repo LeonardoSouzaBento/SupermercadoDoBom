@@ -10,7 +10,12 @@ export const PaiProdStyled = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 8px;
+  transition: all 0.15s ease;
+  /* box-shadow: 0 3px 9px -3px rgba(0, 0, 0, 0.1); */
 
+  &:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
   ${(props) =>
     props.$variant == "cart" &&
     css`

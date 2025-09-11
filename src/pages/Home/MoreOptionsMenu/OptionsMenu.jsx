@@ -4,9 +4,7 @@ import {
   H1Styled,
   DivTitleStyed,
   DivNameSpanStyled,
-  POptionStyled,
   DivSpanStyled,
-  SpanOptionsStyled,
 } from "./StylizedTags";
 import {
   DivSpanCloseStyled,
@@ -111,15 +109,10 @@ const OptionsMenu = ({ setViewOptions }) => {
             }}
             $logout={content.p == "Sair do site"}
           >
-            <DivSpanStyled>
-              <SpanOptionsStyled
-                className="material-symbols-rounded"
-                $logout={content.p == "Sair do site"}
-              >
-                {content.icon}
-              </SpanOptionsStyled>
+            <DivSpanStyled $logout={content.p == "Sair do site"}>
+              <span className="material-symbols-rounded">{content.icon}</span>
             </DivSpanStyled>
-            <POptionStyled>{content.p}</POptionStyled>
+            <p>{content.p}</p>
           </DivNameSpanStyled>
         ))}
       </DivSideStyled>

@@ -10,6 +10,7 @@ import Login from "../../components/Login/Login";
 import ProductInFull from "../../components/Product/ProductInFull/ProductInFull";
 import { CartContext } from "../../contexts/CartContext";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
+import { useNavigate } from "react-router-dom";
 
 const MainStyled = styled.main`
   max-width: 1390px;
@@ -49,7 +50,7 @@ const ProductFeedDivStyled = styled.section`
 
 function HomeContent() {
   const [viewOptions, setViewOptions] = useState(false);
-  const { viewProductInFull, seeLogin, setSeeLogin } =
+  const { viewProductInFull, seeLogin, setSeeLogin, idToken} =
     useContext(VisibilityContext);
   const { currentCategory } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
@@ -57,8 +58,15 @@ function HomeContent() {
   const windowWidthInitialRef = useRef(0);
   const [wasResize, setWasResize] = useState(0);
   const divRef = useRef(null);
-
+  const navigate = useNavigate();
+ 
   useEffect(() => {
+    if (idToken) {
+      console.log("Sim");
+    }
+    if (!idToken) {
+      navigate("/fazer-login");
+    }
     setTimeout(() => {
       setOpacityState(1);
     }, 300);

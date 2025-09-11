@@ -50,8 +50,13 @@ const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
 
         <DivAllValuesStyled>
           {falta > 0 && totalAddedValue != 0 && (
-            <DivToCoverStyled style={{alignItems: "flex-start", backgroundColor: "transparent"}}>
-              <DivAvisoStyled $scale={scaleWarnnig}>
+            <DivToCoverStyled
+              style={{
+                backgroundColor: "transparent",
+                padding: "0px",
+              }}
+            >
+              <DivAvisoStyled $scale={scaleWarnnig} id="warn">
                 <PAvisoStyled>
                   Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
                 </PAvisoStyled>

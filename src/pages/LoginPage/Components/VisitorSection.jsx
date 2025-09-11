@@ -2,18 +2,13 @@ import { useContext } from "react";
 import { signInWithCustomToken } from "firebase/auth";
 import { auth } from "../../../main";
 import { VisibilityContext } from "../../../contexts/VisibilityContext";
-import {
-  ButtonLoginStyled,
-  DivSpanPStyled,
-  PLoginStyled,
-  DivSpanStyled,
-  SpanButtonStyled,
-} from "../StylizedTags";
+import { VisitorBoxStyled, ButtonStyled } from "../StylizedTags";
+import { PValueStyled } from "../../Cart/StylizedTags";
 
-const ButtonLoginAnonymous = ({
+export const VisitorSection = ({
+  setLoginType,
   setLoginSucess,
   setLoginState,
-  onMyAccount,
 }) => {
   const { setIdToken } = useContext(VisibilityContext);
 
@@ -49,20 +44,20 @@ const ButtonLoginAnonymous = ({
   }
 
   return (
-    <ButtonLoginStyled
-      onClick={handleAnonymousLogin}
-      $onMyAccount={onMyAccount}
-    >
-      <DivSpanPStyled>
-        <PLoginStyled>Visitante</PLoginStyled>
-        <DivSpanStyled>
-          <SpanButtonStyled className="material-symbols-outlined">
-            mail_off
-          </SpanButtonStyled>
-        </DivSpanStyled>
-      </DivSpanPStyled>
-    </ButtonLoginStyled>
+    <>
+      <VisitorBoxStyled>
+        <PValueStyled>
+          <strong>Comunicado: </strong>
+          para registrar sua compra será necessário criar uma conta.
+        </PValueStyled>
+      </VisitorBoxStyled>
+
+      <ButtonStyled $variant="market" onClick={handleAnonymousLogin}>
+        Continuar
+      </ButtonStyled>
+      <ButtonStyled type="button" $variant="ghost" onClick={()=>{setLoginType(null)}}>
+        Voltar
+      </ButtonStyled>
+    </>
   );
 };
-
-export default ButtonLoginAnonymous;
