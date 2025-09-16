@@ -6,7 +6,6 @@ import AnnouncementSection from "./AnnoucementSection/AnnouncementSection";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import ProductListHome from "./ProductListHome";
 import Footer from "../../components/BottomNavBar/Footer";
-import Login from "../../components/Login/Login";
 import ProductInFull from "../../components/Product/ProductInFull/ProductInFull";
 import { CartContext } from "../../contexts/CartContext";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
@@ -25,17 +24,20 @@ const MainStyled = styled.main`
     position: absolute;
     top: 24px;
     left: 0;
-    background-image: linear-gradient(to bottom, var(--purple), var(--back-color));
+    background-image: linear-gradient(
+      to bottom,
+      var(--purple),
+      var(--back-color)
+    );
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
     z-index: -1;
-  } 
-
+  }
   &::before {
     content: "";
     width: 100%;
-    height: 24px;
+    height: 24px; //24
     position: absolute;
     top: 0;
     left: 0;
@@ -45,12 +47,28 @@ const MainStyled = styled.main`
 `;
 
 const ProductFeedDivStyled = styled.section`
+  position: relative;
   background-color: var(--back-color);
+  padding-bottom: 62px;
+  padding-left: 12px;
+  padding-top: 36px;
+  background-color: var(--back-color);
+  border-radius: 16px 16px 0 0;
+  z-index: 2;
+
+  /* box-shadow: 0px -8px 20px rgba(0, 0, 0, 0.125); */
+  
+  @media screen and (min-width: 577px) {
+    padding-left: 16px;
+  }
+  @media screen and (min-width: 1201px) {
+    padding-left: 0px;
+  }
 `;
 
 function HomeContent() {
   const [viewOptions, setViewOptions] = useState(false);
-  const { viewProductInFull, seeLogin, setSeeLogin, idToken} =
+  const { viewProductInFull, seeLogin, setSeeLogin, idToken } =
     useContext(VisibilityContext);
   const { currentCategory } = useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0);
@@ -59,11 +77,11 @@ function HomeContent() {
   const [wasResize, setWasResize] = useState(0);
   const divRef = useRef(null);
   const navigate = useNavigate();
- 
+
   useEffect(() => {
-    if (idToken) {
-      console.log("Sim");
-    }
+    // if (idToken) {
+    // //   console.log("Sim");
+    // // }
     if (!idToken) {
       navigate("/fazer-login");
     }
@@ -99,8 +117,6 @@ function HomeContent() {
 
   return (
     <div ref={divRef}>
-      {seeLogin && <Login setSeeLogin={setSeeLogin} />}
-
       {viewOptions && <OptionsSection setViewOptions={setViewOptions} />}
 
       <div

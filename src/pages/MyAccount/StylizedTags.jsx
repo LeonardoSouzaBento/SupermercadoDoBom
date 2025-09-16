@@ -1,7 +1,10 @@
 import styled, { css } from "styled-components";
 import { PStyled } from "../ForRecruiters/StylizedTags";
 import { H2Styled } from "../ForRecruiters/StylizedTags";
-import { H1BaseStyled } from "../../components/GenericStylizedTags";
+import {
+  CentralizeDiv,
+  H1BaseStyled,
+} from "../../components/GenericStylizedTags";
 
 export const HeaderStyled = styled.header`
   width: 100%;
@@ -118,18 +121,11 @@ export const DivImgEmailStyled = styled.div`
   }
 `;
 
-export const DivButtonStyled = styled.div`
-  width: 100%;
-`;
-
-export const ButtonLoginStyled = styled.div`
+export const ButtonLoginStyled = styled(CentralizeDiv)`
   height: 48px;
   width: 100%;
   padding: 0 20px;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 8px;
   background-color: var(--purple);
   color: white;
@@ -165,15 +161,12 @@ export const PLoginStlyed = styled.p`
   }
 `;
 
-export const DivImgUserStyled = styled.div`
+export const DivImgUserStyled = styled(CentralizeDiv)`
   height: 58px;
   width: 58px;
   border-radius: 50%;
   overflow: hidden;
   background-color: #ecf0f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
 `;
 
@@ -289,14 +282,13 @@ export const HeaderH2Styled = styled.header`
 `;
 
 export const SpanH2Styled = styled.span`
-  font-size: 24px;
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 22;
   cursor: default;
   color: var(--purple);
   margin-right: 8px;
 
   ${(props) => props.$smaller && "font-size: 21px;"}
-  ${(props) => props.$bigger && "font-size: 26px;"}
+  ${(props) => props.$bigger && "font-size: 25px;"}
   ${(props) =>
     props.$user &&
     css`
@@ -551,15 +543,12 @@ export const DivZapAndDivPhone = styled.div`
   }
 `;
 
-export const DivZapOrPhone = styled.div`
+export const DivZapOrPhone = styled(CentralizeDiv)`
   height: 100%;
   width: calc(100% - 16px);
   padding-left: 12px;
   padding-right: 6px;
   border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border: 1px solid var(--light-border);
   ${(props) => props.$selected && "background-color: var(--back-color);"}
 
@@ -616,12 +605,9 @@ export const DivHalfAddressStyled = styled.div`
   }
 `;
 
-export const DivSpanStyled = styled.div`
+export const DivSpanStyled = styled(CentralizeDiv)`
   height: 44px;
   min-width: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 2;
   border-radius: 8px;
   background-color: var(--purple);

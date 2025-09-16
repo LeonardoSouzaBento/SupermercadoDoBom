@@ -48,7 +48,7 @@ const MyAccount = () => {
       <MainStyled>
         {/*Minha conta e Contato*/}
         <DivOneTwoStyled>
-          <UserProfile userContact={userContact} setSeeLogin={setSeeLogin} />
+          <UserProfile userContact={userContact} />
           <Contact />
         </DivOneTwoStyled>
 
@@ -59,7 +59,6 @@ const MyAccount = () => {
             isDataComplete={isDataComplete}
             userAddress={userAddress}
             userContact={userContact}
-            setSeeLogin={setSeeLogin}
           />
           <FinishShopping
             userContact={userContact}

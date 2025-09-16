@@ -11,15 +11,16 @@ import ProductItem from "../../../components/Product/ProductItem&List/ProductIte
 import { CartContext } from "../../../contexts/CartContext";
 import { useScrollX } from "../../../hooks/useScrollX";
 import { H1LabelStyled } from "../CategoriesSection/StylizedTags";
+import AnnoucementItem from "./components/AnnoucementItem";
 
 const announcementProducts = [
   {
     id: 105,
     discount: 10,
     url: "https://lojavirtual.urizun.com.br/image/cache/data/eftr/Img_ftr_rp_136501-580x580.JPG?version=20230512211921",
-    url2: "https://i.pinimg.com/736x/99/9b/e7/999be7d41a28a1781a49dc5c7ab2a963.jpg",
+    url2: "anuncios/cup-noodles-anuncio.png",
     weight: "69 g",
-    name: "Nissin cup nodles galinha caipira",
+    name: "Nissin Cup Noddles Galinha Caipira",
     price: "9,90",
   },
   {
@@ -46,14 +47,14 @@ const announcementProducts = [
     url: "https://tiojorge.com.br/wp-content/uploads/2021/05/Arroz-branco-300x300.png",
     url2: "https://i.pinimg.com/736x/69/f1/d3/69f1d3cf3946afdab4edcd4fd98f1597.jpg",
     weight: "5 kg",
-    name: "arroz branco tio jorge",
+    name: "Arroz branco Tio Jorge",
     price: "19,00",
   },
   {
     id: 107,
     discount: 30,
     url: "https://images.tcdn.com.br/img/img_prod/887622/refrigerante_fanta_laranja_lt_350ml_333_1_20201110145812.jpg",
-    url2: "https://i.pinimg.com/736x/03/a4/75/03a475aaf5e64c564e7906a14c11a477.jpg",
+    url2: "anuncios/refri-anuncio.png",
     weight: "350 ml",
     name: "Refrigerante fanta laranja",
     price: "1,55",
@@ -187,7 +188,9 @@ function AnnouncementSection({ wasResize }) {
 
   return (
     <ContainerStyled ref={divRef}>
-      <H1LabelStyled $anun={true}>Maiores promoções!</H1LabelStyled>
+      <div style={{ padding: "16px 0" }}>
+        <H1LabelStyled $anun={true}>Maiores promoções!</H1LabelStyled>
+      </div>
       <DivStyled
         ref={advertisementsRef}
         $odd={announcementProducts.length % 2 !== 0}
@@ -197,6 +200,7 @@ function AnnouncementSection({ wasResize }) {
             key={index}
             ref={(el) => (fundoRefs.current[index] = el)}
           >
+            {/* <AnnoucementItem product={object} index={index} /> */}
             <ImgStyled
               src={object.url2}
               alt={`Imagem de anúncio ${index + 1}`}
@@ -220,3 +224,23 @@ function AnnouncementSection({ wasResize }) {
 }
 
 export default AnnouncementSection;
+
+// {
+//   announcementProducts.map((object, index) => (
+//     <DivFundoImgStyled
+//       key={index}
+//       ref={(el) => (fundoRefs.current[index] = el)}
+//     >
+//       <ImgStyled
+//         src={object.url2}
+//         alt={`Imagem de anúncio ${index + 1}`}
+//         id={`anun ${index}`}
+//       />
+//       <ProductItem
+//         variant={"announcement"}
+//         key={`${object.id}-${object.cat_id}`}
+//         product={object}
+//       />
+//     </DivFundoImgStyled>
+//   ));
+// }

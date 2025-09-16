@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { H1BaseStyled } from "../../components/GenericStylizedTags";
+import { CentralizeDiv, H1BaseStyled } from "../../components/GenericStylizedTags";
 
 export const BodyStyled = styled.div`
   height: auto;
@@ -58,14 +58,11 @@ export const NavOptionsStyled = styled.nav`
   }
 `;
 
-export const DivNameSpanStyled = styled.div`
+export const DivNameSpanStyled = styled(CentralizeDiv)`
   height: 56px;
   width: max-content;
   padding: 0px 16px;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   flex: 1 0 auto;
   border-bottom: 1px solid var(--border);
@@ -92,12 +89,9 @@ export const H1OptionStyled = styled(H1BaseStyled)`
   color: var(--purple);
 `;
 
-export const DivSpanStyled = styled.div`
+export const DivSpanStyled = styled(CentralizeDiv)`
   height: 40px;
   width: max-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const SpanStyled = styled.span`

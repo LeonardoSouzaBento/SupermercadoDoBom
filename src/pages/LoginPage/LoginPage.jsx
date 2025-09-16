@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Mail, User, HeartHandshake } from "lucide-react";
+import { Mail, User } from "lucide-react";
 import {
   PageWrapperStyled,
   ContainerStyled,
@@ -20,8 +20,7 @@ import { VisitorSection } from "./Components/VisitorSection";
 import LoginReturn from "./Components/LoginReturn";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 import { ButtonLoginGoogle } from "./Components/ButtonLoginGoogle";
-
-// ---------- Componente ----------
+import { ResetSection } from "./Components/ResetSection";
 
 const LoginPage = () => {
   const [loginType, setLoginType] = useState(null);
@@ -41,6 +40,10 @@ const LoginPage = () => {
     visitor: {
       title: "Acesso como visitante",
       description: "Navegue sem e-mail",
+    },
+    resetPassword: {
+      title: "Registrar nova senha",
+      description: "Digite seu e-mail",
     },
   };
   const currentLoginType = loginType || "null";
@@ -84,8 +87,7 @@ const LoginPage = () => {
         {/* Logo */}
         <LogoWrapperStyled>
           <LogoCircleStyled>
-            <HeartHandshake color="white" size={38} strokeWidth={2} />
-            {/* <span className="material-symbols-outlined">handshake</span> */}
+            <span className="material-symbols-outlined">handshake</span>
           </LogoCircleStyled>
           <TitleStyled>Supermercado União</TitleStyled>
           <SubtitleStyled>Compre com comodidade e praticidade</SubtitleStyled>
@@ -142,6 +144,10 @@ const LoginPage = () => {
               setLoginSucess={setLoginSucess}
               setLoginState={setLoginState}
             />
+          )}
+
+          {loginType === "resetPassword" && (
+            <ResetSection setLoginType={setLoginType} />
           )}
         </CardStyled>
 

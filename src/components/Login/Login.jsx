@@ -4,11 +4,11 @@ import {
   DivMainStyled,
   DivButtonsStyled,
   DivH1Styled,
+  ButtonCloseStyled
 } from "./StylizedTags";
 import { H1Styled } from "../../pages/Cart/StylizedTags";
 import EmailForm from "./Components/EmailForm";
 import LoginReturn from "./Components/LoginReturn";
-import ButtonClose from "./Components/ButtonClose";
 import ButtonLoginAnonymous from "./Components/ButtonLoginAnonymous";
 import ButtonLoginEmail from "./Components/ButtonLoginEmail";
 import ButtonLoginGoogle from "./Components/ButtonLoginGoogle";
@@ -61,7 +61,13 @@ const Login = ({ setSeeLogin, onMyAccount }) => {
           <>
             <DivH1Styled>
               <H1Styled $login={true}>Fazer Login</H1Styled>
-              <ButtonClose setSeeLogin={setSeeLogin} />
+              <ButtonCloseStyled
+                onClick={() => {
+                  setSeeLogin(false);
+                }}
+              >
+                <span className="material-symbols-rounded">close</span>
+              </ButtonCloseStyled>
             </DivH1Styled>
 
             <DivButtonsStyled>

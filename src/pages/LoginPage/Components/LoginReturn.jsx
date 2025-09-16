@@ -10,7 +10,7 @@ const LoginReturn = ({ loginState }) => {
       {loginState === "checking" && (
         <DivApiReturnStyled>
           <SpanApiReturnStyled
-            className="material-symbols-outlined"
+            className="material-symbols-rounded"
             $wait={true}
           >
             progress_activity
@@ -32,7 +32,7 @@ const LoginReturn = ({ loginState }) => {
       {loginState === "pending" && (
         <DivApiReturnStyled>
           <SpanApiReturnStyled
-            className="material-symbols-outlined"
+            className="material-symbols-rounded"
             $wait={true}
           >
             progress_activity
@@ -68,6 +68,46 @@ const LoginReturn = ({ loginState }) => {
           <PValueStyled style={{ width: "80%", textAlign: "center" }}>
             <strong>Erro: </strong> o login falhou, tente novamente ou tente de
             outro modo.
+          </PValueStyled>
+        </DivApiReturnStyled>
+      )}
+
+      {/*Para reset de senha*/}
+      {loginState === "resetPending" && (
+        <DivApiReturnStyled>
+          <SpanApiReturnStyled
+            className="material-symbols-rounded"
+            $wait={true}
+          >
+            progress_activity
+          </SpanApiReturnStyled>
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            Por favor, aguarde...
+          </PValueStyled>
+        </DivApiReturnStyled>
+      )}
+
+      {loginState === "resetSucess" && (
+        <DivApiReturnStyled>
+          <SpanApiReturnStyled className="material-symbols-outlined"  $check={true}>
+            check
+          </SpanApiReturnStyled>
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            Verifique seu e-mail.
+          </PValueStyled>
+        </DivApiReturnStyled>
+      )}
+
+      {loginState === "resetError" && (
+        <DivApiReturnStyled>
+          <SpanApiReturnStyled
+            className="material-symbols-rounded"
+            $error={true}
+          >
+            error
+          </SpanApiReturnStyled>
+          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            Ocorreu um erro ao enviar o e-mail de recuperação.
           </PValueStyled>
         </DivApiReturnStyled>
       )}

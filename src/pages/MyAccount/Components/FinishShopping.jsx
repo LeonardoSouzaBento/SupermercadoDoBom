@@ -10,7 +10,8 @@ import {
   SpanStatusStyled,
   NameStatusStyled,
 } from "../StylizedTags";
-import { PContinueStyled, ButtonContinueStyled} from "../../Cart/StylizedTags";
+import {ButtonContinueStyled} from "../../Cart/StylizedTags";
+import { PButtonBase } from "../../../components/GenericStylizedTags";
 
 export const FinishShopping = ({ isDataComplete, orderInfo, userContact }) => {
   const enable =
@@ -53,7 +54,7 @@ export const FinishShopping = ({ isDataComplete, orderInfo, userContact }) => {
       </DivH2StatusStyled>
       {orderInfo.status === "pending" && (
         <ButtonContinueStyled $myAccount={true} $enable={enable} onClick={handleClickFinish}>
-          <PContinueStyled>Finalizar a compra</PContinueStyled>
+          <PButtonBase>Finalizar a compra</PButtonBase>
         </ButtonContinueStyled>
       )}
     </DivOneStyled>

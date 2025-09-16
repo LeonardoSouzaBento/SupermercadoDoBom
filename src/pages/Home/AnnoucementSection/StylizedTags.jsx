@@ -4,22 +4,24 @@ export const ContainerStyled = styled.section`
   width: calc(100% - 24px);
   position: relative;
   overflow-x: hidden;
-  padding-top: 16px;
-  padding-bottom: 40px;
+  padding-bottom: 32px;
   margin: auto;
-  margin-bottom: 40px;
   border-radius: 24px;
+  /* background-color: var(--back-hover); */
   background-image: linear-gradient(
     to bottom,
     var(--purple),
-    hsl(210, 33%, 93%)
+    var(--back-hover)
   );
   background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
+
   @media screen and (max-width: 576px) {
     width: calc(100% - 16px);
   }
+
+   & h1{
+    margin-bottom: 0px;
+   }
 `;
 
 export const DivStyled = styled.div`
@@ -44,13 +46,16 @@ export const DivStyled = styled.div`
 `;
 
 export const DivFundoImgStyled = styled.div`
+  /* min-width: 260px;
+  width: 260px;
+  height: 240px; */
   min-width: 220px;
   width: 220px;
   height: 220px;
   border-radius: 16px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.25);
+  box-shadow: 0px 4px 10px hsla(236, 0%, 31%, 0.5);
 `;
 
 export const ImgStyled = styled.img`

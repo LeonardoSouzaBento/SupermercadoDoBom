@@ -11,9 +11,9 @@ import {
   PValueStyled,
   SpanReceiptStyled,
   ButtonContinueStyled,
-  PContinueStyled,
 } from "../StylizedTags.jsx";
 import { SpanH2Styled } from "../../../pages/MyAccount/StylizedTags.jsx";
+import { PButtonBase } from "../../../components/GenericStylizedTags.jsx";
 
 const ReceiptAndContinueSection = ({
   setScaleWarnnig,
@@ -111,9 +111,9 @@ const ReceiptAndContinueSection = ({
           $nocontinue={falta > 0}
           onClick={handleClickContinue}
         >
-          <PContinueStyled>
+          <PButtonBase>
             {userDataComplete ? "Finalizar Compra" : "Continuar"}
-          </PContinueStyled>
+          </PButtonBase>
         </ButtonContinueStyled>
       </ContainerStyled>
       {incompleteDataAlert && <DataAlert />}

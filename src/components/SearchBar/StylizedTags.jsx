@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { CentralizeDiv } from "../GenericStylizedTags";
 
 export const ContainerForFormStyled = styled.div`
   width: 100%;
@@ -111,14 +112,11 @@ export const InputStyled = styled.input`
   }
 `;
 
-export const DivSpanStyled = styled.div`
+export const DivSpanStyled = styled(CentralizeDiv)`
   height: 100%;
   width: 48px;
   padding-bottom: 2px;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
   bottom: 0;
   right: 0px;
@@ -246,13 +244,10 @@ export const CompletionsDivStyled = styled.div`
   }
 `;
 
-export const DivOnePStyled = styled.div`
+export const DivOnePStyled = styled(CentralizeDiv)`
   width: max-content;
   height: 48px;
   padding: 0 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex: none;
   border-radius: 24px;
   background-color: var(--purple-hover);

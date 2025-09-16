@@ -11,29 +11,11 @@ import {
   InputStyled,
   ButtonDivStyled,
 } from "../StylizedTags";
-import {
-  PValueStyled,
-  PContinueStyled,
-} from "../../../pages/Cart/StylizedTags";
+import { PValueStyled } from "../../../pages/Cart/StylizedTags";
 import LoginReturn from "./LoginReturn";
 import PasswordValidationReturn from "./PasswordValidationReturn";
 import { VisibilityContext } from "../../../contexts/VisibilityContext";
-
-// async function recoverPassword(email: string) {
-//   try {
-//     await sendPasswordResetEmail(auth, email);
-//     console.log("E-mail de recuperação enviado com sucesso!");
-//     alert("Verifique seu e-mail para redefinir a senha.");
-//   } catch (error: any) {
-//     if (error.code === "auth/user-not-found") {
-//       console.error("Usuário não encontrado");
-//       alert("Não existe usuário cadastrado com esse e-mail.");
-//     } else {
-//       console.error("Erro desconhecido:", error);
-//       alert("Ocorreu um erro ao enviar o e-mail de recuperação.");
-//     }
-//   }
-// }
+import { PButtonBase } from "../../GenericStylizedTags";
 
 function validatePassword(senha) {
   const requisitos = {
@@ -200,7 +182,7 @@ const EmailForm = ({
         $enable={emailPassed && validacao.valida}
         onClick={checkEmail}
       >
-        <PContinueStyled>Entrar</PContinueStyled>
+        <PButtonBase>Entrar</PButtonBase>
       </ButtonDivStyled>
       <ButtonDivStyled
         onClick={() => {
@@ -209,7 +191,7 @@ const EmailForm = ({
           }, 330);
         }}
       >
-        <PContinueStyled>Voltar</PContinueStyled>
+        <PButtonBase>Voltar</PButtonBase>
       </ButtonDivStyled>
     </ContainerEmailStyled>
   );

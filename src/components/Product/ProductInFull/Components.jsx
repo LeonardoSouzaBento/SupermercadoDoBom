@@ -1,6 +1,5 @@
 import {
   DivSpanCloseStyled,
-  SpanCloseStyled,
   SpanDropDownStyled,
   DivImgStyled,
   ImgStyled,
@@ -13,7 +12,6 @@ import {
   PPriceStyled,
   DivQuantFullStyled,
   DivButtonsStyled,
-  SpanButtonsStyled,
   PQuantFullStyled,
   PAddStyled,
   DivSubStyled,
@@ -27,9 +25,9 @@ export const ButtonClose = ({ seeSpanClose, handleClickClose }) => {
       onPointerUp={handleClickClose}
       style={{ display: seeSpanClose ? "flex" : "none" }}
     >
-      <SpanCloseStyled className="material-symbols-rounded">
+      <span className="material-symbols-rounded">
         close
-      </SpanCloseStyled>
+      </span>
 
       <SpanDropDownStyled />
     </DivSpanCloseStyled>
@@ -87,9 +85,9 @@ export const ButtonAdd = ({
               handlePointerUpButtons(e, "fewer");
             }}
           >
-            <SpanButtonsStyled className="material-symbols-rounded">
+            <span className="material-symbols-rounded">
               remove
-            </SpanButtonsStyled>
+            </span>
           </DivButtonsStyled>
 
           <DivButtonsStyled>
@@ -97,9 +95,9 @@ export const ButtonAdd = ({
           </DivButtonsStyled>
 
           <DivButtonsStyled onPointerUp={handlePointerUpButtons}>
-            <SpanButtonsStyled className="material-symbols-rounded">
+            <span className="material-symbols-rounded">
               add
-            </SpanButtonsStyled>
+            </span>
           </DivButtonsStyled>
         </>
       )}

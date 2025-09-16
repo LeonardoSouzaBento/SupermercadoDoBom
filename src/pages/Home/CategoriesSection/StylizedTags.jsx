@@ -2,21 +2,18 @@ import styled, { css } from "styled-components";
 import { H1BaseStyled } from "../../../components/GenericStylizedTags";
 
 export const DivStyled = styled.div`
-  width: calc(100% - 20px);
-  margin-left: 20px;
-  margin-bottom: 28px;
+  margin-bottom: 8px;
   overflow-x: hidden;
   position: relative;
   z-index: 2;
+
   @media screen and (max-width: 375px) {
-    width: calc(100% - 15px);
-    padding-left: 12px;
+    width: 100%;
   }
   @media screen and (min-width: 1201px) {
     width: calc(100% - 52px);
     margin: auto;
-    margin-bottom: 36px;
-    padding-left: 0px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -24,7 +21,7 @@ export const DivLabelPromosStyled = styled.div`
   width: 100%;
   box-sizing: border-box;
   padding-right: 20px;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
   position: relative;
 
   @media screen and (min-width: 1201px) {
@@ -35,6 +32,7 @@ export const DivLabelPromosStyled = styled.div`
 export const H1LabelStyled = styled(H1BaseStyled)`
   color: var(--dark-purple);
   scale: 1.03;
+
   ${(props) =>
     props.$anun &&
     css`
@@ -43,17 +41,16 @@ export const H1LabelStyled = styled(H1BaseStyled)`
       font-weight: 400;
       text-decoration: underline;
       text-decoration-color: rgba(255, 255, 255, 0.9);
-      text-underline-offset: 4px;
+      text-underline-offset: 2px;
     `}
 `;
 
 export const DivfStyled = styled.div`
   width: auto;
   margin: auto;
-  padding: 4px;
-  padding-bottom: 8px;
-  padding-top: 24px;
-  padding-left: 0px;
+  padding: 8px;
+  padding-right: 20px;
+  padding-bottom: 24px;
   box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
@@ -69,7 +66,6 @@ export const DivfStyled = styled.div`
 
   @media screen and (max-width: 375px) {
     gap: 15px;
-    padding-right: 12px;
   }
   @media screen and (min-width: 1201px) {
     padding-right: 6px;
@@ -107,10 +103,10 @@ export const SpanStyled = styled.span`
 `;
 
 export const DivCatStyled = styled.div`
-  min-width: 110px;
-  max-width: 110px;
-  height: 84px;
-  padding-bottom: 16px;
+  min-width: 116px;
+  width: 116px;
+  max-height: 124px;
+  padding: 12px 0;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -124,24 +120,44 @@ export const DivCatStyled = styled.div`
   ${(props) =>
     props.$selected &&
     css`
+      z-index: 1;
       background-color: white;
-      box-shadow: 0px 3px 6px -4px rgba(41, 46, 117, 0.5);
-      /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.125); */
+      box-shadow: 0px 4px 10px -6px hsla(0, 0%, 15%, 0.50);
     `}
   ${(props) =>
     !props.$selected &&
     css`
       &:hover {
-        background-color: rgba(255, 255, 255, 0.28);
+        box-shadow: 0px 4px 10px -6px hsla(0, 0%, 15%, 0.50);
+        background-color: rgba(255, 255, 255, 0.33);
       }
     `}
-     
-  & div:last-child{
-    display: flex;
-    align-items: center;
-    height: 45px;
-  }
 
+  & div:first-child {
+    height: 44px;
+    width: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--red);
+    border-radius: 50%;
+    transition: all 0.15s ease;
+
+    ${(props) =>
+      props.$selected &&
+      css`
+        scale: 1.05;
+        box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.25);
+        /* box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5); */
+      `}
+  }
+  & div:last-child {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   & p {
     font-family: var(--h-font);
     text-align: center;
@@ -149,28 +165,5 @@ export const DivCatStyled = styled.div`
     letter-spacing: 0.5px;
     margin: 0;
     color: var(--dark-purple);
-  }
-
-  & div:first-child {
-    height: 48px;
-    width: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--red);
-    border-radius: 50%;
-    transform: translateY(-24px);
-    transition: all 0.2s ease;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -20px);
-
-    ${(props) =>
-      props.$selected &&
-      css`
-        padding: 2px;
-        box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5);
-      `}
   }
 `;

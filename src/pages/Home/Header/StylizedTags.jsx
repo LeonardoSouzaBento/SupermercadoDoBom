@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { CentralizeDiv } from "../../../components/GenericStylizedTags";
 
 export const HeaderStyled = styled.header`
   width: 100%;
@@ -57,10 +58,7 @@ export const DivForLogoStyled = styled.div`
     `}
 `;
 
-export const LogoDivStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const LogoDivStyled = styled(CentralizeDiv)`
   background-color: var(--red);
   border-radius: 50%;
   transform: scaleX(-1);
@@ -86,6 +84,7 @@ export const LogoDivStyled = styled.div`
     color: white;
     font-weight: 700;
     padding-top: 1px;
+    padding-left: 1px;
 
     @media screen and (max-width: 375px) {
       font-size: 2.18em;
@@ -209,7 +208,6 @@ export const ButtonMoreOptionsStyled = styled.div`
   }
 
   & span {
-    font-weight: 400;
     cursor: pointer;
     user-select: none;
 
@@ -258,27 +256,4 @@ export const PStyled = styled.p`
   }
   user-select: none;
   cursor: pointer;
-`;
-
-export const SpanStyled = styled.span`
-  font-weight: 400;
-  cursor: pointer;
-  user-select: none;
-
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.55em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.6em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.65em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.7em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.45em;
-    padding-right: 4px;
-  }
 `;

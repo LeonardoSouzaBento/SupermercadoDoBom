@@ -20,13 +20,13 @@ import {
   H3Styled,
 } from "../StylizedTags";
 import { DivToCoverStyled } from "../../../components/GenericStylizedTags";
+import { useNavigate } from "react-router-dom";
 
 export const SavedAddress = ({
   setSeeRegisterAddress,
   isDataComplete,
   userAddress,
   userContact,
-  setSeeLogin,
 }) => {
   function GetInitialsNameState() {
     const palavras = userAddress.estado.split(" ");
@@ -36,12 +36,13 @@ export const SavedAddress = ({
   }
   const initialNameState = GetInitialsNameState();
   const [seeLoginWarn, setSeeLoginWarn] = useState(false);
+  const navigate = useNavigate();
 
   function showLoginWarn() {
     setSeeLoginWarn(true);
     setTimeout(() => {
       setSeeLoginWarn(false);
-      setSeeLogin(true);
+      navigate("/fazer-login");
     }, 3000);
   }
 
@@ -146,7 +147,7 @@ export const SavedAddress = ({
                   textAlign: "center",
                   color: "var(--dark-red)",
                   scale: 1.1,
-                  fontWeight: 400
+                  fontWeight: 400,
                 }}
               >
                 Faça login primeiro!

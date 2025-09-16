@@ -4,23 +4,13 @@ import styled from "styled-components";
 import { CartContext } from "../../contexts/CartContext";
 import ProductItem from "../../components/Product/ProductItem&List/ProductItem";
 import { useScrollX } from "../../hooks/useScrollX";
+import { CentralizeDiv } from "../../components/GenericStylizedTags";
 
 const ContainerStyled = styled.div`
   overflow-x: hidden;
-  padding-bottom: 42px;
   position: relative;
   z-index: 2;
-  @media screen and (max-width: 375px) {
-    width: calc(100% - 12px);
-    margin-left: 12px;
-  }
-  @media screen and (min-width: 385px) and (max-width: 993px) {
-    padding-bottom: 70px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 1200px) {
-    width: calc(100% - 20px);
-    margin-left: 20px;
-  }
+
   @media screen and (min-width: 1201px) {
     width: calc(100% - 52px);
     margin: auto;
@@ -29,34 +19,35 @@ const ContainerStyled = styled.div`
 
 const DivStyled = styled.div`
   width: auto;
-  min-height: 400px;
   height: auto;
+  min-height: 400px;
+  padding-bottom: 12px;
+  padding-right: 20px;
+  padding-left: 8px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
   overflow-x: scroll;
-  box-sizing: border-box !important;
   border-radius: 7px;
-
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {
     display: none;
   }
   @media screen and (max-width: 375px) {
-    padding-right: 13px;
-  }
-  @media screen and (min-width: 375px) and (max-width: 1201px) {
-    padding-right: 20px;
-  }
-  @media screen and (min-width: 385px) and (max-width: 993px) {
-    gap: 16px;
+    max-height: 376px;
+    min-height: 376px;
   }
   @media screen and (min-width: 993px) {
-    gap: 14px;
+    min-height: 284px;
+  }
+  @media screen and (min-width: 1201px) {
+    padding-right: 8px;
+    margin-right: 0px;
   }
 `;
 
@@ -64,21 +55,12 @@ const DivHalfList = styled.div`
   height: auto;
   width: auto;
   display: flex;
-  gap: 12px;
-
-  @media screen and (min-width: 385px) and (max-width: 993px) {
-    gap: 16px;
-  }
-  @media screen and (min-width: 993px) {
-    gap: 14px;
-  }
+  gap: 14px;
 `;
 
-const NoProcutsStyed = styled.div`
+const NoProcutsStyed = styled(CentralizeDiv)`
   width: calc(90% - 20px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 12px 0;
   position: absolute;
   top: 10px;
   left: 50%;
@@ -89,14 +71,15 @@ const NoProcutsStyed = styled.div`
   @media screen and (min-width: 1201px) {
     transform: translateX(-50%);
   }
-`;
-const PNoneStyled = styled.p`
-  font-weight: 600;
-  width: 100%;
-  text-align: center;
-  padding: 16px 0px;
-  color: #292e4e;
-  font-size: 1.04em;
+
+  & p{
+    font-family: var(--p-font);
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    color: var(--dark-purple);
+    font-size: 1.04em;
+  }
 `;
 
 const ProductList = React.forwardRef(({ categoryKey }, ref) => {
@@ -132,7 +115,7 @@ const ProductList = React.forwardRef(({ categoryKey }, ref) => {
 
       {products.length == 0 && (
         <NoProcutsStyed>
-          <PNoneStyled>Não há produtos nesta categoria</PNoneStyled>
+          <p>Não há produtos nesta categoria</p>
         </NoProcutsStyed>
       )}
     </DivStyled>
@@ -145,7 +128,7 @@ function ProductListHome({ categoryKey, wasResize }) {
     currentCategory,
     allProductsInCat,
     productListHomeRef,
-    isDraggingRef
+    isDraggingRef,
   } = useContext(CartContext);
 
   const paiAllProductsRef = useRef(null);

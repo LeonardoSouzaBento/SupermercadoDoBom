@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import { H1BaseStyled } from "../../../components/GenericStylizedTags";
+import { CentralizeDiv, H1BaseStyled } from "../../../components/GenericStylizedTags";
 import { DivToCoverStyled } from "../../../components/GenericStylizedTags";
 
 export const DivBodyStyled = styled.div`
@@ -68,12 +68,9 @@ export const H1Styled = styled(H1BaseStyled)`
   color: var(--purple);
 `;
 
-export const DivSpanCloseStyled = styled.div`
+export const DivSpanCloseStyled = styled(CentralizeDiv)`
   height: 36px;
   width: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
   top: 8px;
   right: 20px;
@@ -97,10 +94,12 @@ export const DivSpanCloseStyled = styled.div`
         background-color: var(--purple-hover);
       }
     `}
+  & span{
+    font-weight: 500;
+  }  
 `;
 
 export const SpanCloseStyled = styled.span`
-  font-size: 24px;
   font-weight: 500;
 `;
 
@@ -193,30 +192,42 @@ export const DivApiReturnStyled = styled(DivToCoverStyled)`
   opacity: ${(props) => props.$opacityReturn};
   transition: opacity 0.2s ease;
   user-select: none;
+
+  & p{
+    color: var(--dark-purple);
+    font-weight: 400;
+    font-family: var(--h-font);
+  }
 `;
 
 export const SpanApiReturnStyled = styled.span`
   user-select: none;
-  font-weight: 600;
+  font-weight: 400;
 
   ${(props) =>
     props.$error &&
     css`
       font-size: 3.2em;
       color: #d5343a;
-      font-weight: 600;
-      background-color: rgba(255, 0, 0, 0.1);
+      background-color: var(--pink);
       border-radius: 50%;
-      padding: 8px;
-      padding-top: 5px;
+      padding: 2px;
     `}
   ${(props) =>
     props.$wait &&
     css`
+      font-weight: 500;
       font-size: 2.35em;
       color: var(--red);
       animation: ${rotate} 2s linear infinite;
     `}
+  ${(props) => props.$check && css`
+    background-color: var(--light-green);
+    color: var(--dark-purple);
+    font-size: 1.5em;
+    padding: 6px;
+    border-radius: 50%;
+  `}  
 `;
 
 const rotate = keyframes`

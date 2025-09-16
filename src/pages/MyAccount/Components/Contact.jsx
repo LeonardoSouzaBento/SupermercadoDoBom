@@ -22,9 +22,11 @@ import {
   H3Styled,
   DivInvalidWarnStyled,
 } from "../StylizedTags";
-import { PContinueStyled, SpanReceiptStyled } from "../../Cart/StylizedTags";
+import { SpanReceiptStyled } from "../../Cart/StylizedTags";
 import { DivToCoverStyled } from "../../../components/GenericStylizedTags";
 import { VisibilityContext } from "../../../contexts/VisibilityContext";
+import { PButtonBase } from "../../../components/GenericStylizedTags";
+import { useNavigate } from "react-router-dom";
 
 function formatPhone(num, selectedPhoneType) {
   if (!num) return "";
@@ -106,7 +108,6 @@ export const Contact = () => {
     setUserContact,
     isDataComplete,
     setIsDataComplete,
-    setSeeLogin,
   } = useContext(VisibilityContext);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [seeInput, setSeeInput] = useState(false);
@@ -118,11 +119,13 @@ export const Contact = () => {
 
   const inputZapRef = useRef(null);
 
+  const navigate = useNavigate();
+
   function showLoginWarn() {
     setSeeLoginWarn(true);
     setTimeout(() => {
       setSeeLoginWarn(false);
-      setSeeLogin(true);
+      navigate("/fazer-login");
     }, 3000);
   }
 
@@ -247,7 +250,7 @@ export const Contact = () => {
               }}
             >
               {seeInput ? (
-                <PContinueStyled>OK</PContinueStyled>
+                <PButtonBase>OK</PButtonBase>
               ) : (
                 <SpanEditStyled className="material-symbols-outlined">
                   edit

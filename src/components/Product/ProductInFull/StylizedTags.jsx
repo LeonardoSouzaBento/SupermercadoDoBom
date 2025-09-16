@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { DivToCoverStyled, H1BaseStyled, H2BaseStyled } from "../../GenericStylizedTags";
+import {
+  CentralizeDiv,
+  DivToCoverStyled,
+  H1BaseStyled,
+  H2BaseStyled,
+} from "../../GenericStylizedTags";
 
 export const BodyDivStyled = styled.div`
   width: 100vw;
@@ -42,30 +47,27 @@ export const MainDivStyled = styled.div`
   }
 `;
 
-export const DivSpanCloseStyled = styled.div`
+export const DivSpanCloseStyled = styled(CentralizeDiv)`
   width: 40px;
   height: 40px;
   margin-left: calc(100% - 48px);
   margin-bottom: -44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: sticky;
   top: 8px;
   right: -4px;
-  background-color: var(--back-color);
+  background-color: var(--bluish-white);
   color: var(--purple);
   cursor: pointer;
   z-index: 3;
   border-radius: 50%;
 
   &:hover {
-    background-color: var(--back-hover);
+    background-color: var(--bluish-white-hover);
   }
 
   @media screen and (min-width: 578px) {
-    width: auto;
     height: 24px;
+    width: 48px;
     padding: 0 12px;
     padding-top: 1px;
     position: absolute;
@@ -81,15 +83,14 @@ export const DivSpanCloseStyled = styled.div`
       background-color: transparent;
     }
   }
-`;
 
-export const SpanCloseStyled = styled.span`
-  font-size: 24px;
-  font-weight: 600;
-  cursor: pointer;
+  & span:first-child {
+    font-weight: 500;
+    cursor: pointer;
 
-  @media screen and (min-width: 578px) {
-    display: none;
+    @media screen and (min-width: 578px) {
+      display: none;
+    }
   }
 `;
 
@@ -266,13 +267,10 @@ export const PWeightStyled = styled.p`
   }
 `;
 
-export const DivNameProdStyled = styled.div`
+export const DivNameProdStyled = styled(CentralizeDiv)`
   min-height: 56px;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const PNameProdStyled = styled.p`
@@ -314,10 +312,7 @@ export const PNameProdStyled = styled.p`
   }
 `;
 
-export const DivPriceStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const DivPriceStyled = styled(CentralizeDiv)`
   height: 56px;
   margin-bottom: 4px;
 `;
@@ -349,12 +344,9 @@ export const PPriceStyled = styled.p`
   }
 `;
 
-export const ContainerQuantStyled = styled.div`
+export const ContainerQuantStyled = styled(CentralizeDiv)`
   max-width: calc(100% - 32px);
   height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 8px;
   margin: auto;
 `;
@@ -376,42 +368,38 @@ export const DivQuantFullStyled = styled.div`
   }
 `;
 
-export const DivButtonsStyled = styled.div`
+export const DivButtonsStyled = styled(CentralizeDiv)`
   width: 48px;
   height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
-export const SpanButtonsStyled = styled.span`
-  color: white;
-  font-weight: 400;
-  padding-bottom: 3px;
-  -webkit-user-select: none; /* Safari, Chrome */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
-  user-select: none; /* Padrão */
-  ${(props) => props.$add && "padding-top: 2px;"}
-  ${(props) => props.$add && "scale: 0.9;"}
+  & span {
+    color: white;
+    padding-bottom: 3px;
+    -webkit-user-select: none; /* Safari, Chrome */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    user-select: none; /* Padrão */
+    ${(props) => props.$add && "padding-top: 2px;"}
+    ${(props) => props.$add && "scale: 0.9;"}
 
   @media screen and (max-width: 375px) {
-    font-size: 1.42em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.48em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.53em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.58em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.61em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.64em;
+      font-size: 1.42em;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      font-size: 1.48em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.53em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.58em;
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+      font-size: 1.61em;
+    }
+    @media screen and (min-width: 1201px) {
+      font-size: 1.64em;
+    }
   }
 `;
 
@@ -458,16 +446,13 @@ export const PAddStyled = styled(PQuantFullStyled)`
   scale: 1.05;
 `;
 
-export const DivSubStyled = styled.div`
+export const DivSubStyled = styled(CentralizeDiv)`
   height: 48px;
   width: 100%;
   padding: 0 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 8px;
-  border: 1px solid var(--border);
-  /* background-color: rgb(250, 250, 250); */
+  /* border: 1px solid var(--light-border); */
+  background-color: var(--back-color);
   border-radius: 8px;
   position: relative;
 
@@ -514,9 +499,6 @@ export const PSubStyled = styled(PNameProdStyled)`
 `;
 
 export const DivCoverSubStyled = styled(DivToCoverStyled)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: white;
   border-radius: 8px;
 `;
@@ -541,16 +523,13 @@ export const SimilarSectionStyled = styled.section`
   }
 `;
 
-export const DivTitleStyled = styled.div`
+export const DivTitleStyled = styled(CentralizeDiv)`
   width: 100%;
   min-height: 56px;
   position: sticky;
   top: 0;
   left: 0;
   background-color: var(--back-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1;
   /* border-bottom: 1px solid var(--border); */
 

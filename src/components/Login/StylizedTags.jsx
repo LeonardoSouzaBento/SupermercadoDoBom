@@ -1,12 +1,13 @@
 import styled, { css } from "styled-components";
-import { DivToCoverStyled, H1BaseStyled } from "../GenericStylizedTags";
+import {
+  CentralizeDiv,
+  DivToCoverStyled,
+  H1BaseStyled,
+} from "../GenericStylizedTags";
 
-export const ContainerStyled = styled.div`
+export const ContainerStyled = styled(CentralizeDiv)`
   height: 100vh;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0px;
@@ -36,19 +37,13 @@ export const DivMainStyled = styled.div`
 
 export const DivAlertStyled = styled(DivToCoverStyled)`
   background-color: var(--red);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 2;
   color: black;
 `;
 
-export const DivH1Styled = styled.div`
+export const DivH1Styled = styled(CentralizeDiv)`
   height: 56px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: var(--red);
   position: relative;
 `;
@@ -60,48 +55,42 @@ export const H1LoginStyled = styled(H1BaseStyled)`
   margin-bottom: 16px;
 `;
 
-export const DivSpanCloseStyled = styled.div`
+export const ButtonCloseStyled = styled(CentralizeDiv)`
   height: 40px;
   width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 50%;
   position: absolute;
   top: 8px;
   right: 20px;
   cursor: pointer;
   transition: background-color 0.05s linear;
-
   &:hover {
     background-color: hsla(358, 66%, 43%, 1);
   }
+
+  & span {
+    font-weight: 300;
+    color: white;
+    scale: 1.07;
+
+    @media screen and (max-width: 375px) {
+      font-size: 1.45em;
+    }
+    @media screen and (min-width: 375px) and (max-width: 576px) {
+      font-size: 1.48em;
+    }
+    @media screen and (min-width: 577px) and (max-width: 768px) {
+      font-size: 1.51em;
+    }
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+      font-size: 1.53em;
+    }
+    @media screen and (min-width: 993px) {
+      font-size: 1.54em;
+    }
+  }
 `;
 
-export const SpanCloseStyled = styled.span`
-  font-weight: 300;
-  color: white;
-  scale: 1.07;
-
-  @media screen and (max-width: 375px) {
-    font-size: 1.45em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.48em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.51em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.53em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.55em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.5em;
-  }
-`;
 
 export const DivEmailStyled = styled.div`
   display: flex;
@@ -208,23 +197,16 @@ export const DivSpanPStyled = styled.div`
   justify-content: space-between;
 `;
 
-export const DivSpanStyled = styled.div`
+export const DivSpanStyled = styled(CentralizeDiv)`
   height: 40px;
   width: 56px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 50%;
 `;
 
 export const SpanButtonStyled = styled.span`
-  font-size: 1.45em;
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 22;
   color: var(--red);
   cursor: default;
-  @media screen and (max-width: 375px) {
-    font-size: 1.5em;
-  }
 `;
 
 export const PLoginStyled = styled.p`
@@ -365,12 +347,9 @@ export const InputStyled = styled.input`
   }
 `;
 
-export const ButtonDivStyled = styled.div`
+export const ButtonDivStyled = styled(CentralizeDiv)`
   height: 44px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 8px;
   background-color: var(--back-color);
   color: var(--dark-purple);
@@ -401,4 +380,3 @@ export const ButtonDivStyled = styled.div`
         `}
     `}
 `;
-

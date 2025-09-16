@@ -1,12 +1,14 @@
 import styled, { css } from "styled-components";
+import { CentralizeDiv } from "../../components/GenericStylizedTags";
 
 export const PageWrapperStyled = styled.div`
-  min-height: 100vh;
+  min-height: 90vh;
+  height: auto;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px 0;
-  /* background-color: var(--back-color); */
   background: linear-gradient(to bottom, var(--back-color), rgb(243, 244, 246));
 `;
 
@@ -39,28 +41,10 @@ export const LogoCircleStyled = styled.div`
 
   & span {
     color: rgba(255, 255, 255, 0.98);
-    font-weight: 550;
+    font-weight: 500;
     padding-top: 2px;
-    padding-right: 1px;
-
-    @media screen and (max-width: 375px) {
-      font-size: 2.18em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 2.207em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 2.259em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 2.315em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 2.372em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 2.4em;
-    }
+    padding-left: 1px;
+    font-size: 37px;
   }
 `;
 
@@ -160,12 +144,9 @@ export const CardDescriptionStyled = styled.p`
   }
 `;
 
-export const ButtonStyled = styled.button`
+export const ButtonStyled = styled(CentralizeDiv)`
   width: 100%;
   height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 10px;
   font-family: var(--bt-font);
   font-weight: 550;
@@ -230,7 +211,7 @@ export const ButtonStyled = styled.button`
     border: 1px solid var(--border);
     &:hover { background: #f8fafc; }
   `}
-
+  ${(props) => props.$reset && "margin-bottom: 12px;"}
   ${(props) =>
     props.$variant === "market" &&
     props.$disable &&
@@ -249,13 +230,14 @@ export const InputWrapperStyled = styled.div`
   margin-bottom: 12px;
   ${(props) => props.$password && "margin-bottom: 16px;"}
   ${(props) => props.$email && "padding-top: 16px;"}
- 
+  ${(props) => props.$reset && "margin-bottom: 20px;"}
+
   & p {
     border: 1px solid var(--dark-red);
     outline: 3px solid var(--pink);
     color: var(--dark-red);
     font-family: var(--p-font);
-    font-weight: 700;
+    font-weight: 600;
     border-radius: 8px;
     box-sizing: border-box;
     padding: 8px 0;
@@ -288,6 +270,7 @@ export const InputWrapperStyled = styled.div`
     color: #551a8b;
     text-decoration: underline;
     margin-top: 8px;
+    cursor: default;
 
     @media screen and (max-width: 375px) {
       font-size: 1.05em;

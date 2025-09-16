@@ -1,5 +1,5 @@
 import { PValueStyled } from "../../../pages/Cart/StylizedTags";
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 const DivForReturnStyled = styled.div`
   width: 100%;
@@ -18,7 +18,6 @@ const DivRowStyled = styled.div`
   align-items: center;
   gap: 8px;
 
-
   @media screen and (max-width: 375px) {
     align-items: flex-start;
   }
@@ -30,24 +29,24 @@ const DivRowStyled = styled.div`
         gap: 4px;
       }
     `}
-`;
-
-const SpanEmailStyled = styled.span`
-  background-color: transparent;
-  font-size: 1.4em;
-  font-weight: 500;
-  color: var(--dark-red);
-  border-radius: 50%;
-  ${(props) =>
-    props.$check &&
-    css`
-      font-size: 1.1em;
-      font-weight: 600;
-      background-color: var(--light-green);
-      color: var(--purple);
-      padding: 1px;
-      margin-left: 2px;
-    `}
+    
+  & span {
+    background-color: transparent;
+    font-size: 1.4em;
+    font-weight: 500;
+    color: var(--dark-red);
+    border-radius: 50%;
+    ${(props) =>
+      props.$check &&
+      css`
+        font-size: 1.1em;
+        font-weight: 600;
+        background-color: var(--light-green);
+        color: var(--purple);
+        padding: 1px;
+        margin-left: 2px;
+      `}
+  }
 `;
 
 const PasswordValidationReturn = ({ validacao }) => {
@@ -58,54 +57,39 @@ const PasswordValidationReturn = ({ validacao }) => {
           <strong style={{ fontWeight: 600 }}>Sua senha deve ter:</strong>
         </PValueStyled>
       </DivRowStyled>
-      
-      <DivRowStyled>
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.tamanhoMinimo}
-        >
+
+      <DivRowStyled $check={validacao.tamanhoMinimo}>
+        <span className="material-symbols-outlined">
           {validacao.tamanhoMinimo ? "check" : "exclamation"}
-        </SpanEmailStyled>
+        </span>
         <PValueStyled $email={true}>8 digitos:</PValueStyled>
       </DivRowStyled>
 
-      <DivRowStyled>
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.temMaiuscula}
-        >
+      <DivRowStyled $check={validacao.temMaiuscula}>
+        <span className="material-symbols-outlined">
           {validacao.temMaiuscula ? "check" : "exclamation"}
-        </SpanEmailStyled>
+        </span>
         <PValueStyled $email={true}>1 Maiúsculo(A-Z)</PValueStyled>
       </DivRowStyled>
 
-      <DivRowStyled>
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.temMinuscula}
-        >
+      <DivRowStyled $check={validacao.temMinuscula}>
+        <span className="material-symbols-outlined">
           {validacao.temMinuscula ? "check" : "exclamation"}
-        </SpanEmailStyled>
+        </span>
         <PValueStyled $email={true}>1 Minúsculo (a-z)</PValueStyled>
       </DivRowStyled>
 
-      <DivRowStyled>
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.temNumero}
-        >
+      <DivRowStyled $check={validacao.temNumero}>
+        <span className="material-symbols-outlined">
           {validacao.temNumero ? "check" : "exclamation"}
-        </SpanEmailStyled>
+        </span>
         <PValueStyled $email={true}>1 Número (0-9)</PValueStyled>
       </DivRowStyled>
 
-      <DivRowStyled>
-        <SpanEmailStyled
-          className="material-symbols-outlined"
-          $check={validacao.temSimbolo}
-        >
+      <DivRowStyled $check={validacao.temSimbolo}>
+        <span className="material-symbols-outlined">
           {validacao.temSimbolo ? "check" : "exclamation"}
-        </SpanEmailStyled>
+        </span>
         <DivRowStyled $last={true}>
           <PValueStyled $email={true} $last={true}>
             1 Símbolo especial

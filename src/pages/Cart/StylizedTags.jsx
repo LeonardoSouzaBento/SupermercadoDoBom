@@ -1,5 +1,8 @@
 import styled, { css } from "styled-components";
-import { H1BaseStyled } from "../../components/GenericStylizedTags";
+import {
+  CentralizeDiv,
+  H1BaseStyled,
+} from "../../components/GenericStylizedTags";
 
 export const MainStyled = styled.div`
   width: 100%;
@@ -68,12 +71,13 @@ export const CartSectionStyed = styled.section`
   margin-bottom: 20px;
   border-radius: 12px;
   box-sizing: border-box;
-  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
-    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
-    -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
-  /* box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5),
+  /* box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
     2px 0px 4px -3px rgba(41, 46, 117, 0.125),
     -2px 0px 4px -3px rgba(41, 46, 117, 0.125); */
+  box-shadow: 0px 2px 4px -2px hsla(236, 18%, 31%, 0.6),
+    2px 0px 4px -3px hsla(236, 18%, 31%, 0.13),
+    -2px 0px 4px -3px hsla(236, 18%, 31%, 0.13);
+
   position: relative;
   transition: height 0.15s ease;
   background-color: white;
@@ -125,25 +129,22 @@ export const HeaderCartStyled = styled.div`
   }
 `;
 
-export const DivSpanDeleteStyled = styled.div`
+export const DivSpanDeleteStyled = styled(CentralizeDiv)`
   min-width: 40px;
   height: 40px;
   margin-bottom: 10px;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
   position: absolute;
   top: 8px;
   right: 8px;
   border-radius: 8px;
-  background-color: var(--back-color);
+  background-color: var(--bluish-white);
   transition: all 0.15s ease;
   color: var(--purple);
 
   &:hover {
-    background-color: var(--back-hover);
+    background-color: var(--bluish-white-hover);
   }
 
   & span {
@@ -227,7 +228,6 @@ export const DivSeeAllStyled = styled.div`
   }
 
   & span {
-    font-weight: 400;
     font-size: 1.65em;
     padding-top: 2px;
 
@@ -289,10 +289,10 @@ export const SectionStyled = styled.section`
   box-sizing: border-box;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
-    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
-    -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
-  /* box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5),
+  box-shadow: 0px 2px 4px -2px hsla(236, 18%, 31%, 0.60),
+    2px 0px 4px -3px hsla(236, 18%, 31%, 0.13),
+    -2px 0px 4px -3px hsla(236, 18%, 31%, 0.13);
+  /* box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
     2px 0px 4px -3px rgba(41, 46, 117, 0.125),
     -2px 0px 4px -3px rgba(41, 46, 117, 0.125); */
   overflow: hidden;
@@ -362,16 +362,23 @@ export const ReceiptOptionStyled = styled.div`
   transition: all 0.15s ease;
   cursor: pointer;
   &:hover {
-    background-color: hsla(213, 31%, 94%, 1);
+    background-color: var(--white-hover);
   }
-  ${(props) => props.$selected && "background-color: #ECF0F5;"}
+  ${(props) =>
+    props.$selected &&
+    css`
+      background-color: var(--bluish-white);
+      &:hover {
+        background-color: var(--bluish-white-hover);
+      }
+    `}
+
   ${(props) => props.$variant === "retirar" && "padding: 8px 16px;"};
   ${(props) => props.$variant === "entregar" && "margin-bottom: 0px;"}
 `;
 
 export const SpanReceiptStyled = styled.span`
   font-size: 1.75em;
-  font-weight: 550;
   color: var(--purple);
   ${(props) =>
     !props.$selected &&
@@ -379,6 +386,7 @@ export const SpanReceiptStyled = styled.span`
       color: rgba(160, 160, 160, 1);
       font-weight: 200;
     `};
+  font-variation-settings: "FILL" 1;
 `;
 
 export const DivAvisoStyled = styled.div`
@@ -388,11 +396,11 @@ export const DivAvisoStyled = styled.div`
   top: 0;
   left: 0;
   padding: 8px 16px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   border-radius: 4px;
   background-color: var(--red);
-  position: relative;
   overflow: hidden;
   scale: ${(props) => props.$scale};
   transition: scale 0.3s ease;
@@ -410,7 +418,6 @@ export const DivAllValuesStyled = styled.div`
   display: flex;
   flex-flow: row wrap;
   box-sizing: border-box;
-  border-radius: 8px;
   border: 1px solid var(--border);
   position: relative;
 
@@ -540,13 +547,10 @@ export const DivToCoverStyled = styled.div`
   z-index: 3;
 `;
 
-export const DivQuestionStyled = styled.div`
+export const DivQuestionStyled = styled(CentralizeDiv)`
   width: 100%;
   height: 56px;
   margin-bottom: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: white;
   ${(props) =>
     !props.$feedback && "border-bottom: 1px solid var(--light-border);"}
@@ -584,12 +588,9 @@ export const DivSimNaoStyled = styled.div`
   height: max-content;
 `;
 
-export const ButtonStyled = styled.div`
+export const ButtonStyled = styled(CentralizeDiv)`
   height: 48px;
   width: calc(100% - 32px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
@@ -699,31 +700,6 @@ export const PValueStyled = styled.p`
   }
   @media screen and (min-width: 1201px) {
     font-size: 1.132em;
-  }
-`;
-
-export const PContinueStyled = styled.p`
-  font-family: var(--bt-font);
-  font-weight: 550;
-  padding-bottom: 2px;
-  cursor: pointer;
-  @media screen and (max-width: 375px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.177em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.192em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.207em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.222em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.23em;
   }
 `;
 

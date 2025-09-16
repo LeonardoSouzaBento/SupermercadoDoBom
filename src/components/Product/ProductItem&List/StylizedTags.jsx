@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { CentralizeDiv } from "../../GenericStylizedTags";
 
 export const PaiProdStyled = styled.div`
   display: flex;
@@ -10,12 +11,15 @@ export const PaiProdStyled = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  transition: all 0.15s ease;
-  /* box-shadow: 0 3px 9px -3px rgba(0, 0, 0, 0.1); */
+  transition: all 0.2s ease;
 
-  &:hover{
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
+  ${(props) =>
+    props.$variant !== "cart" &&
+    `&:hover{
+      box-shadow: 0 4px 8px hsla(0, 0%, 0%, 0.13);
+      }`}
+  // box-shadow: 0 4px 8px hsla(236, 8%, 31%, 0.24);
+  
   ${(props) =>
     props.$variant == "cart" &&
     css`
@@ -326,15 +330,12 @@ export const ImgOfertaStyed = styled.img`
     `}
 `;
 
-export const DivOffStyled = styled.div`
+export const DivOffStyled = styled(CentralizeDiv)`
   width: max-content;
   height: 20px;
   position: absolute;
   top: 7px;
   right: 7px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0px 8px;
   padding-bottom: 1px;
   background-color: var(--red);
@@ -385,7 +386,6 @@ export const DivAddStyled = styled.div`
 
 export const SpanMoreStyled = styled.span`
   font-size: 1.48em;
-  font-weight: 400;
   color: white;
   cursor: pointer;
   -webkit-user-select: none;

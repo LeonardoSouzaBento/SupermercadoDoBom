@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { H1BaseStyled } from "../../../components/GenericStylizedTags";
+import { CentralizeDiv, H1BaseStyled } from "../../../components/GenericStylizedTags";
 
 export const ContainerStyled = styled.div`
   height: 100vh;
@@ -100,12 +100,9 @@ export const DivNameSpanStyled = styled.div`
   }
 `;
 
-export const DivSpanStyled = styled.div`
+export const DivSpanStyled = styled(CentralizeDiv)`
   width: max-content;
   height: 56px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 28px;
   flex: none;
   cursor: pointer;

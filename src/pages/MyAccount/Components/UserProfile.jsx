@@ -13,17 +13,19 @@ import {
   DivStatusStyled,
   DivNameStatus,
   SpanStatusStyled,
-  DivButtonStyled,
   ButtonLoginStyled,
 } from "../StylizedTags";
-import { PContinueStyled } from "../../Cart/StylizedTags";
+import { PButtonBase } from "../../../components/GenericStylizedTags";
+import { useNavigate } from "react-router-dom";
 
-export const UserProfile = ({ userContact, setSeeLogin }) => {
-
+export const UserProfile = ({ userContact }) => {
   const nameUser = userContact.email
-  ? (userContact.name ? userContact.name : "Usuário sem nome")
-  : "Usuário anônimo";
-
+    ? userContact.name
+      ? userContact.name
+      : "Usuário sem nome"
+    : "Usuário anônimo";
+  const navigate = useNavigate();
+  
   // function handleEditNameUser() {
     
   // }
@@ -77,15 +79,13 @@ export const UserProfile = ({ userContact, setSeeLogin }) => {
       )}
 
       {!userContact.email && (
-        <DivButtonStyled
+        <ButtonLoginStyled
           onClick={() => {
-            setSeeLogin(true);
+           navigate("/fazer-login");
           }}
         >
-          <ButtonLoginStyled>
-            <PContinueStyled>Entrar com e-mail</PContinueStyled>
-          </ButtonLoginStyled>
-        </DivButtonStyled>
+          <PButtonBase>Entrar com e-mail</PButtonBase>
+        </ButtonLoginStyled>
       )}
     </DivOneStyled>
   );

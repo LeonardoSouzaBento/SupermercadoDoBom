@@ -54,16 +54,45 @@ export const H2BaseStyled = styled.h2`
   }
 `;
 
-export const DivToCoverStyled = styled.div`
+export const CentralizeDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const PButtonBase = styled.p`
+  font-family: var(--bt-font);
+  font-weight: 550;
+  cursor: pointer;
+  color: white;
+  
+  @media screen and (max-width: 375px) {
+    font-size: 1.125em;
+  }
+  @media screen and (min-width: 375px) and (max-width: 576px) {
+    font-size: 1.136em;
+  }
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 1.159em;
+  }
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    font-size: 1.183em;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    font-size: 1.207em;
+  }
+  @media screen and (min-width: 1201px) {
+    font-size: 1.219em;
+  }
+`;
+
+export const DivToCoverStyled = styled(CentralizeDiv)`
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 3;
   background-color: white;
   border-radius: 12px;
 `;

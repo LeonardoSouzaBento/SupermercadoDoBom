@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, } from "react";
+import { useState, useContext, useEffect } from "react";
 import { VisibilityContext } from "../../../contexts/VisibilityContext";
 import {
   signInWithCustomToken,
@@ -64,6 +64,7 @@ export const EmailForm = ({
     temSimbolo: false,
     valida: false,
   });
+
   const [exceptionalPasswordAlert, setExceptionalPasswordAlert] =
     useState(false);
 
@@ -71,14 +72,14 @@ export const EmailForm = ({
     setExceptionalPasswordAlert(true);
     setTimeout(() => {
       setExceptionalPasswordAlert(false);
-    }, 3000);
+    }, 3300);
   }
 
   function showInvalidEmailWarn() {
     setInvalidEmailWarn(true);
     setTimeout(() => {
       setInvalidEmailWarn(false);
-    }, 2700);
+    }, 3000);
   }
 
   function handleTyping(e) {
@@ -200,7 +201,13 @@ export const EmailForm = ({
             {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
           </TogglePasswordStyled>
         </PasswordWrapperStyled>
-        <a>Esqueci Minha Senha</a>
+        <a
+          onClick={() => {
+            setLoginType("resetPassword");
+          }}
+        >
+          Esqueci Minha Senha
+        </a>
         {exceptionalPasswordAlert && <p>A senha de exemplo não é permitida!</p>}
       </InputWrapperStyled>
 

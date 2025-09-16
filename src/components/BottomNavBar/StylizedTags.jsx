@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { CentralizeDiv } from "../GenericStylizedTags";
 
 export const FooterStyled = styled.footer`
   display: flex;
@@ -41,10 +42,7 @@ export const CartDescStyled = styled.div`
   }
 `;
 
-export const DivDeleteAndCart = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const DivDeleteAndCart = styled(CentralizeDiv)`
   height: 100%;
   width: auto;
   gap: 10px;
@@ -195,7 +193,6 @@ export const DivSpanStyled = styled.div`
   gap: 8px;
   position: relative;
 
-  /* Estilos para SpanStyled */
   & > span {
     font-size: 3.7em;
     padding: 5px;
@@ -327,12 +324,9 @@ export const PVoltarStyled = styled(PSimStyled)`
   text-shadow: 0.2px 0.2px 0px black;
 `;
 
-export const DivFeedBackStyled = styled.div`
+export const DivFeedBackStyled = styled(CentralizeDiv)`
   width: 100%;
   height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 8px;
 `;
 
