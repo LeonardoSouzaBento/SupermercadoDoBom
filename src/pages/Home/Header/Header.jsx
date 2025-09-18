@@ -7,6 +7,8 @@ import {
   ButtonMoreOptionsStyled,
 } from "./StylizedTags";
 import SearchBar from "../../../components/SearchBar/SearchBar";
+import { VisibilityContext } from "../../../contexts/VisibilityContext";
+import { useContext } from "react";
 
 const Header = ({ setViewOptions, onHome }) => {
   function handleClick(e) {
@@ -16,7 +18,8 @@ const Header = ({ setViewOptions, onHome }) => {
     }
     setViewOptions(true);
   }
-
+  const {supermarketName} = useContext(VisibilityContext);
+  
   return (
     <HeaderStyled>
       <DivForLogoStyled $external={true}>
@@ -25,7 +28,7 @@ const Header = ({ setViewOptions, onHome }) => {
             <span className="material-symbols-rounded">handshake</span>
           </LogoDivStyled>
           <DivPsStyled>
-            <p>SUPERMERCADO UNIÃO</p>
+            <p>{supermarketName}</p>
             <p> Seja bem-vindo!</p>
           </DivPsStyled>
         </DivForLogoStyled>

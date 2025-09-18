@@ -57,7 +57,7 @@ const ProductFeedDivStyled = styled.section`
   z-index: 2;
 
   /* box-shadow: 0px -8px 20px rgba(0, 0, 0, 0.125); */
-  
+
   @media screen and (min-width: 577px) {
     padding-left: 16px;
   }
@@ -80,8 +80,8 @@ function HomeContent() {
 
   useEffect(() => {
     // if (idToken) {
-    // //   console.log("Sim");
-    // // }
+    //   console.log("Sim");
+    // }
     if (!idToken) {
       navigate("/fazer-login");
     }

@@ -26,7 +26,8 @@ const LoginPage = () => {
   const [loginType, setLoginType] = useState(null);
   const [loginState, setLoginState] = useState("");
   const [hasSuccessMessage, setHasSuccessMessage] = useState(false);
-  const { setUserDisconnected, setSeeLogin } = useContext(VisibilityContext);
+  const { setUserDisconnected, setSeeLogin, onMyAccount, supermarketName } =
+    useContext(VisibilityContext);
   const navigate = useNavigate();
   const loginTexts = {
     null: {
@@ -89,7 +90,7 @@ const LoginPage = () => {
           <LogoCircleStyled>
             <span className="material-symbols-outlined">handshake</span>
           </LogoCircleStyled>
-          <TitleStyled>Supermercado União</TitleStyled>
+          <TitleStyled>{supermarketName}</TitleStyled>
           <SubtitleStyled>Compre com comodidade e praticidade</SubtitleStyled>
         </LogoWrapperStyled>
 
@@ -113,12 +114,15 @@ const LoginPage = () => {
                 setLoginSucess={setLoginSucess}
               />
 
-              <ButtonStyled
-                $variant="visitor"
-                onClick={() => setLoginType("visitor")}
-              >
-                <User size={20} /> Continuar como Visitante
-              </ButtonStyled>
+              {!onMyAccount && (
+                <ButtonStyled
+                  $variant="visitor"
+                  onClick={() => setLoginType("visitor")}
+                >
+                  <User size={20} /> Continuar como Visitante
+                </ButtonStyled>
+              )}
+
               <ButtonStyled
                 $variant="market"
                 $last={true}

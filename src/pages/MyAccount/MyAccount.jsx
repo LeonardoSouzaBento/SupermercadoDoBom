@@ -11,23 +11,26 @@ import SavedAddress from "./Components/SavedAddress";
 import FinishShopping from "./Components/FinishShopping";
 import UserProfile from "./Components/UserProfile";
 import RegisterAddress from "./RegisterAddress/RegisterAddress";
-import Login from "../../components/Login/Login";
 import { useContext } from "react";
 import { VisibilityContext } from "../../contexts/VisibilityContext";
 import { CartContext } from "../../contexts/CartContext";
 
 const MyAccount = () => {
-  const { userContact, isDataComplete, seeLogin, setSeeLogin } =
+  const { userContact, isDataComplete, setOnMyAccount } =
     useContext(VisibilityContext);
   const { orderInfo, setOrderInfo, userAddress, cartProducts } =
     useContext(CartContext);
   const [seeRegisterAddress, setSeeRegisterAddress] = useState(false);
 
   useEffect(() => {
-    if (cartProducts.length !== 0 && !orderInfo.status) {
+    setOnMyAccount(true);
+    const pendingOrderInfo = cartProducts.length !== 0 && !orderInfo.status;
+    const voidCart = cartProducts.length === 0;
+    
+    if (pendingOrderInfo) {
       setOrderInfo({ ...orderInfo, status: "pending" });
     }
-    if (cartProducts.length === 0) {
+    if (voidCart) {
       setOrderInfo({ ...orderInfo, status: "" });
     }
     requestAnimationFrame(() => {
@@ -39,8 +42,6 @@ const MyAccount = () => {
 
   return (
     <>
-      {seeLogin && <Login setSeeLogin={setSeeLogin} onMyAccount={true} />}
-
       <HeaderStyled>
         <H1Styled>Minha conta</H1Styled>
       </HeaderStyled>

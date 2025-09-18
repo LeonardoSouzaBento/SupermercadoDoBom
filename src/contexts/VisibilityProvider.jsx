@@ -1,10 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { VisibilityContext } from "./VisibilityContext";
 import { CartContext } from "./CartContext";
-import {
-  voidUserContact,
-  voidIsDataComplete,
-} from "./voidConsts";
+import { voidUserContact, voidIsDataComplete } from "./voidConsts";
 
 export const VisibilityProvider = ({ children }) => {
   const { setCartProducts, setOrderInfo, setUserAddress } =
@@ -47,11 +44,14 @@ export const VisibilityProvider = ({ children }) => {
     localStorage.setItem("token", JSON.stringify(idToken));
   }, [idToken]);
 
+  const [onMyAccount, setOnMyAccount] = useState(() => {
+    const stored = localStorage.getItem("onMyAccount");
+    return stored ? JSON.parse(stored) : false;
+  });
+
   const [userContact, setUserContact] = useState(() => {
     const storedInfo = localStorage.getItem("userContact");
-    return storedInfo
-      ? JSON.parse(storedInfo)
-      : voidUserContact;
+    return storedInfo ? JSON.parse(storedInfo) : voidUserContact;
   });
 
   useEffect(() => {
@@ -60,9 +60,7 @@ export const VisibilityProvider = ({ children }) => {
 
   const [isDataComplete, setIsDataComplete] = useState(() => {
     const storedInfo = localStorage.getItem("isDataComplete");
-    return storedInfo
-      ? JSON.parse(storedInfo)
-      : voidIsDataComplete;
+    return storedInfo ? JSON.parse(storedInfo) : voidIsDataComplete;
   });
 
   useEffect(() => {
@@ -73,6 +71,8 @@ export const VisibilityProvider = ({ children }) => {
     const stored = localStorage.getItem("userDisconnected");
     return stored ? JSON.parse(stored) : false;
   });
+
+  const supermarketName = "Supermercado Do Bom";
 
   useEffect(() => {
     // if (userDisconnected) {
@@ -111,6 +111,9 @@ export const VisibilityProvider = ({ children }) => {
         setIdToken,
         userDisconnected,
         setUserDisconnected,
+        onMyAccount,
+        setOnMyAccount,
+        supermarketName
       }}
     >
       {children}

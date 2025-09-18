@@ -6,7 +6,9 @@ O "Supermercado do Bom" é uma aplicação de página única (SPA) que simula a 
 
 
 ***Tecnologias Utilizadas***
+
 O projeto foi desenvolvido com as seguintes tecnologias:
+
 
 Frontend: React, para a construção da interface de usuário.
 
@@ -26,7 +28,9 @@ Firebase Authenticator, para gerenciamento de autenticação de usuários (login
 
 
 ***Páginas Principais***
+
 O site contém as seguintes rotas, acessíveis diretamente pelo link https://supermercadodobom.netlify.app[/nome-da-pagina]:
+
 
  / - Página Inicial: Exibe as maiores ofertas e os produtos em destaque.
 
