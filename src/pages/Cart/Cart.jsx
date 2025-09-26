@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../contexts/CartContext.js";
-import { VisibilityContext } from "../../contexts/VisibilityContext.js";
-import { ProductList } from "../../components/Product/ProductItem&List/ProductList.jsx";
+import { CartContext } from "@contexts/CartContext.js";
+import { VisibilityContext } from "@contexts/VisibilityContext.js";
+import { ProductList } from "@components/Product/ProductItem&List/ProductList.jsx";
 import {
   MainStyled,
   CartSectionStyed,
@@ -11,13 +11,14 @@ import {
   ContinueSectionStyled,
   DivToCoverStyled,
 } from "./StylizedTags.jsx";
-import CancelDialog from "./Components/CancelDialog.jsx";
-import ButtonSeeAll from "./Components/ButtonSeeAll.jsx";
-import DetailAndButtonAdd from "./Components/DetailAndButtonAdd.jsx";
-import HeaderCart from "./Components/HeaderCart.jsx";
-import ReceiptAndContinueSection from "./Components/ReceiptAndContinueSection.jsx";
-
-import ProductInFull from "../../components/Product/ProductInFull/ProductInFull.jsx";
+import {
+  CancelDialog,
+  ButtonSeeAll,
+  DetailAndButtonAdd,
+  HeaderCart,
+  ReceiptAndContinueSection,
+} from "./Components";
+import ProductInFull from "@components/Product/ProductInFull/ProductInFull.jsx";
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar
@@ -155,9 +156,9 @@ const Cart = () => {
           <HeaderCart setSeeCancelDialog={setSeeCancelDialog} />
 
           <ProductList
-            variant={"cart"}
-            categoryKey={12}
             ref={ProductListRef}
+            variant={"cart"}
+            productList={cartProducts}
           ></ProductList>
 
           {viewButtonSeeAll && (

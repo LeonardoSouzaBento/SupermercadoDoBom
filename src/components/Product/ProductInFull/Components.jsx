@@ -18,6 +18,7 @@ import {
   DivCoverSubStyled,
   PSubStyled,
 } from "./StylizedTags";
+import { PButtonBase } from "../../GenericStylizedTags";
 
 export const ButtonClose = ({ seeSpanClose, handleClickClose }) => {
   return (
@@ -106,7 +107,7 @@ export const ButtonAdd = ({
           style={{ width: "100%" }}
           onPointerUp={handlePointerUpAdd}
         >
-          <PAddStyled>Adicionar</PAddStyled>
+          <PButtonBase>Adicionar</PButtonBase>
         </DivButtonsStyled>
       )}
     </DivQuantFullStyled>

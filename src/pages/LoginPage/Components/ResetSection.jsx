@@ -14,7 +14,7 @@ function validateEmail(email) {
   return regex.test(email);
 }
 
-export const ResetSection = ({ setLoginType }) => {
+const ResetSection = ({ setLoginType }) => {
   const [email, setEmail] = useState("");
   const [emailPassed, setEmailPassed] = useState(false);
   const [invalidEmailWarn, setInvalidEmailWarn] = useState(false);
@@ -145,3 +145,5 @@ export const ResetSection = ({ setLoginType }) => {
     </>
   );
 };
+
+export default ResetSection;

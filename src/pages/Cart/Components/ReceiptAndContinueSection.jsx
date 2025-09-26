@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { VisibilityContext } from "../../../contexts/VisibilityContext.js";
 import DataAlert from "./DataAlert";
 import {
   ContainerStyled,
@@ -12,8 +11,9 @@ import {
   SpanReceiptStyled,
   ButtonContinueStyled,
 } from "../StylizedTags.jsx";
-import { SpanH2Styled } from "../../../pages/MyAccount/StylizedTags.jsx";
-import { PButtonBase } from "../../../components/GenericStylizedTags.jsx";
+import { SpanH2Styled } from "@pages/MyAccount/StylizedTags.jsx";
+import { PButtonBase } from "@components/GenericStylizedTags.jsx";
+import { UserDataContext } from "@contexts/UserDataContext.js";
 
 const ReceiptAndContinueSection = ({
   setScaleWarnnig,
@@ -23,7 +23,7 @@ const ReceiptAndContinueSection = ({
   const navigate = useNavigate();
   const [selected, setSelected] = useState("entregar");
   const [incompleteDataAlert, setIncompleteDataAlert] = useState(false);
-  const { userContact, isDataComplete } = useContext(VisibilityContext);
+  const { userContact, isDataComplete } = useContext(UserDataContext);
 
   const userDataComplete =
     isDataComplete.contact && isDataComplete.address && userContact.email;

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import HomePage from "@pages/Home/HomePage";
 import Cart from "./pages/Cart/Cart";
 import SearchAction from "./pages/SearchAction";
 import ForRecruitersPage from "./pages/ForRecruiters/ForRecruiters";
@@ -10,7 +10,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/meu-carrinho" element={<Cart />} />
       <Route path="/buscar-produtos" element={<SearchAction />} />
       <Route path="/sobre" element={<ForRecruitersPage />} />

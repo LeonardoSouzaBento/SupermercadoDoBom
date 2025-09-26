@@ -1,5 +1,5 @@
 import { DivApiReturnStyled, SpanApiReturnStyled } from "../StylizedTags";
-import { PValueStyled } from "../../../../pages/Cart/StylizedTags";
+import { PValueStyled } from "@pages/Cart/StylizedTags";
 
 const CepConvertedReturn = ({ cepConvertedState, opacityReturn }) => {
   return (

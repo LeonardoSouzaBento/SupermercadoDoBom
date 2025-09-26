@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../../main";
-import { VisibilityContext } from "../../../contexts/VisibilityContext";
+import { VisibilityContext } from "@contexts/VisibilityContext";
 import { ButtonStyled } from "../StylizedTags";
 
 const provider = new GoogleAuthProvider();
 
-export const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
+const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
   const { setIdToken, userContact, setUserContact } =
     useContext(VisibilityContext);
 
@@ -82,3 +82,5 @@ export const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
     </ButtonStyled>
   );
 };
+
+export default ButtonLoginGoogle;

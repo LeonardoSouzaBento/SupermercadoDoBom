@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { CartContext } from "../../contexts/CartContext";
+import { CartContext } from "@contexts/CartContext";
 import { useNavigate } from "react-router-dom";
 import ConfirmDialog from "./ConfirmDialog";
 import {

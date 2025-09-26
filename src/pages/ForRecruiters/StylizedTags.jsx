@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CentralizeDiv, H1BaseStyled } from "../../components/GenericStylizedTags";
+import { CentralizeDiv, H1BaseStyled } from "@components/GenericStylizedTags";
 
 export const BodyStyled = styled.div`
   height: auto;

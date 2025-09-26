@@ -1,8 +1,7 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { allProductsForSearch } from "../../data/productList";
+import { allProductsForSearch } from "@data/productList";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../contexts/CartContext";
-import { VisibilityContext } from "../../contexts/VisibilityContext";
+import { VisibilityContext } from "@contexts/VisibilityContext";
 import { sequentialPrefixSearch } from "./sequentialPrefixSearch";
 import {
   animationOfWrite,
@@ -25,6 +24,7 @@ import {
   PStyled,
   InputForFocusStyled,
 } from "./StylizedTags";
+import { UserDataContext } from "../../contexts/Contexts/UserDataContext";
 
 //produtos únicos para sugestão
 
@@ -34,10 +34,9 @@ function SearchBar({ copy, onHome }) {
   const [prevInput, setPrevInput] = useState("");
   const inputRef = useRef(null);
   const [returnedProducts, setReturnedproducts] = useState([]);
-
+  const { setSearchProducts } = useContext(UserDataContext);
   const { preventClick, setPreventClick, tipForRecruiter, setTipForRecruiter } =
     useContext(VisibilityContext);
-  const { setSearchProducts } = useContext(CartContext);
 
   //estados para autocompletar
   const [searchInitiated, setSearchInitiated] = useState(false);
@@ -131,7 +130,10 @@ function SearchBar({ copy, onHome }) {
     setThisInput(completeSuggestion);
     setCompletions([""]);
 
-    const results = sequentialPrefixSearch(allProductsForSearch, completeSuggestion);
+    const results = sequentialPrefixSearch(
+      allProductsForSearch,
+      completeSuggestion
+    );
     let newStart = completeSuggestion.length;
     let newEnd = newStart + 14;
 

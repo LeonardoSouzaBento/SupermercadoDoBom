@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { CartContext } from "../../../contexts/CartContext.js";
-import { VisibilityContext } from "../../../contexts/VisibilityContext.js";
+import { CartContext } from "@contexts/CartContext.js";
+import { VisibilityContext } from "@contexts/VisibilityContext.js";
 import {
   BodyDivStyled,
   MainDivStyled,
@@ -18,15 +18,16 @@ import {
   ProductData,
   Subtotal,
 } from "./Components.jsx";
-import { PValueStyled } from "../../../pages/Cart/StylizedTags.jsx";
+import { PValueStyled } from "@pages/Cart/StylizedTags.jsx";
+import { HomeDivsContext } from "@contexts/HomeDivsContext.js";
 
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
   const [seeSpanClose, setSeeSpanClose] = useState(false);
   const { dataProductFull, setViewProductInFull } =
     useContext(VisibilityContext);
-  const { handleQuantityChange, setUpdateProduct, isDraggingRef } =
-    useContext(CartContext);
+  const { handleQuantityChange } = useContext(CartContext);
+  const { isDraggingRef } = useContext(HomeDivsContext);
   const initialQuant = dataProductFull.quantity;
   const [quantity, setQuantity] = useState(initialQuant);
   const isDragging = useRef(false);
@@ -94,7 +95,6 @@ const ProductInFull = () => {
     }
     setSeeSpanClose(false);
     setTranslateYState("100%");
-    setUpdateProduct({ id: dataProductFull.id, quant: quantity });
     setTimeout(() => {
       setViewProductInFull(false);
     }, 300);
@@ -170,7 +170,7 @@ const ProductInFull = () => {
               textAlign: "center",
             }}
           >
-           *Essa parte ainda não foi desenvolvida* 
+            *Essa parte ainda não foi desenvolvida*
           </PValueStyled>
 
           <ContainerListStyled>

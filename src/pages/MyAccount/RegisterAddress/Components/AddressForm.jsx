@@ -1,12 +1,11 @@
 import { useEffect, useState, useContext } from "react";
-import { CartContext } from "../../../../contexts/CartContext";
-import { VisibilityContext } from "../../../../contexts/VisibilityContext";
 import CepConvertedReturn from "./CepConvertedReturn";
 import {
   InputStyled,
   ButtonStyled,
   RegisterButtonStyled,
 } from "../StylizedTags";
+import { UserDataContext } from "@contexts/UserDataContext";
 
 const AddressForm = ({
   cepConvertedState,
@@ -18,9 +17,8 @@ const AddressForm = ({
 }) => {
   const [addressSaved, setAddressSaved] = useState("");
   const [addressComplete, setAddressComplete] = useState(false);
-  const { setUserAddress } = useContext(CartContext);
-  const { idToken, isDataComplete, setIsDataComplete } =
-    useContext(VisibilityContext);
+  const { idToken, isDataComplete, setIsDataComplete, setUserAddress } =
+    useContext(UserDataContext);
   const [opacityAddressForm, setOpacityAddressForm] = useState(0);
 
   function dismountComponent() {

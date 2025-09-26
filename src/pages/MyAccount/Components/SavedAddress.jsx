@@ -19,14 +19,14 @@ import {
   SpanCheckStyled,
   H3Styled,
 } from "../StylizedTags";
-import { DivToCoverStyled } from "../../../components/GenericStylizedTags";
+import { DivToCoverStyled } from "@components/GenericStylizedTags";
 import { useNavigate } from "react-router-dom";
 
 export const SavedAddress = ({
   setSeeRegisterAddress,
   isDataComplete,
-  userAddress,
   userContact,
+  userAddress,
 }) => {
   function GetInitialsNameState() {
     const palavras = userAddress.estado.split(" ");

@@ -1,9 +1,10 @@
 import { useContext, useState, useEffect } from "react";
-import SearchBar from "../components/SearchBar/SearchBar";
-import { ProductList } from "../components/Product/ProductItem&List/ProductList";
-import ProductInFull from "../components/Product/ProductInFull/ProductInFull";
-import Footer from "../components/BottomNavBar/Footer";
-import { VisibilityContext } from "../contexts/VisibilityContext";
+import SearchBar from "@components/SearchBar/SearchBar";
+import ProductInFull from "@components/Product/ProductInFull/ProductInFull";
+import Footer from "@components/BottomNavBar/Footer";
+import { ProductList } from "@components/Product/ProductItem&List/ProductList";
+import { VisibilityContext } from "@contexts/VisibilityContext";
+import { UserDataContext } from "@contexts/UserDataContext";
 import styled from "styled-components";
 
 const DivStyled = styled.div`
@@ -20,6 +21,7 @@ const DivStyled = styled.div`
 const SearchAction = () => {
   const [opacityState, setOpacityState] = useState(0);
   const { viewProductInFull } = useContext(VisibilityContext);
+  const { searchProducts } = useContext(UserDataContext);
   const [canClick, setCanClick] = useState(false);
 
   useEffect(() => {
@@ -32,11 +34,13 @@ const SearchAction = () => {
   return (
     <>
       <DivStyled $opacityState={opacityState}>
-        <SearchBar copy={true}></SearchBar>
-        {canClick && <ProductList variant={"search"} categoryKey={13} />}
+        <SearchBar copy={true} onHome={false} />
+        {canClick && (
+          <ProductList variant={"search"} productList={searchProducts} />
+        )}
       </DivStyled>
       {viewProductInFull && <ProductInFull />}
-      <Footer search={true}/>
+      <Footer search={true} />
     </>
   );
 };

@@ -3,7 +3,6 @@ import {
   DivSpanDeleteStyled,
   H2Styled
 } from "../StylizedTags.jsx";
-import { SpanH2Styled } from "../../../pages/MyAccount/StylizedTags.jsx";
 import {Package} from "lucide-react"
 
 const HeaderCart = ({ setSeeCancelDialog }) => {

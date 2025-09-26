@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import { CartContext } from "../../../contexts/CartContext";
-import { VisibilityContext } from "../../../contexts/VisibilityContext";
+import { CartContext } from "@contexts/CartContext";
+import { VisibilityContext } from "@contexts/VisibilityContext";
 import {
   PaiProdStyled,
   PpesoStyled,
@@ -26,11 +26,13 @@ import {
   PnomeStyled,
 } from "./StylizedTags";
 
+import { HomeDivsContext } from "@contexts/HomeDivsContext";
+
 const Oferta = ({ product, quantity, setQuantity, variant }) => {
   const { setDataProductFull, viewProductInFull, setViewProductInFull } =
     useContext(VisibilityContext);
-  const { handleQuantityChange, isDraggingRef } = useContext(CartContext);
-
+  const { handleQuantityChange } = useContext(CartContext);
+  const { isDraggingRef } = useContext(HomeDivsContext);
   function handlePointerUpOpen(e) {
     if (e.button === 2) {
       return;
@@ -135,10 +137,9 @@ const Oferta = ({ product, quantity, setQuantity, variant }) => {
 };
 
 function ProductItem({ product, variant }) {
-  const { totalAddedValue, cartProducts, updateProduct } =
-    useContext(CartContext);
-  const [quantity, setQuantity] = useState(0);
+  const { totalAddedValue, cartProducts } = useContext(CartContext);
   const { seeFeedback } = useContext(VisibilityContext);
+  const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
     cartProducts.map((item) => {
@@ -158,18 +159,13 @@ function ProductItem({ product, variant }) {
   }, [seeFeedback]);
 
   useEffect(() => {
-    cartProducts.map((item) => {
-      if (item.id == product.id) {
-        setQuantity(item.quant);
-      }
-    });
-  }, [updateProduct]);
-
-  // useEffect(() => {
-  //   if (updateProduct?.id === product.id) {
-  //     setQuantity(updateProduct.quant);
-  //   }
-  // }, [updateProduct]);
+    const cartItem = cartProducts.find((item) => item.id === product.id);
+    if (cartItem) {
+      setQuantity(cartItem.quant);
+    } else {
+      setQuantity(0);
+    }
+  }, [cartProducts, product.id]);
 
   return (
     <PaiProdStyled $variant={variant}>

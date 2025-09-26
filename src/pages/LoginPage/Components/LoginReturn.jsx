@@ -1,8 +1,8 @@
 import {
   DivApiReturnStyled,
   SpanApiReturnStyled,
-} from "../../../pages/MyAccount/RegisterAddress/StylizedTags";
-import { PValueStyled } from "../../../pages/Cart/StylizedTags";
+} from "@pages/MyAccount/RegisterAddress/StylizedTags";
+import { PValueStyled } from "@pages/Cart/StylizedTags";
 
 const LoginReturn = ({ loginState }) => {
   return (

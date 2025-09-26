@@ -4,7 +4,7 @@ import { H2Styled } from "../ForRecruiters/StylizedTags";
 import {
   CentralizeDiv,
   H1BaseStyled,
-} from "../../components/GenericStylizedTags";
+} from "@components/GenericStylizedTags";
 
 export const HeaderStyled = styled.header`
   width: 100%;

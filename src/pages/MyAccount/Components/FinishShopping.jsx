@@ -11,7 +11,7 @@ import {
   NameStatusStyled,
 } from "../StylizedTags";
 import {ButtonContinueStyled} from "../../Cart/StylizedTags";
-import { PButtonBase } from "../../../components/GenericStylizedTags";
+import { PButtonBase } from "@components/GenericStylizedTags";
 
 export const FinishShopping = ({ isDataComplete, orderInfo, userContact }) => {
   const enable =

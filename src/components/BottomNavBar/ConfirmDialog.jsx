@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
-import { CartContext } from "../../contexts/CartContext";
-import { VisibilityContext } from "../../contexts/VisibilityContext";
+import { CartContext } from "@contexts/CartContext";
+import { VisibilityContext } from "@contexts/VisibilityContext";
 import {
   ContainerStyled,
   DivStyled,

@@ -8,9 +8,8 @@ import {
   SpanStyled,
   DivContentStyled,
 } from "./StylizedTags";
-import AboutMe from "./Components/AboutMe";
-import AboutTheWebsite from "./Components/AboutTheWebsite";
-import { useEffect, useState } from "react";
+import {AboutMe, AboutTheWebsite} from "./Components";
+import { useState } from "react";
 
 const contents = [
   { p: "Sobre o autor", icon: "person_search", goTo: "aboutMe" },
@@ -21,13 +20,6 @@ export default function ForRecruitersPage() {
   const [seeTheOption, setSeeTheOption] = useState("aboutMe");
   const [selectedOption, setSelectedOption] = useState(0);
   const [selectedButtonCode, setSelectedButtonCode] = useState(0);
-  const [opacityState, setOpacityState] = useState(0);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setOpacityState(1);
-    }, 300);
-  }, []);
 
   function handleClick(index) {
     const goTo = contents[index].goTo;
@@ -38,12 +30,7 @@ export default function ForRecruitersPage() {
   return (
     <>
       <BodyStyled>
-        <WrapperStyled
-          style={{
-            opacity: opacityState,
-            transition: "opacity 0.3s ease",
-          }}
-        >
+        <WrapperStyled>
           <NavOptionsStyled>
             {contents.map((content, i) => {
               const isSelected = i === selectedOption;

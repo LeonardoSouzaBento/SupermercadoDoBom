@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { VisibilityContext } from "../../../contexts/VisibilityContext";
+import { VisibilityContext } from "@contexts/VisibilityContext";
 import {
   signInWithCustomToken,
   signInWithEmailAndPassword,
@@ -16,7 +16,7 @@ import {
   TogglePasswordStyled,
 } from "../StylizedTags";
 import { PValueStyled } from "../../Cart/StylizedTags";
-import PasswordValidationReturn from "../../../components/Login/Components/PasswordValidationReturn";
+import PasswordValidationReturn from "./PasswordValidationReturn";
 
 function validatePassword(senha) {
   const requisitos = {
@@ -41,7 +41,7 @@ function validateEmail(email) {
   return regex.test(email);
 }
 
-export const EmailForm = ({
+const EmailForm = ({
   setLoginType,
   setLoginSucess,
   setLoginState,
@@ -241,3 +241,5 @@ export const EmailForm = ({
     </form>
   );
 };
+
+export default EmailForm;

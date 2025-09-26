@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useEffect } from "react";
 import styled, { css } from "styled-components";
 import ProductItem from "./ProductItem";
-import { CartContext } from "../../../contexts/CartContext";
+import { HomeDivsContext } from "@contexts/HomeDivsContext";
 
 const DivStyled = styled.div`
   width: auto;
@@ -137,10 +137,8 @@ const DivStyled = styled.div`
 //     props.$variant === "cart" && "border: 1px solid hsla(213, 31%, 80%, 1.00)"};
 // `;
 
-export const ProductList = React.forwardRef(({ variant, categoryKey }, ref) => {
-  const { allProductsInCat, isDraggingRef } = useContext(CartContext);
-
-  const products = allProductsInCat[categoryKey];
+export const ProductList = React.forwardRef(({ variant, productList }, ref) => {
+  const { isDraggingRef } = useContext(HomeDivsContext);
 
   useEffect(() => {
     return () => {
@@ -150,7 +148,7 @@ export const ProductList = React.forwardRef(({ variant, categoryKey }, ref) => {
 
   return (
     <DivStyled $variant={variant} ref={ref}>
-      {products.map((product) => (
+      {productList.map((product) => (
         <ProductItem
           variant={variant}
           key={`${product.id}-${product.cat_id}`}

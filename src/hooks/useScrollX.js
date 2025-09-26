@@ -1,5 +1,5 @@
 import { useEffect, useContext, useRef, useCallback } from "react";
-import { CartContext } from "../contexts/CartContext";
+import { HomeDivsContext } from "@contexts/HomeDivsContext";
 
 export function useScrollX() {
   const {
@@ -11,7 +11,7 @@ export function useScrollX() {
     limitProductList,
     isDraggingRef,
     pointerPositionRef,
-  } = useContext(CartContext);
+  } = useContext(HomeDivsContext);
 
   const refs = [advertisementsRef, categoriesRef, productListHomeRef];
 

@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { VisibilityContext } from "@contexts/VisibilityContext";
 import {
   DivBodyStyled,
   MainDivStyled,
@@ -8,10 +9,7 @@ import {
   H1Styled,
   ButtonStyled,
 } from "./StylizedTags";
-import CepInput from "./Components/CepInput";
-import { VisibilityContext } from "../../../contexts/VisibilityContext";
-import AddressForm from "./Components/AddressForm";
-import GetLocationButton from "./Components/GetLocationButton";
+import { CepInput, AddressForm, GetLocationButton } from "./Components";
 
 const RegisterAddress = ({ setSeeRegisterAddress }) => {
   const [opacityRegAddress, setOpacityRegAddress] = useState(0);
@@ -38,7 +36,7 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
       setOpacityRegAddress(1);
     }
   }
-
+  
   useEffect(() => {
     setTimeout(() => {
       setOpacityRegAddress(1);

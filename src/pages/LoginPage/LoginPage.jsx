@@ -15,18 +15,20 @@ import {
   ButtonStyled,
   SmallTextStyled,
 } from "./StylizedTags";
-import { EmailForm } from "./Components/EmailForm";
-import { VisitorSection } from "./Components/VisitorSection";
-import LoginReturn from "./Components/LoginReturn";
-import { VisibilityContext } from "../../contexts/VisibilityContext";
-import { ButtonLoginGoogle } from "./Components/ButtonLoginGoogle";
-import { ResetSection } from "./Components/ResetSection";
+import { VisibilityContext } from "@contexts/VisibilityContext";
+import {
+  EmailForm,
+  VisitorSection,
+  LoginReturn,
+  ButtonLoginGoogle,
+  ResetSection,
+} from "./Components";
 
 const LoginPage = () => {
   const [loginType, setLoginType] = useState(null);
   const [loginState, setLoginState] = useState("");
   const [hasSuccessMessage, setHasSuccessMessage] = useState(false);
-  const { setUserDisconnected, setSeeLogin, onMyAccount, supermarketName } =
+  const { setUserDisconnected, onMyAccount, supermarketName } =
     useContext(VisibilityContext);
   const navigate = useNavigate();
   const loginTexts = {
@@ -65,11 +67,10 @@ const LoginPage = () => {
     if (loginState === "completed") {
       setUserDisconnected(false);
       setTimeout(() => {
-        setSeeLogin(false);
         navigate("/");
       }, 1800);
     }
-  }, [loginState, hasSuccessMessage, setSeeLogin, setUserDisconnected]);
+  }, [loginState, hasSuccessMessage, setUserDisconnected]);
 
   useEffect(() => {
     if (loginType === "email" && emailWrapperRef.current) {

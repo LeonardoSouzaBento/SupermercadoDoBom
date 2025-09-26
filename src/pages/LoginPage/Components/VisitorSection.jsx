@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { signInWithCustomToken } from "firebase/auth";
 import { auth } from "../../../main";
-import { VisibilityContext } from "../../../contexts/VisibilityContext";
+import { VisibilityContext } from "@contexts/VisibilityContext";
 import { VisitorBoxStyled, ButtonStyled } from "../StylizedTags";
 import { PValueStyled } from "../../Cart/StylizedTags";
 
-export const VisitorSection = ({
+const VisitorSection = ({
   setLoginType,
   setLoginSucess,
   setLoginState,
@@ -61,3 +61,5 @@ export const VisitorSection = ({
     </>
   );
 };
+
+export default VisitorSection;

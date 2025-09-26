@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import {
   CentralizeDiv,
   H1BaseStyled,
-} from "../../components/GenericStylizedTags";
+} from "@components/GenericStylizedTags";
 
 export const MainStyled = styled.div`
   width: 100%;

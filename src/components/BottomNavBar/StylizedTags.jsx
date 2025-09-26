@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CentralizeDiv } from "../GenericStylizedTags";
+import { CentralizeDiv } from "@components/GenericStylizedTags";
 
 export const FooterStyled = styled.footer`
   display: flex;

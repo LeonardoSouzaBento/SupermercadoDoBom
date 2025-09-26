@@ -118,6 +118,7 @@ export const promo_products = [
     weight: "400 g",
     name: "Mistura para bolos finna sabor chocolate",
     price: "7,99",
+    off: true,
   },
   {
     id: 19,
@@ -134,6 +135,7 @@ export const promo_products = [
     weight: "5 kg",
     name: "arroz branco tio jorge",
     price: "19,99",
+    off: true,
   },
   {
     id: 21,
@@ -142,6 +144,7 @@ export const promo_products = [
     weight: "350 ml",
     name: "Refrigerante fanta laranja",
     price: "1,55",
+    off: true,
   },
   {
     id: 22,
@@ -150,6 +153,7 @@ export const promo_products = [
     weight: "1 kg",
     name: "Linguiça de frango aurora p/ churraco",
     price: "15,99",
+    off: true,
   },
   {
     id: 23,

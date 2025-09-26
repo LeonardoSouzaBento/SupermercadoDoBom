@@ -65,7 +65,7 @@ export const PButtonBase = styled.p`
   font-weight: 550;
   cursor: pointer;
   color: white;
-  
+
   @media screen and (max-width: 375px) {
     font-size: 1.125em;
   }

@@ -23,10 +23,10 @@ import {
   DivInvalidWarnStyled,
 } from "../StylizedTags";
 import { SpanReceiptStyled } from "../../Cart/StylizedTags";
-import { DivToCoverStyled } from "../../../components/GenericStylizedTags";
-import { VisibilityContext } from "../../../contexts/VisibilityContext";
-import { PButtonBase } from "../../../components/GenericStylizedTags";
+import { DivToCoverStyled } from "@components/GenericStylizedTags";
+import { PButtonBase } from "@components/GenericStylizedTags";
 import { useNavigate } from "react-router-dom";
+import { UserDataContext } from "@contexts/UserDataContext";
 
 function formatPhone(num, selectedPhoneType) {
   if (!num) return "";
@@ -108,7 +108,7 @@ export const Contact = () => {
     setUserContact,
     isDataComplete,
     setIsDataComplete,
-  } = useContext(VisibilityContext);
+  } = useContext(UserDataContext);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [seeInput, setSeeInput] = useState(false);
   const [isValidNumber, setIsValidNumber] = useState(false);

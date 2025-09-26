@@ -359,7 +359,11 @@ export const DivQuantFullStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.15s ease;
   background-color: var(--red);
+  &:hover {
+    background-color: var(--dark-red);
+  }
   border-radius: 8px;
   cursor: pointer;
 
@@ -382,7 +386,7 @@ export const DivButtonsStyled = styled(CentralizeDiv)`
     ${(props) => props.$add && "padding-top: 2px;"}
     ${(props) => props.$add && "scale: 0.9;"}
 
-  @media screen and (max-width: 375px) {
+    @media screen and (max-width: 375px) {
       font-size: 1.42em;
     }
     @media screen and (min-width: 375px) and (max-width: 576px) {
@@ -478,6 +482,8 @@ export const PSubStyled = styled(PNameProdStyled)`
   text-transform: none;
   width: max-content;
   padding: 0;
+  color: rgba(0, 0, 0, 0.9);
+
   @media screen and (max-width: 375px) {
     font-size: 1em;
   }
@@ -499,7 +505,7 @@ export const PSubStyled = styled(PNameProdStyled)`
 `;
 
 export const DivCoverSubStyled = styled(DivToCoverStyled)`
-  background-color: white;
+  background-color: var(--back-color);
   border-radius: 8px;
 `;
 

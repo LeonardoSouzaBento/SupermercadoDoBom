@@ -15,7 +15,7 @@ import {
   SpanStatusStyled,
   ButtonLoginStyled,
 } from "../StylizedTags";
-import { PButtonBase } from "../../../components/GenericStylizedTags";
+import { PButtonBase } from "@components/GenericStylizedTags";
 import { useNavigate } from "react-router-dom";
 
 export const UserProfile = ({ userContact }) => {

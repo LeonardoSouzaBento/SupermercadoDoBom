@@ -11,8 +11,8 @@ import {
   PAddStyled,
   H2Styled,
 } from "../StylizedTags.jsx";
-import { SpanH2Styled } from "../../../pages/MyAccount/StylizedTags.jsx";
-import { DivToCoverStyled } from "../../../components/GenericStylizedTags.jsx";
+import { SpanH2Styled } from "@pages/MyAccount/StylizedTags.jsx";
+import { DivToCoverStyled } from "@components/GenericStylizedTags.jsx";
 
 const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
-import { CentralizeDiv, H1BaseStyled } from "../../../components/GenericStylizedTags";
-import { DivToCoverStyled } from "../../../components/GenericStylizedTags";
+import { CentralizeDiv, H1BaseStyled } from "@components/GenericStylizedTags";
+import { DivToCoverStyled } from "@components/GenericStylizedTags";
 
 export const DivBodyStyled = styled.div`
   width: 100vw;

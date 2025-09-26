@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { CentralizeDiv } from "../../components/GenericStylizedTags";
+import { CentralizeDiv } from "@components/GenericStylizedTags";
 
 export const PageWrapperStyled = styled.div`
   min-height: 90vh;

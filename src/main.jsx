@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import Root from "./Root";
+import RootComponent from "./RootComponent";
 import '../src/index.css';
 
 import { initializeApp } from "firebase/app";
@@ -18,4 +18,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-ReactDOM.createRoot(document.getElementById("root")).render(<Root />);
+ReactDOM.createRoot(document.getElementById("root")).render(<RootComponent />);
