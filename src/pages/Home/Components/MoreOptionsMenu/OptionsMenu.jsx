@@ -12,8 +12,8 @@ import {
 } from "@pages/MyAccount/RegisterAddress/StylizedTags";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { VisibilityContext } from "@contexts/VisibilityContext";
 import { getAuth, signOut } from "firebase/auth";
+import { UserDataContext } from "@contexts/UserDataContext";
 
 const contents = [
   { p: "Minha conta", icon: "person_edit", navigateTo: "/minha-conta" },
@@ -31,7 +31,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
   const [canClick, setCanClick] = useState(false);
   const navigate = useNavigate();
   const {setUserDisconnected } =
-    useContext(VisibilityContext);
+    useContext(UserDataContext);
 
   function handleClickClose(e) {
     e.stopPropagation();

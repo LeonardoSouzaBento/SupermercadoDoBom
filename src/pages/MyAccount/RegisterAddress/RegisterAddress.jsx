@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { VisibilityContext } from "@contexts/VisibilityContext";
+import { UserDataContext } from "@contexts/UserDataContext";
 import {
   DivBodyStyled,
   MainDivStyled,
@@ -25,7 +25,7 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
     lat: "",
     lng: "",
   });
-  const { idToken } = useContext(VisibilityContext);
+  const { idToken } = useContext(UserDataContext);
   //-11.186615346993204, lng: -40.26740712716049
 
   function showOrHideComponent(option) {
