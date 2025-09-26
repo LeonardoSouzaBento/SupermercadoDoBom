@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { VisibilityContext } from "@contexts/VisibilityContext";
+import { UserDataContext } from "@contexts/UserDataContext";
 import { HomeDivsContext } from "@contexts/HomeDivsContext";
 import Footer from "@components/BottomNavBar/Footer";
 import ProductInFull from "@components/Product/ProductInFull/ProductInFull";
@@ -68,7 +69,8 @@ const ProductFeedDivStyled = styled.section`
 
 function HomePage() {
   const [viewOptions, setViewOptions] = useState(false);
-  const { viewProductInFull, idToken } = useContext(VisibilityContext);
+  const { viewProductInFull } = useContext(VisibilityContext);
+  const { idToken } = useContext(UserDataContext);
   const { currentCategory } = useContext(HomeDivsContext);
   const resizeDowntime = useRef(null);
   const windowWidthInitialRef = useRef(0);
