@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { signInWithCustomToken } from "firebase/auth";
 import { auth } from "../../../../src/main";
-import { VisibilityContext } from "@contexts/VisibilityContext";
 import {
   ButtonLoginStyled,
   DivSpanPStyled,
@@ -9,13 +8,14 @@ import {
   DivSpanStyled,
   SpanButtonStyled,
 } from "../StylizedTags";
+import { UserDataContext } from "@contexts/UserDataContext";
 
 const ButtonLoginAnonymous = ({
   setLoginSucess,
   setLoginState,
   onMyAccount,
 }) => {
-  const { setIdToken } = useContext(VisibilityContext);
+  const { setIdToken } = useContext(UserDataContext);
 
   async function handleAnonymousLogin() {
     setLoginState("pending");

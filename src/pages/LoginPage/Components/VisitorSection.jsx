@@ -1,7 +1,7 @@
 import { useContext } from "react";
+import { UserDataContext } from "@contexts/UserDataContext";
 import { signInWithCustomToken } from "firebase/auth";
 import { auth } from "../../../main";
-import { VisibilityContext } from "@contexts/VisibilityContext";
 import { VisitorBoxStyled, ButtonStyled } from "../StylizedTags";
 import { PValueStyled } from "../../Cart/StylizedTags";
 
@@ -10,7 +10,7 @@ const VisitorSection = ({
   setLoginSucess,
   setLoginState,
 }) => {
-  const { setIdToken } = useContext(VisibilityContext);
+  const { setIdToken } = useContext(UserDataContext);
 
   async function handleAnonymousLogin() {
     setLoginState("pending");

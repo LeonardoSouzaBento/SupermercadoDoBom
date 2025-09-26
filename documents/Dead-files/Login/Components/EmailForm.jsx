@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { UserDataContext } from "@contexts/UserDataContext";
 import axios from "axios";
 import {
   signInWithCustomToken,
@@ -14,7 +15,6 @@ import {
 import { PValueStyled } from "@pages/Cart/StylizedTags";
 import LoginReturn from "./LoginReturn";
 import PasswordValidationReturn from "./PasswordValidationReturn";
-import { VisibilityContext } from "@contexts/VisibilityContext";
 import { PButtonBase } from "@components/GenericStylizedTags";
 
 function validatePassword(senha) {
@@ -44,7 +44,7 @@ const EmailForm = ({
   setLoginSucess,
 }) => {
   const { setIdToken, userContact, setUserContact } =
-    useContext(VisibilityContext);
+    useContext(UserDataContext);
   const [emailForm, setEmailForm] = useState({
     email: "",
     senha: "",

@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { VisibilityContext } from "@contexts/VisibilityContext";
+import { UserDataContext } from "@contexts/UserDataContext";
 import {
   signInWithCustomToken,
   signInWithEmailAndPassword,
@@ -49,7 +49,7 @@ const EmailForm = ({
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const { setIdToken, userContact, setUserContact } =
-    useContext(VisibilityContext);
+    useContext(UserDataContext);
   const [emailForm, setEmailForm] = useState({
     email: "",
     senha: "",
