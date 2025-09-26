@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mail, User } from "lucide-react";
+import { VisibilityContext } from "@contexts/VisibilityContext";
+import { UserDataContext } from "@contexts/UserDataContext";
 import {
   PageWrapperStyled,
   ContainerStyled,
@@ -15,7 +17,6 @@ import {
   ButtonStyled,
   SmallTextStyled,
 } from "./StylizedTags";
-import { VisibilityContext } from "@contexts/VisibilityContext";
 import {
   EmailForm,
   VisitorSection,
@@ -28,8 +29,8 @@ const LoginPage = () => {
   const [loginType, setLoginType] = useState(null);
   const [loginState, setLoginState] = useState("");
   const [hasSuccessMessage, setHasSuccessMessage] = useState(false);
-  const { setUserDisconnected, onMyAccount, supermarketName } =
-    useContext(VisibilityContext);
+  const { onMyAccount, supermarketName } = useContext(VisibilityContext);
+  const { setUserDisconnected } = useContext(UserDataContext);
   const navigate = useNavigate();
   const loginTexts = {
     null: {
