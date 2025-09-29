@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import SearchBar from "@components/SearchBar/SearchBar";
 import ProductInFull from "@components/Product/ProductInFull/ProductInFull";
-import Footer from "@components/BottomNavBar/Footer";
+import BottomNavBar from "@components/BottomNavBar/BottomNavBar";
 import { ProductList } from "@components/Product/ProductItem&List/ProductList";
 import { VisibilityContext } from "@contexts/VisibilityContext";
 import { UserDataContext } from "@contexts/UserDataContext";
@@ -11,14 +11,14 @@ const DivStyled = styled.div`
   position: relative;
   min-height: 100vh;
   min-width: 100vw;
-  padding-bottom: 59px;
+  padding-bottom: 12px;
   box-sizing: border-box;
   opacity: ${(props) => props.$opacityState};
   transition: opacity 0.2s ease;
   position: relative;
 `;
 
-const SearchAction = () => {
+const SearchPage = () => {
   const [opacityState, setOpacityState] = useState(0);
   const { viewProductInFull } = useContext(VisibilityContext);
   const { searchProducts } = useContext(UserDataContext);
@@ -40,9 +40,9 @@ const SearchAction = () => {
         )}
       </DivStyled>
       {viewProductInFull && <ProductInFull />}
-      <Footer search={true} />
+      <BottomNavBar search={true} />
     </>
   );
 };
 
-export default SearchAction;
+export default SearchPage;

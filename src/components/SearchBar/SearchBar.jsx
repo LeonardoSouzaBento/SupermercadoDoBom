@@ -200,6 +200,9 @@ function SearchBar({ copy, onHome }) {
   }, [searchInitiated, returnedProducts]);
 
   useEffect(() => {
+    if (!onHome) {
+      inputRef.current.focus();
+    }
     //remover foco do input com toque fora em telas touch
     // manter no caso de click na sugestão
     const handleClickOutsideSearchBar = (e) => {

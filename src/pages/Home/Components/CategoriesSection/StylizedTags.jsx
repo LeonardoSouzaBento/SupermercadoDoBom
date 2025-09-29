@@ -32,17 +32,6 @@ export const DivLabelPromosStyled = styled.div`
 export const H1LabelStyled = styled(H1BaseStyled)`
   color: var(--dark-purple);
   scale: 1.03;
-
-  ${(props) =>
-    props.$anun &&
-    css`
-      margin-bottom: 20px;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 400;
-      text-decoration: underline;
-      text-decoration-color: rgba(255, 255, 255, 0.9);
-      text-underline-offset: 2px;
-    `}
 `;
 
 export const DivfStyled = styled.div`
@@ -122,14 +111,13 @@ export const DivCatStyled = styled.div`
     css`
       z-index: 1;
       background-color: white;
-      box-shadow: 0px 4px 10px -6px hsla(0, 0%, 15%, 0.50);
+      box-shadow: 0px 4px 10px -6px hsla(0, 0%, 15%, 0.5);
     `}
   ${(props) =>
     !props.$selected &&
     css`
       &:hover {
-        box-shadow: 0px 4px 10px -6px hsla(0, 0%, 15%, 0.50);
-        background-color: rgba(255, 255, 255, 0.33);
+        box-shadow: 0px 4px 10px -6px hsla(0, 0%, 15%, 0.5);
       }
     `}
 

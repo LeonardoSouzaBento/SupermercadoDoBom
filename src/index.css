@@ -18,7 +18,8 @@
   --back-hover: hsl(210, 33%, 91%);
   --disable: #a8adb3ff;
   --disable-hover: #9299a0ff;
-  --border: #ddddddff;
+  --dark-border: hsl(0, 0%, 85%);
+  --border: hsl(0, 0%, 87%);
   --light-border: #e6e6e6;
   --pink: hsl(0, 100%, 94%);
   --light-grey: rgb(247, 249, 250);
@@ -70,6 +71,10 @@ p{
 span{
   font-weight: 400;
   font-size: 1.5em;
+}
+
+button{
+  border: none;
 }
 
 h1, h2, h3{

@@ -17,7 +17,7 @@ import { UserDataContext } from "@contexts/UserDataContext.js";
 
 const ReceiptAndContinueSection = ({
   setScaleWarnnig,
-  setOrderInfo,
+  setCurrentOrder,
   totalAddedValue,
 }) => {
   const navigate = useNavigate();
@@ -39,11 +39,11 @@ const ReceiptAndContinueSection = ({
       const currentTime = `${hours}:${minutes}:${seconds}`;
 
       if (userDataComplete) {
-        setOrderInfo({ time: currentTime, status: "completed" });
+        setCurrentOrder({ time: currentTime, status: "completed" });
         setIncompleteDataAlert(false);
         navigate("/meus-pedidos");
       } else {
-        setOrderInfo({ time: currentTime, status: "pending" });
+        setCurrentOrder({ time: currentTime, status: "pending" });
         setIncompleteDataAlert(true);
         setTimeout(() => {
           navigate("/minha-conta");

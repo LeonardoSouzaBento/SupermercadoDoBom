@@ -64,8 +64,7 @@ export const LogoDivStyled = styled(CentralizeDiv)`
   transform: scaleX(-1);
   box-sizing: border-box;
   padding-right: 2.2px;
-  border: 1px solid var(--red);
-  box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.4);
+  box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.25);
   @media (max-width: 375px) {
     height: 60px;
     min-width: 60px;
@@ -179,7 +178,7 @@ export const ButtonMoreOptionsStyled = styled.div`
   border-radius: 50%;
   color: white;
   background-color: var(--red);
-  box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.4);
+  box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.25);
   transition: all 100ms linear;
   cursor: pointer;
   &:hover {

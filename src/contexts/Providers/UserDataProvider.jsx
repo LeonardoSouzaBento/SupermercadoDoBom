@@ -26,13 +26,14 @@ const isDataCompleteSchema = {
   address: false,
 };
 
-const voidOrderInfo = {
+const currentOrderSchema = {
   time: "",
   status: "",
+  cartProducts: []
 };
 
 export const UserDataProvider = ({ children }) => {
-  const { setCartProducts, setOrderInfo } = useContext(CartContext);
+  const { setCartProducts, setCurrentOrder } = useContext(CartContext);
 
   /*Token*/
   const [idToken, setIdToken] = useState(() => {
@@ -78,17 +79,18 @@ export const UserDataProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("userDisconnected", JSON.stringify(userDisconnected));
   }, [userDisconnected]);
-  
+
   /*Itens pesquisados*/
   const [searchProducts, setSearchProducts] = useState([]);
 
   useEffect(() => {
     if (userDisconnected) {
       setCartProducts([]);
-      setOrderInfo(voidOrderInfo);
+      setCurrentOrder(currentOrderSchema);
+      setUserDisconnected(false);
     }
-  }, [userDisconnected, setCartProducts, setOrderInfo]);
-
+  }, [userDisconnected]);
+  
   return (
     <UserDataContext.Provider
       value={{

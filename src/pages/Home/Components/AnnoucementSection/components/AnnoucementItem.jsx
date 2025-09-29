@@ -22,9 +22,11 @@ const AnnoucementItem = ({ product, index }) => {
       </DivImgStyled>
 
       <DivPrice>
-        <p>R$ {oldPrice}</p>
-        <p>R$ {product.price}</p>
-        <p>-{product.discount}%</p>
+        <div>
+          <p id="oldPrice">R$ {oldPrice}</p>
+          <p id="price">R$ {product.price}</p>
+          <p id="discount">-{product.discount}%</p>
+        </div>
       </DivPrice>
     </ItenSectionStyled>
   );

@@ -207,8 +207,7 @@ export const DivThreeButtonStyled = styled.div`
   width: 100%;
   max-width: 520px;
   margin: auto;
-  margin-bottom: 24px;
-
+  
   @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }

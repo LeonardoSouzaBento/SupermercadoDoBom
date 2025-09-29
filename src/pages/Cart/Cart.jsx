@@ -25,7 +25,7 @@ const heightCartSection = 393; //para comparar
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { totalAddedValue, cartProducts, setCartProducts, setOrderInfo } =
+  const { totalAddedValue, cartProducts, setCartProducts, setCurrentOrder } =
     useContext(CartContext);
   const [opacityState, setOpacityState] = useState(0.03); //opacidade do main ao entrar
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
@@ -133,7 +133,7 @@ const Cart = () => {
     }
   }, [
     totalAddedValue,
-    setOrderInfo,
+    setCurrentOrder,
     navigate,
   ]);
 
@@ -190,7 +190,7 @@ const Cart = () => {
           <ReceiptAndContinueSection
             totalAddedValue={totalAddedValue}
             setScaleWarnnig={setScaleWarnnig}
-            setOrderInfo={setOrderInfo}
+            setCurrentOrder={setCurrentOrder}
           />
         </ContinueSectionStyled>
       </MainStyled>

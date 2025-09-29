@@ -9,22 +9,22 @@ export const ItenSectionStyled = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
-  background-color: var(--red);
-  /* background-image: linear-gradient(to bottom, var(--purple) ,var(--red)); */
+  background-color: white;
+  /* background-color: var(--red);
+  background-image: linear-gradient(to right, var(--dark-red), var(--red)); */
 `;
 
 export const DivTitleStyled = styled.header`
   width: 100%;
-  height: 68px;
-  padding: 16px;
+  height: 96px;
+  padding: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  background-color: var(--dark-red);
-  /* background-image: linear-gradient(to right, var(--purple) ,var(--dark-red)); */
+  color: var(--dark-red);
   & h2 {
-    color: white;
+    /* color: white; */
     font-family: var(--h-font);
     text-transform: capitalize;
     font-weight: 700;
@@ -53,62 +53,78 @@ export const DivTitleStyled = styled.header`
 
 export const DivImgStyled = styled.div`
   height: 140px;
-  width: 140px;
-  padding: 8px;
-  margin-right: 8px;
-  margin-bottom: 8px;
+  width: 100%;
+  padding-bottom: 8px;
+  margin: auto;
   position: absolute;
   bottom: 0;
   right: 0;
-  border-radius: 12px;
-  background-color: white;
-  box-shadow: -4px -4px 10px rgba(0, 0, 0, 0.125);
-  z-index: 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1;
 
   & img {
-    width: 100%;
+    display: block;
+    width: 140px;
     height: 100%;
+    box-sizing: border-box;
+    padding: 6px;
     object-fit: cover;
+    border-radius: 24px;
+    background-color: transparent;
   }
 `;
 
 export const DivPrice = styled.div`
   width: 100%;
-  height: 164px;
-  padding-top: 16px;
-  padding-left: 12px;
-  padding-bottom: 8px;
+  height: 100%;
+  padding: 16px;
+  border-radius: 16px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background-color: white;
+
+
+  & div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   & p {
     font-family: var(--p-font);
-    color: white;
-    margin-bottom: 8px;
+    color: var(--dark-red);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
   }
-  & p:first-child {
-    text-decoration: line-through;
-    font-size: 0.9em;
-    font-weight: 300;
-    font-size: 1em;
-  }
-  & p:nth-child(2) {
+  #price {
     font-weight: 700;
     font-family: var(--p-font);
-    padding-bottom: 4px;
     font-size: 1.17em;
   }
-  & p:last-child {
+  #oldPrice {
+    text-decoration: line-through;
+    font-size: 0.9em;
+    font-weight: 400;
+    font-size: 1em;
+  }
+  #discount {
     width: max-content;
-    color: var(--red);
+    color: var(--dark-purple);
     font-weight: 500;
     border-radius: 12px;
     height: 24px;
-    padding: 0 8px;
-    background-color: var(--bluish-white);
+    padding: 0 12px;
+    background-color: var(--back-color);
     font-size: 0.9em;
   }
 `;

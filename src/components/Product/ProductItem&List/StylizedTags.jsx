@@ -11,13 +11,17 @@ export const PaiProdStyled = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  transition: all 0.2s ease;
+  transition: box-shadow 0.2s ease;
 
   ${(props) =>
     props.$variant !== "cart" &&
-    `&:hover{
-      box-shadow: 0 4px 8px hsla(0, 0%, 0%, 0.13);
-      }`}
+    css`
+      &:hover {
+        box-shadow: 0 4px 8px hsla(0, 0%, 0%, 0.12),
+          2px 0 4px -2px hsla(0, 0%, 0%, 0.03),
+          -2px 0 4px -2px hsla(0, 0%, 0%, 0.03);
+      }
+    `}
   // box-shadow: 0 4px 8px hsla(236, 8%, 31%, 0.24);
   
   ${(props) =>
@@ -126,7 +130,7 @@ export const DivNomeStyled = styled.div`
   box-sizing: border-box;
   padding-bottom: 12px;
 `;
-export const PnomeStyled = styled.p`
+export const NamePStyled = styled.p`
   text-transform: uppercase;
   margin: auto;
   padding-left: 4px;
@@ -197,7 +201,7 @@ export const PPeso2Styled = styled(PpesoStyled)`
 `;
 
 // Preco e peso
-export const PaiPrecoStyled = styled.div`
+export const PriceWrapperStyled = styled.div`
   height: auto;
   width: 100%;
   display: flex;
@@ -212,7 +216,7 @@ export const PaiPrecoStyled = styled.div`
   }
 `;
 
-export const DivPrecoStyled = styled.div`
+export const PriceDivStyled = styled.div`
   height: auto;
   display: flex;
   align-items: center;
@@ -226,7 +230,7 @@ export const DivPrecoStyled = styled.div`
   }
 `;
 
-export const PprecoStyled = styled.p`
+export const PricePStyled = styled.p`
   width: max-content;
   font-weight: 600;
   text-indent: 4px;
@@ -252,7 +256,7 @@ export const PprecoStyled = styled.p`
   }
 `;
 
-export const PSifraStyled = styled(PprecoStyled)`
+export const PSifraStyled = styled(PricePStyled)`
   width: max-content;
 `;
 
@@ -346,7 +350,7 @@ export const DivOffStyled = styled(CentralizeDiv)`
 
 export const POffStyled = styled.p`
   color: white;
-
+  font-weight: 250;
   @media screen and (max-width: 385px) {
     font-size: 0.87em;
   }

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { VisibilityContext } from "@contexts/VisibilityContext";
 import { UserDataContext } from "@contexts/UserDataContext";
 import { HomeDivsContext } from "@contexts/HomeDivsContext";
-import Footer from "@components/BottomNavBar/Footer";
+import BottomNavBar from "@components/BottomNavBar/BottomNavBar";
 import ProductInFull from "@components/Product/ProductInFull/ProductInFull";
 import Header from "./Components/Header/Header";
 import OptionsSection from "./Components/MoreOptionsMenu/OptionsMenu";
@@ -50,14 +50,10 @@ const MainStyled = styled.main`
 const ProductFeedDivStyled = styled.section`
   position: relative;
   background-color: var(--back-color);
-  padding-bottom: 62px;
   padding-left: 12px;
-  padding-top: 36px;
+  padding-top: 14px;
   background-color: var(--back-color);
-  border-radius: 16px 16px 0 0;
   z-index: 2;
-
-  /* box-shadow: 0px -8px 20px rgba(0, 0, 0, 0.125); */
 
   @media screen and (min-width: 577px) {
     padding-left: 16px;
@@ -131,7 +127,7 @@ function HomePage() {
         </MainStyled>
       </div>
       {viewProductInFull && <ProductInFull />}
-      <Footer />
+      <BottomNavBar />
     </div>
   );
 }

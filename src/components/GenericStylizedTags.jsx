@@ -60,6 +60,12 @@ export const CentralizeDiv = styled.div`
   align-items: center;
 `;
 
+export const CentralizeButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const PButtonBase = styled.p`
   font-family: var(--bt-font);
   font-weight: 550;

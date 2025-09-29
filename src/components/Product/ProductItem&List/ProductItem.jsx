@@ -11,9 +11,9 @@ import {
   ImgOfertaStyed,
   DivPesoStyled,
   DivOffStyled,
-  PaiPrecoStyled,
-  DivPrecoStyled,
-  PprecoStyled,
+  PriceWrapperStyled,
+  PriceDivStyled,
+  PricePStyled,
   PSifraStyled,
   DivAddStyled,
   DivQuantStyled,
@@ -23,7 +23,7 @@ import {
   SpanFewerStyled,
   DescOfertaStyled,
   DivNomeStyled,
-  PnomeStyled,
+  NamePStyled,
 } from "./StylizedTags";
 
 import { HomeDivsContext } from "@contexts/HomeDivsContext";
@@ -171,20 +171,20 @@ function ProductItem({ product, variant }) {
     <PaiProdStyled $variant={variant}>
       <DescOfertaStyled $variant={variant}>
         <DivNomeStyled>
-          <PnomeStyled>{product.name}</PnomeStyled>
+          <NamePStyled>{product.name}</NamePStyled>
         </DivNomeStyled>
 
-        <PaiPrecoStyled>
+        <PriceWrapperStyled>
           {product.weight != "" && product.weight != null && (
             <DivPesoStyled>
               <PpesoStyled>{product.weight}</PpesoStyled>
             </DivPesoStyled>
           )}
-          <DivPrecoStyled>
+          <PriceDivStyled>
             <PSifraStyled>R$</PSifraStyled>
-            <PprecoStyled>{product.price}</PprecoStyled>
-          </DivPrecoStyled>
-        </PaiPrecoStyled>
+            <PricePStyled>{product.price}</PricePStyled>
+          </PriceDivStyled>
+        </PriceWrapperStyled>
       </DescOfertaStyled>
 
       <Oferta

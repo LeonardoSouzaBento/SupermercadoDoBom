@@ -14,24 +14,25 @@ import SavedAddress from "./Components/SavedAddress";
 import FinishShopping from "./Components/FinishShopping";
 import UserProfile from "./Components/UserProfile";
 import RegisterAddress from "./RegisterAddress/RegisterAddress";
+import BottomNavBar from "@components/BottomNavBar/BottomNavBar";
 
 const MyAccount = () => {
   const { userContact, isDataComplete, userAddress } =
     useContext(UserDataContext);
-  const { orderInfo, setOrderInfo, cartProducts } = useContext(CartContext);
+  const { currentOrder, setCurrentOrder, cartProducts } = useContext(CartContext);
   const { setOnMyAccount } = useContext(VisibilityContext);
   const [seeRegisterAddress, setSeeRegisterAddress] = useState(false);
 
   useEffect(() => {
     setOnMyAccount(true);
-    const pendingOrderInfo = cartProducts.length !== 0 && !orderInfo.status;
+    const pendingOrderInfo = cartProducts.length !== 0 && !currentOrder.status;
     const voidCart = cartProducts.length === 0;
 
     if (pendingOrderInfo) {
-      setOrderInfo({ ...orderInfo, status: "pending" });
+      setCurrentOrder({ ...currentOrder, status: "pending" });
     }
     if (voidCart) {
-      setOrderInfo({ ...orderInfo, status: "" });
+      setCurrentOrder({ ...currentOrder, status: "" });
     }
     requestAnimationFrame(() => {
       window.scrollTo(0, 0);
@@ -64,7 +65,7 @@ const MyAccount = () => {
           <FinishShopping
             userContact={userContact}
             isDataComplete={isDataComplete}
-            orderInfo={orderInfo}
+            currentOrder={currentOrder}
           />
         </DivThreeButtonStyled>
       </MainStyled>
@@ -72,6 +73,7 @@ const MyAccount = () => {
       {seeRegisterAddress && (
         <RegisterAddress setSeeRegisterAddress={setSeeRegisterAddress} />
       )}
+      <BottomNavBar />
     </>
   );
 };

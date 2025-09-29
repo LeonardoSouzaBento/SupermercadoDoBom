@@ -187,8 +187,8 @@ function AnnouncementSection({ wasResize }) {
 
   return (
     <ContainerStyled ref={divRef}>
-      <div style={{ padding: "16px 0" }}>
-        <H1LabelStyled $anun={true}>Maiores promoções!</H1LabelStyled>
+      <div id="divH1">
+        <H1LabelStyled>Maiores promoções!</H1LabelStyled>
       </div>
       <DivStyled
         ref={advertisementsRef}
@@ -199,7 +199,6 @@ function AnnouncementSection({ wasResize }) {
             key={index}
             ref={(el) => (fundoRefs.current[index] = el)}
           >
-            {/* <AnnoucementItem product={object} index={index} /> */}
             <ImgStyled
               src={object.url2}
               alt={`Imagem de anúncio ${index + 1}`}

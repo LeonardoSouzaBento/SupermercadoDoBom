@@ -31,6 +31,7 @@ const DivStyled = styled.div`
   ${(props) =>
     props.$variant == "search" &&
     css`
+      padding-bottom: 12px;
       @media screen and (min-width: 385px) and (max-width: 414px) {
         justify-content: center;
         gap: 12px;

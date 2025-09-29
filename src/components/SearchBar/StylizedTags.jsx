@@ -48,7 +48,7 @@ export const FormStyled = styled.form`
   border-radius: 24px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.4);
+  box-shadow: 0px 4px 10px rgba(11, 0, 65, 0.25);
   border: none;
 
   ${(props) =>

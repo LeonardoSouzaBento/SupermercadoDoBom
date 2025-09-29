@@ -14,10 +14,10 @@ import { CartContext } from "@contexts/CartContext";
 import OrderDetails from "./OrderDetails";
 
 const OrderCard = () => {
-  const { totalAddedValue, cartProducts, orderInfo } = useContext(CartContext);
+  const { totalAddedValue, cartProducts, currentOrder } = useContext(CartContext);
   const orderData = {
-    orderDate: orderInfo.time,
-    status: orderInfo.status,
+    orderDate: currentOrder.time,
+    status: currentOrder.status,
     totalPrice: totalAddedValue,
     itemCount: cartProducts.length,
     items: [cartProducts[0], cartProducts[1]],

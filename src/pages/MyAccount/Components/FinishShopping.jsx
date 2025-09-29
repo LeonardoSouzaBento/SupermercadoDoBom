@@ -13,16 +13,16 @@ import {
 import {ButtonContinueStyled} from "../../Cart/StylizedTags";
 import { PButtonBase } from "@components/GenericStylizedTags";
 
-export const FinishShopping = ({ isDataComplete, orderInfo, userContact }) => {
+export const FinishShopping = ({ isDataComplete, currentOrder, userContact }) => {
   const enable =
     isDataComplete.contact &&
     isDataComplete.address &&
     userContact.email &&
-    orderInfo.status === "pending";
+    currentOrder.status === "pending";
   const navigate = useNavigate();
 
   function handleClickFinish() {
-    if (!orderInfo.time) {
+    if (!currentOrder.time) {
       navigate("/meu-carrinho")
     } else {
       navigate("/meus-pedidos")
@@ -41,7 +41,7 @@ export const FinishShopping = ({ isDataComplete, orderInfo, userContact }) => {
           </H2v2Styled>
         </HeaderH2Styled>
 
-        {orderInfo.status === "pending" && (
+        {currentOrder.status === "pending" && (
           <DivStatusStyled $finish={true}>
             <DivNameStatus $finish={true}>
               <SpanStatusStyled className="material-symbols-rounded">
@@ -52,7 +52,7 @@ export const FinishShopping = ({ isDataComplete, orderInfo, userContact }) => {
           </DivStatusStyled>
         )}
       </DivH2StatusStyled>
-      {orderInfo.status === "pending" && (
+      {currentOrder.status === "pending" && (
         <ButtonContinueStyled $myAccount={true} $enable={enable} onClick={handleClickFinish}>
           <PButtonBase>Finalizar a compra</PButtonBase>
         </ButtonContinueStyled>

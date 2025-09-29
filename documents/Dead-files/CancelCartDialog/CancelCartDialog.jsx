@@ -11,7 +11,7 @@ import {
   PQuestionStyled,
 } from "./StylizedTags";
 
-export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
+export default function CancelCartDialog({ seeCalcelDialog, canHandleClick }) {
   const { setCartProducts } = useContext(CartContext);
   const { seeFeedback, setSeeFeedback } = useContext(VisibilityContext);
   const [heightDiv, setHeightDiv] = useState("163px");
@@ -27,14 +27,14 @@ export default function ConfirmDialog({ setViewConfirm, canHandleClick }) {
       setCartProducts([]);
 
       setTimeout(() => {
-        setViewConfirm(false);
+        seeCalcelDialog(false);
         setSeeFeedback(false);
         setHeightDiv("163px");
       }, 2100);
     } else if (action === 0 && canHandleClick) {
       setOpacityDialog(false);
       setTimeout(() => {
-        setViewConfirm(false);
+        seeCalcelDialog(false);
       }, 300);
     }
   };

@@ -24,6 +24,7 @@ const DivStyled = styled.div`
   padding-bottom: 12px;
   padding-right: 20px;
   padding-left: 8px;
+  padding-top: 4px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -39,8 +40,7 @@ const DivStyled = styled.div`
     display: none;
   }
   @media screen and (max-width: 375px) {
-    max-height: 376px;
-    min-height: 376px;
+    min-height: 392px;
   }
   @media screen and (min-width: 993px) {
     min-height: 284px;

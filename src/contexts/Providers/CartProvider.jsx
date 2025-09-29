@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { CartContext } from "../Contexts/CartContext";
 
 /*Schemas*/
-const voidOrderInfo = {
+const currentOrderSchema = {
   time: "",
   status: "",
+  cartProducts: []
 };
 
 export function CartProvider({ children }) {
@@ -15,13 +16,14 @@ export function CartProvider({ children }) {
   });
   useEffect(() => {
     if (cartProducts.length == 0) {
-      setOrderInfo({ time: "", status: "" });
+      setCurrentOrder({ time: "", status: "" });
     }
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   }, [cartProducts]);
 
   const quantityItens = cartProducts.reduce((acc, item) => acc + item.quant, 0);
 
+  /*Função para adicionar ou retirar produto*/
   function handleQuantityChange(product, isAdding) {
     setCartProducts((prev) => {
       const existingItemIndex = prev.findIndex(
@@ -59,15 +61,16 @@ export function CartProvider({ children }) {
   }, 0); // valor inicial do acumulador
 
   const totalValueFormatted = totalAddedValue.toFixed(2).replace(".", ",");
-
-  const [orderInfo, setOrderInfo] = useState(() => {
-    const savedOrderInfo = localStorage.getItem("orderInfo");
-    return savedOrderInfo ? JSON.parse(savedOrderInfo) : voidOrderInfo;
+  
+  /*Pedido*/
+  const [currentOrder, setCurrentOrder] = useState(() => {
+    const savedOrder = localStorage.getItem("currentOrder");
+    return savedOrder ? JSON.parse(savedOrder) : currentOrderSchema;
   });
 
   useEffect(() => {
-    localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
-  }, [orderInfo]);
+    localStorage.setItem("orderInfo", JSON.stringify(currentOrder));
+  }, [currentOrder]);
 
   return (
     <CartContext.Provider
@@ -78,8 +81,8 @@ export function CartProvider({ children }) {
         totalValueFormatted,
         setCartProducts,
         cartProducts,
-        orderInfo,
-        setOrderInfo,
+        currentOrder,
+        setCurrentOrder,
       }}
     >
       {children}

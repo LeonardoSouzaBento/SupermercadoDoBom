@@ -3,7 +3,7 @@ import { VisibilityContext } from "@contexts/VisibilityContext";
 
 export const VisibilityProvider = ({ children }) => {
   const supermarketName = "Supermercado Do Bom";
-
+  
   //dica para recrutador
   const [tipForRecruiter, setTipForRecruiter] = useState(() => {
     const stored = localStorage.getItem("tipForRecruiter");
@@ -31,7 +31,6 @@ export const VisibilityProvider = ({ children }) => {
     localStorage.setItem("seeLogin", JSON.stringify(seeLogin));
   }, [seeLogin]);
 
-  
   const [onMyAccount, setOnMyAccount] = useState(() => {
     const stored = localStorage.getItem("onMyAccount");
     return stored ? JSON.parse(stored) : false;
