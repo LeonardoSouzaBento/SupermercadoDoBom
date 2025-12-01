@@ -28,3 +28,4 @@ const HeaderCart = ({ setSeeCancelDialog }) => {
 };
 
 export default HeaderCart;
+

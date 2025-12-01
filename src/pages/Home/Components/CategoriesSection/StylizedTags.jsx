@@ -77,7 +77,7 @@ export const SpanStyled = styled.span`
   padding: 15px;
   box-sizing: border-box;
   box-shadow: 0px 0px 10px rgb(155, 139, 227);
-  font-size: 1.7em;
+  
   border: 2px solid rgb(176, 130, 232);
   color: rgb(57, 12, 119);
   background-color: rgba(209, 196, 241, 0.799);
@@ -148,10 +148,11 @@ export const DivCatStyled = styled.div`
   & p {
     font-family: var(--h-font);
     text-align: center;
-    font-size: 1.04em;
+    
     letter-spacing: 0.5px;
     margin: 0;
     color: var(--dark-purple);
   }
 `;
+
 

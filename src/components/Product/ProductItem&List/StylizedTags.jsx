@@ -150,7 +150,7 @@ export const DivPesoStyled = styled.div`
 `;
 
 export const PpesoStyled = styled.p`
-  font-size: 0.845em;
+  
   font-weight: 500;
   letter-spacing: 0.5px;
   background-color: var(--back-color);
@@ -210,7 +210,7 @@ export const PricePStyled = styled.p`
   text-indent: 4px;
   padding: 2px 0px;
   @media screen and (max-width: 385px) {
-    font-size: 0.96em;
+    
     letter-spacing: 1px;
   }
   
@@ -349,7 +349,7 @@ export const DivAddStyled = styled.div`
 `;
 
 export const SpanMoreStyled = styled.span`
-  font-size: 1.48em;
+  
   color: white;
   cursor: pointer;
   -webkit-user-select: none;
@@ -357,7 +357,7 @@ export const SpanMoreStyled = styled.span`
 `;
 
 export const SpanFewerStyled = styled(SpanMoreStyled)`
-  font-size: 1.37em;
+  
   font-weight: 500;
 `;
 
@@ -400,9 +400,10 @@ export const DivButtonsStyled = styled.div`
 `;
 
 export const PQuantStyled = styled.p`
-  font-size: 1.3em;
+  
   font-weight: 500;
   padding-bottom: 2px;
   color: white;
 `;
+
 

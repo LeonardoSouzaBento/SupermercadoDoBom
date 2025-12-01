@@ -308,3 +308,4 @@ function SearchBar({ copy, onHome }) {
 }
 export default SearchBar;
 
+

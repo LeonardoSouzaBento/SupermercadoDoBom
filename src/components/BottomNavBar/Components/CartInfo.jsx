@@ -27,7 +27,7 @@ const DivCartInfoStyled = styled.div`
   }
   & span {
     font-variation-settings: "FILL" 1, "wght" 350, "GRAD" 12, "opsz" 30;
-    font-size: 1.38em;
+    
     padding-top: 2px;
   }
   & > p {
@@ -59,4 +59,5 @@ const CartInfo = () => {
 };
 
 export default CartInfo;
+
 

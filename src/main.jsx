@@ -19,3 +19,4 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 ReactDOM.createRoot(document.getElementById("root")).render(<RootComponent />);
+

@@ -303,3 +303,4 @@ export const DetailsButton = styled.button`
     transform: translateY(0);
   }
 `;
+

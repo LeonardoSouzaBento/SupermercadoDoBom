@@ -35,3 +35,4 @@ export function sequentialPrefixSearch(productList, prefix) {
   return uniqueResults;
 }
 
+

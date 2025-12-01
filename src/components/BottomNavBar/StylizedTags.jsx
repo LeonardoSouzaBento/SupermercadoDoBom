@@ -63,7 +63,7 @@ export const ButtonStyled = styled.button`
   & > span {
     color: white;
     font-weight: 300;
-    font-size: 1.85em;
+    
   }
 
   &.active-button {
@@ -80,4 +80,5 @@ export const ButtonStyled = styled.button`
     display: none;
   }
 `;
+
 

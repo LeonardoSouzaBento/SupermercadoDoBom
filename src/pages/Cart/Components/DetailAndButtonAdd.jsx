@@ -97,3 +97,4 @@ const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
 
 export default DetailAndButtonAdd;
 
+

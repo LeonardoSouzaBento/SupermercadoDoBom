@@ -95,11 +95,11 @@ export const DivSpanStyled = styled(CentralizeDiv)`
 `;
 
 export const SpanStyled = styled.span`
-  font-size: 1.35em;
+  
   font-weight: 500;
   font-variation-settings: "FILL" 1;
   user-select: none;
-  ${(props) => props.$person && "font-size: 1.45em;"}
+  ${(props) => props.$person && ""}
 `;
 
 export const DivContentStyled = styled.div``;
@@ -141,7 +141,7 @@ export const H1Styled = styled.h1`
 `;
 
 export const H2Styled = styled.h2`
-  font-size: 1.1em;
+  
   font-family: var(--h-font);
   color: var(--purple);
   font-weight: 700;
@@ -154,4 +154,5 @@ export const H2Styled = styled.h2`
   
   
 `;
+
 

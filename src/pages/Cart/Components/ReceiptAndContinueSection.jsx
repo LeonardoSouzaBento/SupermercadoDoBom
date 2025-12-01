@@ -122,3 +122,4 @@ const ReceiptAndContinueSection = ({
 };
 
 export default ReceiptAndContinueSection;
+

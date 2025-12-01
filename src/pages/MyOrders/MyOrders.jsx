@@ -14,7 +14,7 @@ const PStyled = styled.p`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.125);
   color: var(--dark-purple);
   font-weight: 400;
-  font-size: 1.2em;
+  
 `;
 
 const MyOrders = () => {
@@ -29,4 +29,5 @@ const MyOrders = () => {
 };
 
 export default MyOrders;
+
 

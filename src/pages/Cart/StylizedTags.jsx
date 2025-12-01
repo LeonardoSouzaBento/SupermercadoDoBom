@@ -203,20 +203,20 @@ export const DivSeeAllStyled = styled.div`
     font-weight: 600;
     font-family: var(--bt-font);
     text-transform: uppercase;
-    font-size: 0.93em;
+    
     user-select: none;
   }
 
   & span {
-    font-size: 1.65em;
+    
     padding-top: 2px;
 
     @media screen and (min-width: 385px) and (max-width: 576px) {
-      font-size: 1.68em;
+      
       padding-top: 2.5px;
     }
     @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.7em;
+      
       padding-top: 3px;
     }
   }
@@ -346,7 +346,7 @@ export const ReceiptOptionStyled = styled.div`
 `;
 
 export const SpanReceiptStyled = styled.span`
-  font-size: 1.75em;
+  
   color: var(--purple);
   ${(props) =>
     !props.$selected &&
@@ -694,5 +694,6 @@ export const BodyAlertStyled = styled.div`
     
   }
 `;
+
 
 

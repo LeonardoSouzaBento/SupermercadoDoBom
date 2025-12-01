@@ -46,7 +46,7 @@ export const DivSpanStyled = styled.div`
   position: relative;
 
   & > span {
-    font-size: 3.7em;
+    
     padding: 5px;
     color: #c2272c;
     font-weight: 700;
@@ -151,3 +151,4 @@ export const PFeedBackStyled = styled(PQuestionStyled)`
   padding: 6px 0px;
   padding-top: 8px;
 `;
+

@@ -148,3 +148,4 @@ const ResetSection = ({ setLoginType }) => {
 
 export default ResetSection;
 
+

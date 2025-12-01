@@ -32,14 +32,14 @@ const DivRowStyled = styled.div`
     
   & span {
     background-color: transparent;
-    font-size: 1.4em;
+    
     font-weight: 500;
     color: var(--dark-red);
     border-radius: 50%;
     ${(props) =>
       props.$check &&
       css`
-        font-size: 1.1em;
+        
         font-weight: 600;
         background-color: var(--light-green);
         color: var(--purple);
@@ -104,4 +104,5 @@ const PasswordValidationReturn = ({ validacao }) => {
 };
 
 export default PasswordValidationReturn;
+
 

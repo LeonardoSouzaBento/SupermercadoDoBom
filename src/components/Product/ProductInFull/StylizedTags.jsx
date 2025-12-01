@@ -504,3 +504,4 @@ export const DivHalfList = styled.div`
   }
 `;
 
+

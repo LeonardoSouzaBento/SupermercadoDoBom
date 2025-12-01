@@ -170,7 +170,7 @@ export const ButtonMoreOptionsStyled = styled.div`
   & p {
     font-family: var(--bt-font);
     font-weight: 600;
-    font-size: 1.05em;
+    
     letter-spacing: 0.8px;
     margin: 0px;
     padding-bottom: 2px;
@@ -185,7 +185,7 @@ export const ButtonMoreOptionsStyled = styled.div`
 export const PStyled = styled.p`
   font-family: var(--bt-font);
   font-weight: 600;
-  font-size: 1.05em;
+  
   letter-spacing: 0.8px;
   margin: 0px;
   padding-bottom: 2px;
@@ -195,4 +195,5 @@ export const PStyled = styled.p`
   user-select: none;
   cursor: pointer;
 `;
+
 

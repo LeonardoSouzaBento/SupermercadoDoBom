@@ -597,13 +597,13 @@ export const DivSpanStyled = styled(CentralizeDiv)`
 `;
 
 export const SpanEditStyled = styled.span`
-  font-size: 1.78em;
+  
   font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 20;
 `;
 
 export const SpanEmailWarnStyled = styled.span`
   color: hsl(213, 11%, 45%);
-  font-size: 2.5em;
+  
   font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 20;
 `;
 
@@ -631,4 +631,5 @@ export const InputZapStyled = styled.input`
   
   
 `;
+
 

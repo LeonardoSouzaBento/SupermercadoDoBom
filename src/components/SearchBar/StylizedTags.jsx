@@ -137,7 +137,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
 `;
 
 export const SpanSearchStyled = styled.span`
-  font-size: 1.7em;
+  
   font-weight: 600;
 `;
 
@@ -262,20 +262,21 @@ export const PStyled = styled.p`
   font-weight: 600;
 
   @media screen and (max-width: 375px) {
-    font-size: 0.86em;
+    
     letter-spacing: 1.01px;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 0.89em;
+    
     letter-spacing: 1.05px;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 0.9em;
+    
     letter-spacing: 1.06px;
   }
   @media screen and (min-width: 769px) {
-    font-size: 0.91em;
+    
     letter-spacing: 1.06px;
   }
 `;
+
 

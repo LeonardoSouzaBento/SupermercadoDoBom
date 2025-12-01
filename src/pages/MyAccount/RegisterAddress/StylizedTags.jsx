@@ -119,7 +119,7 @@ export const ButtonStyled = styled.button`
   border-radius: 8px;
   cursor: pointer;
   font-family: var(--bt-font);
-  font-size: 1.12em;
+  
   font-weight: 550;
   text-align: center;
   color: hsla(136, 57%, 89%, 1);
@@ -195,7 +195,7 @@ export const SpanApiReturnStyled = styled.span`
   ${(props) =>
     props.$error &&
     css`
-      font-size: 3.2em;
+      
       color: #d5343a;
       background-color: var(--pink);
       border-radius: 50%;
@@ -205,14 +205,14 @@ export const SpanApiReturnStyled = styled.span`
     props.$wait &&
     css`
       font-weight: 500;
-      font-size: 2.35em;
+      
       color: var(--red);
       animation: ${rotate} 2s linear infinite;
     `}
   ${(props) => props.$check && css`
     background-color: var(--light-green);
     color: var(--dark-purple);
-    font-size: 1.5em;
+    
     padding: 6px;
     border-radius: 50%;
   `}  
@@ -239,7 +239,7 @@ export const InputStyled = styled.input`
   display: block;
   border-radius: 8px;
   border: 1px solid var(--light-border);
-  font-size: 1.06em;
+  
   font-family: var(--p-font);
   font-weight: 400;
   color: black;
@@ -251,7 +251,7 @@ export const InputStyled = styled.input`
 
   @media screen and (max-width: 375px) {
     width: calc(100% - 36px);
-    font-size: 1.15em;
+    
   }
   
   
@@ -305,7 +305,7 @@ export const CepInputStyled = styled(InputStyled)`
   border: none;
 
   @media screen and (max-width: 385px) {
-    font-size: 1.15em;
+    
     width: 140px;
   }
   
@@ -387,4 +387,5 @@ export const GoBackButtonStyled = styled(ButtonStyled)`
     background-color: hsla(234, 31%, 40%, 1);
   }
 `;
+
 

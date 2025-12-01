@@ -113,7 +113,7 @@ export const InputEmailStyled = styled.input`
   border-radius: 8px;
   text-indent: 10px;
   font-family: var(--p-font);
-  font-size: 1.1em;
+  
   box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.12);
 
   &:focus {
@@ -302,4 +302,5 @@ export const ButtonDivStyled = styled(CentralizeDiv)`
         `}
     `}
 `;
+
 

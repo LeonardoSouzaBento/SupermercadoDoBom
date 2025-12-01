@@ -66,3 +66,4 @@ export const DivToCoverStyled = styled(CentralizeDiv)`
   background-color: white;
   border-radius: 12px;
 `;
+

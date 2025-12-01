@@ -78,7 +78,7 @@ const NoProcutsStyed = styled(CentralizeDiv)`
     width: 100%;
     text-align: center;
     color: var(--dark-purple);
-    font-size: 1.04em;
+    
   }
 `;
 
@@ -185,4 +185,5 @@ function ProductListHome({ categoryKey, wasResize }) {
 }
 
 export default ProductListHome;
+
 

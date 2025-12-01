@@ -97,13 +97,13 @@ export const DivPrice = styled.div`
   #price {
     font-weight: 700;
     font-family: var(--p-font);
-    font-size: 1.17em;
+    
   }
   #oldPrice {
     text-decoration: line-through;
-    font-size: 0.9em;
+    
     font-weight: 400;
-    font-size: 1em;
+    
   }
   #discount {
     width: max-content;
@@ -113,7 +113,8 @@ export const DivPrice = styled.div`
     height: 24px;
     padding: 0 12px;
     background-color: var(--back-color);
-    font-size: 0.9em;
+    
   }
 `;
+
 
