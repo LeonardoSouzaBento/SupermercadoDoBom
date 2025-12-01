@@ -185,3 +185,4 @@ function ProductListHome({ categoryKey, wasResize }) {
 }
 
 export default ProductListHome;
+

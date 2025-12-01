@@ -93,3 +93,4 @@ export default function CancelCartDialog({ seeCalcelDialog, canHandleClick }) {
     </ContainerStyled>
   );
 }
+

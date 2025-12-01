@@ -242,3 +242,4 @@ export default AnnouncementSection;
 //     </DivFundoImgStyled>
 //   ));
 // }
+

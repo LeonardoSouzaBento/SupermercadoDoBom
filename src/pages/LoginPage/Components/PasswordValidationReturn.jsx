@@ -104,3 +104,4 @@ const PasswordValidationReturn = ({ validacao }) => {
 };
 
 export default PasswordValidationReturn;
+

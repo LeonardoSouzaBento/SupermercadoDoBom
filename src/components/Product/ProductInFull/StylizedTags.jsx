@@ -167,24 +167,12 @@ export const SpanHeaderStyled = styled.span`
 export const H1Styled = styled(H1BaseStyled)`
   color: var(--purple);
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.196em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.207em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.229em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.252em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.276em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.288em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const DivImgStyled = styled.div`
@@ -247,24 +235,12 @@ export const PWeightStyled = styled.p`
   user-select: none; /* Padrão */
   color: #292e4e;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.01em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.025em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.03em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.04em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.05em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.06em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const DivNameProdStyled = styled(CentralizeDiv)`
@@ -292,24 +268,12 @@ export const PNameProdStyled = styled.p`
     max-width: 330px;
   }
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.02em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.035em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.04em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.045em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.055em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.06em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const DivPriceStyled = styled(CentralizeDiv)`
@@ -324,24 +288,12 @@ export const PPriceStyled = styled.p`
   -ms-user-select: none; /* IE10+ */
   user-select: none; /* Padrão */
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.13em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.135em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.14em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.145em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.15em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const ContainerQuantStyled = styled(CentralizeDiv)`
@@ -386,24 +338,12 @@ export const DivButtonsStyled = styled(CentralizeDiv)`
     ${(props) => props.$add && "padding-top: 2px;"}
     ${(props) => props.$add && "scale: 0.9;"}
 
-    @media screen and (max-width: 375px) {
-      font-size: 1.42em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.48em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.53em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.58em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.61em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 1.64em;
-    }
+    
+    
+    
+    
+    
+    
   }
 `;
 
@@ -420,24 +360,12 @@ export const PQuantFullStyled = styled.p`
   scale: 1.06;
   padding-bottom: 3px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.28em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.289em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.307em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.327em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.346em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.356em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const PAddStyled = styled(PQuantFullStyled)`
@@ -484,24 +412,12 @@ export const PSubStyled = styled(PNameProdStyled)`
   padding: 0;
   color: rgba(0, 0, 0, 0.9);
 
-  @media screen and (max-width: 375px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.01em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.02em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.03em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.04em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.045em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const DivCoverSubStyled = styled(DivToCoverStyled)`
@@ -587,3 +503,4 @@ export const DivHalfList = styled.div`
     margin-bottom: 12px;
   }
 `;
+

@@ -141,24 +141,12 @@ export const ButtonLoginStyled = styled(CentralizeDiv)`
 export const PLoginStlyed = styled.p`
   font-weight: 500;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.137em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.156em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.166em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.175em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.184em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const DivImgUserStyled = styled(CentralizeDiv)`
@@ -313,24 +301,12 @@ export const H2v2Styled = styled(H2Styled)`
       margin-left: 4px;
       width: 100%;
     `};
-  @media screen and (max-width: 375px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.179em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.195em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.213em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.231em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.24em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const DivStatusStyled = styled.div`
@@ -409,24 +385,12 @@ export const NameStatusStyled = styled.p`
   margin-right: 6px;
   ${(props) => props.$email && "color: black;"}
 
-  @media screen and (max-width: 375px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const SpanCheckStyled = styled.span`
@@ -456,24 +420,12 @@ export const H3Styled = styled.h3`
   font-weight: 600;
   font-family: var(--p-font);
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.13em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.11em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.13em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.135em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.138em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.14em;
-  }
+  
+  
+  
+  
+  
+  
 
   ${(props) => props.$hide && "display: none;"}
   ${(props) =>
@@ -672,22 +624,11 @@ export const InputZapStyled = styled.input`
   }
   ${(props) => props.$hide && "display: none;"}
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.15em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.163em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.165em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.175em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.18em;
-  }
+  
+  
+  
+  
+  
+  
 `;
+

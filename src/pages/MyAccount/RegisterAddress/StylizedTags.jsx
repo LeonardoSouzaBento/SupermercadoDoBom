@@ -161,24 +161,12 @@ export const ButtonStyled = styled.button`
   &:focus {
     outline: none;
   }
-  @media screen and (max-width: 385px) {
-    font-size: 1.15em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.205em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.206em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.207em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const DivApiReturnStyled = styled(DivToCoverStyled)`
@@ -265,21 +253,11 @@ export const InputStyled = styled.input`
     width: calc(100% - 36px);
     font-size: 1.15em;
   }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.163em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.165em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.175em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.18em;
-  }
+  
+  
+  
+  
+  
 
   ${(props) =>
     props.$lastInput &&
@@ -330,21 +308,11 @@ export const CepInputStyled = styled(InputStyled)`
     font-size: 1.15em;
     width: 140px;
   }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.205em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.206em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.207em;
-  }
+  
+  
+  
+  
+  
 `;
 
 export const PWarnCepStyled = styled.p`
@@ -355,24 +323,12 @@ export const PWarnCepStyled = styled.p`
   padding-bottom: 1px;
   letter-spacing: 0.4px;
   visibility: ${(props) => (props.$noPassed ? "visibe" : "hidden")};
-  @media screen and (max-width: 375px) {
-    font-size: 1.12em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.15em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.23em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.25em;
-  }
+  
+  
+  
+  
+  
+  
   /* transform: scaleY(1.1);
   padding-bottom: 2px; */
 `;
@@ -396,24 +352,12 @@ export const PCepErrorStyled = styled.p`
   font-weight: 600;
   color: #d5343a;
 
-  @media screen and (max-width: 374px) {
-    font-size: 1.15em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.163em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.165em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.175em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.18em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 // Botão de envio
@@ -429,24 +373,12 @@ export const RegisterButtonStyled = styled(ButtonStyled)`
       props.$enable ? "var(--dark-red)" : "var(--disable-hover)"};
   }
 
-  @media screen and (max-width: 385px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.19em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.22em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.225em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.227em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.23em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const GoBackButtonStyled = styled(ButtonStyled)`
@@ -455,3 +387,4 @@ export const GoBackButtonStyled = styled(ButtonStyled)`
     background-color: hsla(234, 31%, 40%, 1);
   }
 `;
+

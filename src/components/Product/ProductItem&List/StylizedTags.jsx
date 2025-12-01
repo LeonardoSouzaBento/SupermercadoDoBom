@@ -158,15 +158,6 @@ export const PpesoStyled = styled.p`
   padding: 0px 10px;
   padding-bottom: 2px;
   border-radius: 11px;
-  @media screen and (max-width: 385px) {
-    font-size: 0.87em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 0.89em;
-  }
-  @media screen and (min-width: 577px) {
-    font-size: 0.9em;
-  }
 `;
 
 export const PPeso2Styled = styled(PpesoStyled)`
@@ -222,15 +213,7 @@ export const PricePStyled = styled.p`
     font-size: 0.96em;
     letter-spacing: 1px;
   }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.031em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.036em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.041em;
-  }
+  
   @media screen and (min-width: 993px) and (max-width: 1200px) {
     font-size: 1.046;
   }
@@ -334,15 +317,9 @@ export const DivOffStyled = styled(CentralizeDiv)`
 export const POffStyled = styled.p`
   color: white;
   font-weight: 250;
-  @media screen and (max-width: 385px) {
-    font-size: 0.87em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 0.89em;
-  }
-  @media screen and (min-width: 577px) {
-    font-size: 0.9em;
-  }
+  
+  
+  
 `;
 
 //botão de mais
@@ -428,3 +405,4 @@ export const PQuantStyled = styled.p`
   padding-bottom: 2px;
   color: white;
 `;
+

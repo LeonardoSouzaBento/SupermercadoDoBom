@@ -60,24 +60,12 @@ export const SubtitleStyled = styled.p`
   color: #64748b;
   font-family: var(--h-font);
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.027em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.035em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.05em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.066em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.082em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.09em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const CardStyled = styled.div`
@@ -99,24 +87,12 @@ export const CardTitleStyled = styled.h2`
   text-align: left;
   margin-bottom: 4px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.33em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.336em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.346em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.358em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.369em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.375em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const CardDescriptionStyled = styled.p`
@@ -124,24 +100,12 @@ export const CardDescriptionStyled = styled.p`
   font-family: var(--h-font);
   text-align: left;
 
-  @media screen and (max-width: 375px) {
-    font-size: 0.94em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 0.941em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 0.944em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 0.946em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 0.949em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 0.95em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const ButtonStyled = styled(CentralizeDiv)`
@@ -160,24 +124,12 @@ export const ButtonStyled = styled(CentralizeDiv)`
   margin-bottom: 16px;
   transition: all 0.15s ease;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.033em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.037em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.045em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.054em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.063em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.067em;
-  }
+  
+  
+  
+  
+  
+  
 
   ${(props) =>
     props.$variant === "visitor" &&
@@ -244,24 +196,12 @@ export const InputWrapperStyled = styled.div`
     padding-left: 12px;
     margin-top: 6px;
 
-    @media screen and (max-width: 375px) {
-      font-size: 0.99em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 0.997em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.012em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.027em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.042em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 1.05em;
-    }
+    
+    
+    
+    
+    
+    
   }
 
   & a {
@@ -272,24 +212,12 @@ export const InputWrapperStyled = styled.div`
     margin-top: 8px;
     cursor: default;
 
-    @media screen and (max-width: 375px) {
-      font-size: 1.05em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.056em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.068em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.081em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.094em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 1.1em;
-    }
+    
+    
+    
+    
+    
+    
   }
 `;
 
@@ -298,24 +226,12 @@ export const LabelStyled = styled.label`
   font-family: "Open Sans", sans-serif;
   color: var(--dark-purple);
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.073em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.082em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.099em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.117em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.136em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.145em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const InputStyled = styled.input`
@@ -333,24 +249,12 @@ export const InputStyled = styled.input`
     border-color: var(--purple);
     box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
   }
-  @media screen and (max-width: 375px) {
-    font-size: 1.095em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.104em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.121em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.14em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.159em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.168em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const PasswordWrapperStyled = styled.div`
@@ -394,3 +298,4 @@ export const VisitorBoxStyled = styled.div`
     text-align: left;
   }
 `;
+

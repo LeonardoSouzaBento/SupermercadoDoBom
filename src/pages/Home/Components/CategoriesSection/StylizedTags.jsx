@@ -154,3 +154,4 @@ export const DivCatStyled = styled.div`
     color: var(--dark-purple);
   }
 `;
+

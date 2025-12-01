@@ -73,21 +73,11 @@ export const ButtonCloseStyled = styled(CentralizeDiv)`
     color: white;
     scale: 1.07;
 
-    @media screen and (max-width: 375px) {
-      font-size: 1.45em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.48em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.51em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.53em;
-    }
-    @media screen and (min-width: 993px) {
-      font-size: 1.54em;
-    }
+    
+    
+    
+    
+    
   }
 `;
 
@@ -107,24 +97,12 @@ export const PEmailStyled = styled.p`
 
   ${(props) => props.$alert && "color: black;"}
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.259em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.264em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.269em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.275em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.281em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.286em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const InputEmailStyled = styled.input`
@@ -141,21 +119,11 @@ export const InputEmailStyled = styled.input`
   &:focus {
     outline: 1px solid #b12328;
   }
-  @media screen and (max-width: 375px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.11em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.117em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.135em;
-  }
-  @media screen and (min-width: 993px) {
-    font-size: 1.139em;
-  }
+  
+  
+  
+  
+  
 `;
 
 export const DivButtonsStyled = styled.div`
@@ -220,21 +188,11 @@ export const PLoginStyled = styled.p`
   scale: 1.01;
   cursor: pointer;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.07em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.115em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.128em;
-  }
-  @media screen and (min-width: 993px) {
-    font-size: 1.13em;
-  }
+  
+  
+  
+  
+  
 `;
 
 export const PContinueStyled = styled.p`
@@ -242,24 +200,12 @@ export const PContinueStyled = styled.p`
   font-weight: 500;
   padding-bottom: 2px;
   cursor: pointer;
-  @media screen and (max-width: 375px) {
-    font-size: 1.17em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.177em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.192em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.207em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.222em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.23em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const ImgGoogleStyled = styled.img`
@@ -291,24 +237,12 @@ export const LabelStyled = styled.label`
   font-weight: 400;
   margin-bottom: 8px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.206em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.218em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.231em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.244em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.25em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const InputStyled = styled.input`
@@ -327,24 +261,12 @@ export const InputStyled = styled.input`
     outline: none;
   }
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.185em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.193em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.208em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.225em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.242em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.25em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const ButtonDivStyled = styled(CentralizeDiv)`
@@ -380,3 +302,4 @@ export const ButtonDivStyled = styled(CentralizeDiv)`
         `}
     `}
 `;
+

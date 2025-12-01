@@ -30,24 +30,12 @@ export const DivTitleStyled = styled.header`
     font-weight: 700;
     width: 100%;
     text-align: left;
-    @media screen and (max-width: 375px) {
-      font-size: 1em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.012em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.036em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.061em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.087em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 1.1em;
-    }
+    
+    
+    
+    
+    
+    
   }
 `;
 
@@ -128,3 +116,4 @@ export const DivPrice = styled.div`
     font-size: 0.9em;
   }
 `;
+

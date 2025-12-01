@@ -44,24 +44,12 @@ const H3ButtonStyled = styled.h3`
   margin-bottom: 0px;
   font-family: var(--h-font);
   color: var(--purple);
-  @media screen and (max-width: 375px) {
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.206em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.218em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.231em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.244em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.25em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 const DivReferentMidea = styled.div`
@@ -201,3 +189,4 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
+

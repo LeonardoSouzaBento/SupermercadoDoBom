@@ -34,24 +34,12 @@ const InputTextStyled = styled.textarea`
   &:focus {
     outline: none;
   }
-    @media screen and (max-width: 375px) {
-    font-size: 1.13em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.12em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.152em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.155em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.157em;
-  }
+    
+  
+  
+  
+  
+  
 `;
 
 const InputSubmitStyled = styled.input`
@@ -68,15 +56,9 @@ const InputSubmitStyled = styled.input`
   letter-spacing: 0.72px;
 
   ${(props) => props.$sent && "background-color: rgb(76, 156, 34);"};
-  @media screen and (max-width: 768px) {
-    font-size: 1.055em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.065em;
-  }
-  @media screen and (min-width: 993px) {
-    font-size: 1.15em;
-  }
+  
+  
+  
 `;
 
 const InsertComment = () => {
@@ -124,3 +106,4 @@ const InsertComment = () => {
 };
 
 export default InsertComment;
+

@@ -37,3 +37,4 @@ export function HomeDivsProvider({ children }) {
     </HomeDivsContext.Provider>
   );
 }
+

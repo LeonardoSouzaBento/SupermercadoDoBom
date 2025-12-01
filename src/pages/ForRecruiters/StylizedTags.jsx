@@ -116,24 +116,12 @@ export const PStyled = styled.p`
     color: var(--dark-purple);
   }
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.13em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.11em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.13em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.135em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.138em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.14em;
-  }
+  
+  
+  
+  
+  
+  
   ${(props) => props.$mb && "margin-bottom: 13px;"};
   ${(props) => props.$moreWidth && "max-width: 100%;"};
 `;
@@ -144,24 +132,12 @@ export const H1Styled = styled.h1`
   font-weight: 700;
   margin-bottom: 20px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.5em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.53em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.55em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.57em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.585em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.6em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const H2Styled = styled.h2`
@@ -171,22 +147,11 @@ export const H2Styled = styled.h2`
   font-weight: 700;
   margin-bottom: 20px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.3em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.32em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.33em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.34em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.345em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.35em;
-  }
+  
+  
+  
+  
+  
+  
 `;
+

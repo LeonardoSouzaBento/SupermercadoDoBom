@@ -79,24 +79,12 @@ export const DivNameSpanStyled = styled.div`
     width: 100%;
     text-align: left;
 
-    @media screen and (max-width: 375px) {
-      font-size: 1.14em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.155em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.16em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.165em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.168em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 1.17em;
-    }
+    
+    
+    
+    
+    
+    
   }
 `;
 
@@ -117,3 +105,4 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     ${(props) => props.$logout && "font-weight: 500;"}
   }
 `;
+

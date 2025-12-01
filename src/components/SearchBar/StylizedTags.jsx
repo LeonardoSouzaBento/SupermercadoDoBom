@@ -92,24 +92,12 @@ export const InputStyled = styled.input`
     -webkit-appearance: none;
     appearance: none;
   }
-  @media screen and (max-width: 375px) {
-    font-size: 1.01em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.04em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.05em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.06em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.07em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.08em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const DivSpanStyled = styled(CentralizeDiv)`
@@ -191,21 +179,11 @@ export const PMsgStyled = styled.p`
   padding: 6px 0px;
   padding-bottom: 8px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.055em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.07em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.11em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.13em;
-  }
-  @media screen and (min-width: 993px) {
-    font-size: 1.15em;
-  }
+  
+  
+  
+  
+  
 `;
 
 export const CompletionsDivStyled = styled.div`
@@ -300,3 +278,4 @@ export const PStyled = styled.p`
     letter-spacing: 1.06px;
   }
 `;
+
