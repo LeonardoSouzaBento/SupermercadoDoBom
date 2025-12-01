@@ -71,25 +71,6 @@ export const PQuestionStyled = styled.p`
   font-weight: 400;
   text-align: center;
   color: white;
-
-  @media screen and (max-width: 375px) {
-    font-size: 1.35em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.37em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.38em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.39em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.4em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.41em;
-  }
 `;
 
 export const DivSimNaoStyled = styled.div`
@@ -117,15 +98,6 @@ export const DivSimNaoStyled = styled.div`
       background-color: #75171b;
     }
     transition: background-color 0.1s ease;
-    @media screen and (max-width: 375px) {
-      font-size: 1.05em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.06em;
-    }
-    @media screen and (min-width: 577px) {
-      font-size: 1.07em;
-    }
   }
 
   /* Estilos para PVoltarStyled */
@@ -156,15 +128,6 @@ export const PSimStyled = styled.p`
     background-color: #75171b;
   }
   transition: background-color 0.1s ease;
-  @media screen and (max-width: 375px) {
-    font-size: 1.05em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.06em;
-  }
-  @media screen and (min-width: 577px) {
-    font-size: 1.07em;
-  }
 `;
 
 export const PVoltarStyled = styled(PSimStyled)`

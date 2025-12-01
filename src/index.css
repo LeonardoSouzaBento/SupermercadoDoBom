@@ -57,7 +57,7 @@ body::-webkit-scrollbar {
 body {
   background-color: var(--back-grey);
   width: 100%;
-  max-width: 1390px;
+  max-width: 1400px;
   margin: auto;
   position: relative;
 }

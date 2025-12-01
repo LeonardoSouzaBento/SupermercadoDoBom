@@ -136,23 +136,6 @@ export const NamePStyled = styled.p`
   padding-left: 4px;
   font-weight: 500;
   line-height: 1.2;
-
-  @media screen and (max-width: 385px) {
-    font-size: 0.86em;
-    letter-spacing: 1.01px;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 0.89em;
-    letter-spacing: 1.05px;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 0.9em;
-    letter-spacing: 1.06px;
-  }
-  @media screen and (min-width: 769px) {
-    font-size: 0.91em;
-    letter-spacing: 1.06px;
-  }
 `;
 //peso
 export const DivPesoStyled = styled.div`

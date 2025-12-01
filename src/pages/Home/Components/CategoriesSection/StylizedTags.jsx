@@ -7,9 +7,8 @@ export const DivStyled = styled.div`
   position: relative;
   z-index: 2;
 
-  @media screen and (max-width: 375px) {
-    width: 100%;
-  }
+  width: 100%;
+
   @media screen and (min-width: 1201px) {
     width: calc(100% - 52px);
     margin: auto;

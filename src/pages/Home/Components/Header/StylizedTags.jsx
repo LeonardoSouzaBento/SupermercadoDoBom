@@ -3,7 +3,7 @@ import { CentralizeDiv } from "@components/GenericStylizedTags";
 
 export const HeaderStyled = styled.header`
   width: 100%;
-  max-width: 1390px;
+  max-width: 1400px;
   height: max-content;
   position: relative;
   background-color: var(--purple);
@@ -84,25 +84,6 @@ export const LogoDivStyled = styled(CentralizeDiv)`
     font-weight: 700;
     padding-top: 1px;
     padding-left: 1px;
-
-    @media screen and (max-width: 375px) {
-      font-size: 2.18em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 2.207em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 2.259em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 2.315em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 2.372em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 2.4em;
-    }
   }
 `;
 
@@ -121,20 +102,7 @@ export const DivPsStyled = styled.div`
     font-weight: 800;
 
     @media (max-width: 375px) {
-      font-size: 1.05em;
       max-width: 200px;
-    }
-    @media (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.05em;
-    }
-    @media (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.06em;
-    }
-    @media (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.07em;
-    }
-    @media (min-width: 993px) {
-      font-size: 1.08em;
     }
   }
 
@@ -142,22 +110,6 @@ export const DivPsStyled = styled.div`
     font-family: var(h-font);
     font-weight: 400;
     letter-spacing: auto;
-
-    @media (max-width: 375px) {
-      font-size: 1.12em;
-    }
-    @media (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.13em;
-    }
-    @media (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.14em;
-    }
-    @media (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.15em;
-    }
-    @media (min-width: 993px) {
-      font-size: 1.16em;
-    }
   }
 `;
 
@@ -209,21 +161,8 @@ export const ButtonMoreOptionsStyled = styled.div`
   & span {
     cursor: pointer;
     user-select: none;
-
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.55em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.6em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.65em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.7em;
-    }
+    
     @media screen and (min-width: 1201px) {
-      font-size: 1.45em;
       padding-right: 4px;
     }
   }

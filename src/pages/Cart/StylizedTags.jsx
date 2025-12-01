@@ -149,26 +149,13 @@ export const DivSpanDeleteStyled = styled(CentralizeDiv)`
 
   & span {
     font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 22;
-    @media screen and (max-width: 385px) {
-      font-size: 1.55em;
-    }
-    @media screen and (min-width: 385px) and (max-width: 576px) {
-      font-size: 1.58em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.59em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.6em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.61em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 1.62em;
-    }
   }
 `;
+
+// (Get-Content "src/pages/Cart/StylizedTags.jsx" -Raw) `
+//     -replace '@media[^{]+{\s*font-size:\s*[^;]+em;\s*}', '' |
+//     Set-Content "src/pages/Cart/StylizedTags.jsx"
+
 
 export const ShadowStyled = styled.div`
   width: 100%;
@@ -218,13 +205,6 @@ export const DivSeeAllStyled = styled.div`
     text-transform: uppercase;
     font-size: 0.93em;
     user-select: none;
-
-    @media screen and (min-width: 385px) and (max-width: 576px) {
-      font-size: 0.94em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 0.95em;
-    }
   }
 
   & span {
@@ -328,24 +308,12 @@ export const H2Styled = styled.h2`
   font-weight: 700;
   color: var(--purple);
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.15em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.156em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 769px) {
-    font-size: 1.168em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.181em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.194em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.2em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const ReceiptOptionStyled = styled.div`
@@ -560,24 +528,12 @@ export const DivQuestionStyled = styled(CentralizeDiv)`
     font-family: var(--h-font);
     font-weight: 700;
     scale: 0.9;
-    @media screen and (max-width: 385px) {
-      font-size: 1.4em;
-    }
-    @media screen and (min-width: 385px) and (max-width: 576px) {
-      font-size: 1.41em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.43em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.44em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.445em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 1.45em;
-    }
+    
+    
+    
+    
+    
+    
   }
 `;
 
@@ -621,24 +577,12 @@ export const ButtonStyled = styled(CentralizeDiv)`
     letter-spacing: 0.72px;
     border-radius: 4px;
 
-    @media screen and (max-width: 385px) {
-      font-size: 1.15em;
-    }
-    @media screen and (min-width: 385px) and (max-width: 576px) {
-      font-size: 1.18em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.2em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.205em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.206em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 1.207em;
-    }
+    
+    
+    
+    
+    
+    
   }
 `;
 
@@ -646,24 +590,12 @@ export const ButtonStyled = styled(CentralizeDiv)`
 export const PAvisoStyled = styled.p`
   color: white;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.19em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.195em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.21em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.22em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const PValueStyled = styled.p`
@@ -683,24 +615,12 @@ export const PValueStyled = styled.p`
   & strong {
     font-weight: 650;
   }
-  @media screen and (max-width: 385px) {
-    font-size: 1.08em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.09em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.1em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.152em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.122em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.132em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const PAddStyled = styled.p`
@@ -713,48 +633,24 @@ export const PAddStyled = styled.p`
       width: 86%;
     `};
 
-  @media screen and (max-width: 385px) {
-    font-size: 1.15em;
-  }
-  @media screen and (min-width: 385px) and (max-width: 576px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.205em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.206em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.207em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const H1AlertStyled = styled.h1`
   font-family: var(--h-font);
   font-weight: 500;
 
-  @media screen and (max-width: 375px) {
-    font-size: 1.18em;
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    font-size: 1.192em;
-  }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    font-size: 1.216em;
-  }
-  @media screen and (min-width: 769px) and (max-width: 992px) {
-    font-size: 1.241em;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.267em;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.28em;
-  }
+  
+  
+  
+  
+  
+  
 `;
 
 export const BodyAlertStyled = styled.div`
@@ -790,23 +686,12 @@ export const BodyAlertStyled = styled.div`
     font-family: var(--h-font);
     font-weight: 500;
 
-    @media screen and (max-width: 375px) {
-      font-size: 1.18em;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      font-size: 1.192em;
-    }
-    @media screen and (min-width: 577px) and (max-width: 768px) {
-      font-size: 1.216em;
-    }
-    @media screen and (min-width: 769px) and (max-width: 992px) {
-      font-size: 1.241em;
-    }
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-      font-size: 1.267em;
-    }
-    @media screen and (min-width: 1201px) {
-      font-size: 1.28em;
-    }
+    
+    
+    
+    
+    
+    
   }
 `;
+
