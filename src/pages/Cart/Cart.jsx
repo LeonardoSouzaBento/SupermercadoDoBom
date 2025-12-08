@@ -123,11 +123,6 @@ const Cart = () => {
     wasClicked === false;
 
   useEffect(() => {
-    if (totalAddedValue == 0) {
-      setTimeout(() => {
-        navigate("/");
-      }, 1500);
-    }
     if (shouldCheckHiddenProducts) {
       checkHiddenProducts();
     }

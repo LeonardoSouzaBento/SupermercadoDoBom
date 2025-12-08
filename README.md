@@ -1,62 +1,155 @@
-Acesse o site pelo link: https://supermercadodobom.netlify.app
+🔗 **[Acesse a aplicação](https://supermercadodobom.netlify.app)**
 
-***Descrição do Projeto***
+# Supermercado do Bom
 
-O "Supermercado do Bom" é uma aplicação de página única (SPA) que simula a experiência de um supermercado online. O objetivo é demonstrar a construção de uma aplicação web moderna com diversas funcionalidades interativas e possibilidade de manipulação de dados em tempo real.
+[![Netlify Status](https://img.shields.io/badge/deploy-netlify-00C7B7?logo=netlify)](https://supermercadodobom.netlify.app)
+[![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
+[![Firebase](https://img.shields.io/badge/Firebase-BaaS-FFCA28?logo=firebase&logoColor=white)](https://firebase.google.com/)
+[![Styled Components](https://img.shields.io/badge/Styled_Components-CSS--in--JS-DB7093?logo=styled-components&logoColor=white)](https://styled-components.com/)
 
+> Uma aplicação de supermercado online moderna e interativa construída com React e Firebase
 
-***Tecnologias Utilizadas***
+---
 
-O projeto foi desenvolvido com as seguintes tecnologias:
+## 📋 Índice
 
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Tecnologias](#-tecnologias)
+- [Páginas e Rotas](#-páginas-e-rotas)
+- [Funcionalidades](#-funcionalidades)
+- [Como Executar](#-como-executar)
+- [Autor](#-autor)
 
-Frontend: React, para a construção da interface de usuário.
+---
 
-Estilização: Styled Components, para uma estilização modular e com escopo.
+## 🎯 Sobre o Projeto
 
-APIs e Serviços:
+O **Supermercado do Bom** é uma aplicação de página única (SPA) que simula a experiência completa de um supermercado online. O projeto demonstra a construção de uma aplicação web moderna com funcionalidades interativas avançadas e manipulação de dados em tempo real.
 
-Axios, para requisições HTTP.
+### Objetivo
 
-Firebase Client SDK, para integração com serviços do Google.
+Criar uma experiência de compra online intuitiva e eficiente, com recursos como:
 
-Backend como Serviço (BaaS):
+- Autenticação de usuários
+- Carrinho de compras em tempo real
+- Histórico de pedidos
+- Busca inteligente de produtos
+- Gerenciamento de perfil e endereços
 
-Firebase Firestore, para o banco de dados NoSQL e dados em tempo real.
+---
 
-Firebase Authenticator, para gerenciamento de autenticação de usuários (login com Google, e-mail/senha e anônimo).
+## 🛠 Tecnologias
 
+### Frontend
 
-***Páginas Principais***
+- **React** - Biblioteca para construção da interface de usuário
+- **Styled Components** - Estilização modular com CSS-in-JS
+- **Axios** - Cliente HTTP para requisições
 
-O site contém as seguintes rotas, acessíveis diretamente pelo link https://supermercadodobom.netlify.app[/nome-da-pagina]:
+### Backend (BaaS)
 
+- **Firebase Firestore** - Banco de dados NoSQL em tempo real
+- **Firebase Authentication** - Gerenciamento de autenticação
+  - Login com Google
+  - Login com e-mail/senha
+  - Login anônimo
 
- / - Página Inicial: Exibe as maiores ofertas e os produtos em destaque.
+### Deploy
 
- /fazer-login - Permite o acesso com conta Google, e-mail e senha, ou de forma anônima.
+- **Netlify** - Hospedagem e deploy contínuo
 
- /buscar-produtos - Oferece uma interface para pesquisa de produtos.
+---
 
- /meu-carrinho - Exibe a lista de produtos adicionados para a compra atual.
+## 📄 Páginas e Rotas
 
- /minha-conta - Para visualizar e atualizar as informações pessoais e de login.
+Todas as rotas são acessíveis através de `https://supermercadodobom.netlify.app/[rota]`
 
- /meus-pedidos - Mostra o pedido atual e um histórico de compras anteriores.
+| Rota               | Descrição                                         |
+| ------------------ | ------------------------------------------------- |
+| `/`                | Página inicial com ofertas e produtos em destaque |
+| `/fazer-login`     | Autenticação (Google, e-mail/senha ou anônimo)    |
+| `/buscar-produtos` | Interface de pesquisa de produtos                 |
+| `/meu-carrinho`    | Lista de produtos adicionados ao carrinho         |
+| `/minha-conta`     | Visualização e edição de informações pessoais     |
+| `/meus-pedidos`    | Pedido atual e histórico de compras               |
+| `/sobre`           | Informações sobre o projeto e autor               |
 
- /sobre - Contém informações sobre o site e seu autor.
+---
 
+## ✨ Funcionalidades
 
-***Funcionalidades Principais***
+### 🔍 Sugestões de Pesquisa Inteligente
 
-Sugestões de Pesquisa: Ao interagir com a barra de busca, o usuário recebe sugestões que agilizam a localização de produtos. Em dispositivos móveis, uma leve rolagem para cima após o clique na barra de pesquisa permite a visualização dessas sugestões, que poderiam ser ocultadas pelo teclado.
+Ao interagir com a barra de busca, o usuário recebe sugestões em tempo real que agilizam a localização de produtos. Em dispositivos móveis, uma leve rolagem para cima após o clique permite visualizar as sugestões que poderiam ser ocultadas pelo teclado.
 
-Visualização de Produto em Tela Cheia: O clique na imagem de um produto no carrossel de anúncios abre um modal em tela cheia. Isso permite ao usuário ver detalhes do produto com mais zoom, verificar informações adicionais (como o subtotal) e adicionar o item ao carrinho.
+### 🖼️ Visualização em Tela Cheia
 
-Navegação por Categorias e Cards de Produto: A seção de categorias organiza os produtos de forma intuitiva, e cada card de produto inclui botões de ação para facilitar a adição ao carrinho.
+Clique na imagem de um produto no carrossel para abrir um modal em tela cheia, permitindo:
 
-Fluxo de Compra Simplificado: Na página do carrinho, o botão "Ver Tudo" revela o botão "Continuar", mostrando o fluxo de compra completo, o que é especialmente útil para novos usuários.
+- Visualização detalhada com zoom
+- Informações adicionais (subtotal, descrição)
+- Adição direta ao carrinho
 
-Autenticação Simplificada: A opção de "Login com Google" acelera o processo de registro, preenchendo automaticamente informações como nome, e-mail e foto de perfil.
+### 🗂️ Navegação por Categorias
 
-Preenchimento de Endereço Automático: Na seção "Minha Conta > Editar endereço", os botões "Pegar Minha Localização" e "Digite Seu CEP" minimizam a necessidade de digitação manual do endereço, oferecendo conveniência e precisão.
+Organização intuitiva dos produtos por categorias, com cards interativos que facilitam a adição ao carrinho.
+
+### 🛒 Fluxo de Compra Simplificado
+
+Na página do carrinho, o botão "Ver Tudo" revela o fluxo completo de compra, guiando especialmente os novos usuários.
+
+### 🔐 Autenticação Rápida
+
+O "Login com Google" acelera o processo de registro, preenchendo automaticamente:
+
+- Nome completo
+- E-mail
+- Foto de perfil
+
+### 📍 Preenchimento Automático de Endereço
+
+Na seção "Minha Conta > Editar endereço", recursos que minimizam a digitação manual:
+
+- **Pegar Minha Localização** - Usa geolocalização do navegador
+- **Digite Seu CEP** - Busca automática de endereço via CEP
+
+---
+
+## 🚀 Como Executar
+
+```bash
+# Clone o repositório
+git clone https://github.com/LeonardoSouzaBento/SupermercadoDoBom.git
+
+# Entre no diretório do frontend
+cd SupermercadoDoBom/front-end
+
+# Instale as dependências
+npm install
+
+# Execute o projeto
+npm start
+```
+
+A aplicação estará disponível em `http://localhost:3000`
+
+---
+
+## 👤 Autor
+
+**Leonardo Souza Bento**
+
+- GitHub: [@LeonardoSouzaBento](https://github.com/LeonardoSouzaBento)
+- LinkedIn: [Leonardo Souza Bento](https://linkedin.com/in/leonardo-souza-bento)
+
+---
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT, veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+<div align="center">
+  Desenvolvido por Leonardo Souza Bento
+</div>
