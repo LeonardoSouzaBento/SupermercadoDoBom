@@ -66,7 +66,7 @@ const NoProcutsStyed = styled(CentralizeDiv)`
   left: 50%;
   transform: translateX(-52%);
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--white-foreground);
 
   @media screen and (min-width: 1201px) {
     transform: translateX(-50%);

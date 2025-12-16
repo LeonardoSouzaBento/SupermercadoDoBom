@@ -1,6 +1,6 @@
-import styled, { css, keyframes } from "styled-components";
-import { CentralizeDiv, H1BaseStyled } from "@components/GenericStylizedTags";
-import { DivToCoverStyled } from "@components/GenericStylizedTags";
+import styled, { css, keyframes } from 'styled-components';
+import { CentralizeDiv, H1BaseStyled } from '@components/GenericStylizedTags';
+import { DivToCoverStyled } from '@components/GenericStylizedTags';
 
 export const DivBodyStyled = styled.div`
   width: 100vw;
@@ -18,7 +18,7 @@ export const DivBodyStyled = styled.div`
   opacity: ${(props) => props.$opacity};
 
   @media screen and (max-width: 993px) {
-    justify-content: ${(props) => (props.$up ? "flex-start" : "center")};
+    justify-content: ${(props) => (props.$up ? 'flex-start' : 'center')};
   }
 `;
 
@@ -32,12 +32,10 @@ export const MainDivStyled = styled.div`
   padding-bottom: 25px;
   box-sizing: border-box;
   border-radius: 12px;
-  background-color: white;
+  background-color: var(--white-foreground);
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(41, 46, 117, 0.4),
-    4px 0px 4px -3px rgba(41, 46, 117, 0.1),
-    -4px 0px 4px -3px rgba(41, 46, 117, 0.1);
+  box-shadow: var(--shadow-md);
   transition: transform 0.2s ease;
 
   @media screen and (max-width: 375px) {
@@ -74,7 +72,7 @@ export const DivSpanCloseStyled = styled(CentralizeDiv)`
   position: absolute;
   top: 8px;
   right: 20px;
-  background-color: var(--back-color);
+  background-color: var(--background);
   color: var(--primary);
   border-radius: 50%;
   cursor: pointer;
@@ -89,14 +87,14 @@ export const DivSpanCloseStyled = styled(CentralizeDiv)`
       height: 40px;
       width: 40px;
       background-color: var(--primary);
-      color: white;
+      color: var(--white-foreground);
       &:hover {
         background-color: var(--primary-hover);
       }
     `}
-  & span{
+  & span {
     font-weight: 500;
-  }  
+  }
 `;
 
 export const SpanCloseStyled = styled.span`
@@ -119,7 +117,7 @@ export const ButtonStyled = styled.button`
   border-radius: 8px;
   cursor: pointer;
   font-family: var(--font-button);
-  
+
   font-weight: 550;
   text-align: center;
   color: hsla(136, 57%, 89%, 1);
@@ -131,16 +129,14 @@ export const ButtonStyled = styled.button`
   }
 
   ${(props) =>
-    props.$variant === "digitarTudo" &&
+    props.$variant === 'digitarTudo' &&
     css`
       margin-bottom: 0px;
-      box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
-        2px 0px 3px -2px rgba(41, 46, 117, 0.13),
-        -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
+      box-shadow: var(--shadow-sm);
     `}
 
   ${(props) =>
-    (props.$variant === "digitarTudo" || props.$variant === "voltar") &&
+    (props.$variant === 'digitarTudo' || props.$variant === 'voltar') &&
     css`
       background-color: var(--secondary);
       &:hover {
@@ -148,10 +144,10 @@ export const ButtonStyled = styled.button`
       }
     `};
   ${(props) =>
-    props.$variant === "voltar" &&
+    props.$variant === 'voltar' &&
     css`
       margin-bottom: 12.5px;
-      background-color: var(--back-color);
+      background-color: var(--background);
       color: var(--primary);
       &:hover {
         background-color: var(--back-hover);
@@ -161,12 +157,6 @@ export const ButtonStyled = styled.button`
   &:focus {
     outline: none;
   }
-  
-  
-  
-  
-  
-  
 `;
 
 export const DivApiReturnStyled = styled(DivToCoverStyled)`
@@ -175,13 +165,13 @@ export const DivApiReturnStyled = styled(DivToCoverStyled)`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  background-color: white;
+  background-color: var(--white-foreground);
   z-index: 4;
   opacity: ${(props) => props.$opacityReturn};
   transition: opacity 0.2s ease;
   user-select: none;
 
-  & p{
+  & p {
     color: var(--dark-primary);
     font-weight: 400;
     font-family: var(--font-header);
@@ -195,7 +185,6 @@ export const SpanApiReturnStyled = styled.span`
   ${(props) =>
     props.$error &&
     css`
-      
       color: #d5343a;
       background-color: var(--pink);
       border-radius: 50%;
@@ -205,17 +194,19 @@ export const SpanApiReturnStyled = styled.span`
     props.$wait &&
     css`
       font-weight: 500;
-      
+
       color: var(--secondary);
       animation: ${rotate} 2s linear infinite;
     `}
-  ${(props) => props.$check && css`
-    background-color: var(--light-green);
-    color: var(--dark-primary);
-    
-    padding: 6px;
-    border-radius: 50%;
-  `}  
+  ${(props) =>
+    props.$check &&
+    css`
+      background-color: var(--light-green);
+      color: var(--dark-primary);
+
+      padding: 6px;
+      border-radius: 50%;
+    `}
 `;
 
 const rotate = keyframes`
@@ -239,25 +230,19 @@ export const InputStyled = styled.input`
   display: block;
   border-radius: 8px;
   border: 1px solid var(--light-border);
-  
+
   font-family: var(--font-body);
   font-weight: 400;
-  color: black;
+  color: var(--black-foreground);
   background-color: transparent;
-  box-shadow: 0px 2px 3px -2px rgba(41, 46, 117, 0.125);
+  box-shadow: var(--shadow-xs);
   &:focus {
     outline: none;
   }
 
   @media screen and (max-width: 375px) {
     width: calc(100% - 36px);
-    
   }
-  
-  
-  
-  
-  
 
   ${(props) =>
     props.$lastInput &&
@@ -278,12 +263,10 @@ export const DivCepInputStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  background-color: white;
+  background-color: var(--white-foreground);
   border-radius: 8px;
   border: 1px solid rgba(230, 230, 230, 1);
-  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
-    2px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    -2px 0px 3px -2px rgba(41, 46, 117, 0.13);
+  box-shadow: var(--shadow-md);
 
   @media screen and (max-width: 385px) {
     width: calc(100% - 36px);
@@ -298,21 +281,15 @@ export const CepInputStyled = styled(InputStyled)`
   margin-bottom: 2px;
   padding-bottom: 0px;
   padding-left: 0px;
-  background-color: white;
+  background-color: var(--white-foreground);
   font-family: var(--font-button);
   font-weight: 400;
   box-shadow: none;
   border: none;
 
   @media screen and (max-width: 385px) {
-    
     width: 140px;
   }
-  
-  
-  
-  
-  
 `;
 
 export const PWarnCepStyled = styled.p`
@@ -322,13 +299,8 @@ export const PWarnCepStyled = styled.p`
   font-weight: 400;
   padding-bottom: 1px;
   letter-spacing: 0.4px;
-  visibility: ${(props) => (props.$noPassed ? "visibe" : "hidden")};
-  
-  
-  
-  
-  
-  
+  visibility: ${(props) => (props.$noPassed ? 'visibe' : 'hidden')};
+
   /* transform: scaleY(1.1);
   padding-bottom: 2px; */
 `;
@@ -345,40 +317,25 @@ export const DivCepErrorStyled = styled.div`
   justify-content: flex-start;
   align-items: center;
   border-radius: 0 0 8px 8px;
-  box-shadow: 0px 4px 4px 0px #e9eff5;
+  box-shadow: var(--shadow-sm);
 `;
 
 export const PCepErrorStyled = styled.p`
   font-weight: 600;
   color: #d5343a;
-
-  
-  
-  
-  
-  
-  
 `;
 
 // Botão de envio
 export const RegisterButtonStyled = styled(ButtonStyled)`
   border-radius: 8px;
   margin-bottom: 0px;
-  color: white;
+  color: var(--white-foreground);
   transition: all 0.15 ease;
-  background-color: ${(props) =>
-    props.$enable ? "var(--secondary)" : "var(--disable)"};
+  background-color: ${(props) => (props.$enable ? 'var(--secondary)' : 'var(--disable)')};
   &:hover {
     background-color: ${(props) =>
-      props.$enable ? "var(--secondary-hover)" : "var(--disable-hover)"};
+      props.$enable ? 'var(--secondary-hover)' : 'var(--disable-hover)'};
   }
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const GoBackButtonStyled = styled(ButtonStyled)`
@@ -387,5 +344,3 @@ export const GoBackButtonStyled = styled(ButtonStyled)`
     background-color: hsla(234, 31%, 40%, 1);
   }
 `;
-
-

@@ -10,35 +10,7 @@ import {
   SpanStyled,
 } from "./StylizedTags";
 import { useScrollX } from "@hooks/useScrollX";
-import {
-  BadgePercent,
-  Bean,
-  Candy,
-  Apple,
-  Croissant,
-  Drumstick,
-  CookingPot,
-  SoapDispenserDroplet,
-  PawPrint,
-  Milk,
-  BrushCleaning,
-  NotebookPen,
-} from "lucide-react";
-
-const categories = [
-  { id: 0, icon: BadgePercent, label: "Promoções" },
-  { id: 1, icon: Bean, label: "Mercearia" },
-  { id: 2, icon: Candy, label: "Doces e Biscoitos" },
-  { id: 3, icon: Apple, label: "Hortifruit" },
-  { id: 4, icon: Croissant, label: "Padaria" },
-  { id: 5, icon: Drumstick, label: "Açougue" },
-  { id: 6, icon: Milk, label: "Frios e Congelados" },
-  { id: 7, icon: CookingPot, label: "Casa e Cozinha" },
-  { id: 8, icon: BrushCleaning, label: "Limpeza Doméstica" },
-  { id: 9, icon: SoapDispenserDroplet, label: "Higiene pessoal" },
-  { id: 10, icon: NotebookPen, label: "Papelaria" },
-  { id: 11, icon: PawPrint, label: "PetShop" },
-];
+import { categoriesIcons } from "@data/home";
 
 function CategoriesSection({ wasResize }) {
   const {
@@ -63,8 +35,8 @@ function CategoriesSection({ wasResize }) {
         parseFloat(getComputedStyle(categoriesRef.current).paddingRight) * 2;
 
       const totalWidth =
-        categories.length * itemWidth +
-        (categories.length - 1) * gap +
+        categoriesIcons.length * itemWidth +
+        (categoriesIcons.length - 1) * gap +
         paddingRight;
 
       const limit = divWidth - totalWidth;
@@ -93,7 +65,6 @@ function CategoriesSection({ wasResize }) {
   return (
     <DivStyled ref={DivRef}>
       <SpanStyled className="material-symbols-rounded">swipe_left</SpanStyled>
-      {/*Para tutorial de como usar a tela*/}
       <DivLabelPromosStyled>
         <H1LabelStyled>
           Mais vendidos por categoria,
@@ -105,7 +76,7 @@ function CategoriesSection({ wasResize }) {
       </DivLabelPromosStyled>
 
       <DivfStyled ref={categoriesRef}>
-        {categories.map((cat, index) => (
+        {categoriesIcons.map((cat, index) => (
           <DivCatStyled
             key={cat.id}
             $selected={cat.id === currentCategory}

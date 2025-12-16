@@ -1,5 +1,4 @@
-import styled, { css } from "styled-components";
-import { H1BaseStyled } from "@components/GenericStylizedTags";
+import styled, { css } from 'styled-components';
 
 export const DivStyled = styled.div`
   margin-bottom: 8px;
@@ -28,9 +27,9 @@ export const DivLabelPromosStyled = styled.div`
   }
 `;
 
-export const H1LabelStyled = styled(H1BaseStyled)`
+export const H1LabelStyled = styled.h3`
   color: var(--dark-primary);
-  scale: 1.03;
+  text-align: center;
 `;
 
 export const DivfStyled = styled.div`
@@ -77,16 +76,12 @@ export const SpanStyled = styled.span`
   padding: 15px;
   box-sizing: border-box;
   box-shadow: 0px 0px 10px rgb(155, 139, 227);
-  
+
   border: 2px solid rgb(176, 130, 232);
   color: rgb(57, 12, 119);
   background-color: rgba(209, 196, 241, 0.799);
   rotate: 15deg;
   will-change: transform;
-  /*animation: 
-        aparecer 500ms linear 0s, 
-        rolarDedo 1.1s linear 500ms, 
-        desaparecer 500ms linear 1.6s;*/
   display: none;
 `;
 
@@ -109,14 +104,14 @@ export const DivCatStyled = styled.div`
     props.$selected &&
     css`
       z-index: 1;
-      background-color: white;
-      box-shadow: 0px 4px 10px -6px hsla(0, 0%, 15%, 0.5);
+      background-color: var(--white-foreground);
+      box-shadow: var(--shadow-xs);
     `}
   ${(props) =>
     !props.$selected &&
     css`
       &:hover {
-        box-shadow: 0px 4px 10px -6px hsla(0, 0%, 15%, 0.5);
+        box-shadow: var(--shadow-sm);
       }
     `}
 
@@ -134,8 +129,7 @@ export const DivCatStyled = styled.div`
       props.$selected &&
       css`
         scale: 1.05;
-        box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.25);
-        /* box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5); */
+        box-shadow: var(--shadow-md);
       `}
   }
   & div:last-child {
@@ -148,11 +142,10 @@ export const DivCatStyled = styled.div`
   & p {
     font-family: var(--font-header);
     text-align: center;
-    
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05rem;
+    line-height: 1.10;
+    font-size: var(--text-xs);
     margin: 0;
     color: var(--dark-primary);
   }
 `;
-
-

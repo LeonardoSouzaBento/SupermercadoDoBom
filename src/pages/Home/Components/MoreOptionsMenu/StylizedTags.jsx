@@ -23,8 +23,8 @@ export const DivSideStyled = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: white;
-  box-shadow: -4px 0px 12px -4px rgba(41, 46, 117, 0.5);
+  background-color: var(--white-foreground);
+  box-shadow: var(--shadow-md);
   transition: transform 0.4s ease;
   transform: translateX(${(props) => props.$transform});
 

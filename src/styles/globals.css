@@ -19,17 +19,18 @@
   --text-h3: 1.377167em;
   --text-h2: 1.469437em;
   --text-h1: 1.56789em;
-  --text-big-h1: 1.672938em;
   --text-button: 1em;
   --text-sm-button: 0.9em;
   --text-lg-button: 1.1em;
   /*Cores*/
-  --primary: #383d6a;
-  --primary-hover: #2e3257;
-  --dark-primary: #261e3e;
-  --secondary: #d5343a;
-  --secondary-hover: #c3282d;
-  --dark-secondary: #6b393a;
+  --primary: hsl(235, 35%, 35%);
+  --primary-hover: hsl(234, 31%, 26%);
+  --dark-primary: hsl(255, 35%, 18%);
+  --secondary: hsl(360, 66%, 50%);
+  --secondary-hover: hsl(358, 66%, 46%);
+  --dark-secondary: hsl(359, 30%, 32%);
+  --white-foreground: #fff;
+  --black-foreground: #222;
   --dark-green: #396b46;
   --light-green: #b5ebc3;
   /* --back-color: #eef2f6; */
@@ -43,10 +44,67 @@
   --pink: hsl(0, 100%, 94%);
   --light-grey: rgb(247, 249, 250);
   --light-grey-hover: hsl(200, 23%, 91%);
-  --back-grey: rgb(243, 244, 246);
+  --background: hsl(220, 14%, 97.5%);
   --white-hover: #f9fafb;
   --bluish-white: #f1f5f9;
   --bluish-white-hover: #e2e8f0;
+  /* sombras */
+  --shadow-xs: 0 1px 2px -1px hsla(0, 0%, 0%, 0.10);
+  --shadow-sm: 0 1px 3px hsla(0, 0%, 0%, 0.08), 0 0 4px hsla(0, 0%, 0%, 0.01);
+  --shadow-md: 0 3px 6px hsla(0, 0%, 0%, 0.06), 0 0 8px hsla(0, 0%, 0%, 0.01);
+  --shadow-lg: 0 6px 12px hsla(0, 0%, 0%, 0.04), 0 0 16px hsla(0, 0%, 0%, 0.01);
+  --shadow-xl: 0 12px 24px hsla(0, 0%, 0%, 0.02), 0 0 32px hsla(0, 0%, 0%, 0.01);
+  --shadow-2xl: 0 24px 48px hsla(0, 0%, 0%, 0.01), 0 0 64px hsla(0, 0%, 0%, 0.01);
+  /* tamanhos */
+  --size-2: 0.2rem;
+  --size-4: 0.4rem;
+  --size-6: 0.6rem;
+  --size-8: 0.8rem;
+  --size-10: 1rem;
+  --size-12: 1.2rem;
+  --size-14: 1.4rem;
+  --size-16: 1.6rem;
+  --size-18: 1.8rem;
+  --size-20: 2rem;
+  --size-22: 2.2rem;
+  --size-24: 2.4rem;
+  --size-26: 2.6rem;
+  --size-28: 2.8rem;
+  --size-30: 3rem;
+  --size-32: 3.2rem;
+  --size-34: 3.4rem;
+  --size-36: 3.6rem;
+  --size-38: 3.8rem;
+  --size-40: 4rem;
+  --size-42: 4.2rem;
+  --size-44: 4.4rem;
+  --size-46: 4.6rem;
+  --size-48: 4.8rem;
+  --size-50: 5rem;
+  --size-52: 5.2rem;
+  --size-54: 5.4rem;
+  --size-56: 5.6rem;
+  --size-58: 5.8rem;
+  --size-60: 6rem;
+  --size-62: 6.2rem;
+  --size-64: 6.4rem;
+  --size-66: 6.6rem;
+  --size-68: 6.8rem;
+  --size-70: 7rem;
+  --size-72: 7.2rem;
+  --size-74: 7.4rem;
+  --size-76: 7.6rem;
+  --size-78: 7.8rem;
+  --size-80: 8rem;
+  --size-82: 8.2rem;
+  --size-84: 8.4rem;
+  --size-86: 8.6rem;
+  --size-88: 8.8rem;
+  --size-90: 9rem;
+  --size-92: 9.2rem;
+  --size-94: 9.4rem;
+  --size-96: 9.6rem;
+  
 }
 
 html,
@@ -57,25 +115,35 @@ body {
   scrollbar-width: none;
 }
 
-html::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  visibility: hidden;
-}
-
+html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   width: 0;
   height: 0;
   visibility: hidden;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
-  background-color: var(--back-grey);
+  background-color: var(--background);
   width: 100%;
   max-width: 1400px;
   margin: auto;
   position: relative;
-  font-size: 18px;
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-header);
+  cursor: default;
+  user-select: none;
 }
 
 p {
@@ -86,7 +154,6 @@ p {
 
 span {
   font-weight: 400;
-  font-size: 1.5em;
 }
 
 button {

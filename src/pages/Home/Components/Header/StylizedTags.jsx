@@ -80,8 +80,9 @@ export const LogoDivStyled = styled(CentralizeDiv)`
   }
 
   & span {
-    color: white;
-    font-weight: 700;
+    color: var(--white-foreground);
+    font-weight: 600;
+    font-size: 3.6rem;
     padding-top: 1px;
     padding-left: 1px;
   }
@@ -93,7 +94,7 @@ export const DivPsStyled = styled.div`
   gap: 4px;
 
   p {
-    color: white;
+    color: var(--white-foreground);
     letter-spacing: 0.45px;
   }
 
@@ -122,15 +123,14 @@ export const SpaceButtonStyed = styled.div`
 `;
 
 export const ButtonMoreOptionsStyled = styled.div`
-  width: 48px;
-  height: 48px;
+  width: 4.8rem;
+  height: 4.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: white;
+  color: var(--white-foreground);
   background-color: var(--secondary);
-  box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.25);
   transition: all 100ms linear;
   cursor: pointer;
   &:hover {

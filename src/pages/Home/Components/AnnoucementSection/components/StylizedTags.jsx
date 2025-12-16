@@ -9,7 +9,7 @@ export const ItenSectionStyled = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
-  background-color: white;
+  background-color: var(--white-foreground);
   /* background-color: var(--secondary);
   background-image: linear-gradient(to right, var(--secondary-hover), var(--secondary)); */
 `;
@@ -24,18 +24,11 @@ export const DivTitleStyled = styled.header`
   box-sizing: border-box;
   color: var(--secondary-hover);
   & h2 {
-    /* color: white; */
-    font-family: var(--font-header);
+    /* color: var(--white-foreground); */
     text-transform: capitalize;
     font-weight: 700;
     width: 100%;
     text-align: left;
-    
-    
-    
-    
-    
-    
   }
 `;
 
@@ -74,7 +67,7 @@ export const DivPrice = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-end;
-  background-color: white;
+  background-color: var(--white-foreground);
 
 
   & div {
@@ -112,7 +105,7 @@ export const DivPrice = styled.div`
     border-radius: 12px;
     height: 24px;
     padding: 0 12px;
-    background-color: var(--back-color);
+    background-color: var(--background);
     
   }
 `;

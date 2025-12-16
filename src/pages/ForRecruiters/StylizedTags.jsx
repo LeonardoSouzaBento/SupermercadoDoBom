@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { CentralizeDiv, H1BaseStyled } from "@components/GenericStylizedTags";
+import styled, { css } from 'styled-components';
+import { CentralizeDiv, H1BaseStyled } from '@components/GenericStylizedTags';
 
 export const BodyStyled = styled.div`
   height: auto;
@@ -20,15 +20,14 @@ export const WrapperStyled = styled.div`
   box-sizing: border-box;
   overflow-y: scroll;
   border-radius: 8px;
-  background-color: white;
-  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
-    3px 0px 3px -2px rgba(41, 46, 117, 0.125),
+  background-color: var(--white-foreground);
+  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6), 3px 0px 3px -2px rgba(41, 46, 117, 0.125),
     -3px 0px 3px -2px rgba(41, 46, 117, 0.125);
   position: relative;
   z-index: 1;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  
+
   @media screen and (max-width: 530px) {
     border-radius: 0px;
   }
@@ -67,7 +66,7 @@ export const DivNameSpanStyled = styled(CentralizeDiv)`
   flex: 1 0 auto;
   border-bottom: 1px solid var(--border);
   color: var(--primary);
-  background-color: white;
+  background-color: var(--white-foreground);
   transition: all 0.15s ease;
   ${(props) =>
     props.$buttonSelected &&
@@ -95,11 +94,10 @@ export const DivSpanStyled = styled(CentralizeDiv)`
 `;
 
 export const SpanStyled = styled.span`
-  
   font-weight: 500;
-  font-variation-settings: "FILL" 1;
+  font-variation-settings: 'FILL' 1;
   user-select: none;
-  ${(props) => props.$person && ""}
+  ${(props) => props.$person && ''}
 `;
 
 export const DivContentStyled = styled.div``;
@@ -112,47 +110,22 @@ export const PStyled = styled.p`
   line-height: 1.27;
   color: var(--dark-primary);
 
-  & strong{
+  & strong {
     color: var(--dark-primary);
   }
 
-  
-  
-  
-  
-  
-  
-  ${(props) => props.$mb && "margin-bottom: 13px;"};
-  ${(props) => props.$moreWidth && "max-width: 100%;"};
+  ${(props) => props.$mb && 'margin-bottom: 13px;'};
+  ${(props) => props.$moreWidth && 'max-width: 100%;'};
 `;
 
 export const H1Styled = styled.h1`
-  font-family: var(--font-header);
   color: var(--primary);
   font-weight: 700;
   margin-bottom: 20px;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const H2Styled = styled.h2`
-  
-  font-family: var(--font-header);
   color: var(--primary);
   font-weight: 700;
   margin-bottom: 20px;
-
-  
-  
-  
-  
-  
-  
 `;
-
-

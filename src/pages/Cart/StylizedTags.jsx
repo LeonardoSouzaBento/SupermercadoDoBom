@@ -1,8 +1,5 @@
-import styled, { css } from "styled-components";
-import {
-  CentralizeDiv,
-  H1BaseStyled,
-} from "@components/GenericStylizedTags";
+import styled, { css } from 'styled-components';
+import { CentralizeDiv, H1BaseStyled } from '@components/GenericStylizedTags';
 
 export const MainStyled = styled.div`
   width: 100%;
@@ -14,7 +11,7 @@ export const MainStyled = styled.div`
   padding-bottom: 32px;
 
   &::after {
-    content: "";
+    content: '';
     width: 100%;
     height: 6px;
     position: absolute;
@@ -71,16 +68,11 @@ export const CartSectionStyed = styled.section`
   margin-bottom: 20px;
   border-radius: 12px;
   box-sizing: border-box;
-  /* box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
-    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
-    -2px 0px 4px -3px rgba(41, 46, 117, 0.125); */
-  box-shadow: 0px 2px 4px -2px hsla(236, 18%, 31%, 0.6),
-    2px 0px 4px -3px hsla(236, 18%, 31%, 0.13),
-    -2px 0px 4px -3px hsla(236, 18%, 31%, 0.13);
+  box-shadow: var(--shadow-md);
 
   position: relative;
   transition: height 0.15s ease;
-  background-color: white;
+  background-color: var(--white-foreground);
   overflow: hidden;
   transition: all 0.15s ease;
 
@@ -148,7 +140,7 @@ export const DivSpanDeleteStyled = styled(CentralizeDiv)`
   }
 
   & span {
-    font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 22;
+    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 22;
   }
 `;
 
@@ -156,18 +148,13 @@ export const DivSpanDeleteStyled = styled(CentralizeDiv)`
 //     -replace '@media[^{]+{\s*font-size:\s*[^;]+em;\s*}', '' |
 //     Set-Content "src/pages/Cart/StylizedTags.jsx"
 
-
 export const ShadowStyled = styled.div`
   width: 100%;
   height: 16px;
   position: absolute;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.01),
-    rgba(0, 0, 0, 0)
-  );
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0));
   background-size: 100% 100%;
   border-radius: 0px 0px 10px 10px;
 
@@ -190,11 +177,11 @@ export const DivSeeAllStyled = styled.div`
   position: absolute;
   bottom: -1px;
   left: 0;
-  background-color: white;
+  background-color: var(--white-foreground);
   color: var(--dark-primary);
   z-index: 2;
   cursor: pointer;
-  box-shadow: 0px -3px 3px -2px rgba(41, 46, 117, 0.13);
+  box-shadow: var(--shadow-sm);
   @media screen and (min-width: 769px) {
     display: none;
   }
@@ -203,20 +190,16 @@ export const DivSeeAllStyled = styled.div`
     font-weight: 600;
     font-family: var(--font-button);
     text-transform: uppercase;
-    
     user-select: none;
   }
 
   & span {
-    
     padding-top: 2px;
 
     @media screen and (min-width: 385px) and (max-width: 576px) {
-      
       padding-top: 2.5px;
     }
     @media screen and (min-width: 577px) and (max-width: 768px) {
-      
       padding-top: 3px;
     }
   }
@@ -267,14 +250,9 @@ export const SectionStyled = styled.section`
   gap: 0;
   align-items: flex-end;
   box-sizing: border-box;
-  background-color: white;
+  background-color: var(--white-foreground);
   border-radius: 12px;
-  box-shadow: 0px 2px 4px -2px hsla(236, 18%, 31%, 0.60),
-    2px 0px 4px -3px hsla(236, 18%, 31%, 0.13),
-    -2px 0px 4px -3px hsla(236, 18%, 31%, 0.13);
-  /* box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
-    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
-    -2px 0px 4px -3px rgba(41, 46, 117, 0.125); */
+  box-shadow: var(--shadow-md);
   overflow: hidden;
   position: relative;
   transition: all 0.15s ease;
@@ -304,16 +282,8 @@ export const HeaderH2Styled = styled.header`
 `;
 
 export const H2Styled = styled.h2`
-  font-family: var(--font-header);
   font-weight: 700;
   color: var(--primary);
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const ReceiptOptionStyled = styled.div`
@@ -326,7 +296,7 @@ export const ReceiptOptionStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--white-foreground);
   transition: all 0.15s ease;
   cursor: pointer;
   &:hover {
@@ -341,12 +311,11 @@ export const ReceiptOptionStyled = styled.div`
       }
     `}
 
-  ${(props) => props.$variant === "retirar" && "padding: 8px 16px;"};
-  ${(props) => props.$variant === "entregar" && "margin-bottom: 0px;"}
+  ${(props) => props.$variant === 'retirar' && 'padding: 8px 16px;'};
+  ${(props) => props.$variant === 'entregar' && 'margin-bottom: 0px;'}
 `;
 
 export const SpanReceiptStyled = styled.span`
-  
   color: var(--primary);
   ${(props) =>
     !props.$selected &&
@@ -354,7 +323,7 @@ export const SpanReceiptStyled = styled.span`
       color: rgba(160, 160, 160, 1);
       font-weight: 200;
     `};
-  font-variation-settings: "FILL" 1;
+  font-variation-settings: 'FILL' 1;
 `;
 
 export const DivAvisoStyled = styled.div`
@@ -412,23 +381,20 @@ export const ButtonContinueStyled = styled.div`
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.15s ease;
-  color: white;
-  background-color: ${(props) => (props.$nocontinue ? "#C2C6CA" : "#383d6a")};
+  color: var(--white-foreground);
+  background-color: ${(props) => (props.$nocontinue ? '#C2C6CA' : '#383d6a')};
   &:hover {
     background-color: ${(props) =>
-      !props.$nocontinue
-        ? "hsla(234, 31%, 27%, 1)"
-        : "hsla(210, 7%, 68%, 1.00)"};
+      !props.$nocontinue ? 'hsla(234, 31%, 27%, 1)' : 'hsla(210, 7%, 68%, 1.00)'};
   }
 
   ${(props) =>
     props.$myAccount &&
     css`
-      background-color: ${(props) =>
-        !props.$enable ? "var(--disable)" : "var(--dark-green)"};
+      background-color: ${(props) => (!props.$enable ? 'var(--disable)' : 'var(--dark-green)')};
       &:hover {
         background-color: ${(props) =>
-          !props.$enable ? "var(--disable-hover)" : "var(--dark-green)"};
+          !props.$enable ? 'var(--disable-hover)' : 'var(--dark-green)'};
       }
     `}
 
@@ -448,14 +414,12 @@ export const DivAddStyled = styled.div`
   gap: 12px;
   align-items: center;
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--white-foreground);
   transition: all 0.1s ease;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.6),
-      2px 0px 4px -3px rgba(41, 46, 117, 0.125),
-      -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
+    box-shadow: var(--shadow-md);
   }
 `;
 
@@ -484,12 +448,10 @@ export const DivDialogStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 4;
-  background-color: white;
+  background-color: var(--white-foreground);
   overflow: hidden;
-  ${(props) => props.$feedback && "background-color: var(--dark-green);"};
-  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.24),
-    3px 0px 3px -2px rgba(41, 46, 117, 0.13),
-    -3px 0px 3px -2px rgba(41, 46, 117, 0.13);
+  ${(props) => props.$feedback && 'background-color: var(--dark-green);'};
+  box-shadow: var(--shadow-md);
   transition: height 0.15s ease;
   position: relative;
 
@@ -519,21 +481,13 @@ export const DivQuestionStyled = styled(CentralizeDiv)`
   width: 100%;
   height: 56px;
   margin-bottom: 16px;
-  background-color: white;
-  ${(props) =>
-    !props.$feedback && "border-bottom: 1px solid var(--light-border);"}
-  ${(props) => props.$feedback && "background-color: var(--dark-green);"}
+  background-color: var(--white-foreground);
+  ${(props) => !props.$feedback && 'border-bottom: 1px solid var(--light-border);'}
+  ${(props) => props.$feedback && 'background-color: var(--dark-green);'}
 
   & h1 {
-    font-family: var(--font-header);
     font-weight: 700;
     scale: 0.9;
-    
-    
-    
-    
-    
-    
   }
 `;
 
@@ -550,7 +504,7 @@ export const ButtonStyled = styled(CentralizeDiv)`
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  color: white;
+  color: var(--white-foreground);
   transition: all 0.15 ease;
   background-color: var(--secondary);
 
@@ -562,8 +516,8 @@ export const ButtonStyled = styled(CentralizeDiv)`
     props.$voltar &&
     css`
       margin-top: 12px;
-      color: black;
-      background-color: var(--back-color);
+      color: var(--black-foreground);
+      background-color: var(--background);
       &:hover {
         background-color: var(--back-hover);
       }
@@ -576,33 +530,19 @@ export const ButtonStyled = styled(CentralizeDiv)`
     text-align: center;
     letter-spacing: 0.72px;
     border-radius: 4px;
-
-    
-    
-    
-    
-    
-    
   }
 `;
 
 /*Ps*/
 export const PAvisoStyled = styled.p`
-  color: white;
-
-  
-  
-  
-  
-  
-  
+  color: var(--white-foreground);
 `;
 
 export const PValueStyled = styled.p`
   font-weight: 450;
   cursor: default;
   padding-bottom: 2px;
-  ${(props) => props.$selected && "font-weight: 600;"}
+  ${(props) => props.$selected && 'font-weight: 600;'}
   ${(props) =>
     props.$email &&
     css`
@@ -610,17 +550,11 @@ export const PValueStyled = styled.p`
       color: rgba(0, 0, 0, 0.9);
       font-weight: 400;
       scale: 0.94;
-      ${(props) => props.$last && "width: max-content;"}
+      ${(props) => props.$last && 'width: max-content;'}
     `}
   & strong {
     font-weight: 650;
   }
-  
-  
-  
-  
-  
-  
 `;
 
 export const PAddStyled = styled.p`
@@ -632,25 +566,10 @@ export const PAddStyled = styled.p`
     css`
       width: 86%;
     `};
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const H1AlertStyled = styled.h1`
-  font-family: var(--font-header);
   font-weight: 500;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const BodyAlertStyled = styled.div`
@@ -683,17 +602,6 @@ export const BodyAlertStyled = styled.div`
   }
 
   & h1 {
-    font-family: var(--font-header);
     font-weight: 500;
-
-    
-    
-    
-    
-    
-    
   }
 `;
-
-
-

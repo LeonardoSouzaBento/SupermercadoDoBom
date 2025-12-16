@@ -1,10 +1,10 @@
-import styled, { css } from "styled-components";
-import { CentralizeDiv } from "../../GenericStylizedTags";
+import styled, { css } from 'styled-components';
+import { CentralizeDiv } from '../../GenericStylizedTags';
 
 export const PaiProdStyled = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: var(--white-foreground);
   cursor: default;
   -webkit-user-select: none;
   user-select: none;
@@ -14,18 +14,15 @@ export const PaiProdStyled = styled.div`
   transition: box-shadow 0.2s ease;
 
   ${(props) =>
-    props.$variant !== "cart" &&
+    props.$variant !== 'cart' &&
     css`
       &:hover {
-        box-shadow: 0 4px 8px hsla(0, 0%, 0%, 0.12),
-          2px 0 4px -2px hsla(0, 0%, 0%, 0.03),
-          -2px 0 4px -2px hsla(0, 0%, 0%, 0.03);
+        box-shadow: var(--shadow-sm);
       }
     `}
-  // box-shadow: 0 4px 8px hsla(236, 8%, 31%, 0.24);
   
   ${(props) =>
-    props.$variant == "cart" &&
+    props.$variant == 'cart' &&
     css`
       border: 1px solid var(--light-border);
       border-radius: 0px !important;
@@ -34,9 +31,9 @@ export const PaiProdStyled = styled.div`
   //paisagem
   @media screen and (max-width: 385px) {
     flex-direction: row;
-    height: 180px;
-    min-width: 270px;
-    max-width: 270px;
+    height: 18rem;
+    min-width: 27rem;
+    max-width: 27rem;
   }
   //retrato
   @media screen and (min-width: 385px) and (max-width: 414px) {
@@ -44,21 +41,21 @@ export const PaiProdStyled = styled.div`
   }
   @media screen and (min-width: 385px) and (max-width: 992px) {
     flex-direction: column;
-    min-width: 170px;
-    max-width: 170px;
-    min-height: 286px;
-    max-height: 286px;
+    min-width: 17rem;
+    max-width: 17rem;
+    min-height: 28rem;
+    max-height: 28rem;
   }
   //paisagem
   @media screen and (min-width: 993px) {
     flex-direction: row;
-    min-width: 275px;
-    max-width: 275px;
-    height: 177px;
+    min-width: 27.5rem;
+    max-width: 27.5rem;
+    height: 17.7rem;
   }
 
   ${(props) =>
-    props.$variant === "announcement" &&
+    props.$variant === 'announcement' &&
     css`
       display: block;
       width: 100%;
@@ -99,7 +96,7 @@ export const DescOfertaStyled = styled.div`
   @media screen and (max-width: 385px) {
     height: 100%;
     width: 48%;
-    padding: 11px;
+    padding: 1.1rem;
     padding-right: 0px;
   }
   //retrato
@@ -114,11 +111,10 @@ export const DescOfertaStyled = styled.div`
   }
   //paisagem
   @media screen and (min-width: 993px) {
-    width: 130px;
+    width: 13rem;
     padding-right: 0px;
   }
-  ${(props) =>
-    props.$variant === "announcement" && "display: none !important;"};
+  ${(props) => props.$variant === 'announcement' && 'display: none !important;'};
 `;
 
 export const DivNomeStyled = styled.div`
@@ -128,18 +124,19 @@ export const DivNomeStyled = styled.div`
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  padding-bottom: 12px;
+  padding-bottom: 1.2rem;
 `;
 export const NamePStyled = styled.p`
   text-transform: capitalize;
   margin: auto;
-  padding-left: 4px;
+  padding-left: 0.4rem;
+  line-height: 1.3;
 `;
 //peso
 export const DivPesoStyled = styled.div`
   height: auto;
   width: max-content;
-  ${(props) => props.$exist === false && "display: none;"}
+  ${(props) => props.$exist === false && 'display: none;'}
 
   //retrato
   @media screen and (min-width: 385px) and (max-width: 992px) {
@@ -150,17 +147,17 @@ export const DivPesoStyled = styled.div`
 export const PpesoStyled = styled.p`
   font-weight: 500;
   letter-spacing: 0.5px;
-  background-color: var(--back-color);
+  background-color: var(--background);
   color: rgb(50, 50, 50);
-  padding: 0px 10px;
+  padding: 0 10px;
   padding-bottom: 2px;
-  border-radius: 11px;
+  border-radius: 1.2rem;
 `;
 
 export const PPeso2Styled = styled(PpesoStyled)`
   position: absolute;
-  bottom: 38px;
-  right: 7px;
+  bottom: 3.8rem;
+  right: 0.7rem;
   background-color: hsl(213, 29%, 95.9%);
   color: rgb(50, 50, 50);
   @media screen and (max-width: 385px) {
@@ -207,7 +204,6 @@ export const PricePStyled = styled.p`
   text-indent: 4px;
   padding: 2px 0px;
   @media screen and (max-width: 385px) {
-    
     letter-spacing: 1px;
   }
 `;
@@ -230,7 +226,7 @@ export const DivOfertaStyled = styled.div`
   }
 
   ${(props) =>
-    props.$variant === "announcement" &&
+    props.$variant === 'announcement' &&
     css`
       width: 100%;
       height: 100%;
@@ -255,7 +251,7 @@ export const PaiImgOfertaStyled = styled.div`
   }
 
   ${(props) =>
-    props.$variant === "announcement" &&
+    props.$variant === 'announcement' &&
     css`
       @media screen and (min-width: 993px) {
         display: block;
@@ -278,7 +274,7 @@ export const ImgOfertaStyed = styled.img`
   }
 
   ${(props) =>
-    props.$variant === "announcement" &&
+    props.$variant === 'announcement' &&
     css`
       object-fit: cover;
       height: 100%;
@@ -292,30 +288,27 @@ export const ImgOfertaStyed = styled.img`
 
 export const DivOffStyled = styled(CentralizeDiv)`
   width: max-content;
-  height: 20px;
+  height: 2rem;
   position: absolute;
-  top: 7px;
-  right: 7px;
-  padding: 0px 8px;
-  padding-bottom: 1px;
+  top: 0.8rem;
+  right: 0.8rem;
+  padding: 0 var(--size-8);
   background-color: var(--secondary);
-  border-radius: 12px;
+  border-radius: var(--size-12);
 
-  ${(props) => props.$variant === "announcement" && "display: none;"};
+  ${(props) => props.$variant === 'announcement' && 'display: none;'};
 `;
 
 export const POffStyled = styled.p`
-  color: white;
-  font-weight: 250;
-  
-  
-  
+  color: var(--white-foreground);
+  font-weight: 300;
+  font-size: var(--text-xs);
 `;
 
 //botão de mais
 export const DivAddStyled = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 3.2rem;
+  height: 3.2rem;
   position: absolute;
   bottom: 8px;
   right: 5%;
@@ -323,7 +316,7 @@ export const DivAddStyled = styled.div`
   align-items: center;
   justify-content: center;
   background-color: var(--secondary);
-  border-radius: 16px;
+  border-radius: 1.6rem;
   cursor: pointer;
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
@@ -331,23 +324,21 @@ export const DivAddStyled = styled.div`
     bottom: 0px;
   }
   ${(props) =>
-    (props.$variant === "similarList" ||
-      props.$variant === "announcement" ||
-      props.$variant === "cart" ||
+    (props.$variant === 'similarList' ||
+      props.$variant === 'announcement' ||
+      props.$variant === 'cart' ||
       props.$displayNone) &&
-    "display: none;"}
+    'display: none;'}
 `;
 
 export const SpanMoreStyled = styled.span`
-  
-  color: white;
+  color: var(--white-foreground);
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
 `;
 
 export const SpanFewerStyled = styled(SpanMoreStyled)`
-  
   font-weight: 500;
 `;
 
@@ -356,7 +347,7 @@ export const DivQuantStyled = styled.div`
   width: 90%;
   height: 32px;
   background-color: var(--secondary);
-  display: ${(props) => (props.$display ? "flex" : "none")};
+  display: ${(props) => (props.$display ? 'flex' : 'none')};
   justify-content: space-between;
   border-radius: 8px;
   cursor: pointer;
@@ -374,10 +365,10 @@ export const DivQuantStyled = styled.div`
   }
   transition: opacity 0.4s ease;
   ${(props) =>
-    (props.$variant === "similarList" ||
-      props.$variant === "announcement" ||
-      props.$variant === "cart") &&
-    "display: none;"}
+    (props.$variant === 'similarList' ||
+      props.$variant === 'announcement' ||
+      props.$variant === 'cart') &&
+    'display: none;'}
 `;
 
 export const DivButtonsStyled = styled.div`
@@ -390,10 +381,7 @@ export const DivButtonsStyled = styled.div`
 `;
 
 export const PQuantStyled = styled.p`
-  
   font-weight: 500;
   padding-bottom: 2px;
-  color: white;
+  color: var(--white-foreground);
 `;
-
-

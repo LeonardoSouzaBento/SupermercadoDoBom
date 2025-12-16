@@ -1,20 +1,20 @@
 import styled from "styled-components";
 
 export const ContainerStyled = styled.section`
-  width: calc(100% - 24px);
+  width: calc(100% - 2.4rem);
   position: relative;
   overflow-x: hidden;
-  padding-bottom: 32px;
+  padding-bottom: 3.2rem;
   margin: auto;
-  margin-bottom: 24px;
-  border-radius: 24px;
+  margin-bottom: 2.4rem;
+  border-radius: 2.4rem;
 
   &::before {
     content: "";
     width: 100%;
-    height: calc(100% - 56px);
+    height: calc(100% - 5.6rem);
     position: absolute;
-    top: 56px;
+    top: 5.6rem;
     left: 0;
     background-image: linear-gradient(
       to bottom,
@@ -34,17 +34,17 @@ export const ContainerStyled = styled.section`
     position: relative;
     z-index: 1;
   }
-  & h1 {
+  & h3 {
     text-decoration-color: var(--primary);
-    margin-bottom: 0px;
+    margin-bottom: 0;
     color: rgba(255, 255, 255, 0.95);
     font-weight: 400;
     text-decoration: underline;
-    text-underline-offset: 0.5px;
+    text-underline-offset: 0.05rem;
     text-decoration-color: rgba(255, 255, 255, 0.65);
   }
   @media screen and (max-width: 576px) {
-    width: calc(100% - 16px);
+    width: calc(100% - 1.6rem);
   }
   @media screen and (min-width: 1201px) {
     width: max-content;
@@ -80,8 +80,6 @@ export const DivFundoImgStyled = styled.div`
   border-radius: 16px;
   position: relative;
   overflow: hidden;
-  /* box-shadow: 0px 4px 10px hsla(0, 0%, 0%, 0.28),
-    2px 0px 4px hsla(0, 0%, 0%, 0.06), -2px 0px 4px hsla(0, 0%, 0%, 0.06); */
   transition: all 0.2s ease;
 
   &:hover {

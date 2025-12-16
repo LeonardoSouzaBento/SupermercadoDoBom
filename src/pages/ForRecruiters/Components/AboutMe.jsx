@@ -1,6 +1,6 @@
-import { useState } from "react";
-import styled, { css } from "styled-components";
-import { PStyled, H2Styled } from "../StylizedTags";
+import { useState } from 'react';
+import styled, { css } from 'styled-components';
+import { PStyled, H2Styled } from '../StylizedTags';
 
 const ContainerDivPButtons = styled.div`
   display: flex;
@@ -42,14 +42,8 @@ const H3ButtonStyled = styled.h3`
   font-weight: 700;
   user-select: none;
   margin-bottom: 0px;
-  font-family: var(--font-header);
+
   color: var(--primary);
-  
-  
-  
-  
-  
-  
 `;
 
 const DivReferentMidea = styled.div`
@@ -93,17 +87,17 @@ const ImgStyled = styled.img`
 `;
 
 const previousWork = [
-  "Pintor na Prefeitura de Frutal",
-  "Pintor de Fachadas Comerciais",
-  "Ilustrador Digital Freelancer",
+  'Pintor na Prefeitura de Frutal',
+  'Pintor de Fachadas Comerciais',
+  'Ilustrador Digital Freelancer',
 ];
 
 const AboutMe = () => {
   const [buttonSelected, setButtonSelected] = useState(0);
 
-  const greetings = ["Olá, bom dia", "Olá, boa tarde!", "Olá, boa noite!"];
+  const greetings = ['Olá, bom dia', 'Olá, boa tarde!', 'Olá, boa noite!'];
   const hour = new Date().getHours();
-  let greeting = "";
+  let greeting = '';
 
   if (hour >= 5 && hour < 12) {
     greeting = greetings[0]; // Bom dia
@@ -117,16 +111,12 @@ const AboutMe = () => {
     <>
       <H2Styled>{greeting}</H2Styled>
       <PStyled $moreWidth={true}>
-        Meu nome é{" "}
-        <strong style={{ color: "var(--dark-primary)" }}>
-          Leonardo Souza Bento.{" "}
-        </strong>
-        Estou procurando um trabalho como desenvolvedor front-end junior
-        (preferencialmente trabalho remoto). Venho de familia pobre e vivo numa
-        cidade do interior da Bahia, por isso peço essa oportunidade. O curso de
-        Engenharia de Software que faço desde março de 2023 me confere
-        conhecimentos basilares e me habilita a vagas de estágio. E esse site,
-        mostra meu conhecimento em programação.
+        Meu nome é <strong style={{ color: 'var(--dark-primary)' }}>Leonardo Souza Bento. </strong>
+        Estou procurando um trabalho como desenvolvedor front-end junior (preferencialmente trabalho
+        remoto). Venho de familia pobre e vivo numa cidade do interior da Bahia, por isso peço essa
+        oportunidade. O curso de Engenharia de Software que faço desde março de 2023 me confere
+        conhecimentos basilares e me habilita a vagas de estágio. E esse site, mostra meu
+        conhecimento em programação.
       </PStyled>
       <br />
       <H2Styled>Conhecimentos</H2Styled>
@@ -136,9 +126,8 @@ const AboutMe = () => {
       </PStyled>
 
       <PStyled $mb={true}>
-        Typescript • Express • Firebase • Redux • Tailwind <br /> (Estou
-        trabalhando no BackEnd do site nesse momento — para esclarecer, o
-        projeto é fictício)
+        Typescript • Express • Firebase • Redux • Tailwind <br /> (Estou trabalhando no BackEnd do
+        site nesse momento — para esclarecer, o projeto é fictício)
       </PStyled>
       <br />
       <H2Styled>Contato</H2Styled>
@@ -158,8 +147,7 @@ const AboutMe = () => {
             onClick={() => {
               setButtonSelected(i);
             }}
-            $buttonSelected={buttonSelected == i}
-          >
+            $buttonSelected={buttonSelected == i}>
             <H3ButtonStyled>{e}</H3ButtonStyled>
           </DivH3Buttons>
         ))}
@@ -167,19 +155,19 @@ const AboutMe = () => {
 
       <DivReferentMidea>
         {buttonSelected == 0 && (
-          <DivImgStyled $painting={true} $src={"sobre_mim/pintando2.gif"}>
+          <DivImgStyled $painting={true} $src={'sobre_mim/pintando2.gif'}>
             <ImgStyled src="sobre_mim/pintandoParede.png" $hue={true} />
           </DivImgStyled>
         )}
 
         {buttonSelected == 1 && (
-          <DivImgStyled $src={"sobre_mim/pintura1.jpg"}>
+          <DivImgStyled $src={'sobre_mim/pintura1.jpg'}>
             <ImgStyled src="sobre_mim/pintura1.jpg" />
           </DivImgStyled>
         )}
 
         {buttonSelected == 2 && (
-          <DivImgStyled $src={"sobre_mim/ilustracao_compressed.png"}>
+          <DivImgStyled $src={'sobre_mim/ilustracao_compressed.png'}>
             <ImgStyled src="sobre_mim/ilustracao_compressed.png"></ImgStyled>
           </DivImgStyled>
         )}
@@ -189,5 +177,3 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
-
-

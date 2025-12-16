@@ -28,7 +28,7 @@ const MainStyled = styled.main`
     background-image: linear-gradient(
       to bottom,
       var(--primary),
-      var(--back-color)
+      var(--background)
     );
     background-size: cover;
     background-position: top;
@@ -49,10 +49,10 @@ const MainStyled = styled.main`
 
 const ProductFeedDivStyled = styled.section`
   position: relative;
-  background-color: var(--back-color);
+  background-color: var(--background);
   padding-left: 12px;
   padding-top: 14px;
-  background-color: var(--back-color);
+  background-color: var(--background);
   z-index: 2;
 
   @media screen and (min-width: 577px) {

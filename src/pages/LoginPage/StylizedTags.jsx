@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { CentralizeDiv } from "@components/GenericStylizedTags";
+import styled, { css } from 'styled-components';
+import { CentralizeDiv } from '@components/GenericStylizedTags';
 
 export const PageWrapperStyled = styled.div`
   min-height: 90vh;
@@ -9,7 +9,7 @@ export const PageWrapperStyled = styled.div`
   align-items: center;
   justify-content: center;
   padding: 24px 0;
-  background: linear-gradient(to bottom, var(--back-color), rgb(243, 244, 246));
+  background: linear-gradient(to bottom, var(--background), rgb(243, 244, 246));
 `;
 
 export const ContainerStyled = styled.div`
@@ -36,7 +36,7 @@ export const LogoCircleStyled = styled.div`
   border-radius: 50%;
   background-color: var(--secondary);
   margin-bottom: 12px;
-  box-shadow: 0 4px 8px rgba(56, 61, 106, 0.25);
+  box-shadow: var(--shadow-sm);
   transform: scaleX(-1);
 
   & span {
@@ -59,26 +59,19 @@ export const TitleStyled = styled.h1`
 export const SubtitleStyled = styled.p`
   color: #64748b;
   font-family: var(--font-header);
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const CardStyled = styled.div`
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(56, 61, 106, 0.125);
+  box-shadow: var(--shadow-md);
   padding: 24px;
   position: relative;
 `;
 
 export const CardHeaderStyled = styled.header`
   margin-bottom: 24px;
-  ${(props) => props.$inEmail && "margin-bottom: 8px;"};
+  ${(props) => props.$inEmail && 'margin-bottom: 8px;'};
 `;
 
 export const CardTitleStyled = styled.h2`
@@ -86,26 +79,12 @@ export const CardTitleStyled = styled.h2`
   color: var(--primary);
   text-align: left;
   margin-bottom: 4px;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const CardDescriptionStyled = styled.p`
   color: #64748b;
   font-family: var(--font-header);
   text-align: left;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const ButtonStyled = styled(CentralizeDiv)`
@@ -124,15 +103,8 @@ export const ButtonStyled = styled(CentralizeDiv)`
   margin-bottom: 16px;
   transition: all 0.15s ease;
 
-  
-  
-  
-  
-  
-  
-
   ${(props) =>
-    props.$variant === "visitor" &&
+    props.$variant === 'visitor' &&
     `
     background: var(--bluish-white);
     color: #0f172a;
@@ -140,32 +112,32 @@ export const ButtonStyled = styled(CentralizeDiv)`
   `}
 
   ${(props) =>
-    props.$variant === "market" &&
+    props.$variant === 'market' &&
     `
     background: var(--primary);
-    color: white;
+    color: var(--white-foreground);
     &:hover { background: var(--primary-hover); }
   `}
 
   ${(props) =>
-    props.$variant === "google" &&
+    props.$variant === 'google' &&
     `
-    background-color: white;
+    background-color: var(--white-foreground);
     border: 1px solid var(--light-border);
     &:hover { background-color: var(--white-hover); }
   `}
 
   ${(props) =>
-    props.$variant === "ghost" &&
+    props.$variant === 'ghost' &&
     `
     background: transparent;
     color: var(--primary);
     border: 1px solid var(--border);
     &:hover { background: #f8fafc; }
   `}
-  ${(props) => props.$reset && "margin-bottom: 12px;"}
+  ${(props) => props.$reset && 'margin-bottom: 12px;'}
   ${(props) =>
-    props.$variant === "market" &&
+    props.$variant === 'market' &&
     props.$disable &&
     css`
       background-color: var(--disable);
@@ -180,9 +152,9 @@ export const InputWrapperStyled = styled.div`
   flex-direction: column;
   gap: 6px;
   margin-bottom: 12px;
-  ${(props) => props.$password && "margin-bottom: 16px;"}
-  ${(props) => props.$email && "padding-top: 16px;"}
-  ${(props) => props.$reset && "margin-bottom: 20px;"}
+  ${(props) => props.$password && 'margin-bottom: 16px;'}
+  ${(props) => props.$email && 'padding-top: 16px;'}
+  ${(props) => props.$reset && 'margin-bottom: 20px;'}
 
   & p {
     border: 1px solid var(--secondary-hover);
@@ -195,13 +167,6 @@ export const InputWrapperStyled = styled.div`
     padding: 8px 0;
     padding-left: 12px;
     margin-top: 6px;
-
-    
-    
-    
-    
-    
-    
   }
 
   & a {
@@ -211,27 +176,13 @@ export const InputWrapperStyled = styled.div`
     text-decoration: underline;
     margin-top: 8px;
     cursor: default;
-
-    
-    
-    
-    
-    
-    
   }
 `;
 
 export const LabelStyled = styled.label`
   font-weight: 500;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: var(--dark-primary);
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const InputStyled = styled.input`
@@ -249,12 +200,6 @@ export const InputStyled = styled.input`
     border-color: var(--primary);
     box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
   }
-  
-  
-  
-  
-  
-  
 `;
 
 export const PasswordWrapperStyled = styled.div`
@@ -287,7 +232,7 @@ export const SmallTextStyled = styled.p`
 export const VisitorBoxStyled = styled.div`
   text-align: center;
   padding: 8px;
-  background: var(--back-color);
+  background: var(--background);
   border-radius: 12px;
   margin-bottom: 16px;
 
@@ -298,5 +243,3 @@ export const VisitorBoxStyled = styled.div`
     text-align: left;
   }
 `;
-
-

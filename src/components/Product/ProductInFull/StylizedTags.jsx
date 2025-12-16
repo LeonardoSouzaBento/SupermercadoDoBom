@@ -24,11 +24,11 @@ export const MainDivStyled = styled.div`
   bottom: 0;
   left: 0;
   overflow-y: scroll;
-  background-color: var(--back-color);
+  background-color: var(--background);
   border-radius: 12px 12px 0px 0px;
   transform: translateY(${(props) => props.$translate});
   transition: transform 0.3s ease;
-  box-shadow: 0px -4px 8px -4px rgba(41, 46, 117, 0.08);
+  box-shadow: var(--shadow-sm);
 
   @media screen and (max-width: 577px) {
     padding-bottom: 62px;
@@ -79,7 +79,7 @@ export const DivSpanCloseStyled = styled(CentralizeDiv)`
     border-radius: 16px;
 
     &:hover {
-      box-shadow: 0px 3px 6px -3px rgba(0, 0, 0, 0.5);
+      box-shadow: var(--shadow-sm);
       background-color: transparent;
     }
   }
@@ -108,7 +108,7 @@ export const SpanDropDownStyled = styled.span`
 
 export const ProductSectionStyled = styled.section`
   width: 100%;
-  background-color: white;
+  background-color: var(--white-foreground);
   box-sizing: border-box;
   padding-left: 16px;
   padding-right: 16px;
@@ -217,14 +217,14 @@ export const DivDiscountStyled = styled.div`
   background-color: var(--secondary);
   padding: 0px 14px;
   padding-bottom: 2.5px;
-  color: white;
+  color: var(--white-foreground);
   border-radius: 16px;
 `;
 
 export const DivWeightStyled = styled(DivDiscountStyled)`
   position: absolute;
   bottom: 38px;
-  background-color: var(--back-color);
+  background-color: var(--background);
   color: rgb(30, 30, 30);
 `;
 
@@ -329,7 +329,7 @@ export const DivButtonsStyled = styled(CentralizeDiv)`
   height: 48px;
 
   & span {
-    color: white;
+    color: var(--white-foreground);
     padding-bottom: 3px;
     -webkit-user-select: none; /* Safari, Chrome */
     -moz-user-select: none; /* Firefox */
@@ -349,7 +349,7 @@ export const DivButtonsStyled = styled(CentralizeDiv)`
 
 export const PQuantFullStyled = styled.p`
   width: 100%;
-  color: white;
+  color: var(--white-foreground);
   text-align: center;
   font-weight: 500;
   padding-bottom: 1px;
@@ -370,7 +370,7 @@ export const PQuantFullStyled = styled.p`
 
 export const PAddStyled = styled(PQuantFullStyled)`
   width: max-content;
-  color: white;
+  color: var(--white-foreground);
   text-align: left;
   padding-left: 4px;
   padding-bottom: 2px;
@@ -384,7 +384,7 @@ export const DivSubStyled = styled(CentralizeDiv)`
   padding: 0 16px;
   gap: 8px;
   /* border: 1px solid var(--light-border); */
-  background-color: var(--back-color);
+  background-color: var(--background);
   border-radius: 8px;
   position: relative;
 
@@ -421,14 +421,14 @@ export const PSubStyled = styled(PNameProdStyled)`
 `;
 
 export const DivCoverSubStyled = styled(DivToCoverStyled)`
-  background-color: var(--back-color);
+  background-color: var(--background);
   border-radius: 8px;
 `;
 
 export const SimilarSectionStyled = styled.section`
   width: 100%;
   height: max-content;
-  background-color: var(--back-color);
+  background-color: var(--background);
   position: relative;
   pointer-events: none;
   touch-action: none;
@@ -451,7 +451,7 @@ export const DivTitleStyled = styled(CentralizeDiv)`
   position: sticky;
   top: 0;
   left: 0;
-  background-color: var(--back-color);
+  background-color: var(--background);
   z-index: 1;
   /* border-bottom: 1px solid var(--border); */
 

@@ -9,12 +9,10 @@ const DivStyled = styled(CentralizeDiv)`
 
 const PStyled = styled.p`
   padding: 16px 24px;
-  background-color: white;
+  background-color: var(--white-foreground);
   border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.125);
   color: var(--dark-primary);
-  font-weight: 400;
-  
+  box-shadow: var(--shadow-xs);
 `;
 
 const MyOrders = () => {

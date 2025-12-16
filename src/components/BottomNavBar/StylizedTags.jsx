@@ -40,7 +40,7 @@ export const DivButtonsStyled = styled(CentralizeDiv)`
     var(--primary-hover),
     var(--primary)
   );
-  box-shadow: 0 4px 10px hsla(0, 0%, 0%, 0.25);
+  box-shadow: var(--shadow-md);
 
   @media screen and (min-width: 577px) {
     margin-right: 8px;
@@ -61,7 +61,7 @@ export const ButtonStyled = styled.button`
   }
 
   & > span {
-    color: white;
+    color: var(--white-foreground);
     font-weight: 300;
     
   }
@@ -71,7 +71,7 @@ export const ButtonStyled = styled.button`
   }
 
   .active-span {
-    color: white;
+    color: var(--white-foreground);
     font-variation-settings: "FILL" 1;
     text-shadow: 0px 4px 10px hsla(0, 31%, 24%, 0.25);
   }

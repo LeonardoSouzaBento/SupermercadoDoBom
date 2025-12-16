@@ -1,5 +1,5 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+import styled from 'styled-components';
 
 const ContainerStyled = styled.div`
   width: 100%;
@@ -24,22 +24,16 @@ const InputTextStyled = styled.textarea`
   padding-top: 12px;
   box-sizing: border-box;
   border-radius: 8px;
-  background-color: #ECF0F5;
+  background-color: #ecf0f5;
   border: none;
   /* border: 1px solid rgba(41, 46, 117, 0.4); */
   font-family: var(--font-body);
   overflow-wrap: break-word;
   line-height: 1.24;
-  
+
   &:focus {
     outline: none;
   }
-    
-  
-  
-  
-  
-  
 `;
 
 const InputSubmitStyled = styled.input`
@@ -51,14 +45,11 @@ const InputSubmitStyled = styled.input`
   border-radius: 8px;
   background-color: #545126;
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
-  color: white;
+  color: var(--white-foreground);
   border: none;
   letter-spacing: 0.72px;
 
-  ${(props) => props.$sent && "background-color: rgb(76, 156, 34);"};
-  
-  
-  
+  ${(props) => props.$sent && 'background-color: rgb(76, 156, 34);'};
 `;
 
 const InsertComment = () => {
@@ -77,12 +68,12 @@ const InsertComment = () => {
   //     setMaxComments(maxComments + 1);
   //   }
   // }
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const sendToWhatsApp = () => {
-    const numero = "5534984125832";
+    const numero = '5534984125832';
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+    window.open(url, '_blank');
   };
 
   return (
@@ -97,7 +88,7 @@ const InsertComment = () => {
         <InputSubmitStyled
           // value={stateName}
           type="submit"
-          value={"Abrir Whatsapp"}
+          value={'Abrir Whatsapp'}
           onClick={sendToWhatsApp}
         />
       </ContainerStyled2>
@@ -106,5 +97,3 @@ const InsertComment = () => {
 };
 
 export default InsertComment;
-
-

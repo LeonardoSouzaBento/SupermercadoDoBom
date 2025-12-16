@@ -89,11 +89,9 @@ export const DivOneStyled = styled.div`
   align-items: flex-start;
   flex-direction: column;
   gap: 8px;
-  background-color: white;
+  background-color: var(--white-foreground);
   border-radius: 12px;
-  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
-    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
-    -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
+  box-shadow: var(--shadow-md);
   ${(props) => props.$orders && "padding-top: 0px;"}
 `;
 
@@ -128,7 +126,7 @@ export const ButtonLoginStyled = styled(CentralizeDiv)`
   box-sizing: border-box;
   border-radius: 8px;
   background-color: var(--primary);
-  color: white;
+  color: var(--white-foreground);
   cursor: pointer;
   transition: all 0.15s ease;
   border: none;
@@ -218,11 +216,9 @@ export const DivThreeStyled = styled.div`
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  background-color: white;
+  background-color: var(--white-foreground);
   border-radius: 12px;
-  box-shadow: 0px 2px 4px -2px rgba(41, 46, 117, 0.5),
-    2px 0px 4px -3px rgba(41, 46, 117, 0.125),
-    -2px 0px 4px -3px rgba(41, 46, 117, 0.125);
+  box-shadow: var(--shadow-md);
 `;
 
 export const DivH2StatusStyled = styled.div`
@@ -367,14 +363,14 @@ export const DivNameStatus = styled.div`
   align-items: center;
   gap: 4px;
   background-color: var(--secondary-hover);
-  color: white;
+  color: var(--white-foreground);
   border-radius: 14px;
 `;
 
 export const SpanStatusStyled = styled.span`
   font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 24;
   background-color: rgba(0, 0, 0, 0.3);
-  color: white;
+  color: var(--white-foreground);
   padding: 4px;
   margin-top: 2px;
   border-radius: 50%;
@@ -383,7 +379,7 @@ export const SpanStatusStyled = styled.span`
 
 export const NameStatusStyled = styled.p`
   margin-right: 6px;
-  ${(props) => props.$email && "color: black;"}
+  ${(props) => props.$email && "color: var(--black-foreground);"}
 
   
   
@@ -501,7 +497,7 @@ export const DivZapOrPhone = styled(CentralizeDiv)`
   padding-right: 6px;
   border-radius: 4px;
   border: 1px solid var(--light-border);
-  ${(props) => props.$selected && "background-color: var(--back-color);"}
+  ${(props) => props.$selected && "background-color: var(--background);"}
 
   @media screen and (max-width: 576px) {
     width: 100%;
@@ -564,7 +560,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
   background-color: var(--primary);
   cursor: pointer;
   transition: background-color 0.15s ease;
-  color: white;
+  color: var(--white-foreground);
 
   &:hover {
     background-color: hsla(234, 31%, 26%, 1);
@@ -614,7 +610,7 @@ export const InputZapStyled = styled.input`
   padding-bottom: 3px;
   box-sizing: border-box;
   border: none;
-  background-color: var(--back-color);
+  background-color: var(--background);
   font-family: var(--font-body);
   font-weight: 400;
   border-radius: 4px;

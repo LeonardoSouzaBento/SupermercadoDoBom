@@ -48,7 +48,7 @@ export const FormStyled = styled.form`
   border-radius: 24px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 4px 10px rgba(11, 0, 65, 0.25);
+  box-shadow: var(--shadow-sm);
   border: none;
 
   ${(props) =>
@@ -58,8 +58,7 @@ export const FormStyled = styled.form`
       max-width: 684px;
       margin: 0;
       border-radius: 8px;
-      box-shadow: 0px 4px 8px -4px rgba(41, 46, 117, 0.5),
-        0px -2px 4px -2px rgba(41, 46, 117, 0.125);
+      box-shadow: var(--shadow-sm);
     `}
 `;
 
@@ -72,7 +71,7 @@ export const InputStyled = styled.input`
   text-indent: 16px;
   font-weight: 400;
   letter-spacing: 0.71px;
-  color: black;
+  color: var(--black-foreground);
   font-family: var(--font-body);
   font-weight: 500;
   border: none;
@@ -85,7 +84,7 @@ export const InputStyled = styled.input`
 
   &:focus {
     outline: none;
-    background-color: white;
+    background-color: var(--white-foreground);
   }
   &::-webkit-search-cancel-button,
   &::-webkit-search-decoration {
@@ -131,7 +130,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     props.$copy &&
     css`
       background-color: var(--primary);
-      color: white;
+      color: var(--white-foreground);
       border-radius: 0px;
     `}
 `;
@@ -175,7 +174,7 @@ export const PointedShapeStyed = styled.div`
 `;
 
 export const PMsgStyled = styled.p`
-  color: white;
+  color: var(--white-foreground);
   padding: 6px 0px;
   padding-bottom: 8px;
 
@@ -200,7 +199,7 @@ export const CompletionsDivStyled = styled.div`
   align-items: center;
   gap: 8px;
   flex-flow: row wrap;
-  background-color: white;
+  background-color: var(--white-foreground);
   background-color: transparent;
 
   @media screen and (max-width: 375px) {
@@ -229,8 +228,8 @@ export const DivOnePStyled = styled(CentralizeDiv)`
   flex: none;
   border-radius: 24px;
   background-color: var(--primary-hover);
-  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.25);
-  color: white;
+  box-shadow: var(--shadow-sm);
+  color: var(--white-foreground);
   cursor: pointer;
   position: relative;
   overflow: hidden;

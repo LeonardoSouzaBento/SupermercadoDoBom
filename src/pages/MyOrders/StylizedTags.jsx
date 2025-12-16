@@ -203,7 +203,7 @@ export const CardContainer = styled.div`
   background: #ffffff;
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-lg);
   border: 1px solid #f0f0f0;
   max-width: 400px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -211,20 +211,20 @@ export const CardContainer = styled.div`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-xl);
   }
 `;
 
 export const DateTag = styled.div`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  color: var(--white-foreground);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
   display: inline-block;
   margin-bottom: 16px;
-  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+  box-shadow: var(--shadow-sm);
   letter-spacing: 0.5px;
 `;
 

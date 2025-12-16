@@ -13,7 +13,7 @@ const DivCartInfoStyled = styled.div`
   align-items: center;
   gap: 6px;
   border-radius: 8px;
-  color: white;
+  color: var(--white-foreground);
   background-color: var(--secondary);
 
   &:hover {
