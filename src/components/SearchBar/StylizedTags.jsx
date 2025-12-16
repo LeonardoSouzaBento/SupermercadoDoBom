@@ -73,7 +73,7 @@ export const InputStyled = styled.input`
   font-weight: 400;
   letter-spacing: 0.71px;
   color: black;
-  font-family: var(--p-font);
+  font-family: var(--font-body);
   font-weight: 500;
   border: none;
 
@@ -121,7 +121,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
       margin-bottom: 4px;
       margin-right: 8px;
       border-radius: 50%;
-      color: var(--purple);
+      color: var(--primary);
       &:hover {
         background-color: #ecf0f5;
       }
@@ -130,7 +130,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
   ${(props) =>
     props.$copy &&
     css`
-      background-color: var(--purple);
+      background-color: var(--primary);
       color: white;
       border-radius: 0px;
     `}
@@ -228,7 +228,7 @@ export const DivOnePStyled = styled(CentralizeDiv)`
   padding: 0 16px;
   flex: none;
   border-radius: 24px;
-  background-color: var(--purple-hover);
+  background-color: var(--primary-hover);
   box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.25);
   color: white;
   cursor: pointer;

@@ -1,7 +1,5 @@
 import ReactDOM from "react-dom/client";
 import RootComponent from "./RootComponent";
-import '../src/index.css';
-
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 

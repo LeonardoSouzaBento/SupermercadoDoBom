@@ -73,11 +73,11 @@ const NoProcutsStyed = styled(CentralizeDiv)`
   }
 
   & p{
-    font-family: var(--p-font);
+    font-family: var(--font-body);
     font-weight: 500;
     width: 100%;
     text-align: center;
-    color: var(--dark-purple);
+    color: var(--dark-primary);
     
   }
 `;

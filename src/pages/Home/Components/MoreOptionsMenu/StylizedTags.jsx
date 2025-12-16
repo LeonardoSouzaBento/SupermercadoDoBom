@@ -48,7 +48,7 @@ export const DivTitleStyed = styled.div`
   margin-bottom: 15px;
   display: flex;
   align-items: center;
-  background-color: var(--purple);
+  background-color: var(--primary);
   position: relative;
   user-select: none;
   /* border-top-left-radius: 15px; */
@@ -71,7 +71,7 @@ export const DivNameSpanStyled = styled.div`
 
   & p {
     padding-right: 12px;
-    font-family: var(--bt-font);
+    font-family: var(--font-button);
     font-weight: 550;
     user-select: none;
     color: #292d4e;
@@ -99,7 +99,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     font-weight: 550;
     font-size: 22.5px;
     font-variation-settings: "FILL" 1, "GRAD" 12, "opsz" 30;
-    color: var(--purple);
+    color: var(--primary);
     user-select: none;
     padding-top: 1px;
     ${(props) => props.$logout && "font-weight: 500;"}

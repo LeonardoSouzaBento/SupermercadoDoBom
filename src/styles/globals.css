@@ -4,15 +4,34 @@
 }
 
 :root {
+  /*Fontes*/
+  --font-body: 'Open Sans', Arial, Helvetica, sans-serif;
+  --font-button: 'Montserrat', Arial, Helvetica, sans-serif;
+  --font-header: 'Lato', Arial, Helvetica, sans-serif;
+  /* font-sizes */
+  --text-xs: 0.933255em;
+  --text-sm: 0.995783em;
+  --text-base: 1em;
+  --text-lg: 1.133687em;
+  --text-h6: 1.133687em;
+  --text-h5: 1.209645em;
+  --text-h4: 1.290691em;
+  --text-h3: 1.377167em;
+  --text-h2: 1.469437em;
+  --text-h1: 1.56789em;
+  --text-big-h1: 1.672938em;
+  --text-button: 1em;
+  --text-sm-button: 0.9em;
+  --text-lg-button: 1.1em;
   /*Cores*/
-  --purple: #383d6a;
-  --purple-hover: #2e3257;
-  --dark-purple: #261e3e;
-  --red: #d5343a;
-  --dark-red: #c3282d;
-  --dark-red2: #6B393A;
-  --dark-green: #396B46;
-  --light-green: #B5EBC3;
+  --primary: #383d6a;
+  --primary-hover: #2e3257;
+  --dark-primary: #261e3e;
+  --secondary: #d5343a;
+  --secondary-hover: #c3282d;
+  --dark-secondary: #6b393a;
+  --dark-green: #396b46;
+  --light-green: #b5ebc3;
   /* --back-color: #eef2f6; */
   --back-color: hsl(210, 33%, 96%);
   --back-hover: hsl(210, 33%, 91%);
@@ -23,19 +42,15 @@
   --light-border: #e6e6e6;
   --pink: hsl(0, 100%, 94%);
   --light-grey: rgb(247, 249, 250);
-  --light-grey-hover:hsl(200, 23%, 91%);
+  --light-grey-hover: hsl(200, 23%, 91%);
   --back-grey: rgb(243, 244, 246);
   --white-hover: #f9fafb;
   --bluish-white: #f1f5f9;
   --bluish-white-hover: #e2e8f0;
-
-  /*Fontes*/
-  --p-font: "Open Sans", Arial, Helvetica, sans-serif;
-  --bt-font: "Montserrat", Arial, Helvetica, sans-serif;
-  --h-font: "Lato", Arial, Helvetica, sans-serif;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
   height: 100%;
   -ms-overflow-style: none;
@@ -60,24 +75,27 @@ body {
   max-width: 1400px;
   margin: auto;
   position: relative;
+  font-size: 18px;
 }
 
-p{
+p {
   cursor: default;
-  font-family: var(--p-font);
+  font-family: var(--font-body);
   font-weight: 400;
 }
 
-span{
+span {
   font-weight: 400;
   font-size: 1.5em;
 }
 
-button{
+button {
   border: none;
 }
 
-h1, h2, h3{
+h1,
+h2,
+h3 {
   cursor: default;
   user-select: none;
 }

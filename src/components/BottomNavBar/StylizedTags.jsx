@@ -34,11 +34,11 @@ export const DivButtonsStyled = styled(CentralizeDiv)`
   justify-content: space-between;
   align-items: flex-start;
   border-radius: 12px;
-  background-color: var(--purple);
+  background-color: var(--primary);
   background-image: linear-gradient(
     45deg,
-    var(--purple-hover),
-    var(--purple)
+    var(--primary-hover),
+    var(--primary)
   );
   box-shadow: 0 4px 10px hsla(0, 0%, 0%, 0.25);
 

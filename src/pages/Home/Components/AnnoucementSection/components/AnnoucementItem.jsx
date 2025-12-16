@@ -34,6 +34,6 @@ const AnnoucementItem = ({ product, index }) => {
 
 export default AnnoucementItem;
 
-//style={{fontFamily: "var(--p-font)", fontWeight: 700}}
+//style={{fontFamily: "var(--font-body)", fontWeight: 700}}
 
 

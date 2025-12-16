@@ -9,7 +9,7 @@ import {
 export const HeaderStyled = styled.header`
   width: 100%;
   height: 60px;
-  background-color: var(--purple);
+  background-color: var(--primary);
   display: flex;
   align-items: center;
 `;
@@ -55,7 +55,7 @@ export const MainStyled = styled.main`
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--purple);
+    background: var(--primary);
     z-index: -1;
   }
 `;
@@ -127,14 +127,14 @@ export const ButtonLoginStyled = styled(CentralizeDiv)`
   padding: 0 20px;
   box-sizing: border-box;
   border-radius: 8px;
-  background-color: var(--purple);
+  background-color: var(--primary);
   color: white;
   cursor: pointer;
   transition: all 0.15s ease;
   border: none;
 
   &:hover {
-    background-color: var(--purple-hover);
+    background-color: var(--primary-hover);
   }
 `;
 
@@ -271,7 +271,7 @@ export const HeaderH2Styled = styled.header`
 export const SpanH2Styled = styled.span`
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 22;
   cursor: default;
-  color: var(--purple);
+  color: var(--primary);
   margin-right: 8px;
 
   ${(props) => props.$smaller && "font-size: 21px;"}
@@ -292,7 +292,7 @@ export const SpanH2Styled = styled.span`
 export const H2v2Styled = styled(H2Styled)`
   margin-bottom: 0px;
   font-weight: 700;
-  color: var(--purple);
+  color: var(--primary);
 
   ${(props) =>
     props.$nameUser &&
@@ -366,7 +366,7 @@ export const DivNameStatus = styled.div`
   justify-content: flex-end;
   align-items: center;
   gap: 4px;
-  background-color: var(--dark-red);
+  background-color: var(--secondary-hover);
   color: white;
   border-radius: 14px;
 `;
@@ -400,7 +400,7 @@ export const SpanCheckStyled = styled.span`
   padding: 4px;
   border-radius: 50%;
   background-color: var(--light-green);
-  color: var(--purple);
+  color: var(--primary);
   z-index: 2;
   font-size: 18px;
   font-weight: 700;
@@ -418,7 +418,7 @@ export const H3Styled = styled.h3`
   text-align: left;
   scale: 1.01;
   font-weight: 600;
-  font-family: var(--p-font);
+  font-family: var(--font-body);
 
   
   
@@ -431,7 +431,7 @@ export const H3Styled = styled.h3`
   ${(props) =>
     props.$contact &&
     css`
-      font-family: var(--bt-font);
+      font-family: var(--font-button);
       text-align: center;
       padding-right: 26px;
     `}
@@ -447,7 +447,7 @@ export const Pv2Styled = styled(PStyled)`
   ${(props) =>
     props.$contact &&
     css`
-      font-family: var(--bt-font);
+      font-family: var(--font-button);
       text-align: center;
       padding-right: 26px;
     `}
@@ -457,7 +457,7 @@ export const DivInvalidWarnStyled = styled.div`
   width: calc(100% - 32px);
   height: auto;
   padding: 8px 20px;
-  background-color: var(--dark-red);
+  background-color: var(--secondary-hover);
   border-radius: 4px;
   margin: auto;
   margin-bottom: 8px;
@@ -561,7 +561,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
   min-width: 44px;
   z-index: 2;
   border-radius: 8px;
-  background-color: var(--purple);
+  background-color: var(--primary);
   cursor: pointer;
   transition: background-color 0.15s ease;
   color: white;
@@ -615,7 +615,7 @@ export const InputZapStyled = styled.input`
   box-sizing: border-box;
   border: none;
   background-color: var(--back-color);
-  font-family: var(--p-font);
+  font-family: var(--font-body);
   font-weight: 400;
   border-radius: 4px;
 

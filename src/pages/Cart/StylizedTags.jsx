@@ -20,7 +20,7 @@ export const MainStyled = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--purple);
+    background: var(--primary);
     z-index: -1;
   }
 `;
@@ -29,7 +29,7 @@ export const DivHeaderMainStyled = styled.div`
   width: 100%;
   height: 60px;
   margin-bottom: 0;
-  background-color: var(--purple);
+  background-color: var(--primary);
   display: flex;
   align-items: center;
 `;
@@ -141,7 +141,7 @@ export const DivSpanDeleteStyled = styled(CentralizeDiv)`
   border-radius: 8px;
   background-color: var(--bluish-white);
   transition: all 0.15s ease;
-  color: var(--purple);
+  color: var(--primary);
 
   &:hover {
     background-color: var(--bluish-white-hover);
@@ -191,7 +191,7 @@ export const DivSeeAllStyled = styled.div`
   bottom: -1px;
   left: 0;
   background-color: white;
-  color: var(--dark-purple);
+  color: var(--dark-primary);
   z-index: 2;
   cursor: pointer;
   box-shadow: 0px -3px 3px -2px rgba(41, 46, 117, 0.13);
@@ -201,7 +201,7 @@ export const DivSeeAllStyled = styled.div`
 
   & p {
     font-weight: 600;
-    font-family: var(--bt-font);
+    font-family: var(--font-button);
     text-transform: uppercase;
     
     user-select: none;
@@ -304,9 +304,9 @@ export const HeaderH2Styled = styled.header`
 `;
 
 export const H2Styled = styled.h2`
-  font-family: var(--h-font);
+  font-family: var(--font-header);
   font-weight: 700;
-  color: var(--purple);
+  color: var(--primary);
 
   
   
@@ -347,7 +347,7 @@ export const ReceiptOptionStyled = styled.div`
 
 export const SpanReceiptStyled = styled.span`
   
-  color: var(--purple);
+  color: var(--primary);
   ${(props) =>
     !props.$selected &&
     css`
@@ -368,7 +368,7 @@ export const DivAvisoStyled = styled.div`
   display: flex;
   align-items: center;
   border-radius: 4px;
-  background-color: var(--red);
+  background-color: var(--secondary);
   overflow: hidden;
   scale: ${(props) => props.$scale};
   transition: scale 0.3s ease;
@@ -497,7 +497,7 @@ export const DivDialogStyled = styled.div`
     font-size: 40px;
     padding: 5px;
     margin-bottom: 12px;
-    color: var(--dark-purple);
+    color: var(--dark-primary);
     font-weight: 700;
     background-color: var(--light-green);
     border-radius: 50%;
@@ -525,7 +525,7 @@ export const DivQuestionStyled = styled(CentralizeDiv)`
   ${(props) => props.$feedback && "background-color: var(--dark-green);"}
 
   & h1 {
-    font-family: var(--h-font);
+    font-family: var(--font-header);
     font-weight: 700;
     scale: 0.9;
     
@@ -552,10 +552,10 @@ export const ButtonStyled = styled(CentralizeDiv)`
   cursor: pointer;
   color: white;
   transition: all 0.15 ease;
-  background-color: var(--red);
+  background-color: var(--secondary);
 
   &:hover {
-    background-color: var(--dark-red);
+    background-color: var(--secondary-hover);
   }
 
   ${(props) =>
@@ -570,7 +570,7 @@ export const ButtonStyled = styled(CentralizeDiv)`
     `};
 
   & p {
-    font-family: var(--bt-font);
+    font-family: var(--font-button);
     font-weight: 550;
     padding-bottom: 2px;
     text-align: center;
@@ -624,9 +624,9 @@ export const PValueStyled = styled.p`
 `;
 
 export const PAddStyled = styled.p`
-  font-family: var(--bt-font);
+  font-family: var(--font-button);
   font-weight: 550;
-  color: var(--dark-purple);
+  color: var(--dark-primary);
   ${(props) =>
     props.$warn &&
     css`
@@ -642,7 +642,7 @@ export const PAddStyled = styled.p`
 `;
 
 export const H1AlertStyled = styled.h1`
-  font-family: var(--h-font);
+  font-family: var(--font-header);
   font-weight: 500;
 
   
@@ -673,7 +673,7 @@ export const BodyAlertStyled = styled.div`
     width: 350px;
     padding: 20px;
     box-sizing: border-box;
-    background-color: var(--red);
+    background-color: var(--secondary);
     position: relative;
     border-radius: 12px;
     overflow: hidden;
@@ -683,7 +683,7 @@ export const BodyAlertStyled = styled.div`
   }
 
   & h1 {
-    font-family: var(--h-font);
+    font-family: var(--font-header);
     font-weight: 500;
 
     

@@ -66,7 +66,7 @@ export const DivNameSpanStyled = styled(CentralizeDiv)`
   gap: 10px;
   flex: 1 0 auto;
   border-bottom: 1px solid var(--border);
-  color: var(--purple);
+  color: var(--primary);
   background-color: white;
   transition: all 0.15s ease;
   ${(props) =>
@@ -86,7 +86,7 @@ export const DivNameSpanStyled = styled(CentralizeDiv)`
 
 export const H1OptionStyled = styled(H1BaseStyled)`
   cursor: pointer;
-  color: var(--purple);
+  color: var(--primary);
 `;
 
 export const DivSpanStyled = styled(CentralizeDiv)`
@@ -110,10 +110,10 @@ export const PStyled = styled.p`
   text-align: justify;
   margin-bottom: 12px;
   line-height: 1.27;
-  color: var(--dark-purple);
+  color: var(--dark-primary);
 
   & strong{
-    color: var(--dark-purple);
+    color: var(--dark-primary);
   }
 
   
@@ -127,8 +127,8 @@ export const PStyled = styled.p`
 `;
 
 export const H1Styled = styled.h1`
-  font-family: var(--h-font);
-  color: var(--purple);
+  font-family: var(--font-header);
+  color: var(--primary);
   font-weight: 700;
   margin-bottom: 20px;
 
@@ -142,8 +142,8 @@ export const H1Styled = styled.h1`
 
 export const H2Styled = styled.h2`
   
-  font-family: var(--h-font);
-  color: var(--purple);
+  font-family: var(--font-header);
+  color: var(--primary);
   font-weight: 700;
   margin-bottom: 20px;
 

@@ -6,7 +6,7 @@ export const HeaderStyled = styled.header`
   max-width: 1400px;
   height: max-content;
   position: relative;
-  background-color: var(--purple);
+  background-color: var(--primary);
 
   @media screen and (max-width: 768px) {
     padding-bottom: 24px;
@@ -59,7 +59,7 @@ export const DivForLogoStyled = styled.div`
 `;
 
 export const LogoDivStyled = styled(CentralizeDiv)`
-  background-color: var(--red);
+  background-color: var(--secondary);
   border-radius: 50%;
   transform: scaleX(-1);
   box-sizing: border-box;
@@ -98,7 +98,7 @@ export const DivPsStyled = styled.div`
   }
 
   p:first-child {
-    font-family: var(--bt-font);
+    font-family: var(--font-button);
     font-weight: 800;
 
     @media (max-width: 375px) {
@@ -129,12 +129,12 @@ export const ButtonMoreOptionsStyled = styled.div`
   justify-content: center;
   border-radius: 50%;
   color: white;
-  background-color: var(--red);
+  background-color: var(--secondary);
   box-shadow: 0px 4px 10px 0px rgba(11, 0, 65, 0.25);
   transition: all 100ms linear;
   cursor: pointer;
   &:hover {
-    background-color: var(--dark-red);
+    background-color: var(--secondary-hover);
   }
 
   @media screen and (max-width: 375px) {
@@ -168,7 +168,7 @@ export const ButtonMoreOptionsStyled = styled.div`
   }
 
   & p {
-    font-family: var(--bt-font);
+    font-family: var(--font-button);
     font-weight: 600;
     
     letter-spacing: 0.8px;
@@ -183,7 +183,7 @@ export const ButtonMoreOptionsStyled = styled.div`
 `;
 
 export const PStyled = styled.p`
-  font-family: var(--bt-font);
+  font-family: var(--font-button);
   font-weight: 600;
   
   letter-spacing: 0.8px;

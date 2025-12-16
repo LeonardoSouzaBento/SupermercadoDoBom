@@ -10,8 +10,8 @@ export const ItenSectionStyled = styled.section`
   justify-content: flex-start;
   align-items: flex-end;
   background-color: white;
-  /* background-color: var(--red);
-  background-image: linear-gradient(to right, var(--dark-red), var(--red)); */
+  /* background-color: var(--secondary);
+  background-image: linear-gradient(to right, var(--secondary-hover), var(--secondary)); */
 `;
 
 export const DivTitleStyled = styled.header`
@@ -22,10 +22,10 @@ export const DivTitleStyled = styled.header`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  color: var(--dark-red);
+  color: var(--secondary-hover);
   & h2 {
     /* color: white; */
-    font-family: var(--h-font);
+    font-family: var(--font-header);
     text-transform: capitalize;
     font-weight: 700;
     width: 100%;
@@ -87,8 +87,8 @@ export const DivPrice = styled.div`
   }
 
   & p {
-    font-family: var(--p-font);
-    color: var(--dark-red);
+    font-family: var(--font-body);
+    color: var(--secondary-hover);
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 12px;
     position: relative;
@@ -96,7 +96,7 @@ export const DivPrice = styled.div`
   }
   #price {
     font-weight: 700;
-    font-family: var(--p-font);
+    font-family: var(--font-body);
     
   }
   #oldPrice {
@@ -107,7 +107,7 @@ export const DivPrice = styled.div`
   }
   #discount {
     width: max-content;
-    color: var(--dark-purple);
+    color: var(--dark-primary);
     font-weight: 500;
     border-radius: 12px;
     height: 24px;

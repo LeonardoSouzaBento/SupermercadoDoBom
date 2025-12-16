@@ -29,7 +29,7 @@ export const DivLabelPromosStyled = styled.div`
 `;
 
 export const H1LabelStyled = styled(H1BaseStyled)`
-  color: var(--dark-purple);
+  color: var(--dark-primary);
   scale: 1.03;
 `;
 
@@ -126,7 +126,7 @@ export const DivCatStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--red);
+    background-color: var(--secondary);
     border-radius: 50%;
     transition: all 0.15s ease;
 
@@ -146,12 +146,12 @@ export const DivCatStyled = styled.div`
     align-items: center;
   }
   & p {
-    font-family: var(--h-font);
+    font-family: var(--font-header);
     text-align: center;
     
     letter-spacing: 0.5px;
     margin: 0;
-    color: var(--dark-purple);
+    color: var(--dark-primary);
   }
 `;
 

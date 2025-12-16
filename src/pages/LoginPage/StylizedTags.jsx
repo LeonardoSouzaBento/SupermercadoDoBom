@@ -34,7 +34,7 @@ export const LogoCircleStyled = styled.div`
   box-sizing: border-box;
   padding-right: 2.2px;
   border-radius: 50%;
-  background-color: var(--red);
+  background-color: var(--secondary);
   margin-bottom: 12px;
   box-shadow: 0 4px 8px rgba(56, 61, 106, 0.25);
   transform: scaleX(-1);
@@ -51,14 +51,14 @@ export const LogoCircleStyled = styled.div`
 export const TitleStyled = styled.h1`
   font-size: 27.5px;
   font-weight: bold;
-  color: var(--purple);
+  color: var(--primary);
   margin-bottom: 4px;
   font-family: Lato, sans-serif;
 `;
 
 export const SubtitleStyled = styled.p`
   color: #64748b;
-  font-family: var(--h-font);
+  font-family: var(--font-header);
 
   
   
@@ -83,7 +83,7 @@ export const CardHeaderStyled = styled.header`
 
 export const CardTitleStyled = styled.h2`
   font-family: Lato, sans-serif;
-  color: var(--purple);
+  color: var(--primary);
   text-align: left;
   margin-bottom: 4px;
 
@@ -97,7 +97,7 @@ export const CardTitleStyled = styled.h2`
 
 export const CardDescriptionStyled = styled.p`
   color: #64748b;
-  font-family: var(--h-font);
+  font-family: var(--font-header);
   text-align: left;
 
   
@@ -112,9 +112,9 @@ export const ButtonStyled = styled(CentralizeDiv)`
   width: 100%;
   height: 48px;
   border-radius: 10px;
-  font-family: var(--bt-font);
+  font-family: var(--font-button);
   font-weight: 550;
-  color: var(--dark-purple);
+  color: var(--dark-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,9 +142,9 @@ export const ButtonStyled = styled(CentralizeDiv)`
   ${(props) =>
     props.$variant === "market" &&
     `
-    background: var(--purple);
+    background: var(--primary);
     color: white;
-    &:hover { background: var(--purple-hover); }
+    &:hover { background: var(--primary-hover); }
   `}
 
   ${(props) =>
@@ -159,7 +159,7 @@ export const ButtonStyled = styled(CentralizeDiv)`
     props.$variant === "ghost" &&
     `
     background: transparent;
-    color: var(--purple);
+    color: var(--primary);
     border: 1px solid var(--border);
     &:hover { background: #f8fafc; }
   `}
@@ -185,10 +185,10 @@ export const InputWrapperStyled = styled.div`
   ${(props) => props.$reset && "margin-bottom: 20px;"}
 
   & p {
-    border: 1px solid var(--dark-red);
+    border: 1px solid var(--secondary-hover);
     outline: 3px solid var(--pink);
-    color: var(--dark-red);
-    font-family: var(--p-font);
+    color: var(--secondary-hover);
+    font-family: var(--font-body);
     font-weight: 600;
     border-radius: 8px;
     box-sizing: border-box;
@@ -206,7 +206,7 @@ export const InputWrapperStyled = styled.div`
 
   & a {
     text-align: center;
-    font-family: var(--p-font);
+    font-family: var(--font-body);
     color: #551a8b;
     text-decoration: underline;
     margin-top: 8px;
@@ -224,7 +224,7 @@ export const InputWrapperStyled = styled.div`
 export const LabelStyled = styled.label`
   font-weight: 500;
   font-family: "Open Sans", sans-serif;
-  color: var(--dark-purple);
+  color: var(--dark-primary);
 
   
   
@@ -240,13 +240,13 @@ export const InputStyled = styled.input`
   border-radius: 8px;
   box-sizing: border-box;
   border: 1px solid #cbd5e1;
-  font-family: var(--p-font);
+  font-family: var(--font-body);
   font-weight: 400;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 
   &:focus {
     outline: none;
-    border-color: var(--purple);
+    border-color: var(--primary);
     box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
   }
   
@@ -280,7 +280,7 @@ export const SmallTextStyled = styled.p`
   font-size: 13.5px;
   color: #64748b;
   text-align: center;
-  font-family: var(--h-font);
+  font-family: var(--font-header);
   margin-top: 24px;
 `;
 
@@ -292,7 +292,7 @@ export const VisitorBoxStyled = styled.div`
   margin-bottom: 16px;
 
   & p {
-    color: var(--dark-red);
+    color: var(--secondary-hover);
     scale: 0.95;
     font-weight: 400;
     text-align: left;

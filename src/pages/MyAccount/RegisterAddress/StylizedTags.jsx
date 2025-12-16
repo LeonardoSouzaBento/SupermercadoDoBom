@@ -58,14 +58,14 @@ export const DivTitleStyled = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: var(--purple);
+  color: var(--primary);
   position: relative;
   border-bottom: 1px solid var(--border);
   z-index: 3;
 `;
 
 export const H1Styled = styled(H1BaseStyled)`
-  color: var(--purple);
+  color: var(--primary);
 `;
 
 export const DivSpanCloseStyled = styled(CentralizeDiv)`
@@ -75,7 +75,7 @@ export const DivSpanCloseStyled = styled(CentralizeDiv)`
   top: 8px;
   right: 20px;
   background-color: var(--back-color);
-  color: var(--purple);
+  color: var(--primary);
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.15s ease;
@@ -88,10 +88,10 @@ export const DivSpanCloseStyled = styled(CentralizeDiv)`
     css`
       height: 40px;
       width: 40px;
-      background-color: var(--purple);
+      background-color: var(--primary);
       color: white;
       &:hover {
-        background-color: var(--purple-hover);
+        background-color: var(--primary-hover);
       }
     `}
   & span{
@@ -118,16 +118,16 @@ export const ButtonStyled = styled.button`
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-family: var(--bt-font);
+  font-family: var(--font-button);
   
   font-weight: 550;
   text-align: center;
   color: hsla(136, 57%, 89%, 1);
   transition: background-color 0.15s ease;
 
-  background-color: var(--purple);
+  background-color: var(--primary);
   &:hover {
-    background-color: var(--purple-hover);
+    background-color: var(--primary-hover);
   }
 
   ${(props) =>
@@ -142,9 +142,9 @@ export const ButtonStyled = styled.button`
   ${(props) =>
     (props.$variant === "digitarTudo" || props.$variant === "voltar") &&
     css`
-      background-color: var(--red);
+      background-color: var(--secondary);
       &:hover {
-        background-color: var(--dark-red);
+        background-color: var(--secondary-hover);
       }
     `};
   ${(props) =>
@@ -152,7 +152,7 @@ export const ButtonStyled = styled.button`
     css`
       margin-bottom: 12.5px;
       background-color: var(--back-color);
-      color: var(--purple);
+      color: var(--primary);
       &:hover {
         background-color: var(--back-hover);
       }
@@ -182,9 +182,9 @@ export const DivApiReturnStyled = styled(DivToCoverStyled)`
   user-select: none;
 
   & p{
-    color: var(--dark-purple);
+    color: var(--dark-primary);
     font-weight: 400;
-    font-family: var(--h-font);
+    font-family: var(--font-header);
   }
 `;
 
@@ -206,12 +206,12 @@ export const SpanApiReturnStyled = styled.span`
     css`
       font-weight: 500;
       
-      color: var(--red);
+      color: var(--secondary);
       animation: ${rotate} 2s linear infinite;
     `}
   ${(props) => props.$check && css`
     background-color: var(--light-green);
-    color: var(--dark-purple);
+    color: var(--dark-primary);
     
     padding: 6px;
     border-radius: 50%;
@@ -240,7 +240,7 @@ export const InputStyled = styled.input`
   border-radius: 8px;
   border: 1px solid var(--light-border);
   
-  font-family: var(--p-font);
+  font-family: var(--font-body);
   font-weight: 400;
   color: black;
   background-color: transparent;
@@ -299,7 +299,7 @@ export const CepInputStyled = styled(InputStyled)`
   padding-bottom: 0px;
   padding-left: 0px;
   background-color: white;
-  font-family: var(--bt-font);
+  font-family: var(--font-button);
   font-weight: 400;
   box-shadow: none;
   border: none;
@@ -318,7 +318,7 @@ export const CepInputStyled = styled(InputStyled)`
 export const PWarnCepStyled = styled.p`
   min-width: max-content;
   color: red;
-  font-family: var(--p-font);
+  font-family: var(--font-body);
   font-weight: 400;
   padding-bottom: 1px;
   letter-spacing: 0.4px;
@@ -367,10 +367,10 @@ export const RegisterButtonStyled = styled(ButtonStyled)`
   color: white;
   transition: all 0.15 ease;
   background-color: ${(props) =>
-    props.$enable ? "var(--red)" : "var(--disable)"};
+    props.$enable ? "var(--secondary)" : "var(--disable)"};
   &:hover {
     background-color: ${(props) =>
-      props.$enable ? "var(--dark-red)" : "var(--disable-hover)"};
+      props.$enable ? "var(--secondary-hover)" : "var(--disable-hover)"};
   }
 
   

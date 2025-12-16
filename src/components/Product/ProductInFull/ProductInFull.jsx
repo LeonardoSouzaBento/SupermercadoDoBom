@@ -164,7 +164,7 @@ const ProductInFull = () => {
 
           <PValueStyled
             style={{
-              color: "var(--dark-red)",
+              color: "var(--secondary-hover)",
               width: "calc(100% - 40px)",
               margin: "auto",
               textAlign: "center",

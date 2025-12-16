@@ -27,7 +27,7 @@ const MainStyled = styled.main`
     left: 0;
     background-image: linear-gradient(
       to bottom,
-      var(--purple),
+      var(--primary),
       var(--back-color)
     );
     background-size: cover;
@@ -42,7 +42,7 @@ const MainStyled = styled.main`
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--purple);
+    background: var(--primary);
     z-index: 0;
   }
 `;

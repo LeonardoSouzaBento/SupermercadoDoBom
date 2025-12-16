@@ -3,31 +3,17 @@ import styled from "styled-components";
 export const H1BaseStyled = styled.h1`
   color: white;
   font-weight: 700;
-  font-family: var(--h-font);
+  font-family: var(--font-header);
   text-align: center;
   user-select: none;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const H2BaseStyled = styled.h2`
-  color: var(--dark-purple);
-  font-family: var(--h-font);
+  color: var(--dark-primary);
+  font-family: var(--font-header);
   text-align: center;
   user-select: none;
   font-weight: 700;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const CentralizeDiv = styled.div`
@@ -43,17 +29,10 @@ export const CentralizeButton = styled.button`
 `;
 
 export const PButtonBase = styled.p`
-  font-family: var(--bt-font);
+  font-family: var(--font-button);
   font-weight: 550;
   cursor: pointer;
   color: white;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const DivToCoverStyled = styled(CentralizeDiv)`
@@ -66,4 +45,3 @@ export const DivToCoverStyled = styled(CentralizeDiv)`
   background-color: white;
   border-radius: 12px;
 `;
-

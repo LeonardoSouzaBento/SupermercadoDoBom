@@ -19,8 +19,8 @@ const LoginReturn = ({ loginState }) => {
             style={{
               width: "80%",
               textAlign: "center",
-              color: "var(--dark-purple)",
-              fontFamily: "var(--h-font)",
+              color: "var(--dark-primary)",
+              fontFamily: "var(--font-header)",
               scale: 1.03,
             }}
           >

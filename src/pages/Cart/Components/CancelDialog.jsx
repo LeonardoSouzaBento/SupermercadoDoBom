@@ -44,7 +44,7 @@ const CancelDialog = ({
       >
         <DivDialogStyled $feedback={seeFeedback}>
           <DivQuestionStyled $feedback={seeFeedback}>
-            <h1 style={{ color: seeFeedback ? "white" : "var(--dark-purple)" }}>
+            <h1 style={{ color: seeFeedback ? "white" : "var(--dark-primary)" }}>
               {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}
             </h1>
           </DivQuestionStyled>

@@ -18,7 +18,7 @@ export const ContainerStyled = styled.section`
     left: 0;
     background-image: linear-gradient(
       to bottom,
-      var(--purple),
+      var(--primary),
       hsla(219, 27%, 91.5%, 1)
     );
     z-index: 0;
@@ -30,12 +30,12 @@ export const ContainerStyled = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--purple);
+    background-color: var(--primary);
     position: relative;
     z-index: 1;
   }
   & h1 {
-    text-decoration-color: var(--purple);
+    text-decoration-color: var(--primary);
     margin-bottom: 0px;
     color: rgba(255, 255, 255, 0.95);
     font-weight: 400;

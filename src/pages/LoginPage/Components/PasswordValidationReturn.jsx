@@ -34,7 +34,7 @@ const DivRowStyled = styled.div`
     background-color: transparent;
     
     font-weight: 500;
-    color: var(--dark-red);
+    color: var(--secondary-hover);
     border-radius: 50%;
     ${(props) =>
       props.$check &&
@@ -42,7 +42,7 @@ const DivRowStyled = styled.div`
         
         font-weight: 600;
         background-color: var(--light-green);
-        color: var(--purple);
+        color: var(--primary);
         padding: 1px;
         margin-left: 2px;
       `}

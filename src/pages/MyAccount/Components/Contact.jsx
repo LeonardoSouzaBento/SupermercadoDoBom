@@ -265,7 +265,7 @@ export const Contact = () => {
                   style={{
                     width: "100%",
                     textAlign: "center",
-                    color: "var(--dark-red)",
+                    color: "var(--secondary-hover)",
                     scale: 1.1,
                     fontWeight: 400,
                   }}

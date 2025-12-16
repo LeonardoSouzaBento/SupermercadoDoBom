@@ -131,11 +131,9 @@ export const DivNomeStyled = styled.div`
   padding-bottom: 12px;
 `;
 export const NamePStyled = styled.p`
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin: auto;
   padding-left: 4px;
-  font-weight: 500;
-  line-height: 1.2;
 `;
 //peso
 export const DivPesoStyled = styled.div`
@@ -150,7 +148,6 @@ export const DivPesoStyled = styled.div`
 `;
 
 export const PpesoStyled = styled.p`
-  
   font-weight: 500;
   letter-spacing: 0.5px;
   background-color: var(--back-color);
@@ -212,13 +209,6 @@ export const PricePStyled = styled.p`
   @media screen and (max-width: 385px) {
     
     letter-spacing: 1px;
-  }
-  
-  @media screen and (min-width: 993px) and (max-width: 1200px) {
-    font-size: 1.046;
-  }
-  @media screen and (min-width: 1201px) {
-    font-size: 1.049;
   }
 `;
 
@@ -308,7 +298,7 @@ export const DivOffStyled = styled(CentralizeDiv)`
   right: 7px;
   padding: 0px 8px;
   padding-bottom: 1px;
-  background-color: var(--red);
+  background-color: var(--secondary);
   border-radius: 12px;
 
   ${(props) => props.$variant === "announcement" && "display: none;"};
@@ -332,7 +322,7 @@ export const DivAddStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--red);
+  background-color: var(--secondary);
   border-radius: 16px;
   cursor: pointer;
 
@@ -365,7 +355,7 @@ export const SpanFewerStyled = styled(SpanMoreStyled)`
 export const DivQuantStyled = styled.div`
   width: 90%;
   height: 32px;
-  background-color: var(--red);
+  background-color: var(--secondary);
   display: ${(props) => (props.$display ? "flex" : "none")};
   justify-content: space-between;
   border-radius: 8px;
@@ -396,7 +386,7 @@ export const DivButtonsStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--p-font);
+  font-family: var(--font-body);
 `;
 
 export const PQuantStyled = styled.p`

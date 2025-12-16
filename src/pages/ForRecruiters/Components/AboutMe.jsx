@@ -42,8 +42,8 @@ const H3ButtonStyled = styled.h3`
   font-weight: 700;
   user-select: none;
   margin-bottom: 0px;
-  font-family: var(--h-font);
-  color: var(--purple);
+  font-family: var(--font-header);
+  color: var(--primary);
   
   
   
@@ -118,7 +118,7 @@ const AboutMe = () => {
       <H2Styled>{greeting}</H2Styled>
       <PStyled $moreWidth={true}>
         Meu nome é{" "}
-        <strong style={{ color: "var(--dark-purple)" }}>
+        <strong style={{ color: "var(--dark-primary)" }}>
           Leonardo Souza Bento.{" "}
         </strong>
         Estou procurando um trabalho como desenvolvedor front-end junior

@@ -56,7 +56,7 @@ export const DivSpanCloseStyled = styled(CentralizeDiv)`
   top: 8px;
   right: -4px;
   background-color: var(--bluish-white);
-  color: var(--purple);
+  color: var(--primary);
   cursor: pointer;
   z-index: 3;
   border-radius: 50%;
@@ -101,7 +101,7 @@ export const SpanDropDownStyled = styled.span`
     width: 64px;
     height: 5px;
     border-radius: 3px;
-    background-color: var(--purple);
+    background-color: var(--primary);
     border-bottom: 1px solid rgb(0, 0, 0);
   }
 `;
@@ -159,13 +159,13 @@ export const HeaderStyled = styled.header`
 `;
 
 export const SpanHeaderStyled = styled.span`
-  color: var(--purple);
+  color: var(--primary);
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 0;
   font-size: 22px;
 `;
 
 export const H1Styled = styled(H1BaseStyled)`
-  color: var(--purple);
+  color: var(--primary);
 
   
   
@@ -214,7 +214,7 @@ export const DivDiscountStyled = styled.div`
   position: absolute;
   bottom: 4px;
   right: 0px;
-  background-color: var(--red);
+  background-color: var(--secondary);
   padding: 0px 14px;
   padding-bottom: 2.5px;
   color: white;
@@ -312,9 +312,9 @@ export const DivQuantFullStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   transition: all 0.15s ease;
-  background-color: var(--red);
+  background-color: var(--secondary);
   &:hover {
-    background-color: var(--dark-red);
+    background-color: var(--secondary-hover);
   }
   border-radius: 8px;
   cursor: pointer;
@@ -462,7 +462,7 @@ export const DivTitleStyled = styled(CentralizeDiv)`
 
 export const H2Styled = styled(H2BaseStyled)`
   width: 100%;
-  color: var(--dark-purple);
+  color: var(--dark-primary);
   padding-bottom: 4px;
   scale: 0.945;
 `;

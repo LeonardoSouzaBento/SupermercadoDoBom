@@ -14,10 +14,10 @@ const DivCartInfoStyled = styled.div`
   gap: 6px;
   border-radius: 8px;
   color: white;
-  background-color: var(--red);
+  background-color: var(--secondary);
 
   &:hover {
-    background-color: var(--dark-red);
+    background-color: var(--secondary-hover);
   }
 
   & div {

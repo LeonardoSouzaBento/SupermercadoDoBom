@@ -12,7 +12,7 @@ const HeaderCart = ({ setSeeCancelDialog }) => {
         {/* <SpanH2Styled className="material-symbols-rounded" $cart={true}>
           package_2
         </SpanH2Styled> */}
-        <Package size={20} strokeWidth={2.6} color="var(--purple)"/>
+        <Package size={20} strokeWidth={2.6} color="var(--primary)"/>
         <H2Styled $products={true}>Produtos</H2Styled>
       </HeaderH2Styled>
 

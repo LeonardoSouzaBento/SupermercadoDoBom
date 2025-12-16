@@ -27,7 +27,7 @@ const InputTextStyled = styled.textarea`
   background-color: #ECF0F5;
   border: none;
   /* border: 1px solid rgba(41, 46, 117, 0.4); */
-  font-family: var(--p-font);
+  font-family: var(--font-body);
   overflow-wrap: break-word;
   line-height: 1.24;
   
@@ -46,7 +46,7 @@ const InputSubmitStyled = styled.input`
   height: 44px;
   width: 200px;
   margin-right: 0px;
-  font-family: var(--bt-font);
+  font-family: var(--font-button);
   font-weight: 600;
   border-radius: 8px;
   background-color: #545126;

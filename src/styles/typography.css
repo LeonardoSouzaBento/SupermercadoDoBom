@@ -1,0 +1,106 @@
+@import "./globals.css";
+
+body {
+ font-size: 1.0625rem;
+}
+@media (min-width: 640px) {
+ body{font-size: 1.09375rem;}
+}
+@media (min-width: 768px) {
+ body{font-size: 1.10rem;}
+}
+@media (min-width: 1024px) {
+ body{font-size: 1.1125rem;}
+}
+@media (min-width: 1280px) {
+ body{font-size: 1.125rem;}
+}
+@media (min-width: 1536px) {
+ body{font-size: 1.1375rem;}
+}
+
+.smaller-text {font-size: var(--text-xs);}
+
+.small-text, label {font-size: var(--text-sm);}
+
+.normal-text, li, input, select, option {font-size: var(--text-base);}
+
+.large-text {font-size: var(--text-lg);}
+
+h6 {font-size: var(--text-h6);}
+
+h5 {font-size: var(--text-h5);}
+
+h4 {font-size: var(--text-h4);}
+
+h3 {font-size: var(--text-h3);}
+
+h2 {font-size: var(--text-h2);}
+
+h1 {font-size: var(--text-h1);}
+
+.big-h1 {font-size: var(--text-big-h1);}
+
+button {font-size: var(--text-button);}
+
+.small-button {font-size: var(--text-sm-button);}
+
+.large-button {font-size: var(--text-lg-button);}
+
+/* LARGURA MÁXIMA DO CORPO */
+p {max-width: 65ch;}
+@media (min-width: 640px){p {max-width: 73ch;}}
+@media (min-width: 768px){p {max-width: 75ch;}}
+@media (min-width: 1024px){p {max-width: 78ch;}}
+@media (min-width: 1280px){p {max-width: 82ch;}}
+@media (min-width: 1536px){p {max-width: 85ch;}}
+
+/* PESOS */
+input::placeholder {
+  font-weight: 300; /* light */
+}
+
+.helper-text,
+.description-text {
+  font-weight: 300;
+}
+
+p, li, input, select, option {
+  font-weight: 400;
+}
+
+a, h6, h5, h4, button, 
+.small-button, .big-link, .small-link {
+  font-weight: 500;
+}
+
+h3, h2 { font-weight: 600;}
+
+h1, strong { font-weight: 700;}
+
+/* LINE HEIGHTS */
+.h1-hero { line-height: 1.1; }
+h1 { line-height: 1.22; }
+h2 { line-height: 1.24; }
+h3 { line-height: 1.28; }
+h4 { line-height: 1.32; }
+h5 { line-height: 1.38; }
+h6 { line-height: 1.44; }
+
+p,
+li,
+input,
+select,
+option {
+  line-height: 1.5;
+}
+label { line-height: 1.35; }
+button { line-height: 1.15; }
+
+.large-text { line-height: 1.68; }
+.normal-text { line-height: 1.5; }
+
+.small-text { line-height: 1.6; }
+.smaller-text { line-height: 1.5; }
+.large-button { line-height: 1.20; }
+.small-button { line-height: 1.10; }
