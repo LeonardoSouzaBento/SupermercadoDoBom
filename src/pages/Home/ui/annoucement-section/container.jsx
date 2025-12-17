@@ -37,14 +37,13 @@ export const ContainerStyled = styled.section`
     position: relative;
     z-index: 1;
 
-    & > h3 {
+    & > h2 {
       text-decoration-color: var(--primary);
       margin-bottom: 0;
-      color: var(--white-foreground);
-      font-weight: 400;
+      color: hsla(var(--white-value), 0.95);
       text-decoration: underline;
       text-underline-offset: 0.05rem;
-      text-decoration-color: var(--white-foreground * 0.65);
+      text-decoration-color: hsla(var(--white-value), 0.5);
     }
   }
 

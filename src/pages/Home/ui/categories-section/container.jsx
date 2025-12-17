@@ -25,12 +25,12 @@ export const ContainerStyled = styled.div`
       padding-right: 25px;
     }
 
-    & > h3 {
+    & > h2 {
       color: var(--dark-primary);
       text-align: center;
     }
     & strong {
-      font-weight: 400;
+      font-weight: 500;
     }
   }
   /* wrapper rolável*/

@@ -1,24 +1,18 @@
-import { useEffect, useState, useContext } from "react";
-import { CartContext } from "@contexts/CartContext";
-import { UserDataContext } from "@contexts/UserDataContext";
-import { VisibilityContext } from "@contexts/VisibilityContext";
-import {
-  MainStyled,
-  H1Styled,
-  HeaderStyled,
-  DivOneTwoStyled,
-  DivThreeButtonStyled,
-} from "./StylizedTags";
-import Contact from "./Components/Contact";
-import SavedAddress from "./Components/SavedAddress";
-import FinishShopping from "./Components/FinishShopping";
-import UserProfile from "./Components/UserProfile";
-import RegisterAddress from "./RegisterAddress/RegisterAddress";
-import BottomNavBar from "@components/BottomNavBar/BottomNavBar";
+import BottomNavBar from '@components/BottomNavBar/BottomNavBar';
+import { CartContext } from '@contexts/CartContext';
+import { UserDataContext } from '@contexts/UserDataContext';
+import { VisibilityContext } from '@contexts/VisibilityContext';
+import PageHeader from '@ui/PageHeader';
+import { useContext, useEffect, useState } from 'react';
+import Contact from './Components/Contact';
+import FinishShopping from './Components/FinishShopping';
+import SavedAddress from './Components/SavedAddress';
+import UserProfile from './Components/UserProfile';
+import RegisterAddress from './RegisterAddress/RegisterAddress';
+import { DivOneTwoStyled, DivThreeButtonStyled, MainStyled } from './StylizedTags';
 
 const MyAccount = () => {
-  const { userContact, isDataComplete, userAddress } =
-    useContext(UserDataContext);
+  const { userContact, isDataComplete, userAddress } = useContext(UserDataContext);
   const { currentOrder, setCurrentOrder, cartProducts } = useContext(CartContext);
   const { setOnMyAccount } = useContext(VisibilityContext);
   const [seeRegisterAddress, setSeeRegisterAddress] = useState(false);
@@ -29,10 +23,10 @@ const MyAccount = () => {
     const voidCart = cartProducts.length === 0;
 
     if (pendingOrderInfo) {
-      setCurrentOrder({ ...currentOrder, status: "pending" });
+      setCurrentOrder({ ...currentOrder, status: 'pending' });
     }
     if (voidCart) {
-      setCurrentOrder({ ...currentOrder, status: "" });
+      setCurrentOrder({ ...currentOrder, status: '' });
     }
     requestAnimationFrame(() => {
       window.scrollTo(0, 0);
@@ -43,10 +37,8 @@ const MyAccount = () => {
 
   return (
     <>
-      <HeaderStyled>
-        <H1Styled>Minha conta</H1Styled>
-      </HeaderStyled>
-
+      <PageHeader title="Minha conta" />
+      
       <MainStyled>
         {/*Minha conta e Contato*/}
         <DivOneTwoStyled>
@@ -70,14 +62,10 @@ const MyAccount = () => {
         </DivThreeButtonStyled>
       </MainStyled>
 
-      {seeRegisterAddress && (
-        <RegisterAddress setSeeRegisterAddress={setSeeRegisterAddress} />
-      )}
+      {seeRegisterAddress && <RegisterAddress setSeeRegisterAddress={setSeeRegisterAddress} />}
       <BottomNavBar />
     </>
   );
 };
 
 export default MyAccount;
-
-

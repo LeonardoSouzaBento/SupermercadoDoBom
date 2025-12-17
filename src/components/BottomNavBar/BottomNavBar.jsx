@@ -1,44 +1,88 @@
-import { useNavigate, useLocation } from "react-router-dom";
-import { useContext } from "react";
-import { CartContext } from "@contexts/CartContext";
-import { WrapperStyled, DivButtonsStyled, ButtonStyled } from "./StylizedTags";
-import CartInfo from "./Components/CartInfo";
-import { SpaceForNavBarStyled } from "./StylizedTags";
-import { User, House, ScrollText, ShoppingCart, Search } from "lucide-react";
+import { CartContext } from '@contexts/CartContext';
+import Button from '@ui/button';
+import { House, ScrollText, Search, ShoppingCart, User } from 'lucide-react';
+import { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import CartInfo from './cart-info';
 
 const navItems = [
   {
-    path: "/meu-carrinho",
-    icon: "shopping_cart",
+    path: '/meu-carrinho',
+    icon: 'shopping_cart',
     lucidIcon: ShoppingCart,
     active: false,
-    display: "",
+    display: '',
   },
   {
-    path: "/meus-pedidos",
-    icon: "contract",
+    path: '/meus-pedidos',
+    icon: 'contract',
     lucidIcon: ScrollText,
     active: false,
   },
   {
-    path: "/minha-conta",
-    icon: "person",
+    path: '/minha-conta',
+    icon: 'person',
     lucidIcon: User,
     active: false,
   },
   {
-    path: "/buscar-produtos",
-    icon: "search",
+    path: '/buscar-produtos',
+    icon: 'search',
     lucidIcon: Search,
     active: false,
   },
   {
-    path: "/",
-    icon: "home",
+    path: '/',
+    icon: 'home',
     lucidIcon: House,
     active: false,
   },
 ];
+
+const WrapperStyled = styled.div`
+  & > div:first-child {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+    background-color: transparent;
+    position: fixed;
+    left: 0;
+    bottom: 6px;
+    z-index: 4;
+
+    @media screen and (max-width: 576px) {
+      justify-content: center;
+    }
+    & > div:first-child {
+      width: calc(100% - 16px);
+      max-width: 420px;
+      height: 56px;
+      padding: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      border-radius: 12px;
+      background-color: var(--primary);
+      background-image: linear-gradient(45deg, var(--primary-hover), var(--primary));
+      box-shadow: var(--shadow-md);
+
+      @media screen and (min-width: 577px) {
+        margin-right: 8px;
+      }
+    }
+  }
+  /* espaço para o navbar */
+  & > div:last-child {
+    height: 72px;
+    width: 100%;
+    position: relative;
+  }
+`;
 
 export default function BottomNavBar() {
   const navigate = useNavigate();
@@ -46,39 +90,33 @@ export default function BottomNavBar() {
   const { quantityItens } = useContext(CartContext);
 
   return (
-    <>
-      <WrapperStyled>
-        <DivButtonsStyled>
+    <WrapperStyled>
+      <div>
+        <div>
           {quantityItens >= 1 && <CartInfo />}
           {navItems.map((item, index) => {
             const isActive = item.path === location.pathname;
-            const isCartItemHidden =
-              item.path === "/meu-carrinho" && quantityItens >= 1;
+            const isCartItemHidden = item.path === '/meu-carrinho' && quantityItens >= 1;
             return (
-              <ButtonStyled
+              <Button
+                size="icon"
+                variant="primary"
                 key={index}
-                className={`${isActive ? "active-button" : ""} ${
-                  isCartItemHidden ? "button-hide" : ""
+                className={`${isActive ? 'active-button' : ''} ${
+                  isCartItemHidden ? 'button-hide' : ''
                 }`}
                 onClick={() => {
                   if (!isActive) {
                     navigate(item.path);
                   }
-                }}
-              >
-                <item.lucidIcon
-                  strokeWidth={1.8}
-                  color="white"
-                  size={24}
-                />
-              </ButtonStyled>
+                }}>
+                <item.lucidIcon strokeWidth={1.8} color="white" size={24} />
+              </Button>
             );
           })}
-        </DivButtonsStyled>
-      </WrapperStyled>
-      <SpaceForNavBarStyled />
-    </>
+        </div>
+      </div>
+      <div />
+    </WrapperStyled>
   );
 }
-
-

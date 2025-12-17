@@ -25,7 +25,7 @@ const Header = ({ setViewOptions }) => {
             <span className="material-symbols-rounded">handshake</span>
           </div>
           <div>
-            <p>{supermarketName}</p>
+            <h1>{supermarketName}</h1>
             <p> Seja bem-vindo!</p>
           </div>
         </div>

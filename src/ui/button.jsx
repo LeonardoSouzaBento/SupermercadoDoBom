@@ -62,7 +62,7 @@ const StyledButton = styled.button`
           padding: 0.375rem 0.75rem;
           font-size: var(--text-sm-button);
         `;
-      case 'medium':
+      case 'normal':
         return css`
           padding: 0.5rem 1rem;
           font-size: var(--text-button);
@@ -104,7 +104,7 @@ const StyledButton = styled.button`
 
 const Button = ({
   variant = 'primary',
-  size = 'medium',
+  size = 'normal',
   disabled = false,
   children,
   className,

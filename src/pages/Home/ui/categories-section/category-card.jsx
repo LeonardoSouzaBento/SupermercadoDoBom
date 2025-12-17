@@ -58,8 +58,9 @@ export const CategoryCardStyled = styled.div`
     font-family: var(--font-header);
     text-align: center;
     letter-spacing: 0.05rem;
-    line-height: 1.1;
-    font-size: var(--text-xs);
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: var(--text-sm-button);
     margin: 0;
     color: var(--dark-primary);
   }

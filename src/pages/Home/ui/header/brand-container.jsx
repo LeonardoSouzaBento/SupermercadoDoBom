@@ -73,22 +73,14 @@ export const BrandContainerStyled = styled.div`
       flex-direction: column;
       gap: 4px;
 
-      p {
+      h1 {
         color: var(--white-foreground);
         letter-spacing: 0.45px;
       }
-
-      p:first-child {
-        font-family: var(--font-button);
-        font-weight: 800;
-
-        @media (max-width: 375px) {
-          max-width: 200px;
-        }
-      }
-
-      p:last-child {
+      p {
+        color: var(--white-foreground);
         font-family: var(h-font);
+        font-size: var(--text-lg);
         font-weight: 400;
         letter-spacing: auto;
       }

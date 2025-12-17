@@ -1,9 +1,12 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { VisibilityContext } from '@contexts/VisibilityContext.js';
-import { CartContext } from '@contexts/CartContext.js';
-import { useNavigate } from 'react-router-dom';
+import { CardHeader } from '@/ui/Card';
+import PageHeader from '@/ui/PageHeader.jsx';
 import ProductInFull from '@components/Product/ProductInFull/ProductInFull.jsx';
 import { ProductList } from '@components/Product/ProductItem&List/ProductList.jsx';
+import { CartContext } from '@contexts/CartContext.js';
+import { VisibilityContext } from '@contexts/VisibilityContext.js';
+import { Package } from 'lucide-react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   ButtonSeeAll,
   CancelDialog,
@@ -17,9 +20,6 @@ import {
   DivToCoverStyled,
   MainStyled,
 } from './StylizedTags.jsx';
-import { HeaderPageStyled, TitlePageStyled } from '@/ui/PageHeader.jsx';
-import { CardHeader } from '@/ui/Card';
-import { Package } from 'lucide-react';
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar
@@ -136,18 +136,15 @@ const Cart = () => {
 
   return (
     <>
-      <HeaderPageStyled $cart>
-        <div>
-          <TitlePageStyled>Sua compra</TitlePageStyled>
-        </div>
-      </HeaderPageStyled>
+      <PageHeader title="Sua compra" />
 
       <MainStyled $opacity={opacityState}>
         <CartSectionStyed ref={CartSectionRef}>
           <div>
             <CardHeader
               title="Produtos"
-              icon={<Package size={20} strokeWidth={2.6} color="var(--primary)" />} />
+              icon={<Package size={20} strokeWidth={2.6} color="var(--primary)" />}
+            />
 
             <DivSpanDeleteStyled
               onClick={() => {
