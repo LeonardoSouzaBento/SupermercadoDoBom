@@ -22,51 +22,16 @@ export const MainStyled = styled.div`
   }
 `;
 
-export const DivHeaderMainStyled = styled.div`
-  width: 100%;
-  height: 60px;
-  margin-bottom: 0;
-  background-color: var(--primary);
-  display: flex;
-  align-items: center;
-`;
-
-export const H1Styled = styled(H1BaseStyled)`
-  width: max-content;
-  margin: auto;
-  text-align: left;
-
-  @media screen and (max-width: 414px) {
-    margin: 0;
-    padding-left: 20px;
-  }
-  @media screen and (min-width: 414px) and (max-width: 596px) {
-    width: 400px;
-  }
-  @media screen and (min-width: 596px) and (max-width: 768px) {
-    width: 575px;
-  }
-  @media screen and (min-width: 769px) {
-    width: 724px;
-  }
-
-  ${(props) =>
-    props.$login &&
-    css`
-      text-align: center;
-      padding-left: 0px !important;
-    `}
-`;
 
 /*container de produtos*/
 export const CartSectionStyed = styled.section`
-  width: calc(100% - 28px);
-  height: 460px;
-  padding: 20px 0;
-  padding-top: 10px;
+  width: calc(100% - 2.8rem);
+  height: 46rem;
+  padding: 2rem 0;
+  padding-top: 1rem;
   margin: auto;
-  margin-bottom: 20px;
-  border-radius: 12px;
+  margin-bottom: 2rem;
+  border-radius: 1.2rem;
   box-sizing: border-box;
   box-shadow: var(--shadow-md);
 
@@ -103,8 +68,8 @@ export const CartSectionStyed = styled.section`
 `;
 
 export const HeaderCartStyled = styled.div`
-  height: 44px;
-  width: calc(100% - 40px);
+  height: 4.4rem;
+  width: calc(100% - 4rem);
   margin: auto;
   display: flex;
   align-items: center;
@@ -122,14 +87,14 @@ export const HeaderCartStyled = styled.div`
 `;
 
 export const DivSpanDeleteStyled = styled(CentralizeDiv)`
-  min-width: 40px;
-  height: 40px;
-  margin-bottom: 10px;
+  min-width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
   box-sizing: border-box;
   cursor: pointer;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0.8rem;
+  right: 0.8rem;
   border-radius: 8px;
   background-color: var(--bluish-white);
   transition: all 0.15s ease;
@@ -150,13 +115,13 @@ export const DivSpanDeleteStyled = styled(CentralizeDiv)`
 
 export const ShadowStyled = styled.div`
   width: 100%;
-  height: 16px;
+  height: 1.6rem;
   position: absolute;
   bottom: 0;
   left: 0;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0));
   background-size: 100% 100%;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0 0px 10px 10px;
 
   @media screen and (min-width: 769px) {
     width: calc(100% - 31px);
@@ -281,7 +246,7 @@ export const HeaderH2Styled = styled.header`
     `}
 `;
 
-export const H2Styled = styled.h2`
+export const H2Styled = styled.h3`
   font-weight: 700;
   color: var(--primary);
 `;
@@ -312,7 +277,7 @@ export const ReceiptOptionStyled = styled.div`
     `}
 
   ${(props) => props.$variant === 'retirar' && 'padding: 8px 16px;'};
-  ${(props) => props.$variant === 'entregar' && 'margin-bottom: 0px;'}
+  ${(props) => props.$variant === 'entregar' && 'margin-bottom: 0;'}
 `;
 
 export const SpanReceiptStyled = styled.span`

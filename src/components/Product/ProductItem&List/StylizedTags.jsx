@@ -25,7 +25,7 @@ export const PaiProdStyled = styled.div`
     props.$variant == 'cart' &&
     css`
       border: 1px solid var(--light-border);
-      border-radius: 0px !important;
+      border-radius: 0 !important;
     `};
 
   //paisagem
@@ -37,7 +37,7 @@ export const PaiProdStyled = styled.div`
   }
   //retrato
   @media screen and (min-width: 385px) and (max-width: 414px) {
-    gap: 0px;
+    gap: 0;
   }
   @media screen and (min-width: 385px) and (max-width: 992px) {
     flex-direction: column;
@@ -97,7 +97,7 @@ export const DescOfertaStyled = styled.div`
     height: 100%;
     width: 48%;
     padding: 1.1rem;
-    padding-right: 0px;
+    padding-right: 0;
   }
   //retrato
   @media screen and (min-width: 385px) {
@@ -112,7 +112,7 @@ export const DescOfertaStyled = styled.div`
   //paisagem
   @media screen and (min-width: 993px) {
     width: 13rem;
-    padding-right: 0px;
+    padding-right: 0;
   }
   ${(props) => props.$variant === 'announcement' && 'display: none !important;'};
 `;
@@ -321,7 +321,7 @@ export const DivAddStyled = styled.div`
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
     right: 12px;
-    bottom: 0px;
+    bottom: 0;
   }
   ${(props) =>
     (props.$variant === 'similarList' ||
@@ -361,7 +361,7 @@ export const DivQuantStyled = styled.div`
   @media screen and (min-width: 385px) and (max-width: 992px) {
     width: 85%;
     right: 12px;
-    bottom: 0px;
+    bottom: 0;
   }
   transition: opacity 0.4s ease;
   ${(props) =>

@@ -9,28 +9,31 @@
   --font-button: 'Montserrat', Arial, Helvetica, sans-serif;
   --font-header: 'Lato', Arial, Helvetica, sans-serif;
   /* font-sizes */
-  --text-xs: 0.933255em;
-  --text-sm: 0.995783em;
+  --text-xs: 0.878357em;
+  --text-sm: 0.937207em;
   --text-base: 1em;
-  --text-lg: 1.133687em;
-  --text-h6: 1.133687em;
-  --text-h5: 1.209645em;
-  --text-h4: 1.290691em;
-  --text-h3: 1.377167em;
-  --text-h2: 1.469437em;
-  --text-h1: 1.56789em;
+  --text-lg: 1.067em;
+  --text-h6: 1.067em;
+  --text-h5: 1.138489em;
+  --text-h4: 1.214768em;
+  --text-h3: 1.296157em;
+  --text-h2: 1.383em;
+  --text-h1: 1.475661em;
   --text-button: 1em;
   --text-sm-button: 0.9em;
   --text-lg-button: 1.1em;
   /*Cores*/
-  --primary: hsl(235, 35%, 35%);
-  --primary-hover: hsl(234, 31%, 26%);
-  --dark-primary: hsl(255, 35%, 18%);
+  --white-foreground: #fff;
+  --black-foreground: #222;
+  --primary-raw: 235, 35%, 35%;
+  --primary: hsl(var(--primary-raw));
+  --primary-hover: hsl(var(--primary-raw) / 0.8);
+  --dark-primary: hsl(var(--primary-raw) / 0.6);
   --secondary: hsl(360, 66%, 50%);
   --secondary-hover: hsl(358, 66%, 46%);
   --dark-secondary: hsl(359, 30%, 32%);
-  --white-foreground: #fff;
-  --black-foreground: #222;
+  --destructive: hsl(0, 80%, 50%); 
+  --destructive-foreground: hsl(0, 0%, 98%);
   --dark-green: #396b46;
   --light-green: #b5ebc3;
   /* --back-color: #eef2f6; */
@@ -49,7 +52,7 @@
   --bluish-white: #f1f5f9;
   --bluish-white-hover: #e2e8f0;
   /* sombras */
-  --shadow-xs: 0 1px 2px -1px hsla(0, 0%, 0%, 0.10);
+  --shadow-xs: 0 1px 2px -1px hsla(0, 0%, 0%, 0.1);
   --shadow-sm: 0 1px 3px hsla(0, 0%, 0%, 0.08), 0 0 4px hsla(0, 0%, 0%, 0.01);
   --shadow-md: 0 3px 6px hsla(0, 0%, 0%, 0.06), 0 0 8px hsla(0, 0%, 0%, 0.01);
   --shadow-lg: 0 6px 12px hsla(0, 0%, 0%, 0.04), 0 0 16px hsla(0, 0%, 0%, 0.01);
@@ -104,7 +107,6 @@
   --size-92: 9.2rem;
   --size-94: 9.4rem;
   --size-96: 9.6rem;
-  
 }
 
 html,

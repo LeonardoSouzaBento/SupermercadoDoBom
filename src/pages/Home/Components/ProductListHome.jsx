@@ -47,7 +47,7 @@ const DivStyled = styled.div`
   }
   @media screen and (min-width: 1201px) {
     padding-right: 8px;
-    margin-right: 0px;
+    margin-right: 0;
   }
 `;
 

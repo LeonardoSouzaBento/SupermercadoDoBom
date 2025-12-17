@@ -57,7 +57,7 @@ const DivStyled = styled.div`
     css`
       justify-content: flex-start !important;
       padding-top: 8px;
-      margin-bottom: 0px;
+      margin-bottom: 0;
       gap: 0;
       margin: auto;
 
@@ -130,7 +130,7 @@ const DivStyled = styled.div`
 //     props.$variant === "cart" &&
 //     css`
 //       padding-top: 12px;
-//       margin-bottom: 0px;
+//       margin-bottom: 0;
 //       gap: 0;
 //       border: 1px solid rgb(0, 0, 0);
 //     `}

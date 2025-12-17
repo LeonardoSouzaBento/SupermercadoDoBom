@@ -42,7 +42,7 @@ export const MainDivStyled = styled.div`
     width: calc(100% - 16px);
   }
   @media screen and (min-width: 375px) and (max-width: 577px) {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 `;
 
@@ -107,7 +107,7 @@ export const ButtonStyled = styled.button`
   margin: auto;
   margin-bottom: 20px;
   height: 48px;
-  padding: 0px 16px;
+  padding: 0 16px;
   padding-bottom: 2px;
   box-sizing: border-box;
   display: flex;
@@ -131,7 +131,7 @@ export const ButtonStyled = styled.button`
   ${(props) =>
     props.$variant === 'digitarTudo' &&
     css`
-      margin-bottom: 0px;
+      margin-bottom: 0;
       box-shadow: var(--shadow-sm);
     `}
 
@@ -279,8 +279,8 @@ export const CepInputStyled = styled(InputStyled)`
   height: 100%;
   margin: 0;
   margin-bottom: 2px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  padding-bottom: 0;
+  padding-left: 0;
   background-color: var(--white-foreground);
   font-family: var(--font-button);
   font-weight: 400;
@@ -328,7 +328,7 @@ export const PCepErrorStyled = styled.p`
 // Botão de envio
 export const RegisterButtonStyled = styled(ButtonStyled)`
   border-radius: 8px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   color: var(--white-foreground);
   transition: all 0.15 ease;
   background-color: ${(props) => (props.$enable ? 'var(--secondary)' : 'var(--disable)')};

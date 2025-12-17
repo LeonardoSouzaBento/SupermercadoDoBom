@@ -25,8 +25,8 @@ export const ContainerForFormStyled = styled.div`
       padding-bottom: 16px;
       margin-bottom: 12px;
       position: sticky;
-      top: 0px;
-      left: 0px;
+      top: 0;
+      left: 0;
       display: flex;
       justify-content: center;
 
@@ -106,7 +106,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
   box-sizing: border-box;
   position: absolute;
   bottom: 0;
-  right: 0px;
+  right: 0;
   user-select: none;
   cursor: pointer;
 
@@ -131,7 +131,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     css`
       background-color: var(--primary);
       color: var(--white-foreground);
-      border-radius: 0px;
+      border-radius: 0;
     `}
 `;
 
@@ -145,7 +145,7 @@ export const DivMsgStyled = styled.div`
   height: max-content;
   width: max-content;
   border-radius: 7px;
-  padding: 0px 16px;
+  padding: 0 16px;
   position: absolute;
   bottom: -32px;
   left: 4%;
@@ -214,7 +214,7 @@ export const CompletionsDivStyled = styled.div`
   }
   @media screen and (min-width: 769px) {
     justify-content: flex-start;
-    ${(props) => props.$copy && "padding: 0px 0px 0px 20px;"};
+    ${(props) => props.$copy && "padding: 0 0px 0px 20px;"};
   }
   @media screen and (min-width: 1201px) {
     left: 4.5%;

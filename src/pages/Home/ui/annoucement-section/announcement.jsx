@@ -1,0 +1,47 @@
+import styled from 'styled-components';
+
+export const AnnouncementStyled = styled.div`
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 16px;
+  overflow-x: scroll;
+  box-sizing: border-box;
+  padding: 24px;
+  padding-top: 12px;
+  margin-bottom: 4px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media screen and (min-width: 1201px) {
+    ${(props) => props.$odd && 'justify-content: center;'}
+  }
+
+  & > div {
+    min-width: 220px;
+    width: 220px;
+    height: 220px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+
+    &:hover {
+      scale: 1.01;
+    }
+    & > img {
+      height: 100%;
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      margin: auto;
+      position: relative;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+  }
+`;

@@ -10,6 +10,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@ui": path.resolve(__dirname, "./src/ui"),
       "@components": path.resolve(__dirname, "./src/components"),
       "@contexts": path.resolve(__dirname, "./src/contexts/Contexts"),
       "@providers": path.resolve(__dirname, "./src/contexts/Providers"),

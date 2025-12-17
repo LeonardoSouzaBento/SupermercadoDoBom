@@ -71,7 +71,7 @@ export const DivSpanCloseStyled = styled(CentralizeDiv)`
     padding: 0 12px;
     padding-top: 1px;
     position: absolute;
-    top: 0px;
+    top: 0;
     right: 50%;
     transform: translateX(50%);
     background-color: transparent;
@@ -118,7 +118,7 @@ export const ProductSectionStyled = styled.section`
     padding-right: 14px;
   }
   @media screen and (min-width: 430px) and (max-width: 577px) {
-    padding: 0px;
+    padding: 0;
   }
   @media screen and (max-width: 577px) {
     z-index: 3;
@@ -213,9 +213,9 @@ export const ImgStyled = styled.img`
 export const DivDiscountStyled = styled.div`
   position: absolute;
   bottom: 4px;
-  right: 0px;
+  right: 0;
   background-color: var(--secondary);
-  padding: 0px 14px;
+  padding: 0 14px;
   padding-bottom: 2.5px;
   color: var(--white-foreground);
   border-radius: 16px;
@@ -480,7 +480,7 @@ export const ContainerListStyled = styled.div`
     display: none;
   }
   @media screen and (min-width: 577px) and (max-width: 720px) {
-    padding-left: 0px;
+    padding-left: 0;
     max-height: 100%;
     overflow: scroll;
   }
@@ -498,7 +498,7 @@ export const DivHalfList = styled.div`
   @media screen and (min-width: 577px) and (max-width: 720px) {
     flex-direction: column;
     align-items: center;
-    padding-right: 0px;
+    padding-right: 0;
     margin: auto;
     margin-bottom: 12px;
   }

@@ -1,10 +1,5 @@
-import styled, { css } from "styled-components";
-import { PStyled } from "../ForRecruiters/StylizedTags";
-import { H2Styled } from "../ForRecruiters/StylizedTags";
-import {
-  CentralizeDiv,
-  H1BaseStyled,
-} from "@components/GenericStylizedTags";
+import { CentralizeDiv, H1BaseStyled } from '@components/GenericStylizedTags';
+import styled, { css } from 'styled-components';
 
 export const HeaderStyled = styled.header`
   width: 100%;
@@ -44,12 +39,12 @@ export const MainStyled = styled.main`
     flex-direction: row;
     justify-content: center;
     gap: 20px;
-    padding: 0px 17px;
+    padding: 0 17px;
     box-sizing: border-box;
   }
 
   &::after {
-    content: "";
+    content: '';
     width: 100%;
     height: 6px;
     position: absolute;
@@ -92,7 +87,7 @@ export const DivOneStyled = styled.div`
   background-color: var(--white-foreground);
   border-radius: 12px;
   box-shadow: var(--shadow-md);
-  ${(props) => props.$orders && "padding-top: 0px;"}
+  ${(props) => props.$orders && 'padding-top: 0;'}
 `;
 
 export const UserHeaderDivStyled = styled.div`
@@ -138,13 +133,6 @@ export const ButtonLoginStyled = styled(CentralizeDiv)`
 
 export const PLoginStlyed = styled.p`
   font-weight: 500;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const DivImgUserStyled = styled(CentralizeDiv)`
@@ -178,13 +166,13 @@ export const DivEmailUserStyled = styled.div`
 
 export const DivTwoStyled = styled(DivOneStyled)`
   padding: 0;
-  padding-top: 0px;
+  padding-top: 0;
   height: auto;
   flex-direction: column;
   align-items: flex-start;
   gap: 0;
   @media screen and (min-width: 993px) {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
   position: relative;
 `;
@@ -193,7 +181,7 @@ export const DivThreeButtonStyled = styled.div`
   width: 100%;
   max-width: 520px;
   margin: auto;
-  
+
   @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }
@@ -226,7 +214,7 @@ export const DivH2StatusStyled = styled.div`
   padding-right: 20px;
   box-sizing: border-box;
   display: flex;
-  ${(props) => props.$orders && "padding-right: 0px;"}
+  ${(props) => props.$orders && 'padding-right: 0;'}
 
   @media screen and (max-width: 520px) {
     flex-direction: column;
@@ -257,36 +245,36 @@ export const HeaderH2Styled = styled.header`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  ${(props) => props.$cart && "width: max-content;"};
-  ${(props) => props.$orders && "padding-left: 0px;"}
+  ${(props) => props.$cart && 'width: max-content;'};
+  ${(props) => props.$orders && 'padding-left: 0;'}
   @media screen and (min-width: 520px) {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 `;
 
 export const SpanH2Styled = styled.span`
-  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 22;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 22;
   cursor: default;
   color: var(--primary);
   margin-right: 8px;
 
-  ${(props) => props.$smaller && "font-size: 21px;"}
-  ${(props) => props.$bigger && "font-size: 25px;"}
+  ${(props) => props.$smaller && 'font-size: 21px;'}
+  ${(props) => props.$bigger && 'font-size: 25px;'}
   ${(props) =>
     props.$user &&
     css`
-      margin-right: 0px;
-      font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 22;
+      margin-right: 0;
+      font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 22;
     `};
   ${(props) =>
     props.$cart &&
     css`
-      font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 22;
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 22;
     `}
 `;
 
-export const H2v2Styled = styled(H2Styled)`
-  margin-bottom: 0px;
+export const H2v2Styled = styled.h3`
+  margin-bottom: 0;
   font-weight: 700;
   color: var(--primary);
 
@@ -297,12 +285,6 @@ export const H2v2Styled = styled(H2Styled)`
       margin-left: 4px;
       width: 100%;
     `};
-  
-  
-  
-  
-  
-  
 `;
 
 export const DivStatusStyled = styled.div`
@@ -311,20 +293,20 @@ export const DivStatusStyled = styled.div`
   box-sizing: border-box;
   display: flex;
 
-  ${(props) => (props.$finish || props.$user) && "padding-left: 0px;"}
+  ${(props) => (props.$finish || props.$user) && 'padding-left: 0;'}
 
   @media screen and (min-width: 520px) and (max-width: 993px) {
     width: 50%;
-    padding-left: 0px;
+    padding-left: 0;
     justify-content: flex-end;
-    ${(props) => props.$user && "width: 100%;"}
+    ${(props) => props.$user && 'width: 100%;'}
 
     ${(props) =>
       (props.$finish || props.$contact) &&
       css`
         justify-content: flex-start;
         margin-left: 20px;
-        ${(props) => props.$finish && "margin-left: 0px;"}
+        ${(props) => props.$finish && 'margin-left: 0;'}
       `}
   }
 
@@ -368,7 +350,7 @@ export const DivNameStatus = styled.div`
 `;
 
 export const SpanStatusStyled = styled.span`
-  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 24;
+  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
   background-color: rgba(0, 0, 0, 0.3);
   color: var(--white-foreground);
   padding: 4px;
@@ -379,14 +361,7 @@ export const SpanStatusStyled = styled.span`
 
 export const NameStatusStyled = styled.p`
   margin-right: 6px;
-  ${(props) => props.$email && "color: var(--black-foreground);"}
-
-  
-  
-  
-  
-  
-  
+  ${(props) => props.$email && 'color: var(--black-foreground);'}
 `;
 
 export const SpanCheckStyled = styled.span`
@@ -405,7 +380,7 @@ export const SpanCheckStyled = styled.span`
 export const DivStyled = styled.div`
   width: 100%;
   padding: 20px;
-  padding-top: 0px;
+  padding-top: 0;
   box-sizing: border-box;
 `;
 
@@ -416,14 +391,7 @@ export const H3Styled = styled.h3`
   font-weight: 600;
   font-family: var(--font-body);
 
-  
-  
-  
-  
-  
-  
-
-  ${(props) => props.$hide && "display: none;"}
+  ${(props) => props.$hide && 'display: none;'}
   ${(props) =>
     props.$contact &&
     css`
@@ -433,13 +401,13 @@ export const H3Styled = styled.h3`
     `}
 `;
 
-export const Pv2Styled = styled(PStyled)`
+export const Pv2Styled = styled.p`
   width: 100%;
   text-align: left;
   scale: 1.01;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 
-  ${(props) => props.$hide && "display: none;"}
+  ${(props) => props.$hide && 'display: none;'}
   ${(props) =>
     props.$contact &&
     css`
@@ -467,7 +435,7 @@ export const DivZapStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  ${(props) => props.$seeInput && "align-items: flex-end;"};
+  ${(props) => props.$seeInput && 'align-items: flex-end;'};
   position: relative;
   overflow: hidden;
 `;
@@ -481,7 +449,7 @@ export const DivZapAndDivPhone = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  ${(props) => !props.$visible && "display: none;"}
+  ${(props) => !props.$visible && 'display: none;'}
 
   @media screen and (max-width: 576px) {
     flex-direction: column;
@@ -497,7 +465,7 @@ export const DivZapOrPhone = styled(CentralizeDiv)`
   padding-right: 6px;
   border-radius: 4px;
   border: 1px solid var(--light-border);
-  ${(props) => props.$selected && "background-color: var(--background);"}
+  ${(props) => props.$selected && 'background-color: var(--background);'}
 
   @media screen and (max-width: 576px) {
     width: 100%;
@@ -543,12 +511,12 @@ export const DivHalfAddressStyled = styled.div`
   border-radius: 8px;
   display: flex;
   gap: 16px;
-  ${(props) => props.$first && "margin-bottom: 16px;"}
+  ${(props) => props.$first && 'margin-bottom: 16px;'}
 
   @media screen and (max-width: 385px) {
     flex-direction: column;
     gap: 8px;
-    ${(props) => props.$first && "margin-bottom: 8px;"}
+    ${(props) => props.$first && 'margin-bottom: 8px;'}
   }
 `;
 
@@ -593,14 +561,13 @@ export const DivSpanStyled = styled(CentralizeDiv)`
 `;
 
 export const SpanEditStyled = styled.span`
-  
-  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 20;
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 20;
 `;
 
 export const SpanEmailWarnStyled = styled.span`
   color: hsl(213, 11%, 45%);
-  
-  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 20;
+
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 20;
 `;
 
 export const InputZapStyled = styled.input`
@@ -618,14 +585,5 @@ export const InputZapStyled = styled.input`
   &:focus {
     outline: none;
   }
-  ${(props) => props.$hide && "display: none;"}
-
-  
-  
-  
-  
-  
-  
+  ${(props) => props.$hide && 'display: none;'}
 `;
-
-

@@ -73,7 +73,7 @@ export const ButtonStyled = styled.button`
   .active-span {
     color: var(--white-foreground);
     font-variation-settings: "FILL" 1;
-    text-shadow: 0px 4px 10px hsla(0, 31%, 24%, 0.25);
+    text-shadow: 0 4px 10px hsla(0, 31%, 24%, 0.25);
   }
 
   &.button-hide {

@@ -1,25 +1,12 @@
-import { useCallback } from "react";
-import { useRef, useEffect, useContext } from "react";
-import { HomeDivsContext } from "@contexts/HomeDivsContext";
-import {
-  DivStyled,
-  DivLabelPromosStyled,
-  H1LabelStyled,
-  DivfStyled,
-  DivCatStyled,
-  SpanStyled,
-} from "./StylizedTags";
-import { useScrollX } from "@hooks/useScrollX";
-import { categoriesIcons } from "@data/home";
+import { HomeDivsContext } from '@contexts/HomeDivsContext';
+import { categoriesIcons } from '@data/home';
+import { useScrollX } from '@hooks/useScrollX';
+import { useCallback, useContext, useEffect, useRef } from 'react';
+import { ContainerStyled, CategoryCardStyled } from '@pages/Home/ui/categories-section/index';
 
 function CategoriesSection({ wasResize }) {
-  const {
-    setLimitCategories,
-    categoriesRef,
-    currentCategory,
-    setCurrentCategory,
-    isDraggingRef,
-  } = useContext(HomeDivsContext);
+  const { setLimitCategories, categoriesRef, currentCategory, setCurrentCategory, isDraggingRef } =
+    useContext(HomeDivsContext);
   useScrollX();
 
   const DivRef = useRef(null);
@@ -31,13 +18,10 @@ function CategoriesSection({ wasResize }) {
       const divWidth = DivRef.current.offsetWidth;
 
       const gap = parseFloat(getComputedStyle(categoriesRef.current).gap) || 0;
-      const paddingRight =
-        parseFloat(getComputedStyle(categoriesRef.current).paddingRight) * 2;
+      const paddingRight = parseFloat(getComputedStyle(categoriesRef.current).paddingRight) * 2;
 
       const totalWidth =
-        categoriesIcons.length * itemWidth +
-        (categoriesIcons.length - 1) * gap +
-        paddingRight;
+        categoriesIcons.length * itemWidth + (categoriesIcons.length - 1) * gap + paddingRight;
 
       const limit = divWidth - totalWidth;
       setLimitCategories(limit);
@@ -63,41 +47,35 @@ function CategoriesSection({ wasResize }) {
   }
 
   return (
-    <DivStyled ref={DivRef}>
-      <SpanStyled className="material-symbols-rounded">swipe_left</SpanStyled>
-      <DivLabelPromosStyled>
-        <H1LabelStyled>
+    <ContainerStyled ref={DivRef}>
+      <div>
+        <h3>
           Mais vendidos por categoria,
           <br />
-          <strong style={{ fontWeight: 400 }}>
-            os produtos básicos ficam aqui.
-          </strong>
-        </H1LabelStyled>
-      </DivLabelPromosStyled>
+          <strong>os produtos básicos ficam aqui.</strong>
+        </h3>
+      </div>
 
-      <DivfStyled ref={categoriesRef}>
+      <div ref={categoriesRef}>
         {categoriesIcons.map((cat, index) => (
-          <DivCatStyled
+          <CategoryCardStyled
             key={cat.id}
             $selected={cat.id === currentCategory}
             ref={index === 0 ? CategoryItemRef : undefined}
             onPointerUp={(e) => {
               handlePointerUpCat(e, cat.id);
-            }}
-          >
+            }}>
             <div>
               <cat.icon size={28} strokeWidth={1.5} color="white" />
             </div>
             <div>
               <p>{cat.label}</p>
             </div>
-          </DivCatStyled>
+          </CategoryCardStyled>
         ))}
-      </DivfStyled>
-    </DivStyled>
+      </div>
+    </ContainerStyled>
   );
 }
 
 export default CategoriesSection;
-
-

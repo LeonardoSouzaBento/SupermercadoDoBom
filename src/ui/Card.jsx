@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Card = styled.div`
   background: var(--card);
@@ -12,44 +12,22 @@ export const Card = styled.div`
   box-shadow: var(--shadow-sm);
 `;
 
-export const CardHeader = styled.div`
-  display: grid;
-  grid-auto-rows: min-content;
-  grid-template-rows: auto auto;
-  gap: 0.5rem;
-  padding: 0 1.5rem;
-
-  &[data-has-action] {
-    grid-template-columns: 1fr auto;
-  }
-
-  &.with-border {
-    padding-bottom: 1.5rem;
-  }
+export const Title = styled.h3`
+  color: var(--primary);
 `;
 
-export const CardTitle = styled.div`
-  line-height: 1;
-  font-weight: 600;
-`;
-
-export const CardDescription = styled.div`
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-`;
-
-export const CardAction = styled.div`
+export const Action = styled.div`
   grid-column: 2;
   grid-row: 1 / span 2;
   justify-self: end;
   align-self: flex-start;
 `;
 
-export const CardContent = styled.div`
+export const Content = styled.div`
   padding: 0 1.5rem;
 `;
 
-export const CardFooter = styled.div`
+export const Footer = styled.div`
   display: flex;
   align-items: center;
   padding: 0 1.5rem;
@@ -58,3 +36,39 @@ export const CardFooter = styled.div`
     padding-top: 1.5rem;
   }
 `;
+
+const Header = styled.div`
+  height: 3.6rem;
+  padding-bottom: 0.4rem;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-bottom: 1px solid var(--border);
+`;
+
+const WrapperTitle = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+`;
+
+const Description = styled.p`
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+`;
+
+export const CardHeader = ({ icon, title, description }) => {
+  return (
+    <Header>
+      <WrapperTitle>
+        {icon}
+        <Title>{title}</Title>
+      </WrapperTitle>
+      <Description>{description}</Description>
+    </Header>
+  );
+};

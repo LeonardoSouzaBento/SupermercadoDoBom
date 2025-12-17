@@ -7,7 +7,9 @@
       "@providers/*": ["contexts/Providers/*"],
       "@data/*": ["data/*"],
       "@hooks/*": ["hooks/*"],
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
+      "@ui/*": ["ui/*"],
+      "@/*": ["./*"]
     }
   }
 }

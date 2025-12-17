@@ -1,0 +1,26 @@
+$files = @(
+    'iten-section.jsx',
+    'div-title.jsx',
+    'div-img.jsx',
+    'div-cat.jsx',
+    'container.jsx',
+    'div.jsx',
+    'div-fundo-img.jsx',
+    'img.jsx',
+    'div-pagination.jsx',
+    'div-price.jsx'
+)
+
+$destination = "src\pages\Home\ui\annoucement-section"
+
+# Criar a pasta se não existir
+if (!(Test-Path $destination)) {
+    New-Item -ItemType Directory -Path $destination -Force
+}
+
+# Criar cada arquivo
+foreach ($file in $files) {
+    $filePath = Join-Path $destination $file
+    New-Item -ItemType File -Path $filePath -Force
+    Write-Host "Criado: $filePath"
+}

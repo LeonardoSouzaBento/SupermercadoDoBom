@@ -5,17 +5,17 @@ import { UserDataContext } from "@contexts/UserDataContext";
 import { HomeDivsContext } from "@contexts/HomeDivsContext";
 import BottomNavBar from "@components/BottomNavBar/BottomNavBar";
 import ProductInFull from "@components/Product/ProductInFull/ProductInFull";
-import Header from "./Components/Header/Header";
-import OptionsSection from "./Components/MoreOptionsMenu/OptionsMenu";
-import AnnouncementSection from "./Components/AnnoucementSection/AnnouncementSection";
-import CategoriesSection from "./Components/CategoriesSection/CategoriesSection";
+import Header from "./Components/Header";
+import OptionsSection from "./Components/OptionsMenu";
+import AnnouncementSection from "./Components/AnnouncementSection";
+import CategoriesSection from "./Components/CategoriesSection";
 import ProductListHome from "./Components/ProductListHome";
 import styled from "styled-components";
 
 const MainStyled = styled.main`
   max-width: 1400px;
   margin: auto;
-  padding: 0px;
+  padding: 0;
   position: relative;
 
   &::after {
@@ -59,7 +59,7 @@ const ProductFeedDivStyled = styled.section`
     padding-left: 16px;
   }
   @media screen and (min-width: 1201px) {
-    padding-left: 0px;
+    padding-left: 0;
   }
 `;
 
