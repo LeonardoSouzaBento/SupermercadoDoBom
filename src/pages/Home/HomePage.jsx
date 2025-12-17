@@ -13,7 +13,7 @@ import ProductListHome from "./Components/ProductListHome";
 import styled from "styled-components";
 
 const MainStyled = styled.main`
-  max-width: 1400px;
+  max-width: 140rem;
   margin: auto;
   padding: 0;
   position: relative;
@@ -21,9 +21,9 @@ const MainStyled = styled.main`
   &::after {
     content: "";
     width: 100%;
-    height: 280px; //340 + 16px
+    height: 28rem; //340 + 1.6rem
     position: absolute;
-    top: 24px;
+    top: 2.4rem;
     left: 0;
     background-image: linear-gradient(
       to bottom,
@@ -38,7 +38,7 @@ const MainStyled = styled.main`
   &::before {
     content: "";
     width: 100%;
-    height: 24px; //24
+    height: 2.4rem; //24
     position: absolute;
     top: 0;
     left: 0;
@@ -50,13 +50,13 @@ const MainStyled = styled.main`
 const ProductFeedDivStyled = styled.section`
   position: relative;
   background-color: var(--background);
-  padding-left: 12px;
-  padding-top: 14px;
+  padding-left: 1.2rem;
+  padding-top: 1.4rem;
   background-color: var(--background);
   z-index: 2;
 
   @media screen and (min-width: 577px) {
-    padding-left: 16px;
+    padding-left: 1.6rem;
   }
   @media screen and (min-width: 1201px) {
     padding-left: 0;

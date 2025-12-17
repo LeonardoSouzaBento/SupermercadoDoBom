@@ -17,7 +17,7 @@ export const BodyDivStyled = styled.div`
 
 export const MainDivStyled = styled.div`
   width: 100%;
-  height: 580px;
+  height: 58rem;
   box-sizing: border-box;
   display: block;
   position: absolute;
@@ -25,13 +25,13 @@ export const MainDivStyled = styled.div`
   left: 0;
   overflow-y: scroll;
   background-color: var(--background);
-  border-radius: 12px 12px 0px 0px;
+  border-radius: 1.2rem 1.2rem 0px 0px;
   transform: translateY(${(props) => props.$translate});
   transition: transform 0.3s ease;
   box-shadow: var(--shadow-sm);
 
   @media screen and (max-width: 577px) {
-    padding-bottom: 62px;
+    padding-bottom: 6.2rem;
   }
 
   @media screen and (min-width: 578px) {
@@ -48,13 +48,13 @@ export const MainDivStyled = styled.div`
 `;
 
 export const DivSpanCloseStyled = styled(CentralizeDiv)`
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   margin-left: calc(100% - 48px);
-  margin-bottom: -44px;
+  margin-bottom: -4.4rem;
   position: sticky;
-  top: 8px;
-  right: -4px;
+  top: 0.8rem;
+  right: -0.4rem;
   background-color: var(--bluish-white);
   color: var(--primary);
   cursor: pointer;
@@ -66,9 +66,9 @@ export const DivSpanCloseStyled = styled(CentralizeDiv)`
   }
 
   @media screen and (min-width: 578px) {
-    height: 24px;
-    width: 48px;
-    padding: 0 12px;
+    height: 2.4rem;
+    width: 4.8rem;
+    padding: 0 1.2rem;
     padding-top: 1px;
     position: absolute;
     top: 0;
@@ -76,7 +76,7 @@ export const DivSpanCloseStyled = styled(CentralizeDiv)`
     transform: translateX(50%);
     background-color: transparent;
     box-shadow: none;
-    border-radius: 16px;
+    border-radius: 1.6rem;
 
     &:hover {
       box-shadow: var(--shadow-sm);
@@ -98,9 +98,9 @@ export const SpanDropDownStyled = styled.span`
   display: none;
   @media screen and (min-width: 578px) {
     display: block;
-    width: 64px;
-    height: 5px;
-    border-radius: 3px;
+    width: 6.4rem;
+    height: 0.5rem;
+    border-radius: 0.3rem;
     background-color: var(--primary);
     border-bottom: 1px solid rgb(0, 0, 0);
   }
@@ -110,31 +110,31 @@ export const ProductSectionStyled = styled.section`
   width: 100%;
   background-color: var(--white-foreground);
   box-sizing: border-box;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
   z-index: 2;
   @media screen and (max-width: 375px) {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
   }
   @media screen and (min-width: 430px) and (max-width: 577px) {
     padding: 0;
   }
   @media screen and (max-width: 577px) {
     z-index: 3;
-    padding-bottom: 40px;
-    padding-top: 8px;
-    margin-bottom: 12px;
+    padding-bottom: 4rem;
+    padding-top: 0.8rem;
+    margin-bottom: 1.2rem;
   }
   @media screen and (min-width: 577px) {
-    min-width: 320px;
-    max-width: 430px;
-    padding-bottom: 60px;
+    min-width: 32rem;
+    max-width: 43rem;
+    padding-bottom: 6rem;
     box-sizing: content-box;
     overflow-y: scroll;
   }
   @media screen and (min-width: 768px) {
-    min-width: 410px;
+    min-width: 41rem;
     padding: 0;
   }
   -ms-overflow-style: none;
@@ -145,23 +145,23 @@ export const ProductSectionStyled = styled.section`
 `;
 
 export const HeaderStyled = styled.header`
-  height: 56px;
+  height: 5.6rem;
   display: flex;
   box-sizing: border-box;
   align-items: flex-start;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
   border-bottom: 1px solid var(--light-border);
 
   @media screen and (max-width: 576px) {
-    padding-left: 20px;
+    padding-left: 2rem;
   }
 `;
 
 export const SpanHeaderStyled = styled.span`
   color: var(--primary);
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 0;
-  font-size: 22px;
+  font-size: 2.2rem;
 `;
 
 export const H1Styled = styled(H1BaseStyled)`
@@ -179,10 +179,10 @@ export const DivImgStyled = styled.div`
   display: block;
   margin: auto;
   width: 100%;
-  height: 340px;
+  height: 34rem;
   position: relative;
-  padding: 16px;
-  margin-bottom: 8px;
+  padding: 1.6rem;
+  margin-bottom: 0.8rem;
   box-sizing: border-box;
   overflow: hidden;
   -webkit-user-select: none; /* Safari, Chrome */
@@ -194,11 +194,11 @@ export const DivImgStyled = styled.div`
   }
 
   @media screen and (max-width: 577px) {
-    max-width: 340px;
+    max-width: 34rem;
   }
   @media screen and (min-width: 577px) {
-    height: 320px;
-    width: 320px;
+    height: 32rem;
+    width: 32rem;
   }
 `;
 
@@ -212,18 +212,18 @@ export const ImgStyled = styled.img`
 
 export const DivDiscountStyled = styled.div`
   position: absolute;
-  bottom: 4px;
+  bottom: 0.4rem;
   right: 0;
   background-color: var(--secondary);
-  padding: 0 14px;
-  padding-bottom: 2.5px;
+  padding: 0 1.4rem;
+  padding-bottom: 0.25rem;
   color: var(--white-foreground);
-  border-radius: 16px;
+  border-radius: 1.6rem;
 `;
 
 export const DivWeightStyled = styled(DivDiscountStyled)`
   position: absolute;
-  bottom: 38px;
+  bottom: 3.8rem;
   background-color: var(--background);
   color: rgb(30, 30, 30);
 `;
@@ -244,14 +244,14 @@ export const PWeightStyled = styled.p`
 `;
 
 export const DivNameProdStyled = styled(CentralizeDiv)`
-  min-height: 56px;
+  min-height: 5.6rem;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 `;
 
 export const PNameProdStyled = styled.p`
   width: 100%;
-  padding: 16px 0px;
+  padding: 1.6rem 0px;
   font-weight: 500;
   text-align: left;
   text-transform: uppercase;
@@ -262,10 +262,10 @@ export const PNameProdStyled = styled.p`
   user-select: none; /* Padrão */
 
   @media screen and (max-width: 577px) {
-    max-width: 350px;
+    max-width: 35rem;
   }
   @media screen and (min-width: 577px) {
-    max-width: 330px;
+    max-width: 33rem;
   }
 
   
@@ -277,8 +277,8 @@ export const PNameProdStyled = styled.p`
 `;
 
 export const DivPriceStyled = styled(CentralizeDiv)`
-  height: 56px;
-  margin-bottom: 4px;
+  height: 5.6rem;
+  margin-bottom: 0.4rem;
 `;
 
 export const PPriceStyled = styled.p`
@@ -299,15 +299,15 @@ export const PPriceStyled = styled.p`
 export const ContainerQuantStyled = styled(CentralizeDiv)`
   max-width: calc(100% - 32px);
   height: auto;
-  gap: 8px;
+  gap: 0.8rem;
   margin: auto;
 `;
 
 export const DivQuantFullStyled = styled.div`
   width: 100%;
-  min-width: 200px;
-  max-width: 200px;
-  height: 48px;
+  min-width: 20rem;
+  max-width: 20rem;
+  height: 4.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -316,26 +316,26 @@ export const DivQuantFullStyled = styled.div`
   &:hover {
     background-color: var(--secondary-hover);
   }
-  border-radius: 8px;
+  border-radius: 0.8rem;
   cursor: pointer;
 
   @media screen and (max-width: 350px) {
-    min-width: 180px;
+    min-width: 18rem;
   }
 `;
 
 export const DivButtonsStyled = styled(CentralizeDiv)`
-  width: 48px;
-  height: 48px;
+  width: 4.8rem;
+  height: 4.8rem;
 
   & span {
     color: var(--white-foreground);
-    padding-bottom: 3px;
+    padding-bottom: 0.3rem;
     -webkit-user-select: none; /* Safari, Chrome */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
     user-select: none; /* Padrão */
-    ${(props) => props.$add && "padding-top: 2px;"}
+    ${(props) => props.$add && "padding-top: 0.2rem;"}
     ${(props) => props.$add && "scale: 0.9;"}
 
     
@@ -358,7 +358,7 @@ export const PQuantFullStyled = styled.p`
   -ms-user-select: none; /* IE10+ */
   user-select: none; /* Padrão */
   scale: 1.06;
-  padding-bottom: 3px;
+  padding-bottom: 0.3rem;
 
   
   
@@ -372,20 +372,20 @@ export const PAddStyled = styled(PQuantFullStyled)`
   width: max-content;
   color: var(--white-foreground);
   text-align: left;
-  padding-left: 4px;
-  padding-bottom: 2px;
+  padding-left: 0.4rem;
+  padding-bottom: 0.2rem;
   font-weight: 400;
   scale: 1.05;
 `;
 
 export const DivSubStyled = styled(CentralizeDiv)`
-  height: 48px;
+  height: 4.8rem;
   width: 100%;
-  padding: 0 16px;
-  gap: 8px;
+  padding: 0 1.6rem;
+  gap: 0.8rem;
   /* border: 1px solid var(--light-border); */
   background-color: var(--background);
-  border-radius: 8px;
+  border-radius: 0.8rem;
   position: relative;
 
   @media screen and (max-width: 420px) {
@@ -422,7 +422,7 @@ export const PSubStyled = styled(PNameProdStyled)`
 
 export const DivCoverSubStyled = styled(DivToCoverStyled)`
   background-color: var(--background);
-  border-radius: 8px;
+  border-radius: 0.8rem;
 `;
 
 export const SimilarSectionStyled = styled.section`
@@ -435,7 +435,7 @@ export const SimilarSectionStyled = styled.section`
   @media screen and (min-width: 578px) {
     order: 1;
     overflow-y: scroll;
-    border-radius: 7px;
+    border-radius: 0.7rem;
     height: 100%;
   }
   -ms-overflow-style: none;
@@ -447,7 +447,7 @@ export const SimilarSectionStyled = styled.section`
 
 export const DivTitleStyled = styled(CentralizeDiv)`
   width: 100%;
-  min-height: 56px;
+  min-height: 5.6rem;
   position: sticky;
   top: 0;
   left: 0;
@@ -456,23 +456,23 @@ export const DivTitleStyled = styled(CentralizeDiv)`
   /* border-bottom: 1px solid var(--border); */
 
   @media screen and (min-width: 577px) {
-    margin-bottom: 12px;
+    margin-bottom: 1.2rem;
   }
 `;
 
 export const H2Styled = styled(H2BaseStyled)`
   width: 100%;
   color: var(--dark-primary);
-  padding-bottom: 4px;
+  padding-bottom: 0.4rem;
   scale: 0.945;
 `;
 
 export const ContainerListStyled = styled.div`
   overflow-x: scroll;
-  padding-left: 20px;
+  padding-left: 2rem;
 
   @media screen and (max-width: 375px) {
-    padding-left: 15px;
+    padding-left: 1.5rem;
   }
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -490,17 +490,17 @@ export const DivHalfList = styled.div`
   height: auto;
   width: auto;
   display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
   justify-items: flex-start;
-  padding-right: 12px;
+  padding-right: 1.2rem;
 
   @media screen and (min-width: 577px) and (max-width: 720px) {
     flex-direction: column;
     align-items: center;
     padding-right: 0;
     margin: auto;
-    margin-bottom: 12px;
+    margin-bottom: 1.2rem;
   }
 `;
 

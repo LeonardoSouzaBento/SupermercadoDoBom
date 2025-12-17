@@ -5,18 +5,18 @@ const DivForReturnStyled = styled.div`
   width: 100%;
   box-sizing: border-box;
   background-color: rgb(247, 249, 250);
-  padding: 16px;
-  padding-top: 12px;
-  margin-bottom: 16px;
-  border-radius: 8px;
+  padding: 1.6rem;
+  padding-top: 1.2rem;
+  margin-bottom: 1.6rem;
+  border-radius: 0.8rem;
 `;
 
 const DivRowStyled = styled.div`
-  min-height: 32px;
+  min-height: 3.2rem;
   width: max-content;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
 
   @media screen and (max-width: 375px) {
     align-items: flex-start;
@@ -26,7 +26,7 @@ const DivRowStyled = styled.div`
     css`
       @media screen and (max-width: 375px) {
         flex-direction: column;
-        gap: 4px;
+        gap: 0.4rem;
       }
     `}
     
@@ -44,7 +44,7 @@ const DivRowStyled = styled.div`
         background-color: var(--light-green);
         color: var(--primary);
         padding: 1px;
-        margin-left: 2px;
+        margin-left: 0.2rem;
       `}
   }
 `;

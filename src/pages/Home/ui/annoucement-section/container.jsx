@@ -29,7 +29,7 @@ export const ContainerStyled = styled.section`
   /* header */
   & > div:first-child {
     width: 100%;
-    height: 56px;
+    height: 5.6rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,7 +50,7 @@ export const ContainerStyled = styled.section`
   /* div de paginação */
   & > div:last-child {
     height: max-content;
-    width: 200px;
+    width: 20rem;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -59,14 +59,14 @@ export const ContainerStyled = styled.section`
     z-index: 1;
 
     & > span {
-      border-radius: 5px;
+      border-radius: 0.5rem;
       @media screen and (max-width: 375px) {
-        height: 9.5px;
-        width: 9.5px;
+        height: 0.95rem;
+        width: 0.95rem;
       }
       @media screen and (min-width: 375px) {
-        height: 10px;
-        width: 10px;
+        height: 1rem;
+        width: 1rem;
       }
     }
   }

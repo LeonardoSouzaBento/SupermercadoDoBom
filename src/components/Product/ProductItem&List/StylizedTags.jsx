@@ -10,7 +10,7 @@ export const PaiProdStyled = styled.div`
   user-select: none;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   transition: box-shadow 0.2s ease;
 
   ${(props) =>
@@ -101,13 +101,13 @@ export const DescOfertaStyled = styled.div`
   }
   //retrato
   @media screen and (min-width: 385px) {
-    padding: 8px;
+    padding: 0.8rem;
   }
   @media screen and (min-width: 385px) and (max-width: 992px) {
     height: 46%;
     width: 100%;
     order: 2;
-    gap: 4px;
+    gap: 0.4rem;
   }
   //paisagem
   @media screen and (min-width: 993px) {
@@ -118,7 +118,7 @@ export const DescOfertaStyled = styled.div`
 `;
 
 export const DivNomeStyled = styled.div`
-  max-height: 76px;
+  max-height: 7.6rem;
   display: flex;
   justify-items: center;
   width: 100%;
@@ -149,8 +149,8 @@ export const PpesoStyled = styled.p`
   letter-spacing: 0.5px;
   background-color: var(--background);
   color: rgb(50, 50, 50);
-  padding: 0 10px;
-  padding-bottom: 2px;
+  padding: 0 1rem;
+  padding-bottom: 0.2rem;
   border-radius: 1.2rem;
 `;
 
@@ -176,7 +176,7 @@ export const PriceWrapperStyled = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.8rem;
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
     flex-direction: row;
@@ -191,18 +191,18 @@ export const PriceDivStyled = styled.div`
   /* color: #221B39; */
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
-    padding-right: 4px;
+    padding-right: 0.4rem;
     box-sizing: border-box;
     order: 1;
-    padding-right: 4px;
+    padding-right: 0.4rem;
   }
 `;
 
 export const PricePStyled = styled.p`
   width: max-content;
   font-weight: 600;
-  text-indent: 4px;
-  padding: 2px 0px;
+  text-indent: 0.4rem;
+  padding: 0.2rem 0px;
   @media screen and (max-width: 385px) {
     letter-spacing: 1px;
   }
@@ -240,7 +240,7 @@ export const DivOfertaStyled = styled.div`
 export const PaiImgOfertaStyled = styled.div`
   width: 100%;
   height: 100%;
-  border-radius: 6px;
+  border-radius: 0.6rem;
   -webkit-user-select: none;
   user-select: none;
   position: relative;
@@ -263,14 +263,14 @@ export const ImgOfertaStyed = styled.img`
   height: 100%;
   width: 100%;
   object-fit: contain;
-  padding: 8px;
+  padding: 0.8rem;
   box-sizing: border-box;
   -webkit-user-select: none;
   user-select: none;
 
   @media screen and (min-width: 993px) {
     height: auto;
-    padding: 4px;
+    padding: 0.4rem;
   }
 
   ${(props) =>
@@ -310,7 +310,7 @@ export const DivAddStyled = styled.div`
   width: 3.2rem;
   height: 3.2rem;
   position: absolute;
-  bottom: 8px;
+  bottom: 0.8rem;
   right: 5%;
   display: flex;
   align-items: center;
@@ -320,7 +320,7 @@ export const DivAddStyled = styled.div`
   cursor: pointer;
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
-    right: 12px;
+    right: 1.2rem;
     bottom: 0;
   }
   ${(props) =>
@@ -345,22 +345,22 @@ export const SpanFewerStyled = styled(SpanMoreStyled)`
 //Botão p selecionar a quantidade
 export const DivQuantStyled = styled.div`
   width: 90%;
-  height: 32px;
+  height: 3.2rem;
   background-color: var(--secondary);
   display: ${(props) => (props.$display ? 'flex' : 'none')};
   justify-content: space-between;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
   position: absolute;
-  bottom: 8px;
+  bottom: 0.8rem;
   right: 5%;
   z-index: 1;
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
     width: 85%;
-    right: 12px;
+    right: 1.2rem;
     bottom: 0;
   }
   transition: opacity 0.4s ease;
@@ -373,7 +373,7 @@ export const DivQuantStyled = styled.div`
 
 export const DivButtonsStyled = styled.div`
   height: 100%;
-  width: 42px;
+  width: 4.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -382,6 +382,6 @@ export const DivButtonsStyled = styled.div`
 
 export const PQuantStyled = styled.p`
   font-weight: 500;
-  padding-bottom: 2px;
+  padding-bottom: 0.2rem;
   color: var(--white-foreground);
 `;

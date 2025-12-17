@@ -5,12 +5,12 @@ export const AnnouncementStyled = styled.div`
   margin: auto;
   display: flex;
   flex-flow: row nowrap;
-  gap: 16px;
+  gap: 1.6rem;
   overflow-x: scroll;
   box-sizing: border-box;
-  padding: 24px;
-  padding-top: 12px;
-  margin-bottom: 4px;
+  padding: 2.4rem;
+  padding-top: 1.2rem;
+  margin-bottom: 0.4rem;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {
@@ -22,10 +22,10 @@ export const AnnouncementStyled = styled.div`
   }
 
   & > div {
-    min-width: 220px;
-    width: 220px;
-    height: 220px;
-    border-radius: 16px;
+    min-width: 22rem;
+    width: 22rem;
+    height: 22rem;
+    border-radius: 1.6rem;
     position: relative;
     overflow: hidden;
     transition: all 0.2s ease;

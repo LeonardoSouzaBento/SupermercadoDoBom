@@ -47,11 +47,11 @@ const WrapperStyled = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 4px;
+    gap: 0.4rem;
     background-color: transparent;
     position: fixed;
     left: 0;
-    bottom: 6px;
+    bottom: 0.6rem;
     z-index: 4;
 
     @media screen and (max-width: 576px) {
@@ -59,26 +59,26 @@ const WrapperStyled = styled.div`
     }
     & > div:first-child {
       width: calc(100% - 16px);
-      max-width: 420px;
-      height: 56px;
-      padding: 6px;
+      max-width: 42rem;
+      height: 5.6rem;
+      padding: 0.6rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
-      border-radius: 12px;
+      border-radius: 1.2rem;
       background-color: var(--primary);
       background-image: linear-gradient(45deg, var(--primary-hover), var(--primary));
       box-shadow: var(--shadow-md);
 
       @media screen and (min-width: 577px) {
-        margin-right: 8px;
+        margin-right: 0.8rem;
       }
     }
   }
   /* espaço para o navbar */
   & > div:last-child {
-    height: 72px;
+    height: 7.2rem;
     width: 100%;
     position: relative;
   }

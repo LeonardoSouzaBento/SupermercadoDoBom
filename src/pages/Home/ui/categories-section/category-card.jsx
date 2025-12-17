@@ -1,17 +1,17 @@
 import styled, { css } from "styled-components";
 
 export const CategoryCardStyled = styled.div`
-  min-width: 116px;
-  width: 116px;
-  max-height: 124px;
-  padding: 12px 0;
+  min-width: 11.6rem;
+  width: 11.6rem;
+  max-height: 12.4rem;
+  padding: 1.2rem 0;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 0.4rem;
   flex: auto;
-  border-radius: 16px;
+  border-radius: 1.6rem;
   cursor: pointer;
   position: relative;
 
@@ -31,8 +31,8 @@ export const CategoryCardStyled = styled.div`
     `}
 
   & > div:first-child {
-    height: 44px;
-    width: 44px;
+    height: 4.4rem;
+    width: 4.4rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,8 +48,8 @@ export const CategoryCardStyled = styled.div`
       `}
   }
   & >div:last-child {
-    height: 48px;
-    width: 48px;
+    height: 4.8rem;
+    width: 4.8rem;
     display: flex;
     justify-content: center;
     align-items: center;

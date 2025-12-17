@@ -201,11 +201,11 @@ export const SubtotalSectionStyled = styled.div`
 //OrderCard
 export const CardContainer = styled.div`
   background: #ffffff;
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: 1.6rem;
+  padding: 2.4rem;
   box-shadow: var(--shadow-lg);
   border: 1px solid #f0f0f0;
-  max-width: 400px;
+  max-width: 40rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
@@ -218,53 +218,53 @@ export const CardContainer = styled.div`
 export const DateTag = styled.div`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: var(--white-foreground);
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 13px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   display: inline-block;
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
   box-shadow: var(--shadow-sm);
   letter-spacing: 0.5px;
 `;
 
 export const StatusBadge = styled.div`
   color: #22c55e;
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  margin-bottom: 12px;
+  margin-bottom: 1.2rem;
 `;
 
 export const PriceSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 `;
 
 export const Price = styled.div`
-  font-size: 28px;
+  font-size: 2.8rem;
   font-weight: 700;
   color: #1f2937;
 `;
 
 export const ItemCount = styled.div`
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #6b7280;
   font-weight: 500;
 `;
 
 export const ItemsList = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 `;
 
 export const ItemRow = styled.div`
-  padding: 12px 0;
+  padding: 1.2rem 0;
   border-bottom: 1px solid #f3f4f6;
   color: #4b5563;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 500;
   
 
@@ -281,16 +281,16 @@ export const ItemRow = styled.div`
 export const DetailsButton = styled.button`
   width: 100%;
   background: transparent;
-  border: 2px solid #e5e7eb;
+  border: 0.2rem solid #e5e7eb;
   color: #374151;
-  padding: 12px 20px;
-  border-radius: 12px;
-  font-size: 14px;
+  padding: 1.2rem 2rem;
+  border-radius: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 0.4rem;
 
   &:hover {
     border-color: #667eea;

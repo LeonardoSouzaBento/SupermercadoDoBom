@@ -20,33 +20,33 @@ const ContainerStyled = styled.div`
 const DivStyled = styled.div`
   width: auto;
   height: auto;
-  min-height: 400px;
-  padding-bottom: 12px;
-  padding-right: 20px;
-  padding-left: 8px;
-  padding-top: 4px;
+  min-height: 40rem;
+  padding-bottom: 1.2rem;
+  padding-right: 2rem;
+  padding-left: 0.8rem;
+  padding-top: 0.4rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 1.4rem;
   overflow-x: scroll;
-  border-radius: 7px;
+  border-radius: 0.7rem;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {
     display: none;
   }
   @media screen and (max-width: 375px) {
-    min-height: 392px;
+    min-height: 39.2rem;
   }
   @media screen and (min-width: 993px) {
-    min-height: 284px;
+    min-height: 28.4rem;
   }
   @media screen and (min-width: 1201px) {
-    padding-right: 8px;
+    padding-right: 0.8rem;
     margin-right: 0;
   }
 `;
@@ -55,17 +55,17 @@ const DivHalfList = styled.div`
   height: auto;
   width: auto;
   display: flex;
-  gap: 14px;
+  gap: 1.4rem;
 `;
 
 const NoProcutsStyed = styled(CentralizeDiv)`
   width: calc(90% - 20px);
-  padding: 12px 0;
+  padding: 1.2rem 0;
   position: absolute;
-  top: 10px;
+  top: 1rem;
   left: 50%;
   transform: translateX(-52%);
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: var(--white-foreground);
 
   @media screen and (min-width: 1201px) {

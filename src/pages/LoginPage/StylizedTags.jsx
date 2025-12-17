@@ -8,13 +8,13 @@ export const PageWrapperStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 0;
+  padding: 2.4rem 0;
   background: linear-gradient(to bottom, var(--background), rgb(243, 244, 246));
 `;
 
 export const ContainerStyled = styled.div`
   width: calc(100% - 28px);
-  max-width: 420px;
+  max-width: 42rem;
   @media screen and (max-width: 375px) {
     width: calc(100% - 16px);
   }
@@ -22,37 +22,37 @@ export const ContainerStyled = styled.div`
 
 export const LogoWrapperStyled = styled.div`
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 3.2rem;
 `;
 
 export const LogoCircleStyled = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 6.4rem;
+  height: 6.4rem;
   box-sizing: border-box;
-  padding-right: 2.2px;
+  padding-right: 0.22rem;
   border-radius: 50%;
   background-color: var(--secondary);
-  margin-bottom: 12px;
+  margin-bottom: 1.2rem;
   box-shadow: var(--shadow-sm);
   transform: scaleX(-1);
 
   & span {
     color: rgba(255, 255, 255, 0.98);
     font-weight: 500;
-    padding-top: 2px;
+    padding-top: 0.2rem;
     padding-left: 1px;
-    font-size: 37px;
+    font-size: 3.7rem;
   }
 `;
 
 export const TitleStyled = styled.h1`
-  font-size: 27.5px;
+  font-size: 2.75rem;
   font-weight: bold;
   color: var(--primary);
-  margin-bottom: 4px;
+  margin-bottom: 0.4rem;
   font-family: Lato, sans-serif;
 `;
 
@@ -63,22 +63,22 @@ export const SubtitleStyled = styled.p`
 
 export const CardStyled = styled.div`
   background: #fff;
-  border-radius: 16px;
+  border-radius: 1.6rem;
   box-shadow: var(--shadow-md);
-  padding: 24px;
+  padding: 2.4rem;
   position: relative;
 `;
 
 export const CardHeaderStyled = styled.header`
-  margin-bottom: 24px;
-  ${(props) => props.$inEmail && 'margin-bottom: 8px;'};
+  margin-bottom: 2.4rem;
+  ${(props) => props.$inEmail && 'margin-bottom: 0.8rem;'};
 `;
 
 export const CardTitleStyled = styled.h2`
   font-family: Lato, sans-serif;
   color: var(--primary);
   text-align: left;
-  margin-bottom: 4px;
+  margin-bottom: 0.4rem;
 `;
 
 export const CardDescriptionStyled = styled.p`
@@ -89,18 +89,18 @@ export const CardDescriptionStyled = styled.p`
 
 export const ButtonStyled = styled(CentralizeDiv)`
   width: 100%;
-  height: 48px;
-  border-radius: 10px;
+  height: 4.8rem;
+  border-radius: 1rem;
   font-family: var(--font-button);
   font-weight: 550;
   color: var(--dark-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.8rem;
   cursor: pointer;
   border: none;
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
   transition: all 0.15s ease;
 
   ${(props) =>
@@ -135,7 +135,7 @@ export const ButtonStyled = styled(CentralizeDiv)`
     border: 1px solid var(--border);
     &:hover { background: #f8fafc; }
   `}
-  ${(props) => props.$reset && 'margin-bottom: 12px;'}
+  ${(props) => props.$reset && 'margin-bottom: 1.2rem;'}
   ${(props) =>
     props.$variant === 'market' &&
     props.$disable &&
@@ -150,23 +150,23 @@ export const ButtonStyled = styled(CentralizeDiv)`
 export const InputWrapperStyled = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 12px;
-  ${(props) => props.$password && 'margin-bottom: 16px;'}
-  ${(props) => props.$email && 'padding-top: 16px;'}
-  ${(props) => props.$reset && 'margin-bottom: 20px;'}
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+  ${(props) => props.$password && 'margin-bottom: 1.6rem;'}
+  ${(props) => props.$email && 'padding-top: 1.6rem;'}
+  ${(props) => props.$reset && 'margin-bottom: 2rem;'}
 
   & p {
     border: 1px solid var(--secondary-hover);
-    outline: 3px solid var(--pink);
+    outline: 0.3rem solid var(--pink);
     color: var(--secondary-hover);
     font-family: var(--font-body);
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     box-sizing: border-box;
-    padding: 8px 0;
-    padding-left: 12px;
-    margin-top: 6px;
+    padding: 0.8rem 0;
+    padding-left: 1.2rem;
+    margin-top: 0.6rem;
   }
 
   & a {
@@ -174,7 +174,7 @@ export const InputWrapperStyled = styled.div`
     font-family: var(--font-body);
     color: #551a8b;
     text-decoration: underline;
-    margin-top: 8px;
+    margin-top: 0.8rem;
     cursor: default;
   }
 `;
@@ -187,18 +187,18 @@ export const LabelStyled = styled.label`
 
 export const InputStyled = styled.input`
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  border-radius: 0.8rem;
   box-sizing: border-box;
   border: 1px solid #cbd5e1;
   font-family: var(--font-body);
   font-weight: 400;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0.3rem rgba(0, 0, 0, 0.05);
 
   &:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.3);
   }
 `;
 
@@ -208,7 +208,7 @@ export const PasswordWrapperStyled = styled.div`
 
 export const TogglePasswordStyled = styled.button`
   position: absolute;
-  right: 10px;
+  right: 1rem;
   top: 50%;
   transform: translateY(-50%);
   background: transparent;
@@ -222,19 +222,19 @@ export const TogglePasswordStyled = styled.button`
 `;
 
 export const SmallTextStyled = styled.p`
-  font-size: 13.5px;
+  font-size: 1.35rem;
   color: #64748b;
   text-align: center;
   font-family: var(--font-header);
-  margin-top: 24px;
+  margin-top: 2.4rem;
 `;
 
 export const VisitorBoxStyled = styled.div`
   text-align: center;
-  padding: 8px;
+  padding: 0.8rem;
   background: var(--background);
-  border-radius: 12px;
-  margin-bottom: 16px;
+  border-radius: 1.2rem;
+  margin-bottom: 1.6rem;
 
   & p {
     color: var(--secondary-hover);

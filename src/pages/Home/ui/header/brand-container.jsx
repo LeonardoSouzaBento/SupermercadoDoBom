@@ -50,13 +50,13 @@ export const BrandContainerStyled = styled.div`
       border-radius: 50%;
       transform: scaleX(-1);
       box-sizing: border-box;
-      padding-right: 2.2px;
-      box-shadow: 0 4px 10px 0px rgba(11, 0, 65, 0.25);
+      padding-right: 0.22rem;
+      box-shadow: 0 0.4rem 1rem 0px rgba(11, 0, 65, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       @media (max-width: 375px) {
-        margin-right: -9px;
+        margin-right: -0.9rem;
       }
       & > span {
         color: var(--white-foreground);
@@ -71,7 +71,7 @@ export const BrandContainerStyled = styled.div`
     & > div:last-child {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 0.4rem;
 
       h1 {
         color: var(--white-foreground);

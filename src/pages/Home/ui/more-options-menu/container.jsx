@@ -23,19 +23,19 @@ export const ContainerStyled = styled.div`
       max-width: none;
     }
     @media screen and (min-width: 375px) and (max-width: 576px) {
-      max-width: 330px;
+      max-width: 33rem;
     }
     @media screen and (min-width: 577px) {
-      max-width: 360px;
+      max-width: 36rem;
     }
     @media screen and (min-width: 993px) {
-      max-width: 390px;
+      max-width: 39rem;
     }
     /* header */
     & > div:first-child {
-      height: 56px;
+      height: 5.6rem;
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
       background-color: var(--primary);
@@ -45,8 +45,8 @@ export const ContainerStyled = styled.div`
       & > h3 {
         width: 100%;
         text-align: left;
-        padding-bottom: 2px;
-        padding-left: 18px;
+        padding-bottom: 0.2rem;
+        padding-left: 1.8rem;
         scale: 0.91;
         color: var(--white-foreground);
       }
@@ -56,22 +56,22 @@ export const ContainerStyled = styled.div`
 `;
 
 export const DivNameSpanStyled = styled.div`
-  height: 48px;
+  height: 4.8rem;
   width: calc(100% - 32px);
   margin: auto;
   box-sizing: border-box;
-  padding-left: 14px;
-  margin-bottom: 12px;
+  padding-left: 1.4rem;
+  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 1.2rem;
   cursor: pointer;
-  border-radius: 4px;
-  ${(props) => props.$logout && 'margin-top: 25px;'}
+  border-radius: 0.4rem;
+  ${(props) => props.$logout && 'margin-top: 2.5rem;'}
 
   & p {
-    padding-right: 12px;
+    padding-right: 1.2rem;
     font-family: var(--font-button);
     font-weight: 550;
     user-select: none;
@@ -84,14 +84,14 @@ export const DivNameSpanStyled = styled.div`
 
 export const DivSpanStyled = styled(CentralizeDiv)`
   width: max-content;
-  height: 56px;
-  border-radius: 28px;
+  height: 5.6rem;
+  border-radius: 2.8rem;
   flex: none;
   cursor: pointer;
 
   & span {
     font-weight: 550;
-    font-size: 22.5px;
+    font-size: 2.25rem;
     font-variation-settings: 'FILL' 1, 'GRAD' 12, 'opsz' 30;
     color: var(--primary);
     user-select: none;

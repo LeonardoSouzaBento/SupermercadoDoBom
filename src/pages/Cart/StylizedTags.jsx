@@ -8,12 +8,12 @@ export const MainStyled = styled.div`
   position: relative;
   opacity: ${(props) => props.$opacity};
   transition: opacity 0.5s ease;
-  padding-bottom: 32px;
+  padding-bottom: 3.2rem;
 
   &::after {
     content: '';
     width: 100%;
-    height: 6px;
+    height: 0.6rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -45,22 +45,22 @@ export const CartSectionStyed = styled.section`
     width: calc(100% - 16px);
   }
   @media screen and (max-width: 596px) {
-    max-width: 400px;
+    max-width: 40rem;
   }
   @media screen and (min-width: 596px) and (max-width: 768px) {
-    max-width: 575px;
+    max-width: 57.5rem;
   }
 
   @media screen and (min-width: 769px) {
-    height: 500px;
-    width: 724px;
+    height: 50rem;
+    width: 72.4rem;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
       display: none;
     }
-    margin-bottom: 16px;
+    margin-bottom: 1.6rem;
   }
   @media screen and (min-width: 993px) {
     max-width: calc(100% - 64px);
@@ -95,7 +95,7 @@ export const DivSpanDeleteStyled = styled(CentralizeDiv)`
   position: absolute;
   top: 0.8rem;
   right: 0.8rem;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: var(--bluish-white);
   transition: all 0.15s ease;
   color: var(--primary);
@@ -121,11 +121,11 @@ export const ShadowStyled = styled.div`
   left: 0;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0));
   background-size: 100% 100%;
-  border-radius: 0 0px 10px 10px;
+  border-radius: 0 0px 1rem 1rem;
 
   @media screen and (min-width: 769px) {
     width: calc(100% - 31px);
-    margin-left: 15px;
+    margin-left: 1.5rem;
   }
   @media screen and (min-width: 993px) {
     display: none;
@@ -133,12 +133,12 @@ export const ShadowStyled = styled.div`
 `;
 
 export const DivSeeAllStyled = styled.div`
-  height: 49px;
+  height: 4.9rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 0.2rem;
   position: absolute;
   bottom: -1px;
   left: 0;
@@ -159,13 +159,13 @@ export const DivSeeAllStyled = styled.div`
   }
 
   & span {
-    padding-top: 2px;
+    padding-top: 0.2rem;
 
     @media screen and (min-width: 385px) and (max-width: 576px) {
-      padding-top: 2.5px;
+      padding-top: 0.25rem;
     }
     @media screen and (min-width: 577px) and (max-width: 768px) {
-      padding-top: 3px;
+      padding-top: 0.3rem;
     }
   }
 `;
@@ -179,7 +179,7 @@ export const ContinueSectionStyled = styled.div`
     width: max-content;
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: 1.6rem;
   }
 `;
 
@@ -191,11 +191,11 @@ export const ContainerStyled = styled.section`
   }
   @media screen and (max-width: 768px) {
     width: calc(100% - 28px);
-    max-width: 400px;
+    max-width: 40rem;
   }
   @media screen and (min-width: 769px) {
     width: 50%;
-    max-width: 370px;
+    max-width: 37rem;
     margin: 0;
     flex: auto;
   }
@@ -204,11 +204,11 @@ export const ContainerStyled = styled.section`
 export const SectionStyled = styled.section`
   height: auto;
   width: 100%;
-  height: 230px;
-  padding: 20px;
-  padding-top: 10px;
+  height: 23rem;
+  padding: 2rem;
+  padding-top: 1rem;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -216,22 +216,22 @@ export const SectionStyled = styled.section`
   align-items: flex-end;
   box-sizing: border-box;
   background-color: var(--white-foreground);
-  border-radius: 12px;
+  border-radius: 1.2rem;
   box-shadow: var(--shadow-md);
   overflow: hidden;
   position: relative;
   transition: all 0.15s ease;
 
   @media screen and (min-width: 769px) {
-    margin-bottom: 16px;
+    margin-bottom: 1.6rem;
   }
 `;
 
 /*cabeçalho das divs*/
 export const HeaderH2Styled = styled.header`
-  height: 48px;
+  height: 4.8rem;
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -240,7 +240,7 @@ export const HeaderH2Styled = styled.header`
   ${(props) =>
     props.$cart &&
     css`
-      gap: 8px;
+      gap: 0.8rem;
       width: calc(100% - 40px);
       margin: auto;
     `}
@@ -253,14 +253,14 @@ export const H2Styled = styled.h3`
 
 export const ReceiptOptionStyled = styled.div`
   width: 100%;
-  height: 44px;
-  margin-bottom: 8px;
+  height: 4.4rem;
+  margin-bottom: 0.8rem;
   box-sizing: border-box;
-  padding: 0 16px;
+  padding: 0 1.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: var(--white-foreground);
   transition: all 0.15s ease;
   cursor: pointer;
@@ -276,7 +276,7 @@ export const ReceiptOptionStyled = styled.div`
       }
     `}
 
-  ${(props) => props.$variant === 'retirar' && 'padding: 8px 16px;'};
+  ${(props) => props.$variant === 'retirar' && 'padding: 0.8rem 1.6rem;'};
   ${(props) => props.$variant === 'entregar' && 'margin-bottom: 0;'}
 `;
 
@@ -297,11 +297,11 @@ export const DivAvisoStyled = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  padding: 8px 16px;
+  padding: 0.8rem 1.6rem;
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   background-color: var(--secondary);
   overflow: hidden;
   scale: ${(props) => props.$scale};
@@ -309,13 +309,13 @@ export const DivAvisoStyled = styled.div`
 
   @media screen and (min-width: 769px) {
     margin: 0;
-    margin-bottom: 12px;
+    margin-bottom: 1.2rem;
   }
 `;
 
 export const DivAllValuesStyled = styled.div`
   width: 100%;
-  height: 136px;
+  height: 13.6rem;
   margin: auto;
   display: flex;
   flex-flow: row wrap;
@@ -325,9 +325,9 @@ export const DivAllValuesStyled = styled.div`
 
   & div:not(#warn) {
     width: 100%;
-    height: 44px;
+    height: 4.4rem;
     box-sizing: border-box;
-    padding: 0 16px;
+    padding: 0 1.6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -338,12 +338,12 @@ export const DivAllValuesStyled = styled.div`
 
 export const ButtonContinueStyled = styled.div`
   width: 100%;
-  height: 48px;
+  height: 4.8rem;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   cursor: pointer;
   transition: background-color 0.15s ease;
   color: var(--white-foreground);
@@ -371,14 +371,14 @@ export const ButtonContinueStyled = styled.div`
 export const DivAddStyled = styled.div`
   width: 100%;
   margin: auto;
-  margin-bottom: 20px;
-  height: 48px;
+  margin-bottom: 2rem;
+  height: 4.8rem;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 1.2rem;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: var(--white-foreground);
   transition: all 0.1s ease;
   cursor: pointer;
@@ -403,11 +403,11 @@ export const ContainerDialogStyled = styled.div`
 
 export const DivDialogStyled = styled.div`
   width: calc(100% - 16px);
-  max-width: 300px;
-  padding-bottom: 16px;
-  margin-right: 12px;
-  margin-top: 12px;
-  border-radius: 12px;
+  max-width: 30rem;
+  padding-bottom: 1.6rem;
+  margin-right: 1.2rem;
+  margin-top: 1.2rem;
+  border-radius: 1.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -421,9 +421,9 @@ export const DivDialogStyled = styled.div`
   position: relative;
 
   & span {
-    font-size: 40px;
-    padding: 5px;
-    margin-bottom: 12px;
+    font-size: 4rem;
+    padding: 0.5rem;
+    margin-bottom: 1.2rem;
     color: var(--dark-primary);
     font-weight: 700;
     background-color: var(--light-green);
@@ -444,8 +444,8 @@ export const DivToCoverStyled = styled.div`
 
 export const DivQuestionStyled = styled(CentralizeDiv)`
   width: 100%;
-  height: 56px;
-  margin-bottom: 16px;
+  height: 5.6rem;
+  margin-bottom: 1.6rem;
   background-color: var(--white-foreground);
   ${(props) => !props.$feedback && 'border-bottom: 1px solid var(--light-border);'}
   ${(props) => props.$feedback && 'background-color: var(--dark-green);'}
@@ -464,9 +464,9 @@ export const DivSimNaoStyled = styled.div`
 `;
 
 export const ButtonStyled = styled(CentralizeDiv)`
-  height: 48px;
+  height: 4.8rem;
   width: calc(100% - 32px);
-  border-radius: 8px;
+  border-radius: 0.8rem;
   overflow: hidden;
   cursor: pointer;
   color: var(--white-foreground);
@@ -480,7 +480,7 @@ export const ButtonStyled = styled(CentralizeDiv)`
   ${(props) =>
     props.$voltar &&
     css`
-      margin-top: 12px;
+      margin-top: 1.2rem;
       color: var(--black-foreground);
       background-color: var(--background);
       &:hover {
@@ -491,10 +491,10 @@ export const ButtonStyled = styled(CentralizeDiv)`
   & p {
     font-family: var(--font-button);
     font-weight: 550;
-    padding-bottom: 2px;
+    padding-bottom: 0.2rem;
     text-align: center;
     letter-spacing: 0.72px;
-    border-radius: 4px;
+    border-radius: 0.4rem;
   }
 `;
 
@@ -506,7 +506,7 @@ export const PAvisoStyled = styled.p`
 export const PValueStyled = styled.p`
   font-weight: 450;
   cursor: default;
-  padding-bottom: 2px;
+  padding-bottom: 0.2rem;
   ${(props) => props.$selected && 'font-weight: 600;'}
   ${(props) =>
     props.$email &&
@@ -553,13 +553,13 @@ export const BodyAlertStyled = styled.div`
   opacity: ${(props) => props.$opacity};
 
   & div {
-    height: 230px;
-    width: 350px;
-    padding: 20px;
+    height: 23rem;
+    width: 35rem;
+    padding: 2rem;
     box-sizing: border-box;
     background-color: var(--secondary);
     position: relative;
-    border-radius: 12px;
+    border-radius: 1.2rem;
     overflow: hidden;
     display: flex;
     justify-content: center;

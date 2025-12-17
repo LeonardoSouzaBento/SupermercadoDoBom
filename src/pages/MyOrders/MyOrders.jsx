@@ -8,9 +8,9 @@ const DivStyled = styled(CentralizeDiv)`
 `;
 
 const PStyled = styled.p`
-  padding: 16px 24px;
+  padding: 1.6rem 2.4rem;
   background-color: var(--white-foreground);
-  border-radius: 12px;
+  border-radius: 1.2rem;
   color: var(--dark-primary);
   box-shadow: var(--shadow-xs);
 `;

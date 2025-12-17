@@ -7,15 +7,15 @@ import { HomeDivsContext } from "@contexts/HomeDivsContext";
 const DivStyled = styled.div`
   width: auto;
   height: max-content;
-  margin-bottom: 12px;
+  margin-bottom: 1.2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: flex-start;
-  gap: 12px;
+  gap: 1.2rem;
   flex-wrap: wrap;
   box-sizing: border-box;
-  border-radius: 7px;
+  border-radius: 0.7rem;
   overflow-x: scroll;
   position: relative;
   scrollbar-width: none; /* Firefox */
@@ -25,19 +25,19 @@ const DivStyled = styled.div`
   }
 
   @media screen and (max-width: 385px) {
-    gap: 11px;
+    gap: 1.1rem;
   }
 
   ${(props) =>
     props.$variant == "search" &&
     css`
-      padding-bottom: 12px;
+      padding-bottom: 1.2rem;
       @media screen and (min-width: 385px) and (max-width: 414px) {
         justify-content: center;
-        gap: 12px;
+        gap: 1.2rem;
       }
       @media screen and (min-width: 414px) and (max-width: 577px) {
-        width: 414px;
+        width: 41.4rem;
         margin: auto;
       }
       @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -46,7 +46,7 @@ const DivStyled = styled.div`
       }
       @media screen and (min-width: 768px) {
         justify-content: flex-start;
-        padding-left: 24px;
+        padding-left: 2.4rem;
       }
       @media screen and (min-width: 768px) and (max-width: 993px) {
         max-width: 95%;
@@ -56,25 +56,25 @@ const DivStyled = styled.div`
     props.$variant === "cart" &&
     css`
       justify-content: flex-start !important;
-      padding-top: 8px;
+      padding-top: 0.8rem;
       margin-bottom: 0;
       gap: 0;
       margin: auto;
 
       @media screen and (max-width: 385px) {
-        width: 275px;
+        width: 27.5rem;
       }
       @media screen and (min-width: 385px) and (max-width: 596px) {
-        width: 346px;
+        width: 34.6rem;
       }
       @media screen and (min-width: 596px) and (max-width: 768px) {
-        width: 517px;
+        width: 51.7rem;
       }
       @media screen and (min-width: 769px) and (max-width: 992px) {
-        width: 688px;
+        width: 68.8rem;
       }
       @media screen and (min-width: 993px) {
-        padding-left: 20px;
+        padding-left: 2rem;
       }
     `}
 `;
@@ -82,15 +82,15 @@ const DivStyled = styled.div`
 // const BorderDivStyled = styled.div`
 //     width: auto;
 //   height: max-content;
-//   margin-bottom: 12px;
+//   margin-bottom: 1.2rem;
 //   display: flex;
 //   flex-direction: row;
 //   justify-content: center;
 //   align-content: flex-start;
-//   gap: 12px;
+//   gap: 1.2rem;
 //   flex-wrap: wrap;
 //   box-sizing: border-box;
-//   border-radius: 7px;
+//   border-radius: 0.7rem;
 //   overflow-x: scroll;
 //   position: relative;
 //   scrollbar-width: none; /* Firefox */
@@ -100,7 +100,7 @@ const DivStyled = styled.div`
 //   }
 
 //   @media screen and (max-width: 385px) {
-//     gap: 11px;
+//     gap: 1.1rem;
 //   }
 
 //   ${(props) =>
@@ -108,10 +108,10 @@ const DivStyled = styled.div`
 //     css`
 //       @media screen and (min-width: 385px) and (max-width: 414px) {
 //         justify-content: center;
-//         gap: 12px;
+//         gap: 1.2rem;
 //       }
 //       @media screen and (min-width: 414px) and (max-width: 577px) {
-//         width: 414px;
+//         width: 41.4rem;
 //         margin: auto;
 //       }
 //       @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -120,7 +120,7 @@ const DivStyled = styled.div`
 //       }
 //       @media screen and (min-width: 768px) {
 //         justify-content: flex-start;
-//         padding-left: 24px;
+//         padding-left: 2.4rem;
 //       }
 //       @media screen and (min-width: 768px) and (max-width: 993px) {
 //         max-width: 95%;
@@ -129,7 +129,7 @@ const DivStyled = styled.div`
 //   ${(props) =>
 //     props.$variant === "cart" &&
 //     css`
-//       padding-top: 12px;
+//       padding-top: 1.2rem;
 //       margin-bottom: 0;
 //       gap: 0;
 //       border: 1px solid rgb(0, 0, 0);

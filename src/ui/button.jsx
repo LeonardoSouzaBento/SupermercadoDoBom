@@ -12,10 +12,10 @@ const StyledButton = styled.button`
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   &:focus-visible {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--focus-ring-color, currentColor),
-      0 0 0 4px var(--focus-ring-offset-color, currentColor);
+    outline: 0.2rem solid transparent;
+    outline-offset: 0.2rem;
+    box-shadow: 0 0 0 0.2rem var(--focus-ring-color, currentColor),
+      0 0 0 0.4rem var(--focus-ring-offset-color, currentColor);
   }
 
   ${({ $customStyles }) => $customStyles}
@@ -41,7 +41,7 @@ const StyledButton = styled.button`
       case 'outline':
         return css`
           color: var(--primary);
-          border: 1.5px solid var(--primary);
+          border: 0.15rem solid var(--primary);
           background-color: transparent;
         `;
       case 'ghost':

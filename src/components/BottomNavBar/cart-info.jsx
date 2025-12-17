@@ -6,13 +6,13 @@ import styled from "styled-components";
 import { PricePStyled } from "@components/Product/ProductItem&List/StylizedTags";
 
 const DivCartInfoStyled = styled.div`
-  height: 44px;
+  height: 4.4rem;
   width: max-content;
-  padding: 0 12px;
+  padding: 0 1.2rem;
   display: flex;
   align-items: center;
-  gap: 6px;
-  border-radius: 8px;
+  gap: 0.6rem;
+  border-radius: 0.8rem;
   color: var(--white-foreground);
   background-color: var(--secondary);
 
@@ -28,11 +28,11 @@ const DivCartInfoStyled = styled.div`
   & span {
     font-variation-settings: "FILL" 1, "wght" 350, "GRAD" 12, "opsz" 30;
     
-    padding-top: 2px;
+    padding-top: 0.2rem;
   }
   & > p {
     scale: 1.03;
-    padding-bottom: 2px;
+    padding-bottom: 0.2rem;
     letter-spacing: 0.75px;
     font-weight: 450;
   }

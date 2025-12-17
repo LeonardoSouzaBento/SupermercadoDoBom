@@ -211,9 +211,9 @@ const EmailForm = ({
         {exceptionalPasswordAlert && <p>A senha de exemplo não é permitida!</p>}
       </InputWrapperStyled>
 
-      <PValueStyled style={{ marginBottom: "16px" }} $email={true}>
+      <PValueStyled style={{ marginBottom: "1.6rem" }} $email={true}>
         Exemplo de senha recomendada:{" "}
-        <strong style={{ fontWeight: 600, marginBottom: "16px" }}>
+        <strong style={{ fontWeight: 600, marginBottom: "1.6rem" }}>
           J@iro450Love
         </strong>
       </PValueStyled>

@@ -1,11 +1,11 @@
-import styled, { css } from "styled-components";
-import { CentralizeDiv } from "../GenericStylizedTags";
+import styled, { css } from 'styled-components';
+import { CentralizeDiv } from '../GenericStylizedTags';
 
 export const ContainerForFormStyled = styled.div`
   width: 100%;
   height: max-content;
-  padding-top: 2px;
-  padding-bottom: 14px;
+  padding-top: 0.2rem;
+  padding-bottom: 1.4rem;
   position: relative;
   z-index: 4;
   box-sizing: border-box;
@@ -14,16 +14,16 @@ export const ContainerForFormStyled = styled.div`
     props.$copy === false &&
     css`
       @media screen and (min-width: 769px) {
-        padding-top: 13px;
+        padding-top: 1.3rem;
       }
     `}
 
   ${(props) =>
     props.$copy &&
     css`
-      padding-top: 16px;
-      padding-bottom: 16px;
-      margin-bottom: 12px;
+      padding-top: 1.6rem;
+      padding-bottom: 1.6rem;
+      margin-bottom: 1.2rem;
       position: sticky;
       top: 0;
       left: 0;
@@ -32,7 +32,7 @@ export const ContainerForFormStyled = styled.div`
 
       @media screen and (min-width: 769px) {
         justify-content: flex-start;
-        padding-left: 24px;
+        padding-left: 2.4rem;
       }
     `}
 `;
@@ -45,7 +45,7 @@ export const FormStyled = styled.form`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  border-radius: 24px;
+  border-radius: 2.4rem;
   overflow: hidden;
   position: relative;
   box-shadow: var(--shadow-sm);
@@ -55,20 +55,20 @@ export const FormStyled = styled.form`
     props.$copy &&
     css`
       width: 91.5%;
-      max-width: 684px;
+      max-width: 68.4rem;
       margin: 0;
-      border-radius: 8px;
+      border-radius: 0.8rem;
       box-shadow: var(--shadow-sm);
     `}
 `;
 
 export const InputStyled = styled.input`
   width: 100%;
-  height: 48px;
+  height: 4.8rem;
   box-sizing: border-box;
-  padding-bottom: 2px;
+  padding-bottom: 0.2rem;
   touch-action: auto;
-  text-indent: 16px;
+  text-indent: 1.6rem;
   font-weight: 400;
   letter-spacing: 0.71px;
   color: var(--black-foreground);
@@ -79,7 +79,7 @@ export const InputStyled = styled.input`
   ${(props) =>
     props.$copy === false &&
     css`
-      text-indent: 20px;
+      text-indent: 2rem;
     `}
 
   &:focus {
@@ -91,18 +91,12 @@ export const InputStyled = styled.input`
     -webkit-appearance: none;
     appearance: none;
   }
-  
-  
-  
-  
-  
-  
 `;
 
 export const DivSpanStyled = styled(CentralizeDiv)`
   height: 100%;
-  width: 48px;
-  padding-bottom: 2px;
+  width: 4.8rem;
+  padding-bottom: 0.2rem;
   box-sizing: border-box;
   position: absolute;
   bottom: 0;
@@ -113,12 +107,12 @@ export const DivSpanStyled = styled(CentralizeDiv)`
   ${(props) =>
     props.$copy === false &&
     css`
-      height: 40px;
-      width: 40px;
+      height: 4rem;
+      width: 4rem;
       box-sizing: border-box;
-      padding-left: 2px;
-      margin-bottom: 4px;
-      margin-right: 8px;
+      padding-left: 0.2rem;
+      margin-bottom: 0.4rem;
+      margin-right: 0.8rem;
       border-radius: 50%;
       color: var(--primary);
       &:hover {
@@ -136,7 +130,6 @@ export const DivSpanStyled = styled(CentralizeDiv)`
 `;
 
 export const SpanSearchStyled = styled.span`
-  
   font-weight: 600;
 `;
 
@@ -144,18 +137,18 @@ export const DivMsgStyled = styled.div`
   background-color: blue;
   height: max-content;
   width: max-content;
-  border-radius: 7px;
-  padding: 0 16px;
+  border-radius: 0.7rem;
+  padding: 0 1.6rem;
   position: absolute;
-  bottom: -32px;
+  bottom: -3.2rem;
   left: 4%;
   z-index: 4;
 
   @media screen and (max-width: 375px) {
-    max-width: 260px;
+    max-width: 26rem;
   }
   @media screen and (max-width: 768px) {
-    max-width: 308px;
+    max-width: 30.8rem;
   }
   @media screen and (min-width: 993px) {
     left: 4.2%;
@@ -163,58 +156,52 @@ export const DivMsgStyled = styled.div`
 `;
 
 export const PointedShapeStyed = styled.div`
-  height: 10px;
-  width: 10px;
+  height: 1rem;
+  width: 1rem;
   background-color: blue;
   rotate: 45deg;
-  border: 4px;
+  border: 0.4rem;
   position: absolute;
-  top: -5px;
-  left: 16px;
+  top: -0.5rem;
+  left: 1.6rem;
 `;
 
 export const PMsgStyled = styled.p`
   color: var(--white-foreground);
-  padding: 6px 0px;
-  padding-bottom: 8px;
-
-  
-  
-  
-  
-  
+  padding: 0.6rem 0px;
+  padding-bottom: 0.8rem;
 `;
 
 export const CompletionsDivStyled = styled.div`
   width: 100%;
   height: auto;
-  padding-right: 16px;
+  padding-right: 1.6rem;
   box-sizing: border-box;
   display: flex;
   justify-content: flex-end;
   position: absolute;
-  top: 72px;
-  ${(props) => props.$copy == true && "top: 82px;"}
+  top: 7.2rem;
+  ${(props) => props.$copy == true && 'top: 8.2rem;'}
   left: 0%;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
   flex-flow: row wrap;
   background-color: var(--white-foreground);
   background-color: transparent;
 
   @media screen and (max-width: 375px) {
-    gap: 4px;
-    padding-right: 8px;
+    gap: 0.4rem;
+    padding-right: 0.8rem;
   }
   @media screen and (max-width: 768px) {
-    ${(props) => props.$copy == false && "top:62px;"};
+    ${(props) => props.$copy == false && 'top:6.2rem;'};
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    ${(props) => props.$copy && "padding-right: 28px;"};
+    ${(props) => props.$copy && 'padding-right: 2.8rem;'};
   }
   @media screen and (min-width: 769px) {
     justify-content: flex-start;
-    ${(props) => props.$copy && "padding: 0 0px 0px 20px;"};
+    ${(props) => props.$copy && 'padding: 0 0px 0px 2rem;'};
   }
   @media screen and (min-width: 1201px) {
     left: 4.5%;
@@ -223,10 +210,10 @@ export const CompletionsDivStyled = styled.div`
 
 export const DivOnePStyled = styled(CentralizeDiv)`
   width: max-content;
-  height: 48px;
-  padding: 0 16px;
+  height: 4.8rem;
+  padding: 0 1.6rem;
   flex: none;
-  border-radius: 24px;
+  border-radius: 2.4rem;
   background-color: var(--primary-hover);
   box-shadow: var(--shadow-sm);
   color: var(--white-foreground);
@@ -235,7 +222,7 @@ export const DivOnePStyled = styled(CentralizeDiv)`
   overflow: hidden;
 
   @media screen and (max-width: 375px) {
-    padding: 0 12px;
+    padding: 0 1.2rem;
   }
 `;
 
@@ -261,21 +248,15 @@ export const PStyled = styled.p`
   font-weight: 600;
 
   @media screen and (max-width: 375px) {
-    
-    letter-spacing: 1.01px;
+    letter-spacing: 0.1rem;
   }
   @media screen and (min-width: 375px) and (max-width: 576px) {
-    
-    letter-spacing: 1.05px;
+    letter-spacing: 0.11rem;
   }
   @media screen and (min-width: 577px) and (max-width: 768px) {
-    
-    letter-spacing: 1.06px;
+    letter-spacing: 0.11rem;
   }
   @media screen and (min-width: 769px) {
-    
-    letter-spacing: 1.06px;
+    letter-spacing: 0.11rem;
   }
 `;
-
-

@@ -220,7 +220,7 @@ export const Contact = () => {
         <div
           style={{
             border: "1px solid var(--border)",
-            borderRadius: "6px",
+            borderRadius: "0.6rem",
           }}
         >
           <DivZapStyled $seeInput={seeInput}>

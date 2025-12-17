@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const HeaderStyled = styled.header`
   width: 100%;
-  height: 60px;
+  height: 6rem;
   background-color: var(--primary);
   display: flex;
   align-items: center;
@@ -18,15 +18,15 @@ export const H1Styled = styled(H1BaseStyled)`
   }
   @media screen and (min-width: 375px) {
     width: calc(100% - 28px);
-    max-width: 520px;
+    max-width: 52rem;
   }
   @media screen and (min-width: 993px) and (max-width: 1085px) {
     width: max-content;
     margin: 0;
-    margin-left: 16px;
+    margin-left: 1.6rem;
   }
   @media screen and (min-width: 1085px) {
-    max-width: 1056px;
+    max-width: 105.6rem;
   }
 `;
 
@@ -38,15 +38,15 @@ export const MainStyled = styled.main`
   @media screen and (min-width: 993px) {
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
-    padding: 0 17px;
+    gap: 2rem;
+    padding: 0 1.7rem;
     box-sizing: border-box;
   }
 
   &::after {
     content: '';
     width: 100%;
-    height: 6px;
+    height: 0.6rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -58,7 +58,7 @@ export const MainStyled = styled.main`
 export const DivOneTwoStyled = styled.div`
   height: auto;
   width: 100%;
-  max-width: 520px;
+  max-width: 52rem;
   margin: auto;
 
   @media screen and (max-width: 375px) {
@@ -77,15 +77,15 @@ export const DivOneStyled = styled.div`
   width: 100%;
   height: max-content;
   margin: auto;
-  padding: 20px;
+  padding: 2rem;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.8rem;
   background-color: var(--white-foreground);
-  border-radius: 12px;
+  border-radius: 1.2rem;
   box-shadow: var(--shadow-md);
   ${(props) => props.$orders && 'padding-top: 0;'}
 `;
@@ -93,13 +93,13 @@ export const DivOneStyled = styled.div`
 export const UserHeaderDivStyled = styled.div`
   width: 100%;
   margin: auto;
-  padding: 16px;
+  padding: 1.6rem;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 0.6rem;
   position: relative;
 `;
 
@@ -107,7 +107,7 @@ export const DivImgEmailStyled = styled.div`
   width: max-content;
   box-sizing: border-box;
   display: flex;
-  gap: 12px;
+  gap: 1.2rem;
 
   @media screen and (max-width: 512px) {
     flex-direction: column;
@@ -115,11 +115,11 @@ export const DivImgEmailStyled = styled.div`
 `;
 
 export const ButtonLoginStyled = styled(CentralizeDiv)`
-  height: 48px;
+  height: 4.8rem;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 2rem;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: var(--primary);
   color: var(--white-foreground);
   cursor: pointer;
@@ -136,8 +136,8 @@ export const PLoginStlyed = styled.p`
 `;
 
 export const DivImgUserStyled = styled(CentralizeDiv)`
-  height: 58px;
-  width: 58px;
+  height: 5.8rem;
+  width: 5.8rem;
   border-radius: 50%;
   overflow: hidden;
   background-color: #ecf0f5;
@@ -161,7 +161,7 @@ export const DivNameEmailStyled = styled.header`
 
 export const DivEmailUserStyled = styled.div`
   display: flex;
-  gap: 4px;
+  gap: 0.4rem;
 `;
 
 export const DivTwoStyled = styled(DivOneStyled)`
@@ -179,7 +179,7 @@ export const DivTwoStyled = styled(DivOneStyled)`
 
 export const DivThreeButtonStyled = styled.div`
   width: 100%;
-  max-width: 520px;
+  max-width: 52rem;
   margin: auto;
 
   @media screen and (max-width: 375px) {
@@ -198,27 +198,27 @@ export const DivThreeStyled = styled.div`
   height: max-content;
   width: 100%;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: relative;
   background-color: var(--white-foreground);
-  border-radius: 12px;
+  border-radius: 1.2rem;
   box-shadow: var(--shadow-md);
 `;
 
 export const DivH2StatusStyled = styled.div`
   width: 100%;
-  padding-right: 20px;
+  padding-right: 2rem;
   box-sizing: border-box;
   display: flex;
   ${(props) => props.$orders && 'padding-right: 0;'}
 
   @media screen and (max-width: 520px) {
     flex-direction: column;
-    margin-bottom: 8px;
+    margin-bottom: 0.8rem;
   }
   @media screen and (min-width: 520px) and (max-width: 993px) {
     flex-direction: row;
@@ -227,7 +227,7 @@ export const DivH2StatusStyled = styled.div`
   }
   @media screen and (min-width: 993px) and (max-width: 1058px) {
     flex-direction: column;
-    margin-bottom: 8px;
+    margin-bottom: 0.8rem;
   }
   @media screen and (min-width: 1058px) {
     flex-direction: row;
@@ -237,11 +237,11 @@ export const DivH2StatusStyled = styled.div`
 `;
 
 export const HeaderH2Styled = styled.header`
-  height: 56px;
+  height: 5.6rem;
   width: 100%;
   box-sizing: border-box;
-  padding-left: 16px;
-  margin-bottom: 4px;
+  padding-left: 1.6rem;
+  margin-bottom: 0.4rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -256,10 +256,10 @@ export const SpanH2Styled = styled.span`
   font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 22;
   cursor: default;
   color: var(--primary);
-  margin-right: 8px;
+  margin-right: 0.8rem;
 
-  ${(props) => props.$smaller && 'font-size: 21px;'}
-  ${(props) => props.$bigger && 'font-size: 25px;'}
+  ${(props) => props.$smaller && 'font-size: 2.1rem;'}
+  ${(props) => props.$bigger && 'font-size: 2.5rem;'}
   ${(props) =>
     props.$user &&
     css`
@@ -282,14 +282,14 @@ export const H2v2Styled = styled.h3`
     props.$nameUser &&
     css`
       scale: 1.04;
-      margin-left: 4px;
+      margin-left: 0.4rem;
       width: 100%;
     `};
 `;
 
 export const DivStatusStyled = styled.div`
   width: 100%;
-  padding-left: 20px;
+  padding-left: 2rem;
   box-sizing: border-box;
   display: flex;
 
@@ -305,7 +305,7 @@ export const DivStatusStyled = styled.div`
       (props.$finish || props.$contact) &&
       css`
         justify-content: flex-start;
-        margin-left: 20px;
+        margin-left: 2rem;
         ${(props) => props.$finish && 'margin-left: 0;'}
       `}
   }
@@ -336,50 +336,50 @@ export const DivStatusStyled = styled.div`
 `;
 
 export const DivNameStatus = styled.div`
-  height: 24px;
+  height: 2.4rem;
   width: max-content;
-  padding-bottom: 3px;
-  padding-left: 2px;
+  padding-bottom: 0.3rem;
+  padding-left: 0.2rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 4px;
+  gap: 0.4rem;
   background-color: var(--secondary-hover);
   color: var(--white-foreground);
-  border-radius: 14px;
+  border-radius: 1.4rem;
 `;
 
 export const SpanStatusStyled = styled.span`
   font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
   background-color: rgba(0, 0, 0, 0.3);
   color: var(--white-foreground);
-  padding: 4px;
-  margin-top: 2px;
+  padding: 0.4rem;
+  margin-top: 0.2rem;
   border-radius: 50%;
-  font-size: 16px;
+  font-size: 1.6rem;
 `;
 
 export const NameStatusStyled = styled.p`
-  margin-right: 6px;
+  margin-right: 0.6rem;
   ${(props) => props.$email && 'color: var(--black-foreground);'}
 `;
 
 export const SpanCheckStyled = styled.span`
   position: absolute;
-  top: 16px;
-  right: 20px;
-  padding: 4px;
+  top: 1.6rem;
+  right: 2rem;
+  padding: 0.4rem;
   border-radius: 50%;
   background-color: var(--light-green);
   color: var(--primary);
   z-index: 2;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 700;
 `;
 
 export const DivStyled = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 2rem;
   padding-top: 0;
   box-sizing: border-box;
 `;
@@ -397,7 +397,7 @@ export const H3Styled = styled.h3`
     css`
       font-family: var(--font-button);
       text-align: center;
-      padding-right: 26px;
+      padding-right: 2.6rem;
     `}
 `;
 
@@ -413,25 +413,25 @@ export const Pv2Styled = styled.p`
     css`
       font-family: var(--font-button);
       text-align: center;
-      padding-right: 26px;
+      padding-right: 2.6rem;
     `}
 `;
 
 export const DivInvalidWarnStyled = styled.div`
   width: calc(100% - 32px);
   height: auto;
-  padding: 8px 20px;
+  padding: 0.8rem 2rem;
   background-color: var(--secondary-hover);
-  border-radius: 4px;
+  border-radius: 0.4rem;
   margin: auto;
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
   box-sizing: border-box;
 `;
 
 export const DivZapStyled = styled.div`
   max-width: 100%;
   box-sizing: border-box;
-  padding: 16px;
+  padding: 1.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -442,28 +442,28 @@ export const DivZapStyled = styled.div`
 
 export const DivZapAndDivPhone = styled.div`
   width: 100%;
-  height: 40px;
-  padding: 0 16px;
-  margin-bottom: 16px;
+  height: 4rem;
+  padding: 0 1.6rem;
+  margin-bottom: 1.6rem;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  gap: 0.8rem;
   ${(props) => !props.$visible && 'display: none;'}
 
   @media screen and (max-width: 576px) {
     flex-direction: column;
-    height: 88px;
-    gap: 8px;
+    height: 8.8rem;
+    gap: 0.8rem;
   }
 `;
 
 export const DivZapOrPhone = styled(CentralizeDiv)`
   height: 100%;
   width: calc(100% - 16px);
-  padding-left: 12px;
-  padding-right: 6px;
-  border-radius: 4px;
+  padding-left: 1.2rem;
+  padding-right: 0.6rem;
+  border-radius: 0.4rem;
   border: 1px solid var(--light-border);
   ${(props) => props.$selected && 'background-color: var(--background);'}
 
@@ -478,7 +478,7 @@ export const DivFormStyled = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.8rem;
   position: relative;
 
   @media screen and (max-width: 375px) {
@@ -495,36 +495,36 @@ export const DivFormStyled = styled.div`
     props.$zap &&
     css`
       width: 100% !important;
-      padding-right: 16px;
+      padding-right: 1.6rem;
       box-sizing: border-box;
     `}
 `;
 
 export const DivAddressStyled = styled.div`
-  padding: 16px;
+  padding: 1.6rem;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 0.6rem;
   position: relative;
 `;
 
 export const DivHalfAddressStyled = styled.div`
-  border-radius: 8px;
+  border-radius: 0.8rem;
   display: flex;
-  gap: 16px;
-  ${(props) => props.$first && 'margin-bottom: 16px;'}
+  gap: 1.6rem;
+  ${(props) => props.$first && 'margin-bottom: 1.6rem;'}
 
   @media screen and (max-width: 385px) {
     flex-direction: column;
-    gap: 8px;
-    ${(props) => props.$first && 'margin-bottom: 8px;'}
+    gap: 0.8rem;
+    ${(props) => props.$first && 'margin-bottom: 0.8rem;'}
   }
 `;
 
 export const DivSpanStyled = styled(CentralizeDiv)`
-  height: 44px;
-  min-width: 44px;
+  height: 4.4rem;
+  min-width: 4.4rem;
   z-index: 2;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background-color: var(--primary);
   cursor: pointer;
   transition: background-color 0.15s ease;
@@ -537,13 +537,13 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     (props.$first || props.$address) &&
     css`
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 1.6rem;
+      right: 1.6rem;
     `}
   ${(props) =>
     props.$disable &&
     css`
-      border-radius: 4px;
+      border-radius: 0.4rem;
       background-color: var(--disable);
       &:hover {
         background-color: var(--disable-hover);
@@ -554,8 +554,8 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     css`
       @media screen and (max-width: 520px) {
         position: absolute;
-        top: 12px;
-        right: 12px;
+        top: 1.2rem;
+        right: 1.2rem;
       }
     `}
 `;
@@ -571,16 +571,16 @@ export const SpanEmailWarnStyled = styled.span`
 `;
 
 export const InputZapStyled = styled.input`
-  height: 44px;
+  height: 4.4rem;
   width: 100%;
-  padding-left: 8px;
-  padding-bottom: 3px;
+  padding-left: 0.8rem;
+  padding-bottom: 0.3rem;
   box-sizing: border-box;
   border: none;
   background-color: var(--background);
   font-family: var(--font-body);
   font-weight: 400;
-  border-radius: 4px;
+  border-radius: 0.4rem;
 
   &:focus {
     outline: none;

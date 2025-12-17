@@ -111,8 +111,8 @@ const AddressForm = ({
     <form
       autoComplete="off"
       style={{
-        marginTop: "-12px",
-        borderRadius: "8px",
+        marginTop: "-1.2rem",
+        borderRadius: "0.8rem",
         position: "relative",
         transition: "all 0.3s ease",
         opacity: { opacityAddressForm },

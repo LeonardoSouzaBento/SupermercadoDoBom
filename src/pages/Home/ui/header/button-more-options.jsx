@@ -17,23 +17,23 @@ export const ButtonMoreOptionsStyled = styled.div`
 
   @media screen and (max-width: 375px) {
     position: absolute;
-    top: 44px;
+    top: 4.4rem;
     right: 4.5%;
   }
   @media screen and (min-width: 375px) and (max-width: 768px) {
     position: absolute;
-    top: 44px;
+    top: 4.4rem;
     right: 5%;
   }
   @media screen and (min-width: 768px) {
     position: relative;
-    min-width: 48px;
+    min-width: 4.8rem;
   }
   @media screen and (min-width: 1201px) {
     min-width: max-content;
-    padding: 0 16px;
-    gap: 4px;
-    border-radius: 12px;
+    padding: 0 1.6rem;
+    gap: 0.4rem;
+    border-radius: 1.2rem;
   }
 
   & span {
@@ -41,7 +41,7 @@ export const ButtonMoreOptionsStyled = styled.div`
     user-select: none;
 
     @media screen and (min-width: 1201px) {
-      padding-right: 4px;
+      padding-right: 0.4rem;
     }
   }
 
@@ -51,7 +51,7 @@ export const ButtonMoreOptionsStyled = styled.div`
 
     letter-spacing: 0.8px;
     margin: 0;
-    padding-bottom: 2px;
+    padding-bottom: 0.2rem;
     @media (max-width: 1201px) {
       display: none;
     }

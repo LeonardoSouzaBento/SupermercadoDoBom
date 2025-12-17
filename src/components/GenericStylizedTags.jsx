@@ -41,5 +41,5 @@ export const DivToCoverStyled = styled(CentralizeDiv)`
   left: 0;
   z-index: 3;
   background-color: var(--white-foreground);
-  border-radius: 12px;
+  border-radius: 1.2rem;
 `;
