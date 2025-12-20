@@ -1,8 +1,9 @@
+import { lgIcon } from '@/styles/lucideIcons';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { categoriesIcons } from '@data/home';
 import { useScrollX } from '@hooks/useScrollX';
+import { CategoryCardStyled, ContainerStyled } from '@pages/Home/ui/categories-section/index';
 import { useCallback, useContext, useEffect, useRef } from 'react';
-import { ContainerStyled, CategoryCardStyled } from '@pages/Home/ui/categories-section/index';
 
 function CategoriesSection({ wasResize }) {
   const { setLimitCategories, categoriesRef, currentCategory, setCurrentCategory, isDraggingRef } =
@@ -66,7 +67,7 @@ function CategoriesSection({ wasResize }) {
               handlePointerUpCat(e, cat.id);
             }}>
             <div>
-              <cat.icon size={28} strokeWidth={1.5} color="white" />
+              <cat.icon {...lgIcon} color="var(--white-foreground)" />
             </div>
             <div>
               <p>{cat.label}</p>

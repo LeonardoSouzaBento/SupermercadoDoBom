@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { CentralizeDiv } from '../GenericStylizedTags';
 
-export const ContainerForFormStyled = styled.div`
+export const ContainerStyled = styled.div`
   width: 100%;
   height: max-content;
   padding-top: 0.2rem;
@@ -35,61 +35,70 @@ export const ContainerForFormStyled = styled.div`
         padding-left: 2.4rem;
       }
     `}
-`;
+  &>form {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    align-items: center;
+    border-radius: 999rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    border: none;
 
-export const FormStyled = styled.form`
-  width: 90%;
-  height: auto;
-  margin: auto;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 2.4rem;
-  overflow: hidden;
-  position: relative;
-  box-shadow: var(--shadow-sm);
-  border: none;
+    ${(props) =>
+      props.$copy &&
+      css`
+        width: 91.5%;
+        max-width: 68.4rem;
+        margin: 0;
+        border-radius: 0.8rem;
+        box-shadow: var(--shadow-sm);
+      `}
+    & > input {
+      width: 100%;
+      height: 4.8rem;
+      box-sizing: border-box;
+      padding-bottom: 0.2rem;
+      touch-action: auto;
+      text-indent: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.71px;
+      color: var(--black-foreground);
+      font-family: var(--font-body);
+      font-weight: 500;
+      border: none;
 
-  ${(props) =>
-    props.$copy &&
-    css`
-      width: 91.5%;
-      max-width: 68.4rem;
-      margin: 0;
-      border-radius: 0.8rem;
-      box-shadow: var(--shadow-sm);
-    `}
-`;
+      ${(props) =>
+        props.$copy === false &&
+        css`
+          text-indent: 2rem;
+        `}
 
-export const InputStyled = styled.input`
-  width: 100%;
-  height: 4.8rem;
-  box-sizing: border-box;
-  padding-bottom: 0.2rem;
-  touch-action: auto;
-  text-indent: 1.6rem;
-  font-weight: 400;
-  letter-spacing: 0.71px;
-  color: var(--black-foreground);
-  font-family: var(--font-body);
-  font-weight: 500;
-  border: none;
+      &:focus {
+        outline: none;
+        background-color: var(--white-foreground);
+      }
+      &::-webkit-search-cancel-button,
+      &::-webkit-search-decoration {
+        -webkit-appearance: none;
+        appearance: none;
+      }
+    }
+    & > button {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background-color: var(--white-foreground);
+      color: var(--primary);
+      height: 100%;
+      width: 56px;
+      border-radius: 999rem;
 
-  ${(props) =>
-    props.$copy === false &&
-    css`
-      text-indent: 2rem;
-    `}
-
-  &:focus {
-    outline: none;
-    background-color: var(--white-foreground);
-  }
-  &::-webkit-search-cancel-button,
-  &::-webkit-search-decoration {
-    -webkit-appearance: none;
-    appearance: none;
+      &>svg {
+       margin-bottom: 2px; 
+      }
+    }
   }
 `;
 

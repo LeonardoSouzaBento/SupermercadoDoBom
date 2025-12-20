@@ -9,18 +9,19 @@ export const CategoryCardStyled = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.4rem;
+  gap: 0.2rem;
   flex: auto;
-  border-radius: 1.6rem;
+  border-radius: 1.2rem;
   cursor: pointer;
   position: relative;
+  background-color: hsla(var(--secondary-value), 0.02);
 
   ${(props) =>
     props.$selected &&
     css`
       z-index: 1;
       background-color: var(--white-foreground);
-      box-shadow: var(--shadow-xs);
+      box-shadow: var(--shadow-sm);
     `}
   ${(props) =>
     !props.$selected &&
@@ -36,7 +37,7 @@ export const CategoryCardStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--secondary);
+    background: var(--primary);
     border-radius: 50%;
     transition: all 0.15s ease;
 
@@ -44,7 +45,7 @@ export const CategoryCardStyled = styled.div`
       props.$selected &&
       css`
         scale: 1.05;
-        box-shadow: var(--shadow-md);
+        box-shadow: var(--shadow-sm);
       `}
   }
   & >div:last-child {
@@ -62,6 +63,6 @@ export const CategoryCardStyled = styled.div`
     line-height: 1.2;
     font-size: var(--text-sm-button);
     margin: 0;
-    color: var(--dark-primary);
+    color: var(--primary);
   }
 `;

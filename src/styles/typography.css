@@ -119,7 +119,7 @@ p {
 
 /* PESOS */
 input::placeholder {
-  font-weight: 300; /* light */
+  font-weight: 400;
 }
 
 .helper-text,
@@ -143,7 +143,7 @@ button,
 .small-button,
 .big-link,
 .small-link {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 h3,

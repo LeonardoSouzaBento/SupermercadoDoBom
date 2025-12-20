@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
   CentralizeDiv,
   DivToCoverStyled,
   H1BaseStyled,
   H2BaseStyled,
-} from "../../GenericStylizedTags";
+} from '../../GenericStylizedTags';
 
 export const BodyDivStyled = styled.div`
   width: 100vw;
@@ -160,19 +160,12 @@ export const HeaderStyled = styled.header`
 
 export const SpanHeaderStyled = styled.span`
   color: var(--primary);
-  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 0;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 0;
   font-size: 2.2rem;
 `;
 
 export const H1Styled = styled(H1BaseStyled)`
   color: var(--primary);
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const DivImgStyled = styled.div`
@@ -234,13 +227,6 @@ export const PWeightStyled = styled.p`
   -ms-user-select: none; /* IE10+ */
   user-select: none; /* Padrão */
   color: #292e4e;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const DivNameProdStyled = styled(CentralizeDiv)`
@@ -267,13 +253,6 @@ export const PNameProdStyled = styled.p`
   @media screen and (min-width: 577px) {
     max-width: 33rem;
   }
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const DivPriceStyled = styled(CentralizeDiv)`
@@ -287,13 +266,6 @@ export const PPriceStyled = styled.p`
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
   user-select: none; /* Padrão */
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const ContainerQuantStyled = styled(CentralizeDiv)`
@@ -335,15 +307,8 @@ export const DivButtonsStyled = styled(CentralizeDiv)`
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
     user-select: none; /* Padrão */
-    ${(props) => props.$add && "padding-top: 0.2rem;"}
-    ${(props) => props.$add && "scale: 0.9;"}
-
-    
-    
-    
-    
-    
-    
+    ${(props) => props.$add && 'padding-top: 0.2rem;'}
+    ${(props) => props.$add && 'scale: 0.9;'}
   }
 `;
 
@@ -359,13 +324,6 @@ export const PQuantFullStyled = styled.p`
   user-select: none; /* Padrão */
   scale: 1.06;
   padding-bottom: 0.3rem;
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const PAddStyled = styled(PQuantFullStyled)`
@@ -411,13 +369,6 @@ export const PSubStyled = styled(PNameProdStyled)`
   width: max-content;
   padding: 0;
   color: rgba(0, 0, 0, 0.9);
-
-  
-  
-  
-  
-  
-  
 `;
 
 export const DivCoverSubStyled = styled(DivToCoverStyled)`
@@ -503,5 +454,3 @@ export const DivHalfList = styled.div`
     margin-bottom: 1.2rem;
   }
 `;
-
-

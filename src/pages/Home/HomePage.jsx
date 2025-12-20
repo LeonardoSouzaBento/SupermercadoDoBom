@@ -1,16 +1,16 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { VisibilityContext } from "@contexts/VisibilityContext";
-import { UserDataContext } from "@contexts/UserDataContext";
-import { HomeDivsContext } from "@contexts/HomeDivsContext";
-import BottomNavBar from "@components/BottomNavBar/BottomNavBar";
-import ProductInFull from "@components/Product/ProductInFull/ProductInFull";
-import Header from "./Components/Header";
-import OptionsSection from "./Components/OptionsMenu";
-import AnnouncementSection from "./Components/AnnouncementSection";
-import CategoriesSection from "./Components/CategoriesSection";
-import ProductListHome from "./Components/ProductListHome";
-import styled from "styled-components";
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { VisibilityContext } from '@contexts/VisibilityContext';
+import { UserDataContext } from '@contexts/UserDataContext';
+import { HomeDivsContext } from '@contexts/HomeDivsContext';
+import BottomNavBar from '@components/BottomNavBar';
+import ProductInFull from '@components/Product/ProductInFull/ProductInFull';
+import Header from './Components/Header';
+import OptionsSection from './Components/OptionsMenu';
+import AnnouncementSection from './Components/AnnouncementSection';
+import CategoriesSection from './Components/CategoriesSection';
+import ProductListHome from './Components/ProductListHome';
+import styled from 'styled-components';
 
 const MainStyled = styled.main`
   max-width: 140rem;
@@ -19,24 +19,20 @@ const MainStyled = styled.main`
   position: relative;
 
   &::after {
-    content: "";
+    content: '';
     width: 100%;
     height: 28rem; //340 + 1.6rem
     position: absolute;
     top: 2.4rem;
     left: 0;
-    background-image: linear-gradient(
-      to bottom,
-      var(--primary),
-      var(--background)
-    );
+    background-image: linear-gradient(to bottom, var(--primary), var(--background));
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
     z-index: -1;
   }
   &::before {
-    content: "";
+    content: '';
     width: 100%;
     height: 2.4rem; //24
     position: absolute;
@@ -49,10 +45,10 @@ const MainStyled = styled.main`
 
 const ProductFeedDivStyled = styled.section`
   position: relative;
-  background-color: var(--background);
   padding-left: 1.2rem;
   padding-top: 1.4rem;
-  background-color: var(--background);
+  background: linear-gradient(to bottom, transparent, var(--background));
+  /* background-color: var(--background); */
   z-index: 2;
 
   @media screen and (min-width: 577px) {
@@ -76,7 +72,7 @@ function HomePage() {
 
   useEffect(() => {
     if (idToken) {
-      console.log("Sim");
+      console.log('Sim');
     }
     // if (!idToken) {
     //   navigate("/fazer-login");
@@ -97,10 +93,10 @@ function HomePage() {
       }, 300);
     }
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
       if (resizeDowntime.current) {
         clearTimeout(resizeDowntime.current);
       }
@@ -109,9 +105,7 @@ function HomePage() {
 
   return (
     <div ref={divRef}>
-      {viewOptions && (
-        <OptionsSection setViewOptions={setViewOptions} idToken={idToken} />
-      )}
+      {viewOptions && <OptionsSection setViewOptions={setViewOptions} idToken={idToken} />}
 
       <div>
         <Header setViewOptions={setViewOptions} />
@@ -119,10 +113,7 @@ function HomePage() {
           <AnnouncementSection wasResize={wasResize} />
           <ProductFeedDivStyled>
             <CategoriesSection wasResize={wasResize} />
-            <ProductListHome
-              categoryKey={currentCategory}
-              wasResize={wasResize}
-            />
+            <ProductListHome categoryKey={currentCategory} wasResize={wasResize} />
           </ProductFeedDivStyled>
         </MainStyled>
       </div>
@@ -133,5 +124,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-

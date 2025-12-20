@@ -33,7 +33,7 @@ export const BrandContainerStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.4rem;
+    gap: 1.2rem;
     @media (max-width: 375px) {
       gap: 0;
     }
@@ -60,7 +60,7 @@ export const BrandContainerStyled = styled.div`
       }
       & > span {
         color: var(--white-foreground);
-        font-weight: 600;
+        font-weight: 550;
         font-size: 3.6rem;
         padding-top: 1px;
         padding-left: 1px;
@@ -71,11 +71,10 @@ export const BrandContainerStyled = styled.div`
     & > div:last-child {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
 
       h1 {
         color: var(--white-foreground);
-        letter-spacing: 0.45px;
+        letter-spacing: 0.008rem;
       }
       p {
         color: var(--white-foreground);

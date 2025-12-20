@@ -1,24 +1,23 @@
-import {
-  DivSpanCloseStyled,
-  SpanDropDownStyled,
-  DivImgStyled,
-  ImgStyled,
-  DivWeightStyled,
-  PWeightStyled,
-  DivDiscountStyled,
-  DivNameProdStyled,
-  PNameProdStyled,
-  DivPriceStyled,
-  PPriceStyled,
-  DivQuantFullStyled,
-  DivButtonsStyled,
-  PQuantFullStyled,
-  PAddStyled,
-  DivSubStyled,
-  DivCoverSubStyled,
-  PSubStyled,
-} from "./StylizedTags";
 import { PButtonBase } from "../../GenericStylizedTags";
+import {
+  DivButtonsStyled,
+  DivCoverSubStyled,
+  DivDiscountStyled,
+  DivImgStyled,
+  DivNameProdStyled,
+  DivPriceStyled,
+  DivQuantFullStyled,
+  DivSpanCloseStyled,
+  DivSubStyled,
+  DivWeightStyled,
+  ImgStyled,
+  PNameProdStyled,
+  PPriceStyled,
+  PQuantFullStyled,
+  PSubStyled,
+  PWeightStyled,
+  SpanDropDownStyled
+} from "./StylizedTags";
 
 export const ButtonClose = ({ seeSpanClose, handleClickClose }) => {
   return (

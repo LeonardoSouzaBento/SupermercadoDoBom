@@ -1,10 +1,8 @@
-import {
-  HeaderStyled,
-  BrandContainerStyled,
-  ButtonMoreOptionsStyled,
-} from '@/pages/Home/ui/header/index';
+import { BrandContainerStyled, HeaderStyled } from '@/pages/Home/ui/header/index';
+import { mdIcon } from '@/styles/lucideIcons';
 import SearchBar from '@components/SearchBar/SearchBar';
 import { VisibilityContext } from '@contexts/VisibilityContext';
+import { Menu } from 'lucide-react';
 import { useContext } from 'react';
 
 const Header = ({ setViewOptions }) => {
@@ -34,10 +32,10 @@ const Header = ({ setViewOptions }) => {
 
       <SearchBar copy={false} onHome={true} />
 
-      <ButtonMoreOptionsStyled onPointerDown={handleClick}>
-        <span className="material-symbols-rounded">menu</span>
+      <button onPointerDown={handleClick}>
+        <Menu {...mdIcon} />
         <p>Mais opções</p>
-      </ButtonMoreOptionsStyled>
+      </button>
     </HeaderStyled>
   );
 };

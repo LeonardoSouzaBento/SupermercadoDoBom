@@ -1,4 +1,4 @@
-import ProductItem from '@components/Product/ProductItem&List/ProductItem';
+import ProductItem from '@components/product-list/product-item';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { announcements } from '@data/announcements';
 import { useScrollX } from '@hooks/useScrollX';

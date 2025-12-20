@@ -1,6 +1,6 @@
-import BottomNavBar from "@components/BottomNavBar/BottomNavBar";
-import { CentralizeDiv } from "@components/GenericStylizedTags";
-import styled from "styled-components";
+import BottomNavBar from '@components/BottomNavBar';
+import { CentralizeDiv } from '@components/GenericStylizedTags';
+import styled from 'styled-components';
 
 const DivStyled = styled(CentralizeDiv)`
   width: 100%;
@@ -27,5 +27,3 @@ const MyOrders = () => {
 };
 
 export default MyOrders;
-
-

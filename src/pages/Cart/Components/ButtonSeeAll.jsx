@@ -1,4 +1,4 @@
-import { DivSeeAllStyled } from "../StylizedTags.jsx";
+import Button from '@ui/button.jsx';
 
 const ButtonSeeAll = ({
   applyNewHeight,
@@ -15,19 +15,17 @@ const ButtonSeeAll = ({
       setwasClicked(true);
       CartSectionRef.current.style.height = `${newHeight}px`;
       setTimeout(() => {
-        CartSectionRef.current.style.height = "auto";
+        CartSectionRef.current.style.height = 'auto';
       }, 160);
     }
   }
 
   return (
-    <DivSeeAllStyled onClick={handleClickSeeAll}>
+    <Button variant="outline" onClick={handleClickSeeAll}>
       <p>Ver Tudo</p>
       <span className="material-symbols-rounded">keyboard_arrow_down</span>
-    </DivSeeAllStyled>
+    </Button>
   );
 };
 
 export default ButtonSeeAll;
-
-

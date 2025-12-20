@@ -38,22 +38,23 @@ export const Footer = styled.div`
 `;
 
 const Header = styled.div`
+  width: 100%;
   height: 3.6rem;
   padding-bottom: 0.4rem;
-  padding-left: 1.2rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.8rem;
   border-bottom: 1px solid var(--border);
 `;
 
 const WrapperTitle = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: start;
   align-items: center;
-  flex-direction: row;
-  align-items: center;
   gap: 0.8rem;
+  color: var(--primary);
 `;
 
 const Description = styled.p`
@@ -68,7 +69,7 @@ export const CardHeader = ({ icon, title, description }) => {
         {icon}
         <Title>{title}</Title>
       </WrapperTitle>
-      <Description>{description}</Description>
+      {description && <Description>{description}</Description>}
     </Header>
   );
 };

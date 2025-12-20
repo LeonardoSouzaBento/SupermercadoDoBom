@@ -1,37 +1,37 @@
-import { useState, useEffect, useContext, useRef } from "react";
-import { allProductsForSearch } from "@data/productList";
-import { useNavigate } from "react-router-dom";
-import { VisibilityContext } from "@contexts/VisibilityContext";
-import { sequentialPrefixSearch } from "./sequentialPrefixSearch";
+import { lgIcon, mdIcon } from '@/styles/lucideIcons';
+import { VisibilityContext } from '@contexts/VisibilityContext';
+import { allProductsForSearch } from '@data/productList';
+import Button from '@ui/button';
+import { Search } from 'lucide-react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserDataContext } from '../../contexts/Contexts/UserDataContext';
 import {
+  animateInputMessage,
   animationOfWrite,
   getUniqueResults,
   normalize,
   normalize2,
-  animateInputMessage,
-} from "./functions";
+} from '../search-bar/functions';
+import { sequentialPrefixSearch } from '../search-bar/sequentialPrefixSearch';
 import {
-  ContainerForFormStyled,
-  FormStyled,
-  InputStyled,
-  DivSpanStyled,
-  SpanSearchStyled,
-  DivMsgStyled,
-  PointedShapeStyed,
-  PMsgStyled,
   CompletionsDivStyled,
+  ContainerStyled,
+  DivMsgStyled,
   DivOnePStyled,
-  PStyled,
   InputForFocusStyled,
-} from "./StylizedTags";
-import { UserDataContext } from "../../contexts/Contexts/UserDataContext";
+  PMsgStyled,
+  PointedShapeStyed,
+  PStyled,
+} from './StylizedTags';
+import { css } from 'styled-components';
 
 //produtos únicos para sugestão
 
 function SearchBar({ copy, onHome }) {
   const navigate = useNavigate();
-  const [thisInput, setThisInput] = useState("");
-  const [prevInput, setPrevInput] = useState("");
+  const [thisInput, setThisInput] = useState('');
+  const [prevInput, setPrevInput] = useState('');
   const inputRef = useRef(null);
   const [returnedProducts, setReturnedproducts] = useState([]);
   const { setSearchProducts } = useContext(UserDataContext);
@@ -40,12 +40,12 @@ function SearchBar({ copy, onHome }) {
 
   //estados para autocompletar
   const [searchInitiated, setSearchInitiated] = useState(false);
-  const [completions, setCompletions] = useState([""]);
-  const [sixUniqueSuggestions, setSixUniqueSuggestions] = useState([""]);
+  const [completions, setCompletions] = useState(['']);
+  const [sixUniqueSuggestions, setSixUniqueSuggestions] = useState(['']);
   const [countComplete, setCountCompletes] = useState(2);
 
   //dica para recrutador
-  const [textOfTip, setTextOfTip] = useState("");
+  const [textOfTip, setTextOfTip] = useState('');
   const tip = "Digite 'Biscoito'";
   const [viewTipState, setViewTipState] = useState(false);
 
@@ -80,10 +80,7 @@ function SearchBar({ copy, onHome }) {
         setSixUniqueSuggestions(uniqueResults);
         const completions = uniqueResults.map((name) => name.slice(0, 13));
 
-        if (
-          completions[0] &&
-          normalize(term).startsWith(normalize(completions[0]))
-        ) {
+        if (completions[0] && normalize(term).startsWith(normalize(completions[0]))) {
           setCompletions([]);
           setSixUniqueSuggestions([]);
         } else {
@@ -91,7 +88,7 @@ function SearchBar({ copy, onHome }) {
         }
       }
     }
-    if (term === "") {
+    if (term === '') {
       setSixUniqueSuggestions([]);
       setCompletions([]);
       setCountCompletes(2);
@@ -103,37 +100,29 @@ function SearchBar({ copy, onHome }) {
     if (e.button === 2) {
       return;
     }
-    let newSuggestion = "";
+    let newSuggestion = '';
     let normalizedInput = normalize2(thisInput);
     suggestion = normalize2(suggestion);
 
     if (suggestion.startsWith(normalizedInput)) {
-      newSuggestion =
-        normalizedInput + suggestion.slice(normalizedInput.length);
+      newSuggestion = normalizedInput + suggestion.slice(normalizedInput.length);
     } else {
       newSuggestion = normalizedInput + suggestion;
     }
 
-    let copyUniqueSuggestions = sixUniqueSuggestions.map((item) =>
-      normalize(item)
-    );
-    let matchedIndex = copyUniqueSuggestions.findIndex((item) =>
-      item.startsWith(newSuggestion)
-    );
+    let copyUniqueSuggestions = sixUniqueSuggestions.map((item) => normalize(item));
+    let matchedIndex = copyUniqueSuggestions.findIndex((item) => item.startsWith(newSuggestion));
     let matchedItem = sixUniqueSuggestions[matchedIndex];
 
     const completeSuggestion =
       matchedItem !== undefined
-        ? matchedItem.split(/\s+/).slice(0, countComplete).join(" ")
+        ? matchedItem.split(/\s+/).slice(0, countComplete).join(' ')
         : suggestion;
 
     setThisInput(completeSuggestion);
-    setCompletions([""]);
+    setCompletions(['']);
 
-    const results = sequentialPrefixSearch(
-      allProductsForSearch,
-      completeSuggestion
-    );
+    const results = sequentialPrefixSearch(allProductsForSearch, completeSuggestion);
     let newStart = completeSuggestion.length;
     let newEnd = newStart + 14;
 
@@ -141,9 +130,7 @@ function SearchBar({ copy, onHome }) {
     const newresults = uniqueResults.slice(0, 6); //restringir a 6 resultados
     setSixUniqueSuggestions(newresults);
 
-    const newCompletions = uniqueResults.map((name) =>
-      name.slice(newStart, newEnd)
-    );
+    const newCompletions = uniqueResults.map((name) => name.slice(newStart, newEnd));
     setCompletions([...newCompletions]);
 
     setCountCompletes(countComplete + 1);
@@ -151,15 +138,13 @@ function SearchBar({ copy, onHome }) {
 
   const handleClickScrollOnMobile = () => {
     if (onHome) {
-      const el = document.documentElement.scrollTop
-        ? document.documentElement
-        : document.body;
+      const el = document.documentElement.scrollTop ? document.documentElement : document.body;
 
       if (window.innerWidth <= 768) {
         setTimeout(() => {
           el.scrollTo({
             top: 130,
-            behavior: "smooth",
+            behavior: 'smooth',
           });
         }, 100);
       }
@@ -180,7 +165,7 @@ function SearchBar({ copy, onHome }) {
   function handleClickSearch() {
     const term = thisInput.toLowerCase();
     if (!term) {
-      animateInputMessage("Digite algo", setThisInput);
+      animateInputMessage('Digite algo', setThisInput);
       return;
     }
     const results = sequentialPrefixSearch(allProductsForSearch, term);
@@ -193,7 +178,7 @@ function SearchBar({ copy, onHome }) {
       setSearchProducts(returnedProducts);
       setCompletions([]);
       if (copy === false) {
-        navigate("/buscar-produtos");
+        navigate('/buscar-produtos');
         setSearchInitiated(false);
       }
     }
@@ -208,49 +193,38 @@ function SearchBar({ copy, onHome }) {
     const handleClickOutsideSearchBar = (e) => {
       const active = document.activeElement;
       const isInputOrTextarea =
-        active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA");
-      const clickedInsideInput =
-        e.target.closest("input") || e.target.closest("textarea");
-      const clickedOnSuggestion = e.target.closest("[data-suggestion]");
-      const clickedOnSpan = e.target.closest("[data-span]");
+        active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA');
+      const clickedInsideInput = e.target.closest('input') || e.target.closest('textarea');
+      const clickedOnSuggestion = e.target.closest('[data-suggestion]');
+      const clickedOnSpan = e.target.closest('[data-span]');
 
-      if (
-        !isInputOrTextarea &&
-        !clickedInsideInput &&
-        !clickedOnSuggestion &&
-        !clickedOnSpan
-      ) {
+      if (!isInputOrTextarea && !clickedInsideInput && !clickedOnSuggestion && !clickedOnSpan) {
         active.blur();
-        setThisInput("");
-        setCompletions([""]);
+        setThisInput('');
+        setCompletions(['']);
       }
     };
-    document.addEventListener("pointerup", handleClickOutsideSearchBar);
+    document.addEventListener('pointerup', handleClickOutsideSearchBar);
 
     return () => {
-      const el = document.documentElement.scrollTop
-        ? document.documentElement
-        : document.body;
+      const el = document.documentElement.scrollTop ? document.documentElement : document.body;
 
       el.scrollTo({
         top: 0,
       });
 
-      document.removeEventListener("pointerdown", handleClickOutsideSearchBar);
+      document.removeEventListener('pointerdown', handleClickOutsideSearchBar);
     };
   }, []);
 
   return (
-    <ContainerForFormStyled $copy={copy}>
-      <FormStyled
-        $copy={copy}
+    <ContainerStyled $copy={copy}>
+      <form
         onSubmit={(e) => {
           e.preventDefault();
           handleClickSearch();
-        }}
-      >
-        <InputStyled
-          $copy={copy}
+        }}>
+        <input
           type="text"
           name="query"
           placeholder="O que queres? Digite aqui"
@@ -261,12 +235,16 @@ function SearchBar({ copy, onHome }) {
           ref={inputRef}
           autoComplete="off"
         />
-        <DivSpanStyled $copy={copy} data-span onPointerDown={handleClickSearch}>
-          <SpanSearchStyled className="material-symbols-rounded">
-            search
-          </SpanSearchStyled>
-        </DivSpanStyled>
-      </FormStyled>
+
+        <Button
+          size="icon"
+          variant="ghost"
+          type="submit"
+          data-span
+          onPointerDown={handleClickSearch}>
+          <Search {...lgIcon} />
+        </Button>
+      </form>
 
       {tipForRecruiter && viewTipState && (
         <DivMsgStyled>
@@ -275,7 +253,7 @@ function SearchBar({ copy, onHome }) {
         </DivMsgStyled>
       )}
 
-      {completions != "" && (
+      {completions != '' && (
         <CompletionsDivStyled $copy={copy}>
           {completions.map((suggestion, i) => (
             <DivOnePStyled
@@ -295,17 +273,14 @@ function SearchBar({ copy, onHome }) {
               onClick={(e) => {
                 e.stopPropagation();
                 inputRef.current.focus();
-              }}
-            >
+              }}>
               <InputForFocusStyled type="text" />
               <PStyled>{suggestion}...</PStyled>
             </DivOnePStyled>
           ))}
         </CompletionsDivStyled>
       )}
-    </ContainerForFormStyled>
+    </ContainerStyled>
   );
 }
 export default SearchBar;
-
-

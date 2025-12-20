@@ -1,4 +1,4 @@
-import BottomNavBar from '@components/BottomNavBar/BottomNavBar';
+import BottomNavBar from '@components/BottomNavBar';
 import { CartContext } from '@contexts/CartContext';
 import { UserDataContext } from '@contexts/UserDataContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
@@ -38,7 +38,7 @@ const MyAccount = () => {
   return (
     <>
       <PageHeader title="Minha conta" />
-      
+
       <MainStyled>
         {/*Minha conta e Contato*/}
         <DivOneTwoStyled>

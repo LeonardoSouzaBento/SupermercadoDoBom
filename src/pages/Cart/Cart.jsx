@@ -1,10 +1,13 @@
+import { mdIcon } from '@/styles/lucideIcons';
 import { CardHeader } from '@/ui/Card';
 import PageHeader from '@/ui/PageHeader.jsx';
+import BottomNavBar from '@components/BottomNavBar';
 import ProductInFull from '@components/Product/ProductInFull/ProductInFull.jsx';
-import { ProductList } from '@components/Product/ProductItem&List/ProductList.jsx';
+import { ProductList } from '@components/ProductList.jsx';
 import { CartContext } from '@contexts/CartContext.js';
 import { VisibilityContext } from '@contexts/VisibilityContext.js';
-import { Package } from 'lucide-react';
+import Button from '@ui/button';
+import { Package, Trash2 } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -14,12 +17,10 @@ import {
   ReceiptAndContinueSection,
 } from './Components';
 import {
-  CartSectionStyed,
-  ContinueSectionStyled,
-  DivSpanDeleteStyled,
-  DivToCoverStyled,
-  MainStyled,
+  ContainerStyled,
+  ContinueSectionStyled
 } from './StylizedTags.jsx';
+import { CartSectionStyed, MainWrapperStyled } from './ui/index';
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar
@@ -107,7 +108,7 @@ const Cart = () => {
     window.addEventListener('resize', handleResize);
 
     return () => {
-      setSeeFeedback(false);
+      // setSeeFeedback(false);
       document.body.style.overflow = 'auto';
       window.removeEventListener('resize', handleResize);
       if (resizeDowntime.current) {
@@ -138,7 +139,7 @@ const Cart = () => {
     <>
       <PageHeader title="Sua compra" />
 
-      <MainStyled $opacity={opacityState}>
+      <MainWrapperStyled $opacity={opacityState}>
         <CartSectionStyed ref={CartSectionRef}>
           <div>
             <CardHeader
@@ -146,12 +147,15 @@ const Cart = () => {
               icon={<Package size={20} strokeWidth={2.6} color="var(--primary)" />}
             />
 
-            <DivSpanDeleteStyled
+            <Button
+              id="delete-button"
+              variant="destructive"
+              size="icon"
               onClick={() => {
                 setSeeCancelDialog(true);
               }}>
-              <span className="material-symbols-rounded">delete</span>
-            </DivSpanDeleteStyled>
+              <Trash2 {...mdIcon} />
+            </Button>
           </div>
 
           <ProductList
@@ -161,6 +165,7 @@ const Cart = () => {
 
           {viewButtonSeeAll && (
             <ButtonSeeAll
+              id="see-all-button"
               applyNewHeight={applyNewHeight}
               setApplyNewHeight={setApplyNewHeight}
               setViewButtonsetSeeAll={setViewButtonsetSeeAll}
@@ -188,9 +193,11 @@ const Cart = () => {
             setCurrentOrder={setCurrentOrder}
           />
         </ContinueSectionStyled>
-      </MainStyled>
-      {seeFeedback && <DivToCoverStyled />}
+      </MainWrapperStyled>
+      {seeFeedback && <ContainerStyled />}
       {viewProductInFull && <ProductInFull />}
+
+      <BottomNavBar />
     </>
   );
 };

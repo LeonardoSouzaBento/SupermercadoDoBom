@@ -1,11 +1,11 @@
-import { useContext, useState, useEffect } from "react";
-import SearchBar from "@components/SearchBar/SearchBar";
-import ProductInFull from "@components/Product/ProductInFull/ProductInFull";
-import BottomNavBar from "@components/BottomNavBar/BottomNavBar";
-import { ProductList } from "@components/Product/ProductItem&List/ProductList";
-import { VisibilityContext } from "@contexts/VisibilityContext";
-import { UserDataContext } from "@contexts/UserDataContext";
-import styled from "styled-components";
+import { useContext, useState, useEffect } from 'react';
+import SearchBar from '@components/SearchBar/SearchBar';
+import ProductInFull from '@components/Product/ProductInFull/ProductInFull';
+import BottomNavBar from '@components/BottomNavBar';
+import { ProductList } from '@components/ProductList';
+import { VisibilityContext } from '@contexts/VisibilityContext';
+import { UserDataContext } from '@contexts/UserDataContext';
+import styled from 'styled-components';
 
 const DivStyled = styled.div`
   position: relative;
@@ -35,9 +35,7 @@ const SearchPage = () => {
     <>
       <DivStyled $opacityState={opacityState}>
         <SearchBar copy={true} onHome={false} />
-        {canClick && (
-          <ProductList variant={"search"} productList={searchProducts} />
-        )}
+        {canClick && <ProductList variant={'search'} productList={searchProducts} />}
       </DivStyled>
       {viewProductInFull && <ProductInFull />}
       <BottomNavBar search={true} />
@@ -46,5 +44,3 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
-
-

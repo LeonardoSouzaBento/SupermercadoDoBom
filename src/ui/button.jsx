@@ -2,12 +2,12 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
-  height: 4.4rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   border-radius: 0.8rem;
+  box-sizing: border-box;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
@@ -17,6 +17,9 @@ const StyledButton = styled.button`
     box-shadow: 0 0 0 0.2rem var(--focus-ring-color, currentColor),
       0 0 0 0.4rem var(--focus-ring-offset-color, currentColor);
   }
+  & > svg {
+    flex-shrink: 0;
+  }
 
   ${({ $customStyles }) => $customStyles}
 
@@ -24,6 +27,7 @@ const StyledButton = styled.button`
     switch ($variant) {
       case 'primary':
         return css`
+          font-weight: 500;
           background-color: var(--primary);
           color: var(--white-foreground);
           &:hover {
@@ -32,8 +36,8 @@ const StyledButton = styled.button`
         `;
       case 'secondary':
         return css`
-          color: var(--secondary);
-          border: 1px solid var(--border);
+          background-color: var(--secondary);
+          color: var(--white-foreground);
           &:hover {
             background-color: var(--secondary-hover);
           }
@@ -41,15 +45,23 @@ const StyledButton = styled.button`
       case 'outline':
         return css`
           color: var(--primary);
-          border: 0.15rem solid var(--primary);
+          outline: 0.15rem solid hsla(var(--primary-value), 0.5);
           background-color: transparent;
         `;
       case 'ghost':
         return css`
-          background-color: transparent;
-          color: #374151; /* text-gray-800 */
+          background-color: var(--background);
+          color: var(--primary);
           &:hover {
-            background-color: #f3f4f6; /* hover:bg-gray-100 */
+            background-color: var(--primary-hover);
+          }
+        `;
+      case 'destructive':
+        return css`
+          background-color: var(--destructive);
+          color: var(--destructive-foreground);
+          &:hover {
+            filter: brightness(1.07);
           }
         `;
     }
@@ -64,7 +76,7 @@ const StyledButton = styled.button`
         `;
       case 'normal':
         return css`
-          padding: 0.5rem 1rem;
+          padding: 1.389rem 1.5rem;
           font-size: var(--text-button);
         `;
       case 'large':
@@ -72,23 +84,22 @@ const StyledButton = styled.button`
           padding: 0.75rem 1.5rem;
           font-size: var(--text-lg-button);
         `;
-      case 'large-icon':
-        return css`
-          padding: 0;
-          width: 4.4rem;
-          height: 4.4rem;
-        `;
-      case 'icon':
+      case 'lg-icon':
         return css`
           padding: 0;
           width: 4rem;
           height: 4rem;
         `;
-      case 'icon-sm':
+      case 'icon':
         return css`
-          padding: 0;
           width: 3.6rem;
           height: 3.6rem;
+        `;
+      case 'sm-icon':
+        return css`
+          padding: 0;
+          width: 3.2rem;
+          height: 3.2rem;
         `;
     }
   }}
@@ -96,7 +107,7 @@ const StyledButton = styled.button`
   ${({ disabled }) =>
     disabled &&
     css`
-      opacity: 0.5;
+      opacity: 0.33;
       filter: grayscale(1);
       cursor: not-allowed;
     `}

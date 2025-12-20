@@ -1,19 +1,19 @@
+import { DivToCoverStyled } from '@components/GenericStylizedTags.jsx';
+import { SpanH2Styled } from '@pages/MyAccount/StylizedTags.jsx';
+import Button from '@ui/button.jsx';
 import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 import {
   ContainerStyled,
-  SectionStyled,
-  HeaderH2Styled,
-  PValueStyled,
   DivAllValuesStyled,
   DivAvisoStyled,
-  PAvisoStyled,
-  DivAddStyled,
   H2Styled,
+  HeaderH2Styled,
+  PAvisoStyled,
+  PValueStyled,
 } from '../StylizedTags.jsx';
-import { SpanH2Styled } from '@pages/MyAccount/StylizedTags.jsx';
-import { DivToCoverStyled } from '@components/GenericStylizedTags.jsx';
-import Button from '@ui/button.jsx';
-import { css } from 'styled-components';
+import { SectionStyled } from '../ui/index';
+import { CardHeader } from '@ui/Card.jsx';
 
 const styles = {
   button: css`
@@ -45,12 +45,10 @@ const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
   return (
     <ContainerStyled>
       <SectionStyled>
-        <HeaderH2Styled>
-          <SpanH2Styled className="material-symbols-rounded" $cart={true} $bigger={true}>
-            data_info_alert
-          </SpanH2Styled>
-          <H2Styled>Detalhes</H2Styled>
-        </HeaderH2Styled>
+        <CardHeader
+          icon={<span className="material-symbols-rounded">data_info_alert</span>}
+          title="Detalhes"
+        />
 
         <DivAllValuesStyled>
           {falta > 0 && totalAddedValue != 0 && (

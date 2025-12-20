@@ -43,7 +43,7 @@ export const ContainerStyled = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-flow: row nowrap;
-    gap: 1.2rem;
+    gap: 1.5rem;
     position: relative;
     overflow-x: scroll;
     user-select: none;
@@ -53,18 +53,12 @@ export const ContainerStyled = styled.div`
       display: none;
     }
 
-    @media screen and (max-width: 375px) {
-      gap: 1.5rem;
-    }
     @media screen and (min-width: 1201px) {
       padding-right: 0.6rem;
       justify-content: space-between;
     }
     @media screen and (min-width: 375px) and (max-width: 1200px) {
       padding-right: 2rem;
-    }
-    @media screen and (min-width: 1201px) {
-      gap: 0;
     }
   }
 `;

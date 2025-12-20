@@ -1,18 +1,8 @@
-import { useEffect, useState } from "react";
-import {
-  ContainerDialogStyled,
-  DivDialogStyled,
-  DivQuestionStyled,
-  ButtonStyled,
-  DivToCoverStyled,
-} from "../StylizedTags.jsx";
+import Button from '@ui/button.jsx';
+import { useEffect, useState } from 'react';
+import { BackgroundStyled, ModalStyled } from '../ui/cancel-dialog.jsx';
 
-const CancelDialog = ({
-  seeFeedback,
-  setSeeFeedback,
-  setSeeCancelDialog,
-  setCartProducts,
-}) => {
+const CancelDialog = ({ seeFeedback, setSeeFeedback, setSeeCancelDialog, setCartProducts }) => {
   const [opacityDialog, setOpacityDialog] = useState(false);
   useEffect(() => {
     setTimeout(() => {
@@ -29,60 +19,48 @@ const CancelDialog = ({
 
   return (
     <>
-      <DivToCoverStyled
-        style={{
-          backgroundColor: "rgba(0, 0, 0, 0.1)",
-          height: "100%",
-          overflow: "auto",
-        }}
-      />
-      <ContainerDialogStyled
+      <BackgroundStyled />
+      <ModalStyled
+        $feedback={seeFeedback}
         style={{
           opacity: opacityDialog ? 1 : 0,
-          transition: "opacity 0.3s ease",
-        }}
-      >
-        <DivDialogStyled $feedback={seeFeedback}>
-          <DivQuestionStyled $feedback={seeFeedback}>
-            <h1 style={{ color: seeFeedback ? "white" : "var(--dark-primary)" }}>
-              {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}
+          transition: 'opacity 0.3s ease',
+        }}>
+        <div>
+          <div>
+            <h1 style={{ color: seeFeedback ? 'white' : 'var(--dark-primary)' }}>
+              {seeFeedback ? 'Compra Cancelada!' : 'Cancelar a compra?'}
             </h1>
-          </DivQuestionStyled>
+          </div>
 
-          {/*Botoes de sim ou não*/}
           {seeFeedback === false ? (
-            <>
-              <ButtonStyled
+            <div id="wrapper-buttons">
+              <Button
+                variant="destructive"
                 onClick={() => {
                   setSeeFeedback(true);
                   setTimeout(() => {
                     setCartProducts([]);
                   }, 700);
-                }}
-              >
-                <p>Sim, cancelar</p>
-              </ButtonStyled>
+                }}>
+                Sim, cancelar
+              </Button>
 
-              <ButtonStyled
-                $voltar={true}
+              <Button
+                variant="outline"
                 onClick={() => {
                   handleClickClose();
-                }}
-              >
-                <p>Voltar</p>
-              </ButtonStyled>
-            </>
+                }}>
+                Voltar
+              </Button>
+            </div>
           ) : (
-            <span className="material-symbols-rounded">
-              check
-            </span>
+            <span className="material-symbols-rounded">check</span>
           )}
-        </DivDialogStyled>
-      </ContainerDialogStyled>
+        </div>
+      </ModalStyled>
     </>
   );
 };
 
 export default CancelDialog;
-
-

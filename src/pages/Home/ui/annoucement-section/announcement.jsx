@@ -25,7 +25,7 @@ export const AnnouncementStyled = styled.div`
     min-width: 22rem;
     width: 22rem;
     height: 22rem;
-    border-radius: 1.6rem;
+    border-radius: 1.5rem;
     position: relative;
     overflow: hidden;
     transition: all 0.2s ease;

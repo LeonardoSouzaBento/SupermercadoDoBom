@@ -1,32 +1,25 @@
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import DataAlert from "./DataAlert";
+import { UserDataContext } from '@contexts/UserDataContext.js';
+import Button from '@ui/button';
+import { CardHeader } from '@ui/Card.jsx';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 import {
   ContainerStyled,
-  SectionStyled,
-  HeaderH2Styled,
-  H2Styled,
-  ReceiptOptionStyled,
   PValueStyled,
+  ReceiptOptionStyled,
   SpanReceiptStyled,
-  ButtonContinueStyled,
-} from "../StylizedTags.jsx";
-import { SpanH2Styled } from "@pages/MyAccount/StylizedTags.jsx";
-import { PButtonBase } from "@components/GenericStylizedTags.jsx";
-import { UserDataContext } from "@contexts/UserDataContext.js";
+} from '../StylizedTags.jsx';
+import { SectionStyled } from '../ui/index.js';
+import DataAlert from './DataAlert';
 
-const ReceiptAndContinueSection = ({
-  setScaleWarnnig,
-  setCurrentOrder,
-  totalAddedValue,
-}) => {
+const ReceiptAndContinueSection = ({ setScaleWarnnig, setCurrentOrder, totalAddedValue }) => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState("entregar");
+  const [selected, setSelected] = useState('entregar');
   const [incompleteDataAlert, setIncompleteDataAlert] = useState(false);
   const { userContact, isDataComplete } = useContext(UserDataContext);
 
-  const userDataComplete =
-    isDataComplete.contact && isDataComplete.address && userContact.email;
+  const userDataComplete = isDataComplete.contact && isDataComplete.address && userContact.email;
 
   const falta = 40 - totalAddedValue > 0 ? 40 - totalAddedValue : 0;
 
@@ -39,14 +32,14 @@ const ReceiptAndContinueSection = ({
       const currentTime = `${hours}:${minutes}:${seconds}`;
 
       if (userDataComplete) {
-        setCurrentOrder({ time: currentTime, status: "completed" });
+        setCurrentOrder({ time: currentTime, status: 'completed' });
         setIncompleteDataAlert(false);
-        navigate("/meus-pedidos");
+        navigate('/meus-pedidos');
       } else {
-        setCurrentOrder({ time: currentTime, status: "pending" });
+        setCurrentOrder({ time: currentTime, status: 'pending' });
         setIncompleteDataAlert(true);
         setTimeout(() => {
-          navigate("/minha-conta");
+          navigate('/minha-conta');
         }, 4000);
       }
     } else {
@@ -61,60 +54,52 @@ const ReceiptAndContinueSection = ({
     <>
       <ContainerStyled>
         <SectionStyled>
-          <HeaderH2Styled>
-            <SpanH2Styled className="material-symbols-rounded" $cart={true}>
-              delivery_truck_speed
-            </SpanH2Styled>
-            <H2Styled>Recebimento</H2Styled>
-          </HeaderH2Styled>
+          <CardHeader
+            icon={<span className="material-symbols-rounded">delivery_truck_speed</span>}
+            title="Recebimento"
+          />
 
           <ReceiptOptionStyled
-            $variant={"retirar"}
-            $selected={selected == "retirar"}
+            $variant={'retirar'}
+            $selected={selected == 'retirar'}
             onClick={() => {
-              setSelected("retirar");
-            }}
-          >
-            <PValueStyled $selected={selected == "retirar"}>
+              setSelected('retirar');
+            }}>
+            <PValueStyled $selected={selected == 'retirar'}>
               Retirar no estabelecimento
             </PValueStyled>
             <SpanReceiptStyled
               className="material-symbols-rounded"
-              $selected={selected == "retirar"}
-            >
-              {selected === "retirar" ? "check_box" : "check_box_outline_blank"}
+              $selected={selected == 'retirar'}>
+              {selected === 'retirar' ? 'check_box' : 'check_box_outline_blank'}
             </SpanReceiptStyled>
           </ReceiptOptionStyled>
 
           <ReceiptOptionStyled
-            $variant={"entregar"}
-            $selected={selected == "entregar"}
+            $variant={'entregar'}
+            $selected={selected == 'entregar'}
             onClick={() => {
-              setSelected("entregar");
-            }}
-          >
-            <PValueStyled $selected={selected == "entregar"}>
-              Entregar
-            </PValueStyled>
+              setSelected('entregar');
+            }}>
+            <PValueStyled $selected={selected == 'entregar'}>Entregar</PValueStyled>
             <SpanReceiptStyled
               className="material-symbols-rounded"
-              $selected={selected == "entregar"}
-            >
-              {selected === "entregar"
-                ? "check_box"
-                : "check_box_outline_blank"}
+              $selected={selected == 'entregar'}>
+              {selected === 'entregar' ? 'check_box' : 'check_box_outline_blank'}
             </SpanReceiptStyled>
           </ReceiptOptionStyled>
         </SectionStyled>
 
-        <ButtonContinueStyled
-          $nocontinue={falta > 0}
+        <Button
+          variant="primary"
+          size="normal"
+          disabled={falta > 0}
           onClick={handleClickContinue}
-        >
-          <PButtonBase>
-            {userDataComplete ? "Finalizar Compra" : "Continuar"}
-          </PButtonBase>
-        </ButtonContinueStyled>
+          customStyles={css`
+            width: 100%;
+          `}>
+          {userDataComplete ? 'Finalizar Compra' : 'Continuar'}
+        </Button>
       </ContainerStyled>
       {incompleteDataAlert && <DataAlert />}
     </>
@@ -122,4 +107,3 @@ const ReceiptAndContinueSection = ({
 };
 
 export default ReceiptAndContinueSection;
-
