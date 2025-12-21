@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const H1BaseStyled = styled.h1`
   color: var(--white-foreground);

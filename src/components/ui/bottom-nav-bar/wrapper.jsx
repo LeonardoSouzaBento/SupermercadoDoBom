@@ -17,6 +17,7 @@ export const WrapperStyled = styled.div`
     @media screen and (max-width: 576px) {
       justify-content: center;
     }
+    /* wrapper buttons */
     & > div:first-child {
       width: calc(100% - 16px);
       max-width: 42rem;
@@ -28,22 +29,24 @@ export const WrapperStyled = styled.div`
       box-sizing: border-box;
       border-radius: 0.9rem;
       background: var(--primary);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-lg);
       overflow: hidden;
       @media screen and (min-width: 577px) {
         margin-right: 0.6rem;
       }
     }
   }
+  /* feedback cart */
   & #cart-feedback {
-    height: 100%;
+    height: 48px;
     width: max-content;
     padding: 0 1.2rem;
-    margin-left: -8px;
+    margin-left: -4px;
     display: flex;
     align-items: center;
     gap: 1.2rem;
     color: var(--white-foreground);
+    border-radius: 6px;
     background-color: var(--secondary);
 
     &:hover {
@@ -64,7 +67,8 @@ export const WrapperStyled = styled.div`
       scale: 1.03;
       padding-bottom: 0.2rem;
       letter-spacing: 0.75px;
-      font-weight: 450;
+      font-weight: 500;
+      font-size: var(--text-button);
     }
   }
   /* espaço para o navbar */

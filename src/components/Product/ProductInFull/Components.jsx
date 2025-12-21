@@ -1,130 +1,49 @@
-import { PButtonBase } from "../../GenericStylizedTags";
-import {
-  DivButtonsStyled,
-  DivCoverSubStyled,
-  DivDiscountStyled,
-  DivImgStyled,
-  DivNameProdStyled,
-  DivPriceStyled,
-  DivQuantFullStyled,
-  DivSpanCloseStyled,
-  DivSubStyled,
-  DivWeightStyled,
-  ImgStyled,
-  PNameProdStyled,
-  PPriceStyled,
-  PQuantFullStyled,
-  PSubStyled,
-  PWeightStyled,
-  SpanDropDownStyled
-} from "./StylizedTags";
+import { flexCenter } from '@/styles/baseStyles';
+import { smIcon } from '@/styles/lucideIcons';
+import { X } from 'lucide-react';
+import styled from 'styled-components';
+
+const ButtonStyled = styled.button`
+  width: 40px;
+  height: 40px;
+  ${flexCenter}
+  margin-left: calc(100% - 48px);
+  margin-bottom: -4.4rem;
+  position: sticky;
+  top: 0.8rem;
+  right: -0.4rem;
+  background-color: var(--background);
+  color: var(--primary);
+  cursor: pointer;
+  z-index: 3;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: var(--bluish-white-hover);
+  }
+
+  @media screen and (min-width: 578px) {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  & span:first-child {
+    font-weight: 500;
+    cursor: pointer;
+
+    @media screen and (min-width: 578px) {
+      display: none;
+    }
+  }
+`;
 
 export const ButtonClose = ({ seeSpanClose, handleClickClose }) => {
   return (
-    <DivSpanCloseStyled
+    <ButtonStyled
       onPointerUp={handleClickClose}
-      style={{ display: seeSpanClose ? "flex" : "none" }}
-    >
-      <span className="material-symbols-rounded">
-        close
-      </span>
-
-      <SpanDropDownStyled />
-    </DivSpanCloseStyled>
+      style={{ display: seeSpanClose ? 'flex' : 'none' }}>
+      <X {...smIcon} />
+    </ButtonStyled>
   );
 };
-
-export const ProductData = ({ dataProductFull }) => {
-  return (
-    <>
-      <DivImgStyled>
-        <ImgStyled src={dataProductFull.url} alt="Imagem do Produto" />
-
-        {dataProductFull.weight != "" && dataProductFull.weight != null && (
-          <DivWeightStyled>
-            <PWeightStyled>{dataProductFull.weight}</PWeightStyled>
-          </DivWeightStyled>
-        )}
-
-        {dataProductFull.discount != "" && dataProductFull.discount != null && (
-          <DivDiscountStyled>
-            <PWeightStyled style={{ color: "white" }}>
-              -{dataProductFull.discount}%
-            </PWeightStyled>
-          </DivDiscountStyled>
-        )}
-      </DivImgStyled>
-
-      <DivNameProdStyled>
-        <PNameProdStyled>{dataProductFull.name}</PNameProdStyled>
-      </DivNameProdStyled>
-
-      <DivPriceStyled>
-        <PPriceStyled>R$ {dataProductFull.price}</PPriceStyled>
-      </DivPriceStyled>
-    </>
-  );
-};
-
-export const ButtonAdd = ({
-  quantity,
-  handlePointerDownDiv,
-  handlePointerMoveDiv,
-  handlePointerUpAdd,
-  handlePointerUpButtons,
-}) => {
-  return (
-    <DivQuantFullStyled
-      onPointerDown={handlePointerDownDiv}
-      onPointerMove={handlePointerMoveDiv}
-    >
-      {quantity > 0 && (
-        <>
-          <DivButtonsStyled
-            onPointerUp={(e) => {
-              handlePointerUpButtons(e, "fewer");
-            }}
-          >
-            <span className="material-symbols-rounded">
-              remove
-            </span>
-          </DivButtonsStyled>
-
-          <DivButtonsStyled>
-            <PQuantFullStyled>{quantity}</PQuantFullStyled>
-          </DivButtonsStyled>
-
-          <DivButtonsStyled onPointerUp={handlePointerUpButtons}>
-            <span className="material-symbols-rounded">
-              add
-            </span>
-          </DivButtonsStyled>
-        </>
-      )}
-      {quantity == 0 && (
-        <DivButtonsStyled
-          style={{ width: "100%" }}
-          onPointerUp={handlePointerUpAdd}
-        >
-          <PButtonBase>Adicionar</PButtonBase>
-        </DivButtonsStyled>
-      )}
-    </DivQuantFullStyled>
-  );
-};
-
-export const Subtotal = ({ subtotal }) => {
-  return (
-    <DivSubStyled>
-      {subtotal == "0,00" && (
-        <DivCoverSubStyled>
-          <PSubStyled>Subtotal:</PSubStyled>
-        </DivCoverSubStyled>
-      )}
-      <PSubStyled>Subtotal:</PSubStyled>
-      <PSubStyled>R$ {subtotal}</PSubStyled>
-    </DivSubStyled>
-  );
-};
-
-

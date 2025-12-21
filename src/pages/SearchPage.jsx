@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import SearchBar from '@components/SearchBar/SearchBar';
+import SearchBar from '@components/SearchBar';
 import ProductInFull from '@components/Product/ProductInFull/ProductInFull';
 import BottomNavBar from '@components/BottomNavBar';
 import { ProductList } from '@components/ProductList';

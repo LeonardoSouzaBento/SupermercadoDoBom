@@ -1,71 +1,67 @@
-import { useState, useRef, useEffect, useContext } from "react";
+import { DivToCoverStyled, PButtonBase } from '@components/GenericStylizedTags';
+import { UserDataContext } from '@contexts/UserDataContext';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
-  DivTwoStyled,
-  DivH2StatusStyled,
-  HeaderH2Styled,
-  SpanH2Styled,
-  H2v2Styled,
-  DivStatusStyled,
-  DivNameStatus,
-  SpanStatusStyled,
-  NameStatusStyled,
-  DivStyled,
-  DivZapStyled,
   DivFormStyled,
-  Pv2Styled,
-  InputZapStyled,
+  DivH2StatusStyled,
+  DivInvalidWarnStyled,
   DivSpanStyled,
-  SpanEditStyled,
+  DivStyled,
+  DivTwoStyled,
   DivZapAndDivPhone,
   DivZapOrPhone,
-  SpanCheckStyled,
+  DivZapStyled,
+  H2v2Styled,
   H3Styled,
-  DivInvalidWarnStyled,
-} from "../StylizedTags";
-import { SpanReceiptStyled } from "../../Cart/StylizedTags";
-import { DivToCoverStyled } from "@components/GenericStylizedTags";
-import { PButtonBase } from "@components/GenericStylizedTags";
-import { useNavigate } from "react-router-dom";
-import { UserDataContext } from "@contexts/UserDataContext";
+  HeaderH2Styled,
+  InputZapStyled,
+  Pv2Styled,
+  SpanCheckStyled,
+  SpanEditStyled,
+  SpanH2Styled,
+  StatusWrapperStyled,
+} from '../StylizedTags';
+import Button from '@ui/button';
 
 function formatPhone(num, selectedPhoneType) {
-  if (!num) return "";
+  if (!num) return '';
 
   // Remove tudo que não é número
-  let digits = num.replace(/\D/g, "");
+  let digits = num.replace(/\D/g, '');
   // Remove prefixo do Brasil (+55 ou 55)
-  if (digits.startsWith("55")) {
+  if (digits.startsWith('55')) {
     digits = digits.slice(2);
   }
   // Se for WhatsApp (zap) e o número tiver 10 dígitos, adiciona o 9
-  if (selectedPhoneType === "zap" && digits.length === 10) {
-    digits = digits.replace(/^(\d{2})(\d{4})(\d{4})$/, "$19$2$3");
+  if (selectedPhoneType === 'zap' && digits.length === 10) {
+    digits = digits.replace(/^(\d{2})(\d{4})(\d{4})$/, '$19$2$3');
   }
 
   // Se for fixo (landline) e tiver 11 dígitos (com 9 extra), remove o 9
-  if (selectedPhoneType === "landline" && digits.length === 11) {
-    digits = digits.replace(/^(\d{2})9(\d{4})(\d{4})$/, "$1$2$3");
+  if (selectedPhoneType === 'landline' && digits.length === 11) {
+    digits = digits.replace(/^(\d{2})9(\d{4})(\d{4})$/, '$1$2$3');
   }
 
   // Só formata se tiver pelo menos 10 dígitos
   if (digits.length < 10) return num;
   if (digits.length === 11) {
-    return digits.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+    return digits.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
   }
   if (digits.length === 10) {
-    return digits.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3");
+    return digits.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
   }
   // Caso venha com mais de 11 dígitos, corta e formata como celular
-  return digits.slice(0, 11).replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+  return digits.slice(0, 11).replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
 }
 
 function validatePhoneNumber(num, selectedPhoneType) {
   if (!num) return false;
 
-  let digits = num.replace(/\D/g, "");
+  let digits = num.replace(/\D/g, '');
 
   // Remove prefixo do Brasil
-  if (digits.startsWith("55")) {
+  if (digits.startsWith('55')) {
     digits = digits.slice(2);
   }
 
@@ -78,22 +74,22 @@ function validatePhoneNumber(num, selectedPhoneType) {
   // 🔹 Restrição geral: não pode ser sequência repetida
   if (/^(\d)\1+$/.test(digits)) return false;
 
-  if (selectedPhoneType === "landline") {
+  if (selectedPhoneType === 'landline') {
     // Deve ter 10 dígitos
     if (digits.length !== 10) return false;
 
     // Não pode começar com 0,1,8,9 após o DDD
-    if (["0", "1", "8", "9"].includes(prefix)) return false;
+    if (['0', '1', '8', '9'].includes(prefix)) return false;
 
     return true;
   }
 
-  if (selectedPhoneType === "zap") {
+  if (selectedPhoneType === 'zap') {
     // Deve ter 11 dígitos
     if (digits.length !== 11) return false;
 
     // Deve começar com 9 após o DDD
-    if (prefix !== "9") return false;
+    if (prefix !== '9') return false;
 
     return true;
   }
@@ -103,16 +99,12 @@ function validatePhoneNumber(num, selectedPhoneType) {
 }
 
 export const Contact = () => {
-  const {
-    userContact,
-    setUserContact,
-    isDataComplete,
-    setIsDataComplete,
-  } = useContext(UserDataContext);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const { userContact, setUserContact, isDataComplete, setIsDataComplete } =
+    useContext(UserDataContext);
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [seeInput, setSeeInput] = useState(false);
   const [isValidNumber, setIsValidNumber] = useState(false);
-  const [selectedPhoneType, setSelectedPhoneType] = useState("zap");
+  const [selectedPhoneType, setSelectedPhoneType] = useState('zap');
   const [clickCount, setClickCount] = useState(0);
   const [seeLoginWarn, setSeeLoginWarn] = useState(false);
   const [seeInvalidWarn, setSeeInvalidWarn] = useState(false);
@@ -125,7 +117,7 @@ export const Contact = () => {
     setSeeLoginWarn(true);
     setTimeout(() => {
       setSeeLoginWarn(false);
-      navigate("/fazer-login");
+      navigate('/fazer-login');
     }, 3000);
   }
 
@@ -148,7 +140,7 @@ export const Contact = () => {
         setTimeout(() => {
           inputZapRef.current.focus();
         }, 120);
-        setPhoneNumber("");
+        setPhoneNumber('');
       } else {
         if (isValidNumber) {
           setSeeInput(false);
@@ -167,7 +159,7 @@ export const Contact = () => {
   }
 
   useEffect(() => {
-    if (phoneNumber && phoneNumber.replace(/\D/g, "").length >= 10) {
+    if (phoneNumber && phoneNumber.replace(/\D/g, '').length >= 10) {
       const isValid = validatePhoneNumber(phoneNumber, selectedPhoneType);
       setIsValidNumber(isValid);
 
@@ -186,32 +178,26 @@ export const Contact = () => {
   return (
     <DivTwoStyled>
       {isDataComplete.contact && (
-        <SpanCheckStyled className="material-symbols-outlined">
-          check
-        </SpanCheckStyled>
+        <SpanCheckStyled className="material-symbols-rounded">check</SpanCheckStyled>
       )}
       <DivH2StatusStyled>
         <HeaderH2Styled>
-          <SpanH2Styled className="material-symbols-outlined" $smaller={true}>
+          <SpanH2Styled className="material-symbols-rounded" $smaller={true}>
             call
           </SpanH2Styled>
-          <H2v2Styled style={{ marginBottom: "0px" }}>
-            Informações para contato
-          </H2v2Styled>
+          <H2v2Styled style={{ marginBottom: '0px' }}>Informações para contato</H2v2Styled>
         </HeaderH2Styled>
 
         {/*Estado do número*/}
         {!isDataComplete.contact && (
-          <DivStatusStyled $contact={true}>
-            <DivNameStatus>
-              <SpanStatusStyled className="material-symbols-outlined">
-                {isDataComplete.contact ? "check" : "exclamation"}
-              </SpanStatusStyled>
-              <NameStatusStyled>
-                {isDataComplete.contact ? "Número salvo" : "Sem um número"}
-              </NameStatusStyled>
-            </DivNameStatus>
-          </DivStatusStyled>
+          <StatusWrapperStyled $contact={true}>
+            <div>
+              <span className="material-symbols-rounded">
+                {isDataComplete.contact ? 'check' : 'priority_high'}
+              </span>
+              <p>{isDataComplete.contact ? 'Número salvo' : 'Sem um número'}</p>
+            </div>
+          </StatusWrapperStyled>
         )}
       </DivH2StatusStyled>
 
@@ -219,17 +205,14 @@ export const Contact = () => {
       <DivStyled>
         <div
           style={{
-            border: "1px solid var(--border)",
-            borderRadius: "0.6rem",
-          }}
-        >
+            border: '1px solid var(--border)',
+            borderRadius: '0.6rem',
+          }}>
           <DivZapStyled $seeInput={seeInput}>
             <DivFormStyled $zap={true}>
               <H3Styled>Whatsapp ou Telefone:</H3Styled>
 
-              <Pv2Styled $hide={userContact.phone === ""}>
-                {userContact.phone}
-              </Pv2Styled>
+              <Pv2Styled $hide={userContact.phone === ''}>{userContact.phone}</Pv2Styled>
 
               <InputZapStyled
                 ref={inputZapRef}
@@ -243,33 +226,30 @@ export const Contact = () => {
               />
             </DivFormStyled>
 
-            <DivSpanStyled
-              $disable={!isValidNumber && seeInput}
+            <Button
+              size="icon"
+              disabled={!isValidNumber && seeInput}
               onClick={() => {
                 handleClickSavePhone();
-              }}
-            >
+              }}>
               {seeInput ? (
                 <PButtonBase>OK</PButtonBase>
               ) : (
-                <SpanEditStyled className="material-symbols-outlined">
-                  edit
-                </SpanEditStyled>
+                <SpanEditStyled className="material-symbols-rounded">edit</SpanEditStyled>
               )}
-            </DivSpanStyled>
+            </Button>
 
             {seeLoginWarn && (
               <DivToCoverStyled>
                 <H2v2Styled
                   $nameUser={true}
                   style={{
-                    width: "100%",
-                    textAlign: "center",
-                    color: "var(--secondary-hover)",
+                    width: '100%',
+                    textAlign: 'center',
+                    color: 'var(--secondary-hover)',
                     scale: 1.1,
                     fontWeight: 400,
-                  }}
-                >
+                  }}>
                   Faça login primeiro!
                 </H2v2Styled>
               </DivToCoverStyled>
@@ -277,46 +257,32 @@ export const Contact = () => {
           </DivZapStyled>
           {seeInvalidWarn && (
             <DivInvalidWarnStyled>
-              <H3Styled style={{ color: "white" }}>
-                {phoneNumber.length !== 0
-                  ? "Número inválido!"
-                  : "Digite um número."}
+              <H3Styled style={{ color: 'white' }}>
+                {phoneNumber.length !== 0 ? 'Número inválido!' : 'Digite um número.'}
               </H3Styled>
             </DivInvalidWarnStyled>
           )}
 
           <DivZapAndDivPhone $visible={seeInput}>
             <DivZapOrPhone
-              $selected={selectedPhoneType === "zap"}
+              $selected={selectedPhoneType === 'zap'}
               onClick={() => {
-                setSelectedPhoneType("zap");
-              }}
-            >
-              <SpanReceiptStyled
-                className="material-symbols-rounded"
-                $selected={selectedPhoneType == "zap"}
-              >
-                {selectedPhoneType === "zap"
-                  ? "check_box"
-                  : "check_box_outline_blank"}
-              </SpanReceiptStyled>
+                setSelectedPhoneType('zap');
+              }}>
+              <span className="material-symbols-rounded">
+                {selectedPhoneType === 'zap' ? 'check_box' : 'check_box_outline_blank'}
+              </span>
               <Pv2Styled $contact={true}>É whatsApp</Pv2Styled>
             </DivZapOrPhone>
 
             <DivZapOrPhone
-              $selected={selectedPhoneType === "landline"}
+              $selected={selectedPhoneType === 'landline'}
               onClick={() => {
-                setSelectedPhoneType("landline");
-              }}
-            >
-              <SpanReceiptStyled
-                className="material-symbols-rounded"
-                $selected={selectedPhoneType == "landline"}
-              >
-                {selectedPhoneType === "landline"
-                  ? "check_box"
-                  : "check_box_outline_blank"}
-              </SpanReceiptStyled>
+                setSelectedPhoneType('landline');
+              }}>
+              <span className="material-symbols-rounded">
+                {selectedPhoneType === 'landline' ? 'check_box' : 'check_box_outline_blank'}
+              </span>
               <Pv2Styled $contact={true}>É telefone fixo</Pv2Styled>
             </DivZapOrPhone>
           </DivZapAndDivPhone>
@@ -327,5 +293,3 @@ export const Contact = () => {
 };
 
 export default Contact;
-
-

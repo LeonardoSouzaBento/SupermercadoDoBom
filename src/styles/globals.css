@@ -5,7 +5,6 @@
 
 :root {
   /* Para ver */
-  --border: 1px solid black;
   /*Fontes*/
   --font-body: 'Open Sans', Arial, Helvetica, sans-serif;
   --font-button: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -28,13 +27,13 @@
   /*CORES*/
   --white-value: 0, 0%, 100%;
   --white-foreground: hsl(var(--white-value));
-   /* 
+  /* 
    azul-escuro: hsl(215, 50%, 23%);
    azul-medio: #457b9d;
    azul-claro: #a8dadc;
    branco-verde: #f1faee
    */
-  --black-value: 0, 0%, 13%;
+  --black-value: 0%, 0%, 12%;
   --black-foreground: hsl(var(--black-value));
   --muted-foreground: hsla(var(--black-value), 0.7);
 
@@ -56,7 +55,10 @@
   --dark-secondary-value: 359, 30%, 32%;
   --dark-secondary: hsl(var(--dark-secondary-value));
 
-  --destructive-value: 0, 80%, 50%;
+  --warn-value: 38, 92%, 50%;
+  --warn: hsl(var(--warn-value));
+
+  --destructive-value: 0, 90%, 42%;
   --destructive: hsl(var(--destructive-value));
 
   --destructive-foreground-value: 0, 0%, 98%;
@@ -108,6 +110,7 @@ html {
 
 body {
   background: linear-gradient(135deg, var(--white-foreground), var(--background));
+  color: var(--black-foreground);
   width: 100%;
   max-width: 1400px;
   margin: auto;
@@ -147,4 +150,3 @@ h3 {
   cursor: default;
   user-select: none;
 }
-

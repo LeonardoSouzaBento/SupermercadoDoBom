@@ -90,7 +90,7 @@ export const DivOneStyled = styled.div`
   ${(props) => props.$orders && 'padding-top: 0;'}
 `;
 
-export const UserHeaderDivStyled = styled.div`
+export const ProfileCardHeaderStyled = styled.div`
   width: 100%;
   margin: auto;
   padding: 1.6rem;
@@ -101,16 +101,45 @@ export const UserHeaderDivStyled = styled.div`
   border: 1px solid var(--border);
   border-radius: 0.6rem;
   position: relative;
-`;
 
-export const DivImgEmailStyled = styled.div`
-  width: max-content;
-  box-sizing: border-box;
-  display: flex;
-  gap: 1.2rem;
+  & > div:first-child {
+    width: max-content;
+    box-sizing: border-box;
+    display: flex;
+    gap: 1.2rem;
 
-  @media screen and (max-width: 512px) {
-    flex-direction: column;
+    @media screen and (max-width: 512px) {
+      flex-direction: column;
+    }
+
+    /* wrapper da foto do usuario */
+    & > div:first-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 5.8rem;
+      width: 5.8rem;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #ecf0f5;
+      position: relative;
+
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        scale: 1.02;
+      }
+    }
+
+    /* wrapper do nome e email do usuario */
+    & > div:last-child {
+      width: max-content;
+      height: auto;
+    }
   }
 `;
 
@@ -133,25 +162,6 @@ export const ButtonLoginStyled = styled(CentralizeDiv)`
 
 export const PLoginStlyed = styled.p`
   font-weight: 500;
-`;
-
-export const DivImgUserStyled = styled(CentralizeDiv)`
-  height: 5.8rem;
-  width: 5.8rem;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: #ecf0f5;
-  position: relative;
-`;
-
-export const ImgUserStyled = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  scale: 1.02;
 `;
 
 export const DivNameEmailStyled = styled.header`
@@ -287,7 +297,7 @@ export const H2v2Styled = styled.h3`
     `};
 `;
 
-export const DivStatusStyled = styled.div`
+export const StatusWrapperStyled = styled.div`
   width: 100%;
   padding-left: 2rem;
   box-sizing: border-box;
@@ -333,35 +343,37 @@ export const DivStatusStyled = styled.div`
         justify-content: flex-end;
       `}
   }
-`;
 
-export const DivNameStatus = styled.div`
-  height: 2.4rem;
-  width: max-content;
-  padding-bottom: 0.3rem;
-  padding-left: 0.2rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.4rem;
-  background-color: var(--secondary-hover);
-  color: var(--white-foreground);
-  border-radius: 1.4rem;
-`;
+  & > div {
+    height: 2.4rem;
+    width: max-content;
+    padding: 2px 0;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: hsla(var(--warn-value), 0.2);
+    color: var(--foreground);
+    border-radius: 999px;
 
-export const SpanStatusStyled = styled.span`
-  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: var(--white-foreground);
-  padding: 0.4rem;
-  margin-top: 0.2rem;
-  border-radius: 50%;
-  font-size: 1.6rem;
-`;
+    & > p {
+      margin-right: 0.6rem;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      ${(props) => props.$email && 'color: var(--black-foreground);'}
+    }
 
-export const NameStatusStyled = styled.p`
-  margin-right: 0.6rem;
-  ${(props) => props.$email && 'color: var(--black-foreground);'}
+    & > span {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      background-color: hsla(var(--warn-value), 0.3);
+      color: var(--destructive);
+      padding: 0.4rem; 
+      border-radius: 50%;
+      font-size: 1.6rem;
+    }
+  }
 `;
 
 export const SpanCheckStyled = styled.span`

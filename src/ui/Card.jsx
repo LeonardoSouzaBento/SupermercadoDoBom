@@ -45,7 +45,12 @@ const Header = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 0.8rem;
-  border-bottom: 1px solid var(--border);
+  ${(props) => props.$customStyles && props.$customStyles}
+  ${(props) =>
+    props.$separator &&
+    css`
+      border-bottom: 1px solid var(--border);
+    `}
 `;
 
 const WrapperTitle = styled.div`
@@ -62,9 +67,9 @@ const Description = styled.p`
   color: var(--muted-foreground);
 `;
 
-export const CardHeader = ({ icon, title, description }) => {
+export const CardHeader = ({ icon, title, description, separator = true, customStyles }) => {
   return (
-    <Header>
+    <Header $separator={separator} $customStyles={customStyles}>
       <WrapperTitle>
         {icon}
         <Title>{title}</Title>

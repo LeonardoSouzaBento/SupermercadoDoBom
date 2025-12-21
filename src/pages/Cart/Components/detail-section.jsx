@@ -1,10 +1,9 @@
-import { DivToCoverStyled } from '@components/GenericStylizedTags.jsx';
 import Button from '@ui/button.jsx';
 import { CardHeader } from '@ui/Card.jsx';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import { DivAllValuesStyled, DivAvisoStyled } from '../StylizedTags.jsx';
-import { SectionStyled } from '../ui/index';
+import { DetailWrapperStyled, SectionStyled } from '../ui/index';
+import ValueWarn from './value-warn';
 
 const styles = {
   button: css`
@@ -41,17 +40,9 @@ const DetailSection = ({ totalAddedValue, scaleWarnnig }) => {
           title="Detalhes"
         />
 
-        <DivAllValuesStyled>
+        <DetailWrapperStyled>
           {falta > 0 && totalAddedValue != 0 && (
-            <DivToCoverStyled
-              style={{
-                backgroundColor: 'transparent',
-                padding: '0px',
-              }}>
-              <DivAvisoStyled $scale={scaleWarnnig} id="warn">
-                <p>Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00</p>
-              </DivAvisoStyled>
-            </DivToCoverStyled>
+            <ValueWarn scaleWarnnig={scaleWarnnig} faltaFormatada={faltaFormatada} />
           )}
           <div>
             <p>Compra:</p>
@@ -71,7 +62,7 @@ const DetailSection = ({ totalAddedValue, scaleWarnnig }) => {
               <strong>R$ {totalFormatted}</strong>
             </p>
           </div>
-        </DivAllValuesStyled>
+        </DetailWrapperStyled>
       </div>
 
       <Button

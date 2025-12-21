@@ -1,6 +1,6 @@
 import { BrandContainerStyled, HeaderStyled } from '@/pages/Home/ui/header/index';
 import { mdIcon } from '@/styles/lucideIcons';
-import SearchBar from '@components/SearchBar/SearchBar';
+import SearchBar from '@components/SearchBar';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { Menu } from 'lucide-react';
 import { useContext } from 'react';

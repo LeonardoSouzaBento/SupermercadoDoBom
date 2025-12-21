@@ -27,7 +27,7 @@ export const CategoryCardStyled = styled.div`
     !props.$selected &&
     css`
       &:hover {
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-xs);
       }
     `}
 

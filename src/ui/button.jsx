@@ -8,7 +8,7 @@ const StyledButton = styled.button`
   flex-shrink: 0;
   border-radius: 0.8rem;
   box-sizing: border-box;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, box-shadow, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   &:focus-visible {
@@ -53,7 +53,7 @@ const StyledButton = styled.button`
           background-color: var(--background);
           color: var(--primary);
           &:hover {
-            background-color: var(--primary-hover);
+            box-shadow:var(--shadow-sm);
           }
         `;
       case 'transparent':
@@ -73,6 +73,8 @@ const StyledButton = styled.button`
         `;
     }
   }}
+
+  ${({ $wFull }) => $wFull && css`width: 100%;`}
 
   ${({ $size }) => {
     switch ($size) {
@@ -123,6 +125,7 @@ const StyledButton = styled.button`
 const Button = ({
   variant = 'primary',
   size = 'normal',
+  wFull = false,
   disabled = false,
   children,
   className,
@@ -134,6 +137,7 @@ const Button = ({
       $customStyles={customStyles}
       $variant={variant}
       $size={size}
+      $wFull={wFull}
       disabled={disabled}
       className={className}
       {...rest}>

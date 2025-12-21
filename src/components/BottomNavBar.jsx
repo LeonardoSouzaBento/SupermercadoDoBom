@@ -33,7 +33,7 @@ export default function BottomNavBar() {
                 navigate('/meu-carrinho');
               }}>
               <div>
-                <span className="material-symbols-outlined" id="cartIcon">
+                <span className="material-symbols-rounded" id="cartIcon">
                   shopping_cart
                 </span>
               </div>

@@ -4,7 +4,6 @@ import { CardHeader } from '@ui/Card.jsx';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import { SpanReceiptStyled } from '../StylizedTags.jsx';
 import { SectionStyled } from '../ui/index.js';
 import DataAlert from './data-alert.jsx';
 
@@ -56,30 +55,24 @@ const ReceiptAndContinueSection = ({ setScaleWarnnig, setCurrentOrder, totalAdde
 
           <Button
             variant="transparent"
-            $selected={selected == 'retirar'}
             onClick={() => {
               setSelected('retirar');
             }}>
             Retirar no estabelecimento
-            <SpanReceiptStyled
-              className="material-symbols-rounded"
-              $selected={selected == 'retirar'}>
+            <span className="material-symbols-rounded">
               {selected === 'retirar' ? 'check_box' : 'check_box_outline_blank'}
-            </SpanReceiptStyled>
+            </span>
           </Button>
 
           <Button
             variant="transparent"
-            $selected={selected == 'entregar'}
             onClick={() => {
               setSelected('entregar');
             }}>
             Entregar
-            <SpanReceiptStyled
-              className="material-symbols-rounded"
-              $selected={selected == 'entregar'}>
+            <span className="material-symbols-rounded">
               {selected === 'entregar' ? 'check_box' : 'check_box_outline_blank'}
-            </SpanReceiptStyled>
+            </span>
           </Button>
         </div>
 

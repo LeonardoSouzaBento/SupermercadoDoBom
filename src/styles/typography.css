@@ -124,7 +124,7 @@ input::placeholder {
 
 .helper-text,
 .description-text {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 p,
@@ -148,12 +148,12 @@ button,
 
 h3,
 h2 {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 h1,
 strong {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 /* LINE HEIGHTS */

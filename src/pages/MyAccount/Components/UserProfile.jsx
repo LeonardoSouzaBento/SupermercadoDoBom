@@ -1,89 +1,70 @@
+import { PButtonBase } from '@components/GenericStylizedTags';
+import Button from '@ui/button';
+import { useNavigate } from 'react-router-dom';
 import {
-  DivOneStyled,
-  UserHeaderDivStyled,
-  DivImgEmailStyled,
-  DivImgUserStyled,
-  SpanH2Styled,
-  ImgUserStyled,
-  DivNameEmailStyled,
-  H2v2Styled,
-  NameStatusStyled,
-  DivSpanStyled,
-  SpanEditStyled,
-  DivStatusStyled,
-  DivNameStatus,
-  SpanStatusStyled,
   ButtonLoginStyled,
-} from "../StylizedTags";
-import { PButtonBase } from "@components/GenericStylizedTags";
-import { useNavigate } from "react-router-dom";
+  DivOneStyled,
+  H2v2Styled,
+  ProfileCardHeaderStyled,
+  SpanEditStyled,
+  SpanH2Styled,
+  StatusWrapperStyled
+} from '../StylizedTags';
 
 export const UserProfile = ({ userContact }) => {
   const nameUser = userContact.email
     ? userContact.name
       ? userContact.name
-      : "Usuário sem nome"
-    : "Usuário anônimo";
+      : 'Usuário sem nome'
+    : 'Usuário anônimo';
   const navigate = useNavigate();
-  
+
   // function handleEditNameUser() {
-    
+
   // }
 
   return (
     <DivOneStyled>
-      <UserHeaderDivStyled>
-        <DivImgEmailStyled>
-          <DivImgUserStyled>
+      <ProfileCardHeaderStyled>
+        <div>
+          <div>
             {!userContact.photoUrl && (
               <SpanH2Styled className="material-symbols-rounded" $user={true}>
-                {!userContact.name ? "person_alert" : "person"}
+                {!userContact.name ? 'person_alert' : 'person'}
               </SpanH2Styled>
             )}
-            <ImgUserStyled src={userContact.photoUrl || null} />
-          </DivImgUserStyled>
+            <img src={userContact.photoUrl || null} />
+          </div>
 
-          <DivNameEmailStyled>
+          <div>
             <H2v2Styled $nameUser={true}>{nameUser}</H2v2Styled>
-            <NameStatusStyled $email={true}>
-              {!userContact.email
-                ? "usuario_anonimo@email.com"
-                : userContact.email}
-            </NameStatusStyled>
-          </DivNameEmailStyled>
-        </DivImgEmailStyled>
+            <p>
+              {!userContact.email ? 'usuario_anonimo@email.com' : userContact.email}
+            </p>
+          </div>
+        </div>
 
-        <DivSpanStyled $editUser={true}>
-          <SpanEditStyled className="material-symbols-outlined">
-            edit
-          </SpanEditStyled>
-        </DivSpanStyled>
-      </UserHeaderDivStyled>
+        <Button size="icon">
+          <SpanEditStyled className="material-symbols-rounded">edit</SpanEditStyled>
+        </Button>
+      </ProfileCardHeaderStyled>
 
       {(!userContact.email || !userContact.name) && (
-        <DivStatusStyled $user={true}>
-          <DivNameStatus
-            $user={true}
-            $hide={userContact.email && userContact.name}
-          >
-            <SpanStatusStyled className="material-symbols-outlined">
-              {!userContact.email || !userContact.name
-                ? "exclamation"
-                : "check"}
-            </SpanStatusStyled>
-            <NameStatusStyled $hide={userContact.email && userContact.name}>
-              {!userContact.email ? "Usúario anônimo" : "Sem seu nome"}
-            </NameStatusStyled>
-          </DivNameStatus>
-        </DivStatusStyled>
+        <StatusWrapperStyled $user={true}>
+          <div>
+            <span className="material-symbols-rounded">
+              {!userContact.email || !userContact.name ? 'priority_high' : 'check'}
+            </span>
+            <p>{!userContact.email ? 'Usúario anônimo' : 'Sem seu nome'}</p>
+          </div>
+        </StatusWrapperStyled>
       )}
 
       {!userContact.email && (
         <ButtonLoginStyled
           onClick={() => {
-           navigate("/fazer-login");
-          }}
-        >
+            navigate('/fazer-login');
+          }}>
           <PButtonBase>Entrar com e-mail</PButtonBase>
         </ButtonLoginStyled>
       )}
@@ -92,5 +73,3 @@ export const UserProfile = ({ userContact }) => {
 };
 
 export default UserProfile;
-
-

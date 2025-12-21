@@ -1,30 +1,20 @@
-import { lgIcon, mdIcon } from '@/styles/lucideIcons';
+import { CompletionsStyled, ContainerStyled, HelpMessage } from '@/components/ui/search-bar/index';
+import { mdIcon } from '@/styles/lucideIcons';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { allProductsForSearch } from '@data/productList';
 import Button from '@ui/button';
 import { Search } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserDataContext } from '../../contexts/Contexts/UserDataContext';
+import { UserDataContext } from '../contexts/Contexts/UserDataContext';
 import {
   animateInputMessage,
   animationOfWrite,
   getUniqueResults,
   normalize,
   normalize2,
-} from '../search-bar/functions';
-import { sequentialPrefixSearch } from '../search-bar/sequentialPrefixSearch';
-import {
-  CompletionsDivStyled,
-  ContainerStyled,
-  DivMsgStyled,
-  DivOnePStyled,
-  InputForFocusStyled,
-  PMsgStyled,
-  PointedShapeStyed,
-  PStyled,
-} from './StylizedTags';
-import { css } from 'styled-components';
+} from './search-bar/functions';
+import { sequentialPrefixSearch } from './search-bar/sequentialPrefixSearch';
 
 //produtos únicos para sugestão
 
@@ -237,26 +227,21 @@ function SearchBar({ copy, onHome }) {
         />
 
         <Button
-          size="icon"
+          size="lg-icon"
           variant="ghost"
           type="submit"
           data-span
           onPointerDown={handleClickSearch}>
-          <Search {...lgIcon} />
+          <Search {...mdIcon} />
         </Button>
       </form>
 
-      {tipForRecruiter && viewTipState && (
-        <DivMsgStyled>
-          <PointedShapeStyed />
-          <PMsgStyled>{textOfTip}</PMsgStyled>
-        </DivMsgStyled>
-      )}
+      {tipForRecruiter && viewTipState && <HelpMessage message={textOfTip} />}
 
       {completions != '' && (
-        <CompletionsDivStyled $copy={copy}>
+        <CompletionsStyled $copy={copy}>
           {completions.map((suggestion, i) => (
-            <DivOnePStyled
+            <div
               key={i}
               data-suggestion
               onPointerDown={(e) => {
@@ -274,11 +259,11 @@ function SearchBar({ copy, onHome }) {
                 e.stopPropagation();
                 inputRef.current.focus();
               }}>
-              <InputForFocusStyled type="text" />
-              <PStyled>{suggestion}...</PStyled>
-            </DivOnePStyled>
+              <input type="text" />
+              <p>{suggestion}...</p>
+            </div>
           ))}
-        </CompletionsDivStyled>
+        </CompletionsStyled>
       )}
     </ContainerStyled>
   );

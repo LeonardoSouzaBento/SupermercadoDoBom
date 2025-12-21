@@ -12,7 +12,7 @@ const PStyled = styled.p`
   background-color: var(--white-foreground);
   border-radius: 1.2rem;
   color: var(--dark-primary);
-  box-shadow: var(--shadow-xs);
+  box-shadow: var(--shadow-sm);
 `;
 
 const MyOrders = () => {
