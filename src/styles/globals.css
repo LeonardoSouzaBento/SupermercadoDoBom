@@ -29,6 +29,7 @@
   --white-value: 0, 0%, 100%;
   --white-foreground: hsl(var(--white-value));
    /* 
+   azul-escuro: hsl(215, 50%, 23%);
    azul-medio: #457b9d;
    azul-claro: #a8dadc;
    branco-verde: #f1faee

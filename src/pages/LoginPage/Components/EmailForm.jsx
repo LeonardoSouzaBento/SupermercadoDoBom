@@ -1,21 +1,20 @@
-import { useState, useContext, useEffect } from "react";
 import { UserDataContext } from "@contexts/UserDataContext";
+import axios from "axios";
 import {
   signInWithCustomToken,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { auth } from "../../../main";
-import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
+import { useContext, useEffect, useState } from "react";
+import { auth } from "../../../main";
 import {
+  ButtonStyled,
+  InputStyled,
   InputWrapperStyled,
   LabelStyled,
-  InputStyled,
   PasswordWrapperStyled,
-  ButtonStyled,
   TogglePasswordStyled,
 } from "../StylizedTags";
-import { PValueStyled } from "../../Cart/StylizedTags";
 import PasswordValidationReturn from "./PasswordValidationReturn";
 
 function validatePassword(senha) {
@@ -211,12 +210,12 @@ const EmailForm = ({
         {exceptionalPasswordAlert && <p>A senha de exemplo não é permitida!</p>}
       </InputWrapperStyled>
 
-      <PValueStyled style={{ marginBottom: "1.6rem" }} $email={true}>
+      <p style={{ marginBottom: "1.6rem" }}>
         Exemplo de senha recomendada:{" "}
         <strong style={{ fontWeight: 600, marginBottom: "1.6rem" }}>
           J@iro450Love
         </strong>
-      </PValueStyled>
+      </p>
       <PasswordValidationReturn validacao={validacao} />
 
       <ButtonStyled

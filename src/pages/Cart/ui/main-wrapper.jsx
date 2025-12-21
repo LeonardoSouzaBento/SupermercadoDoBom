@@ -19,4 +19,16 @@ export const MainWrapperStyled = styled.div`
     background: var(--primary);
     z-index: -1;
   }
+
+  & > div:last-child {
+    width: 100%;
+    margin: auto;
+
+    @media screen and (min-width: 769px) {
+      width: max-content;
+      display: flex;
+      justify-content: center;
+      gap: 1.6rem;
+    }
+  }
 `;

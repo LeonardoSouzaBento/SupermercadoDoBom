@@ -56,6 +56,13 @@ const StyledButton = styled.button`
             background-color: var(--primary-hover);
           }
         `;
+      case 'transparent':
+        return css`
+          background-color: transparent;
+          &:hover {
+            background-color: var(--background);
+          }
+        `;
       case 'destructive':
         return css`
           background-color: var(--destructive);

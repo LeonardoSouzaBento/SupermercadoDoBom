@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import { UserDataContext } from "@contexts/UserDataContext";
 import { signInWithCustomToken } from "firebase/auth";
+import { useContext } from "react";
 import { auth } from "../../../main";
-import { VisitorBoxStyled, ButtonStyled } from "../StylizedTags";
-import { PValueStyled } from "../../Cart/StylizedTags";
+import { ButtonStyled, VisitorBoxStyled } from "../StylizedTags";
 
 const VisitorSection = ({
   setLoginType,
@@ -46,10 +45,10 @@ const VisitorSection = ({
   return (
     <>
       <VisitorBoxStyled>
-        <PValueStyled>
+        <p>
           <strong>Comunicado: </strong>
           para registrar sua compra será necessário criar uma conta.
-        </PValueStyled>
+        </p>
       </VisitorBoxStyled>
 
       <ButtonStyled $variant="market" onClick={handleAnonymousLogin}>

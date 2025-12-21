@@ -1,5 +1,4 @@
 import { DivApiReturnStyled, SpanApiReturnStyled } from "../StylizedTags";
-import { PValueStyled } from "@pages/Cart/StylizedTags";
 
 const CepConvertedReturn = ({ cepConvertedState, opacityReturn }) => {
   return (
@@ -13,9 +12,9 @@ const CepConvertedReturn = ({ cepConvertedState, opacityReturn }) => {
             progress_activity
           </SpanApiReturnStyled>
 
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p style={{ width: "80%", textAlign: "center" }}>
             Convertendo endereço...
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -28,9 +27,9 @@ const CepConvertedReturn = ({ cepConvertedState, opacityReturn }) => {
             exclamation
           </SpanApiReturnStyled>
 
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p style={{ width: "80%", textAlign: "center" }}>
             <strong>Erro:</strong> ao converter seu CEP!
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
     </>

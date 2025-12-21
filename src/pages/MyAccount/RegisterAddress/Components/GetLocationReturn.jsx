@@ -1,5 +1,4 @@
 import { DivApiReturnStyled, SpanApiReturnStyled } from "../StylizedTags";
-import { PValueStyled } from "@pages/Cart/StylizedTags";
 
 const GetLocationReturn = ({ getLocationStatus, opacityReturn }) => {
   return (
@@ -8,14 +7,14 @@ const GetLocationReturn = ({ getLocationStatus, opacityReturn }) => {
         getLocationStatus === "bloqued") && (
         <DivApiReturnStyled $opacityReturn={opacityReturn}>
           {getLocationStatus === "inPermission" ? (
-            <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            <p>
               <strong>Permita</strong> pegar a sua localização.
-            </PValueStyled>
+            </p>
           ) : (
-            <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+            <p>
               <strong>Localização bloqueda </strong>. Permita o acesso ou tente
               de outro modo.
-            </PValueStyled>
+            </p>
           )}
         </DivApiReturnStyled>
       )}
@@ -28,9 +27,9 @@ const GetLocationReturn = ({ getLocationStatus, opacityReturn }) => {
           >
             progress_activity
           </SpanApiReturnStyled>
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p>
             Pegando sua localização
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -42,9 +41,9 @@ const GetLocationReturn = ({ getLocationStatus, opacityReturn }) => {
           >
             exclamation
           </SpanApiReturnStyled>
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p>
             <strong>Erro: </strong>não conseguimos pegar sua localização
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
     </>

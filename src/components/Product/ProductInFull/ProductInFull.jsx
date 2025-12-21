@@ -1,25 +1,24 @@
-import { useState, useEffect, useContext, useRef } from "react";
 import { CartContext } from "@contexts/CartContext.js";
+import { HomeDivsContext } from "@contexts/HomeDivsContext.js";
 import { VisibilityContext } from "@contexts/VisibilityContext.js";
-import {
-  BodyDivStyled,
-  MainDivStyled,
-  ProductSectionStyled,
-  ContainerQuantStyled,
-  SimilarSectionStyled,
-  DivTitleStyled,
-  H1Styled,
-  ContainerListStyled,
-  DivHalfList,
-} from "./StylizedTags.jsx";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   ButtonAdd,
   ButtonClose,
   ProductData,
   Subtotal,
 } from "./Components.jsx";
-import { PValueStyled } from "@pages/Cart/StylizedTags.jsx";
-import { HomeDivsContext } from "@contexts/HomeDivsContext.js";
+import {
+  BodyDivStyled,
+  ContainerListStyled,
+  ContainerQuantStyled,
+  DivHalfList,
+  DivTitleStyled,
+  H1Styled,
+  MainDivStyled,
+  ProductSectionStyled,
+  SimilarSectionStyled,
+} from "./StylizedTags.jsx";
 
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
@@ -162,7 +161,7 @@ const ProductInFull = () => {
             <H1Styled>Produtos Similares</H1Styled>
           </DivTitleStyled>
 
-          <PValueStyled
+          <p
             style={{
               color: "var(--secondary-hover)",
               width: "calc(100% - 40px)",
@@ -171,7 +170,7 @@ const ProductInFull = () => {
             }}
           >
             *Essa parte ainda não foi desenvolvida*
-          </PValueStyled>
+          </p>
 
           <ContainerListStyled>
             <DivHalfList></DivHalfList>

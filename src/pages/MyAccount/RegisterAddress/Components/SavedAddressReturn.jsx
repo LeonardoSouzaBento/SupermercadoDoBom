@@ -10,9 +10,9 @@ const SavedAddressReturn = ({ savedAddress, opacityReturn }) => {
             progress_activity
           </SpanApiReturnStyled>
 
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p style={{ width: "80%", textAlign: "center" }}>
             Salvando seu endereço...
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -22,9 +22,9 @@ const SavedAddressReturn = ({ savedAddress, opacityReturn }) => {
             check
           </SpanApiReturnStyled>
 
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p style={{ width: "80%", textAlign: "center" }}>
             Endereço salvo!
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -37,9 +37,9 @@ const SavedAddressReturn = ({ savedAddress, opacityReturn }) => {
             exclamation
           </SpanApiReturnStyled>
 
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p style={{ width: "80%", textAlign: "center" }}>
             <strong>Erro: </strong>não conseguimos pegar sua localização
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
     </>

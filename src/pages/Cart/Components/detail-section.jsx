@@ -1,19 +1,10 @@
 import { DivToCoverStyled } from '@components/GenericStylizedTags.jsx';
-import { SpanH2Styled } from '@pages/MyAccount/StylizedTags.jsx';
 import Button from '@ui/button.jsx';
+import { CardHeader } from '@ui/Card.jsx';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import {
-  ContainerStyled,
-  DivAllValuesStyled,
-  DivAvisoStyled,
-  H2Styled,
-  HeaderH2Styled,
-  PAvisoStyled,
-  PValueStyled,
-} from '../StylizedTags.jsx';
+import { DivAllValuesStyled, DivAvisoStyled } from '../StylizedTags.jsx';
 import { SectionStyled } from '../ui/index';
-import { CardHeader } from '@ui/Card.jsx';
 
 const styles = {
   button: css`
@@ -22,7 +13,7 @@ const styles = {
   `,
 };
 
-const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
+const DetailSection = ({ totalAddedValue, scaleWarnnig }) => {
   const navigate = useNavigate();
 
   const totalValue = totalAddedValue.toLocaleString('pt-BR', {
@@ -43,8 +34,8 @@ const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
   });
 
   return (
-    <ContainerStyled>
-      <SectionStyled>
+    <SectionStyled>
+      <div>
         <CardHeader
           icon={<span className="material-symbols-rounded">data_info_alert</span>}
           title="Detalhes"
@@ -58,32 +49,30 @@ const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
                 padding: '0px',
               }}>
               <DivAvisoStyled $scale={scaleWarnnig} id="warn">
-                <PAvisoStyled>
-                  Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00
-                </PAvisoStyled>
+                <p>Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00</p>
               </DivAvisoStyled>
             </DivToCoverStyled>
           )}
           <div>
-            <PValueStyled>Compra:</PValueStyled>
-            <PValueStyled>R$ {totalValue}</PValueStyled>
+            <p>Compra:</p>
+            <p>R$ {totalValue}</p>
           </div>
 
           <div>
-            <PValueStyled>Taxa de Entrega:</PValueStyled>
-            <PValueStyled>R$ 4,00</PValueStyled>
+            <p>Taxa de Entrega:</p>
+            <p>R$ 4,00</p>
           </div>
 
           <div style={{ borderBottom: 'none' }}>
-            <PValueStyled>
+            <p>
               <strong>Total:</strong>
-            </PValueStyled>
-            <PValueStyled>
+            </p>
+            <p>
               <strong>R$ {totalFormatted}</strong>
-            </PValueStyled>
+            </p>
           </div>
         </DivAllValuesStyled>
-      </SectionStyled>
+      </div>
 
       <Button
         customStyles={styles.button}
@@ -93,8 +82,8 @@ const DetailAndButtonAdd = ({ totalAddedValue, scaleWarnnig }) => {
         }}>
         Adicionar mais produtos
       </Button>
-    </ContainerStyled>
+    </SectionStyled>
   );
 };
 
-export default DetailAndButtonAdd;
+export default DetailSection;

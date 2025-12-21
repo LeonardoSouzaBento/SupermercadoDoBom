@@ -1,25 +1,13 @@
-import { mdIcon } from '@/styles/lucideIcons';
-import { CardHeader } from '@/ui/Card';
 import PageHeader from '@/ui/PageHeader.jsx';
 import BottomNavBar from '@components/BottomNavBar';
 import ProductInFull from '@components/Product/ProductInFull/ProductInFull.jsx';
 import { ProductList } from '@components/ProductList.jsx';
 import { CartContext } from '@contexts/CartContext.js';
 import { VisibilityContext } from '@contexts/VisibilityContext.js';
-import Button from '@ui/button';
-import { Package, Trash2 } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  ButtonSeeAll,
-  CancelDialog,
-  DetailAndButtonAdd,
-  ReceiptAndContinueSection,
-} from './Components';
-import {
-  ContainerStyled,
-  ContinueSectionStyled
-} from './StylizedTags.jsx';
+import { ButtonSeeAll, CancelDialog, DetailSection, ReceiptAndContinueSection } from './Components';
+import ProductCardHeader from './Components/product-card-header';
 import { CartSectionStyed, MainWrapperStyled } from './ui/index';
 
 //altura - o cabeçalho 'sua compra'
@@ -141,27 +129,9 @@ const Cart = () => {
 
       <MainWrapperStyled $opacity={opacityState}>
         <CartSectionStyed ref={CartSectionRef}>
-          <div>
-            <CardHeader
-              title="Produtos"
-              icon={<Package size={20} strokeWidth={2.6} color="var(--primary)" />}
-            />
+          <ProductCardHeader setSeeCancelDialog={setSeeCancelDialog} />
 
-            <Button
-              id="delete-button"
-              variant="destructive"
-              size="icon"
-              onClick={() => {
-                setSeeCancelDialog(true);
-              }}>
-              <Trash2 {...mdIcon} />
-            </Button>
-          </div>
-
-          <ProductList
-            ref={ProductListRef}
-            variant={'cart'}
-            productList={cartProducts}></ProductList>
+          <ProductList ref={ProductListRef} variant={'cart'} productList={cartProducts} />
 
           {viewButtonSeeAll && (
             <ButtonSeeAll
@@ -185,16 +155,17 @@ const Cart = () => {
           )}
         </CartSectionStyed>
 
-        <ContinueSectionStyled>
-          <DetailAndButtonAdd totalAddedValue={totalAddedValue} scaleWarnnig={scaleWarnnig} />
+        <div>
+          <DetailSection totalAddedValue={totalAddedValue} scaleWarnnig={scaleWarnnig} />
           <ReceiptAndContinueSection
             totalAddedValue={totalAddedValue}
             setScaleWarnnig={setScaleWarnnig}
             setCurrentOrder={setCurrentOrder}
           />
-        </ContinueSectionStyled>
+        </div>
+
+        {seeFeedback && <div />}
       </MainWrapperStyled>
-      {seeFeedback && <ContainerStyled />}
       {viewProductInFull && <ProductInFull />}
 
       <BottomNavBar />

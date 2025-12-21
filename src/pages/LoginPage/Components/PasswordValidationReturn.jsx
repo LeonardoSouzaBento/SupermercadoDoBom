@@ -1,4 +1,3 @@
-import { PValueStyled } from "@pages/Cart/StylizedTags";
 import styled, { css } from "styled-components";
 
 const DivForReturnStyled = styled.div`
@@ -53,50 +52,50 @@ const PasswordValidationReturn = ({ validacao }) => {
   return (
     <DivForReturnStyled>
       <DivRowStyled $first={true}>
-        <PValueStyled $email={true}>
+        <p>
           <strong style={{ fontWeight: 600 }}>Sua senha deve ter:</strong>
-        </PValueStyled>
+        </p>
       </DivRowStyled>
 
       <DivRowStyled $check={validacao.tamanhoMinimo}>
         <span className="material-symbols-outlined">
           {validacao.tamanhoMinimo ? "check" : "exclamation"}
         </span>
-        <PValueStyled $email={true}>8 digitos:</PValueStyled>
+        <p>8 digitos:</p>
       </DivRowStyled>
 
       <DivRowStyled $check={validacao.temMaiuscula}>
         <span className="material-symbols-outlined">
           {validacao.temMaiuscula ? "check" : "exclamation"}
         </span>
-        <PValueStyled $email={true}>1 Maiúsculo(A-Z)</PValueStyled>
+        <p>1 Maiúsculo(A-Z)</p>
       </DivRowStyled>
 
       <DivRowStyled $check={validacao.temMinuscula}>
         <span className="material-symbols-outlined">
           {validacao.temMinuscula ? "check" : "exclamation"}
         </span>
-        <PValueStyled $email={true}>1 Minúsculo (a-z)</PValueStyled>
+        <p>1 Minúsculo (a-z)</p>
       </DivRowStyled>
 
       <DivRowStyled $check={validacao.temNumero}>
         <span className="material-symbols-outlined">
           {validacao.temNumero ? "check" : "exclamation"}
         </span>
-        <PValueStyled $email={true}>1 Número (0-9)</PValueStyled>
+        <p>1 Número (0-9)</p>
       </DivRowStyled>
 
       <DivRowStyled $check={validacao.temSimbolo}>
         <span className="material-symbols-outlined">
           {validacao.temSimbolo ? "check" : "exclamation"}
         </span>
-        <DivRowStyled $last={true}>
-          <PValueStyled $email={true} $last={true}>
+        <DivRowStyled>
+          <p>
             1 Símbolo especial
-          </PValueStyled>
-          <PValueStyled $email={true} $last={true}>
+          </p>
+          <p>
             (!@#$%^&*)
-          </PValueStyled>
+          </p>
         </DivRowStyled>
       </DivRowStyled>
     </DivForReturnStyled>

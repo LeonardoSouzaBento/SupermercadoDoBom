@@ -2,7 +2,6 @@ import {
   DivApiReturnStyled,
   SpanApiReturnStyled,
 } from "@pages/MyAccount/RegisterAddress/StylizedTags";
-import { PValueStyled } from "@pages/Cart/StylizedTags";
 
 const LoginReturn = ({ loginState }) => {
   return (
@@ -15,17 +14,9 @@ const LoginReturn = ({ loginState }) => {
           >
             progress_activity
           </SpanApiReturnStyled>
-          <PValueStyled
-            style={{
-              width: "80%",
-              textAlign: "center",
-              color: "var(--dark-primary)",
-              fontFamily: "var(--font-header)",
-              scale: 1.03,
-            }}
-          >
+          <p>
             Consultando seu cadastro...
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -37,9 +28,9 @@ const LoginReturn = ({ loginState }) => {
           >
             progress_activity
           </SpanApiReturnStyled>
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p>
             Fazendo Login...
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -51,9 +42,9 @@ const LoginReturn = ({ loginState }) => {
           >
             check
           </SpanApiReturnStyled>
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p>
             Sucesso! Usuário logado.
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -65,10 +56,10 @@ const LoginReturn = ({ loginState }) => {
           >
             exclamation
           </SpanApiReturnStyled>
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p>
             <strong>Erro: </strong> o login falhou, tente novamente ou tente de
             outro modo.
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -81,9 +72,9 @@ const LoginReturn = ({ loginState }) => {
           >
             progress_activity
           </SpanApiReturnStyled>
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p>
             Por favor, aguarde...
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -92,9 +83,9 @@ const LoginReturn = ({ loginState }) => {
           <SpanApiReturnStyled className="material-symbols-outlined"  $check={true}>
             check
           </SpanApiReturnStyled>
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p>
             Verifique seu e-mail.
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
 
@@ -106,9 +97,9 @@ const LoginReturn = ({ loginState }) => {
           >
             error
           </SpanApiReturnStyled>
-          <PValueStyled style={{ width: "80%", textAlign: "center" }}>
+          <p>
             Ocorreu um erro ao enviar o e-mail de recuperação.
-          </PValueStyled>
+          </p>
         </DivApiReturnStyled>
       )}
     </>
@@ -116,5 +107,6 @@ const LoginReturn = ({ loginState }) => {
 };
 
 export default LoginReturn;
+
 
 

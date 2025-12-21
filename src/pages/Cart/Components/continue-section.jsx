@@ -4,14 +4,9 @@ import { CardHeader } from '@ui/Card.jsx';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import {
-  ContainerStyled,
-  PValueStyled,
-  ReceiptOptionStyled,
-  SpanReceiptStyled,
-} from '../StylizedTags.jsx';
+import { SpanReceiptStyled } from '../StylizedTags.jsx';
 import { SectionStyled } from '../ui/index.js';
-import DataAlert from './DataAlert';
+import DataAlert from './data-alert.jsx';
 
 const ReceiptAndContinueSection = ({ setScaleWarnnig, setCurrentOrder, totalAddedValue }) => {
   const navigate = useNavigate();
@@ -52,43 +47,41 @@ const ReceiptAndContinueSection = ({ setScaleWarnnig, setCurrentOrder, totalAdde
 
   return (
     <>
-      <ContainerStyled>
-        <SectionStyled>
+      <SectionStyled>
+        <div>
           <CardHeader
             icon={<span className="material-symbols-rounded">delivery_truck_speed</span>}
             title="Recebimento"
           />
 
-          <ReceiptOptionStyled
-            $variant={'retirar'}
+          <Button
+            variant="transparent"
             $selected={selected == 'retirar'}
             onClick={() => {
               setSelected('retirar');
             }}>
-            <PValueStyled $selected={selected == 'retirar'}>
-              Retirar no estabelecimento
-            </PValueStyled>
+            Retirar no estabelecimento
             <SpanReceiptStyled
               className="material-symbols-rounded"
               $selected={selected == 'retirar'}>
               {selected === 'retirar' ? 'check_box' : 'check_box_outline_blank'}
             </SpanReceiptStyled>
-          </ReceiptOptionStyled>
+          </Button>
 
-          <ReceiptOptionStyled
-            $variant={'entregar'}
+          <Button
+            variant="transparent"
             $selected={selected == 'entregar'}
             onClick={() => {
               setSelected('entregar');
             }}>
-            <PValueStyled $selected={selected == 'entregar'}>Entregar</PValueStyled>
+            Entregar
             <SpanReceiptStyled
               className="material-symbols-rounded"
               $selected={selected == 'entregar'}>
               {selected === 'entregar' ? 'check_box' : 'check_box_outline_blank'}
             </SpanReceiptStyled>
-          </ReceiptOptionStyled>
-        </SectionStyled>
+          </Button>
+        </div>
 
         <Button
           variant="primary"
@@ -100,7 +93,7 @@ const ReceiptAndContinueSection = ({ setScaleWarnnig, setCurrentOrder, totalAdde
           `}>
           {userDataComplete ? 'Finalizar Compra' : 'Continuar'}
         </Button>
-      </ContainerStyled>
+      </SectionStyled>
       {incompleteDataAlert && <DataAlert />}
     </>
   );
