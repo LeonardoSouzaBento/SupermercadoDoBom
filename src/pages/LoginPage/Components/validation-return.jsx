@@ -1,16 +1,16 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-const DivForReturnStyled = styled.div`
+const WrapperStyled = styled.div`
   width: 100%;
   box-sizing: border-box;
-  background-color: rgb(247, 249, 250);
+  background-color: var(--background);
   padding: 1.6rem;
   padding-top: 1.2rem;
-  margin-bottom: 1.6rem;
-  border-radius: 0.8rem;
+  margin-bottom: 21px;
+  border-radius: 0.9rem;
 `;
 
-const DivRowStyled = styled.div`
+const RowStyled = styled.div`
   min-height: 3.2rem;
   width: max-content;
   display: flex;
@@ -28,17 +28,18 @@ const DivRowStyled = styled.div`
         gap: 0.4rem;
       }
     `}
-    
+  & > p {
+    font-size: var(--text-sm);
+  }
   & span {
     background-color: transparent;
-    
+
     font-weight: 500;
     color: var(--secondary-hover);
     border-radius: 50%;
     ${(props) =>
       props.$check &&
       css`
-        
         font-weight: 600;
         background-color: var(--light-green);
         color: var(--primary);
@@ -48,60 +49,65 @@ const DivRowStyled = styled.div`
   }
 `;
 
+const ExampleStyled = styled.p`
+  background-color: var(--white-foreground);
+  padding: 8px;
+  font-size: var(--text-sm);
+  margin-top: 8px;
+  border-radius: 6px;
+`;
+
 const PasswordValidationReturn = ({ validacao }) => {
   return (
-    <DivForReturnStyled>
-      <DivRowStyled $first={true}>
+    <WrapperStyled>
+      <RowStyled $first>
         <p>
-          <strong style={{ fontWeight: 600 }}>Sua senha deve ter:</strong>
+          <strong>Sua senha deve ter:</strong>
         </p>
-      </DivRowStyled>
+      </RowStyled>
 
-      <DivRowStyled $check={validacao.tamanhoMinimo}>
+      <RowStyled $check={validacao.tamanhoMinimo}>
         <span className="material-symbols-outlined">
-          {validacao.tamanhoMinimo ? "check" : "exclamation"}
+          {validacao.tamanhoMinimo ? 'check' : 'exclamation'}
         </span>
         <p>8 digitos:</p>
-      </DivRowStyled>
+      </RowStyled>
 
-      <DivRowStyled $check={validacao.temMaiuscula}>
+      <RowStyled $check={validacao.temMaiuscula}>
         <span className="material-symbols-outlined">
-          {validacao.temMaiuscula ? "check" : "exclamation"}
+          {validacao.temMaiuscula ? 'check' : 'exclamation'}
         </span>
         <p>1 Maiúsculo(A-Z)</p>
-      </DivRowStyled>
+      </RowStyled>
 
-      <DivRowStyled $check={validacao.temMinuscula}>
+      <RowStyled $check={validacao.temMinuscula}>
         <span className="material-symbols-outlined">
-          {validacao.temMinuscula ? "check" : "exclamation"}
+          {validacao.temMinuscula ? 'check' : 'exclamation'}
         </span>
         <p>1 Minúsculo (a-z)</p>
-      </DivRowStyled>
+      </RowStyled>
 
-      <DivRowStyled $check={validacao.temNumero}>
+      <RowStyled $check={validacao.temNumero}>
         <span className="material-symbols-outlined">
-          {validacao.temNumero ? "check" : "exclamation"}
+          {validacao.temNumero ? 'check' : 'exclamation'}
         </span>
         <p>1 Número (0-9)</p>
-      </DivRowStyled>
+      </RowStyled>
 
-      <DivRowStyled $check={validacao.temSimbolo}>
+      <RowStyled $check={validacao.temSimbolo}>
         <span className="material-symbols-outlined">
-          {validacao.temSimbolo ? "check" : "exclamation"}
+          {validacao.temSimbolo ? 'check' : 'exclamation'}
         </span>
-        <DivRowStyled>
-          <p>
-            1 Símbolo especial
-          </p>
-          <p>
-            (!@#$%^&*)
-          </p>
-        </DivRowStyled>
-      </DivRowStyled>
-    </DivForReturnStyled>
+        <RowStyled $last>
+          <p>1 Símbolo especial</p>
+          <p>(!@#$%^&*)</p>
+        </RowStyled>
+      </RowStyled>
+      <ExampleStyled>
+        Exemplo: J@iro450Love
+      </ExampleStyled>
+    </WrapperStyled>
   );
 };
 
 export default PasswordValidationReturn;
-
-

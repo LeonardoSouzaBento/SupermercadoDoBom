@@ -21,6 +21,7 @@
   --text-h3: 1.215em;
   --text-h2: 1.296em;
   --text-h1: 1.383em;
+  --text-h1-hero: 1.4755em;
   --text-button: 1em;
   --text-sm-button: 0.9em;
   --text-lg-button: 1.1em;
@@ -73,7 +74,7 @@
   --disable-hover: #9299a0ff;
   --dark-border: hsl(0, 0%, 85%);
   --border: hsl(0, 0%, 87%);
-  --light-border: #e6e6e6;
+  --card-border: hsl(0, 0%, 97%);
   --pink: hsl(0, 100%, 94%);
   --background-value: hsl(220, 14%, 91%);
   --background: hsl(210, 12%, 98%);

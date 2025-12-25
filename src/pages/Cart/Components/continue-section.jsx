@@ -1,6 +1,6 @@
 import { UserDataContext } from '@contexts/UserDataContext.js';
 import Button from '@ui/button';
-import { CardHeader } from '@ui/Card.jsx';
+import { CardHeader } from '@ui/card.jsx';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';

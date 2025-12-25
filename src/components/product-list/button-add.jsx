@@ -1,9 +1,10 @@
-import { useContext } from "react";
-import { CartContext } from "@contexts/CartContext";
-import { HomeDivsContext } from "@contexts/HomeDivsContext";
-import Button from "@ui/button";
-import { Plus } from "lucide-react";
-import { mdIcon, smIcon } from "@/styles/lucideIcons";
+import { mdIcon } from '@/styles/lucideIcons';
+import { CartContext } from '@contexts/CartContext';
+import { HomeDivsContext } from '@contexts/HomeDivsContext';
+import Button from '@ui/button';
+import { Plus } from 'lucide-react';
+import { useContext } from 'react';
+import { css } from 'styled-components';
 
 export const ButtonAdd = ({ product, setQuantity }) => {
   const { handleQuantityChange } = useContext(CartContext);
@@ -19,10 +20,18 @@ export const ButtonAdd = ({ product, setQuantity }) => {
       isDraggingRef.current = false;
     }
   }
-  
+
   return (
-    <Button id="button-add" variant="primary" size="sm-icon" onPointerUp={handlePointerUpAdd}>
-      <Plus {...smIcon}/>
+    <Button
+      id="button-add"
+      variant="outline"
+      size="sm-icon"
+      customStyles={css`
+        color: var(--primary);
+        background-color: var(--white-foreground) !important;
+      `}
+      onPointerUp={handlePointerUpAdd}>
+      <Plus {...mdIcon}/>
     </Button>
   );
 };

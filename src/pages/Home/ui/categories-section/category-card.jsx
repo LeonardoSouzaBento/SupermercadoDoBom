@@ -1,27 +1,25 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const CategoryCardStyled = styled.div`
-  min-width: 11.6rem;
-  width: 11.6rem;
-  max-height: 12.4rem;
-  padding: 1.2rem 0;
+  min-width: 12rem;
+  padding: 9px 15px;
+  box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.2rem;
+  gap: 0.5ex;
   flex: auto;
-  border-radius: 1.2rem;
   cursor: pointer;
   position: relative;
-  background-color: hsla(var(--secondary-value), 0.02);
+  border-radius: 9px;
 
   ${(props) =>
     props.$selected &&
     css`
       z-index: 1;
       background-color: var(--white-foreground);
-      box-shadow: var(--shadow-sm);
+      
     `}
   ${(props) =>
     !props.$selected &&
@@ -32,23 +30,24 @@ export const CategoryCardStyled = styled.div`
     `}
 
   & > div:first-child {
-    height: 4.4rem;
     width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 999px;
+    background-color: ${(props) => (props.$selected ? "var(--primary)" : "var(--white-foreground)")};
+    color: ${(props) => (props.$selected ? "var(--white-foreground)" : "var(--primary)")};
+    border: 1.5px solid hsla(var(--primary-value), 0.25);
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--primary);
-    border-radius: 50%;
     transition: all 0.15s ease;
-
+    /* box-shadow: var(--shadow-xs); */
     ${(props) =>
       props.$selected &&
       css`
         scale: 1.05;
-        box-shadow: var(--shadow-sm);
       `}
   }
-  & >div:last-child {
+  & > div:last-child {
     height: 4.8rem;
     width: 4.8rem;
     display: flex;
@@ -61,8 +60,8 @@ export const CategoryCardStyled = styled.div`
     letter-spacing: 0.05rem;
     font-weight: 500;
     line-height: 1.2;
+    /* color: var(--primary); */
     font-size: var(--text-sm-button);
     margin: 0;
-    color: var(--primary);
   }
 `;

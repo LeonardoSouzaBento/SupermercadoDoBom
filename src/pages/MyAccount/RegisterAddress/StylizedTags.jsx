@@ -229,7 +229,7 @@ export const InputStyled = styled.input`
   margin-bottom: 0.8rem;
   display: block;
   border-radius: 0.8rem;
-  border: 1px solid var(--light-border);
+  border: 1px solid var(--card-border);
 
   font-family: var(--font-body);
   font-weight: 400;

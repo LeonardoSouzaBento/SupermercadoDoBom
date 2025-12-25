@@ -1,3 +1,4 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
 import RootComponent from "./RootComponent";
 import { initializeApp } from "firebase/app";
@@ -16,5 +17,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-ReactDOM.createRoot(document.getElementById("root")).render(<RootComponent />);
+const rootElement = document.getElementById("root");
+
+if (!window.reactRoot) {
+  window.reactRoot = ReactDOM.createRoot(rootElement);
+}
+
+window.reactRoot.render(
+  <React.StrictMode>
+    <RootComponent />
+  </React.StrictMode>
+);
 

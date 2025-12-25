@@ -67,7 +67,7 @@ function CategoriesSection({ wasResize }) {
               handlePointerUpCat(e, cat.id);
             }}>
             <div>
-              <cat.icon {...lgIcon} color="var(--white-foreground)" />
+              <cat.icon {...lgIcon} />
             </div>
             <div>
               <p>{cat.label}</p>

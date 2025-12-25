@@ -2,20 +2,22 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
+  width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 1ex;
   flex-shrink: 0;
-  border-radius: 0.8rem;
+  border-radius: 0.9rem;
   box-sizing: border-box;
-  transition-property: color, box-shadow, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, box-shadow, background-color, border-color, text-decoration-color,
+    fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   &:focus-visible {
     outline: 0.2rem solid transparent;
     outline-offset: 0.2rem;
-    box-shadow: 0 0 0 0.2rem var(--focus-ring-color, currentColor),
-      0 0 0 0.4rem var(--focus-ring-offset-color, currentColor);
+    box-shadow: var(--shadow-xs);
   }
   & > svg {
     flex-shrink: 0;
@@ -44,16 +46,29 @@ const StyledButton = styled.button`
         `;
       case 'outline':
         return css`
+          padding: 1.245rem 1.5rem;
+          margin-bottom: 1px;
           color: var(--primary);
-          outline: 0.15rem solid hsla(var(--primary-value), 0.5);
+          border: 1.5px solid hsla(var(--primary-value), 0.5);
           background-color: transparent;
         `;
       case 'ghost':
         return css`
-          background-color: var(--background);
+          background-color: transparent;
+          border: 1px solid var(--border);
           color: var(--primary);
           &:hover {
-            box-shadow:var(--shadow-sm);
+            box-shadow: var(--shadow-sm);
+          }
+        `;
+      case 'link':
+        return css`
+          font-weight: 500;
+          background-color: transparent;
+          color: blue;
+          font-size: var(--text-sm-button);
+          &:hover {
+            background-color: transparent;
           }
         `;
       case 'transparent':
@@ -74,7 +89,11 @@ const StyledButton = styled.button`
     }
   }}
 
-  ${({ $wFull }) => $wFull && css`width: 100%;`}
+  ${({ $wFull }) =>
+    $wFull &&
+    css`
+      width: 100%;
+    `}
 
   ${({ $size }) => {
     switch ($size) {
@@ -85,7 +104,7 @@ const StyledButton = styled.button`
         `;
       case 'normal':
         return css`
-          padding: 1.389rem 1.5rem;
+          ${(props) => props.$variant !== 'outline' && 'padding: 1.389rem 1.5rem;'}
           font-size: var(--text-button);
         `;
       case 'large':

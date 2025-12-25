@@ -1,5 +1,5 @@
-export { default as ButtonLoginGoogle } from "./ButtonLoginGoogle";
-export { default as EmailForm } from "./EmailForm";
-export { default as LoginReturn } from "./LoginReturn";
-export { default as ResetSection } from "./ResetSection";
-export { default as VisitorSection } from "./VisitorSection";
+export { default as ButtonLoginGoogle } from './google-button';
+export { default as EmailForm } from './email-form';
+export { default as LoginReturn } from './login-feedback';
+export { default as ResetSection } from './ResetSection';
+export { default as VisitorSection } from './visitor-section';

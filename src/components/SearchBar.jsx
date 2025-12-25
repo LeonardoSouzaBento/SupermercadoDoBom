@@ -15,6 +15,7 @@ import {
   normalize2,
 } from './search-bar/functions';
 import { sequentialPrefixSearch } from './search-bar/sequentialPrefixSearch';
+import { css } from 'styled-components';
 
 //produtos únicos para sugestão
 
@@ -228,10 +229,13 @@ function SearchBar({ copy, onHome }) {
 
         <Button
           size="lg-icon"
-          variant="ghost"
+          variant="transparent"
           type="submit"
           data-span
-          onPointerDown={handleClickSearch}>
+          onPointerDown={handleClickSearch}
+          customStyles={css`
+            background-color: var(--background) !important;
+          `}>
           <Search {...mdIcon} />
         </Button>
       </form>

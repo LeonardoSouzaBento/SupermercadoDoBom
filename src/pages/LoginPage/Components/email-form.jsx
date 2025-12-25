@@ -1,21 +1,14 @@
-import { UserDataContext } from "@contexts/UserDataContext";
-import axios from "axios";
-import {
-  signInWithCustomToken,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { Eye, EyeOff } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
-import { auth } from "../../../main";
-import {
-  ButtonStyled,
-  InputStyled,
-  InputWrapperStyled,
-  LabelStyled,
-  PasswordWrapperStyled,
-  TogglePasswordStyled,
-} from "../StylizedTags";
-import PasswordValidationReturn from "./PasswordValidationReturn";
+import { UserDataContext } from '@contexts/UserDataContext';
+import Button from '@ui/button';
+import { Input, Label, WrapperInput } from '@ui/input';
+import axios from 'axios';
+import { signInWithCustomToken, signInWithEmailAndPassword } from 'firebase/auth';
+import { Eye, EyeOff } from 'lucide-react';
+import { useContext, useEffect, useState } from 'react';
+import { auth } from '../../../main';
+import { PasswordWrapperStyled, TogglePasswordStyled } from '../StylizedTags';
+import PasswordValidationReturn from './validation-return';
+import { css } from 'styled-components';
 
 function validatePassword(senha) {
   const requisitos = {
@@ -26,7 +19,7 @@ function validatePassword(senha) {
     temSimbolo: /[!@#$%^&*]/.test(senha),
   };
   const valida = Object.values(requisitos).every(Boolean);
-  const excecao = senha === "J@iro450Love";
+  const excecao = senha === 'J@iro450Love';
 
   return {
     ...requisitos,
@@ -40,18 +33,12 @@ function validateEmail(email) {
   return regex.test(email);
 }
 
-const EmailForm = ({
-  setLoginType,
-  setLoginSucess,
-  setLoginState,
-  emailWrapperRef,
-}) => {
+const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRef }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const { setIdToken, userContact, setUserContact } =
-    useContext(UserDataContext);
+  const { setIdToken, userContact, setUserContact } = useContext(UserDataContext);
   const [emailForm, setEmailForm] = useState({
-    email: "",
-    senha: "",
+    email: '',
+    senha: '',
   });
   const [emailPassed, setEmailPassed] = useState(null);
   const [invalidEmailWarn, setInvalidEmailWarn] = useState(false);
@@ -64,8 +51,7 @@ const EmailForm = ({
     valida: false,
   });
 
-  const [exceptionalPasswordAlert, setExceptionalPasswordAlert] =
-    useState(false);
+  const [exceptionalPasswordAlert, setExceptionalPasswordAlert] = useState(false);
 
   function showExceptionalPasswordAlert() {
     setExceptionalPasswordAlert(true);
@@ -112,14 +98,14 @@ const EmailForm = ({
   }
 
   async function handleEmailLogin() {
-    setLoginState("pending");
+    setLoginState('pending');
     setUserContact({
       ...userContact,
       email: emailForm.email,
     });
     try {
       // 1. Tenta login normal
-      setLoginState("checking");
+      setLoginState('checking');
       const userCredential = await signInWithEmailAndPassword(
         auth,
         emailForm.email,
@@ -129,14 +115,14 @@ const EmailForm = ({
 
       setIdToken(idToken);
       setLoginSucess();
-      console.log("Login bem-sucedido!");
+      console.log('Login bem-sucedido!');
     } catch (error) {
       // 2. Se usuário não existir → chama backend
-      setLoginState("pending");
-      if (error.code === "auth/user-not-found") {
+      setLoginState('pending');
+      if (error.code === 'auth/user-not-found') {
         try {
           const response = await axios.post(
-            "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-email",
+            'https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-email',
             {
               email: emailForm.email,
               senha: emailForm.senha,
@@ -149,17 +135,17 @@ const EmailForm = ({
 
           setIdToken(idToken);
           setLoginSucess();
-          console.log("Login bem-sucedido!");
+          console.log('Login bem-sucedido!');
         } catch (backendError) {
-          setLoginState("error");
-          console.error("Erro no backend:", backendError);
+          setLoginState('error');
+          console.error('Erro no backend:', backendError);
         }
-      } else if (error.code === "auth/wrong-password") {
-        setLoginState("error");
-        console.error("Senha incorreta");
+      } else if (error.code === 'auth/wrong-password') {
+        setLoginState('error');
+        console.error('Senha incorreta');
       } else {
-        setLoginState("error");
-        console.error("Erro desconhecido:", error);
+        setLoginState('error');
+        console.error('Erro desconhecido:', error);
       }
     }
   }
@@ -170,10 +156,10 @@ const EmailForm = ({
   }, [emailForm.senha]);
 
   return (
-    <form>
-      <InputWrapperStyled ref={emailWrapperRef} $email={true}>
-        <LabelStyled htmlFor="email">E-mail</LabelStyled>
-        <InputStyled
+    <form style={{ paddingTop: '8px' }}>
+      <WrapperInput ref={emailWrapperRef}>
+        <Label htmlFor="email">E-mail</Label>
+        <Input
           name="email"
           type="email"
           placeholder="seu@email.com"
@@ -181,66 +167,61 @@ const EmailForm = ({
           required
         />
         {invalidEmailWarn && <p>Email Inválido!</p>}
-      </InputWrapperStyled>
+      </WrapperInput>
 
-      <InputWrapperStyled $password={true}>
-        <LabelStyled>Senha</LabelStyled>
+      <WrapperInput $password={true}>
+        <Label>Senha</Label>
         <PasswordWrapperStyled>
-          <InputStyled
+          <Input
             name="senha"
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             placeholder="Digite sua senha"
             onChange={handleTyping}
             required
           />
-          <TogglePasswordStyled
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-          >
+          <TogglePasswordStyled type="button" onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
           </TogglePasswordStyled>
         </PasswordWrapperStyled>
-        <a
-          onClick={() => {
-            setLoginType("resetPassword");
-          }}
-        >
-          Esqueci Minha Senha
-        </a>
-        {exceptionalPasswordAlert && <p>A senha de exemplo não é permitida!</p>}
-      </InputWrapperStyled>
+      </WrapperInput>
 
-      <p style={{ marginBottom: "1.6rem" }}>
-        Exemplo de senha recomendada:{" "}
-        <strong style={{ fontWeight: 600, marginBottom: "1.6rem" }}>
-          J@iro450Love
-        </strong>
-      </p>
+      <Button
+        variant="link"
+        customStyles={css`
+          justify-content: start;
+          padding: 0px !important;
+          margin-bottom: 1.65ex;
+        `}
+        onClick={() => {
+          setLoginType('resetPassword');
+        }}>
+        Esqueci Minha Senha
+      </Button>
+
+      {exceptionalPasswordAlert && <p>A senha de exemplo não é permitida!</p>}
+
       <PasswordValidationReturn validacao={validacao} />
 
-      <ButtonStyled
-        $variant="market"
-        $disable={!emailPassed || !validacao.valida}
+      <Button
+        type="submit"
+        variant="primary"
+        customStyles={'margin-bottom: 18px;'}
+        disabled={!emailPassed || !validacao.valida}
         onClick={(e) => {
           e.preventDefault();
           checkEmailAndPassword();
-        }}
-      >
+        }}>
         Entrar
-      </ButtonStyled>
-      <ButtonStyled
-        type="button"
-        $variant="ghost"
+      </Button>
+      <Button
+        variant="ghost"
         onClick={() => {
           setLoginType(null);
-        }}
-      >
+        }}>
         Voltar
-      </ButtonStyled>
+      </Button>
     </form>
   );
 };
 
 export default EmailForm;
-
-

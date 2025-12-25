@@ -3,7 +3,7 @@ import { ContainerStyled, SimilarSectionStyled } from '@components/ui/product-fu
 import { CartContext } from '@contexts/CartContext.js';
 import { HomeDivsContext } from '@contexts/HomeDivsContext.js';
 import { VisibilityContext } from '@contexts/VisibilityContext.js';
-import { CardHeader } from '@ui/Card.jsx';
+import { CardHeader } from '@ui/card.jsx';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { ButtonClose } from './Components.jsx';
 import { ProductSectionStyled } from './StylizedTags.jsx';

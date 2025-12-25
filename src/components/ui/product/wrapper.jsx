@@ -24,7 +24,7 @@ export const WrapperStyled = styled.div`
   ${(props) =>
     props.$variant == 'cart' &&
     css`
-      border: 1px solid var(--light-border);
+      border: 1px solid var(--card-border);
       border-radius: 0.2rem !important;
     `};
 

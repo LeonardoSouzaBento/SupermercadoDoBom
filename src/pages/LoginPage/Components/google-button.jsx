@@ -1,8 +1,9 @@
-import { useContext } from "react";
 import { UserDataContext } from "@contexts/UserDataContext";
+import Button from "@ui/button";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useContext } from "react";
+import { css } from "styled-components";
 import { auth } from "../../../main";
-import { ButtonStyled } from "../StylizedTags";
 
 const provider = new GoogleAuthProvider();
 
@@ -54,7 +55,7 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
     }
   }
   return (
-    <ButtonStyled $variant="google" onClick={handleGoogleLogin}>
+    <Button variant="primary" customStyles={css`margin-bottom: 18px;`} onClick={handleGoogleLogin}>
       {/* Logo Google */}
       <svg width="20" height="20" viewBox="0 0 24 24" aria-label="Login com Google">
         <path
@@ -79,7 +80,7 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
         />
       </svg>
       Login com Google
-    </ButtonStyled>
+    </Button>
   );
 };
 

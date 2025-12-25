@@ -142,17 +142,18 @@ h4,
 button,
 .small-button,
 .big-link,
-.small-link {
+.small-link,
+label {
   font-weight: 600;
 }
 
 h3,
-h2 {
+h2,
+strong {
   font-weight: 700;
 }
 
-h1,
-strong {
+h1 {
   font-weight: 800;
 }
 

@@ -1,11 +1,11 @@
 import Button from '@ui/button';
-import { CardHeader } from '@ui/Card';
+import { CardHeader } from '@ui/card';
 import { Trash2 } from 'lucide-react';
 import { mdIcon } from '@/styles/lucideIcons';
 import { Package } from 'lucide-react';
 import React from 'react';
 
-const ProductCardHeader = ({setSeeCancelDialog}) => {
+const ProductCardHeader = ({ setSeeCancelDialog }) => {
   return (
     <div>
       <CardHeader

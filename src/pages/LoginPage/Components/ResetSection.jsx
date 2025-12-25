@@ -1,13 +1,9 @@
-import { useState, useEffect } from "react";
-import {
-  InputWrapperStyled,
-  LabelStyled,
-  InputStyled,
-  ButtonStyled,
-} from "../StylizedTags";
-import { auth } from "../../../main";
-import { sendPasswordResetEmail } from "firebase/auth";
-import LoginReturn from "./LoginReturn";
+import Button from '@ui/button';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { auth } from '../../../main';
+import { InputStyled, InputWrapperStyled, LabelStyled } from '../StylizedTags';
+import LoginReturn from './login-feedback';
 
 function validateEmail(email) {
   const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -15,10 +11,10 @@ function validateEmail(email) {
 }
 
 const ResetSection = ({ setLoginType }) => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [emailPassed, setEmailPassed] = useState(false);
   const [invalidEmailWarn, setInvalidEmailWarn] = useState(false);
-  const [resetProcessState, setResetProcessState] = useState("");
+  const [resetProcessState, setResetProcessState] = useState('');
 
   function showInvalidEmailAlert() {
     setInvalidEmailWarn(true);
@@ -44,7 +40,7 @@ const ResetSection = ({ setLoginType }) => {
     }
 
     function erase() {
-      updateCallback("");
+      updateCallback('');
     }
 
     type();
@@ -52,7 +48,7 @@ const ResetSection = ({ setLoginType }) => {
 
   function handleClickReset() {
     if (email.length === 0) {
-      const message = "Digite seu e-mail.";
+      const message = 'Digite seu e-mail.';
       typeMessageAlert(message, (currentText) => {
         setEmail(currentText);
       });
@@ -67,20 +63,20 @@ const ResetSection = ({ setLoginType }) => {
   }
 
   async function recoverPassword(email) {
-    setResetProcessState("resetPending");
+    setResetProcessState('resetPending');
     try {
       await sendPasswordResetEmail(auth, email);
-      console.log("E-mail de recuperação enviado com sucesso!");
-      alert("Verifique seu e-mail para redefinir a senha.");
-      setResetProcessState("resetSuccess");
+      console.log('E-mail de recuperação enviado com sucesso!');
+      alert('Verifique seu e-mail para redefinir a senha.');
+      setResetProcessState('resetSuccess');
     } catch (error) {
-      setResetProcessState("resetError");
-      if (error.code === "auth/user-not-found") {
-        console.error("Usuário não encontrado");
-        alert("Não existe usuário cadastrado com esse e-mail.");
+      setResetProcessState('resetError');
+      if (error.code === 'auth/user-not-found') {
+        console.error('Usuário não encontrado');
+        alert('Não existe usuário cadastrado com esse e-mail.');
       } else {
-        console.error("Erro desconhecido:", error);
-        alert("Ocorreu um erro ao enviar o e-mail de recuperação.");
+        console.error('Erro desconhecido:', error);
+        alert('Ocorreu um erro ao enviar o e-mail de recuperação.');
       }
     }
   }
@@ -92,13 +88,13 @@ const ResetSection = ({ setLoginType }) => {
   }, [email]);
 
   useEffect(() => {
-    if (resetProcessState == "resetError") {
+    if (resetProcessState == 'resetError') {
       setTimeout(() => {
-        setResetProcessState("");
+        setResetProcessState('');
       }, 3400);
-    } else if (resetProcessState == "resetSucess") {
+    } else if (resetProcessState == 'resetSucess') {
       setTimeout(() => {
-        setResetProcessState("");
+        setResetProcessState('');
       }, 2500);
     }
   }, [resetProcessState, setResetProcessState]);
@@ -120,32 +116,26 @@ const ResetSection = ({ setLoginType }) => {
         {invalidEmailWarn && <p>O e-mail digitado é inválido!</p>}
       </InputWrapperStyled>
 
-      <ButtonStyled
-        $variant="market"
-        $disable={!emailPassed}
+      <Button
+        variant="primary"
+        disabled={!emailPassed}
         onClick={handleClickReset}
       >
         Enviar e-mail de redefinição
-      </ButtonStyled>
+      </Button>
 
-      <ButtonStyled
+      <Button
         type="button"
-        $variant="ghost"
-        $reset={true}
+        variant="ghost"
         onClick={() => {
           setLoginType(null);
-        }}
-      >
+        }}>
         Voltar
-      </ButtonStyled>
+      </Button>
 
-      {resetProcessState !== "" && (
-        <LoginReturn loginState={resetProcessState} />
-      )}
+      {resetProcessState !== '' && <LoginReturn loginState={resetProcessState} />}
     </>
   );
 };
 
 export default ResetSection;
-
-

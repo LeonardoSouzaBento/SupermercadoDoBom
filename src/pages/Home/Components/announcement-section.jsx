@@ -126,11 +126,7 @@ function AnnouncementSection({ wasResize }) {
       <AnnouncementStyled ref={advertisementsRef} $odd={announcements.length % 2 !== 0}>
         {announcements.map((object, index) => (
           <div key={index} ref={(el) => (fundoRefs.current[index] = el)}>
-            <img
-              src={object.url2}
-              alt={`Imagem de anúncio ${index + 1}`}
-              id={`anun ${index}`}
-            />
+            <img src={object.url2} alt={`Imagem de anúncio ${index + 1}`} id={`anun ${index}`} />
             <ProductItem
               variant={'announcement'}
               key={`${object.id}-${object.cat_id}`}

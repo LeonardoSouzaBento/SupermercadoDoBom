@@ -1,5 +1,5 @@
 import Button from '@ui/button.jsx';
-import { CardHeader } from '@ui/Card.jsx';
+import { CardHeader } from '@ui/card.jsx';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
 import { DetailWrapperStyled, SectionStyled } from '../ui/index';

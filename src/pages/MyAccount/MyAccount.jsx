@@ -2,7 +2,7 @@ import BottomNavBar from '@components/BottomNavBar';
 import { CartContext } from '@contexts/CartContext';
 import { UserDataContext } from '@contexts/UserDataContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
-import PageHeader from '@ui/PageHeader';
+import PageHeader from '@ui/page-header';
 import { useContext, useEffect, useState } from 'react';
 import Contact from './Components/Contact';
 import FinishShopping from './Components/FinishShopping';

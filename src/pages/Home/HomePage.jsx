@@ -1,16 +1,18 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { VisibilityContext } from '@contexts/VisibilityContext';
-import { UserDataContext } from '@contexts/UserDataContext';
-import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import BottomNavBar from '@components/BottomNavBar';
 import ProductInFull from '@components/Product/ProductInFull/ProductInFull';
-import Header from './Components/Header';
-import OptionsSection from './Components/OptionsMenu';
-import AnnouncementSection from './Components/AnnouncementSection';
-import CategoriesSection from './Components/CategoriesSection';
-import ProductListHome from './Components/ProductListHome';
+import { HomeDivsContext } from '@contexts/HomeDivsContext';
+import { UserDataContext } from '@contexts/UserDataContext';
+import { VisibilityContext } from '@contexts/VisibilityContext';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import {
+  AnnouncementSection,
+  CategoriesSection,
+  Header,
+  OptionsMenu,
+  ProductListHome,
+} from './components/index';
 
 const MainStyled = styled.main`
   max-width: 140rem;
@@ -105,7 +107,7 @@ function HomePage() {
 
   return (
     <div ref={divRef}>
-      {viewOptions && <OptionsSection setViewOptions={setViewOptions} idToken={idToken} />}
+      {viewOptions && <OptionsMenu setViewOptions={setViewOptions} idToken={idToken} />}
 
       <div>
         <Header setViewOptions={setViewOptions} />

@@ -476,7 +476,7 @@ export const DivZapOrPhone = styled(CentralizeDiv)`
   padding-left: 1.2rem;
   padding-right: 0.6rem;
   border-radius: 0.4rem;
-  border: 1px solid var(--light-border);
+  border: 1px solid var(--card-border);
   ${(props) => props.$selected && 'background-color: var(--background);'}
 
   @media screen and (max-width: 576px) {

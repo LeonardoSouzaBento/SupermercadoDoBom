@@ -1,4 +1,4 @@
-import PageHeader from '@/ui/PageHeader.jsx';
+import PageHeader from '@ui/page-header.jsx';
 import BottomNavBar from '@components/BottomNavBar';
 import ProductInFull from '@components/Product/ProductInFull/ProductInFull.jsx';
 import { ProductList } from '@components/ProductList.jsx';
@@ -6,8 +6,8 @@ import { CartContext } from '@contexts/CartContext.js';
 import { VisibilityContext } from '@contexts/VisibilityContext.js';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ButtonSeeAll, CancelDialog, DetailSection, ReceiptAndContinueSection } from './Components';
-import ProductCardHeader from './Components/product-card-header';
+import { ButtonSeeAll, CancelDialog, DetailSection, ReceiptAndContinueSection } from './components';
+import ProductCardHeader from './components/product-card-header';
 import { CartSectionStyed, MainWrapperStyled } from './ui/index';
 
 //altura - o cabeçalho 'sua compra'

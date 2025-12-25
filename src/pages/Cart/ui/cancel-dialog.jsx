@@ -60,7 +60,7 @@ export const ModalStyled = styled.div`
       height: 5.6rem;
       margin-bottom: 1.6rem;
       background-color: var(--white-foreground);
-      ${(props) => !props.$feedback && 'border-bottom: 1px solid var(--light-border);'}
+      ${(props) => !props.$feedback && 'border-bottom: 1px solid var(--card-border);'}
       ${(props) => props.$feedback && 'background-color: var(--dark-green);'}
 
   & h1 {
