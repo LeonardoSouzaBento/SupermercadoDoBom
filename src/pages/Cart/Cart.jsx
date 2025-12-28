@@ -12,7 +12,7 @@ import {
   DetailSection,
   ReceiptAndContinueSection,
   ProductCardHeader,
-} from '@/pages/Cart/components/index';
+} from '@/pages/Cart/components/index.js';
 import { CartSectionStyed, MainWrapperStyled } from '@/pages/Cart/ui/index.js';
 
 //altura - o cabeçalho 'sua compra'
