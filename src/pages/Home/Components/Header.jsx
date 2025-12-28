@@ -2,7 +2,7 @@ import { BrandContainerStyled, HeaderStyled } from '@/pages/Home/ui/header/index
 import { mdIcon } from '@/styles/lucideIcons';
 import SearchBar from '@components/SearchBar';
 import { VisibilityContext } from '@contexts/VisibilityContext';
-import { Menu } from 'lucide-react';
+import { HeartHandshake, Menu } from 'lucide-react';
 import { useContext } from 'react';
 
 const Header = ({ setViewOptions }) => {
@@ -20,7 +20,7 @@ const Header = ({ setViewOptions }) => {
       <BrandContainerStyled>
         <div>
           <div>
-            <span className="material-symbols-rounded">handshake</span>
+            <HeartHandshake {...mdIcon} size="3.6rem" />
           </div>
           <div>
             <h1>{supermarketName}</h1>
@@ -34,7 +34,6 @@ const Header = ({ setViewOptions }) => {
 
       <button onPointerDown={handleClick}>
         <Menu {...mdIcon} />
-        <p>Mais opções</p>
       </button>
     </HeaderStyled>
   );

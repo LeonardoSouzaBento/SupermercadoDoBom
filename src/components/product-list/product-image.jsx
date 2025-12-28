@@ -71,7 +71,7 @@ const ProductImage = ({ product, quantity, setQuantity, variant }) => {
         {product.weight != '' && product.weight != null && <p id="weight">{product.weight}</p>}
         <img src={product.url}></img>
 
-        <ButtonAdd product={product} setQuantity={setQuantity} />
+        {quantity == 0 && <ButtonAdd product={product} setQuantity={setQuantity} />}
 
         {variant == 'cart' && (
           <div id="quantity-in-cart">

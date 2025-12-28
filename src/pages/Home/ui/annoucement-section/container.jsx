@@ -13,6 +13,7 @@ export const ContainerStyled = styled.section`
   }
   @media screen and (min-width: 1201px) {
     width: max-content;
+    padding-bottom: 0;
   }
 
   &::before {
@@ -69,5 +70,8 @@ export const ContainerStyled = styled.section`
         width: 1rem;
       }
     }
+   @media screen and (min-width: 1201px) {
+    display: none;
+   } 
   }
 `;

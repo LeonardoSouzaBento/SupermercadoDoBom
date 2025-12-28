@@ -39,9 +39,10 @@ export const SimilarSectionStyled = styled.section`
     color: var(--secondary-hover);
     margin: auto;
     text-align: center;
+    font-weight: 600;
     background-color: var(--white-foreground);
     padding: 12px;
-    border-radius: 0.7rem;
+    border-radius: 999px;
     box-shadow: var(--shadow-sm);
   }
 

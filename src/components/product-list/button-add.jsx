@@ -28,7 +28,8 @@ export const ButtonAdd = ({ product, setQuantity }) => {
       size="sm-icon"
       customStyles={css`
         color: var(--primary);
-        background-color: var(--white-foreground) !important;
+        background-color: hsla(var(--white-value), 0.5) !important;
+        backdrop-filter: blur(3px);
       `}
       onPointerUp={handlePointerUpAdd}>
       <Plus {...mdIcon}/>

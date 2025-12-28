@@ -29,8 +29,10 @@ export const ContainerStyled = styled.div`
       color: var(--dark-primary);
       text-align: center;
     }
-    & strong {
-      font-weight: 500;
+    & p {
+      width: 100%;
+      color: var(--muted-foreground);
+      text-align: center;
     }
   }
   /* wrapper rolável*/

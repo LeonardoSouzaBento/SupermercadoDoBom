@@ -10,10 +10,10 @@ export const WrapperImageStyled = styled.div`
   margin-bottom: 0.8rem;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-user-select: none; /* Safari, Chrome */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
-  user-select: none; /* Padrão */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   @media screen and (max-width: 375px) {
     height: auto;
   }
@@ -53,11 +53,12 @@ export const WrapperImageStyled = styled.div`
     position: absolute;
     bottom: 0.4rem;
     right: 0;
-    background-color: var(--secondary);
-    padding: 0 1.4rem;
+    background-color: hsla(var(--secondary-value), 0.03);
+    padding: 0 1.2rem;
     padding-bottom: 0.25rem;
-    color: var(--white-foreground);
+    color: var(--secondary);
     border-radius: 1.6rem;
+    font-size: var(--text-sm);
   }
 `;
 

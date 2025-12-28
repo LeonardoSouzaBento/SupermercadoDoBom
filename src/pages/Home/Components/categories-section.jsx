@@ -51,10 +51,9 @@ function CategoriesSection({ wasResize }) {
     <ContainerStyled ref={DivRef}>
       <div>
         <h2>
-          Mais vendidos por categoria,
-          <br />
-          <strong>os produtos básicos ficam aqui.</strong>
+          Explore por categoria
         </h2>
+        <p>Encontre o essencial aqui</p>
       </div>
 
       <div ref={categoriesRef}>

@@ -3,11 +3,10 @@ import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
   width: 100%;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 1ex;
-  flex-shrink: 0;
   border-radius: 0.9rem;
   box-sizing: border-box;
   transition-property: color, box-shadow, background-color, border-color, text-decoration-color,
@@ -49,7 +48,7 @@ const StyledButton = styled.button`
           padding: 1.245rem 1.5rem;
           margin-bottom: 1px;
           color: var(--primary);
-          border: 1.5px solid hsla(var(--primary-value), 0.5);
+          border: 1.5px solid hsla(var(--primary-value), 0.9);
           background-color: transparent;
         `;
       case 'ghost':

@@ -35,15 +35,6 @@ export const HeaderStyled = styled.header`
       background-color: var(--secondary-hover);
     }
 
-    & > p {
-      font-family: var(--font-button);
-      font-weight: 600;
-      font-size: var(--text-button);
-      color: var(--white-foreground);
-      @media screen and (max-width: 1201px) {
-        display: none;
-      }
-    }
     & > svg {
       margin-top: 2px;
       margin-left: 1px;
@@ -62,20 +53,6 @@ export const HeaderStyled = styled.header`
     @media screen and (min-width: 768px) {
       position: relative;
       min-width: 4.8rem;
-    }
-    @media screen and (min-width: 1201px) {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      min-width: max-content;
-      padding-right: 18px !important;
-      padding: 0 1.6rem;
-      gap: 0.8rem;
-      border-radius: 8px;
-      & > svg {
-        margin-bottom: 3px;
-      }
     }
   }
 `;

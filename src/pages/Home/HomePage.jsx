@@ -49,8 +49,6 @@ const ProductFeedDivStyled = styled.section`
   position: relative;
   padding-left: 1.2rem;
   padding-top: 1.4rem;
-  background: linear-gradient(to bottom, transparent, var(--background));
-  /* background-color: var(--background); */
   z-index: 2;
 
   @media screen and (min-width: 577px) {

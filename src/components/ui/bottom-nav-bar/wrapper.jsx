@@ -3,15 +3,18 @@ import styled from 'styled-components';
 export const WrapperStyled = styled.div`
   & > div:first-child {
     width: 100%;
+    padding: 0 8px;
+    box-sizing: border-box;
     height: 56px;
+    background-color: hsla(var(--white-value), 0.66);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 0.4rem;
-    background-color: transparent;
     position: fixed;
     left: 0;
-    bottom: 0.6rem;
+    bottom: 0;
     z-index: 4;
 
     @media screen and (max-width: 576px) {
@@ -19,8 +22,7 @@ export const WrapperStyled = styled.div`
     }
     /* wrapper buttons */
     & > div:first-child {
-      width: calc(100% - 16px);
-      max-width: 42rem;
+      width: 100%;
       height: 56px;
       display: flex;
       padding: 0 8px;
@@ -28,8 +30,6 @@ export const WrapperStyled = styled.div`
       align-items: center;
       box-sizing: border-box;
       border-radius: 0.9rem;
-      background: var(--primary);
-      box-shadow: var(--shadow-lg);
       overflow: hidden;
       @media screen and (min-width: 577px) {
         margin-right: 0.6rem;

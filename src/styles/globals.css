@@ -12,16 +12,16 @@
   /* font-sizes */
   --text-xxs: 0.8232em;
   --text-xs: 0.878em;
-  --text-sm: 0.937em;
+  --text-sm: 0.937207em;
   --text-base: 1em;
   --text-lg: 1.067em;
   --text-h6: 1.067em;
-  --text-h5: 1.067em;
-  --text-h4: 1.138em;
-  --text-h3: 1.215em;
-  --text-h2: 1.296em;
-  --text-h1: 1.383em;
-  --text-h1-hero: 1.4755em;
+  --text-h5: 1.138489em;
+  --text-h4: 1.214768em;
+  --text-h3: 1.296157em;
+  --text-h2: 1.383em;
+  --text-h1: 1.475661em;
+  --text-big-h1: 1.57453em;
   --text-button: 1em;
   --text-sm-button: 0.9em;
   --text-lg-button: 1.1em;
@@ -36,7 +36,7 @@
    */
   --black-value: 0%, 0%, 12%;
   --black-foreground: hsl(var(--black-value));
-  --muted-foreground: hsla(var(--black-value), 0.7);
+  --muted-foreground: hsla(var(--black-value), 0.66);
 
   --primary-value: 215, 50%, 23%;
   --primary: hsl(var(--primary-value));
@@ -64,7 +64,7 @@
 
   --destructive-foreground-value: 0, 0%, 98%;
   --destructive-foreground: hsl(var(--destructive-foreground-value));
-
+  --selected: #93c5fd;
   --dark-green: #396b46;
   --light-green: #b5ebc3;
   /* --back-color: #eef2f6; */
@@ -125,7 +125,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-header);
+  font-family: var(--font-body);
   cursor: default;
   user-select: none;
 }
@@ -144,7 +144,9 @@ button {
   font-family: var(--font-button);
   border: none;
 }
-
+a {
+  text-decoration: none;
+}
 h1,
 h2,
 h3 {

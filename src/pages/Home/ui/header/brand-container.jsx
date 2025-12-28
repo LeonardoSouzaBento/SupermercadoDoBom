@@ -46,7 +46,7 @@ export const BrandContainerStyled = styled.div`
     & > div:first-child {
       height: 6rem;
       width: 6rem;
-      background-color: var(--secondary);
+      background: linear-gradient(45deg, var(--secondary), var(--secondary-hover));
       border-radius: 50%;
       transform: scaleX(-1);
       box-sizing: border-box;
@@ -58,10 +58,9 @@ export const BrandContainerStyled = styled.div`
       @media (max-width: 375px) {
         margin-right: -0.9rem;
       }
-      & > span {
+      & > svg {
         color: var(--white-foreground);
         font-weight: 550;
-        font-size: 3.6rem;
         padding-top: 1px;
         padding-left: 1px;
       }

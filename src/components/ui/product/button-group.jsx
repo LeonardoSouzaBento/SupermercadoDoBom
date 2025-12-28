@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const ButtonGroupStyled = styled.div`
   width: 90%;
   height: 3.2rem;
-  background-color: var(--primary);
+  background-color: hsla(var(--primary-value), 0.88);
+  backdrop-filter: blur(6px);
   display: ${(props) => (props.$display ? 'flex' : 'none')};
   justify-content: space-between;
   border-radius: 0.6rem;

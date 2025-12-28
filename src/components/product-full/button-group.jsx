@@ -1,24 +1,32 @@
+import { mdIcon } from '@/styles/lucideIcons';
 import Button from '@ui/button';
+import { Minus, Plus } from 'lucide-react';
 import styled from 'styled-components';
 
 const WrapperStyled = styled.div`
   width: 100%;
   min-width: 20rem;
-  max-width: 20rem;
-  height: 4.8rem;
+  max-width: 200px;
+  height: 44px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.15s ease;
-  background-color: var(--secondary);
+  background-color: var(--primary);
   &:hover {
-    background-color: var(--secondary-hover);
+    background-color: var(--primary-hover);
   }
   border-radius: 0.8rem;
   cursor: pointer;
 
   @media screen and (max-width: 350px) {
     min-width: 18rem;
+  }
+
+  & > button {
+    min-width: none;
+    width: 48px;
+    height: 100%;
   }
 `;
 
@@ -37,15 +45,15 @@ export const ButtonGroup = ({
             onPointerUp={(e) => {
               handlePointerUpButtons(e, 'fewer');
             }}>
-            <span className="material-symbols-rounded">remove</span>
+            <Minus {...mdIcon} />
           </Button>
 
           <Button>
-            <PQuantFullStyled>{quantity}</PQuantFullStyled>
+            <p>{quantity}</p>
           </Button>
 
           <Button onPointerUp={handlePointerUpButtons}>
-            <span className="material-symbols-rounded">add</span>
+            <Plus {...mdIcon} />
           </Button>
         </>
       )}
