@@ -1,5 +1,5 @@
 import Button from '@ui/button';
-import { CardHeader } from '@ui/card';
+import { CardHeader } from '@ui/card-ui';
 import { Trash2 } from 'lucide-react';
 import { mdIcon } from '@/styles/lucideIcons';
 import { Package } from 'lucide-react';
