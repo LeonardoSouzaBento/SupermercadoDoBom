@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CentralizeDiv } from '@components/GenericStylizedTags.jsx';
+import { CentralizeDiv } from '@components/GenericStylizedTags';
 
 const ContainerStyled = styled(CentralizeDiv)`
   width: 100%;

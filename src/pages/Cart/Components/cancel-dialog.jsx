@@ -1,6 +1,6 @@
-import Button from '@ui/button.jsx';
+import Button from '@ui/button';
 import { useEffect, useState } from 'react';
-import { BackgroundStyled, ModalStyled } from '../ui/cancel-dialog.jsx';
+import { BackgroundStyled, ModalStyled } from '../ui/cancel-dialog';
 
 const CancelDialog = ({ seeFeedback, setSeeFeedback, setSeeCancelDialog, setCartProducts }) => {
   const [opacityDialog, setOpacityDialog] = useState(false);
