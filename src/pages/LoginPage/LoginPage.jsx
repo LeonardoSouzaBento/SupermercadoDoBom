@@ -10,9 +10,9 @@ import {
   LoginReturn,
   ResetSection,
   VisitorSection,
-} from './components';
-import { CardStyled } from './StylizedTags';
-import { ContainerStyled } from './ui/index';
+} from '@/pages/LoginPage/components/index';
+import { CardStyled } from '@/pages/LoginPage/StylizedTags';
+import { ContainerStyled } from '@/pages/LoginPage/ui/index';
 
 const LoginPage = () => {
   const [loginType, setLoginType] = useState(null);
