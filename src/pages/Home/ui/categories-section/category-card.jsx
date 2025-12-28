@@ -13,6 +13,7 @@ export const CategoryCardStyled = styled.div`
   position: relative;
   border-radius: 15px;
   transition: all 0.2s ease;
+  box-shadow: var(--shadow-cat-card);
 
   ${(props) =>
     props.$selected
@@ -20,6 +21,7 @@ export const CategoryCardStyled = styled.div`
           z-index: 1;
           background-color: var(--white-foreground);
           border: 2.8px solid var(--selected);
+          box-shadow: var(--shadow-selected-cat-card);
           &:hover {
             box-shadow: var(--shadow-xs);
           }

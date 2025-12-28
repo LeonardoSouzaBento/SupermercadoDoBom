@@ -88,6 +88,8 @@
   --shadow-lg: 0 6px 12px -6px hsla(0, 0%, 0%, 0.12);
   --shadow-xl: 0 8px 16px -8px hsla(0, 0%, 0%, 0.08);
   --shadow-2xl: 0 10px 20px -10px hsla(0, 0%, 0%, 0.05);
+  --shadow-cat-card: 0 2px 8px hsla(215, 50%, 23%, 0.02);
+  --shadow-selected-cat-card: inset 0 0 8px hsla(212, 96%, 78%, 0.2);
 }
 
 html,

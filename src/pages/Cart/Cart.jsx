@@ -6,8 +6,7 @@ import { CartContext } from '@contexts/CartContext.js';
 import { VisibilityContext } from '@contexts/VisibilityContext.js';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ButtonSeeAll, CancelDialog, DetailSection, ReceiptAndContinueSection } from './components';
-import ProductCardHeader from './components/product-card-header';
+import { ButtonSeeAll, CancelDialog, DetailSection, ReceiptAndContinueSection, ProductCardHeader } from './components';
 import { CartSectionStyed, MainWrapperStyled } from './ui/index';
 
 //altura - o cabeçalho 'sua compra'
