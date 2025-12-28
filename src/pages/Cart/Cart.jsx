@@ -6,8 +6,14 @@ import { CartContext } from '@contexts/CartContext.js';
 import { VisibilityContext } from '@contexts/VisibilityContext.js';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ButtonSeeAll, CancelDialog, DetailSection, ReceiptAndContinueSection, ProductCardHeader } from './components/components.js';
-import { CartSectionStyed, MainWrapperStyled } from './ui/index';
+import {
+  ButtonSeeAll,
+  CancelDialog,
+  DetailSection,
+  ReceiptAndContinueSection,
+  ProductCardHeader,
+} from '@/pages/Cart/components/index';
+import { CartSectionStyed, MainWrapperStyled } from '@/pages/Cart/ui/index.js';
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar

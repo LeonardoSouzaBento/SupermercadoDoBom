@@ -42,9 +42,6 @@ export const ContainerStyled = styled.section`
       text-decoration-color: var(--primary);
       margin-bottom: 0;
       color: hsla(var(--white-value), 0.95);
-      text-decoration: underline;
-      text-underline-offset: 0.05rem;
-      text-decoration-color: hsla(var(--white-value), 0.5);
     }
   }
 

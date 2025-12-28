@@ -8,6 +8,8 @@ const StyledButton = styled.button`
   justify-content: center;
   gap: 1ex;
   border-radius: 0.9rem;
+  position: relative;
+  z-index: 1;
   box-sizing: border-box;
   transition-property: color, box-shadow, background-color, border-color, text-decoration-color,
     fill, stroke;
