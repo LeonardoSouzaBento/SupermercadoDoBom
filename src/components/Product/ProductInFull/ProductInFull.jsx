@@ -1,15 +1,15 @@
-import { ButtonGroup, ProductData, Subtotal } from '@components/product-full/index.js';
+import { ButtonGroup, ProductData, Subtotal } from '@components/product-full/index';
 import {
   ContainerStyled,
   ProductSectionStyled,
   SimilarSectionStyled,
-} from '@components/ui/product-full/index.js';
-import { CartContext } from '@contexts/CartContext.js';
-import { HomeDivsContext } from '@contexts/HomeDivsContext.js';
-import { VisibilityContext } from '@contexts/VisibilityContext.js';
-import { CardHeader } from '@ui/card.jsx';
+} from '@components/ui/product-full/index';
+import { CartContext } from '@contexts/CartContext';
+import { HomeDivsContext } from '@contexts/HomeDivsContext';
+import { VisibilityContext } from '@contexts/VisibilityContext';
+import { CardHeader } from '@ui/card';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { ButtonClose } from './Components.jsx';
+import { ButtonClose } from './Components';
 
 const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState('100%');

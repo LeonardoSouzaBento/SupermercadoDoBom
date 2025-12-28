@@ -1,11 +1,11 @@
-import { UserDataContext } from '@contexts/UserDataContext.js';
+import { UserDataContext } from '@contexts/UserDataContext';
 import Button from '@ui/button';
-import { CardHeader } from '@ui/card.jsx';
+import { CardHeader } from '@ui/card';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import { SectionStyled } from '../ui/index.js';
-import DataAlert from './data-alert.jsx';
+import { SectionStyled } from '../ui/index';
+import DataAlert from './data-alert';
 
 const ReceiptAndContinueSection = ({ setScaleWarnnig, setCurrentOrder, totalAddedValue }) => {
   const navigate = useNavigate();

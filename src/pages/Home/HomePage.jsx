@@ -12,7 +12,7 @@ import {
   Header,
   OptionsMenu,
   ProductListHome,
-} from '@/pages/Home/components/index.js';
+} from '@/pages/Home/components/index';
 
 const MainStyled = styled.main`
   max-width: 140rem;

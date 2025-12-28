@@ -1,9 +1,9 @@
-import PageHeader from '@ui/page-header.jsx';
+import PageHeader from '@ui/page-header';
 import BottomNavBar from '@components/BottomNavBar';
-import ProductInFull from '@components/Product/ProductInFull/ProductInFull.jsx';
-import { ProductList } from '@components/ProductList.jsx';
-import { CartContext } from '@contexts/CartContext.js';
-import { VisibilityContext } from '@contexts/VisibilityContext.js';
+import ProductInFull from '@components/Product/ProductInFull/ProductInFull';
+import { ProductList } from '@components/ProductList';
+import { CartContext } from '@contexts/CartContext';
+import { VisibilityContext } from '@contexts/VisibilityContext';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -12,8 +12,8 @@ import {
   DetailSection,
   ReceiptAndContinueSection,
   ProductCardHeader,
-} from '@/pages/Cart/components/index.js';
-import { CartSectionStyed, MainWrapperStyled } from '@/pages/Cart/ui/index.js';
+} from '@/pages/Cart/components/index';
+import { CartSectionStyed, MainWrapperStyled } from '@/pages/Cart/ui/index';
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar
