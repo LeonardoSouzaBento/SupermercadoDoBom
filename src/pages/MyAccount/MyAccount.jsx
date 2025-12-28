@@ -4,10 +4,10 @@ import { UserDataContext } from '@contexts/UserDataContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import PageHeader from '@ui/page-header';
 import { useContext, useEffect, useState } from 'react';
-import Contact from './Components/Contact';
-import FinishShopping from './Components/FinishShopping';
-import SavedAddress from './Components/SavedAddress';
-import UserProfile from './Components/UserProfile';
+import Contact from './subomponents/Contact';
+import FinishShopping from './subomponents/FinishShopping';
+import SavedAddress from './subomponents/SavedAddress';
+import UserProfile from './subomponents/UserProfile';
 import RegisterAddress from './RegisterAddress/RegisterAddress';
 import { DivOneTwoStyled, DivThreeButtonStyled, MainStyled } from './StylizedTags';
 

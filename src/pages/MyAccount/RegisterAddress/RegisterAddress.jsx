@@ -9,7 +9,7 @@ import {
   H1Styled,
   ButtonStyled,
 } from "./StylizedTags";
-import { CepInput, AddressForm, GetLocationButton } from "./Components";
+import { CepInput, AddressForm, GetLocationButton } from "./subcomponents";
 
 const RegisterAddress = ({ setSeeRegisterAddress }) => {
   const [opacityRegAddress, setOpacityRegAddress] = useState(0);

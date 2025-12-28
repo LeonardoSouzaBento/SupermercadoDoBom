@@ -10,7 +10,7 @@ import {
   LoginReturn,
   ResetSection,
   VisitorSection,
-} from '@/pages/LoginPage/components/index';
+} from '@pages/LoginPage/subcomponents/index';
 import { CardStyled } from '@/pages/LoginPage/StylizedTags';
 import { ContainerStyled } from '@/pages/LoginPage/ui/index';
 
