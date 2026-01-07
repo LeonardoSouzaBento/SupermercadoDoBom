@@ -433,7 +433,7 @@ export const DivInvalidWarnStyled = styled.div`
   width: calc(100% - 32px);
   height: auto;
   padding: 0.8rem 2rem;
-  background-color: var(--secondary-hover);
+  background-color: var(--red-brand-hover);
   border-radius: 0.4rem;
   margin: auto;
   margin-bottom: 0.8rem;

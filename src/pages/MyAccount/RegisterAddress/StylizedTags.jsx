@@ -138,9 +138,9 @@ export const ButtonStyled = styled.button`
   ${(props) =>
     (props.$variant === 'digitarTudo' || props.$variant === 'voltar') &&
     css`
-      background-color: var(--secondary);
+      background-color: var(--red-brand);
       &:hover {
-        background-color: var(--secondary-hover);
+        background-color: var(--red-brand-hover);
       }
     `};
   ${(props) =>
@@ -195,7 +195,7 @@ export const SpanApiReturnStyled = styled.span`
     css`
       font-weight: 500;
 
-      color: var(--secondary);
+      color: var(--red-brand);
       animation: ${rotate} 2s linear infinite;
     `}
   ${(props) =>
@@ -331,10 +331,10 @@ export const RegisterButtonStyled = styled(ButtonStyled)`
   margin-bottom: 0;
   color: var(--white-foreground);
   transition: all 0.15 ease;
-  background-color: ${(props) => (props.$enable ? 'var(--secondary)' : 'var(--disable)')};
+  background-color: ${(props) => (props.$enable ? 'var(--red-brand)' : 'var(--disable)')};
   &:hover {
     background-color: ${(props) =>
-      props.$enable ? 'var(--secondary-hover)' : 'var(--disable-hover)'};
+      props.$enable ? 'var(--red-brand-hover)' : 'var(--disable-hover)'};
   }
 `;
 

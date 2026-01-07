@@ -40,9 +40,9 @@ export const InputWrapperStyled = styled.div`
   ${(props) => props.$reset && 'margin-bottom: 2rem;'}
 
   & p {
-    border: 1px solid var(--secondary-hover);
+    border: 1px solid var(--red-brand-hover);
     outline: 0.3rem solid var(--pink);
-    color: var(--secondary-hover);
+    color: var(--red-brand-hover);
     font-family: var(--font-body);
     font-weight: 600;
     border-radius: 0.8rem;
@@ -119,7 +119,7 @@ export const VisitorBoxStyled = styled.div`
   margin-bottom: 1.6rem;
 
   & p {
-    color: var(--secondary-hover);
+    color: var(--red-brand-hover);
     scale: 0.95;
     text-align: left;
   }

@@ -14,14 +14,17 @@ export const CategoryCardStyled = styled.div`
   border-radius: 15px;
   transition: all 0.2s ease;
   box-shadow: var(--shadow-cat-card);
+  border: 1.5px solid transparent;
+  outline: 2.5px solid transparent;
 
   ${(props) =>
     props.$selected
       ? css`
           z-index: 1;
-          background-color: var(--white-foreground);
-          border: 2.8px solid var(--selected);
-          box-shadow: var(--shadow-selected-cat-card);
+          background-color: hsla(var(--primary-50), 0.4);
+          border: 1.5px solid hsla(var(--primary-value), 0.8);
+          outline: 2.5px solid var(--selected);
+          box-shadow: 0 3px 6px hsla(var(--primary-value), 0.2);
           &:hover {
             box-shadow: var(--shadow-xs);
           }
@@ -32,7 +35,6 @@ export const CategoryCardStyled = styled.div`
             background-color: hsla(var(--white-value), 0.88);
           }
         `}
-
   & > div:first-child {
     width: 4.8rem;
     height: max-content;

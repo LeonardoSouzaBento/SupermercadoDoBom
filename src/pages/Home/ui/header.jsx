@@ -1,21 +1,6 @@
-import BottomNavBar from '@components/BottomNavBar';
-import { CentralizeDiv } from '@components/GenericStylizedTags';
 import styled from 'styled-components';
 
-const DivStyled = styled(CentralizeDiv)`
-  width: 100%;
-  height: calc(100vh - 56px);
-`;
-
-const PStyled = styled.p`
-  padding: 1.6rem 2.4rem;
-  background-color: var(--white-foreground);
-  border-radius: 1.2rem;
-  color: var(--dark-primary);
-  box-shadow: var(--shadow-sm);
-`;
-
-const Header = styled.header`
+export const HeaderStyled = styled.header`
   height: auto;
   padding-block: 18px;
   padding-inline: 24px;
@@ -90,6 +75,24 @@ const Header = styled.header`
     }
   }
 
+  & > div:nth-child(2) {
+    width: 100%;
+    height: 40px;
+    max-width: 94%;
+    border-radius: 999px;
+    background-color: var(--white-foreground);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: 640px) {
+      max-width: 72%;
+    }
+    @media screen and (min-width: 840px) {
+      max-width: 50%;
+    }
+  }
+
   & > button {
     height: 40px;
     width: 40px;
@@ -122,61 +125,4 @@ const Header = styled.header`
       }
     }
   }
-
-  & > #wrapper-input {
-    width: 100%;
-    height: 40px;
-    max-width: 94%;
-    border-radius: 999px;
-    background-color: var(--white-foreground);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    @media screen and (min-width: 640px) {
-      max-width: 72%;
-    }
-    @media screen and (min-width: 840px) {
-      max-width: 50%;
-    }
-    & > input {
-      width: 100%;
-      height: 100%;
-      border-radius: 999px;
-      background-color: var(--white-foreground);
-      padding: 12px;
-      box-sizing: border-box;
-      border: none;
-    }
-  }
 `;
-
-const MyOrders = () => {
-  return (
-    <>
-      <div style={{ backgroundColor: 'var(--primary)' }}>
-        <Header>
-          <div id="logo-name">
-            <div id="logo">a</div>
-            <div id="nome">
-              <h1>Supermercado do bom</h1>
-              <p>Compre com comodidade</p>
-            </div>
-          </div>
-          <div id="wrapper-input">
-            <input type="text" name="" id="" />
-          </div>
-          <button>
-            <p>Mais opções</p>
-          </button>
-        </Header>
-      </div>
-      <DivStyled>
-        <PStyled>Essa página ainda não foi feita</PStyled>
-      </DivStyled>
-      <BottomNavBar />
-    </>
-  );
-};
-
-export default MyOrders;

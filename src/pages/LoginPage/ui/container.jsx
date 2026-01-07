@@ -32,7 +32,7 @@ export const ContainerStyled = styled.div`
         box-sizing: border-box;
         padding-right: 0.22rem;
         border-radius: 50%;
-        background-color: var(--secondary);
+        background-color: var(--red-brand);
         margin-bottom: 1.2rem;
         box-shadow: var(--shadow-sm);
         transform: scaleX(-1);

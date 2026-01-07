@@ -36,7 +36,7 @@ export const SimilarSectionStyled = styled.section`
   & #warning {
     width: calc(100% - 32px);
     max-width: max-content;
-    color: var(--secondary-hover);
+    color: var(--red-brand-hover);
     margin: auto;
     text-align: center;
     font-weight: 600;

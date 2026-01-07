@@ -23,7 +23,7 @@ export const ContainerStyled = styled.section`
     position: absolute;
     top: 5.6rem;
     left: 0;
-    background-image: linear-gradient(to bottom, var(--primary), hsla(219, 27%, 91.5%, 1));
+    background-image: linear-gradient(to bottom, var(--primary), hsl(var(--primary-100)));
     z-index: 0;
   }
 

@@ -33,25 +33,37 @@ const StyledButton = styled.button`
           font-weight: 500;
           background-color: var(--primary);
           color: var(--white-foreground);
+          box-shadow: inset 0 1px 4px hsla(var(--primary-value), 0.08);
           &:hover {
             background-color: var(--primary-hover);
           }
         `;
       case 'secondary':
         return css`
-          background-color: var(--secondary);
+          padding: 1.245rem 1.5rem;
+          margin-bottom: 1.5px;
+          margin-left: 1.5px;
+          color: var(--primary);
+          box-shadow: inset 0 1px 4px hsla(var(--primary-value), 0.08);
+          background-color: hsla(var(--primary-200), 0.5);
+          backdrop-filter: blur(3px);
+        `;
+      case 'cta':
+        return css`
+          background-color: var(--red-brand);
           color: var(--white-foreground);
           &:hover {
-            background-color: var(--secondary-hover);
+            background-color: var(--red-brand-hover);
           }
         `;
       case 'outline':
         return css`
-          padding: 1.245rem 1.5rem;
+          padding: 1.245rem 1.1rem;
           margin-bottom: 1px;
           color: var(--primary);
-          border: 1.5px solid hsla(var(--primary-value), 0.9);
-          background-color: transparent;
+          border: 2.2px solid hsla(var(--primary-value), 0.9);
+          background-color: rgba(236, 236, 236, 0.478);
+          backdrop-filter: blur(3px);
         `;
       case 'ghost':
         return css`
@@ -121,14 +133,15 @@ const StyledButton = styled.button`
         `;
       case 'icon':
         return css`
+          padding: 0;
           width: 3.6rem;
           height: 3.6rem;
         `;
       case 'sm-icon':
         return css`
           padding: 0;
-          width: 3.2rem;
-          height: 3.2rem;
+          width: 3.4rem;
+          height: 3.4rem;
         `;
     }
   }}

@@ -6,7 +6,7 @@ export const WrapperStyled = styled.div`
     padding: 0 8px;
     box-sizing: border-box;
     height: 56px;
-    background-color: hsla(var(--white-value), 0.66);
+    background-color: hsla(var(--primary-50), 0.66);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: flex-end;
@@ -47,10 +47,10 @@ export const WrapperStyled = styled.div`
     gap: 1.2rem;
     color: var(--white-foreground);
     border-radius: 6px;
-    background-color: var(--secondary);
+    background-color: var(--red-brand);
 
     &:hover {
-      background-color: var(--secondary-hover);
+      background-color: var(--red-brand-hover);
     }
 
     & div {

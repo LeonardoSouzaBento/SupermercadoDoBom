@@ -3,6 +3,7 @@ import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { categoriesIcons } from '@data/home';
 import { useScrollX } from '@hooks/useScrollX';
 import { CategoryCardStyled, ContainerStyled } from '@pages/Home/ui/categories-section/index';
+import { Icon } from '@ui/icon';
 import { useCallback, useContext, useEffect, useRef } from 'react';
 
 function CategoriesSection({ wasResize }) {
@@ -50,9 +51,7 @@ function CategoriesSection({ wasResize }) {
   return (
     <ContainerStyled ref={DivRef}>
       <div>
-        <h2>
-          Explore por categoria
-        </h2>
+        <h2>Explore por categoria</h2>
         <p>Encontre o essencial aqui</p>
       </div>
 
@@ -66,7 +65,11 @@ function CategoriesSection({ wasResize }) {
               handlePointerUpCat(e, cat.id);
             }}>
             <div>
-              <cat.icon {...lgIcon} />
+              <Icon
+                Icon={cat.icon}
+                size="h5"
+                strokeValue={2.4}
+              />
             </div>
             <div>
               <p>{cat.label}</p>

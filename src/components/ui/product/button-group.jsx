@@ -37,13 +37,11 @@ export const ButtonGroupStyled = styled.div`
     justify-content: center;
     font-family: var(--font-body);
 
-    & > span {
-      font-weight: 400;
+    & > svg {
       color: var(--primary-foreground);
       cursor: pointer;
       -webkit-user-select: none;
       user-select: none;
-      font-size: 2.24rem;
     }
   }
   /* p de quantidade */

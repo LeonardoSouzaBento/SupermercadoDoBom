@@ -20,7 +20,7 @@ const DataAlertStyled = styled.div`
     width: 35rem;
     padding: 2rem;
     box-sizing: border-box;
-    background-color: var(--secondary);
+    background-color: var(--red-brand);
     position: relative;
     border-radius: 1.2rem;
     overflow: hidden;

@@ -89,7 +89,7 @@ export const ImageWrapperStyled = styled.div`
     }
     /* desconto */
     & > p#discount {
-      color: var(--secondary);
+      color: var(--red-brand);
       font-weight: 400;
       font-size: var(--text-xs);
       width: max-content;

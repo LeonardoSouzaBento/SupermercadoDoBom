@@ -35,7 +35,7 @@ const RowStyled = styled.div`
     background-color: transparent;
 
     font-weight: 500;
-    color: var(--secondary-hover);
+    color: var(--red-brand-hover);
     border-radius: 50%;
     ${(props) =>
       props.$check &&

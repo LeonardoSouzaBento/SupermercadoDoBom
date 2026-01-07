@@ -70,7 +70,6 @@ export const InfoWrapperStyled = styled.div`
       /* peso */
       & > p {
         font-size: var(--text-xs);
-        font-weight: 500;
         letter-spacing: 0.5px;
         background-color: var(--background);
         color: var(--muted-foreground);

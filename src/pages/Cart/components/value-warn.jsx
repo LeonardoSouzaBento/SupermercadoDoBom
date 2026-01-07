@@ -24,7 +24,7 @@ const WrapperStyled = styled.div`
   display: flex;
   align-items: center;
   border-radius: 0.4rem;
-  background-color: var(--secondary);
+  background-color: var(--red-brand);
   overflow: hidden;
   scale: ${(props) => props.$scale};
   transition: scale 0.3s ease;

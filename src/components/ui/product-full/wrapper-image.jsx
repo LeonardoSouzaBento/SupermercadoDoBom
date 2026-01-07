@@ -53,10 +53,10 @@ export const WrapperImageStyled = styled.div`
     position: absolute;
     bottom: 0.4rem;
     right: 0;
-    background-color: hsla(var(--secondary-value), 0.03);
+    background-color: hsla(var(--red-brand-value), 0.03);
     padding: 0 1.2rem;
     padding-bottom: 0.25rem;
-    color: var(--secondary);
+    color: var(--red-brand);
     border-radius: 1.6rem;
     font-size: var(--text-sm);
   }

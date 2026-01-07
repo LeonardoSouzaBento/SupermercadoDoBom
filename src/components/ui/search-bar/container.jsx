@@ -3,19 +3,9 @@ import styled, { css } from 'styled-components';
 export const ContainerStyled = styled.div`
   width: 100%;
   height: max-content;
-  padding-top: 0.2rem;
-  padding-bottom: 1.4rem;
   position: relative;
   z-index: 4;
   box-sizing: border-box;
-
-  ${(props) =>
-    props.$copy === false &&
-    css`
-      @media screen and (min-width: 769px) {
-        padding-top: 1.3rem;
-      }
-    `}
 
   ${(props) =>
     props.$copy &&
@@ -35,12 +25,10 @@ export const ContainerStyled = styled.div`
       }
     `}
   &>form {
-    width: 90%;
-    height: 48px;
     margin: auto;
     display: flex;
     align-items: center;
-    border-radius: 999rem;
+    border-radius: 9999px;
     overflow: hidden;
     position: relative;
     box-shadow: var(--shadow-sm);
@@ -51,28 +39,15 @@ export const ContainerStyled = styled.div`
         width: 91.5%;
         max-width: 68.4rem;
         margin: 0;
-        border-radius: 0.8rem;
         box-shadow: var(--shadow-sm);
       `}
     & > input {
-      width: 100%;
-      height: 4.8rem;
       box-sizing: border-box;
-      padding-bottom: 0.2rem;
       touch-action: auto;
       text-indent: 1.6rem;
-      font-weight: 400;
       letter-spacing: 0.71px;
-      color: var(--black-foreground);
-      font-family: var(--font-body);
-      font-weight: 500;
+      font-weight: 400;
       border: none;
-
-      ${(props) =>
-        props.$copy === false &&
-        css`
-          text-indent: 2rem;
-        `}
 
       &:focus {
         outline: none;
@@ -87,7 +62,7 @@ export const ContainerStyled = styled.div`
     & > button {
       position: absolute;
       right: 4px;
-      bottom: 4px;
+      bottom: 3px;
       color: var(--primary);
       border-radius: 999rem;
 

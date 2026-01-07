@@ -3,6 +3,7 @@ import { mdIcon } from '@/styles/lucideIcons';
 import { CartContext } from '@contexts/CartContext';
 import { bottomNavBarItems } from '@data/bottomNavBarItems';
 import Button from '@ui/button';
+import { Icon } from '@ui/icon';
 import { ShoppingCart } from 'lucide-react';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -98,7 +99,7 @@ const NavButton = ({ item, isActive }) => {
         gap: 2px;
       `}>
       <LinkStyled to={item.path}>
-        <item.lucidIcon {...mdIcon} />
+        <Icon Icon={item.lucidIcon} size="h5" />
         {/* <NameButtonStyled>{item.name}</NameButtonStyled> */}
       </LinkStyled>
 

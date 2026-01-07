@@ -4,6 +4,8 @@ import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { useContext } from 'react';
 import { ButtonAdd } from './button-add';
+import { Icon } from '@ui/icon';
+import { Plus, Minus } from 'lucide-react';
 
 const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef }) => {
   const { handleQuantityChange } = useContext(CartContext);
@@ -34,13 +36,13 @@ const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef })
         onPointerUp={(e) => {
           handlePointerUpButtons(e, 'fewer');
         }}>
-        <span className="material-symbols-rounded">remove</span>
+        <Icon size="sm" Icon={Minus} />
       </div>
 
       <p>{quantity}</p>
 
       <div onPointerUp={handlePointerUpButtons}>
-        <span className="material-symbols-rounded">add</span>
+        <Icon size="sm" Icon={Plus} />
       </div>
     </ButtonGroupStyled>
   );

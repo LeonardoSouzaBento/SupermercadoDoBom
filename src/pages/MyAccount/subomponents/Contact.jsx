@@ -246,7 +246,7 @@ export const Contact = () => {
                   style={{
                     width: '100%',
                     textAlign: 'center',
-                    color: 'var(--secondary-hover)',
+                    color: 'var(--red-brand-hover)',
                     scale: 1.1,
                     fontWeight: 400,
                   }}>

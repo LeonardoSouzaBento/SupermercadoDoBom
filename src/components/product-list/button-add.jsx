@@ -1,10 +1,9 @@
-import { mdIcon } from '@/styles/lucideIcons';
 import { CartContext } from '@contexts/CartContext';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import Button from '@ui/button';
 import { Plus } from 'lucide-react';
+import { Icon } from '@ui/icon';
 import { useContext } from 'react';
-import { css } from 'styled-components';
 
 export const ButtonAdd = ({ product, setQuantity }) => {
   const { handleQuantityChange } = useContext(CartContext);
@@ -24,15 +23,10 @@ export const ButtonAdd = ({ product, setQuantity }) => {
   return (
     <Button
       id="button-add"
-      variant="outline"
+      variant="secondary"
       size="sm-icon"
-      customStyles={css`
-        color: var(--primary);
-        background-color: hsla(var(--white-value), 0.5) !important;
-        backdrop-filter: blur(3px);
-      `}
       onPointerUp={handlePointerUpAdd}>
-      <Plus {...mdIcon}/>
+      <Icon size="lg" Icon={Plus} />
     </Button>
   );
 };

@@ -10,14 +10,14 @@ export const WrapperStyled = styled.div`
   user-select: none;
   position: relative;
   overflow: hidden;
-  border-radius: 0.6rem;
+  border-radius: 9px;
   transition: box-shadow 0.2s ease;
 
   ${(props) =>
     props.$variant !== 'cart' &&
     css`
       &:hover {
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-md);
       }
     `}
 
