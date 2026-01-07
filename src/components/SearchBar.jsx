@@ -229,7 +229,7 @@ function SearchBar({ copy, onHome }) {
         />
 
         <Button
-          size="lg-icon"
+          size="icon"
           variant="secondary"
           type="submit"
           data-span
@@ -237,7 +237,7 @@ function SearchBar({ copy, onHome }) {
           customStyles={css`
             box-shadow: none !important;
           `}>
-          <Icon size="lg" Icon={Search} />
+          <Icon size="lg" LucideIcon={Search} />
         </Button>
       </form>
 

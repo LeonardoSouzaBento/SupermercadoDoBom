@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const InfoWrapperStyled = styled.div`
   display: flex;
@@ -63,18 +63,16 @@ export const InfoWrapperStyled = styled.div`
     }
     /* wrapper peso */
     & #weight {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      background-color: hsla(var(--primary-50), 0.88);
+      color: var(--muted-foreground);
+      padding: 0 0.85rem;
+      border-radius: 999rem;
       ${(props) => props.$exist === false && 'display: none;'}
       @media screen and (min-width: 385px) and (max-width: 992px) {
         display: none;
-      }
-      /* peso */
-      & > p {
-        font-size: var(--text-xs);
-        letter-spacing: 0.5px;
-        background-color: var(--background);
-        color: var(--muted-foreground);
-        padding: 0 0.85rem;
-        border-radius: 999rem;
       }
     }
     /* wrapper preço */

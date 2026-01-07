@@ -185,7 +185,7 @@ export const productsCatId1 = [
   },
   {
     url: "https://http2.mlstatic.com/D_NQ_NP_2X_648069-MLU74110437286_012024-F.webp",
-    name: "Macarrão de Arroz Espaguete Urbano Pacote 500g",
+    name: "Macarrão Espaguete Urbano Pacote 500g",
     price: "5,99",
     weight: "500 g",
     cat_id: 1,
@@ -241,7 +241,7 @@ export const productsCatId1 = [
   },
   {
     url: "https://i.pinimg.com/736x/76/c3/e8/76c3e88f19152c67dc2a00e70102230e.jpg",
-    name: "Oléo de soja soya garrafa",
+    name: "Oléo de soja soya",
     price: "10,00",
     weight: "900 ml",
     cat_id: 1,

@@ -8,6 +8,7 @@ export const AnnouncementStyled = styled.div`
   gap: 1.6rem;
   overflow-x: scroll;
   box-sizing: border-box;
+  box-shadow: var(--shadow-lg);
   padding: 2.4rem;
   padding-top: 1.2rem;
   margin-bottom: 0.4rem;

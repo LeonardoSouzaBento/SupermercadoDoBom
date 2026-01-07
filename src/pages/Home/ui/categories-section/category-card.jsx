@@ -35,7 +35,7 @@ export const CategoryCardStyled = styled.div`
             background-color: hsla(var(--white-value), 0.88);
           }
         `}
-  & > div:first-child {
+  & > div#wrapper-cat-icon {
     width: 4.8rem;
     height: max-content;
     border-radius: 12px;
@@ -45,12 +45,16 @@ export const CategoryCardStyled = styled.div`
     align-items: center;
     transition: all 0.15s ease;
     ${(props) =>
-      props.$selected &&
-      css`
-        scale: 1.05;
-      `}
+      props.$selected
+        ? css`
+            scale: 1.05;
+            background-color: transparent;
+          `
+        : css`
+            background-color: hsla(var(--white-value), 0.66);
+          `}
   }
-  & > div:last-child {
+  & > div#wrapper-cat-label {
     height: 4.8rem;
     width: 4.8rem;
     display: flex;

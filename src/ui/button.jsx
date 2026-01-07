@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
-  width: 100%;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,11 +44,11 @@ const StyledButton = styled.button`
           margin-bottom: 1.5px;
           margin-left: 1.5px;
           color: var(--primary);
-          box-shadow: inset 0 1px 4px hsla(var(--primary-value), 0.08);
+          box-shadow: inset 0 1px 4px hsla(var(--primary-100), 0.1);
           background-color: hsla(var(--primary-200), 0.5);
           backdrop-filter: blur(3px);
         `;
-      case 'cta':
+      case 'red':
         return css`
           background-color: var(--red-brand);
           color: var(--white-foreground);
@@ -61,8 +61,8 @@ const StyledButton = styled.button`
           padding: 1.245rem 1.1rem;
           margin-bottom: 1px;
           color: var(--primary);
-          border: 2.2px solid hsla(var(--primary-value), 0.9);
-          background-color: rgba(236, 236, 236, 0.478);
+          border: 2.5px solid hsla(var(--primary-value), 0.88);
+          background-color: transparent;
           backdrop-filter: blur(3px);
         `;
       case 'ghost':
@@ -110,9 +110,10 @@ const StyledButton = styled.button`
 
   ${({ $size }) => {
     switch ($size) {
-      case 'small':
+      case 'sm':
         return css`
-          padding: 0.375rem 0.75rem;
+          height: 44px;
+          padding-inline: 0.9em;
           font-size: var(--text-sm-button);
         `;
       case 'normal':
@@ -128,20 +129,20 @@ const StyledButton = styled.button`
       case 'lg-icon':
         return css`
           padding: 0;
-          width: 4rem;
-          height: 4rem;
+          width: 44px;
+          height: 44px;
         `;
       case 'icon':
         return css`
           padding: 0;
-          width: 3.6rem;
-          height: 3.6rem;
+          width: 40px;
+          height: 40px;
         `;
       case 'sm-icon':
         return css`
           padding: 0;
-          width: 3.4rem;
-          height: 3.4rem;
+          width: 38px;
+          height: 38px;
         `;
     }
   }}

@@ -6,6 +6,8 @@ import { useContext } from 'react';
 import { ButtonAdd } from './button-add';
 import { Icon } from '@ui/icon';
 import { Plus, Minus } from 'lucide-react';
+import { weightStyles } from './product-item';
+import Button from '@ui/button';
 
 const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef }) => {
   const { handleQuantityChange } = useContext(CartContext);
@@ -36,13 +38,13 @@ const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef })
         onPointerUp={(e) => {
           handlePointerUpButtons(e, 'fewer');
         }}>
-        <Icon size="sm" Icon={Minus} />
+        <Icon size="sm" LucideIcon={Minus} />
       </div>
 
       <p>{quantity}</p>
 
       <div onPointerUp={handlePointerUpButtons}>
-        <Icon size="sm" Icon={Plus} />
+        <Icon size="sm" LucideIcon={Plus} />
       </div>
     </ButtonGroupStyled>
   );
@@ -65,7 +67,7 @@ const ProductImage = ({ product, quantity, setQuantity, variant }) => {
   }
 
   return (
-    <ImageWrapperStyled $variant={variant}>
+    <ImageWrapperStyled $variant={variant} $weightStyles={weightStyles}>
       <div onPointerUp={handlePointerUpOpen}>
         {product.discount != '' && product.discount != null && (
           <p id="discount">-{product.discount}%</p>
@@ -76,9 +78,9 @@ const ProductImage = ({ product, quantity, setQuantity, variant }) => {
         {quantity == 0 && <ButtonAdd product={product} setQuantity={setQuantity} />}
 
         {variant == 'cart' && (
-          <div id="quantity-in-cart">
-            <p>{quantity}</p>
-          </div>
+          <Button id="quantity-in-cart" variant="primary" size="icon">
+            {quantity}
+          </Button>
         )}
 
         <ButtonGroup

@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const ButtonGroupStyled = styled.div`
   width: 90%;
-  height: 3.2rem;
-  background-color: hsla(var(--primary-value), 0.88);
+  height: 36px;
+  background-color: hsla(var(--primary-value), 0.85);
   backdrop-filter: blur(6px);
   display: ${(props) => (props.$display ? 'flex' : 'none')};
   justify-content: space-between;
-  border-radius: 0.6rem;
+  border-radius: 8px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
@@ -47,8 +47,8 @@ export const ButtonGroupStyled = styled.div`
   /* p de quantidade */
   & > p {
     font-weight: 600;
-    font-size: var(--text-button);
-    padding-top: 0.25rem;
+    font-size: var(--text-lg-button);
+    padding-top: 5px;
     color: var(--white-foreground);
     cursor: pointer;
     -webkit-user-select: none;

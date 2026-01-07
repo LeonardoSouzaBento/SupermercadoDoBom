@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderStyled = styled.header`
   height: auto;
-  padding-block: 18px;
-  padding-inline: 24px;
+  padding: 24px 18px 20px;
   width: 100%;
   max-width: 1000px;
   margin-inline: auto;
@@ -12,11 +11,11 @@ export const HeaderStyled = styled.header`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1cap;
+  gap: 2ex;
   box-sizing: border-box;
   position: relative;
 
-  @media screen and (min-width: 840px) {
+  @media screen and (min-width: 940px) {
     flex-direction: row;
     align-items: center;
     height: 130px;
@@ -33,7 +32,7 @@ export const HeaderStyled = styled.header`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 1ex;
 
     @media screen and (min-width: 640px) {
       flex-direction: row;
@@ -50,9 +49,6 @@ export const HeaderStyled = styled.header`
       justify-content: center;
       align-items: center;
       flex-shrink: 0;
-      /* @media screen and (min-width: 640px) {
-        margin-top: 8px;
-      } */
     }
 
     & > #nome {
@@ -75,21 +71,22 @@ export const HeaderStyled = styled.header`
     }
   }
 
-  & > div:nth-child(2) {
+  & > div:nth-child(2) > form {
     width: 100%;
-    height: 40px;
-    max-width: 94%;
+    height: 48px;
     border-radius: 999px;
     background-color: var(--white-foreground);
     display: flex;
     justify-content: center;
     align-items: center;
-
-    @media screen and (min-width: 640px) {
-      max-width: 72%;
+    @media screen and (max-width: 640px) {
+      width: calc(100% - 28px);
     }
-    @media screen and (min-width: 840px) {
-      max-width: 50%;
+    @media screen and (min-width: 640px) {
+      max-width: 76%;
+    }
+    @media screen and (min-width: 940px) {
+      max-width: none;
     }
   }
 
@@ -103,25 +100,29 @@ export const HeaderStyled = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    @media screen and (max-width: 840px) {
+    @media screen and (max-width: 940px) {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 16px;
+      right: 16px;
     }
-    @media screen and (min-width: 840px) {
+    @media screen and (min-width: 940px) {
       position: relative;
       margin-left: 12px;
     }
     @media screen and (min-width: 1200px) {
       width: auto;
+      height: 44px;
+      padding-inline: 0.9em;
     }
     & > p {
+      font-family: var(--font-button);
+      font-weight: 600;
+      line-height: 1;
       @media screen and (max-width: 1200px) {
         display: none;
       }
       @media screen and (min-width: 1200px) {
         display: inline-flex;
-        padding: 0 24px;
       }
     }
   }

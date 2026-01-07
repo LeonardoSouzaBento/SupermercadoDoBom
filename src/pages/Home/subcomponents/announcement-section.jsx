@@ -121,7 +121,7 @@ function AnnouncementSection({ wasResize }) {
   return (
     <ContainerStyled ref={divRef}>
       <div>
-        <h2>Maiores promoções!</h2>
+        <h3>Maiores promoções!</h3>
       </div>
       <AnnouncementStyled ref={advertisementsRef} $odd={announcements.length % 2 !== 0}>
         {announcements.map((object, index) => (

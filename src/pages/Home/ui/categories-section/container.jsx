@@ -1,12 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContainerStyled = styled.div`
+  width: 100%;
   margin-bottom: 0.8rem;
   overflow-x: hidden;
   position: relative;
   z-index: 2;
-
-  width: 100%;
 
   @media screen and (min-width: 1201px) {
     width: calc(100% - 52px);
@@ -14,34 +13,32 @@ export const ContainerStyled = styled.div`
     margin-bottom: 1rem;
   }
   /* header */
-  & > div:first-child {
+  & > div#header {
     width: 100%;
     box-sizing: border-box;
-    padding-right: 2rem;
-    margin-bottom: 3.2rem;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 1.5ex;
 
-    @media screen and (min-width: 1201px) {
-      padding-right: 2.5rem;
+    & > h3,
+    p {
+      min-width: 100%;
+      box-sizing: border-box;
     }
-
-    & > h2 {
-      color: var(--dark-primary);
-      text-align: center;
-    }
-    & p {
-      width: 100%;
+    & > p {
       color: var(--muted-foreground);
-      text-align: center;
+    }
+    & > h3 {
+      color: var(--primary);
     }
   }
   /* wrapper rolável*/
   & > div:last-child {
     width: auto;
     margin: auto;
-    padding: 0.8rem;
-    padding-right: 2rem;
-    padding-bottom: 2.4rem;
+    padding: 4px 20px 24px 4px;
     box-sizing: border-box;
     display: flex;
     flex-flow: row nowrap;

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { weightStyles } from '@components/product-list/product-item';
 
 export const ImageWrapperStyled = styled.div`
   height: 100%;
@@ -71,15 +72,11 @@ export const ImageWrapperStyled = styled.div`
     }
     /* peso */
     & > p#weight {
-      padding: 0 0.85rem;
+      ${(props) => props.$weightStyles}
+      backdrop-filter: blur(3px);
       position: absolute;
-      font-size: var(--text-xs);
-      font-weight: 600;
-      border-radius: 999rem;
-      bottom: 3.8rem;
+      bottom: 4.5rem;
       right: 0.7rem;
-      background-color: var(--background);
-      color: var(--muted-foreground);
       @media screen and (max-width: 385px) {
         display: none;
       }
@@ -120,7 +117,7 @@ export const ImageWrapperStyled = styled.div`
         props.$displayNone) &&
       'display: none;'}
   }
-  & div#quantity-in-cart {
+  & #quantity-in-cart {
     width: 3.2rem;
     height: 3.2rem;
     position: absolute;
@@ -129,8 +126,7 @@ export const ImageWrapperStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary);
-    border-radius: 1.6rem;
+    border-radius: 999px;
     cursor: pointer;
 
     @media screen and (min-width: 385px) and (max-width: 992px) {

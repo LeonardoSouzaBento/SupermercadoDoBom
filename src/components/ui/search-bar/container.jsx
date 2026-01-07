@@ -25,6 +25,8 @@ export const ContainerStyled = styled.div`
       }
     `}
   &>form {
+    width: 100%;
+    height: 48px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -36,12 +38,13 @@ export const ContainerStyled = styled.div`
     ${(props) =>
       props.$copy &&
       css`
-        width: 91.5%;
         max-width: 68.4rem;
         margin: 0;
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-md);
+        border: 1px solid hsl(var(--primary-100));
       `}
     & > input {
+      width: 100%;
       box-sizing: border-box;
       touch-action: auto;
       text-indent: 1.6rem;
@@ -62,7 +65,7 @@ export const ContainerStyled = styled.div`
     & > button {
       position: absolute;
       right: 4px;
-      bottom: 3px;
+      bottom: 2.5px;
       color: var(--primary);
       border-radius: 999rem;
 

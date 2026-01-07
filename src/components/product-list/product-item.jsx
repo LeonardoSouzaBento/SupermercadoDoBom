@@ -4,6 +4,17 @@ import { VisibilityContext } from '@contexts/VisibilityContext';
 import { useContext, useEffect, useState } from 'react';
 import InfoWrapper from './info-wrapper';
 import ProductImage from './product-image';
+import { css } from 'styled-components';
+
+export const weightStyles = css`
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background-color: hsla(var(--primary-50), 0.88);
+  color: var(--muted-foreground);
+  padding: 0 0.85rem;
+  border-radius: 999rem;
+`;
 
 export default function ProductItem({ product, variant }) {
   const { totalAddedValue, cartProducts } = useContext(CartContext);

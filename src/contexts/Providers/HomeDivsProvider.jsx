@@ -11,7 +11,7 @@ export function HomeDivsProvider({ children }) {
   const productListHomeRef = useRef();
   const isDraggingRef = useRef(null);
   const pointerPositionRef = useRef(null);
-  const [currentCategory, setCurrentCategory] = useState(1);
+  const [currentCategory, setCurrentCategory] = useState(2);
   const allProductsInCat = [...allProducts, [], []];
 
   return (

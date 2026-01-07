@@ -50,8 +50,8 @@ function CategoriesSection({ wasResize }) {
 
   return (
     <ContainerStyled ref={DivRef}>
-      <div>
-        <h2>Explore por categoria</h2>
+      <div id='header'>
+        <h3>Explore por categoria</h3>
         <p>Encontre o essencial aqui</p>
       </div>
 
@@ -64,14 +64,14 @@ function CategoriesSection({ wasResize }) {
             onPointerUp={(e) => {
               handlePointerUpCat(e, cat.id);
             }}>
-            <div>
+            <div id='wrapper-cat-icon'>
               <Icon
-                Icon={cat.icon}
+                LucideIcon={cat.icon}
                 size="h5"
                 strokeValue={2.4}
               />
             </div>
-            <div>
+            <div id='wrapper-cat-label'>
               <p>{cat.label}</p>
             </div>
           </CategoryCardStyled>

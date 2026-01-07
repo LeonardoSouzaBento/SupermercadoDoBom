@@ -17,26 +17,24 @@ const Header = ({ setViewOptions }) => {
   const { supermarketName } = useContext(VisibilityContext);
 
   return (
-    <HeaderStyled>
-      <div id="logo-name">
-        <div>
+    <div style={{ backgroundColor: 'var(--primary)' }}>
+      <HeaderStyled>
+        <div id="logo-name">
           <div id="logo">
-            <Icon icon={<HeartHandshake />} size="h3" />
+            <Icon LucideIcon={HeartHandshake} size="3.4rem" />
           </div>
           <div id="nome">
             <h1>{supermarketName}</h1>
             <p> Seja bem-vindo!</p>
           </div>
         </div>
-      </div>
-
-      <SearchBar copy={false} onHome={true} />
-
-      <Button onPointerDown={handleClick}>
-        <Icon icon={<Menu />} size="lg" />
-        <p>Mais opções</p>
-      </Button>
-    </HeaderStyled>
+        <SearchBar onHome={true} />
+        <Button onPointerDown={handleClick} variant="red" size="icon">
+          <Icon LucideIcon={Menu} size="h5" />
+          <p>Mais opções</p>
+        </Button>
+      </HeaderStyled>
+    </div>
   );
 };
 

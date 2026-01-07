@@ -26,7 +26,7 @@ export const ButtonAdd = ({ product, setQuantity }) => {
       variant="secondary"
       size="sm-icon"
       onPointerUp={handlePointerUpAdd}>
-      <Icon size="lg" Icon={Plus} />
+      <Icon size="xl" LucideIcon={Plus} />
     </Button>
   );
 };
