@@ -1,6 +1,6 @@
 import { CartContext } from '@contexts/CartContext';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { Plus } from 'lucide-react';
 import { Icon } from '@ui/icon';
 import { useContext } from 'react';

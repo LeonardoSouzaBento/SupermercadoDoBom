@@ -1,4 +1,4 @@
-import Button from '@ui/button';
+import { Button } from '@ui/button';
 
 const ButtonSeeAll = ({
   applyNewHeight,
@@ -21,7 +21,7 @@ const ButtonSeeAll = ({
   }
 
   return (
-    <Button variant="outline" onClick={handleClickSeeAll}>
+    <Button variant="ghost" size="sm" fullWidth onClick={handleClickSeeAll}>
       <p>Ver Tudo</p>
       <span className="material-symbols-rounded">keyboard_arrow_down</span>
     </Button>

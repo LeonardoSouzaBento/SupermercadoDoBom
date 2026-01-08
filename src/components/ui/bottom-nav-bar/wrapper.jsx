@@ -13,15 +13,18 @@ export const WrapperStyled = styled.div`
   & > div#buttons-wrapper {
     width: 100%;
     height: 56px;
-    max-width: 988px;
+    max-width: 1080px;
     display: flex;
     justify-content: space-between;
-    gap: 16px;
     align-items: center;
     box-sizing: border-box;
     margin-inline: auto;
     padding-inline: 12px;
     box-sizing: border-box;
+
+    @media screen and (min-width: 840px) {
+      gap: 16px;
+    }
   }
   /* feedback cart */
   & #cart-feedback {

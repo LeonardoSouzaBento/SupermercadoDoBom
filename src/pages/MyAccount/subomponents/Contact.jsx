@@ -22,7 +22,7 @@ import {
   SpanH2Styled,
   StatusWrapperStyled,
 } from '../StylizedTags';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 
 function formatPhone(num, selectedPhoneType) {
   if (!num) return '';

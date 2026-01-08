@@ -6,11 +6,11 @@ export const CartSectionStyed = styled.section`
   padding: 2rem 0;
   padding-top: 1rem;
   margin: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
   border-radius: 1.2rem;
   box-sizing: border-box;
   box-shadow: var(--shadow-md);
-
+  border: var(--card-border);
   position: relative;
   transition: height 0.15s ease;
   background-color: var(--white-foreground);
@@ -36,7 +36,6 @@ export const CartSectionStyed = styled.section`
     &::-webkit-scrollbar {
       display: none;
     }
-    margin-bottom: 1.6rem;
   }
   @media screen and (min-width: 993px) {
     max-width: calc(100% - 64px);
@@ -50,6 +49,7 @@ export const CartSectionStyed = styled.section`
 
   & #see-all-button {
     width: 100%;
+    height: 48px;
     gap: 0.2rem;
     position: absolute;
     bottom: -1px;
@@ -66,17 +66,6 @@ export const CartSectionStyed = styled.section`
       font-family: var(--font-button);
       text-transform: uppercase;
       user-select: none;
-    }
-
-    & span {
-      padding-top: 0.2rem;
-
-      @media screen and (min-width: 385px) and (max-width: 576px) {
-        padding-top: 0.25rem;
-      }
-      @media screen and (min-width: 577px) and (max-width: 768px) {
-        padding-top: 0.3rem;
-      }
     }
   }
 `;

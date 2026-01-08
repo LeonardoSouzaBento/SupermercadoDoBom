@@ -1,5 +1,5 @@
 import { UserDataContext } from '@contexts/UserDataContext';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { Input, Label, WrapperInput } from '@ui/input';
 import axios from 'axios';
 import { signInWithCustomToken, signInWithEmailAndPassword } from 'firebase/auth';

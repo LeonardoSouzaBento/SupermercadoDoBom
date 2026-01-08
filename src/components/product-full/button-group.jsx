@@ -1,5 +1,5 @@
 import { mdIcon } from '@/styles/lucideIcons';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { Minus, Plus } from 'lucide-react';
 import styled from 'styled-components';
 

@@ -10,7 +10,7 @@ export const WrapperStyled = styled.div`
   user-select: none;
   position: relative;
   overflow: hidden;
-  border-radius: 9px;
+  border-radius: 8px;
   transition: box-shadow 0.2s ease;
 
   ${(props) =>

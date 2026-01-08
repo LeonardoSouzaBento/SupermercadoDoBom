@@ -1,6 +1,6 @@
 import { UserDataContext } from '@contexts/UserDataContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { HeartHandshake, Mail, User } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

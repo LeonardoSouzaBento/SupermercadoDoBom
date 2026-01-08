@@ -2,34 +2,28 @@ import styled, { css } from 'styled-components';
 
 const Header = styled.header`
   width: 100%;
-  height: 5.2rem;
+  height: 56px;
   margin-bottom: 0;
   background-color: var(--primary);
   display: flex;
   align-items: center;
+  /* border-radius: 0 0 16px 16px; */
 `;
 
 const Title = styled.h2`
   width: max-content;
   margin: auto;
   text-align: left;
+  padding-bottom: 6px;
   color: var(--white-foreground);
 
   ${(props) =>
     props.$title === 'sua compra' &&
     css`
-      @media screen and (max-width: 414px) {
-        margin: 0;
-        padding-left: 2rem;
-      }
-      @media screen and (min-width: 414px) and (max-width: 596px) {
-        width: 40rem;
-      }
-      @media screen and (min-width: 596px) and (max-width: 768px) {
-        width: 57.5rem;
-      }
-      @media screen and (min-width: 769px) {
-        width: 72.4rem;
+      width: calc(100% - 24px);
+      max-width: 768px;
+      @media screen and (min-width: 640px) {
+        width: calc(100% - 48px);
       }
     `}
   ${(props) =>

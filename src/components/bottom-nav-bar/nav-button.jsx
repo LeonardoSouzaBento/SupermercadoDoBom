@@ -1,4 +1,4 @@
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { Icon } from '@ui/icon';
 import { Link } from 'react-router-dom';
 import { css } from 'styled-components';
@@ -11,11 +11,13 @@ const WrapperStyled = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-inline: 12px;
   & > button {
     width: auto;
     gap: -4px;
     padding-inline: 1.1em;
+  }
+  @media screen and (min-width: 840px) {
+    padding-inline: 12px;
   }
 `;
 

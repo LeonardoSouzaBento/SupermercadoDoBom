@@ -1,19 +1,22 @@
-import PageHeader from '@ui/page-header';
+import {
+  ButtonSeeAll,
+  CancelDialog,
+  DetailsCard,
+  ReceiptCard,
+  ButtonsCard,
+} from '@/pages/Cart/components/index';
+import { MainWrapperStyled } from '@/pages/Cart/ui/index';
 import BottomNavBar from '@components/BottomNavBar';
 import ProductInFull from '@components/Product/ProductInFull/ProductInFull';
 import { ProductList } from '@components/ProductList';
 import { CartContext } from '@contexts/CartContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
+import { Button, CardHeader, CardTitle, Icon, MuiIcon } from '@ui/index';
+import PageHeader from '@ui/page-header';
+import { Trash2 } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  ButtonSeeAll,
-  CancelDialog,
-  DetailSection,
-  ReceiptAndContinueSection,
-  ProductCardHeader,
-} from '@/pages/Cart/components/index';
-import { CartSectionStyed, MainWrapperStyled } from '@/pages/Cart/ui/index';
+import { css } from 'styled-components';
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar
@@ -75,7 +78,7 @@ const Cart = () => {
       resizeDowntime.current = setTimeout(() => {
         let widthOfWindow = window.innerWidth;
         let quantProducts = cartProducts.length;
-        if (widthOfWindow !== currentWindowWidthRef.current) {
+        if (widthOfWindow !== currentWindowWidthRef.current && totalAddedValue !== 0) {
           currentWindowWidthRef.current = widthOfWindow;
           checkHiddenProducts();
           const div = CartSectionRef.current;
@@ -133,8 +136,31 @@ const Cart = () => {
       <PageHeader title="Sua compra" />
 
       <MainWrapperStyled $opacity={opacityState}>
-        <CartSectionStyed ref={CartSectionRef}>
-          <ProductCardHeader setSeeCancelDialog={setSeeCancelDialog} />
+        <div ref={CartSectionRef} id="products-card">
+          <div>
+            <CardHeader
+              separator
+              customStyles={css`
+                padding-left: 20px;
+              `}>
+              <CardTitle>
+                <MuiIcon icon="package_2" size="h3" margin="1px 0 0" />
+                <h3>Produtos</h3>
+              </CardTitle>
+            </CardHeader>
+
+            <Button
+              id="delete-button"
+              variant="destructive"
+              size="sm-icon"
+              onClick={() => {
+                setSeeCancelDialog(true);
+              }}>
+              <Icon LucideIcon={Trash2} size="h4" strokeValue={2.4} marginValue="1px 0 0 1px" />
+            </Button>
+          </div>
+
+          {totalAddedValue === 0 && <img src="./void-cart.png" alt="" />}
 
           <ProductList ref={ProductListRef} variant={'cart'} productList={cartProducts} />
 
@@ -158,16 +184,22 @@ const Cart = () => {
               setCartProducts={setCartProducts}
             />
           )}
-        </CartSectionStyed>
+        </div>
 
-        <div>
-          <DetailSection totalAddedValue={totalAddedValue} scaleWarnnig={scaleWarnnig} />
-          <ReceiptAndContinueSection
+        <div id="details-and-receipt">
+          <DetailsCard totalAddedValue={totalAddedValue} scaleWarnnig={scaleWarnnig} />
+          <ReceiptCard
             totalAddedValue={totalAddedValue}
             setScaleWarnnig={setScaleWarnnig}
             setCurrentOrder={setCurrentOrder}
           />
         </div>
+
+        <ButtonsCard
+          setCurrentOrder={setCurrentOrder}
+          totalAddedValue={totalAddedValue}
+          setScaleWarnnig={setScaleWarnnig}
+        />
 
         {seeFeedback && <div />}
       </MainWrapperStyled>

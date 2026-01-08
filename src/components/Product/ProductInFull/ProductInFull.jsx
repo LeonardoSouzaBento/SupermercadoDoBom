@@ -7,7 +7,7 @@ import {
 import { CartContext } from '@contexts/CartContext';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
-import { CardHeader } from '@ui/card-ui';
+import { CardHeader } from '@ui/card';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { ButtonClose } from './Components';
 

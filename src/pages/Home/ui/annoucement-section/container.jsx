@@ -1,19 +1,14 @@
 import styled from 'styled-components';
 
 export const ContainerStyled = styled.section`
-  width: calc(100% - 2.4rem);
+  width: 100%;
   position: relative;
   overflow-x: hidden;
   padding-bottom: 24px;
-  margin: auto;
   margin-bottom: 2.4rem;
-  border-radius: 2.4rem;
-  border: 1.5px solid hsla(var(--primary-50), 0.12);
-  @media screen and (max-width: 576px) {
-    width: calc(100% - 1.6rem);
-  }
+  border-radius: 0 0 20px 20px;
+  border-top: 1px solid hsla(var(--primary-50), 0.18);
   @media screen and (min-width: 1201px) {
-    width: max-content;
     padding-bottom: 4px;
   }
 
@@ -24,7 +19,7 @@ export const ContainerStyled = styled.section`
     position: absolute;
     top: 56px;
     left: 0;
-    background-image: linear-gradient(to bottom, var(--primary), hsla(var(--primary-50), 0.5));
+    background-image: linear-gradient(to bottom, var(--primary), hsl(var(--primary-50)));
     z-index: 0;
   }
 

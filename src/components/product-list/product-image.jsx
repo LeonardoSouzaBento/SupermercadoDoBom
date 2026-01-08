@@ -7,7 +7,7 @@ import { ButtonAdd } from './button-add';
 import { Icon } from '@ui/icon';
 import { Plus, Minus } from 'lucide-react';
 import { weightStyles } from './product-item';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 
 const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef }) => {
   const { handleQuantityChange } = useContext(CartContext);

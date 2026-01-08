@@ -6,8 +6,9 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1ex;
-  border-radius: 0.9rem;
+  line-height: 1.1;
+  gap: 0.75ex;
+  border-radius: 8px;
   position: relative;
   z-index: 1;
   box-sizing: border-box;
@@ -30,7 +31,7 @@ const StyledButton = styled.button`
     switch ($variant) {
       case 'primary':
         return css`
-          font-weight: 500;
+          font-weight: 600;
           background-color: var(--primary);
           color: var(--white-foreground);
           box-shadow: inset 0 1px 4px hsla(var(--primary-value), 0.08);
@@ -61,7 +62,7 @@ const StyledButton = styled.button`
           padding: 1.245rem 1.1rem;
           margin-bottom: 1px;
           color: var(--primary);
-          border: 2.5px solid hsla(var(--primary-value), 0.88);
+          border: 2px solid hsl(var(--primary-600));
           background-color: transparent;
           backdrop-filter: blur(3px);
         `;
@@ -102,8 +103,8 @@ const StyledButton = styled.button`
     }
   }}
 
-  ${({ $wFull }) =>
-    $wFull &&
+  ${({ $fullWidth }) =>
+    $fullWidth &&
     css`
       width: 100%;
     `}
@@ -147,20 +148,28 @@ const StyledButton = styled.button`
     }
   }}
 
-  ${({ disabled }) =>
-    disabled &&
+  ${(props) =>
+    props.$disabled &&
     css`
-      opacity: 0.33;
+      opacity: 0.25;
       filter: grayscale(1);
       cursor: not-allowed;
     `}
+
+  ${({ $selected }) =>
+    $selected &&
+    css`
+      border: 2px solid hsl(var(--selected));
+      background-color: hsla(var(--selected), 0.10);
+    `}
 `;
 
-const Button = ({
+export const Button = ({
   variant = 'primary',
   size = 'normal',
-  wFull = false,
+  fullWidth = false,
   disabled = false,
+  selected = false,
   children,
   className,
   customStyles,
@@ -171,13 +180,12 @@ const Button = ({
       $customStyles={customStyles}
       $variant={variant}
       $size={size}
-      $wFull={wFull}
-      disabled={disabled}
+      $fullWidth={fullWidth}
+      $disabled={disabled}
+      $selected={selected}
       className={className}
       {...rest}>
       {children}
     </StyledButton>
   );
 };
-
-export default Button;

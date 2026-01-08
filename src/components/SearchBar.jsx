@@ -2,7 +2,7 @@ import { CompletionsStyled, ContainerStyled, HelpMessage } from '@/components/ui
 import { mdIcon } from '@/styles/lucideIcons';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { allProductsForSearch } from '@data/productList';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { Search } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

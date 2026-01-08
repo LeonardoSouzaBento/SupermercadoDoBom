@@ -45,6 +45,7 @@ export const ContainerStyled = styled.div`
       `}
     & > input {
       width: 100%;
+      height: 100%;
       box-sizing: border-box;
       touch-action: auto;
       text-indent: 1.6rem;

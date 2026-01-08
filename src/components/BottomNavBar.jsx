@@ -1,23 +1,10 @@
 import { WrapperStyled } from '@/components/ui/bottom-nav-bar/index';
-import { mdIcon } from '@/styles/lucideIcons';
 import { CartContext } from '@contexts/CartContext';
 import { bottomNavBarItems } from '@data/bottomNavBarItems';
-import Button from '@ui/button';
-import { ShoppingCart } from 'lucide-react';
+import { Button } from '@ui/button';
 import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { NavButton } from './bottom-nav-bar/nav-button';
-import { Icon } from '@ui/icon';
-import { css } from 'styled-components';
-
-const cartButtonStyles = css`
-  width: max-content;
-  & > p {
-    color: var(--primary);
-    font-size: var(--text-sm-button);
-    font-weight: 600;
-  }
-`;
 
 export default function BottomNavBar() {
   const navigate = useNavigate();

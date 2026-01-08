@@ -1,4 +1,4 @@
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { auth } from '../../../main';

@@ -1,7 +1,7 @@
 import { HeaderStyled } from '@/pages/Home/ui/header';
 import SearchBar from '@components/SearchBar';
 import { VisibilityContext } from '@contexts/VisibilityContext';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { Icon } from '@ui/icon';
 import { HeartHandshake, Menu } from 'lucide-react';
 import { useContext } from 'react';
@@ -25,7 +25,7 @@ const Header = ({ setViewOptions }) => {
           </div>
           <div id="nome">
             <h1>{supermarketName}</h1>
-            <p> Seja bem-vindo!</p>
+            <p>Compre com comodidade, compre online</p>
           </div>
         </div>
         <SearchBar onHome={true} />

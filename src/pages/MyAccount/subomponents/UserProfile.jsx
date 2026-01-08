@@ -1,5 +1,5 @@
 import { PButtonBase } from '@components/GenericStylizedTags';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { useNavigate } from 'react-router-dom';
 import {
   ButtonLoginStyled,

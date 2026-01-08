@@ -1,4 +1,4 @@
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { useEffect, useState } from 'react';
 import { BackgroundStyled, ModalStyled } from '../ui/cancel-dialog';
 

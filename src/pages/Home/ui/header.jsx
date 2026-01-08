@@ -11,7 +11,7 @@ export const HeaderStyled = styled.header`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 2ex;
+  gap: 24px;
   box-sizing: border-box;
   position: relative;
 
@@ -102,8 +102,8 @@ export const HeaderStyled = styled.header`
     align-items: center;
     @media screen and (max-width: 940px) {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 20px;
+      right: 20px;
     }
     @media screen and (min-width: 940px) {
       position: relative;
@@ -118,6 +118,7 @@ export const HeaderStyled = styled.header`
       font-family: var(--font-button);
       font-weight: 600;
       line-height: 1;
+      padding-bottom: 1px;
       @media screen and (max-width: 1200px) {
         display: none;
       }

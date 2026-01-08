@@ -1,5 +1,5 @@
 import { UserDataContext } from '@contexts/UserDataContext';
-import Button from '@ui/button';
+import {Button} from '@ui/button';
 import { signInWithCustomToken } from 'firebase/auth';
 import { useContext } from 'react';
 import { auth } from '../../../main';

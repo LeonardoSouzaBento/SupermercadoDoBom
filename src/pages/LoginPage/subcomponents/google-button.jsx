@@ -1,21 +1,20 @@
-import { UserDataContext } from "@contexts/UserDataContext";
-import Button from "@ui/button";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useContext } from "react";
-import { css } from "styled-components";
-import { auth } from "../../../main";
+import { UserDataContext } from '@contexts/UserDataContext';
+import { Button } from '@ui/button';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useContext } from 'react';
+import { css } from 'styled-components';
+import { auth } from '../../../main';
 
 const provider = new GoogleAuthProvider();
 
 const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
-  const { setIdToken, userContact, setUserContact } =
-    useContext(UserDataContext);
+  const { setIdToken, userContact, setUserContact } = useContext(UserDataContext);
 
   async function handleGoogleLogin() {
-    setLoginState("pending");
+    setLoginState('pending');
     try {
       provider.setCustomParameters({
-        prompt: "select_account",
+        prompt: 'select_account',
       });
 
       const result = await signInWithPopup(auth, provider);
@@ -31,31 +30,36 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
       setIdToken(idToken);
 
       const response = await fetch(
-        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-google",
+        'https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-google',
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${idToken}`,
           },
         }
       );
 
       if (!response.ok) {
-        setLoginState("Error");
-        throw new Error("Erro no login: " + response.statusText);
+        setLoginState('Error');
+        throw new Error('Erro no login: ' + response.statusText);
       }
 
       setLoginSucess();
       const data = await response.json();
-      console.log("Resposta do backend:", data);
+      console.log('Resposta do backend:', data);
     } catch (error) {
-      setLoginState("error");
+      setLoginState('error');
       console.log(error);
     }
   }
   return (
-    <Button variant="primary" customStyles={css`margin-bottom: 18px;`} onClick={handleGoogleLogin}>
+    <Button
+      variant="primary"
+      customStyles={css`
+        margin-bottom: 18px;
+      `}
+      onClick={handleGoogleLogin}>
       {/* Logo Google */}
       <svg width="20" height="20" viewBox="0 0 24 24" aria-label="Login com Google">
         <path
@@ -85,4 +89,3 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
 };
 
 export default ButtonLoginGoogle;
-

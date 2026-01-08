@@ -20,19 +20,6 @@ const MainStyled = styled.main`
   padding: 0;
   position: relative;
 
-  &::after {
-    content: '';
-    width: 100%;
-    height: 28rem; //340 + 1.6rem
-    position: absolute;
-    top: 2.4rem;
-    left: 0;
-    background-image: linear-gradient(to bottom, var(--primary), var(--background));
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    z-index: -1;
-  }
   &::before {
     content: '';
     width: 100%;
