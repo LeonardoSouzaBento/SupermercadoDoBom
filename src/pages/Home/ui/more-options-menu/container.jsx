@@ -2,14 +2,15 @@ import { CentralizeDiv } from '@components/GenericStylizedTags';
 import styled from 'styled-components';
 
 export const ContainerStyled = styled.div`
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 6;
   /* wrapper lateral */
-  & > div {
-    width: 100%;
+  & > div#side-div {
+    width: 80%;
+    max-width: 348px;
     height: 100%;
     position: absolute;
     top: 0;
@@ -18,39 +19,52 @@ export const ContainerStyled = styled.div`
     box-shadow: var(--shadow-md);
     transition: transform 0.4s ease;
     transform: translateX(${(props) => props.$transform});
-
-    @media screen and (max-width: 375px) {
-      max-width: none;
-    }
-    @media screen and (min-width: 375px) and (max-width: 576px) {
-      max-width: 33rem;
-    }
-    @media screen and (min-width: 577px) {
-      max-width: 36rem;
-    }
-    @media screen and (min-width: 993px) {
-      max-width: 39rem;
-    }
     /* header */
-    & > div:first-child {
-      height: 5.6rem;
+    & > div#options-header {
+      height: 56px;
       width: 100%;
-      margin-bottom: 1.5rem;
+      padding-left: 16px;
+      padding-right: 8px;
+      box-sizing: border-box;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       background-color: var(--primary);
       position: relative;
       user-select: none;
 
-      & > h3 {
+      & > h4 {
         width: 100%;
         text-align: left;
-        padding-bottom: 0.2rem;
-        padding-left: 1.8rem;
-        scale: 0.91;
         color: var(--white-foreground);
+        margin-top: 1px;
       }
+      & > button {
+        background-color: hsla(var(--primary-700), 0.66);
+        border-radius: 999px;
+      }
+    }
 
+    & > div#options-content {
+      height: calc(100% - 56px);
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      box-sizing: border-box;
+      gap: 8px;
+      position: relative;
+      &  button {
+        width: 100%;
+        justify-content: start;
+        color: var(--primary);
+      }
+      & > div {
+        width: 100%;
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+      }
     }
   }
 `;

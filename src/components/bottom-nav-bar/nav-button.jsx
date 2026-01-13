@@ -37,7 +37,7 @@ const SelectedDivStyled = styled.div`
   height: 2.8px;
   width: 80%;
   border-radius: 999px;
-  background-color: hsl(var(--primary-700));
+  background-color: hsl(var(--primary-600));
   margin-top: -2px;
   position: relative;
   z-index: 2;
@@ -78,10 +78,7 @@ export const NavButton = ({ item, isActive }) => {
           <Icon
             LucideIcon={item.lucidIcon}
             size="h5"
-            styles={{
-              color: 'var(--primary)',
-              marginBottom: '2px',
-            }}
+            color="var(--primary)"
           />
           <NameButtonStyled>{item.name}</NameButtonStyled>
         </LinkStyled>

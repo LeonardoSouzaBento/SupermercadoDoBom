@@ -1,30 +1,22 @@
 import { DivToCoverStyled } from '@components/GenericStylizedTags';
+import { Button, MuiIcon } from '@ui/index';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 import {
   DivAddressStyled,
   DivFormStyled,
-  DivH2StatusStyled,
   DivHalfAddressStyled,
-  DivSpanStyled,
   DivStyled,
   DivThreeStyled,
   H2v2Styled,
   H3Styled,
-  HeaderH2Styled,
   Pv2Styled,
   SpanCheckStyled,
-  SpanEditStyled,
-  SpanH2Styled,
-  StatusWrapperStyled
 } from '../StylizedTags';
+import { CardHeaderStyled, CardTitleStyled, StatusStyled } from '../ui';
 
-export const SavedAddress = ({
-  setSeeRegisterAddress,
-  isDataComplete,
-  userContact,
-  userAddress,
-}) => {
+export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddress }) => {
   function GetInitialsNameState() {
     const palavras = userAddress.estado.split(' ');
     const iniciais = palavras.map((palavra) => palavra.charAt(0));
@@ -57,25 +49,23 @@ export const SavedAddress = ({
         <SpanCheckStyled className="material-symbols-outlined">check</SpanCheckStyled>
       )}
 
-      <DivH2StatusStyled>
-        <HeaderH2Styled>
-          <SpanH2Styled className="material-symbols-rounded">location_home</SpanH2Styled>
-          <H2v2Styled style={{ marginBottom: '0px' }}>Endereço para entrega</H2v2Styled>
-        </HeaderH2Styled>
+      <CardHeaderStyled>
+        <CardTitleStyled>
+          <MuiIcon fill={1} icon="location_home" size="4xl" />
+          <h3 style={{ marginBottom: '0px' }}>Endereço para entrega</h3>
+        </CardTitleStyled>
 
         {!isDataComplete.address && (
-          <StatusWrapperStyled $address={true}>
+          <StatusStyled $address={true}>
             <div>
               <span className="material-symbols-rounded">
                 {isDataComplete.address ? 'check' : 'priority_high'}
               </span>
-              <p>
-                {isDataComplete.address ? 'Endereço salvo' : 'Sem endereço'}
-              </p>
+              <p>{isDataComplete.address ? 'Endereço salvo!' : 'Sem endereço!'}</p>
             </div>
-          </StatusWrapperStyled>
+          </StatusStyled>
         )}
-      </DivH2StatusStyled>
+      </CardHeaderStyled>
 
       <DivStyled>
         <DivAddressStyled>
@@ -113,9 +103,17 @@ export const SavedAddress = ({
             </DivFormStyled>
           </DivHalfAddressStyled>
 
-          <DivSpanStyled $address={true} $first={true} onClick={handleRegisterAddress}>
-            <SpanEditStyled className="material-symbols-rounded">edit</SpanEditStyled>
-          </DivSpanStyled>
+          <Button
+            size="sm-icon"
+            variant="secondary"
+            onClick={handleRegisterAddress}
+            customStyles={css`
+              position: absolute;
+              top: 1.6rem;
+              right: 1.6rem;
+            `}>
+            <MuiIcon icon="edit" size="3xl" weight={600} />
+          </Button>
 
           {seeLoginWarn && (
             <DivToCoverStyled>
@@ -138,4 +136,4 @@ export const SavedAddress = ({
   );
 };
 
-export default SavedAddress;
+export default Address;

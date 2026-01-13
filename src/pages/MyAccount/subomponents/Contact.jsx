@@ -1,28 +1,24 @@
-import { DivToCoverStyled, PButtonBase } from '@components/GenericStylizedTags';
+import { DivToCoverStyled } from '@components/GenericStylizedTags';
 import { UserDataContext } from '@contexts/UserDataContext';
+import { Button } from '@ui/button';
+import { Card, CardHeader, CardTitle, MuiIcon } from '@ui/index';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 import {
   DivFormStyled,
-  DivH2StatusStyled,
   DivInvalidWarnStyled,
-  DivSpanStyled,
   DivStyled,
-  DivTwoStyled,
   DivZapAndDivPhone,
   DivZapOrPhone,
   DivZapStyled,
   H2v2Styled,
   H3Styled,
-  HeaderH2Styled,
   InputZapStyled,
   Pv2Styled,
-  SpanCheckStyled,
-  SpanEditStyled,
-  SpanH2Styled,
-  StatusWrapperStyled,
+  SpanCheckStyled
 } from '../StylizedTags';
-import {Button} from '@ui/button';
+import { StatusStyled } from '../ui';
 
 function formatPhone(num, selectedPhoneType) {
   if (!num) return '';
@@ -176,43 +172,47 @@ export const Contact = () => {
   }, [phoneNumber, selectedPhoneType]);
 
   return (
-    <DivTwoStyled>
+    <Card>
       {isDataComplete.contact && (
         <SpanCheckStyled className="material-symbols-rounded">check</SpanCheckStyled>
       )}
-      <DivH2StatusStyled>
-        <HeaderH2Styled>
-          <SpanH2Styled className="material-symbols-rounded" $smaller={true}>
-            call
-          </SpanH2Styled>
-          <H2v2Styled style={{ marginBottom: '0px' }}>Informações para contato</H2v2Styled>
-        </HeaderH2Styled>
+      <CardHeader
+        customStyles={css`
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 8px;
+        `}>
+        <CardTitle>
+          <MuiIcon fill={1} icon="call" size="3xl" />
+          <h3>Informações para contato</h3>
+        </CardTitle>
 
         {/*Estado do número*/}
         {!isDataComplete.contact && (
-          <StatusWrapperStyled $contact={true}>
+          <StatusStyled $contact={true}>
             <div>
               <span className="material-symbols-rounded">
                 {isDataComplete.contact ? 'check' : 'priority_high'}
               </span>
               <p>{isDataComplete.contact ? 'Número salvo' : 'Sem um número'}</p>
             </div>
-          </StatusWrapperStyled>
+          </StatusStyled>
         )}
-      </DivH2StatusStyled>
+      </CardHeader>
 
       {/*Whatsapp*/}
       <DivStyled>
         <div
           style={{
             border: '1px solid var(--border)',
-            borderRadius: '0.6rem',
+            borderRadius: '8px',
           }}>
           <DivZapStyled $seeInput={seeInput}>
             <DivFormStyled $zap={true}>
-              <H3Styled>Whatsapp ou Telefone:</H3Styled>
+              <h6>Whatsapp ou Telefone:</h6>
 
-              <Pv2Styled $hide={userContact.phone === ''}>{userContact.phone}</Pv2Styled>
+              <p>{userContact.phone}</p>
 
               <InputZapStyled
                 ref={inputZapRef}
@@ -227,16 +227,13 @@ export const Contact = () => {
             </DivFormStyled>
 
             <Button
-              size="icon"
+              size={seeInput ? 'sm' : 'sm-icon'}
+              variant="secondary"
               disabled={!isValidNumber && seeInput}
               onClick={() => {
                 handleClickSavePhone();
               }}>
-              {seeInput ? (
-                <PButtonBase>OK</PButtonBase>
-              ) : (
-                <SpanEditStyled className="material-symbols-rounded">edit</SpanEditStyled>
-              )}
+              {seeInput ? 'OK' : <MuiIcon icon="edit" size="3xl" weight={600} />}
             </Button>
 
             {seeLoginWarn && (
@@ -288,7 +285,7 @@ export const Contact = () => {
           </DivZapAndDivPhone>
         </div>
       </DivStyled>
-    </DivTwoStyled>
+    </Card>
   );
 };
 

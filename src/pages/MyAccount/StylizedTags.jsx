@@ -1,75 +1,16 @@
-import { CentralizeDiv, H1BaseStyled } from '@components/GenericStylizedTags';
+import { CentralizeDiv } from '@components/GenericStylizedTags';
 import styled, { css } from 'styled-components';
-
-export const HeaderStyled = styled.header`
-  width: 100%;
-  height: 6rem;
-  background-color: var(--primary);
-  display: flex;
-  align-items: center;
-`;
-
-export const H1Styled = styled(H1BaseStyled)`
-  margin: auto;
-  text-align: left;
-
-  @media screen and (max-width: 375px) {
-    width: calc(100% - 16px);
-  }
-  @media screen and (min-width: 375px) {
-    width: calc(100% - 28px);
-    max-width: 52rem;
-  }
-  @media screen and (min-width: 993px) and (max-width: 1085px) {
-    width: max-content;
-    margin: 0;
-    margin-left: 1.6rem;
-  }
-  @media screen and (min-width: 1085px) {
-    max-width: 105.6rem;
-  }
-`;
 
 export const MainStyled = styled.main`
   display: flex;
   flex-direction: column;
   position: relative;
+  padding: 0 12px;
+  max-width: 640px;
+  margin: 0 auto;
 
-  @media screen and (min-width: 993px) {
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-    padding: 0 1.7rem;
-    box-sizing: border-box;
-  }
-
-  &::after {
-    content: '';
-    width: 100%;
-    height: 0.6rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: var(--primary);
-    z-index: -1;
-  }
-`;
-
-export const DivOneTwoStyled = styled.div`
-  height: auto;
-  width: 100%;
-  max-width: 52rem;
-  margin: auto;
-
-  @media screen and (max-width: 375px) {
-    width: calc(100% - 16px);
-  }
-  @media screen and (min-width: 375px) and (max-width: 576px) {
-    width: calc(100% - 28px);
-  }
-  @media screen and (min-width: 993px) {
-    width: 50%;
-    margin: 0;
+  & > div {
+    margin-bottom: 24px;
   }
 `;
 
@@ -88,59 +29,6 @@ export const DivOneStyled = styled.div`
   border-radius: 1.2rem;
   box-shadow: var(--shadow-md);
   ${(props) => props.$orders && 'padding-top: 0;'}
-`;
-
-export const ProfileCardHeaderStyled = styled.div`
-  width: 100%;
-  margin: auto;
-  padding: 1.6rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid var(--border);
-  border-radius: 0.6rem;
-  position: relative;
-
-  & > div:first-child {
-    width: max-content;
-    box-sizing: border-box;
-    display: flex;
-    gap: 1.2rem;
-
-    @media screen and (max-width: 512px) {
-      flex-direction: column;
-    }
-
-    /* wrapper da foto do usuario */
-    & > div:first-child {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 5.8rem;
-      width: 5.8rem;
-      border-radius: 50%;
-      overflow: hidden;
-      background-color: #ecf0f5;
-      position: relative;
-
-      & > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        scale: 1.02;
-      }
-    }
-
-    /* wrapper do nome e email do usuario */
-    & > div:last-child {
-      width: max-content;
-      height: auto;
-    }
-  }
 `;
 
 export const ButtonLoginStyled = styled(CentralizeDiv)`
@@ -268,8 +156,6 @@ export const SpanH2Styled = styled.span`
   color: var(--primary);
   margin-right: 0.8rem;
 
-  ${(props) => props.$smaller && 'font-size: 2.1rem;'}
-  ${(props) => props.$bigger && 'font-size: 2.5rem;'}
   ${(props) =>
     props.$user &&
     css`
@@ -291,7 +177,6 @@ export const H2v2Styled = styled.h3`
   ${(props) =>
     props.$nameUser &&
     css`
-      scale: 1.04;
       margin-left: 0.4rem;
       width: 100%;
     `};
@@ -369,7 +254,7 @@ export const StatusWrapperStyled = styled.div`
       font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
       background-color: hsla(var(--warn-value), 0.3);
       color: var(--destructive);
-      padding: 0.4rem; 
+      padding: 0.4rem;
       border-radius: 50%;
       font-size: 1.6rem;
     }
@@ -391,23 +276,19 @@ export const SpanCheckStyled = styled.span`
 
 export const DivStyled = styled.div`
   width: 100%;
-  padding: 2rem;
   padding-top: 0;
   box-sizing: border-box;
 `;
 
-export const H3Styled = styled.h3`
+export const H3Styled = styled.h6`
   width: 100%;
   text-align: left;
-  scale: 1.01;
-  font-weight: 600;
   font-family: var(--font-body);
 
   ${(props) => props.$hide && 'display: none;'}
   ${(props) =>
     props.$contact &&
     css`
-      font-family: var(--font-button);
       text-align: center;
       padding-right: 2.6rem;
     `}
@@ -418,6 +299,7 @@ export const Pv2Styled = styled.p`
   text-align: left;
   scale: 1.01;
   margin-bottom: 0;
+  color: var(--muted-foreground);
 
   ${(props) => props.$hide && 'display: none;'}
   ${(props) =>

@@ -1,13 +1,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const StyledButton = styled.button`
+const ButtonStyled = styled.button`
   width: auto;
+  padding-inline: 1.1em;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1.1;
-  gap: 0.75ex;
+  gap: 0.80ex;
   border-radius: 8px;
   position: relative;
   z-index: 1;
@@ -41,7 +42,6 @@ const StyledButton = styled.button`
         `;
       case 'secondary':
         return css`
-          padding: 1.245rem 1.5rem;
           margin-bottom: 1.5px;
           margin-left: 1.5px;
           color: var(--primary);
@@ -59,7 +59,6 @@ const StyledButton = styled.button`
         `;
       case 'outline':
         return css`
-          padding: 1.245rem 1.1rem;
           margin-bottom: 1px;
           color: var(--primary);
           border: 2px solid hsl(var(--primary-600));
@@ -114,17 +113,17 @@ const StyledButton = styled.button`
       case 'sm':
         return css`
           height: 44px;
-          padding-inline: 0.9em;
           font-size: var(--text-sm-button);
         `;
       case 'normal':
         return css`
+          height: 48px;
           ${(props) => props.$variant !== 'outline' && 'padding: 1.389rem 1.5rem;'}
           font-size: var(--text-button);
         `;
-      case 'large':
+      case 'lg':
         return css`
-          padding: 0.75rem 1.5rem;
+          height: 52px;
           font-size: var(--text-lg-button);
         `;
       case 'lg-icon':
@@ -132,18 +131,21 @@ const StyledButton = styled.button`
           padding: 0;
           width: 44px;
           height: 44px;
+          flex-shrink: 0;
         `;
       case 'icon':
         return css`
           padding: 0;
           width: 40px;
           height: 40px;
+          flex-shrink: 0;
         `;
       case 'sm-icon':
         return css`
           padding: 0;
           width: 38px;
           height: 38px;
+          flex-shrink: 0;
         `;
     }
   }}
@@ -160,7 +162,7 @@ const StyledButton = styled.button`
     $selected &&
     css`
       border: 2px solid hsl(var(--selected));
-      background-color: hsla(var(--selected), 0.10);
+      background-color: hsla(var(--selected), 0.1);
     `}
 `;
 
@@ -176,7 +178,7 @@ export const Button = ({
   ...rest
 }) => {
   return (
-    <StyledButton
+    <ButtonStyled
       $customStyles={customStyles}
       $variant={variant}
       $size={size}
@@ -186,6 +188,6 @@ export const Button = ({
       className={className}
       {...rest}>
       {children}
-    </StyledButton>
+    </ButtonStyled>
   );
 };

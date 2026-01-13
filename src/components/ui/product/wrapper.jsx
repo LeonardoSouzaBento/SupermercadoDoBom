@@ -17,7 +17,7 @@ export const WrapperStyled = styled.div`
     props.$variant !== 'cart' &&
     css`
       &:hover {
-        box-shadow: var(--shadow-md);
+        box-shadow: var(--shadow-sm);
       }
     `}
 

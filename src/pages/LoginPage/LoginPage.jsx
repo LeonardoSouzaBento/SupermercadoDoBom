@@ -79,7 +79,7 @@ const LoginPage = () => {
         {/* Logo */}
         <div id="header">
           <div id="logo">
-            <HeartHandshake size={32} color="var(--primary-foreground)" strokeWidth={2.4} />
+            <HeartHandshake size={32} color="rgba(255, 255, 255, 0.97)" strokeWidth={2.5} />
           </div>
 
           <div id="title">
@@ -102,12 +102,12 @@ const LoginPage = () => {
               <ButtonLoginGoogle setLoginState={setLoginState} setLoginSucess={setLoginSucess} />
 
               {!onMyAccount && (
-                <Button variant="outline" onClick={() => setLoginType('visitor')}>
+                <Button variant="outline" onClick={() => setLoginType('visitor')} fullWidth>
                   <User size={20} /> Continuar como Visitante
                 </Button>
               )}
 
-              <Button variant="outline" onClick={() => setLoginType('email')}>
+              <Button variant="outline" onClick={() => setLoginType('email')} fullWidth>
                 <Mail size={20} /> Login com Email
               </Button>
             </>

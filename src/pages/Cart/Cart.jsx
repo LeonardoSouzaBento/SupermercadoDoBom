@@ -133,17 +133,18 @@ const Cart = () => {
 
   return (
     <>
-      <PageHeader title="Sua compra" />
+    <PageHeader title="Sua compra" />
 
       <MainWrapperStyled $opacity={opacityState}>
         <div ref={CartSectionRef} id="products-card">
           <div>
             <CardHeader
+              mb={1}
               separator
               customStyles={css`
                 padding-left: 20px;
               `}>
-              <CardTitle>
+              <CardTitle >
                 <MuiIcon icon="package_2" size="h3" margin="1px 0 0" />
                 <h3>Produtos</h3>
               </CardTitle>

@@ -10,15 +10,14 @@ export const ContainerStyled = styled.div`
   ${(props) =>
     props.$copy &&
     css`
-      padding-top: 1.6rem;
-      padding-bottom: 1.6rem;
+      padding: 16px;
       margin-bottom: 1.2rem;
       position: sticky;
       top: 0;
       left: 0;
       display: flex;
       justify-content: center;
-
+      
       @media screen and (min-width: 769px) {
         justify-content: flex-start;
         padding-left: 2.4rem;
@@ -70,8 +69,8 @@ export const ContainerStyled = styled.div`
       color: var(--primary);
       border-radius: 999rem;
 
-      &>svg {
-       margin-bottom: 2px; 
+      & > svg {
+        margin-bottom: 2px;
       }
     }
   }

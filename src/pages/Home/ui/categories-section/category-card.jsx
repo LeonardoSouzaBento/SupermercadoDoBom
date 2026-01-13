@@ -13,7 +13,7 @@ export const CategoryCardStyled = styled.div`
   position: relative;
   border-radius: 16px;
   transition: all 0.2s ease;
-  box-shadow: var(--shadow-cat-card);
+  box-shadow: var(--shadow-sm);
   border: 1.5px solid transparent;
   outline: 2.5px solid transparent;
 
@@ -24,7 +24,7 @@ export const CategoryCardStyled = styled.div`
           background-color: hsla(var(--selected), 0.1);
           border: 1.5px solid hsla(var(--primary-value), 0.8);
           outline: 2.5px solid hsl(var(--selected));
-          box-shadow: 0 3px 6px hsla(var(--primary-value), 0.2);
+          box-shadow: var(--shadow-selected-button);
           &:hover {
             box-shadow: var(--shadow-xs);
           }

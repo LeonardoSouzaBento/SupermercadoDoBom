@@ -1,4 +1,13 @@
 import { Button } from '@ui/button';
+import { Icon, MuiIcon } from '@ui/index';
+import { ChevronDown } from 'lucide-react';
+import { css } from 'styled-components';
+
+const styles = css`
+  width: calc(100% - 32px);
+  margin-inline: auto;
+  padding-inline: 0;
+`;
 
 const ButtonSeeAll = ({
   applyNewHeight,
@@ -21,9 +30,9 @@ const ButtonSeeAll = ({
   }
 
   return (
-    <Button variant="ghost" size="sm" fullWidth onClick={handleClickSeeAll}>
-      <p>Ver Tudo</p>
-      <span className="material-symbols-rounded">keyboard_arrow_down</span>
+    <Button variant="ghost" size="sm" onClick={handleClickSeeAll} customStyles={styles}>
+      Ver Tudo
+      <Icon LucideIcon={ChevronDown} size="h3" strokeValue={2.4} />
     </Button>
   );
 };

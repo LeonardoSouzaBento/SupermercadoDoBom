@@ -1,13 +1,7 @@
-import {Button} from '@ui/button';
+import { Button } from '@ui/button';
+import { MuiIcon } from '@ui/index';
 import { useNavigate } from 'react-router-dom';
-import {
-  DivH2StatusStyled,
-  DivOneStyled,
-  H2v2Styled,
-  HeaderH2Styled,
-  SpanH2Styled,
-  StatusWrapperStyled
-} from '../StylizedTags';
+import { CardHeaderStyled, CardTitleStyled, StatusStyled, WrapperStyled } from '../ui';
 
 export const FinishShopping = ({ isDataComplete, currentOrder, userContact }) => {
   const enable =
@@ -26,28 +20,28 @@ export const FinishShopping = ({ isDataComplete, currentOrder, userContact }) =>
   }
 
   return (
-    <DivOneStyled $orders={true}>
-      <DivH2StatusStyled $orders={true}>
-        <HeaderH2Styled $orders={true}>
-          <SpanH2Styled className="material-symbols-rounded">shopping_bag</SpanH2Styled>
-          <H2v2Styled style={{ marginBottom: '0px' }}>Minhas compras</H2v2Styled>
-        </HeaderH2Styled>
+    <WrapperStyled $orders={true}>
+      <CardHeaderStyled $orders={true}>
+        <CardTitleStyled $orders={true}>
+          <MuiIcon fill={1} icon="shopping_bag" size="3xl" />
+          <h3 style={{ marginBottom: '0px' }}>Minhas compras</h3>
+        </CardTitleStyled>
 
         {currentOrder.status === 'pending' && (
-          <StatusWrapperStyled $finish={true}>
+          <StatusStyled $finish={true}>
             <div>
               <span className="material-symbols-rounded">priority_high</span>
               <p>Compra não finalizada</p>
             </div>
-          </StatusWrapperStyled>
+          </StatusStyled>
         )}
-      </DivH2StatusStyled>
+      </CardHeaderStyled>
       {currentOrder.status === 'pending' && (
-        <Button disabled={!enable} onClick={handleClickFinish}>
+        <Button disabled={!enable} fullWidth onClick={handleClickFinish}>
           Finalizar a compra
         </Button>
       )}
-    </DivOneStyled>
+    </WrapperStyled>
   );
 };
 

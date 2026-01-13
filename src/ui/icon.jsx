@@ -15,12 +15,12 @@ const iconSizes = {
   '4xl': '1.383em', // h3
 };
 
-export const Icon = ({ size, LucideIcon, strokeValue, marginValue = '0' }) => {
+export const Icon = ({ size, LucideIcon, strokeValue, marginValue = '0', color }) => {
   return (
     <LucideIcon
       size={iconSizes[size] || size || '1em'}
       strokeWidth={strokeValue || 2.8}
-      style={{ margin: marginValue}}
+      style={{ margin: marginValue, color }}
     />
   );
 };

@@ -3,16 +3,17 @@ import styled, { css } from 'styled-components';
 const Header = styled.header`
   width: 100%;
   height: 56px;
-  margin-bottom: 0;
+  margin-bottom: 12px;
   background-color: var(--primary);
   display: flex;
   align-items: center;
-  /* border-radius: 0 0 16px 16px; */
+  box-sizing: border-box;
 `;
 
 const Title = styled.h2`
   width: max-content;
-  margin: auto;
+  box-sizing: border-box;
+  margin: 0 auto;
   text-align: left;
   padding-bottom: 6px;
   color: var(--white-foreground);
@@ -29,31 +30,16 @@ const Title = styled.h2`
   ${(props) =>
     props.$title === 'minha conta' &&
     css`
-      @media screen and (max-width: 375px) {
-        width: calc(100% - 16px);
-      }
-      @media screen and (min-width: 375px) {
-        width: calc(100% - 28px);
-        max-width: 52rem;
-      }
-      @media screen and (min-width: 993px) and (max-width: 1085px) {
-        width: max-content;
-        margin: 0;
-        margin-left: 1.6rem;
-      }
-      @media screen and (min-width: 1085px) {
-        max-width: 105.6rem;
-      }
+      width: calc(100% - 24px);
+      max-width: 640px;
     `}
 `;
 
 const PageHeader = ({ title }) => {
   return (
-    <div>
-      <Header>
-        <Title $title={title.toLowerCase()}>{title}</Title>
-      </Header>
-    </div>
+    <Header>
+      <Title $title={title.toLowerCase()}>{title}</Title>
+    </Header>
   );
 };
 

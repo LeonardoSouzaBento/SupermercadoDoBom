@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const WrapperStyled = styled.div`
   width: 100%;
-  background-color: hsla(var(--primary-50), 0.66);
+  background-color: hsla(var(--primary-50), 0.7);
+  border-top: 1px solid hsla(var(--primary-50), 0.2);
   backdrop-filter: blur(10px);
   position: fixed;
   left: 0;
@@ -13,7 +14,7 @@ export const WrapperStyled = styled.div`
   & > div#buttons-wrapper {
     width: 100%;
     height: 56px;
-    max-width: 1080px;
+    max-width: 1000px;
     display: flex;
     justify-content: space-between;
     align-items: center;

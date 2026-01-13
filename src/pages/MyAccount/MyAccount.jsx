@@ -4,12 +4,9 @@ import { UserDataContext } from '@contexts/UserDataContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import PageHeader from '@ui/page-header';
 import { useContext, useEffect, useState } from 'react';
-import Contact from './subomponents/Contact';
-import FinishShopping from './subomponents/FinishShopping';
-import SavedAddress from './subomponents/SavedAddress';
-import UserProfile from './subomponents/UserProfile';
 import RegisterAddress from './RegisterAddress/RegisterAddress';
-import { DivOneTwoStyled, DivThreeButtonStyled, MainStyled } from './StylizedTags';
+import { MainStyled } from './StylizedTags';
+import { Address, Contact, FinishShopping, Profile } from './subomponents';
 
 const MyAccount = () => {
   const { userContact, isDataComplete, userAddress } = useContext(UserDataContext);
@@ -37,29 +34,23 @@ const MyAccount = () => {
 
   return (
     <>
-      <PageHeader title="Minha conta" />
+      <PageHeader title="Minha conta"  />
 
       <MainStyled>
-        {/*Minha conta e Contato*/}
-        <DivOneTwoStyled>
-          <UserProfile userContact={userContact} />
-          <Contact />
-        </DivOneTwoStyled>
+        <Profile userContact={userContact} />
+        <Contact />
 
-        {/*Endereço e Finalizar compra*/}
-        <DivThreeButtonStyled>
-          <SavedAddress
-            setSeeRegisterAddress={setSeeRegisterAddress}
-            isDataComplete={isDataComplete}
-            userAddress={userAddress}
-            userContact={userContact}
-          />
-          <FinishShopping
-            userContact={userContact}
-            isDataComplete={isDataComplete}
-            currentOrder={currentOrder}
-          />
-        </DivThreeButtonStyled>
+        <Address
+          setSeeRegisterAddress={setSeeRegisterAddress}
+          isDataComplete={isDataComplete}
+          userAddress={userAddress}
+          userContact={userContact}
+        />
+        <FinishShopping
+          userContact={userContact}
+          isDataComplete={isDataComplete}
+          currentOrder={currentOrder}
+        />
       </MainStyled>
 
       {seeRegisterAddress && <RegisterAddress setSeeRegisterAddress={setSeeRegisterAddress} />}

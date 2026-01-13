@@ -1,18 +1,14 @@
+import { ContainerStyled } from '@/pages/Home/ui/more-options-menu/container';
 import { UserDataContext } from '@contexts/UserDataContext';
-import { DivSpanCloseStyled, SpanCloseStyled } from '@pages/MyAccount/RegisterAddress/StylizedTags';
+import { Button, MuiIcon, Separator, WrapperButtons } from '@ui/index';
 import { getAuth, signOut } from 'firebase/auth';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  ContainerStyled,
-  DivNameSpanStyled,
-  DivSpanStyled
-} from '@/pages/Home/ui/more-options-menu/container';
+import { css } from 'styled-components';
 
 const contents = [
   { p: 'Minha conta', icon: 'person_edit', navigateTo: '/minha-conta' },
   { p: 'Meus pedidos', icon: 'local_mall', navigateTo: '/meus-pedidos' },
-  { p: 'Sair do site', icon: 'logout' },
 ];
 
 const OptionsMenu = ({ setViewOptions, idToken }) => {
@@ -75,27 +71,43 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
 
   return (
     <ContainerStyled onPointerDown={handleClickClose} $transform={transform}>
-      <div>
-        <div>
-          <h3>Mais Opções</h3>
-          <DivSpanCloseStyled onPointerDown={handleClickClose} $moreOptions={true}>
-            <SpanCloseStyled className="material-symbols-rounded">close</SpanCloseStyled>
-          </DivSpanCloseStyled>
+      <div id="side-div">
+        <div id="options-header">
+          <h4>Mais Opções</h4>
+          <Button onPointerDown={handleClickClose} size="sm-icon">
+            <MuiIcon icon="close" size="3xl" weight={400} />
+          </Button>
         </div>
-        {contents.map((content, index) => (
-          <DivNameSpanStyled
-            key={index}
-            onPointerDown={(e) => {
-              e.stopPropagation();
-              handleOpenContent(e, index, content.p);
-            }}
-            $logout={content.p == 'Sair do site'}>
-            <DivSpanStyled $logout={content.p == 'Sair do site'}>
-              <span className="material-symbols-rounded">{content.icon}</span>
-            </DivSpanStyled>
-            <p>{content.p}</p>
-          </DivNameSpanStyled>
-        ))}
+        <div id="options-content">
+          {contents.map((content, index) => (
+            <Button
+              key={index}
+              fullWidth={true}
+              variant="transparent"
+              size="lg"
+              onPointerDown={(e) => {
+                e.stopPropagation();
+                handleOpenContent(e, index, content.p);
+              }}>
+              <MuiIcon icon={content.icon} size="xl" fill={1} />
+              {content.p}
+            </Button>
+          ))}
+          <div>
+            <Separator />
+            <Button
+              fullWidth={true}
+              variant="transparent"
+              size="lg"
+              onPointerDown={(e) => {
+                e.stopPropagation();
+                handleLogout();
+              }}>
+              <MuiIcon icon="logout" size="2xl" />
+              Sair do site
+            </Button>
+          </div>
+        </div>
       </div>
     </ContainerStyled>
   );

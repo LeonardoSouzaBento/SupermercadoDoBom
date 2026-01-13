@@ -21,7 +21,7 @@ export const ContainerStyled = styled.div`
     & > #header {
       padding: 0 20px;
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
 
       & > #logo {
         display: inline-flex;
@@ -32,29 +32,20 @@ export const ContainerStyled = styled.div`
         box-sizing: border-box;
         padding-right: 0.22rem;
         border-radius: 50%;
-        background-color: var(--red-brand);
-        margin-bottom: 1.2rem;
+        background-color: var(--primary);
+        margin-bottom: 8px;
         box-shadow: var(--shadow-sm);
         transform: scaleX(-1);
-
-        & span {
-          color: rgba(255, 255, 255, 0.98);
-          font-weight: 500;
-          padding-top: 0.2rem;
-          padding-left: 1px;
-          font-size: 32px;
-        }
       }
       /* título e subtítulo */
       & > #title {
         & > h1 {
-          font-size: var(--text-h1-hero);
-          color: var(--primary);
+          font-size: var(--text-big-h1);
+          color: var(--red-brand);
         }
         & > p {
-          color: #64748b;
+          color: var(--muted-foreground);
           font-family: var(--font-header);
-          font-size: var(--text-sm);
         }
       }
     }
@@ -69,7 +60,7 @@ export const ContainerStyled = styled.div`
         text-align: center;
         color: #64748b;
         font-size: var(--text-xs);
-        margin-top: 36px;
+        margin-top: 32px;
 
         & > a {
           text-decoration: none;

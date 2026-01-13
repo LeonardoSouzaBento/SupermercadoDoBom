@@ -59,32 +59,32 @@ const DetailsCard = ({ totalAddedValue, scaleWarnnig }) => {
         </CardTitle>
         <CardDescription>Leia os detalhes de sua compra</CardDescription>
       </CardHeader>
-
-      <WrapperStyled>
-        {falta > 0 && totalAddedValue != 0 && (
-          <ValueWarn scaleWarnnig={scaleWarnnig} faltaFormatada={faltaFormatada} />
-        )}
-        <div className="data">
-          <p>Compra:</p>
-          <p>
-            <strong>R$ {totalValue}</strong>
-          </p>
-        </div>
-        <Separators />
-        <div className="data">
-          <p>Taxa de Entrega:</p>
-          <p>
-            <strong>R$ 4,00</strong>
-          </p>
-        </div>
-        <Separators />
-        <div className="data">
-          <p>Total:</p>
-          <p>
-            <strong>R$ {totalFormatted}</strong>
-          </p>
-        </div>
-      </WrapperStyled>
+      {falta === 0 && totalAddedValue > 0 ? (
+        <WrapperStyled>
+          <div className="data">
+            <p>Compra:</p>
+            <p>
+              <strong>R$ {totalValue}</strong>
+            </p>
+          </div>
+          <Separators />
+          <div className="data">
+            <p>Taxa de Entrega:</p>
+            <p>
+              <strong>R$ 4,00</strong>
+            </p>
+          </div>
+          <Separators />
+          <div className="data">
+            <p>Total:</p>
+            <p>
+              <strong>R$ {totalFormatted}</strong>
+            </p>
+          </div>
+        </WrapperStyled>
+      ) : (
+        <ValueWarn scaleWarnnig={scaleWarnnig} faltaFormatada={faltaFormatada} />
+      )}
     </Card>
   );
 };

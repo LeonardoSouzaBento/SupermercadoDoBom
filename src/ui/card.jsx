@@ -31,6 +31,7 @@ export const CardHeader = ({
 
 /* titulo */
 const TitleStyled = styled.div`
+  max-width: max-content;
   height: max-content;
   display: flex;
   flex-direction: row;

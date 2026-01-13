@@ -5,6 +5,8 @@ import { Button } from '@ui/button';
 import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { NavButton } from './bottom-nav-bar/nav-button';
+import { MuiIcon } from '@ui/index';
+import { css } from 'styled-components';
 
 export default function BottomNavBar() {
   const navigate = useNavigate();
@@ -15,20 +17,6 @@ export default function BottomNavBar() {
     <div>
       <WrapperStyled>
         <div id="buttons-wrapper">
-          {quantityItens >= 1 && (
-            <Button
-              id="cart-feedback"
-              size="sm"
-              variant="red"
-              onClick={() => {
-                navigate('/meu-carrinho');
-              }}>
-              <span className="material-symbols-rounded" id="cartIcon">
-                shopping_cart
-              </span>
-              R$ {totalValueFormatted}
-            </Button>
-          )}
           {bottomNavBarItems.map((item, index) => {
             const isActive = item.path === location.pathname;
             if (item.path === '/meu-carrinho' && quantityItens >= 1) {
@@ -36,6 +24,29 @@ export default function BottomNavBar() {
             }
             return <NavButton key={index} item={item} isActive={isActive} />;
           })}
+          {quantityItens >= 1 && (
+            <Button
+              id="cart-feedback"
+              size="sm"
+              variant="red"
+              customStyles={css`
+                gap: 0.5ex !important;
+                padding: 0 0.75em !important;
+                @media screen and (min-width: 375px) {
+                  padding: 0 1em !important;
+                  gap: 1ex !important;
+                }
+                @media screen and (min-width: 430px) {
+                  min-width: max-content;
+                }
+              `}
+              onClick={() => {
+                navigate('/meu-carrinho');
+              }}>
+              <MuiIcon icon="shopping_cart" id="cartIcon" fill={1} size="3xl" weight={400} />
+              R$ {totalValueFormatted}
+            </Button>
+          )}
         </div>
       </WrapperStyled>
       <div style={{ height: '72px', width: '100%', position: 'relative' }} />

@@ -63,6 +63,7 @@ export const HeaderStyled = styled.header`
       }
       & > p {
         width: 100%;
+        font-weight: 400;
       }
       @media screen and (min-width: 640px) {
         text-align: start;

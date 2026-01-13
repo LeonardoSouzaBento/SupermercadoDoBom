@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const CardStyled = styled.div`
   background: #fff;
   border-radius: 15px;
-  box-shadow: var(--shadow-lg);
   border: 1px solid var(--card-border);
   padding: 24px;
   padding-top: 16px;
   position: relative;
+  box-shadow: var(--shadow-md);
 
   /* header */
   & > div:first-child {

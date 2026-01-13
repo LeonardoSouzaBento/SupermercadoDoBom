@@ -22,16 +22,11 @@ const iconSizes = {
   '4xl': '1.383em', // h3
 };
 
-/* 
---text-h6: 1.067em;
---text-h5: 1.138489em;
---text-h4: 1.214768em;
---text-h3: 1.296157em;
-*/
 
-export const MuiIcon = ({ icon, size, fill = 0, weight = 600, margin = '0', customStyles }) => {
+export const MuiIcon = ({ icon, size, fill = 0, weight = 600, margin = '0', customStyles, id }) => {
   return (
     <SpanStyled
+      id={id}
       className="material-symbols-rounded"
       $fill={fill}
       $weight={weight}

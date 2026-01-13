@@ -1,51 +1,49 @@
+import { MuiIcon } from '@ui/index';
 import React from 'react';
 import styled from 'styled-components';
-import { CentralizeDiv } from '@components/GenericStylizedTags';
-
-const ContainerStyled = styled(CentralizeDiv)`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  background-color: var(--white-foreground);
-  border-radius: 1.2rem;
-`;
 
 const WrapperStyled = styled.div`
   width: 100%;
   height: max-content;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0.8rem 1.6rem;
-  box-sizing: border-box;
   display: flex;
+  justify-content: start;
   align-items: center;
-  border-radius: 0.4rem;
-  background-color: var(--red-brand);
-  overflow: hidden;
+  gap: 0.75ex;
+  padding: 10px 12px 12px;
+  margin-bottom: 1px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid hsla(var(--destructive-value), 0.33);
+  box-shadow: var(--shadow-sm);
+  background-color: hsla(var(--warn-value), 0.066);
+  color: hsl(var(--destructive-value));
   scale: ${(props) => props.$scale};
   transition: scale 0.3s ease;
 
-  @media screen and (min-width: 769px) {
-    margin: 0;
-    margin-bottom: 1.2rem;
+  & > div:first-child {
+    height: 100%;
+    display: flex;
+    align-items: start;
+    align-self: stretch;
+    gap: 0.75ex;
+
+    & > span {
+      color: hsl(var(--destructive-value));
+    }
   }
 `;
 
 const ValueWarn = ({ scaleWarnnig, faltaFormatada }) => {
   return (
-    <ContainerStyled
-      style={{
-        backgroundColor: 'transparent',
-        padding: '0px',
-      }}>
-      <WrapperStyled $scale={scaleWarnnig} id="warn">
-        <p>Faltam R$ {faltaFormatada} para o valor mínimo de R$ 40,00</p>
-      </WrapperStyled>
-    </ContainerStyled>
+    <WrapperStyled $scale={scaleWarnnig} id="warn">
+      <div>
+        <MuiIcon icon="error" size="h5" margin="3px 0 0 0" />
+      </div>
+      <div>
+        <h6>Aviso</h6>
+        <p>Faltam R$ {faltaFormatada} para o <strong>valor mínimo</strong> de R$ 40,00</p>
+      </div>
+    </WrapperStyled>
   );
 };
 

@@ -1,21 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const CompletionsStyled = styled.div`
   width: 100%;
   height: auto;
-  padding-right: 1.6rem;
+  padding: 16px;
   box-sizing: border-box;
   display: flex;
   justify-content: flex-end;
   position: absolute;
-  top: 7.2rem;
-  ${(props) => props.$copy == true && 'top: 8.2rem;'}
+  top: 48px;
   left: 0%;
+  ${(props) => props.$copy == true && 'top: 64px;'}
   align-items: center;
   gap: 0.8rem;
   flex-flow: row wrap;
-  background-color: var(--white-foreground);
-  background-color: transparent;
+  border-radius: 16px;
 
   @media screen and (max-width: 375px) {
     gap: 0.4rem;
@@ -24,36 +23,29 @@ export const CompletionsStyled = styled.div`
   @media screen and (max-width: 768px) {
     ${(props) => props.$copy == false && 'top:6.2rem;'};
   }
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    ${(props) => props.$copy && 'padding-right: 2.8rem;'};
-  }
   @media screen and (min-width: 769px) {
     justify-content: flex-start;
-    ${(props) => props.$copy && 'padding: 0 0px 0px 2rem;'};
   }
   @media screen and (min-width: 1201px) {
     left: 4.5%;
   }
 
   & > div {
+    height: 44px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: max-content;
-    height: 4.8rem;
-    padding: 0 1.6rem;
+    padding: 0 1.1em;
     flex: none;
-    border-radius: 2.4rem;
-    background-color: var(--primary-hover);
-    box-shadow: var(--shadow-sm);
-    color: var(--white-foreground);
+    border-radius: 999px;
+    background-color: hsla(var(--white-value), 0.96);
+    ${(props) => props.$copy && 'border: 1px solid hsla(var(--primary-300));'}
+    color: var(--black-foreground);
+    box-shadow: var(--shadow-md);
     cursor: pointer;
     position: relative;
     overflow: hidden;
-
-    @media screen and (max-width: 375px) {
-      padding: 0 1.2rem;
-    }
 
     & > input {
       width: 100%;
@@ -74,6 +66,7 @@ export const CompletionsStyled = styled.div`
 
     & > p {
       text-transform: uppercase;
+      font-size: var(--text-xs);
       font-weight: 600;
 
       @media screen and (max-width: 375px) {
