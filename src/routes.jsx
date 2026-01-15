@@ -1,11 +1,11 @@
-import HomePage from '@pages/Home/HomePage';
+import HomePage from '@pages/home-page/HomePage';
 import { Route, Routes } from 'react-router-dom';
-import Cart from './pages/Cart/Cart';
-import LoginPage from './pages/LoginPage/LoginPage';
-import MyAccount from './pages/MyAccount/MyAccount';
-import MyOrders from './pages/MyOrders/MyOrders';
-import SearchPage from './pages/SearchPage';
-import NotFound from './pages/NotFound';
+import Cart from './pages/cart-page/Cart';
+import LoginPage from './pages/login-page/login-page';
+import MyAccount from './pages/my-account/my-account';
+import MyOrders from './pages/my-orders/my-orders';
+import SearchPage from './pages/search-page';
+import NotFound from './pages/not-found';
 
 const AppRoutes = () => {
   return (

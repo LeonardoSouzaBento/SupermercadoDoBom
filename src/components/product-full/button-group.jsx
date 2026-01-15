@@ -1,5 +1,5 @@
-import { mdIcon } from '@/styles/lucideIcons';
-import {Button} from '@ui/button';
+import { Button } from '@ui/button';
+import { Icon } from '@ui/index';
 import { Minus, Plus } from 'lucide-react';
 import styled from 'styled-components';
 
@@ -45,7 +45,7 @@ export const ButtonGroup = ({
             onPointerUp={(e) => {
               handlePointerUpButtons(e, 'fewer');
             }}>
-            <Minus {...mdIcon} />
+            <Icon LucideIcon={Minus} />
           </Button>
 
           <Button>
@@ -53,7 +53,7 @@ export const ButtonGroup = ({
           </Button>
 
           <Button onPointerUp={handlePointerUpButtons}>
-            <Plus {...mdIcon} />
+            <Icon LucideIcon={Plus} />
           </Button>
         </>
       )}

@@ -26,6 +26,9 @@ const InputStyled = styled.input`
 
 const LabelStyled = styled.label`
   padding-bottom: 0.7ex;
+  &* {
+    position: relative;
+  }
 `;
 
 const WrapperInput = ({ children, customStyles }) => {

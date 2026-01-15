@@ -1,0 +1,191 @@
+import { useEffect, useState, useContext } from 'react';
+import CepConvertedReturn from './cep-converted-return';
+import { InputStyled, ButtonStyled, RegisterButtonStyled } from './stylized-tags';
+import { UserDataContext } from '@contexts/UserDataContext';
+
+const AddressForm = ({
+  cepConvertedState,
+  opacityReturn,
+  formData,
+  setFormData,
+  setSeeAddressForm,
+  showOrHideComponent,
+}) => {
+  const [addressSaved, setAddressSaved] = useState('');
+  const [addressComplete, setAddressComplete] = useState(false);
+  const { idToken, isDataComplete, setIsDataComplete, setUserAddress } =
+    useContext(UserDataContext);
+  const [opacityAddressForm, setOpacityAddressForm] = useState(0);
+
+  function dismountComponent() {
+    setOpacityAddressForm(0);
+    setTimeout(() => {
+      setSeeAddressForm(false);
+    }, 300);
+  }
+
+  //para preenchimento manual
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  function handleRegisterAddres() {
+    if (addressComplete) {
+      setIsDataComplete({ ...isDataComplete, address: true });
+      setUserAddress(formData);
+      setOpacityAddressForm(0);
+      showOrHideComponent('hide');
+      updateAddres(formData); //enviar ao servidor
+    }
+  }
+
+  async function updateAddres(endereco) {
+    setAddressSaved('pending');
+    try {
+      const response = await fetch(
+        'https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/user-update-address',
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${idToken}`,
+          },
+          body: JSON.stringify({ endereco: endereco }),
+        }
+      );
+
+      console.log(JSON.stringify({ endereco: endereco }));
+
+      if (!response.ok) {
+        throw new Error(`Erro: ${response.status}`);
+      }
+      setAddressSaved('saved');
+    } catch (error) {
+      setAddressSaved('error');
+      console.error('Erro ao salvar endereço: ', error);
+    }
+  }
+
+  useEffect(() => {
+    if (addressSaved !== 'pending') {
+      setTimeout(() => {
+        setAddressSaved('');
+      }, 3000);
+    }
+  }, [addressSaved]);
+
+  //verificar completude do endereço
+  useEffect(() => {
+    const isFormValid = Object.keys(formData).every((key) => {
+      if (key === 'complemento' || key === 'cep' || key === 'lat' || key === 'lng') {
+        return true;
+      }
+      return formData[key].trim() !== '';
+    });
+    if (isFormValid) {
+      setAddressComplete(true);
+    } else {
+      setAddressComplete(false);
+    }
+  }, [formData]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacityAddressForm(1);
+    }, 150);
+  }, []);
+
+  return (
+    <form
+      autoComplete="off"
+      style={{
+        marginTop: '-1.2rem',
+        borderRadius: '0.8rem',
+        position: 'relative',
+        transition: 'all 0.3s ease',
+        opacity: { opacityAddressForm },
+      }}>
+      {cepConvertedState !== '' && (
+        <CepConvertedReturn opacityReturn={opacityReturn} cepConvertedState={cepConvertedState} />
+      )}
+      <InputStyled
+        type="text"
+        name="cidade"
+        placeholder="Cidade"
+        value={formData.cidade}
+        required
+        onChange={handleChange}
+        autoComplete="off"
+      />
+      <InputStyled
+        type="text"
+        name="estado"
+        placeholder="Estado"
+        value={formData.estado}
+        required
+        onChange={handleChange}
+        autoComplete="off"
+      />
+      <InputStyled
+        type="text"
+        name="rua"
+        placeholder="Rua"
+        value={formData.rua}
+        required
+        maxLength={40}
+        autoComplete="off"
+        onChange={handleChange}
+      />
+      <InputStyled
+        type="text"
+        name="numero"
+        placeholder="Número"
+        value={formData.numero}
+        required
+        maxLength={10}
+        autoComplete="off"
+        onChange={handleChange}
+      />
+      <InputStyled
+        type="text"
+        name="complemento"
+        placeholder="Complemento"
+        value={formData.complemento}
+        maxLength={50}
+        autoComplete="off"
+        onChange={handleChange}
+      />
+      <InputStyled
+        type="text"
+        name="bairro"
+        placeholder="Bairro"
+        value={formData.bairro}
+        required
+        maxLength={50}
+        autoComplete="off"
+        onChange={handleChange}
+        $lastInput={true}
+      />
+      <ButtonStyled
+        $variant={'voltar'}
+        onClick={() => {
+          dismountComponent();
+        }}>
+        Voltar
+      </ButtonStyled>
+      <RegisterButtonStyled
+        $enable={addressComplete}
+        onClick={(e) => {
+          e.preventDefault();
+          handleRegisterAddres();
+        }}>
+        Salvar endereço
+      </RegisterButtonStyled>
+    </form>
+  );
+};
+
+export default AddressForm;
