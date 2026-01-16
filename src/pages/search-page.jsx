@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import SearchBar from '@components/search-bar';
-import ProductInFull from '@components/product-item/ProductInFull/product-in-full';
+import ProductInFull from '@components/product-in-full';
 import BottomNavBar from '@components/bottom-nav-bar';
 import { ProductList } from '@components/product-list';
 import { VisibilityContext } from '@contexts/VisibilityContext';

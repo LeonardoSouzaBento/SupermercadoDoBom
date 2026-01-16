@@ -1,13 +1,13 @@
-import { ButtonGroupStyled, ImageWrapperStyled } from '@components/ui/product/index';
+import { ButtonGroupStyled, ImageWrapperStyled } from '@components/product/index';
 import { CartContext } from '@contexts/CartContext';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { useContext } from 'react';
-import { ButtonAdd } from './button-add';
+import ButtonAdd from './button-add';
 import { Icon } from '@ui/icon';
 import { Plus, Minus } from 'lucide-react';
 import { weightStyles } from './product-item';
-import {Button} from '@ui/button';
+import { Button } from '@ui/button';
 
 const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef }) => {
   const { handleQuantityChange } = useContext(CartContext);

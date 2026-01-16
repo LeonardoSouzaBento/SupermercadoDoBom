@@ -1,5 +1,5 @@
-import { InfoWrapperStyled } from "@components/ui/product/index";
-import { weightStyles } from "@components/product-list/product-item";
+import { InfoWrapperStyled } from '@components/product/index';
+import { weightStyles } from '@components/product-list/product-item';
 
 const InfoWrapper = ({ product, variant }) => {
   return (
@@ -9,11 +9,7 @@ const InfoWrapper = ({ product, variant }) => {
       </div>
 
       <div>
-        {product.weight != '' && product.weight != null && (
-          <div id="weight">
-            {product.weight}
-          </div>
-        )}
+        {product.weight != '' && product.weight != null && <div id="weight">{product.weight}</div>}
         <div id="price">
           <p>R$</p>
           <p>{product.price}</p>

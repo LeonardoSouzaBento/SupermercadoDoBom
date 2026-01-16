@@ -1,14 +1,14 @@
-import { ButtonGroup, ProductData, Subtotal } from '@components/product-full/index';
 import {
+  ButtonGroup,
   ContainerStyled,
-  ProductSectionStyled,
-  SimilarSectionStyled,
-} from '@components/ui/product-full/index';
+  ProductData
+} from '@components/product-full/index';
 import { CartContext } from '@contexts/CartContext';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { Button } from '@ui/button';
-import { CardHeader } from '@ui/card';
+import { Icon } from '@ui/index';
+import { X } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 
 const ProductInFull = () => {
@@ -121,13 +121,26 @@ const ProductInFull = () => {
         onPointerUp={(e) => {
           e.stopPropagation();
         }}>
-        <Button size="icon" handleClickClose={handleClickClose} />
+        <Button size="sm-icon" variant="secondary" onClick={handleClickClose}>
+          <Icon LucideIcon={X} size="xl" />
+        </Button>
 
-        <ProductSectionStyled>
+        <div id="product-full-section">
           <ProductData dataProductFull={dataProductFull} />
 
-          <div>
-            <Subtotal subtotal={subtotal} />
+          <div id="subtotal-and-button">
+            <div>
+              {subtotal == '0,00' ? (
+                <div>
+                  <p>Subtotal:</p>
+                </div>
+              ) : (
+                <>
+                  <p>Subtotal:</p>
+                  <p>R$ {subtotal}</p>
+                </>
+              )}
+            </div>
 
             <ButtonGroup
               quantity={quantity}
@@ -137,17 +150,12 @@ const ProductInFull = () => {
               handlePointerUpButtons={handlePointerUpButtons}
             />
           </div>
-        </ProductSectionStyled>
+        </div>
 
-        <SimilarSectionStyled>
-          <CardHeader title="Produtos Similares" separator={false} />
+        <div id="similar-products-section">
+          <h3>Produtos Similares</h3>
           <p id="warning">*Essa parte ainda será desenvolvida*</p>
-
-          <div>
-            <div></div>
-            <div></div>
-          </div>
-        </SimilarSectionStyled>
+        </div>
       </div>
     </ContainerStyled>
   );

@@ -1,5 +1,5 @@
 import BottomNavBar from '@components/bottom-nav-bar';
-import ProductInFull from '@components/product-item/ProductInFull/product-in-full';
+import ProductInFull from '@components/product-in-full';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { UserDataContext } from '@contexts/UserDataContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';

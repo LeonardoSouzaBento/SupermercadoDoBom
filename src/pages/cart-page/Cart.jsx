@@ -7,7 +7,7 @@ import {
 } from '@pages/cart-page/components/index';
 import { MainWrapperStyled } from '@pages/cart-page/ui/index';
 import BottomNavBar from '@components/bottom-nav-bar';
-import ProductInFull from '@components/product-item/ProductInFull/product-in-full';
+import ProductInFull from '@components/product-in-full';
 import { ProductList } from '@components/product-list';
 import { CartContext } from '@contexts/CartContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';

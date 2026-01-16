@@ -1,10 +1,9 @@
-import { WrapperStyled } from '@/components/ui/bottom-nav-bar/index';
 import { CartContext } from '@contexts/CartContext';
 import { bottomNavBarItems } from '@data/bottomNavBarItems';
 import { Button } from '@ui/button';
 import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { NavButton } from './bottom-nav-bar/nav-button';
+import { NavButton, WrapperStyled } from './bottom-nav-bar/index';
 import { MuiIcon } from '@ui/index';
 import { css } from 'styled-components';
 

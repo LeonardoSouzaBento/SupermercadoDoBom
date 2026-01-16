@@ -1,4 +1,4 @@
-import { WrapperStyled } from '@components/ui/product/index';
+import { WrapperStyled } from '@components/product/index';
 import { CartContext } from '@contexts/CartContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { useContext, useEffect, useState } from 'react';

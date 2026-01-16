@@ -8,7 +8,7 @@ const ButtonStyled = styled.button`
   align-items: center;
   justify-content: center;
   line-height: 1.1;
-  gap: 0.80ex;
+  gap: 0.8ex;
   border-radius: 8px;
   position: relative;
   z-index: 1;
@@ -48,6 +48,9 @@ const ButtonStyled = styled.button`
           box-shadow: inset 0 1px 4px hsla(var(--primary-100), 0.1);
           background-color: hsla(var(--primary-200), 0.5);
           backdrop-filter: blur(3px);
+          & :hover {
+            background-color: hsl(var(--primary-200));
+          }
         `;
       case 'red':
         return css`

@@ -1,11 +1,11 @@
 import { CartContext } from '@contexts/CartContext';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
-import {Button} from '@ui/button';
-import { Plus } from 'lucide-react';
+import { Button } from '@ui/button';
 import { Icon } from '@ui/icon';
+import { Plus } from 'lucide-react';
 import { useContext } from 'react';
 
-export const ButtonAdd = ({ product, setQuantity }) => {
+export default function ButtonAdd({ product, setQuantity }) {
   const { handleQuantityChange } = useContext(CartContext);
   const { isDraggingRef } = useContext(HomeDivsContext);
   function handlePointerUpAdd(e) {
@@ -21,12 +21,8 @@ export const ButtonAdd = ({ product, setQuantity }) => {
   }
 
   return (
-    <Button
-      id="button-add"
-      variant="secondary"
-      size="sm-icon"
-      onPointerUp={handlePointerUpAdd}>
+    <Button id="button-add" variant="secondary" size="sm-icon" onPointerUp={handlePointerUpAdd}>
       <Icon size="xl" LucideIcon={Plus} />
     </Button>
   );
-};
+}

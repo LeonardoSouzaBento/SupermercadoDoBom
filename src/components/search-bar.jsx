@@ -1,4 +1,4 @@
-import { CompletionsStyled, ContainerStyled, HelpMessage } from '@/components/ui/search-bar/index';
+import { CompletionsStyled, ContainerStyled, HelpMessage } from '@components/search-bar/index';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { allProductsForSearch } from '@data/productList';
 import { Button } from '@ui/button';

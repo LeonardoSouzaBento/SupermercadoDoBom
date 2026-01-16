@@ -1,4 +1,4 @@
-import { ListContainerStyled } from '@components/ui/product/index';
+import { ListContainerStyled } from '@components/product/index';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import React, { useContext, useEffect } from 'react';
 import ProductItem from './product-list/product-item';
