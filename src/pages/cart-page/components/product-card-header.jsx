@@ -11,7 +11,7 @@ const ProductCardHeader = ({ setSeeCancelDialog }) => {
       <CardHeader
         title="Produtos"
         icon={<MuiIcon icon="package_2" size="h3" />}
-        customStyles={css`
+        styles={css`
           padding-left: 20px;
         `}
       />

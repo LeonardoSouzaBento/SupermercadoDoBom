@@ -8,17 +8,18 @@ export const ButtonGroupStyled = styled.div`
   display: ${(props) => (props.$display ? 'flex' : 'none')};
   justify-content: space-between;
   border-radius: 8px;
+  color: var(--white-foreground);
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
   position: absolute;
-  bottom: 0.8rem;
+  bottom: 8px;
   right: 5%;
   z-index: 1;
 
   @media screen and (min-width: 385px) and (max-width: 992px) {
     width: 85%;
-    right: 1.2rem;
+    right: 12px;
     bottom: 0;
   }
   transition: opacity 0.4s ease;
@@ -31,7 +32,7 @@ export const ButtonGroupStyled = styled.div`
   /* botão de menos */
   & > div {
     height: 100%;
-    width: 4.2rem;
+    width: 42px;
     display: flex;
     align-items: center;
     justify-content: center;

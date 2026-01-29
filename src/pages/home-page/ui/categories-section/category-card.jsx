@@ -36,7 +36,7 @@ export const CategoryCardStyled = styled.div`
           }
         `}
   & > div#wrapper-cat-icon {
-    width: 4.8rem;
+    width: 48px;
     height: max-content;
     border-radius: 12px;
     color: var(--primary);
@@ -47,8 +47,8 @@ export const CategoryCardStyled = styled.div`
     background-color: transparent;
   }
   & > div#wrapper-cat-label {
-    height: 4.8rem;
-    width: 4.8rem;
+    height: 48px;
+    width: 48px;
     display: flex;
     justify-content: center;
     align-items: center;

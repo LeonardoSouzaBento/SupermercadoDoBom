@@ -5,13 +5,13 @@ export const AnnouncementStyled = styled.div`
   margin: auto;
   display: flex;
   flex-flow: row nowrap;
-  gap: 1.6rem;
+  gap: 16px;
   overflow-x: scroll;
   box-sizing: border-box;
   box-shadow: var(--shadow-lg);
-  padding: 2.4rem;
-  padding-top: 1.2rem;
-  margin-bottom: 0.4rem;
+  padding: 24px;
+  padding-top: 12px;
+  margin-bottom: 4px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {

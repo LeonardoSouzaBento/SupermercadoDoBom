@@ -233,7 +233,7 @@ function SearchBar({ copy, onHome }) {
           type="submit"
           data-span
           onPointerDown={handleClickSearch}
-          customStyles={css`
+          styles={css`
             box-shadow: none !important;
           `}>
           <Icon size="lg" LucideIcon={Search} />

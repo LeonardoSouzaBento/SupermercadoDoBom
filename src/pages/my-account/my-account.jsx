@@ -12,7 +12,7 @@ const MyAccount = () => {
   const { userContact, isDataComplete, userAddress } = useContext(UserDataContext);
   const { currentOrder, setCurrentOrder, cartProducts } = useContext(CartContext);
   const { setOnMyAccount } = useContext(VisibilityContext);
-  const [seeRegisterAddress, setSeeRegisterAddress] = useState(false);
+  const [seeRegisterAddress, setSeeRegisterAddress] = useState(true);
 
   useEffect(() => {
     setOnMyAccount(true);

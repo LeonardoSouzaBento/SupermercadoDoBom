@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext } from 'react';
-import CepConvertedReturn from './cep-converted-return';
-import { InputStyled, ButtonStyled, RegisterButtonStyled } from './stylized-tags';
 import { UserDataContext } from '@contexts/UserDataContext';
+import { Button, Input, InputWrapper, Label } from '@ui/index';
+import { useContext, useEffect, useState } from 'react';
+import CepConvertedReturn from './cep-converted-return';
 
 const AddressForm = ({
   cepConvertedState,
@@ -9,7 +9,7 @@ const AddressForm = ({
   formData,
   setFormData,
   setSeeAddressForm,
-  showOrHideComponent,
+  setSeeRegisterAddress,
 }) => {
   const [addressSaved, setAddressSaved] = useState('');
   const [addressComplete, setAddressComplete] = useState(false);
@@ -37,7 +37,7 @@ const AddressForm = ({
       setIsDataComplete({ ...isDataComplete, address: true });
       setUserAddress(formData);
       setOpacityAddressForm(0);
-      showOrHideComponent('hide');
+      setSeeRegisterAddress(false);
       updateAddres(formData); //enviar ao servidor
     }
   }
@@ -54,7 +54,7 @@ const AddressForm = ({
             Authorization: `Bearer ${idToken}`,
           },
           body: JSON.stringify({ endereco: endereco }),
-        }
+        },
       );
 
       console.log(JSON.stringify({ endereco: endereco }));
@@ -102,88 +102,121 @@ const AddressForm = ({
     <form
       autoComplete="off"
       style={{
-        marginTop: '-1.2rem',
-        borderRadius: '0.8rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+        marginTop: '-12px',
+        borderRadius: '8px',
         position: 'relative',
         transition: 'all 0.3s ease',
+        height: '85dvh',
+        overflowY: 'scroll',
         opacity: { opacityAddressForm },
       }}>
       {cepConvertedState !== '' && (
         <CepConvertedReturn opacityReturn={opacityReturn} cepConvertedState={cepConvertedState} />
       )}
-      <InputStyled
-        type="text"
-        name="cidade"
-        placeholder="Cidade"
-        value={formData.cidade}
-        required
-        onChange={handleChange}
-        autoComplete="off"
-      />
-      <InputStyled
-        type="text"
-        name="estado"
-        placeholder="Estado"
-        value={formData.estado}
-        required
-        onChange={handleChange}
-        autoComplete="off"
-      />
-      <InputStyled
-        type="text"
-        name="rua"
-        placeholder="Rua"
-        value={formData.rua}
-        required
-        maxLength={40}
-        autoComplete="off"
-        onChange={handleChange}
-      />
-      <InputStyled
-        type="text"
-        name="numero"
-        placeholder="Número"
-        value={formData.numero}
-        required
-        maxLength={10}
-        autoComplete="off"
-        onChange={handleChange}
-      />
-      <InputStyled
-        type="text"
-        name="complemento"
-        placeholder="Complemento"
-        value={formData.complemento}
-        maxLength={50}
-        autoComplete="off"
-        onChange={handleChange}
-      />
-      <InputStyled
-        type="text"
-        name="bairro"
-        placeholder="Bairro"
-        value={formData.bairro}
-        required
-        maxLength={50}
-        autoComplete="off"
-        onChange={handleChange}
-        $lastInput={true}
-      />
-      <ButtonStyled
-        $variant={'voltar'}
-        onClick={() => {
-          dismountComponent();
+      <InputWrapper>
+        <Label>Cidade</Label>
+        <Input
+          type="text"
+          name="cidade"
+          placeholder="Cidade"
+          value={formData.cidade}
+          required
+          onChange={handleChange}
+          autoComplete="off"
+        />
+      </InputWrapper>
+      <InputWrapper>
+        <Label>Estado</Label>
+        <Input
+          type="text"
+          name="estado"
+          placeholder="Estado"
+          value={formData.estado}
+          required
+          onChange={handleChange}
+          autoComplete="off"
+        />
+      </InputWrapper>
+      <InputWrapper>
+        <Label>Rua</Label>
+        <Input
+          type="text"
+          name="rua"
+          placeholder="Rua"
+          value={formData.rua}
+          required
+          maxLength={40}
+          autoComplete="off"
+          onChange={handleChange}
+        />
+      </InputWrapper>
+      <InputWrapper>
+        <Label>Número</Label>
+        <Input
+          type="text"
+          name="numero"
+          placeholder="Número"
+          value={formData.numero}
+          required
+          maxLength={10}
+          autoComplete="off"
+          onChange={handleChange}
+        />
+      </InputWrapper>
+      <InputWrapper>
+        <Label>Complemento</Label>
+        <Input
+          type="text"
+          name="complemento"
+          placeholder="Complemento"
+          value={formData.complemento}
+          maxLength={50}
+          autoComplete="off"
+          onChange={handleChange}
+        />
+      </InputWrapper>
+      <InputWrapper>
+        <Label>Bairro</Label>
+        <Input
+          type="text"
+          name="bairro"
+          placeholder="Bairro"
+          value={formData.bairro}
+          required
+          maxLength={50}
+          autoComplete="off"
+          onChange={handleChange}
+          $lastInput={true}
+        />
+      </InputWrapper>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+          marginTop: '8px',
         }}>
-        Voltar
-      </ButtonStyled>
-      <RegisterButtonStyled
-        $enable={addressComplete}
-        onClick={(e) => {
-          e.preventDefault();
-          handleRegisterAddres();
-        }}>
-        Salvar endereço
-      </RegisterButtonStyled>
+        <Button
+          size="normal"
+          variant="outline"
+          onClick={() => {
+            dismountComponent();
+          }}>
+          Voltar
+        </Button>
+        <Button
+          variant="primary"
+          disabled={!addressComplete}
+          onClick={(e) => {
+            e.preventDefault();
+            handleRegisterAddres();
+          }}>
+          Salvar endereço
+        </Button>
+      </div>
     </form>
   );
 };

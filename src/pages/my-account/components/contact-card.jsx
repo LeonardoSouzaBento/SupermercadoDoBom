@@ -177,7 +177,7 @@ export const Contact = () => {
         <SpanCheckStyled className="material-symbols-rounded">check</SpanCheckStyled>
       )}
       <CardHeader
-        customStyles={css`
+        styles={css`
           flex-direction: row;
           flex-wrap: wrap;
           justify-content: space-between;
@@ -227,7 +227,7 @@ export const Contact = () => {
             </DivFormStyled>
 
             <Button
-              size={seeInput ? 'sm' : 'sm-icon'}
+              size={seeInput ? 'sm' : 'icon-sm'}
               variant="secondary"
               disabled={!isValidNumber && seeInput}
               onClick={() => {

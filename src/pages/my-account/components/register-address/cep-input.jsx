@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { DivCepInputStyled, CepInputStyled, PWarnCepStyled } from './stylized-tags';
+import { Input } from '@ui/index';
+import { useEffect, useState } from 'react';
 import CepConvertedReturn from './cep-converted-return';
 
 const CepInput = ({ setSeeAddressForm, setFormData, opacityReturn }) => {
@@ -84,8 +84,8 @@ const CepInput = ({ setSeeAddressForm, setFormData, opacityReturn }) => {
         <CepConvertedReturn cepConvertedState={cepConvertedState} opacityReturn={opacityReturn} />
       )}
 
-      <DivCepInputStyled>
-        <CepInputStyled
+      <div>
+        <Input
           type="text"
           inputMode="numeric"
           pattern="[0-9]*"
@@ -96,8 +96,8 @@ const CepInput = ({ setSeeAddressForm, setFormData, opacityReturn }) => {
           onChange={handleChangeCepInput}
           onClick={clickOnCep ? null : handleClickOnCep}
         />
-        <PWarnCepStyled $noPassed={cepState.length === 9}>CEP INVÁLIDO</PWarnCepStyled>
-      </DivCepInputStyled>
+        {cepState.length === 9 && <p>CEP INVÁLIDO</p>}
+      </div>
     </>
   );
 };

@@ -12,7 +12,7 @@ export const WrapperStyled = styled.div`
   flex-direction: column;
   gap: 12px;
   background-color: var(--white-foreground);
-  border-radius: 1.2rem;
+  border-radius: 12px;
   box-shadow: var(--shadow-md);
   ${(props) => props.$orders && 'padding-top: 0;'}
 `;
@@ -21,13 +21,13 @@ export const StatusStyled = styled.div`
   width: 100%;
   box-sizing: border-box;
   display: flex;
-  
+
   & > div {
-    height: 2.4rem;
+    height: 24px;
     width: max-content;
     padding: 2px 0;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
+    padding-left: 2px;
+    padding-right: 2px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -38,7 +38,7 @@ export const StatusStyled = styled.div`
     border: 2px solid hsla(var(--destructive-value), 0.2);
 
     & > p {
-      margin-right: 0.6rem;
+      margin-right: 6px;
       font-size: var(--text-xs);
       font-weight: 600;
       color: var(--destructive);
@@ -46,13 +46,17 @@ export const StatusStyled = styled.div`
     }
 
     & > span {
-      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 24;
       background-color: hsla(var(--warn-value), 0.3);
       color: var(--destructive);
-      padding: 0.4rem;
+      padding: 4px;
       margin-bottom: 1px;
       border-radius: 50%;
-      font-size: 1.6rem;
+      font-size: 16px;
     }
   }
 `;
@@ -66,7 +70,7 @@ export const CardHeaderStyled = styled.div`
 
   @media screen and (max-width: 520px) {
     flex-direction: column;
-    margin-bottom: 0.8rem;
+    margin-bottom: 8px;
   }
   @media screen and (min-width: 520px) and (max-width: 993px) {
     flex-direction: row;
@@ -75,7 +79,7 @@ export const CardHeaderStyled = styled.div`
   }
   @media screen and (min-width: 993px) and (max-width: 1058px) {
     flex-direction: column;
-    margin-bottom: 0.8rem;
+    margin-bottom: 8px;
   }
   @media screen and (min-width: 1058px) {
     flex-direction: row;
@@ -85,11 +89,11 @@ export const CardHeaderStyled = styled.div`
 `;
 
 export const CardTitleStyled = styled.header`
-  height: 5.6rem;
+  height: 56px;
   width: 100%;
   box-sizing: border-box;
-  padding-left: 1.6rem;
-  margin-bottom: 0.4rem;
+  padding-left: 16px;
+  margin-bottom: 4px;
   display: flex;
   justify-content: flex-start;
   align-items: center;

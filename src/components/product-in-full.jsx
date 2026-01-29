@@ -1,8 +1,4 @@
-import {
-  ButtonGroup,
-  ContainerStyled,
-  ProductData
-} from '@components/product-full/index';
+import { ButtonGroup, ContainerStyled, ProductData } from '@components/product-full/index';
 import { CartContext } from '@contexts/CartContext';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
@@ -121,7 +117,7 @@ const ProductInFull = () => {
         onPointerUp={(e) => {
           e.stopPropagation();
         }}>
-        <Button size="sm-icon" variant="secondary" onClick={handleClickClose}>
+        <Button size="icon-sm" variant="secondary" onClick={handleClickClose}>
           <Icon LucideIcon={X} size="xl" />
         </Button>
 

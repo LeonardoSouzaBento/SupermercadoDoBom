@@ -1,4 +1,4 @@
-import {Button} from '@ui/button';
+import { Button } from '@ui/button';
 import { Icon } from '@ui/icon';
 import { Link } from 'react-router-dom';
 import { css } from 'styled-components';
@@ -50,12 +50,12 @@ const LinkStyled = styled(Link)`
   padding: 0;
   gap: 0.85ex;
   flex-shrink: 0;
-  border-radius: 0.9rem;
+  border-radius: 9px;
   box-sizing: border-box;
   transition: all 150ms ease;
   &:focus-visible {
-    outline: 0.2rem solid transparent;
-    outline-offset: 0.2rem;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
     box-shadow: var(--shadow-xs);
   }
   & > svg {
@@ -67,19 +67,15 @@ export const NavButton = ({ item, isActive }) => {
   return (
     <WrapperStyled>
       <Button
-        size="lg-icon"
+        size="icon-lg"
         variant="transparent"
-        customStyles={css`
+        styles={css`
           color: var(--primary);
           flex-direction: column;
           gap: 2px;
         `}>
         <LinkStyled to={item.path}>
-          <Icon
-            LucideIcon={item.lucidIcon}
-            size="h5"
-            color="var(--primary)"
-          />
+          <Icon LucideIcon={item.lucidIcon} size="h5" color="var(--primary)" />
           <NameButtonStyled>{item.name}</NameButtonStyled>
         </LinkStyled>
       </Button>

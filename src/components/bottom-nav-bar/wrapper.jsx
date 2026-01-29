@@ -32,7 +32,7 @@ export const WrapperStyled = styled.div`
     width: max-content;
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 12px;
     color: var(--white-foreground);
     background-color: var(--red-brand);
 

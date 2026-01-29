@@ -79,12 +79,12 @@ const ButtonsCard = ({ setCurrentOrder, totalAddedValue, setScaleWarnnig }) => {
   }
   return (
     <Card hasHeader={false}>
-      <WrapperButtons customStyles={headerStyled}>
+      <WrapperButtons styles={headerStyled}>
         <Separator />
         <p>Continue</p>
         <Separator />
       </WrapperButtons>
-      <WrapperButtons customStyles={wrapperButtonsCss}>
+      <WrapperButtons styles={wrapperButtonsCss}>
         <Button
           variant="primary"
           size="normal"

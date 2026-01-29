@@ -26,9 +26,9 @@ export const MainWrapperStyled = styled.div`
   & > div#products-card {
     width: 100%;
     padding: 2rem 0;
-    padding-top: 1rem;
+    padding-top: 10px;
     margin-inline: auto;
-    border-radius: 1.2rem;
+    border-radius: 12px;
     box-sizing: border-box;
     box-shadow: var(--shadow-md);
     border: var(--card-border);

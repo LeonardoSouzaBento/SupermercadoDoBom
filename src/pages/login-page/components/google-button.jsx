@@ -37,7 +37,7 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${idToken}`,
           },
-        }
+        },
       );
 
       if (!response.ok) {
@@ -57,8 +57,8 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
     <Button
       variant="primary"
       fullWidth
-      customStyles={css`
-        margin-bottom: 18px;
+      styles={css`
+        margin-bottom: 16px;
       `}
       onClick={handleGoogleLogin}>
       {/* Logo Google */}

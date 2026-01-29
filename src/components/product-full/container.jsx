@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexCenter } from '@/styles/baseStyles';
+import { flexCenter } from '@/css/baseStyles';
 
 export const ContainerStyled = styled.div`
   width: 100vw;
@@ -18,13 +18,13 @@ export const ContainerStyled = styled.div`
     bottom: 0;
     left: 0;
     overflow-y: scroll;
-    border-radius: 1.2rem 1.2rem 0px 0px;
+    border-radius: 12px 12px 0px 0px;
     transform: translateY(${(props) => props.$translate});
     transition: transform 0.3s ease;
     box-shadow: var(--shadow-sm);
 
     @media screen and (max-width: 577px) {
-      padding-bottom: 6.2rem;
+      padding-bottom: 62px;
     }
 
     @media screen and (min-width: 840px) {
@@ -70,14 +70,14 @@ export const ContainerStyled = styled.div`
       box-sizing: border-box;
 
       & > div:first-child {
-        height: 4.8rem;
+        height: 48px;
         width: 100%;
         max-width: max-content;
-        padding: 0 1.6rem;
+        padding: 0 16px;
         ${flexCenter}
-        gap: 0.8rem;
+        gap: 8px;
         background-color: var(--background);
-        border-radius: 0.8rem;
+        border-radius: 8px;
         position: relative;
         @media screen and (max-width: 420px) {
           flex-direction: column;
@@ -87,7 +87,7 @@ export const ContainerStyled = styled.div`
         & > div {
           ${flexCenter}
           background-color: var(--background);
-          border-radius: 0.8rem;
+          border-radius: 8px;
           & > p {
             font-size: var(--text-sm);
             font-weight: 500;

@@ -141,7 +141,7 @@ const Cart = () => {
             <CardHeader
               mb={1}
               separator
-              customStyles={css`
+              styles={css`
                 padding-left: 20px;
               `}>
               <CardTitle>
@@ -153,7 +153,7 @@ const Cart = () => {
             <Button
               id="delete-button"
               variant="destructive"
-              size="sm-icon"
+              size="icon-sm"
               onClick={() => {
                 setSeeCancelDialog(true);
               }}>

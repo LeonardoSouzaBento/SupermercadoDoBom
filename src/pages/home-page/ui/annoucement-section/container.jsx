@@ -5,7 +5,7 @@ export const ContainerStyled = styled.section`
   position: relative;
   overflow-x: hidden;
   padding-bottom: 24px;
-  margin-bottom: 2.4rem;
+  margin-bottom: 24px;
   border-radius: 0 0 20px 20px;
   border-top: 1px solid hsla(var(--primary-50), 0.18);
   @media screen and (min-width: 1201px) {
@@ -53,14 +53,14 @@ export const ContainerStyled = styled.section`
     z-index: 1;
 
     & > span {
-      border-radius: 0.5rem;
+      border-radius: 5px;
       @media screen and (max-width: 375px) {
         height: 0.95rem;
         width: 0.95rem;
       }
       @media screen and (min-width: 375px) {
-        height: 1rem;
-        width: 1rem;
+        height: 10px;
+        width: 10px;
       }
     }
     @media screen and (min-width: 1201px) {

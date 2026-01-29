@@ -70,22 +70,22 @@ export const ContainerStyled = styled.div`
 `;
 
 export const DivNameSpanStyled = styled.div`
-  height: 4.8rem;
+  height: 48px;
   width: calc(100% - 32px);
   margin: auto;
   box-sizing: border-box;
-  padding-left: 1.4rem;
-  margin-bottom: 1.2rem;
+  padding-left: 14px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.2rem;
+  gap: 12px;
   cursor: pointer;
-  border-radius: 0.4rem;
-  ${(props) => props.$logout && 'margin-top: 2.5rem;'}
+  border-radius: 4px;
+  ${(props) => props.$logout && 'margin-top: 25px;'}
 
   & p {
-    padding-right: 1.2rem;
+    padding-right: 12px;
     font-family: var(--font-button);
     font-weight: 550;
     user-select: none;
@@ -98,15 +98,18 @@ export const DivNameSpanStyled = styled.div`
 
 export const DivSpanStyled = styled(CentralizeDiv)`
   width: max-content;
-  height: 5.6rem;
-  border-radius: 2.8rem;
+  height: 56px;
+  border-radius: 28px;
   flex: none;
   cursor: pointer;
 
   & span {
     font-weight: 550;
     font-size: 2.25rem;
-    font-variation-settings: 'FILL' 1, 'GRAD' 12, 'opsz' 30;
+    font-variation-settings:
+      'FILL' 1,
+      'GRAD' 12,
+      'opsz' 30;
     color: var(--primary);
     user-select: none;
     padding-top: 1px;

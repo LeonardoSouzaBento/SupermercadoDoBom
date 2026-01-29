@@ -9,9 +9,11 @@ import {
 } from '@pages/login-page/components/index';
 import { ContainerStyled } from '@pages/login-page/ui/index';
 import { Button } from '@ui/button';
+import { Card, CardDescription, CardHeader, CardTitle } from '@ui/index';
 import { HeartHandshake, Mail, User } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 
 const LoginPage = () => {
   const [loginType, setLoginType] = useState(null);
@@ -87,13 +89,19 @@ const LoginPage = () => {
           </div>
         </div>
 
-        <div className="card">
+        <Card
+          styles={css`
+            box-shadow: var(--shadow-lg);
+          `}>
           {loginState !== '' && <LoginReturn loginState={loginState} />}
-          <div>
-            <h3>{loginTexts[currentLoginType].title}</h3>
-
-            <p>{loginTexts[currentLoginType].description}</p>
-          </div>
+          <CardHeader>
+            <CardTitle>
+              <h3>{loginTexts[currentLoginType].title}</h3>
+            </CardTitle>
+            <CardDescription>
+              <p>{loginTexts[currentLoginType].description}</p>
+            </CardDescription>
+          </CardHeader>
 
           {/* Opções iniciais */}
           {loginType === null && (
@@ -130,7 +138,7 @@ const LoginPage = () => {
           )}
 
           {loginType === 'resetPassword' && <ResetSection setLoginType={setLoginType} />}
-        </div>
+        </Card>
 
         <div>
           <p>

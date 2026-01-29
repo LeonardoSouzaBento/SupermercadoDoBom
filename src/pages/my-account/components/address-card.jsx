@@ -3,17 +3,7 @@ import { Button, MuiIcon } from '@ui/index';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import {
-  DivAddressStyled,
-  DivFormStyled,
-  DivHalfAddressStyled,
-  DivStyled,
-  DivThreeStyled,
-  H2v2Styled,
-  H3Styled,
-  Pv2Styled,
-  SpanCheckStyled,
-} from '../StylizedTags';
+import { AddressWrapperStyled, DivStyled, DivThreeStyled, SpanCheckStyled } from '../StylizedTags';
 import { CardHeaderStyled, CardTitleStyled, StatusStyled } from '../ui';
 
 export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddress }) => {
@@ -36,11 +26,12 @@ export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, us
   }
 
   function handleRegisterAddress() {
-    if (userContact.email) {
-      setSeeRegisterAddress(true);
-    } else {
-      showLoginWarn();
-    }
+    setSeeRegisterAddress(true);
+    // if (userContact.email) {
+    //   setSeeRegisterAddress(true);
+    // } else {
+    //   showLoginWarn();
+    // }
   }
 
   return (
@@ -68,69 +59,67 @@ export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, us
       </CardHeaderStyled>
 
       <DivStyled>
-        <DivAddressStyled>
-          <DivHalfAddressStyled $first={true}>
-            <DivFormStyled $first={true}>
-              <H3Styled>Rua:</H3Styled>
-              <Pv2Styled>{!userAddress.rua ? 'Não fornecido' : userAddress.rua}</Pv2Styled>
-            </DivFormStyled>
+        <AddressWrapperStyled>
+          <div className="part-address first">
+            <div className="title first">
+              <h6>Rua:</h6>
+              <p>{!userAddress.rua ? 'Não fornecido' : userAddress.rua}</p>
+            </div>
 
-            <DivFormStyled>
-              <H3Styled>Número:</H3Styled>
-              <Pv2Styled>{!userAddress.numero ? 'Não fornecido' : userAddress.numero}</Pv2Styled>
-            </DivFormStyled>
-          </DivHalfAddressStyled>
+            <div className="title">
+              <h6>Número:</h6>
+              <p>{!userAddress.numero ? 'Não fornecido' : userAddress.numero}</p>
+            </div>
+          </div>
 
-          <DivHalfAddressStyled>
-            <DivFormStyled $first={true}>
-              <H3Styled>Complemento:</H3Styled>
-              <Pv2Styled>
+          <div className="part-address first">
+            <div className="title">
+              <h6>Complemento:</h6>
+              <p>
                 {!userAddress.complemento ? 'Não fornecido (opcional)' : userAddress.complemento}
-              </Pv2Styled>
-            </DivFormStyled>
+              </p>
+            </div>
 
-            <DivFormStyled>
-              <DivFormStyled>
-                <H3Styled>Cidade (UF):</H3Styled>
-                <Pv2Styled>
+            <div className="title">
+              <div className="title">
+                <h6>Cidade (UF):</h6>
+                <p>
                   {!userAddress.cidade
                     ? 'Não fornecido'
                     : `${userAddress.cidade} (${
                         initialNameState ? initialNameState : userAddress.estado
                       })`}
-                </Pv2Styled>
-              </DivFormStyled>
-            </DivFormStyled>
-          </DivHalfAddressStyled>
+                </p>
+              </div>
+            </div>
+          </div>
 
           <Button
-            size="sm-icon"
+            size="icon-sm"
             variant="secondary"
             onClick={handleRegisterAddress}
-            customStyles={css`
+            styles={css`
               position: absolute;
-              top: 1.6rem;
-              right: 1.6rem;
+              bottom: 16px;
+              right: 16px;
             `}>
             <MuiIcon icon="edit" size="3xl" weight={600} />
           </Button>
 
           {seeLoginWarn && (
             <DivToCoverStyled>
-              <H2v2Styled
-                $nameUser={true}
+              <p
                 style={{
                   width: '100%',
                   textAlign: 'center',
                   color: 'var(--red-brand-hover)',
-                  scale: 1.1,
-                  fontWeight: 400,
+                  fontWeight: 500,
                 }}>
                 Faça login primeiro!
-              </H2v2Styled>
+              </p>
             </DivToCoverStyled>
           )}
-        </DivAddressStyled>
+        </AddressWrapperStyled>
       </DivStyled>
     </DivThreeStyled>
   );

@@ -47,16 +47,16 @@ const ReceiptCard = () => {
           <h3>Recebimento</h3>
         </CardTitle>
       </CardHeader>
-      <CardContent customStyles={mainWrapperCss}>
+      <CardContent styles={mainWrapperCss}>
         <WrapperForm
           pt="1ex"
-          customStyles={css`
+          styles={css`
             gap: 0;
           `}>
-          <CardTitle customStyles={selectPCss}>
+          <CardTitle styles={selectPCss}>
             <p>Selecione</p>
           </CardTitle>
-          <WrapperButtons customStyles={wrapperButtonsCss}>
+          <WrapperButtons styles={wrapperButtonsCss}>
             <Button
               variant="ghost"
               size="sm"
@@ -64,7 +64,7 @@ const ReceiptCard = () => {
                 setSelected('entregar');
               }}
               selected={selected === 'entregar'}
-              customStyles={css`
+              styles={css`
                 justify-content: start;
               `}>
               <MuiIcon
@@ -83,7 +83,7 @@ const ReceiptCard = () => {
               onClick={() => {
                 setSelected('retirar');
               }}
-              customStyles={css`
+              styles={css`
                 justify-content: start;
               `}>
               <MuiIcon

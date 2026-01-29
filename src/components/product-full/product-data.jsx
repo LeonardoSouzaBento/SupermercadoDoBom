@@ -25,7 +25,7 @@ const InfoWrapperStyled = styled.div`
     gap: 8px;
     padding: 16px 0;
     margin-bottom: 16px;
-    min-height: 5.6rem;
+    min-height: 56px;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 
@@ -53,8 +53,8 @@ const ImageWrapperStyled = styled.div`
   width: 100%;
   height: 34rem;
   position: relative;
-  padding: 1.6rem;
-  margin-bottom: 0.8rem;
+  padding: 16px;
+  margin-bottom: 8px;
   box-sizing: border-box;
   overflow: hidden;
   -webkit-user-select: none;
@@ -91,20 +91,20 @@ const ImageWrapperStyled = styled.div`
 
   & #weight {
     position: absolute;
-    bottom: 3.8rem;
+    bottom: 38px;
     background-color: var(--background);
     color: #292e4e;
   }
 
   & #discount {
     position: absolute;
-    bottom: 0.4rem;
+    bottom: 4px;
     right: 0;
     background-color: hsla(var(--red-brand-value), 0.03);
-    padding: 0 1.2rem;
+    padding: 0 12px;
     padding-bottom: 0.25rem;
     color: var(--red-brand);
-    border-radius: 1.6rem;
+    border-radius: 16px;
     font-size: var(--text-sm);
   }
 `;

@@ -21,19 +21,19 @@ const DivStyled = styled.div`
   width: auto;
   height: auto;
   min-height: 40rem;
-  padding-bottom: 1.2rem;
+  padding-bottom: 12px;
   padding-right: 2rem;
-  padding-left: 0.8rem;
-  padding-top: 0.4rem;
+  padding-left: 8px;
+  padding-top: 4px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  gap: 1.4rem;
+  gap: 14px;
   overflow-x: scroll;
-  border-radius: 0.7rem;
+  border-radius: 7px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {
@@ -46,7 +46,7 @@ const DivStyled = styled.div`
     min-height: 28.4rem;
   }
   @media screen and (min-width: 1201px) {
-    padding-right: 0.8rem;
+    padding-right: 8px;
     margin-right: 0;
   }
 `;
@@ -55,17 +55,17 @@ const DivHalfList = styled.div`
   height: auto;
   width: auto;
   display: flex;
-  gap: 1.4rem;
+  gap: 14px;
 `;
 
 const NoProcutsStyed = styled(CentralizeDiv)`
   width: calc(90% - 20px);
-  padding: 1.2rem 0;
+  padding: 12px 0;
   position: absolute;
-  top: 1rem;
+  top: 10px;
   left: 50%;
   transform: translateX(-52%);
-  border-radius: 0.8rem;
+  border-radius: 8px;
   background-color: var(--white-foreground);
 
   @media screen and (min-width: 1201px) {

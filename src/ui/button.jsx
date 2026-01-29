@@ -11,22 +11,23 @@ const ButtonStyled = styled.button`
   gap: 0.8ex;
   border-radius: 8px;
   position: relative;
+  cursor: pointer;
   z-index: 1;
   box-sizing: border-box;
-  transition-property: color, box-shadow, background-color, border-color, text-decoration-color,
-    fill, stroke;
+  transition-property:
+    color, box-shadow, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   &:focus-visible {
-    outline: 0.2rem solid transparent;
-    outline-offset: 0.2rem;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
     box-shadow: var(--shadow-xs);
   }
   & > svg {
     flex-shrink: 0;
   }
 
-  ${({ $customStyles }) => $customStyles}
+  ${({ $styles }) => $styles}
 
   ${({ $variant }) => {
     switch ($variant) {
@@ -48,7 +49,7 @@ const ButtonStyled = styled.button`
           box-shadow: inset 0 1px 4px hsla(var(--primary-100), 0.1);
           background-color: hsla(var(--primary-200), 0.5);
           backdrop-filter: blur(3px);
-          & :hover {
+          &:hover {
             background-color: hsl(var(--primary-200));
           }
         `;
@@ -121,7 +122,7 @@ const ButtonStyled = styled.button`
       case 'normal':
         return css`
           height: 48px;
-          ${(props) => props.$variant !== 'outline' && 'padding: 1.389rem 1.5rem;'}
+          ${(props) => props.$variant !== 'outline' && 'padding: 1.389rem 15px;'}
           font-size: var(--text-button);
         `;
       case 'lg':
@@ -129,7 +130,7 @@ const ButtonStyled = styled.button`
           height: 52px;
           font-size: var(--text-lg-button);
         `;
-      case 'lg-icon':
+      case 'icon-lg':
         return css`
           padding: 0;
           width: 44px;
@@ -143,7 +144,7 @@ const ButtonStyled = styled.button`
           height: 40px;
           flex-shrink: 0;
         `;
-      case 'sm-icon':
+      case 'icon-sm':
         return css`
           padding: 0;
           width: 38px;
@@ -177,12 +178,12 @@ export const Button = ({
   selected = false,
   children,
   className,
-  customStyles,
+  styles,
   ...rest
 }) => {
   return (
     <ButtonStyled
-      $customStyles={customStyles}
+      $styles={styles}
       $variant={variant}
       $size={size}
       $fullWidth={fullWidth}

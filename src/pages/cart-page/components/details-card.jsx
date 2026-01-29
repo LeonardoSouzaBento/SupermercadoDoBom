@@ -5,7 +5,7 @@ import ValueWarn from './value-warn';
 
 const WrapperStyled = styled.div`
   width: 100%;
-  height: 13.6rem;
+  height: 136px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ const WrapperStyled = styled.div`
     max-width: max-content;
     height: 44px;
     box-sizing: border-box;
-    padding: 0 1.6rem;
+    padding: 0 16px;
     display: flex;
     gap: 1ex;
     align-items: center;
@@ -95,7 +95,7 @@ const Separators = () => {
   return (
     <>
       <Separator
-        customStyles={css`
+        styles={css`
           @media screen and (min-width: 680px) {
             display: none;
           }
@@ -103,7 +103,7 @@ const Separators = () => {
       />
       <Separator
         orientation="vertical"
-        customStyles={css`
+        styles={css`
           @media screen and (max-width: 680px) {
             display: none;
           }

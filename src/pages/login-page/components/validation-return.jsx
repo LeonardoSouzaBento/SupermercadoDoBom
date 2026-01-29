@@ -4,18 +4,18 @@ const WrapperStyled = styled.div`
   width: 100%;
   box-sizing: border-box;
   background-color: var(--background);
-  padding: 1.6rem;
-  padding-top: 1.2rem;
+  padding: 16px;
+  padding-top: 12px;
   margin-bottom: 21px;
-  border-radius: 0.9rem;
+  border-radius: 9px;
 `;
 
 const RowStyled = styled.div`
-  min-height: 3.2rem;
+  min-height: 32px;
   width: max-content;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 8px;
 
   @media screen and (max-width: 375px) {
     align-items: flex-start;
@@ -25,7 +25,7 @@ const RowStyled = styled.div`
     css`
       @media screen and (max-width: 375px) {
         flex-direction: column;
-        gap: 0.4rem;
+        gap: 4px;
       }
     `}
   & > p {
@@ -44,7 +44,7 @@ const RowStyled = styled.div`
         background-color: var(--light-green);
         color: var(--primary);
         padding: 1px;
-        margin-left: 0.2rem;
+        margin-left: 2px;
       `}
   }
 `;
@@ -103,9 +103,7 @@ const PasswordValidationReturn = ({ validacao }) => {
           <p>(!@#$%^&*)</p>
         </RowStyled>
       </RowStyled>
-      <ExampleStyled>
-        Exemplo: J@iro450Love
-      </ExampleStyled>
+      <ExampleStyled>Exemplo: J@iro450Love</ExampleStyled>
     </WrapperStyled>
   );
 };

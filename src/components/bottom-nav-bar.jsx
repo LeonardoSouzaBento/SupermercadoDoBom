@@ -28,7 +28,7 @@ export default function BottomNavBar() {
               id="cart-feedback"
               size="sm"
               variant="red"
-              customStyles={css`
+              styles={css`
                 gap: 0.5ex !important;
                 padding: 0 0.75em !important;
                 @media screen and (min-width: 375px) {

@@ -68,34 +68,4 @@ export const ContainerStyled = styled.div`
       }
     }
   }
-  /* card de botões e inputs */
-  & > div.card {
-    background: #fff;
-    border-radius: 15px;
-    border: 1px solid var(--card-border);
-    padding: 24px;
-    padding-top: 16px;
-    position: relative;
-    box-shadow: var(--shadow-md);
-
-    /* header */
-    & > div:first-child {
-      margin-bottom: 18px;
-      padding-bottom: 1ex;
-      border-bottom: 1px solid var(--border);
-      ${(props) => props.$inEmail && 'margin-bottom: 0.8rem;'};
-
-      & h3 {
-        color: var(--primary);
-        text-align: left;
-        margin-bottom: 3px;
-      }
-
-      & p {
-        color: #64748b;
-        text-align: left;
-        font-size: var(--text-sm);
-      }
-    }
-  }
 `;

@@ -20,7 +20,7 @@ export const Profile = ({ userContact }) => {
     <WrapperStyled>
       <HeaderStyled>
         <div>
-          <div id='photo-wrapper'>
+          <div id="photo-wrapper">
             {!userContact.photoUrl && (
               <MuiIcon
                 icon={!userContact.name ? 'person_alert' : 'person'}
@@ -32,13 +32,13 @@ export const Profile = ({ userContact }) => {
             <img src={userContact.photoUrl || null} />
           </div>
 
-          <div id='name-email-wrapper'>
-            <h3 $nameUser={true}>{nameUser}</h3>
+          <div id="name-email-wrapper">
+            <h3>{nameUser}</h3>
             <p>{!userContact.email ? 'usuario_anonimo@email.com' : userContact.email}</p>
           </div>
         </div>
 
-        <Button size="sm-icon" variant="secondary">
+        <Button size="icon-sm" variant="secondary">
           <MuiIcon icon="edit" size="3xl" weight={600} />
         </Button>
       </HeaderStyled>

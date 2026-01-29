@@ -35,9 +35,9 @@ const Title = styled.h2`
     `}
 `;
 
-const PageHeader = ({ title }) => {
+const PageHeader = ({ title, ...props }) => {
   return (
-    <Header>
+    <Header {...props}>
       <Title $title={title.toLowerCase()}>{title}</Title>
     </Header>
   );

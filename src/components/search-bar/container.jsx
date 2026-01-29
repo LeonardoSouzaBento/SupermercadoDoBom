@@ -11,16 +11,16 @@ export const ContainerStyled = styled.div`
     props.$copy &&
     css`
       padding: 16px;
-      margin-bottom: 1.2rem;
+      margin-bottom: 12px;
       position: sticky;
       top: 0;
       left: 0;
       display: flex;
       justify-content: center;
-      
+
       @media screen and (min-width: 769px) {
         justify-content: flex-start;
-        padding-left: 2.4rem;
+        padding-left: 24px;
       }
     `}
   &>form {
@@ -47,7 +47,7 @@ export const ContainerStyled = styled.div`
       height: 100%;
       box-sizing: border-box;
       touch-action: auto;
-      text-indent: 1.6rem;
+      text-indent: 16px;
       letter-spacing: 0.71px;
       font-weight: 400;
       border: none;

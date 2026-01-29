@@ -1,15 +1,9 @@
 import { UserDataContext } from '@contexts/UserDataContext';
+import { Button, Card, CardHeader, CardTitle, CloseButton } from '@ui/index';
 import { useContext, useEffect, useState } from 'react';
+import { css } from 'styled-components';
 import { AddressForm, CepInput, GetLocationButton } from '../components/register-address/index';
-import {
-  ButtonStyled,
-  DivBodyStyled,
-  DivSpanCloseStyled,
-  DivTitleStyled,
-  H1Styled,
-  MainDivStyled,
-  SpanCloseStyled,
-} from './register-address/stylized-tags';
+import { ContainerStyled } from './register-address/stylized-tags';
 
 const RegisterAddress = ({ setSeeRegisterAddress }) => {
   const [opacityRegAddress, setOpacityRegAddress] = useState(0);
@@ -28,15 +22,6 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
   const { idToken } = useContext(UserDataContext);
   //-11.186615346993204, lng: -40.26740712716049
 
-  function showOrHideComponent(option) {
-    if (option === 'hide') {
-      setSeeRegisterAddress(false);
-    } else {
-      setSeeRegisterAddress(true);
-      setOpacityRegAddress(1);
-    }
-  }
-
   useEffect(() => {
     setTimeout(() => {
       setOpacityRegAddress(1);
@@ -45,29 +30,46 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
   }, []);
 
   return (
-    <DivBodyStyled $opacity={opacityRegAddress} $up={seeAdressForm}>
-      <MainDivStyled $up={seeAdressForm}>
-        <DivTitleStyled>
-          <H1Styled>Cadastrar endereço</H1Styled>
-          <DivSpanCloseStyled
-            onClick={() => {
-              showOrHideComponent('hide');
-            }}>
-            <SpanCloseStyled className="material-symbols-rounded">close</SpanCloseStyled>
-          </DivSpanCloseStyled>
-        </DivTitleStyled>
+    <ContainerStyled $opacity={opacityRegAddress} $up={seeAdressForm}>
+      <Card className="card">
+        <CardHeader>
+          <CardTitle
+            styles={css`
+              width: 100%;
+              justify-content: space-between;
+            `}>
+            <h3>Cadastrar endereço</h3>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                width: '38px',
+                height: '38px',
+                position: 'relative',
+              }}>
+              <CloseButton
+                styles={css`
+                  position: absolute;
+                  top: 1px;
+                  right: -8px;
+                `}
+                setOpenState={setSeeRegisterAddress}
+              />
+            </div>
+          </CardTitle>
+        </CardHeader>
 
         {seeAdressForm ? (
           <AddressForm
             key="form"
-            showOrHideComponent={showOrHideComponent}
+            setSeeRegisterAddress={setSeeRegisterAddress}
             opacityReturn={opacityReturn}
             formData={formData}
             setFormData={setFormData}
             setSeeAddressForm={setSeeAddressForm}
           />
         ) : (
-          <div key="options">
+          <div className="options">
             {/*3 Opções de preenchimento*/}
             <GetLocationButton
               setOpacityReturn={setOpacityReturn}
@@ -82,17 +84,17 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
               setFormData={setFormData}
             />
 
-            <ButtonStyled
-              $variant={'digitarTudo'}
+            <Button
+              variant="outline"
               onClick={() => {
                 setSeeAddressForm(true);
               }}>
               Digitar todos os dados
-            </ButtonStyled>
+            </Button>
           </div>
         )}
-      </MainDivStyled>
-    </DivBodyStyled>
+      </Card>
+    </ContainerStyled>
   );
 };
 

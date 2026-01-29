@@ -4,10 +4,10 @@ const DivMsgStyled = styled.div`
   background-color: blue;
   height: max-content;
   width: max-content;
-  border-radius: 0.7rem;
-  padding: 0 1.6rem;
+  border-radius: 7px;
+  padding: 0 16px;
   position: absolute;
-  bottom: -3.2rem;
+  bottom: -32px;
   left: 4%;
   z-index: 4;
 
@@ -15,27 +15,27 @@ const DivMsgStyled = styled.div`
     max-width: 26rem;
   }
   @media screen and (max-width: 768px) {
-    max-width: 30.8rem;
+    max-width: 38px;
   }
   @media screen and (min-width: 993px) {
     left: 4.2%;
   }
 
   & > div {
-    height: 1rem;
-    width: 1rem;
+    height: 10px;
+    width: 10px;
     background-color: blue;
     rotate: 45deg;
-    border: 0.4rem;
+    border: 4px;
     position: absolute;
-    top: -0.5rem;
-    left: 1.6rem;
+    top: -5px;
+    left: 16px;
   }
 
   & > p {
     color: var(--white-foreground);
-    padding: 0.6rem 0px;
-    padding-bottom: 0.8rem;
+    padding: 6px 0px;
+    padding-bottom: 8px;
   }
 `;
 

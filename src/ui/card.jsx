@@ -3,7 +3,7 @@ import { Separator } from '@ui/index';
 
 /* header */
 const CardHeaderStyled = styled.div`
-  ${(props) => props.$customStyles && props.$customStyles}
+  ${(props) => props.$styles && props.$styles}
 `;
 
 export const CardHeader = ({
@@ -11,16 +11,18 @@ export const CardHeader = ({
   mb = 2,
   mbMeasurement = 'ex',
   separator = false,
-  customStyles,
+  styles,
+  ...props
 }) => {
   return (
     <CardHeaderStyled
-      $customStyles={customStyles}
-      style={{ marginBottom: mb > 0 ? `${mb}${mbMeasurement}` : '' }}>
+      $styles={styles}
+      style={{ marginBottom: mb > 0 ? `${mb}${mbMeasurement}` : '' }}
+      {...props}>
       {children}
       {separator && (
         <Separator
-          customStyles={css`
+          styles={css`
             margin-top: 0.75ex;
           `}
         />
@@ -31,7 +33,7 @@ export const CardHeader = ({
 
 /* titulo */
 const TitleStyled = styled.div`
-  max-width: max-content;
+  width: max-content;
   height: max-content;
   display: flex;
   flex-direction: row;
@@ -39,11 +41,15 @@ const TitleStyled = styled.div`
   align-items: center;
   gap: 0.8ex;
   color: var(--primary);
-  ${(props) => props.$customStyles && props.$customStyles}
+  ${(props) => props.$styles && props.$styles}
 `;
 
-export const CardTitle = ({ children, customStyles }) => {
-  return <TitleStyled $customStyles={customStyles}>{children}</TitleStyled>;
+export const CardTitle = ({ children, styles, ...props }) => {
+  return (
+    <TitleStyled $styles={styles} {...props}>
+      {children}
+    </TitleStyled>
+  );
 };
 
 /* descrição */
@@ -52,8 +58,12 @@ const DescriptionStyled = styled.p`
   color: var(--muted-foreground);
 `;
 
-export const CardDescription = ({ children, customStyles }) => {
-  return <DescriptionStyled $customStyles={customStyles}>{children}</DescriptionStyled>;
+export const CardDescription = ({ children, styles, ...props }) => {
+  return (
+    <DescriptionStyled $styles={styles} {...props}>
+      {children}
+    </DescriptionStyled>
+  );
 };
 
 /* card */
@@ -65,7 +75,7 @@ const CardStyled = styled.div`
   color: var(--card-foreground);
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
+  border-radius: 12px;
   border: 1px solid var(--card-border);
   box-shadow: var(--shadow-md);
   padding: 24px;
@@ -74,12 +84,12 @@ const CardStyled = styled.div`
     css`
       padding-top: 1.5ex;
     `}
-  ${(props) => props.$customStyles && props.$customStyles}
+  ${(props) => props.$styles && props.$styles}
 `;
 
-export const Card = ({ children, customStyles, hasHeader = true }) => {
+export const Card = ({ children, styles, hasHeader = true, ...props }) => {
   return (
-    <CardStyled $customStyles={customStyles} $hasHeader={hasHeader}>
+    <CardStyled $styles={styles} $hasHeader={hasHeader} {...props}>
       {children}
     </CardStyled>
   );
@@ -89,24 +99,32 @@ export const Card = ({ children, customStyles, hasHeader = true }) => {
 const ContentStyled = styled.div`
   padding-top: 0px;
   border-radius: 12px;
-  ${(props) => props.$customStyles && props.$customStyles}
+  ${(props) => props.$styles && props.$styles}
 `;
 
-export const CardContent = ({ children, customStyles }) => {
-  return <ContentStyled $customStyles={customStyles}>{children}</ContentStyled>;
+export const CardContent = ({ children, styles, ...props }) => {
+  return (
+    <ContentStyled $styles={styles} {...props}>
+      {children}
+    </ContentStyled>
+  );
 };
 
 /* footer */
 const FooterStyled = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: 0 15px;
 
   &.with-border {
-    padding-top: 1.5rem;
+    padding-top: 15px;
   }
 `;
 
-export const CardFooter = ({ children, customStyles }) => {
-  return <FooterStyled $customStyles={customStyles}>{children}</FooterStyled>;
+export const CardFooter = ({ children, styles, ...props }) => {
+  return (
+    <FooterStyled $styles={styles} {...props}>
+      {children}
+    </FooterStyled>
+  );
 };

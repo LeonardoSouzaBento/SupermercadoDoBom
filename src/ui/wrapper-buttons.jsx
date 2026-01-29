@@ -7,13 +7,13 @@ const WrapperStyled = styled.div`
   flex-wrap: wrap;
   gap: 16px;
   position: relative;
-  ${(props) => props.$customStyles && props.$customStyles}
-  ${(props) => props.$secondCustomStyles && props.$secondCustomStyles}
+  ${(props) => props.$styles && props.$styles}
+  ${(props) => props.$secondstyles && props.$secondstyles}
 `;
 
-export const WrapperButtons = ({ children, customStyles, secondCustomStyles }) => {
+export const WrapperButtons = ({ children, styles, secondstyles, ...props }) => {
   return (
-    <WrapperStyled $customStyles={customStyles} $secondCustomStyles={secondCustomStyles}>
+    <WrapperStyled $styles={styles} $secondstyles={secondstyles} {...props}>
       {children}
     </WrapperStyled>
   );

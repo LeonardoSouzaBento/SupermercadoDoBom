@@ -7,10 +7,10 @@ import styled from 'styled-components';
 
 const VisitorBoxStyled = styled.div`
   text-align: center;
-  padding: 0.8rem;
+  padding: 8px;
   background: var(--background);
-  border-radius: 1.2rem;
-  margin-bottom: 1.6rem;
+  border-radius: 12px;
+  margin-bottom: 16px;
 
   & p {
     color: var(--red-brand-hover);
@@ -32,7 +32,7 @@ const VisitorSection = ({ setLoginType, setLoginSucess, setLoginState }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-        }
+        },
       );
 
       if (!response.ok) {

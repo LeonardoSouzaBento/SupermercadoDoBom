@@ -8,3 +8,5 @@ export * from './mui-icon'
 export * from './separator';
 export * from './wrapper-buttons';
 export * from './wrapper-form';
+export * from './close-button';
+export * from './input-wrapper';

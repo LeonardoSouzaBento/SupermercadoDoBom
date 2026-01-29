@@ -25,10 +25,10 @@ export const ModalStyled = styled.div`
   & > div {
     width: calc(100% - 16px);
     max-width: 30rem;
-    padding-bottom: 1.6rem;
-    margin-right: 1.2rem;
-    margin-top: 1.2rem;
-    border-radius: 1.2rem;
+    padding-bottom: 16px;
+    margin-right: 12px;
+    margin-top: 12px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,8 +43,8 @@ export const ModalStyled = styled.div`
 
     & span {
       font-size: 4rem;
-      padding: 0.5rem;
-      margin-bottom: 1.2rem;
+      padding: 5px;
+      margin-bottom: 12px;
       color: var(--dark-primary);
       font-weight: 700;
       background-color: var(--light-green);
@@ -57,8 +57,8 @@ export const ModalStyled = styled.div`
       justify-content: center;
       align-items: center;
       width: 100%;
-      height: 5.6rem;
-      margin-bottom: 1.6rem;
+      height: 56px;
+      margin-bottom: 16px;
       background-color: var(--white-foreground);
       ${(props) => !props.$feedback && 'border-bottom: 1px solid var(--card-border);'}
       ${(props) => props.$feedback && 'background-color: var(--dark-green);'}

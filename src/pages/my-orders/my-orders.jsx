@@ -10,9 +10,9 @@ const DivStyled = styled.div`
 `;
 
 const PStyled = styled.p`
-  padding: 1.6rem 2.4rem;
+  padding: 16px 24px;
   background-color: var(--white-foreground);
-  border-radius: 1.2rem;
+  border-radius: 12px;
   color: var(--dark-primary);
   box-shadow: var(--shadow-sm);
 `;

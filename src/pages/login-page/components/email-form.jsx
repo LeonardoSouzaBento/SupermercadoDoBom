@@ -108,7 +108,7 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
       const userCredential = await signInWithEmailAndPassword(
         auth,
         emailForm.email,
-        emailForm.senha
+        emailForm.senha,
       );
       const idToken = await userCredential.user.getIdToken();
 
@@ -125,7 +125,7 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
             {
               email: emailForm.email,
               senha: emailForm.senha,
-            }
+            },
           );
 
           const { token: customToken } = await response.data; // do backend
@@ -169,10 +169,10 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
       </WrapperInput>
 
       <WrapperInput
-        customStyles={css`
+        styles={css`
           & > div > button {
             position: absolute;
-            right: 1rem;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
             background: transparent;
@@ -202,7 +202,7 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
 
       <Button
         variant="link"
-        customStyles={css`
+        styles={css`
           justify-content: start;
           padding: 0px !important;
           margin-bottom: 1.65ex;
@@ -220,7 +220,7 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
       <Button
         type="submit"
         variant="primary"
-        customStyles={'margin-bottom: 18px;'}
+        styles={'margin-bottom: 18px;'}
         disabled={!emailPassed || !validacao.valida}
         onClick={(e) => {
           e.preventDefault();

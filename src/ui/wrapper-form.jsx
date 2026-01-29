@@ -8,12 +8,12 @@ const WrapperStyled = styled.div`
   border-radius: 12px;
   border: 1px solid var(--border);
   padding: 16px;
-  ${(props) => props.$customStyles && props.$customStyles}
+  ${(props) => props.$styles && props.$styles}
 `;
 
-export const WrapperForm = ({ children, customStyles, pt = '16px' }) => {
+export const WrapperForm = ({ children, styles, pt = '16px', ...props }) => {
   return (
-    <WrapperStyled $customStyles={customStyles} style={{ paddingTop: pt }}>
+    <WrapperStyled $styles={styles} style={{ paddingTop: pt }} {...props}>
       {children}
     </WrapperStyled>
   );

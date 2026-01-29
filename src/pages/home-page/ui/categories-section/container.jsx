@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerStyled = styled.div`
   width: 100%;
-  margin-bottom: 0.8rem;
+  margin-bottom: 8px;
   overflow-x: hidden;
   position: relative;
   z-index: 2;
@@ -10,7 +10,7 @@ export const ContainerStyled = styled.div`
   @media screen and (min-width: 1201px) {
     width: calc(100% - 52px);
     margin: auto;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
   }
   /* header */
   & > div#header {
@@ -42,7 +42,7 @@ export const ContainerStyled = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-flow: row nowrap;
-    gap: 1.5rem;
+    gap: 15px;
     position: relative;
     overflow-x: scroll;
     user-select: none;
@@ -53,7 +53,7 @@ export const ContainerStyled = styled.div`
     }
 
     @media screen and (min-width: 1201px) {
-      padding-right: 0.6rem;
+      padding-right: 6px;
       justify-content: space-between;
     }
     @media screen and (min-width: 375px) and (max-width: 1200px) {

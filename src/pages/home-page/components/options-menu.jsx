@@ -74,7 +74,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
       <div id="side-div">
         <div id="options-header">
           <h4>Mais Opções</h4>
-          <Button onPointerDown={handleClickClose} size="sm-icon">
+          <Button onPointerDown={handleClickClose} size="icon-sm">
             <MuiIcon icon="close" size="3xl" weight={400} />
           </Button>
         </div>

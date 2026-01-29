@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const DataAlertStyled = styled.div`
   width: 100vw;
@@ -22,7 +22,7 @@ const DataAlertStyled = styled.div`
     box-sizing: border-box;
     background-color: var(--red-brand);
     position: relative;
-    border-radius: 1.2rem;
+    border-radius: 12px;
     overflow: hidden;
     display: flex;
     justify-content: center;

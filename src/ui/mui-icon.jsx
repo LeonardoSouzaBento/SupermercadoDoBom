@@ -2,9 +2,11 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 const SpanStyled = styled.span`
-  font-variation-settings: 'FILL' ${(props) => props.$fill}, 'wght' ${(props) => props.$weight};
+  font-variation-settings:
+    'FILL' ${(props) => props.$fill},
+    'wght' ${(props) => props.$weight};
   font-size: ${(props) => props.$size};
-  ${(props) => props.$customStyles}
+  ${(props) => props.$styles}
 `;
 
 const iconSizes = {
@@ -22,17 +24,27 @@ const iconSizes = {
   '4xl': '1.383em', // h3
 };
 
-
-export const MuiIcon = ({ icon, size, fill = 0, weight = 600, margin = '0', customStyles, id }) => {
+export const MuiIcon = ({
+  icon,
+  size,
+  fill = 0,
+  weight = 600,
+  margin = '0',
+  styles,
+  id,
+  className,
+  ...props
+}) => {
   return (
     <SpanStyled
       id={id}
-      className="material-symbols-rounded"
+      className={`material-symbols-rounded ${className || ''}`}
       $fill={fill}
       $weight={weight}
       $size={iconSizes[size] || size || '1em'}
-      $customStyles={customStyles}
-      style={{ margin: margin }}>
+      $styles={styles}
+      style={{ margin: margin }}
+      {...props}>
       {icon}
     </SpanStyled>
   );

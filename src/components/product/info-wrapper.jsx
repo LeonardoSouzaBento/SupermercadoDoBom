@@ -10,18 +10,18 @@ export const InfoWrapperStyled = styled.div`
   @media screen and (max-width: 385px) {
     height: 100%;
     width: 48%;
-    padding: 1.1rem;
+    padding: 1.1px;
     padding-right: 0;
   }
   //retrato
   @media screen and (min-width: 385px) {
-    padding: 0.8rem;
+    padding: 8px;
   }
   @media screen and (min-width: 385px) and (max-width: 992px) {
     height: 46%;
     width: 100%;
     order: 2;
-    gap: 0.4rem;
+    gap: 4px;
   }
   //paisagem
   @media screen and (min-width: 993px) {
@@ -38,12 +38,12 @@ export const InfoWrapperStyled = styled.div`
     width: 100%;
     overflow: hidden;
     box-sizing: border-box;
-    padding-bottom: 1.2rem;
+    padding-bottom: 12px;
 
     & > p {
       text-transform: capitalize;
       margin: auto;
-      padding-left: 0.4rem;
+      padding-left: 4px;
       line-height: 1.3;
     }
   }
@@ -55,7 +55,7 @@ export const InfoWrapperStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 0.8rem;
+    gap: 8px;
 
     @media screen and (min-width: 385px) and (max-width: 992px) {
       flex-direction: row;
@@ -82,10 +82,10 @@ export const InfoWrapperStyled = styled.div`
       align-items: center;
 
       @media screen and (min-width: 385px) and (max-width: 992px) {
-        padding-right: 0.4rem;
+        padding-right: 4px;
         box-sizing: border-box;
         order: 1;
-        padding-right: 0.4rem;
+        padding-right: 4px;
       }
       & p {
         width: max-content;
@@ -93,8 +93,8 @@ export const InfoWrapperStyled = styled.div`
         font-size: var(--text-lg);
       }
       & > p:last-child {
-        text-indent: 0.4rem;
-        padding: 0.2rem 0px;
+        text-indent: 4px;
+        padding: 2px 0px;
         @media screen and (max-width: 385px) {
           letter-spacing: 1px;
         }

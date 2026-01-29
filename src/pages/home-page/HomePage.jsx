@@ -23,7 +23,7 @@ const MainStyled = styled.main`
   &::before {
     content: '';
     width: 100%;
-    height: 2.4rem; //24
+    height: 24px; //24
     position: absolute;
     top: 0;
     left: 0;
@@ -34,12 +34,12 @@ const MainStyled = styled.main`
 
 const ProductFeedDivStyled = styled.section`
   position: relative;
-  padding-left: 1.2rem;
-  padding-top: 1.4rem;
+  padding-left: 12px;
+  padding-top: 14px;
   z-index: 2;
 
   @media screen and (min-width: 577px) {
-    padding-left: 1.6rem;
+    padding-left: 16px;
   }
   @media screen and (min-width: 1201px) {
     padding-left: 0;

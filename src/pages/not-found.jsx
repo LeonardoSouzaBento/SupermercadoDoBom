@@ -82,7 +82,7 @@ const Title = styled.h2`
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   color: var(--primary);
-  margin: 2rem 0 1rem;
+  margin: 2rem 0 10px;
   font-family: var(--font-header);
 `;
 

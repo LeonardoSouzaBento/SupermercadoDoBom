@@ -11,7 +11,7 @@ const DivStyled = styled.div`
   position: relative;
   min-height: 100vh;
   min-width: 100vw;
-  padding-bottom: 1.2rem;
+  padding-bottom: 12px;
   box-sizing: border-box;
   opacity: ${(props) => props.$opacityState};
   transition: opacity 0.2s ease;

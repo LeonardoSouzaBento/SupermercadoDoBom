@@ -26,7 +26,7 @@ export const ImageWrapperStyled = styled.div`
   & > div:first-child {
     width: 100%;
     height: 100%;
-    border-radius: 0.6rem;
+    border-radius: 6px;
     -webkit-user-select: none;
     user-select: none;
     position: relative;
@@ -48,14 +48,14 @@ export const ImageWrapperStyled = styled.div`
       height: 100%;
       width: 100%;
       object-fit: contain;
-      padding: 0.8rem;
+      padding: 8px;
       box-sizing: border-box;
       -webkit-user-select: none;
       user-select: none;
 
       @media screen and (min-width: 993px) {
         height: auto;
-        padding: 0.4rem;
+        padding: 4px;
       }
 
       ${(props) =>
@@ -75,8 +75,8 @@ export const ImageWrapperStyled = styled.div`
       ${(props) => props.$weightStyles}
       backdrop-filter: blur(3px);
       position: absolute;
-      bottom: 4.5rem;
-      right: 0.7rem;
+      bottom: 45px;
+      right: 7px;
       @media screen and (max-width: 385px) {
         display: none;
       }
@@ -91,9 +91,9 @@ export const ImageWrapperStyled = styled.div`
       font-size: var(--text-xs);
       width: max-content;
       position: absolute;
-      top: 0.8rem;
-      right: 0.8rem;
-      padding: 0 0.6rem;
+      top: 8px;
+      right: 8px;
+      padding: 0 6px;
       background-color: var(--background);
       border-radius: 999rem;
 
@@ -102,12 +102,12 @@ export const ImageWrapperStyled = styled.div`
   }
   & button#button-add {
     position: absolute;
-    bottom: 0.8rem;
+    bottom: 8px;
     right: 5%;
     border-radius: 999rem;
 
     @media screen and (min-width: 385px) and (max-width: 992px) {
-      right: 1.2rem;
+      right: 12px;
       bottom: 0;
     }
     ${(props) =>
@@ -118,10 +118,10 @@ export const ImageWrapperStyled = styled.div`
       'display: none;'}
   }
   & #quantity-in-cart {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 32px;
+    height: 32px;
     position: absolute;
-    bottom: 0.8rem;
+    bottom: 8px;
     right: 5%;
     display: flex;
     align-items: center;
@@ -130,7 +130,7 @@ export const ImageWrapperStyled = styled.div`
     cursor: pointer;
 
     @media screen and (min-width: 385px) and (max-width: 992px) {
-      right: 1.2rem;
+      right: 12px;
       bottom: 0;
     }
     & p {

@@ -1,7 +1,7 @@
 @import './globals.css';
 
 body {
-  font-size: 1.7rem;
+  font-size: 17px;
 }
 @media (min-width: 640px) {
   body {
@@ -20,7 +20,7 @@ body {
 }
 @media (min-width: 1280px) {
   body {
-    font-size: 1.8rem;
+    font-size: 18px;
   }
 }
 

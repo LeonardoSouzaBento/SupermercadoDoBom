@@ -12,16 +12,16 @@ export const CompletionsStyled = styled.div`
   left: 0%;
   ${(props) => props.$copy == true && 'top: 64px;'}
   align-items: center;
-  gap: 0.8rem;
+  gap: 8px;
   flex-flow: row wrap;
   border-radius: 16px;
 
   @media screen and (max-width: 375px) {
-    gap: 0.4rem;
-    padding-right: 0.8rem;
+    gap: 4px;
+    padding-right: 8px;
   }
   @media screen and (max-width: 768px) {
-    ${(props) => props.$copy == false && 'top:6.2rem;'};
+    ${(props) => props.$copy == false && 'top:62px;'};
   }
   @media screen and (min-width: 769px) {
     justify-content: flex-start;
@@ -70,16 +70,16 @@ export const CompletionsStyled = styled.div`
       font-weight: 600;
 
       @media screen and (max-width: 375px) {
-        letter-spacing: 0.1rem;
+        letter-spacing: 0.1px;
       }
       @media screen and (min-width: 375px) and (max-width: 576px) {
-        letter-spacing: 0.11rem;
+        letter-spacing: 0.11px;
       }
       @media screen and (min-width: 577px) and (max-width: 768px) {
-        letter-spacing: 0.11rem;
+        letter-spacing: 0.11px;
       }
       @media screen and (min-width: 769px) {
-        letter-spacing: 0.11rem;
+        letter-spacing: 0.11px;
       }
     }
   }

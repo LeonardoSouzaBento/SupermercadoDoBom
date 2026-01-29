@@ -7,7 +7,7 @@ const StyledSeparator = styled.div`
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 
-  ${({ $customStyles }) => $customStyles}
+  ${({ $styles }) => $styles}
 
   ${({ $orientation }) => {
     switch ($orientation) {
@@ -16,9 +16,9 @@ const StyledSeparator = styled.div`
           width: 100%;
           height: 1px;
           border-bottom: 1px solid var(--border);
-          `;
+        `;
       case 'vertical':
-          return css`
+        return css`
           width: 1px;
           border-right: 1px solid var(--border);
           align-self: stretch;
@@ -42,7 +42,7 @@ export const Separator = ({
   orientation = 'horizontal',
   decorative = true,
   className,
-  customStyles,
+  styles,
   ...rest
 }) => {
   return (
@@ -51,7 +51,7 @@ export const Separator = ({
       aria-orientation={!decorative ? orientation : undefined}
       $orientation={orientation}
       $decorative={decorative}
-      $customStyles={customStyles}
+      $styles={styles}
       className={className}
       {...rest}
     />

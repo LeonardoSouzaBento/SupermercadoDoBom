@@ -15,7 +15,7 @@ const WrapperStyled = styled.div`
   &:hover {
     background-color: var(--primary-hover);
   }
-  border-radius: 0.8rem;
+  border-radius: 8px;
   cursor: pointer;
 
   @media screen and (max-width: 350px) {

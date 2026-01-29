@@ -1,17 +1,17 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const ListContainerStyled = styled.div`
   width: auto;
   height: max-content;
-  margin-bottom: 1.2rem;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: flex-start;
-  gap: 1.2rem;
+  gap: 12px;
   flex-wrap: wrap;
   box-sizing: border-box;
-  border-radius: 0.7rem;
+  border-radius: 7px;
   overflow-x: scroll;
   position: relative;
   scrollbar-width: none; /* Firefox */
@@ -21,19 +21,19 @@ export const ListContainerStyled = styled.div`
   }
 
   @media screen and (max-width: 385px) {
-    gap: 1.1rem;
+    gap: 1.1px;
   }
 
   ${(props) =>
-    props.$variant == "search" &&
+    props.$variant == 'search' &&
     css`
-      padding-bottom: 1.2rem;
+      padding-bottom: 12px;
       @media screen and (min-width: 385px) and (max-width: 414px) {
         justify-content: center;
-        gap: 1.2rem;
+        gap: 12px;
       }
       @media screen and (min-width: 414px) and (max-width: 577px) {
-        width: 41.4rem;
+        width: 414px;
         margin: auto;
       }
       @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -42,17 +42,17 @@ export const ListContainerStyled = styled.div`
       }
       @media screen and (min-width: 768px) {
         justify-content: flex-start;
-        padding-left: 2.4rem;
+        padding-left: 24px;
       }
       @media screen and (min-width: 768px) and (max-width: 993px) {
         max-width: 95%;
       }
     `}
   ${(props) =>
-    props.$variant === "cart" &&
+    props.$variant === 'cart' &&
     css`
       justify-content: flex-start !important;
-      padding-top: 0.8rem;
+      padding-top: 8px;
       margin-bottom: 0;
       gap: 0;
       margin: auto;
@@ -61,10 +61,10 @@ export const ListContainerStyled = styled.div`
         width: 27.5rem;
       }
       @media screen and (min-width: 385px) and (max-width: 596px) {
-        width: 34.6rem;
+        width: 346px;
       }
       @media screen and (min-width: 596px) and (max-width: 768px) {
-        width: 51.7rem;
+        width: 517px;
       }
       @media screen and (min-width: 769px) and (max-width: 992px) {
         width: 68.8rem;

@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const H1BaseStyled = styled.h1`
   color: var(--white-foreground);
@@ -41,5 +41,5 @@ export const DivToCoverStyled = styled(CentralizeDiv)`
   left: 0;
   z-index: 3;
   background-color: var(--white-foreground);
-  border-radius: 1.2rem;
+  border-radius: 12px;
 `;

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const WrapperStyled = styled.div`
-  padding: 0.4rem;
+  padding: 4px;
   display: flex;
   justify-content: space-between;
   background-color: var(--white-foreground);
@@ -25,7 +25,7 @@ export const WrapperStyled = styled.div`
     props.$variant == 'cart' &&
     css`
       border: 1px solid var(--card-border);
-      border-radius: 0.2rem !important;
+      border-radius: 2px !important;
     `};
 
   //paisagem

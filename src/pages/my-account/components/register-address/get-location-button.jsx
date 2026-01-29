@@ -1,5 +1,5 @@
+import { Button } from '@ui/index';
 import { useEffect, useState } from 'react';
-import { ButtonStyled } from './stylized-tags';
 import GetLocationReturn from './get-location-return';
 
 async function checkLocationPermission() {
@@ -138,12 +138,13 @@ const GetLocationButton = ({
       {getLocationStatus !== '' && (
         <GetLocationReturn opacityReturn={opacityReturn} getLocationStatus={getLocationStatus} />
       )}
-      <ButtonStyled
+      <Button
+        fullWidth
         onClick={() => {
           respondLocationPermission();
         }}>
         Pegar minha localização
-      </ButtonStyled>
+      </Button>
     </>
   );
 };

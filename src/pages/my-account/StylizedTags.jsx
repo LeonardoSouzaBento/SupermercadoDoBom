@@ -24,19 +24,19 @@ export const DivOneStyled = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 8px;
   background-color: var(--white-foreground);
-  border-radius: 1.2rem;
+  border-radius: 12px;
   box-shadow: var(--shadow-md);
   ${(props) => props.$orders && 'padding-top: 0;'}
 `;
 
 export const ButtonLoginStyled = styled(CentralizeDiv)`
-  height: 4.8rem;
+  height: 48px;
   width: 100%;
   padding: 0 2rem;
   box-sizing: border-box;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   background-color: var(--primary);
   color: var(--white-foreground);
   cursor: pointer;
@@ -59,7 +59,7 @@ export const DivNameEmailStyled = styled.header`
 
 export const DivEmailUserStyled = styled.div`
   display: flex;
-  gap: 0.4rem;
+  gap: 4px;
 `;
 
 export const DivTwoStyled = styled(DivOneStyled)`
@@ -103,7 +103,7 @@ export const DivThreeStyled = styled.div`
   align-items: flex-start;
   position: relative;
   background-color: var(--white-foreground);
-  border-radius: 1.2rem;
+  border-radius: 12px;
   box-shadow: var(--shadow-md);
 `;
 
@@ -116,7 +116,7 @@ export const DivH2StatusStyled = styled.div`
 
   @media screen and (max-width: 520px) {
     flex-direction: column;
-    margin-bottom: 0.8rem;
+    margin-bottom: 8px;
   }
   @media screen and (min-width: 520px) and (max-width: 993px) {
     flex-direction: row;
@@ -125,7 +125,7 @@ export const DivH2StatusStyled = styled.div`
   }
   @media screen and (min-width: 993px) and (max-width: 1058px) {
     flex-direction: column;
-    margin-bottom: 0.8rem;
+    margin-bottom: 8px;
   }
   @media screen and (min-width: 1058px) {
     flex-direction: row;
@@ -135,11 +135,11 @@ export const DivH2StatusStyled = styled.div`
 `;
 
 export const HeaderH2Styled = styled.header`
-  height: 5.6rem;
+  height: 56px;
   width: 100%;
   box-sizing: border-box;
-  padding-left: 1.6rem;
-  margin-bottom: 0.4rem;
+  padding-left: 16px;
+  margin-bottom: 4px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -151,21 +151,33 @@ export const HeaderH2Styled = styled.header`
 `;
 
 export const SpanH2Styled = styled.span`
-  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 22;
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 600,
+    'GRAD' 0,
+    'opsz' 22;
   cursor: default;
   color: var(--primary);
-  margin-right: 0.8rem;
+  margin-right: 8px;
 
   ${(props) =>
     props.$user &&
     css`
       margin-right: 0;
-      font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 22;
+      font-variation-settings:
+        'FILL' 1,
+        'wght' 700,
+        'GRAD' 0,
+        'opsz' 22;
     `};
   ${(props) =>
     props.$cart &&
     css`
-      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 22;
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 22;
     `}
 `;
 
@@ -177,7 +189,7 @@ export const H2v2Styled = styled.h3`
   ${(props) =>
     props.$nameUser &&
     css`
-      margin-left: 0.4rem;
+      margin-left: 4px;
       width: 100%;
     `};
 `;
@@ -230,47 +242,51 @@ export const StatusWrapperStyled = styled.div`
   }
 
   & > div {
-    height: 2.4rem;
+    height: 24px;
     width: max-content;
     padding: 2px 0;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
+    padding-left: 2px;
+    padding-right: 2px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 0.4rem;
+    gap: 4px;
     background-color: hsla(var(--warn-value), 0.2);
     color: var(--foreground);
     border-radius: 999px;
 
     & > p {
-      margin-right: 0.6rem;
+      margin-right: 6px;
       font-size: var(--text-xs);
       font-weight: 600;
       ${(props) => props.$email && 'color: var(--black-foreground);'}
     }
 
     & > span {
-      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 600,
+        'GRAD' 0,
+        'opsz' 24;
       background-color: hsla(var(--warn-value), 0.3);
       color: var(--destructive);
-      padding: 0.4rem;
+      padding: 4px;
       border-radius: 50%;
-      font-size: 1.6rem;
+      font-size: 16px;
     }
   }
 `;
 
 export const SpanCheckStyled = styled.span`
   position: absolute;
-  top: 1.6rem;
+  top: 16px;
   right: 2rem;
-  padding: 0.4rem;
+  padding: 4px;
   border-radius: 50%;
   background-color: var(--light-green);
   color: var(--primary);
   z-index: 2;
-  font-size: 1.8rem;
+  font-size: 18px;
   font-weight: 700;
 `;
 
@@ -290,7 +306,7 @@ export const H3Styled = styled.h6`
     props.$contact &&
     css`
       text-align: center;
-      padding-right: 2.6rem;
+      padding-right: 26px;
     `}
 `;
 
@@ -307,25 +323,25 @@ export const Pv2Styled = styled.p`
     css`
       font-family: var(--font-button);
       text-align: center;
-      padding-right: 2.6rem;
+      padding-right: 26px;
     `}
 `;
 
 export const DivInvalidWarnStyled = styled.div`
   width: calc(100% - 32px);
   height: auto;
-  padding: 0.8rem 2rem;
+  padding: 8px 2rem;
   background-color: var(--red-brand-hover);
-  border-radius: 0.4rem;
+  border-radius: 4px;
   margin: auto;
-  margin-bottom: 0.8rem;
+  margin-bottom: 8px;
   box-sizing: border-box;
 `;
 
 export const DivZapStyled = styled.div`
   max-width: 100%;
   box-sizing: border-box;
-  padding: 1.6rem;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -337,27 +353,27 @@ export const DivZapStyled = styled.div`
 export const DivZapAndDivPhone = styled.div`
   width: 100%;
   height: 4rem;
-  padding: 0 1.6rem;
-  margin-bottom: 1.6rem;
+  padding: 0 16px;
+  margin-bottom: 16px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  gap: 0.8rem;
+  gap: 8px;
   ${(props) => !props.$visible && 'display: none;'}
 
   @media screen and (max-width: 576px) {
     flex-direction: column;
     height: 8.8rem;
-    gap: 0.8rem;
+    gap: 8px;
   }
 `;
 
 export const DivZapOrPhone = styled(CentralizeDiv)`
   height: 100%;
   width: calc(100% - 16px);
-  padding-left: 1.2rem;
-  padding-right: 0.6rem;
-  border-radius: 0.4rem;
+  padding-left: 12px;
+  padding-right: 6px;
+  border-radius: 4px;
   border: 1px solid var(--card-border);
   ${(props) => props.$selected && 'background-color: var(--background);'}
 
@@ -372,7 +388,7 @@ export const DivFormStyled = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 0.8rem;
+  gap: 8px;
   position: relative;
 
   @media screen and (max-width: 375px) {
@@ -389,36 +405,49 @@ export const DivFormStyled = styled.div`
     props.$zap &&
     css`
       width: 100% !important;
-      padding-right: 1.6rem;
+      padding-right: 16px;
       box-sizing: border-box;
     `}
 `;
 
-export const DivAddressStyled = styled.div`
-  padding: 1.6rem;
+export const AddressWrapperStyled = styled.div`
+  padding: 16px;
   border: 1px solid var(--border);
-  border-radius: 0.6rem;
+  border-radius: 6px;
   position: relative;
-`;
 
-export const DivHalfAddressStyled = styled.div`
-  border-radius: 0.8rem;
-  display: flex;
-  gap: 1.6rem;
-  ${(props) => props.$first && 'margin-bottom: 1.6rem;'}
+  & > div.part-address {
+    border-radius: 8px;
+    display: flex;
+    gap: 16px;
 
-  @media screen and (max-width: 385px) {
-    flex-direction: column;
-    gap: 0.8rem;
-    ${(props) => props.$first && 'margin-bottom: 0.8rem;'}
+    @media screen and (max-width: 385px) {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &.title {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 8px;
+      position: relative;
+      @media screen and (max-width: 375px) {
+        width: 100%;
+      }
+      & > p {
+        color: var(--muted-foreground);
+      }
+    }
   }
 `;
 
 export const DivSpanStyled = styled(CentralizeDiv)`
-  height: 4.4rem;
-  min-width: 4.4rem;
+  height: 44px;
+  min-width: 44px;
   z-index: 2;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   background-color: var(--primary);
   cursor: pointer;
   transition: background-color 0.15s ease;
@@ -431,13 +460,13 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     (props.$first || props.$address) &&
     css`
       position: absolute;
-      top: 1.6rem;
-      right: 1.6rem;
+      top: 16px;
+      right: 16px;
     `}
   ${(props) =>
     props.$disable &&
     css`
-      border-radius: 0.4rem;
+      border-radius: 4px;
       background-color: var(--disable);
       &:hover {
         background-color: var(--disable-hover);
@@ -448,33 +477,41 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     css`
       @media screen and (max-width: 520px) {
         position: absolute;
-        top: 1.2rem;
-        right: 1.2rem;
+        top: 12px;
+        right: 12px;
       }
     `}
 `;
 
 export const SpanEditStyled = styled.span`
-  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 20;
 `;
 
 export const SpanEmailWarnStyled = styled.span`
   color: hsl(213, 11%, 45%);
 
-  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 20;
 `;
 
 export const InputZapStyled = styled.input`
-  height: 4.4rem;
+  height: 44px;
   width: 100%;
-  padding-left: 0.8rem;
-  padding-bottom: 0.3rem;
+  padding-left: 8px;
+  padding-bottom: 3px;
   box-sizing: border-box;
   border: none;
   background-color: var(--background);
   font-family: var(--font-body);
   font-weight: 400;
-  border-radius: 0.4rem;
+  border-radius: 4px;
 
   &:focus {
     outline: none;

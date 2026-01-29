@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const CartSectionStyed = styled.section`
-  width: calc(100% - 2.8rem);
+  width: calc(100% - 28px);
   height: 46rem;
   padding: 2rem 0;
-  padding-top: 1rem;
+  padding-top: 10px;
   margin: auto;
   margin-bottom: 20px;
-  border-radius: 1.2rem;
+  border-radius: 12px;
   box-sizing: border-box;
   box-shadow: var(--shadow-md);
   border: var(--card-border);
@@ -29,7 +29,7 @@ export const CartSectionStyed = styled.section`
 
   @media screen and (min-width: 769px) {
     height: 50rem;
-    width: 72.4rem;
+    width: 724px;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -50,7 +50,7 @@ export const CartSectionStyed = styled.section`
   & #see-all-button {
     width: 100%;
     height: 48px;
-    gap: 0.2rem;
+    gap: 2px;
     position: absolute;
     bottom: -1px;
     left: 0;
