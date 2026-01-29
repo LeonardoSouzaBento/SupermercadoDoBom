@@ -95,7 +95,7 @@ export const ImageWrapperStyled = styled.div`
       right: 8px;
       padding: 0 6px;
       background-color: var(--background);
-      border-radius: 999rem;
+      border-radius: 999px;
 
       ${(props) => props.$variant === 'announcement' && 'display: none;'};
     }
@@ -104,7 +104,7 @@ export const ImageWrapperStyled = styled.div`
     position: absolute;
     bottom: 8px;
     right: 5%;
-    border-radius: 999rem;
+    border-radius: 999px;
 
     @media screen and (min-width: 385px) and (max-width: 992px) {
       right: 12px;

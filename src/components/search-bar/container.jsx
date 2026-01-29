@@ -67,7 +67,7 @@ export const ContainerStyled = styled.div`
       right: 4px;
       bottom: 2.5px;
       color: var(--primary);
-      border-radius: 999rem;
+      border-radius: 999px;
 
       & > svg {
         margin-bottom: 2px;

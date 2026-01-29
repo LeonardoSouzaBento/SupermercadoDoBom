@@ -13,7 +13,7 @@ export const weightStyles = css`
   background-color: hsla(var(--primary-50), 0.88);
   color: var(--muted-foreground);
   padding: 0 0.85rem;
-  border-radius: 999rem;
+  border-radius: 999px;
 `;
 
 export default function ProductItem({ product, variant }) {

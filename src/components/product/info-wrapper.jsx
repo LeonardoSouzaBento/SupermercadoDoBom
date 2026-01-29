@@ -69,7 +69,7 @@ export const InfoWrapperStyled = styled.div`
       background-color: hsla(var(--primary-50), 0.88);
       color: var(--muted-foreground);
       padding: 0 0.85rem;
-      border-radius: 999rem;
+      border-radius: 999px;
       ${(props) => props.$exist === false && 'display: none;'}
       @media screen and (min-width: 385px) and (max-width: 992px) {
         display: none;
