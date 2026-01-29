@@ -15,7 +15,7 @@ import {
 } from '@pages/home-page/components/index';
 
 const MainStyled = styled.main`
-  max-width: 140rem;
+  max-width: 1400px;
   margin: auto;
   padding: 0;
   position: relative;
@@ -111,3 +111,4 @@ function HomePage() {
 }
 
 export default HomePage;
+

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const CartSectionStyed = styled.section`
   width: calc(100% - 28px);
-  height: 46rem;
-  padding: 2rem 0;
+  height: 460px;
+  padding: 20px 0;
   padding-top: 10px;
   margin: auto;
   margin-bottom: 20px;
@@ -21,14 +21,14 @@ export const CartSectionStyed = styled.section`
     width: calc(100% - 16px);
   }
   @media screen and (max-width: 596px) {
-    max-width: 40rem;
+    max-width: 400px;
   }
   @media screen and (min-width: 596px) and (max-width: 768px) {
-    max-width: 57.5rem;
+    max-width: 575px;
   }
 
   @media screen and (min-width: 769px) {
-    height: 50rem;
+    height: 500px;
     width: 724px;
     overflow: scroll;
     scrollbar-width: none;
@@ -69,3 +69,4 @@ export const CartSectionStyed = styled.section`
     }
   }
 `;
+

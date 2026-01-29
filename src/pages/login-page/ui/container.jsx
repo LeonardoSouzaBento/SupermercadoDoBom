@@ -13,7 +13,7 @@ export const ContainerStyled = styled.div`
   /* card wrapper */
   & > div {
     width: calc(100% - 28px);
-    max-width: 42rem;
+    max-width: 420px;
     @media screen and (max-width: 375px) {
       width: calc(100% - 16px);
     }
@@ -30,7 +30,7 @@ export const ContainerStyled = styled.div`
         width: 56px;
         height: 56px;
         box-sizing: border-box;
-        padding-right: 0.22rem;
+        padding-right: 2.2px;
         border-radius: 50%;
         background-color: var(--primary);
         margin-bottom: 8px;
@@ -69,3 +69,4 @@ export const ContainerStyled = styled.div`
     }
   }
 `;
+

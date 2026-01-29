@@ -20,9 +20,9 @@ const ContainerStyled = styled.div`
 const DivStyled = styled.div`
   width: auto;
   height: auto;
-  min-height: 40rem;
+  min-height: 400px;
   padding-bottom: 12px;
-  padding-right: 2rem;
+  padding-right: 20px;
   padding-left: 8px;
   padding-top: 4px;
   box-sizing: border-box;
@@ -40,10 +40,10 @@ const DivStyled = styled.div`
     display: none;
   }
   @media screen and (max-width: 375px) {
-    min-height: 39.2rem;
+    min-height: 392px;
   }
   @media screen and (min-width: 993px) {
-    min-height: 28.4rem;
+    min-height: 284px;
   }
   @media screen and (min-width: 1201px) {
     padding-right: 8px;
@@ -172,3 +172,4 @@ function ProductListHome({ categoryKey, wasResize }) {
 }
 
 export default ProductListHome;
+

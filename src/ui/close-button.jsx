@@ -27,3 +27,4 @@ const CloseButton = ({ setOpenState, size, variant, styles, ...props }) => {
 };
 
 export { CloseButton };
+

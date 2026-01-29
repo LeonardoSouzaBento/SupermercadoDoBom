@@ -70,3 +70,4 @@ export const Profile = ({ userContact }) => {
 };
 
 export default Profile;
+

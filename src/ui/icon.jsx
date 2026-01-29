@@ -37,3 +37,4 @@ export const Icon = ({ size, LucideIcon, strokeValue, marginValue = '0', color, 
     </div>
   );
 };
+

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const CategoryCardStyled = styled.div`
-  min-width: 12rem;
+  min-width: 120px;
   padding: 16px;
   box-sizing: border-box;
   display: flex;
@@ -56,7 +56,7 @@ export const CategoryCardStyled = styled.div`
   & p {
     font-family: var(--font-header);
     text-align: center;
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.5px;
     font-weight: 500;
     line-height: 1.2;
     color: var(--primary);
@@ -64,3 +64,4 @@ export const CategoryCardStyled = styled.div`
     margin: 0;
   }
 `;
+

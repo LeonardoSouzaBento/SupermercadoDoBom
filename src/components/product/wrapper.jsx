@@ -31,9 +31,9 @@ export const WrapperStyled = styled.div`
   //paisagem
   @media screen and (max-width: 385px) {
     flex-direction: row;
-    height: 18rem;
-    min-width: 27rem;
-    max-width: 27rem;
+    height: 180px;
+    min-width: 270px;
+    max-width: 270px;
   }
   //retrato
   @media screen and (min-width: 385px) and (max-width: 414px) {
@@ -41,17 +41,17 @@ export const WrapperStyled = styled.div`
   }
   @media screen and (min-width: 385px) and (max-width: 992px) {
     flex-direction: column;
-    min-width: 17rem;
-    max-width: 17rem;
-    min-height: 28rem;
-    max-height: 28rem;
+    min-width: 170px;
+    max-width: 170px;
+    min-height: 280px;
+    max-height: 280px;
   }
   //paisagem
   @media screen and (min-width: 993px) {
     flex-direction: row;
-    min-width: 27.5rem;
-    max-width: 27.5rem;
-    height: 17.7rem;
+    min-width: 275px;
+    max-width: 275px;
+    height: 177px;
   }
 
   ${(props) =>
@@ -84,3 +84,4 @@ export const WrapperStyled = styled.div`
       }
     `}
 `;
+

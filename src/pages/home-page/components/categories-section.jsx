@@ -77,3 +77,4 @@ function CategoriesSection({ wasResize }) {
 }
 
 export default CategoriesSection;
+

@@ -86,3 +86,4 @@ const OrderDetails = ({ date, totalItems, deliveryAddress, items, subtotal, form
 };
 
 export default OrderDetails;
+

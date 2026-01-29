@@ -44,7 +44,7 @@ export const ContainerStyled = styled.section`
   /* div de paginação */
   & > div:last-child {
     height: max-content;
-    width: 20rem;
+    width: 200px;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -55,8 +55,8 @@ export const ContainerStyled = styled.section`
     & > span {
       border-radius: 5px;
       @media screen and (max-width: 375px) {
-        height: 0.95rem;
-        width: 0.95rem;
+        height: 9.5px;
+        width: 9.5px;
       }
       @media screen and (min-width: 375px) {
         height: 10px;
@@ -68,3 +68,4 @@ export const ContainerStyled = styled.section`
     }
   }
 `;
+

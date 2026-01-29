@@ -34,10 +34,10 @@ const InfoWrapperStyled = styled.div`
       line-height: 1.4;
 
       @media screen and (max-width: 577px) {
-        max-width: 35rem;
+        max-width: 350px;
       }
       @media screen and (min-width: 577px) {
-        max-width: 33rem;
+        max-width: 330px;
       }
     }
     & #price {
@@ -51,7 +51,7 @@ const ImageWrapperStyled = styled.div`
   display: block;
   margin: auto;
   width: 100%;
-  height: 34rem;
+  height: 340px;
   position: relative;
   padding: 16px;
   margin-bottom: 8px;
@@ -66,11 +66,11 @@ const ImageWrapperStyled = styled.div`
   }
 
   @media screen and (max-width: 577px) {
-    max-width: 34rem;
+    max-width: 340px;
   }
   @media screen and (min-width: 577px) {
-    height: 32rem;
-    width: 32rem;
+    height: 320px;
+    width: 320px;
   }
 
   & img {
@@ -102,7 +102,7 @@ const ImageWrapperStyled = styled.div`
     right: 0;
     background-color: hsla(var(--red-brand-value), 0.03);
     padding: 0 12px;
-    padding-bottom: 0.25rem;
+    padding-bottom: 2.5px;
     color: var(--red-brand);
     border-radius: 16px;
     font-size: var(--text-sm);
@@ -133,3 +133,4 @@ export const ProductData = ({ dataProductFull }) => {
     </>
   );
 };
+

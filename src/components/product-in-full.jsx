@@ -158,3 +158,4 @@ const ProductInFull = () => {
 };
 
 export default ProductInFull;
+

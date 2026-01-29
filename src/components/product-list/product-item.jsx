@@ -12,7 +12,7 @@ export const weightStyles = css`
   letter-spacing: 0.5px;
   background-color: hsla(var(--primary-50), 0.88);
   color: var(--muted-foreground);
-  padding: 0 0.85rem;
+  padding: 0 8.5px;
   border-radius: 999px;
 `;
 
@@ -59,3 +59,4 @@ export default function ProductItem({ product, variant }) {
     </WrapperStyled>
   );
 }
+

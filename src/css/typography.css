@@ -5,17 +5,17 @@ body {
 }
 @media (min-width: 640px) {
   body {
-    font-size: 1.75rem;
+    font-size: 17.5px;
   }
 }
 @media (min-width: 768px) {
   body {
-    font-size: 1.76rem;
+    font-size: 17.6px;
   }
 }
 @media (min-width: 1024px) {
   body {
-    font-size: 1.78rem;
+    font-size: 17.8px;
   }
 }
 @media (min-width: 1280px) {
@@ -26,7 +26,7 @@ body {
 
 @media (min-width: 1536px) {
   body {
-    font-size: 1.82rem;
+    font-size: 18.2px;
   }
 }
 
@@ -213,3 +213,4 @@ button {
 .small-button {
   line-height: 1.1;
 }
+

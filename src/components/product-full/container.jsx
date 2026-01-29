@@ -11,7 +11,7 @@ export const ContainerStyled = styled.div`
 
   & > div {
     width: 100%;
-    height: 58rem;
+    height: 580px;
     box-sizing: border-box;
     display: block;
     position: absolute;
@@ -137,3 +137,4 @@ export const ContainerStyled = styled.div`
     }
   }
 `;
+

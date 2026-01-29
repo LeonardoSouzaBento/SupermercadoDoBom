@@ -58,7 +58,7 @@ export const ListContainerStyled = styled.div`
       margin: auto;
 
       @media screen and (max-width: 385px) {
-        width: 27.5rem;
+        width: 275px;
       }
       @media screen and (min-width: 385px) and (max-width: 596px) {
         width: 346px;
@@ -67,10 +67,11 @@ export const ListContainerStyled = styled.div`
         width: 517px;
       }
       @media screen and (min-width: 769px) and (max-width: 992px) {
-        width: 68.8rem;
+        width: 688px;
       }
       @media screen and (min-width: 993px) {
-        padding-left: 2rem;
+        padding-left: 20px;
       }
     `}
 `;
+

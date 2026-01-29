@@ -18,3 +18,4 @@ export const WrapperButtons = ({ children, styles, secondstyles, ...props }) => 
     </WrapperStyled>
   );
 };
+

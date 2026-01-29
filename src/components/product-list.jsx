@@ -20,3 +20,4 @@ export const ProductList = React.forwardRef(({ variant, productList }, ref) => {
     </ListContainerStyled>
   );
 });
+

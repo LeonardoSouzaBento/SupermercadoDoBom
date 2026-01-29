@@ -48,3 +48,4 @@ const ValueWarn = ({ scaleWarnnig, faltaFormatada }) => {
 };
 
 export default ValueWarn;
+

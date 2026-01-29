@@ -37,7 +37,7 @@ export const ContainerStyled = styled.div`
     ${(props) =>
       props.$copy &&
       css`
-        max-width: 68.4rem;
+        max-width: 684px;
         margin: 0;
         box-shadow: var(--shadow-md);
         border: 1px solid hsl(var(--primary-100));
@@ -75,3 +75,4 @@ export const ContainerStyled = styled.div`
     }
   }
 `;
+

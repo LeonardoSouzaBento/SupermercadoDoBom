@@ -105,7 +105,7 @@ export const DivSpanStyled = styled(CentralizeDiv)`
 
   & span {
     font-weight: 550;
-    font-size: 2.25rem;
+    font-size: 22.5px;
     font-variation-settings:
       'FILL' 1,
       'GRAD' 12,
@@ -116,3 +116,4 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     ${(props) => props.$logout && 'font-weight: 500;'}
   }
 `;
+

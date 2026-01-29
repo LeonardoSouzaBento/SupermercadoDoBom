@@ -12,7 +12,7 @@ const DivMsgStyled = styled.div`
   z-index: 4;
 
   @media screen and (max-width: 375px) {
-    max-width: 26rem;
+    max-width: 260px;
   }
   @media screen and (max-width: 768px) {
     max-width: 38px;
@@ -47,3 +47,4 @@ export function HelpMessage() {
     </DivMsgStyled>
   );
 }
+

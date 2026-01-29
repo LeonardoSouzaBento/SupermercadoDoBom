@@ -25,7 +25,7 @@ export const MainWrapperStyled = styled.div`
   /* seção de produtos */
   & > div#products-card {
     width: 100%;
-    padding: 2rem 0;
+    padding: 20px 0;
     padding-top: 10px;
     margin-inline: auto;
     border-radius: 12px;
@@ -87,3 +87,4 @@ export const MainWrapperStyled = styled.div`
     filter: grayscale(33%);
   }
 `;
+

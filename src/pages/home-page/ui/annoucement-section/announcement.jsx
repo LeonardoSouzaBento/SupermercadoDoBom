@@ -23,9 +23,9 @@ export const AnnouncementStyled = styled.div`
   }
 
   & > div {
-    min-width: 22rem;
-    width: 22rem;
-    height: 22rem;
+    min-width: 220px;
+    width: 220px;
+    height: 220px;
     border-radius: 16px;
     position: relative;
     overflow: hidden;
@@ -46,3 +46,4 @@ export const AnnouncementStyled = styled.div`
     }
   }
 `;
+

@@ -110,8 +110,8 @@ svg {
   scrollbar-color: var(--color-border) transparent;
 }
 *::-webkit-scrollbar {
-  width: 0.25rem;
-  height: 0.25rem;
+  width: 2.5px;
+  height: 2.5px;
 }
 *::-webkit-scrollbar-thumb {
   background: var(--color-border);
@@ -133,10 +133,6 @@ html,
 body,
 .scrollbar-hidden {
   scrollbar-width: none;
-}
-
-html {
-  font-size: 62.5%;
 }
 
 body {
@@ -183,3 +179,4 @@ h3 {
   cursor: default;
   user-select: none;
 }
+

@@ -20,3 +20,4 @@ const InfoWrapper = ({ product, variant }) => {
 };
 
 export default InfoWrapper;
+

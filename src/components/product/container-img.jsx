@@ -141,3 +141,4 @@ export const ImageWrapperStyled = styled.div`
     }
   }
 `;
+

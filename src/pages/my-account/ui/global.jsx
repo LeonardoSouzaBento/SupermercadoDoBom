@@ -4,9 +4,9 @@ export const WrapperStyled = styled.div`
   width: 100%;
   height: max-content;
   margin: auto;
-  padding: 2rem;
+  padding: 20px;
   box-sizing: border-box;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -63,7 +63,7 @@ export const StatusStyled = styled.div`
 
 export const CardHeaderStyled = styled.div`
   width: 100%;
-  padding-right: 2rem;
+  padding-right: 20px;
   box-sizing: border-box;
   display: flex;
   ${(props) => props.$orders && 'padding-right: 0;'}
@@ -104,3 +104,4 @@ export const CardTitleStyled = styled.header`
     margin-bottom: 0;
   }
 `;
+

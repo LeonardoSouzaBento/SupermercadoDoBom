@@ -26,3 +26,4 @@ export default function ButtonAdd({ product, setQuantity }) {
     </Button>
   );
 }
+

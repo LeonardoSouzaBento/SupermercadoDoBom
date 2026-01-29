@@ -9,7 +9,7 @@ const WrapperStyled = styled.div`
 
 const InputStyled = styled.input`
   width: 100%;
-  padding: 0.808rem 12px;
+  padding: 8.08px 12px;
   border-radius: 8px;
   box-sizing: border-box;
   border: 1px solid #cbd5e1;
@@ -48,3 +48,4 @@ const Input = ({ name, type, placeholder, ...props }) => {
 };
 
 export { Input, WrapperInput, Label };
+

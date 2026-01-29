@@ -128,3 +128,4 @@ export const CardFooter = ({ children, styles, ...props }) => {
     </FooterStyled>
   );
 };
+

@@ -96,3 +96,4 @@ const ProductImage = ({ product, quantity, setQuantity, variant }) => {
 };
 
 export default ProductImage;
+

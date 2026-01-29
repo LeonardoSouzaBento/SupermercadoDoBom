@@ -57,7 +57,8 @@ export const ContainerStyled = styled.div`
       justify-content: space-between;
     }
     @media screen and (min-width: 375px) and (max-width: 1200px) {
-      padding-right: 2rem;
+      padding-right: 20px;
     }
   }
 `;
+

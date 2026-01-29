@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 //Order Details
 export const ContainerStyled = styled.div`
-  max-width: 28rem; /* equivalente a max-w-md */
+  max-width: 280px; /* equivalente a max-w-md */
   margin: 0 auto;
   background: var(--background);
   min-height: 100vh;
@@ -22,19 +22,19 @@ export const HeaderInfoStyled = styled.div`
   margin-bottom: 5px;
 
   span {
-    font-size: 0.875rem;
+    font-size: 8.75px;
     color: var(--muted-foreground);
   }
 `;
 
 export const BadgeStyled = styled.div`
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.375rem;
+  padding: 2.5px 7.5px;
+  border-radius: 3.75px;
   border: 1px solid var(--success);
   background: var(--success);
   color: var(--success-foreground);
-  font-size: 0.75rem;
+  font-size: 7.5px;
   font-weight: 600;
   margin-bottom: 10px;
 `;
@@ -50,13 +50,13 @@ export const TotalsRowStyled = styled.div`
     text-align: center;
 
     .value {
-      font-size: 1.875rem;
+      font-size: 18.75px;
       font-weight: 700;
       color: var(--price-highlight);
     }
 
     .label {
-      font-size: 0.875rem;
+      font-size: 8.75px;
       color: var(--muted-foreground);
     }
   }
@@ -66,8 +66,8 @@ export const AddressStyled = styled.div`
   text-align: left;
 
   p {
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
+    font-size: 8.75px;
+    margin-bottom: 2.5px;
     line-height: 1.5;
   }
 
@@ -89,7 +89,7 @@ export const CardStyled = styled.div`
 `;
 
 export const CardHeaderStyled = styled.div`
-  padding-bottom: 0.75rem;
+  padding-bottom: 7.5px;
 
   h3 {
     font-size: 10px;
@@ -111,14 +111,14 @@ export const ItemStyled = styled.div`
   padding: 10px;
 
   display: flex;
-  gap: 0.75rem;
+  gap: 7.5px;
 `;
 
 export const ItemImageStyled = styled.div`
-  width: 4rem;
-  height: 4rem;
+  width: 40px;
+  height: 40px;
   background: var(--muted);
-  border-radius: 0.375rem;
+  border-radius: 3.75px;
   overflow: hidden;
   flex-shrink: 0;
 
@@ -134,10 +134,10 @@ export const ItemDetailsStyled = styled.div`
   min-width: 0;
 
   h4 {
-    font-size: 0.875rem;
+    font-size: 8.75px;
     font-weight: 500;
     color: var(--foreground);
-    margin-bottom: 0.75rem;
+    margin-bottom: 7.5px;
     line-height: 1.25;
   }
 `;
@@ -146,20 +146,20 @@ export const ItemGridStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
-  font-size: 0.75rem;
+  font-size: 7.5px;
 
   div {
     text-align: center;
 
     .label {
       color: var(--muted-foreground);
-      margin-bottom: 0.25rem;
+      margin-bottom: 2.5px;
     }
 
     .quantity {
       background: var(--quantity-bg);
-      border-radius: 0.25rem;
-      padding: 0.25rem 5px;
+      border-radius: 2.5px;
+      padding: 2.5px 5px;
       font-weight: 500;
       color: var(--foreground);
     }
@@ -186,13 +186,13 @@ export const SubtotalSectionStyled = styled.div`
   justify-content: space-between;
 
   span:first-child {
-    font-size: 1.125rem;
+    font-size: 11.25px;
     font-weight: 600;
     color: var(--foreground);
   }
 
   span:last-child {
-    font-size: 1.125rem;
+    font-size: 11.25px;
     font-weight: 700;
     color: var(--price-highlight);
   }
@@ -205,7 +205,7 @@ export const CardContainer = styled.div`
   padding: 24px;
   box-shadow: var(--shadow-lg);
   border: 1px solid #f0f0f0;
-  max-width: 40rem;
+  max-width: 400px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   transition:
     transform 0.2s ease,
@@ -221,7 +221,7 @@ export const DateTag = styled.div`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: var(--white-foreground);
   padding: 8px 16px;
-  border-radius: 2rem;
+  border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
   display: inline-block;
@@ -243,7 +243,7 @@ export const PriceSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
 `;
 
 export const Price = styled.div`
@@ -259,7 +259,7 @@ export const ItemCount = styled.div`
 `;
 
 export const ItemsList = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
 `;
 
 export const ItemRow = styled.div`
@@ -284,7 +284,7 @@ export const DetailsButton = styled.button`
   background: transparent;
   border: 2px solid #e5e7eb;
   color: #374151;
-  padding: 12px 2rem;
+  padding: 12px 20px;
   border-radius: 12px;
   font-size: 14px;
   font-weight: 600;
@@ -304,3 +304,4 @@ export const DetailsButton = styled.button`
     transform: translateY(0);
   }
 `;
+

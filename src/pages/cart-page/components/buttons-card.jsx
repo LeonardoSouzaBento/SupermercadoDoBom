@@ -110,3 +110,4 @@ const ButtonsCard = ({ setCurrentOrder, totalAddedValue, setScaleWarnnig }) => {
 };
 
 export default ButtonsCard;
+

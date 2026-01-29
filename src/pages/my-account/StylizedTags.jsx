@@ -18,9 +18,9 @@ export const DivOneStyled = styled.div`
   width: 100%;
   height: max-content;
   margin: auto;
-  padding: 2rem;
+  padding: 20px;
   box-sizing: border-box;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -34,7 +34,7 @@ export const DivOneStyled = styled.div`
 export const ButtonLoginStyled = styled(CentralizeDiv)`
   height: 48px;
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 20px;
   box-sizing: border-box;
   border-radius: 8px;
   background-color: var(--primary);
@@ -77,7 +77,7 @@ export const DivTwoStyled = styled(DivOneStyled)`
 
 export const DivThreeButtonStyled = styled.div`
   width: 100%;
-  max-width: 52rem;
+  max-width: 520px;
   margin: auto;
 
   @media screen and (max-width: 375px) {
@@ -96,7 +96,7 @@ export const DivThreeStyled = styled.div`
   height: max-content;
   width: 100%;
   margin: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -109,7 +109,7 @@ export const DivThreeStyled = styled.div`
 
 export const DivH2StatusStyled = styled.div`
   width: 100%;
-  padding-right: 2rem;
+  padding-right: 20px;
   box-sizing: border-box;
   display: flex;
   ${(props) => props.$orders && 'padding-right: 0;'}
@@ -196,7 +196,7 @@ export const H2v2Styled = styled.h3`
 
 export const StatusWrapperStyled = styled.div`
   width: 100%;
-  padding-left: 2rem;
+  padding-left: 20px;
   box-sizing: border-box;
   display: flex;
 
@@ -212,7 +212,7 @@ export const StatusWrapperStyled = styled.div`
       (props.$finish || props.$contact) &&
       css`
         justify-content: flex-start;
-        margin-left: 2rem;
+        margin-left: 20px;
         ${(props) => props.$finish && 'margin-left: 0;'}
       `}
   }
@@ -280,7 +280,7 @@ export const StatusWrapperStyled = styled.div`
 export const SpanCheckStyled = styled.span`
   position: absolute;
   top: 16px;
-  right: 2rem;
+  right: 20px;
   padding: 4px;
   border-radius: 50%;
   background-color: var(--light-green);
@@ -330,7 +330,7 @@ export const Pv2Styled = styled.p`
 export const DivInvalidWarnStyled = styled.div`
   width: calc(100% - 32px);
   height: auto;
-  padding: 8px 2rem;
+  padding: 8px 20px;
   background-color: var(--red-brand-hover);
   border-radius: 4px;
   margin: auto;
@@ -352,7 +352,7 @@ export const DivZapStyled = styled.div`
 
 export const DivZapAndDivPhone = styled.div`
   width: 100%;
-  height: 4rem;
+  height: 40px;
   padding: 0 16px;
   margin-bottom: 16px;
   box-sizing: border-box;
@@ -363,7 +363,7 @@ export const DivZapAndDivPhone = styled.div`
 
   @media screen and (max-width: 576px) {
     flex-direction: column;
-    height: 8.8rem;
+    height: 88px;
     gap: 8px;
   }
 `;
@@ -518,3 +518,4 @@ export const InputZapStyled = styled.input`
   }
   ${(props) => props.$hide && 'display: none;'}
 `;
+

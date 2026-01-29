@@ -240,3 +240,4 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
 };
 
 export default EmailForm;
+

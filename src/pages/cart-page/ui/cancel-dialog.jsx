@@ -24,7 +24,7 @@ export const ModalStyled = styled.div`
 
   & > div {
     width: calc(100% - 16px);
-    max-width: 30rem;
+    max-width: 300px;
     padding-bottom: 16px;
     margin-right: 12px;
     margin-top: 12px;
@@ -42,7 +42,7 @@ export const ModalStyled = styled.div`
     position: relative;
 
     & span {
-      font-size: 4rem;
+      font-size: 40px;
       padding: 5px;
       margin-bottom: 12px;
       color: var(--dark-primary);
@@ -70,3 +70,4 @@ export const ModalStyled = styled.div`
     }
   }
 `;
+

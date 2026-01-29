@@ -16,9 +16,9 @@ const DataAlertStyled = styled.div`
   opacity: ${(props) => props.$opacity};
 
   & div {
-    height: 23rem;
-    width: 35rem;
-    padding: 2rem;
+    height: 230px;
+    width: 350px;
+    padding: 20px;
     box-sizing: border-box;
     background-color: var(--red-brand);
     position: relative;
@@ -48,3 +48,4 @@ const DataAlert = () => {
 };
 
 export default DataAlert;
+

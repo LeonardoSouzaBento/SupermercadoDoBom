@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const WrapperStyled = styled.div`
   width: 100%;
-  min-width: 20rem;
+  min-width: 200px;
   height: 44px;
   display: flex;
   justify-content: space-between;
@@ -19,7 +19,7 @@ const WrapperStyled = styled.div`
   cursor: pointer;
 
   @media screen and (max-width: 350px) {
-    min-width: 18rem;
+    min-width: 180px;
   }
 
   & > button {
@@ -64,3 +64,4 @@ export const ButtonGroup = ({
     </WrapperStyled>
   );
 };
+

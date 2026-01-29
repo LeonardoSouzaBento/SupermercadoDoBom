@@ -83,12 +83,12 @@ const Cart = () => {
           checkHiddenProducts();
           const div = CartSectionRef.current;
           if (widthOfWindow >= 769) {
-            const newHeight = '50rem';
+            const newHeight = '500px';
             if (div.style.height !== newHeight) {
               div.style.height = newHeight;
             }
           } else {
-            const newHeight = '46rem';
+            const newHeight = '460px';
             if (quantProducts >= 3) {
               if (div.style.height !== newHeight) {
                 div.style.height = newHeight;
@@ -212,3 +212,4 @@ const Cart = () => {
 };
 
 export default Cart;
+

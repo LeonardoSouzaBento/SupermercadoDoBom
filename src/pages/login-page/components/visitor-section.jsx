@@ -78,3 +78,4 @@ const VisitorSection = ({ setLoginType, setLoginSucess, setLoginState }) => {
 };
 
 export default VisitorSection;
+

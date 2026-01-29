@@ -122,7 +122,7 @@ const ButtonStyled = styled.button`
       case 'normal':
         return css`
           height: 48px;
-          ${(props) => props.$variant !== 'outline' && 'padding: 1.389rem 15px;'}
+          ${(props) => props.$variant !== 'outline' && 'padding: 13.89px 15px;'}
           font-size: var(--text-button);
         `;
       case 'lg':
@@ -195,3 +195,4 @@ export const Button = ({
     </ButtonStyled>
   );
 };
+

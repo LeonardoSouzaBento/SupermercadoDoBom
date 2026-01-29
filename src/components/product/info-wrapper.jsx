@@ -25,14 +25,14 @@ export const InfoWrapperStyled = styled.div`
   }
   //paisagem
   @media screen and (min-width: 993px) {
-    width: 13rem;
+    width: 130px;
     padding-right: 0;
   }
   ${(props) => props.$variant === 'announcement' && 'display: none !important;'};
 
   /* wrapper-nome */
   & > div:first-child {
-    max-height: 7.6rem;
+    max-height: 76px;
     display: flex;
     justify-items: center;
     width: 100%;
@@ -68,7 +68,7 @@ export const InfoWrapperStyled = styled.div`
       letter-spacing: 0.5px;
       background-color: hsla(var(--primary-50), 0.88);
       color: var(--muted-foreground);
-      padding: 0 0.85rem;
+      padding: 0 8.5px;
       border-radius: 999px;
       ${(props) => props.$exist === false && 'display: none;'}
       @media screen and (min-width: 385px) and (max-width: 992px) {
@@ -102,3 +102,4 @@ export const InfoWrapperStyled = styled.div`
     }
   }
 `;
+

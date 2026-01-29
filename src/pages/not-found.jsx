@@ -29,7 +29,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 20px;
   box-sizing: border-box;
   background: linear-gradient(
     135deg,
@@ -61,7 +61,7 @@ const Content = styled.div`
 `;
 
 const ErrorCode = styled.h1`
-  font-size: clamp(8rem, 20vw, 16rem);
+  font-size: clamp(80px, 20vw, 160px);
   font-weight: 800;
   background: linear-gradient(
     135deg,
@@ -79,17 +79,17 @@ const ErrorCode = styled.h1`
 `;
 
 const Title = styled.h2`
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(20px, 5vw, 30px);
   font-weight: 700;
   color: var(--primary);
-  margin: 2rem 0 10px;
+  margin: 20px 0 10px;
   font-family: var(--font-header);
 `;
 
 const Description = styled.p`
   font-size: var(--text-lg);
   color: var(--muted-foreground);
-  margin-bottom: 3rem;
+  margin-bottom: 30px;
   line-height: 1.6;
   max-width: 500px;
   margin-left: auto;
@@ -97,7 +97,7 @@ const Description = styled.p`
 `;
 
 const IconWrapper = styled.div`
-  margin: 2rem 0;
+  margin: 20px 0;
   animation: ${float} 4s ease-in-out infinite;
 `;
 
@@ -201,3 +201,4 @@ const NotFound = () => {
 };
 
 export default NotFound;
+
