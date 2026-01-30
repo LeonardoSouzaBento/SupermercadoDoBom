@@ -59,8 +59,8 @@
   --muted-foreground: hsl(226, 20%, 40%);
 
   --red-brand-value: 360, 66%, 50%;
-  --red-brand: hsl(var(--red-brand-value));
-
+  --red-brand: #d42b2b;
+  
   --red-brand-hover-value: 355, 78%, 56%;
   --red-brand-hover: hsl(var(--red-brand-hover-value));
 

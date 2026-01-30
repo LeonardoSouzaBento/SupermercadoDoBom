@@ -117,7 +117,11 @@ const ProductInFull = () => {
         onPointerUp={(e) => {
           e.stopPropagation();
         }}>
-        <Button size="icon-sm" variant="secondary" onClick={handleClickClose}>
+        <Button
+          className="close-button"
+          size="icon-sm"
+          variant="secondary"
+          onClick={handleClickClose}>
           <Icon LucideIcon={X} size="xl" />
         </Button>
 
@@ -125,18 +129,16 @@ const ProductInFull = () => {
           <ProductData dataProductFull={dataProductFull} />
 
           <div id="subtotal-and-button">
-            <div>
+            <p className='subtotal'>
               {subtotal == '0,00' ? (
-                <div>
-                  <p>Subtotal:</p>
-                </div>
+                <strong>Subtotal:</strong>
               ) : (
                 <>
-                  <p>Subtotal:</p>
-                  <p>R$ {subtotal}</p>
+                  <strong>Subtotal:</strong>
+                  <strong>R$ {subtotal}</strong>
                 </>
               )}
-            </div>
+            </p>
 
             <ButtonGroup
               quantity={quantity}

@@ -6,26 +6,19 @@ import styled from 'styled-components';
 const WrapperSc = styled.div`
   width: 100%;
   min-width: 200px;
-  height: 44px;
+  height: max-content;
   display: flex;
+  background-color: ${(props) => props.$bg};
   justify-content: space-between;
   align-items: center;
-  transition: all 0.15s ease;
-  background-color: var(--primary);
-  &:hover {
-    background-color: var(--primary-hover);
-  }
   border-radius: 8px;
   cursor: pointer;
-
+  & > p {
+    color: hsl(var(--primary-50));
+    font-size: var(--text-lg);
+  }
   @media screen and (max-width: 350px) {
     min-width: 180px;
-  }
-
-  & > button {
-    min-width: none;
-    width: 48px;
-    height: 100%;
   }
 `;
 
@@ -37,27 +30,29 @@ export const ButtonGroup = ({
   handlePointerUpAdd,
 }) => {
   return (
-    <WrapperSc onPointerDown={handlePointerDownDiv} onPointerMove={handlePointerMoveDiv}>
+    <WrapperSc
+      $bg={quantity > 0 ? 'var(--primary)' : 'transparent'}
+      onPointerDown={handlePointerDownDiv}
+      onPointerMove={handlePointerMoveDiv}>
       {quantity > 0 && (
         <>
           <Button
+            size="icon-lg"
             onPointerUp={(e) => {
               handlePointerUpButtons(e, 'fewer');
             }}>
-            <Icon LucideIcon={Minus} />
+            <Icon LucideIcon={Minus} size="lg" />
           </Button>
 
-          <Button>
-            <p>{quantity}</p>
-          </Button>
+          <p>{quantity}</p>
 
-          <Button onPointerUp={handlePointerUpButtons}>
-            <Icon LucideIcon={Plus} />
+          <Button size="icon-lg" onPointerUp={handlePointerUpButtons}>
+            <Icon LucideIcon={Plus} size="lg" />
           </Button>
         </>
       )}
       {quantity == 0 && (
-        <Button wFull onPointerUp={handlePointerUpAdd}>
+        <Button onPointerUp={handlePointerUpAdd} wFull variant="secondary" size="sm">
           Adicionar
         </Button>
       )}

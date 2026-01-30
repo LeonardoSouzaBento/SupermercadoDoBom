@@ -38,7 +38,7 @@ export const ContainerSc = styled.div`
       height: 0;
       visibility: hidden;
     }
-    & > button {
+    & > .close-button {
       position: absolute;
       top: 12px;
       right: 12px;
@@ -63,14 +63,13 @@ export const ContainerSc = styled.div`
 
     & > div#subtotal-and-button {
       ${flexCenter}
-      height: auto;
       max-width: 420px;
       gap: 16px;
       margin: auto;
       box-sizing: border-box;
 
-      & > div:first-child {
-        height: 48px;
+      & > p.subtotal {
+        height: 44px;
         width: 100%;
         max-width: max-content;
         padding: 0 16px;
@@ -84,19 +83,14 @@ export const ContainerSc = styled.div`
           gap: 0;
         }
 
-        & > div {
+        & > strong {
           ${flexCenter}
-          background-color: var(--background);
           border-radius: 8px;
-          & > p {
-            font-size: var(--text-sm);
-            font-weight: 500;
-            letter-spacing: 0.35px;
-            text-transform: uppercase;
-            width: max-content;
-            padding: 0;
-            color: rgba(0, 0, 0, 0.9);
-          }
+          color: var(--muted-foreground);
+          font-size: var(--text-sm);
+          text-transform: uppercase;
+          width: max-content;
+          padding: 0;
         }
       }
     }
