@@ -109,12 +109,12 @@ const LoginPage = () => {
               <ButtonLoginGoogle setLoginState={setLoginState} setLoginSucess={setLoginSucess} />
 
               {!onMyAccount && (
-                <Button variant="outline" onClick={() => setLoginType('visitor')} fullWidth>
+                <Button variant="outline" onClick={() => setLoginType('visitor')} wFull>
                   <User size={20} /> Continuar como Visitante
                 </Button>
               )}
 
-              <Button variant="outline" onClick={() => setLoginType('email')} fullWidth>
+              <Button variant="outline" onClick={() => setLoginType('email')} wFull>
                 <Mail size={20} /> Login com Email
               </Button>
             </>
@@ -152,4 +152,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

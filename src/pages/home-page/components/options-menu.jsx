@@ -1,6 +1,6 @@
 import { ContainerStyled } from '@pages/home-page/ui/more-options-menu/container';
 import { UserDataContext } from '@contexts/UserDataContext';
-import { Button, MuiIcon, Separator, WrapperButtons } from '@ui/index';
+import { Button, MuiIcon, Separator, ButtonsWrapper } from '@ui/index';
 import { getAuth, signOut } from 'firebase/auth';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -82,7 +82,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
           {contents.map((content, index) => (
             <Button
               key={index}
-              fullWidth={true}
+              wFull
               variant="transparent"
               size="lg"
               onPointerDown={(e) => {
@@ -96,7 +96,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
           <div>
             <Separator />
             <Button
-              fullWidth={true}
+              wFull
               variant="transparent"
               size="lg"
               onPointerDown={(e) => {
@@ -114,4 +114,3 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
 };
 
 export default OptionsMenu;
-

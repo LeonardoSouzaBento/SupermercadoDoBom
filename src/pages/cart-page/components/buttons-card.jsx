@@ -1,13 +1,13 @@
 import { UserDataContext } from '@contexts/UserDataContext';
 import { Icon } from '@ui/icon';
-import { Button, Card, Separator, WrapperButtons } from '@ui/index';
+import { Button, Card, Separator, ButtonsWrapper } from '@ui/index';
 import { ArrowRight, Check, Plus } from 'lucide-react';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DataAlert from './data-alert';
 import { css } from 'styled-components';
 
-const wrapperButtonsCss = css`
+const ButtonsWrapperCss = css`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -79,23 +79,23 @@ const ButtonsCard = ({ setCurrentOrder, totalAddedValue, setScaleWarnnig }) => {
   }
   return (
     <Card hasHeader={false}>
-      <WrapperButtons styles={headerStyled}>
+      <ButtonsWrapper styles={headerStyled}>
         <Separator />
         <p>Continue</p>
         <Separator />
-      </WrapperButtons>
-      <WrapperButtons styles={wrapperButtonsCss}>
+      </ButtonsWrapper>
+      <ButtonsWrapper styles={ButtonsWrapperCss}>
         <Button
           variant="primary"
           size="normal"
           disabled={falta > 0}
           onClick={handleClickContinue}
-          fullWidth>
+          wFull>
           {userDataComplete ? 'Finalizar Compra' : 'Continuar'}
           <Icon LucideIcon={userDataComplete ? Check : ArrowRight} />
         </Button>
         <Button
-          fullWidth
+          wFull
           variant="outline"
           onClick={() => {
             navigate('/buscar-produtos');
@@ -104,10 +104,9 @@ const ButtonsCard = ({ setCurrentOrder, totalAddedValue, setScaleWarnnig }) => {
           Adicionar produtos
         </Button>
         {incompleteDataAlert && <DataAlert />}
-      </WrapperButtons>
+      </ButtonsWrapper>
     </Card>
   );
 };
 
 export default ButtonsCard;
-

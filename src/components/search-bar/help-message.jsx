@@ -1,34 +1,27 @@
 import styled from 'styled-components';
 
-const DivMsgStyled = styled.div`
+const WrapperStyled = styled.div`
   background-color: blue;
   height: max-content;
-  width: max-content;
-  border-radius: 7px;
+  border-radius: 8px;
   padding: 0 16px;
   position: absolute;
-  bottom: -32px;
-  left: 4%;
+  bottom: -40px;
+  left: 12px;
   z-index: 4;
 
-  @media screen and (max-width: 375px) {
-    max-width: 260px;
-  }
-  @media screen and (max-width: 768px) {
-    max-width: 38px;
-  }
   @media screen and (min-width: 993px) {
     left: 4.2%;
   }
 
   & > div {
-    height: 10px;
-    width: 10px;
+    height: 12px;
+    width: 12px;
     background-color: blue;
     rotate: 45deg;
     border: 4px;
     position: absolute;
-    top: -5px;
+    top: -6px;
     left: 16px;
   }
 
@@ -39,12 +32,12 @@ const DivMsgStyled = styled.div`
   }
 `;
 
-export function HelpMessage() {
+export function HelpMessage({ message }) {
   return (
-    <DivMsgStyled>
+    <WrapperStyled>
       <div />
-      <p>Busque por produtos</p>
-    </DivMsgStyled>
+      <p>{message}</p>
+    </WrapperStyled>
   );
 }
 

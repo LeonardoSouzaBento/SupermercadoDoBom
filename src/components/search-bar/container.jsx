@@ -29,8 +29,7 @@ export const ContainerStyled = styled.div`
     margin: auto;
     display: flex;
     align-items: center;
-    border-radius: 9999px;
-    overflow: hidden;
+    border-radius: 999px;
     position: relative;
     box-shadow: var(--shadow-sm);
 
@@ -45,6 +44,7 @@ export const ContainerStyled = styled.div`
     & > input {
       width: 100%;
       height: 100%;
+      border-radius: 999px;
       box-sizing: border-box;
       touch-action: auto;
       text-indent: 16px;
@@ -75,4 +75,3 @@ export const ContainerStyled = styled.div`
     }
   }
 `;
-

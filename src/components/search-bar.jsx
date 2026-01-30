@@ -211,6 +211,7 @@ function SearchBar({ copy, onHome }) {
   return (
     <ContainerStyled $copy={copy}>
       <form
+        style={{ position: 'relative' }}
         onSubmit={(e) => {
           e.preventDefault();
           handleClickSearch();
@@ -238,9 +239,8 @@ function SearchBar({ copy, onHome }) {
           `}>
           <Icon size="lg" LucideIcon={Search} />
         </Button>
+        {tipForRecruiter && viewTipState && <HelpMessage message={textOfTip} />}
       </form>
-
-      {tipForRecruiter && viewTipState && <HelpMessage message={textOfTip} />}
 
       {completions != '' && (
         <CompletionsStyled $copy={copy}>
@@ -273,4 +273,3 @@ function SearchBar({ copy, onHome }) {
   );
 }
 export default SearchBar;
-

@@ -80,7 +80,7 @@
   --dark-border: hsl(0, 0%, 85%);
   --border: hsla(var(--primary-100));
   --card-background: #fff;
-  --card-border: hsla(var(--primary-100), 0.34);
+  --card-border: hsla(var(--primary-100), 0.40);
   --pink: hsl(0, 100%, 94%);
   --background-value: hsl(220, 14%, 91%);
   --background: hsl(210, 12%, 96%);
@@ -107,14 +107,14 @@ svg {
   outline-color: var(--color-border);
   font-family: var(--font-default);
   scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
+  scrollbar-color: var(--border) transparent;
 }
 *::-webkit-scrollbar {
   width: 2.5px;
   height: 2.5px;
 }
 *::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: var(--border);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary-200) !important;

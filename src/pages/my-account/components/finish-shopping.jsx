@@ -1,7 +1,8 @@
 import { Button } from '@ui/button';
-import { MuiIcon } from '@ui/index';
+import { Card, CardHeader, CardTitle, MuiIcon } from '@ui/index';
 import { useNavigate } from 'react-router-dom';
-import { CardHeaderStyled, CardTitleStyled, StatusStyled, WrapperStyled } from '../ui';
+import { StatusStyled } from '../ui';
+import { css } from 'styled-components';
 
 export const FinishShopping = ({ isDataComplete, currentOrder, userContact }) => {
   const enable =
@@ -20,12 +21,18 @@ export const FinishShopping = ({ isDataComplete, currentOrder, userContact }) =>
   }
 
   return (
-    <WrapperStyled $orders={true}>
-      <CardHeaderStyled $orders={true}>
-        <CardTitleStyled $orders={true}>
+    <Card>
+      <CardHeader
+        styles={css`
+          width: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        `}>
+        <CardTitle>
           <MuiIcon fill={1} icon="shopping_bag" size="3xl" />
           <h3 style={{ marginBottom: '0px' }}>Minhas compras</h3>
-        </CardTitleStyled>
+        </CardTitle>
 
         {currentOrder.status === 'pending' && (
           <StatusStyled $finish={true}>
@@ -35,15 +42,14 @@ export const FinishShopping = ({ isDataComplete, currentOrder, userContact }) =>
             </div>
           </StatusStyled>
         )}
-      </CardHeaderStyled>
+      </CardHeader>
       {currentOrder.status === 'pending' && (
-        <Button disabled={!enable} fullWidth onClick={handleClickFinish}>
+        <Button disabled={!enable} flex onClick={handleClickFinish}>
           Finalizar a compra
         </Button>
       )}
-    </WrapperStyled>
+    </Card>
   );
 };
 
 export default FinishShopping;
-

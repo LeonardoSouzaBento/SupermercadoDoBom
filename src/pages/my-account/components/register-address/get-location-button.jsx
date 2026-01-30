@@ -58,7 +58,7 @@ const GetLocationButton = ({
           });
         },
         (err) => reject(err),
-        { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
+        { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 },
       );
     });
   }
@@ -75,7 +75,7 @@ const GetLocationButton = ({
     } else if (permission === 'denied') {
       setGetLocationStatus('bloqued');
       alert(
-        'Você bloqueou o acesso à localização. Digite o endereço manualmente ou permita nas configurações do navegador.'
+        'Você bloqueou o acesso à localização. Digite o endereço manualmente ou permita nas configurações do navegador.',
       );
     }
   }
@@ -97,7 +97,7 @@ const GetLocationButton = ({
             ...(idToken && { Authorization: `Bearer ${idToken}` }),
           },
           body: JSON.stringify(coords),
-        }
+        },
       );
 
       if (!response.ok) {
@@ -139,7 +139,7 @@ const GetLocationButton = ({
         <GetLocationReturn opacityReturn={opacityReturn} getLocationStatus={getLocationStatus} />
       )}
       <Button
-        fullWidth
+        wFull
         onClick={() => {
           respondLocationPermission();
         }}>
@@ -150,4 +150,3 @@ const GetLocationButton = ({
 };
 
 export default GetLocationButton;
-

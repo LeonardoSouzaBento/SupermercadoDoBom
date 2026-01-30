@@ -94,18 +94,3 @@ const rotate = keyframes`
   }
 `;
 
-export const DivCepErrorStyled = styled.div`
-  min-height: 48px;
-  height: auto;
-  width: calc(100% - 48px);
-  box-sizing: border-box;
-  padding-left: 16px;
-  margin: auto;
-  margin-top: 18px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 0 0 8px 8px;
-  box-shadow: var(--shadow-sm);
-`;
-

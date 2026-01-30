@@ -57,7 +57,7 @@ export const ButtonGroup = ({
         </>
       )}
       {quantity == 0 && (
-        <Button style={{ width: '100%' }} onPointerUp={handlePointerUpAdd}>
+        <Button wFull onPointerUp={handlePointerUpAdd}>
           Adicionar
         </Button>
       )}

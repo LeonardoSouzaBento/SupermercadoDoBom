@@ -1,7 +1,7 @@
 import { UserDataContext } from '@contexts/UserDataContext';
 import { Button } from '@ui/button';
 import { Card, CardHeader } from '@ui/card';
-import { CardContent, CardTitle, Icon, MuiIcon, WrapperButtons, WrapperForm } from '@ui/index';
+import { CardContent, CardTitle, Icon, MuiIcon, ButtonsWrapper, WrapperForm } from '@ui/index';
 import { ArrowRight, Check, Plus } from 'lucide-react';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ const mainWrapperCss = css`
   gap: 20px;
 `;
 
-const wrapperButtonsCss = css`
+const ButtonsWrapperCss = css`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -56,7 +56,7 @@ const ReceiptCard = () => {
           <CardTitle styles={selectPCss}>
             <p>Selecione</p>
           </CardTitle>
-          <WrapperButtons styles={wrapperButtonsCss}>
+          <ButtonsWrapper styles={ButtonsWrapperCss}>
             <Button
               variant="ghost"
               size="sm"
@@ -94,7 +94,7 @@ const ReceiptCard = () => {
               />
               Retirar no estabelecimento
             </Button>
-          </WrapperButtons>
+          </ButtonsWrapper>
         </WrapperForm>
       </CardContent>
     </Card>
@@ -102,4 +102,3 @@ const ReceiptCard = () => {
 };
 
 export default ReceiptCard;
-

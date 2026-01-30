@@ -4,15 +4,15 @@ import { UserDataContext } from '@contexts/UserDataContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import PageHeader from '@ui/page-header';
 import { useContext, useEffect, useState } from 'react';
-import RegisterAddress from './components/register-address';
-import { MainStyled } from './StylizedTags';
 import { Address, Contact, FinishShopping, Profile } from './components';
+import RegisterAddress from './components/register-address';
+import { MainStyled } from './ui/main';
 
 const MyAccount = () => {
   const { userContact, isDataComplete, userAddress } = useContext(UserDataContext);
   const { currentOrder, setCurrentOrder, cartProducts } = useContext(CartContext);
   const { setOnMyAccount } = useContext(VisibilityContext);
-  const [seeRegisterAddress, setSeeRegisterAddress] = useState(true);
+  const [seeRegisterAddress, setSeeRegisterAddress] = useState(false);
 
   useEffect(() => {
     setOnMyAccount(true);

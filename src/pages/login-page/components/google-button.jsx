@@ -56,7 +56,7 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
   return (
     <Button
       variant="primary"
-      fullWidth
+      wFull
       styles={css`
         margin-bottom: 16px;
       `}
@@ -90,4 +90,3 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
 };
 
 export default ButtonLoginGoogle;
-

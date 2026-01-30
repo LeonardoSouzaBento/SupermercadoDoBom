@@ -3,6 +3,8 @@ import { Separator } from '@ui/index';
 
 /* header */
 const CardHeaderStyled = styled.div`
+  display: flex;
+  flex-direction: column;
   ${(props) => props.$styles && props.$styles}
 `;
 
@@ -16,6 +18,7 @@ export const CardHeader = ({
 }) => {
   return (
     <CardHeaderStyled
+      data-class="card-header"
       $styles={styles}
       style={{ marginBottom: mb > 0 ? `${mb}${mbMeasurement}` : '' }}
       {...props}>
@@ -53,7 +56,7 @@ export const CardTitle = ({ children, styles, ...props }) => {
 };
 
 /* descrição */
-const DescriptionStyled = styled.p`
+const DescriptionStyled = styled.div`
   font-size: var(--text-sm);
   color: var(--muted-foreground);
 `;
@@ -82,7 +85,7 @@ const CardStyled = styled.div`
   ${(props) =>
     props.$hasHeader &&
     css`
-      padding-top: 1.5ex;
+      padding-top: 18px;
     `}
   ${(props) => props.$styles && props.$styles}
 `;
@@ -97,9 +100,13 @@ export const Card = ({ children, styles, hasHeader = true, ...props }) => {
 
 /* conteúdo */
 const ContentStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   padding-top: 0px;
   border-radius: 12px;
-  ${(props) => props.$styles && props.$styles}
+  position: relative;
+  ${(props) => props.$styles && props.$styles};
 `;
 
 export const CardContent = ({ children, styles, ...props }) => {
@@ -128,4 +135,3 @@ export const CardFooter = ({ children, styles, ...props }) => {
     </FooterStyled>
   );
 };
-

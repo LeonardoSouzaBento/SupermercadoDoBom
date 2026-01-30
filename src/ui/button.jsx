@@ -2,9 +2,10 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const ButtonStyled = styled.button`
-  width: auto;
+  width: ${(props) => (props.$wFull ? '100%' : 'auto')};
   padding-inline: 1.1em;
   display: flex;
+  flex: ${(props) => (props.$flex ? 'auto' : 'none')};
   align-items: center;
   justify-content: center;
   line-height: 1.1;
@@ -26,7 +27,7 @@ const ButtonStyled = styled.button`
   & > svg {
     flex-shrink: 0;
   }
-
+  ${({ $optionButton }) => $optionButton && 'border-radius: 999px;'}
   ${({ $styles }) => $styles}
 
   ${({ $variant }) => {
@@ -106,12 +107,6 @@ const ButtonStyled = styled.button`
     }
   }}
 
-  ${({ $fullWidth }) =>
-    $fullWidth &&
-    css`
-      width: 100%;
-    `}
-
   ${({ $size }) => {
     switch ($size) {
       case 'sm':
@@ -173,7 +168,9 @@ const ButtonStyled = styled.button`
 export const Button = ({
   variant = 'primary',
   size = 'normal',
-  fullWidth = false,
+  flex = false,
+  wFull = false,
+  optionButton = false,
   disabled = false,
   selected = false,
   children,
@@ -186,13 +183,14 @@ export const Button = ({
       $styles={styles}
       $variant={variant}
       $size={size}
-      $fullWidth={fullWidth}
+      $flex={flex}
+      $optionButton={optionButton}
       $disabled={disabled}
       $selected={selected}
       className={className}
+      $wFull={wFull}
       {...rest}>
       {children}
     </ButtonStyled>
   );
 };
-

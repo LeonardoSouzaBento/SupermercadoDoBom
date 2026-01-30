@@ -104,8 +104,10 @@ const AddressForm = ({
       style={{
         display: 'flex',
         flexDirection: 'column',
+        marginRight: '-8px',
+        paddingRight: '4px',
         gap: '8px',
-        marginTop: '-12px',
+        marginTop: '-8px',
         borderRadius: '8px',
         position: 'relative',
         transition: 'all 0.3s ease',

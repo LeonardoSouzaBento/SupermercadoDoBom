@@ -1,10 +1,9 @@
 import { DivToCoverStyled } from '@components/generic-stylized-tags';
-import { Button, MuiIcon } from '@ui/index';
+import { Button, Card, CardContent, CardHeader, CardTitle, MuiIcon } from '@ui/index';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import { AddressWrapperStyled, DivStyled, DivThreeStyled, SpanCheckStyled } from '../StylizedTags';
-import { CardHeaderStyled, CardTitleStyled, StatusStyled } from '../ui';
+import { AddressWrapperStyled, CheckIconStyled, StatusStyled } from '../ui/index';
 
 export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddress }) => {
   function GetInitialsNameState() {
@@ -26,71 +25,67 @@ export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, us
   }
 
   function handleRegisterAddress() {
-    setSeeRegisterAddress(true);
-    // if (userContact.email) {
-    //   setSeeRegisterAddress(true);
-    // } else {
-    //   showLoginWarn();
-    // }
+    if (userContact.email) {
+      setSeeRegisterAddress(true);
+    } else {
+      showLoginWarn();
+    }
   }
 
   return (
-    <DivThreeStyled>
-      {isDataComplete.address && (
-        <SpanCheckStyled className="material-symbols-outlined">check</SpanCheckStyled>
-      )}
-
-      <CardHeaderStyled>
-        <CardTitleStyled>
+    <Card>
+      <CardHeader
+        mb={1.25}
+        separator
+        styles={css`
+          width: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        `}>
+        <CardTitle>
           <MuiIcon fill={1} icon="location_home" size="4xl" />
-          <h3 style={{ marginBottom: '0px' }}>Endereço para entrega</h3>
-        </CardTitleStyled>
+          <h3>Endereço para entrega</h3>
+        </CardTitle>
 
-        {!isDataComplete.address && (
+        {!isDataComplete.address ? (
           <StatusStyled $address={true}>
             <div>
-              <span className="material-symbols-rounded">
-                {isDataComplete.address ? 'check' : 'priority_high'}
-              </span>
+              <MuiIcon icon={isDataComplete.address ? 'check' : 'priority_high'} size="xs" />
               <p>{isDataComplete.address ? 'Endereço salvo!' : 'Sem endereço!'}</p>
             </div>
           </StatusStyled>
+        ) : (
+          <CheckIconStyled className="material-symbols-outlined">check</CheckIconStyled>
         )}
-      </CardHeaderStyled>
+      </CardHeader>
 
-      <DivStyled>
+      <CardContent className="card-content">
         <AddressWrapperStyled>
-          <div className="part-address first">
+          <div className="info-wrapper">
             <div className="title first">
               <h6>Rua:</h6>
               <p>{!userAddress.rua ? 'Não fornecido' : userAddress.rua}</p>
             </div>
-
             <div className="title">
               <h6>Número:</h6>
               <p>{!userAddress.numero ? 'Não fornecido' : userAddress.numero}</p>
             </div>
-          </div>
-
-          <div className="part-address first">
             <div className="title">
               <h6>Complemento:</h6>
               <p>
                 {!userAddress.complemento ? 'Não fornecido (opcional)' : userAddress.complemento}
               </p>
             </div>
-
             <div className="title">
-              <div className="title">
-                <h6>Cidade (UF):</h6>
-                <p>
-                  {!userAddress.cidade
-                    ? 'Não fornecido'
-                    : `${userAddress.cidade} (${
-                        initialNameState ? initialNameState : userAddress.estado
-                      })`}
-                </p>
-              </div>
+              <h6>Cidade (UF):</h6>
+              <p>
+                {!userAddress.cidade
+                  ? 'Não fornecido'
+                  : `${userAddress.cidade} (${
+                      initialNameState ? initialNameState : userAddress.estado
+                    })`}
+              </p>
             </div>
           </div>
 
@@ -100,8 +95,8 @@ export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, us
             onClick={handleRegisterAddress}
             styles={css`
               position: absolute;
-              bottom: 16px;
-              right: 16px;
+              bottom: 0px;
+              right: 0px;
             `}>
             <MuiIcon icon="edit" size="3xl" weight={600} />
           </Button>
@@ -112,18 +107,17 @@ export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, us
                 style={{
                   width: '100%',
                   textAlign: 'center',
-                  color: 'var(--red-brand-hover)',
-                  fontWeight: 500,
+                  color: 'var(--red-brand)',
+                  fontWeight: 600,
                 }}>
                 Faça login primeiro!
               </p>
             </DivToCoverStyled>
           )}
         </AddressWrapperStyled>
-      </DivStyled>
-    </DivThreeStyled>
+      </CardContent>
+    </Card>
   );
 };
 
 export default Address;
-

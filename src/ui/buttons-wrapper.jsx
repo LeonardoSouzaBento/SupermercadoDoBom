@@ -2,20 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const WrapperStyled = styled.div`
-  max-width: max-content;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
   position: relative;
   ${(props) => props.$styles && props.$styles}
   ${(props) => props.$secondstyles && props.$secondstyles}
 `;
 
-export const WrapperButtons = ({ children, styles, secondstyles, ...props }) => {
+export const ButtonsWrapper = ({ children, styles, secondstyles, ...props }) => {
   return (
     <WrapperStyled $styles={styles} $secondstyles={secondstyles} {...props}>
       {children}
     </WrapperStyled>
   );
 };
-

@@ -57,7 +57,7 @@ export const Profile = ({ userContact }) => {
       {!userContact.email && (
         <Button
           variant="outline"
-          fullWidth
+          wFull
           onClick={() => {
             navigate('/fazer-login');
           }}>
