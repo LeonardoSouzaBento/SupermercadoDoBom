@@ -3,7 +3,7 @@ import { Icon } from '@ui/index';
 import { Minus, Plus } from 'lucide-react';
 import styled from 'styled-components';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   width: 100%;
   min-width: 200px;
   height: 44px;
@@ -37,7 +37,7 @@ export const ButtonGroup = ({
   handlePointerUpAdd,
 }) => {
   return (
-    <WrapperStyled onPointerDown={handlePointerDownDiv} onPointerMove={handlePointerMoveDiv}>
+    <WrapperSc onPointerDown={handlePointerDownDiv} onPointerMove={handlePointerMoveDiv}>
       {quantity > 0 && (
         <>
           <Button
@@ -61,7 +61,6 @@ export const ButtonGroup = ({
           Adicionar
         </Button>
       )}
-    </WrapperStyled>
+    </WrapperSc>
   );
 };
-

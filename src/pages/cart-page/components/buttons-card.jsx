@@ -25,7 +25,7 @@ const ButtonsWrapperCss = css`
   }
 `;
 
-const headerStyled = css`
+const headerSc = css`
   width: 100%;
   height: max-content;
   display: grid;
@@ -79,7 +79,7 @@ const ButtonsCard = ({ setCurrentOrder, totalAddedValue, setScaleWarnnig }) => {
   }
   return (
     <Card hasHeader={false}>
-      <ButtonsWrapper styles={headerStyled}>
+      <ButtonsWrapper styles={headerSc}>
         <Separator />
         <p>Continue</p>
         <Separator />

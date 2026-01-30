@@ -1,7 +1,7 @@
-import { CentralizeDiv } from '@components/generic-stylized-tags';
+import { CentralizeDiv } from '@components/generic-tags';
 import styled from 'styled-components';
 
-export const ContainerStyled = styled.div`
+export const ContainerSc = styled.div`
   height: 100dvh;
   width: 100vw;
   position: fixed;
@@ -69,7 +69,7 @@ export const ContainerStyled = styled.div`
   }
 `;
 
-export const DivNameSpanStyled = styled.div`
+export const DivNameSpanSc = styled.div`
   height: 48px;
   width: calc(100% - 32px);
   margin: auto;
@@ -96,7 +96,7 @@ export const DivNameSpanStyled = styled.div`
   }
 `;
 
-export const DivSpanStyled = styled(CentralizeDiv)`
+export const DivSpanSc = styled(CentralizeDiv)`
   width: max-content;
   height: 56px;
   border-radius: 28px;
@@ -116,4 +116,3 @@ export const DivSpanStyled = styled(CentralizeDiv)`
     ${(props) => props.$logout && 'font-weight: 500;'}
   }
 `;
-

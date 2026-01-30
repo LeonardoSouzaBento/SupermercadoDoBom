@@ -1,4 +1,4 @@
-import { ContainerStyled } from '@pages/home-page/ui/more-options-menu/container';
+import { ContainerSc } from '@pages/home-page/ui/more-options-menu/container';
 import { UserDataContext } from '@contexts/UserDataContext';
 import { Button, MuiIcon, Separator, ButtonsWrapper } from '@ui/index';
 import { getAuth, signOut } from 'firebase/auth';
@@ -70,7 +70,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
   }, []);
 
   return (
-    <ContainerStyled onPointerDown={handleClickClose} $transform={transform}>
+    <ContainerSc onPointerDown={handleClickClose} $transform={transform}>
       <div id="side-div">
         <div id="options-header">
           <h4>Mais Opções</h4>
@@ -109,7 +109,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
           </div>
         </div>
       </div>
-    </ContainerStyled>
+    </ContainerSc>
   );
 };
 

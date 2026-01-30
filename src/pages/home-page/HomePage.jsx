@@ -14,7 +14,7 @@ import {
   ProductListHome,
 } from '@pages/home-page/components/index';
 
-const MainStyled = styled.main`
+const MainSc = styled.main`
   max-width: 1400px;
   margin: auto;
   padding: 0;
@@ -32,7 +32,7 @@ const MainStyled = styled.main`
   }
 `;
 
-const ProductFeedDivStyled = styled.section`
+const ProductFeedDivSc = styled.section`
   position: relative;
   padding-left: 12px;
   padding-top: 14px;
@@ -96,13 +96,13 @@ function HomePage() {
 
       <div>
         <Header setViewOptions={setViewOptions} />
-        <MainStyled>
+        <MainSc>
           <AnnouncementSection wasResize={wasResize} />
-          <ProductFeedDivStyled>
+          <ProductFeedDivSc>
             <CategoriesSection wasResize={wasResize} />
             <ProductListHome categoryKey={currentCategory} wasResize={wasResize} />
-          </ProductFeedDivStyled>
-        </MainStyled>
+          </ProductFeedDivSc>
+        </MainSc>
       </div>
       {viewProductInFull && <ProductInFull />}
       <BottomNavBar />
@@ -111,4 +111,3 @@ function HomePage() {
 }
 
 export default HomePage;
-

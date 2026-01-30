@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const InfoWrapperStyled = styled.div`
+const InfoWrapperSc = styled.div`
   width: calc(100% - 24px);
   margin: 0 auto;
   display: flex;
@@ -47,7 +47,7 @@ const InfoWrapperStyled = styled.div`
   }
 `;
 
-const ImageWrapperStyled = styled.div`
+const ImageWrapperSc = styled.div`
   display: block;
   margin: auto;
   width: 100%;
@@ -112,7 +112,7 @@ const ImageWrapperStyled = styled.div`
 export const ProductData = ({ dataProductFull }) => {
   return (
     <>
-      <ImageWrapperStyled>
+      <ImageWrapperSc>
         <img src={dataProductFull.url} alt="Imagem do Produto" />
 
         {dataProductFull.weight != '' && dataProductFull.weight != null && (
@@ -122,15 +122,14 @@ export const ProductData = ({ dataProductFull }) => {
         {dataProductFull.discount != '' && dataProductFull.discount != null && (
           <div id="discount">-{dataProductFull.discount}%</div>
         )}
-      </ImageWrapperStyled>
+      </ImageWrapperSc>
 
-      <InfoWrapperStyled>
+      <InfoWrapperSc>
         <div id="name">
           <p>{dataProductFull.name}</p>
           <p id="price">R$ {dataProductFull.price}</p>
         </div>
-      </InfoWrapperStyled>
+      </InfoWrapperSc>
     </>
   );
 };
-

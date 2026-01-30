@@ -1,7 +1,6 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 
-const StyledSeparator = styled.div`
+const SeparatorSc = styled.div`
   flex-shrink: 0;
   transition-property: border;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -46,7 +45,7 @@ export const Separator = ({
   ...rest
 }) => {
   return (
-    <StyledSeparator
+    <SeparatorSc
       role={decorative ? 'none' : 'separator'}
       aria-orientation={!decorative ? orientation : undefined}
       $orientation={orientation}

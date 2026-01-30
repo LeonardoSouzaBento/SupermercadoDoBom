@@ -2,7 +2,7 @@ import ProductItem from '@components/product-list/product-item';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { announcements } from '@data/announcements';
 import { useScrollX } from '@hooks/useScrollX';
-import { ContainerStyled, AnnouncementStyled } from '@pages/home-page/ui/annoucement-section/index';
+import { ContainerSc, AnnouncementSc } from '@pages/home-page/ui/annoucement-section/index';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 function AnnouncementSection({ wasResize }) {
@@ -119,11 +119,11 @@ function AnnouncementSection({ wasResize }) {
   }, [updatePagination, advertisementsRef]);
 
   return (
-    <ContainerStyled ref={divRef}>
+    <ContainerSc ref={divRef}>
       <div>
         <h3>Maiores promoções!</h3>
       </div>
-      <AnnouncementStyled ref={advertisementsRef} $odd={announcements.length % 2 !== 0}>
+      <AnnouncementSc ref={advertisementsRef} $odd={announcements.length % 2 !== 0}>
         {announcements.map((object, index) => (
           <div key={index} ref={(el) => (fundoRefs.current[index] = el)}>
             <img src={object.url2} alt={`Imagem de anúncio ${index + 1}`} id={`anun ${index}`} />
@@ -134,7 +134,7 @@ function AnnouncementSection({ wasResize }) {
             />
           </div>
         ))}
-      </AnnouncementStyled>
+      </AnnouncementSc>
       <div>
         {announcements.map((_, i) => (
           <span
@@ -147,9 +147,8 @@ function AnnouncementSection({ wasResize }) {
           />
         ))}
       </div>
-    </ContainerStyled>
+    </ContainerSc>
   );
 }
 
 export default AnnouncementSection;
-

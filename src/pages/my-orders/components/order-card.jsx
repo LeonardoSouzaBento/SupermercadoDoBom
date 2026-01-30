@@ -9,7 +9,7 @@ import {
   ItemsList,
   DetailsButton,
   ItemRow,
-} from "../stylized-tags";
+} from "./ui/all";
 import { CartContext } from "@contexts/CartContext";
 import OrderDetails from "./order-details";
 

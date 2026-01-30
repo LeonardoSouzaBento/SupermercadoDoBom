@@ -1,6 +1,6 @@
-import {Button} from '@ui/button';
+import { Button } from '@ui/button';
 import { useEffect, useState } from 'react';
-import { BackgroundStyled, ModalStyled } from '../ui/cancel-dialog';
+import { BackgroundSc, ModalSc } from '../ui/cancel-dialog';
 
 const CancelDialog = ({ seeFeedback, setSeeFeedback, setSeeCancelDialog, setCartProducts }) => {
   const [opacityDialog, setOpacityDialog] = useState(false);
@@ -19,8 +19,8 @@ const CancelDialog = ({ seeFeedback, setSeeFeedback, setSeeCancelDialog, setCart
 
   return (
     <>
-      <BackgroundStyled />
-      <ModalStyled
+      <BackgroundSc />
+      <ModalSc
         $feedback={seeFeedback}
         style={{
           opacity: opacityDialog ? 1 : 0,
@@ -58,10 +58,9 @@ const CancelDialog = ({ seeFeedback, setSeeFeedback, setSeeCancelDialog, setCart
             <span className="material-symbols-rounded">check</span>
           )}
         </div>
-      </ModalStyled>
+      </ModalSc>
     </>
   );
 };
 
 export default CancelDialog;
-

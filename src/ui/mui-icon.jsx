@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-const SpanStyled = styled.span`
+const SpanSc = styled.span`
   font-variation-settings:
     'FILL' ${(props) => props.$fill},
     'wght' ${(props) => props.$weight};
@@ -36,7 +36,7 @@ export const MuiIcon = ({
   ...props
 }) => {
   return (
-    <SpanStyled
+    <SpanSc
       id={id}
       className={`material-symbols-rounded ${className || ''}`}
       $fill={fill}
@@ -46,7 +46,6 @@ export const MuiIcon = ({
       style={{ margin: margin }}
       {...props}>
       {icon}
-    </SpanStyled>
+    </SpanSc>
   );
 };
-

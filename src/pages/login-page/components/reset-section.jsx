@@ -101,8 +101,8 @@ const ResetSection = ({ setLoginType }) => {
   return (
     <>
       <div>
-        <LabelStyled htmlFor="email">E-mail</LabelStyled>
-        <InputStyled
+        <LabelSc htmlFor="email">E-mail</LabelSc>
+        <InputSc
           name="email"
           type="email"
           value={email}
@@ -134,4 +134,3 @@ const ResetSection = ({ setLoginType }) => {
 };
 
 export default ResetSection;
-

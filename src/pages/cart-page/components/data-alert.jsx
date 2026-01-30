@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const DataAlertStyled = styled.div`
+const DataAlertSc = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -36,16 +36,15 @@ const DataAlertStyled = styled.div`
 
 const DataAlert = () => {
   return (
-    <DataAlertStyled>
+    <DataAlertSc>
       <div>
         <h2 style={{ color: 'white' }}>
           <strong>Complete suas informações </strong>
           para continuar a compra.
         </h2>
       </div>
-    </DataAlertStyled>
+    </DataAlertSc>
   );
 };
 
 export default DataAlert;
-

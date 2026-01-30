@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 4px;
@@ -9,11 +9,10 @@ const WrapperStyled = styled.div`
 
 const InputWrapper = ({ children, styles, ...props }) => {
   return (
-    <WrapperStyled {...props} $styles={styles}>
+    <WrapperSc {...props} $styles={styles}>
       {children}
-    </WrapperStyled>
+    </WrapperSc>
   );
 };
 
 export { InputWrapper };
-

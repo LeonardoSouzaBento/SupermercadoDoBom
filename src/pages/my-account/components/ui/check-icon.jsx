@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CheckIconStyled = styled.span`
+export const CheckIconSc = styled.span`
   position: absolute;
   top: 16px;
   right: 20px;

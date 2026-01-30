@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-export const ContainerStyled = styled.div`
+export const ContainerSc = styled.div`
   height: 100vh;
   width: auto;
+  padding: 0 16px;
   max-width: max-content;
   margin: auto;
   display: flex;
@@ -12,16 +13,13 @@ export const ContainerStyled = styled.div`
 
   /* card wrapper */
   & > div {
-    width: calc(100% - 28px);
+    padding-block: 32px;
     max-width: 420px;
-    @media screen and (max-width: 375px) {
-      width: calc(100% - 16px);
-    }
 
     & > #header {
       padding: 0 20px;
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
 
       & > #logo {
         display: inline-flex;
@@ -69,4 +67,3 @@ export const ContainerStyled = styled.div`
     }
   }
 `;
-

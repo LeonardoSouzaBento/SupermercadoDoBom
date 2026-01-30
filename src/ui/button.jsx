@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const ButtonStyled = styled.button`
+const ButtonSc = styled.button`
   width: ${(props) => (props.$wFull ? '100%' : 'auto')};
   padding-inline: 1.1em;
   display: flex;
@@ -179,7 +179,7 @@ export const Button = ({
   ...rest
 }) => {
   return (
-    <ButtonStyled
+    <ButtonSc
       $styles={styles}
       $variant={variant}
       $size={size}
@@ -191,6 +191,6 @@ export const Button = ({
       $wFull={wFull}
       {...rest}>
       {children}
-    </ButtonStyled>
+    </ButtonSc>
   );
 };

@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 //Order Details
-export const ContainerStyled = styled.div`
+export const ContainerSc = styled.div`
   max-width: 280px; /* equivalente a max-w-md */
   margin: 0 auto;
   background: var(--background);
   min-height: 100vh;
 `;
 
-export const HeaderStyled = styled.div`
+export const HeaderSc = styled.div`
   background: var(--order-header);
   padding: 15px;
   text-align: center;
 `;
 
-export const HeaderInfoStyled = styled.div`
+export const HeaderInfoSc = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +27,7 @@ export const HeaderInfoStyled = styled.div`
   }
 `;
 
-export const BadgeStyled = styled.div`
+export const BadgeSc = styled.div`
   display: inline-block;
   padding: 2.5px 7.5px;
   border-radius: 3.75px;
@@ -39,7 +39,7 @@ export const BadgeStyled = styled.div`
   margin-bottom: 10px;
 `;
 
-export const TotalsRowStyled = styled.div`
+export const TotalsRowSc = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -62,7 +62,7 @@ export const TotalsRowStyled = styled.div`
   }
 `;
 
-export const AddressStyled = styled.div`
+export const AddressSc = styled.div`
   text-align: left;
 
   p {
@@ -81,14 +81,14 @@ export const AddressStyled = styled.div`
   }
 `;
 
-export const CardStyled = styled.div`
+export const CardSc = styled.div`
   border: none;
   border-radius: 0;
   box-shadow: none;
   margin-top: 10px;
 `;
 
-export const CardHeaderStyled = styled.div`
+export const CardHeaderSc = styled.div`
   padding-bottom: 7.5px;
 
   h3 {
@@ -98,13 +98,13 @@ export const CardHeaderStyled = styled.div`
   }
 `;
 
-export const CardContentStyled = styled.div`
+export const CardContentSc = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
 `;
 
-export const ItemStyled = styled.div`
+export const ItemSc = styled.div`
   background: var(--order-item);
   border: 1px solid var(--border);
   border-radius: 5px;
@@ -114,7 +114,7 @@ export const ItemStyled = styled.div`
   gap: 7.5px;
 `;
 
-export const ItemImageStyled = styled.div`
+export const ItemImageSc = styled.div`
   width: 40px;
   height: 40px;
   background: var(--muted);
@@ -129,7 +129,7 @@ export const ItemImageStyled = styled.div`
   }
 `;
 
-export const ItemDetailsStyled = styled.div`
+export const ItemDetailsSc = styled.div`
   flex: 1;
   min-width: 0;
 
@@ -142,7 +142,7 @@ export const ItemDetailsStyled = styled.div`
   }
 `;
 
-export const ItemGridStyled = styled.div`
+export const ItemGridSc = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
@@ -176,7 +176,7 @@ export const ItemGridStyled = styled.div`
   }
 `;
 
-export const SubtotalSectionStyled = styled.div`
+export const SubtotalSectionSc = styled.div`
   background: var(--order-header);
   padding: 15px;
   margin-top: 10px;
@@ -304,4 +304,3 @@ export const DetailsButton = styled.button`
     transform: translateY(0);
   }
 `;
-

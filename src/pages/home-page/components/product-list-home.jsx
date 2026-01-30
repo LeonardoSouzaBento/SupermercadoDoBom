@@ -3,10 +3,10 @@ import { useRef, useContext, useEffect, useCallback } from 'react';
 import { useScrollX } from '@hooks/useScrollX';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import ProductItem from '@components/product-list/product-item';
-import { CentralizeDiv } from '@components/generic-stylized-tags';
+import { CentralizeDiv } from '@components/generic-tags';
 import styled from 'styled-components';
 
-const ContainerStyled = styled.div`
+const ContainerSc = styled.div`
   overflow-x: hidden;
   position: relative;
   z-index: 2;
@@ -17,7 +17,7 @@ const ContainerStyled = styled.div`
   }
 `;
 
-const DivStyled = styled.div`
+const DivSc = styled.div`
   width: auto;
   height: auto;
   min-height: 400px;
@@ -91,7 +91,7 @@ const ProductList = React.forwardRef(({ categoryKey }, ref) => {
   const secondHalf = products.slice(middleIndex);
 
   return (
-    <DivStyled ref={ref}>
+    <DivSc ref={ref}>
       <DivHalfList>
         {firstHalf.map((product) => (
           <ProductItem variant={'home'} key={`${product.id}-${product.cat_id}`} product={product} />
@@ -109,7 +109,7 @@ const ProductList = React.forwardRef(({ categoryKey }, ref) => {
           <p>Não há produtos nesta categoria</p>
         </NoProcutsStyed>
       )}
-    </DivStyled>
+    </DivSc>
   );
 });
 
@@ -165,11 +165,10 @@ function ProductListHome({ categoryKey, wasResize }) {
   }, [currentCategory]);
 
   return (
-    <ContainerStyled ref={paiAllProductsRef}>
+    <ContainerSc ref={paiAllProductsRef}>
       <ProductList categoryKey={categoryKey} ref={productListHomeRef} />
-    </ContainerStyled>
+    </ContainerSc>
   );
 }
 
 export default ProductListHome;
-

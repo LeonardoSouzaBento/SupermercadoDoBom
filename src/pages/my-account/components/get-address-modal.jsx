@@ -2,10 +2,10 @@ import { UserDataContext } from '@contexts/UserDataContext';
 import { Button, Card, CardHeader, CardTitle, CloseButton } from '@ui/index';
 import { useContext, useEffect, useState } from 'react';
 import { css } from 'styled-components';
-import { AddressForm, CepInput, GetLocationButton } from '../components/register-address/index';
-import { ContainerStyled } from './register-address/stylized-tags';
+import { AddressForm, CepInput, GetLocationButton } from './get-address-modal/index';
+import { ContainerSc } from './get-address-modal/container';
 
-const RegisterAddress = ({ setSeeRegisterAddress }) => {
+const GetAddressModal = ({ setSeeRegisterAddress }) => {
   const [opacityRegAddress, setOpacityRegAddress] = useState(0);
   const [seeAdressForm, setSeeAddressForm] = useState(false);
   const [opacityReturn, setOpacityReturn] = useState(0);
@@ -30,7 +30,7 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
   }, []);
 
   return (
-    <ContainerStyled $opacity={opacityRegAddress} $up={seeAdressForm}>
+    <ContainerSc $opacity={opacityRegAddress} $up={seeAdressForm}>
       <Card className="card">
         <CardHeader>
           <CardTitle
@@ -94,9 +94,8 @@ const RegisterAddress = ({ setSeeRegisterAddress }) => {
           </div>
         )}
       </Card>
-    </ContainerStyled>
+    </ContainerSc>
   );
 };
 
-export default RegisterAddress;
-
+export { GetAddressModal };

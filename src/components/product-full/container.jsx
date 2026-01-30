@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { flexCenter } from '@/css/baseStyles';
 
-export const ContainerStyled = styled.div`
+export const ContainerSc = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -105,7 +105,7 @@ export const ContainerStyled = styled.div`
   & div#similar-products-section {
     width: 100%;
     height: 100%;
-    background: linear-gradient(-135deg, hsl(var(--white-value)), var(--background));
+    background: linear-gradient(-135deg, var(--light-bg), var(--background));
     position: relative;
     pointer-events: none;
     touch-action: none;
@@ -137,4 +137,3 @@ export const ContainerStyled = styled.div`
     }
   }
 `;
-

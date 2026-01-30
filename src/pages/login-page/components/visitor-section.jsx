@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { auth } from '@/main';
 import styled from 'styled-components';
 
-const VisitorBoxStyled = styled.div`
+const VisitorBoxSc = styled.div`
   text-align: center;
   padding: 8px;
   background: var(--background);
@@ -55,12 +55,12 @@ const VisitorSection = ({ setLoginType, setLoginSucess, setLoginState }) => {
 
   return (
     <>
-      <VisitorBoxStyled>
+      <VisitorBoxSc>
         <p>
           <strong>Comunicado: </strong>
           para registrar sua compra será necessário criar uma conta.
         </p>
-      </VisitorBoxStyled>
+      </VisitorBoxSc>
 
       <Button variant="primary" onClick={handleAnonymousLogin}>
         Continuar
@@ -78,4 +78,3 @@ const VisitorSection = ({ setLoginType, setLoginSucess, setLoginState }) => {
 };
 
 export default VisitorSection;
-

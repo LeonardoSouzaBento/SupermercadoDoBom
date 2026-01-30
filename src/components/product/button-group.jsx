@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonGroupStyled = styled.div`
+export const ButtonGroupSc = styled.div`
   width: 90%;
   height: 36px;
   background-color: hsla(var(--primary-value), 0.85);
@@ -56,4 +56,3 @@ export const ButtonGroupStyled = styled.div`
     user-select: none;
   }
 `;
-

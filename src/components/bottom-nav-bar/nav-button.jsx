@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { css } from 'styled-components';
 import styled from 'styled-components';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -21,7 +21,7 @@ const WrapperStyled = styled.div`
   }
 `;
 
-const NameButtonStyled = styled.p`
+const NameButtonSc = styled.p`
   font-family: var(--font-header);
   text-transform: capitalize;
   font-weight: 600;
@@ -33,7 +33,7 @@ const NameButtonStyled = styled.p`
   }
 `;
 
-const SelectedDivStyled = styled.div`
+const SelectedDivSc = styled.div`
   height: 2.8px;
   width: 80%;
   border-radius: 999px;
@@ -43,7 +43,7 @@ const SelectedDivStyled = styled.div`
   z-index: 2;
 `;
 
-const LinkStyled = styled(Link)`
+const LinkSc = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@ const LinkStyled = styled(Link)`
 
 export const NavButton = ({ item, isActive }) => {
   return (
-    <WrapperStyled>
+    <WrapperSc>
       <Button
         size="icon-lg"
         variant="transparent"
@@ -74,13 +74,12 @@ export const NavButton = ({ item, isActive }) => {
           flex-direction: column;
           gap: 2px;
         `}>
-        <LinkStyled to={item.path}>
+        <LinkSc to={item.path}>
           <Icon LucideIcon={item.lucidIcon} size="h5" color="var(--primary)" />
-          <NameButtonStyled>{item.name}</NameButtonStyled>
-        </LinkStyled>
+          <NameButtonSc>{item.name}</NameButtonSc>
+        </LinkSc>
       </Button>
-      {isActive && <SelectedDivStyled />}
-    </WrapperStyled>
+      {isActive && <SelectedDivSc />}
+    </WrapperSc>
   );
 };
-

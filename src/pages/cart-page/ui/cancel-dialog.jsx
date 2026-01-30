@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BackgroundStyled = styled.div`
+export const BackgroundSc = styled.div`
   width: 100vw;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
@@ -10,7 +10,7 @@ export const BackgroundStyled = styled.div`
   z-index: 3;
 `;
 
-export const ModalStyled = styled.div`
+export const ModalSc = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -70,4 +70,3 @@ export const ModalStyled = styled.div`
     }
   }
 `;
-

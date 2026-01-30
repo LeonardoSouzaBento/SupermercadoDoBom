@@ -1,10 +1,10 @@
 import { Button } from '@ui/button';
 import { Card, CardHeader, CardTitle, MuiIcon } from '@ui/index';
 import { useNavigate } from 'react-router-dom';
-import { StatusStyled } from '../ui';
+import { StatusSc } from './ui';
 import { css } from 'styled-components';
 
-export const FinishShopping = ({ isDataComplete, currentOrder, userContact }) => {
+const FinishShopping = ({ isDataComplete, currentOrder, userContact }) => {
   const enable =
     isDataComplete.contact &&
     isDataComplete.address &&
@@ -35,12 +35,12 @@ export const FinishShopping = ({ isDataComplete, currentOrder, userContact }) =>
         </CardTitle>
 
         {currentOrder.status === 'pending' && (
-          <StatusStyled $finish={true}>
+          <StatusSc $finish={true}>
             <div>
               <span className="material-symbols-rounded">priority_high</span>
               <p>Compra não finalizada</p>
             </div>
-          </StatusStyled>
+          </StatusSc>
         )}
       </CardHeader>
       {currentOrder.status === 'pending' && (
@@ -52,4 +52,4 @@ export const FinishShopping = ({ isDataComplete, currentOrder, userContact }) =>
   );
 };
 
-export default FinishShopping;
+export { FinishShopping };

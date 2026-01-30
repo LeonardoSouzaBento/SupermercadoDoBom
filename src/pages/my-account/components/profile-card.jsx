@@ -2,7 +2,7 @@ import { Button } from '@ui/button';
 import { Icon, MuiIcon } from '@ui/index';
 import { Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { HeaderStyled, StatusStyled, WrapperStyled } from '../ui';
+import { HeaderSc, StatusSc, WrapperSc } from './ui';
 
 export const Profile = ({ userContact }) => {
   const nameUser = userContact.email
@@ -17,8 +17,8 @@ export const Profile = ({ userContact }) => {
   // }
 
   return (
-    <WrapperStyled>
-      <HeaderStyled>
+    <WrapperSc>
+      <HeaderSc>
         <div>
           <div id="photo-wrapper">
             {!userContact.photoUrl && (
@@ -41,17 +41,17 @@ export const Profile = ({ userContact }) => {
         <Button size="icon-sm" variant="secondary">
           <MuiIcon icon="edit" size="3xl" weight={600} />
         </Button>
-      </HeaderStyled>
+      </HeaderSc>
 
       {(!userContact.email || !userContact.name) && (
-        <StatusStyled $user={true}>
+        <StatusSc $user={true}>
           <div>
             <span className="material-symbols-rounded">
               {!userContact.email || !userContact.name ? 'priority_high' : 'check'}
             </span>
             <p>{!userContact.email ? 'Usúario anônimo' : 'Sem seu nome'}</p>
           </div>
-        </StatusStyled>
+        </StatusSc>
       )}
 
       {!userContact.email && (
@@ -65,9 +65,6 @@ export const Profile = ({ userContact }) => {
           Entrar com e-mail
         </Button>
       )}
-    </WrapperStyled>
+    </WrapperSc>
   );
 };
-
-export default Profile;
-

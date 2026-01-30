@@ -5,7 +5,7 @@ import {
   ReceiptCard,
   ButtonsCard,
 } from '@pages/cart-page/components/index';
-import { MainWrapperStyled } from '@pages/cart-page/ui/index';
+import { MainWrapperSc } from '@pages/cart-page/ui/index';
 import BottomNavBar from '@components/bottom-nav-bar';
 import ProductInFull from '@components/product-in-full';
 import { ProductList } from '@components/product-list';
@@ -135,7 +135,7 @@ const Cart = () => {
     <>
       <PageHeader title="Sua compra" />
 
-      <MainWrapperStyled $opacity={opacityState}>
+      <MainWrapperSc $opacity={opacityState}>
         <div ref={CartSectionRef} id="products-card">
           <div>
             <CardHeader
@@ -203,7 +203,7 @@ const Cart = () => {
         />
 
         {seeFeedback && <div />}
-      </MainWrapperStyled>
+      </MainWrapperSc>
       {viewProductInFull && <ProductInFull />}
 
       <BottomNavBar />
@@ -212,4 +212,3 @@ const Cart = () => {
 };
 
 export default Cart;
-

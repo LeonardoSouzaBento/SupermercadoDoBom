@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerStyled = styled.div`
+export const ContainerSc = styled.div`
   width: 100%;
   margin-bottom: 8px;
   overflow-x: hidden;
@@ -61,4 +61,3 @@ export const ContainerStyled = styled.div`
     }
   }
 `;
-

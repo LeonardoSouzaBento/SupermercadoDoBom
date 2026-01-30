@@ -1,11 +1,11 @@
-import { DivToCoverStyled } from '@components/generic-stylized-tags';
+import { DivToCoverSc } from '@components/generic-tags';
 import { Button, Card, CardContent, CardHeader, CardTitle, MuiIcon } from '@ui/index';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import { AddressWrapperStyled, CheckIconStyled, StatusStyled } from '../ui/index';
+import { AddressWrapperSc, CheckIconSc, StatusSc } from './ui/index';
 
-export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddress }) => {
+const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddress }) => {
   function GetInitialsNameState() {
     const palavras = userAddress.estado.split(' ');
     const iniciais = palavras.map((palavra) => palavra.charAt(0));
@@ -49,19 +49,19 @@ export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, us
         </CardTitle>
 
         {!isDataComplete.address ? (
-          <StatusStyled $address={true}>
+          <StatusSc $address={true}>
             <div>
               <MuiIcon icon={isDataComplete.address ? 'check' : 'priority_high'} size="xs" />
               <p>{isDataComplete.address ? 'Endereço salvo!' : 'Sem endereço!'}</p>
             </div>
-          </StatusStyled>
+          </StatusSc>
         ) : (
-          <CheckIconStyled className="material-symbols-outlined">check</CheckIconStyled>
+          <CheckIconSc className="material-symbols-outlined">check</CheckIconSc>
         )}
       </CardHeader>
 
       <CardContent className="card-content">
-        <AddressWrapperStyled>
+        <AddressWrapperSc>
           <div className="info-wrapper">
             <div className="title first">
               <h6>Rua:</h6>
@@ -102,7 +102,7 @@ export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, us
           </Button>
 
           {seeLoginWarn && (
-            <DivToCoverStyled>
+            <DivToCoverSc>
               <p
                 style={{
                   width: '100%',
@@ -112,12 +112,12 @@ export const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, us
                 }}>
                 Faça login primeiro!
               </p>
-            </DivToCoverStyled>
+            </DivToCoverSc>
           )}
-        </AddressWrapperStyled>
+        </AddressWrapperSc>
       </CardContent>
     </Card>
   );
 };
 
-export default Address;
+export { Address };

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -13,8 +13,8 @@ const WrapperStyled = styled.div`
 
 export const ButtonsWrapper = ({ children, styles, secondstyles, ...props }) => {
   return (
-    <WrapperStyled $styles={styles} $secondstyles={secondstyles} {...props}>
+    <WrapperSc $styles={styles} $secondstyles={secondstyles} {...props}>
       {children}
-    </WrapperStyled>
+    </WrapperSc>
   );
 };

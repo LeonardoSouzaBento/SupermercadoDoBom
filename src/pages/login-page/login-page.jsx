@@ -7,7 +7,7 @@ import {
   ResetSection,
   VisitorSection,
 } from '@pages/login-page/components/index';
-import { ContainerStyled } from '@pages/login-page/ui/index';
+import { ContainerSc } from '@pages/login-page/ui/index';
 import { Button } from '@ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@ui/index';
 import { HeartHandshake, Mail, User } from 'lucide-react';
@@ -75,7 +75,7 @@ const LoginPage = () => {
   }, [loginType]);
 
   return (
-    <ContainerStyled style={loginType == 'email' ? { padding: '12px 0' } : {}}>
+    <ContainerSc style={loginType == 'email' ? { padding: '12px 0' } : {}}>
       <div>
         {/* Logo */}
         <div id="header">
@@ -91,6 +91,8 @@ const LoginPage = () => {
 
         <Card
           styles={css`
+            padding-top: 24px;
+            padding-bottom: 36px;
             box-shadow: var(--shadow-lg);
           `}>
           {loginState !== '' && <LoginReturn loginState={loginState} />}
@@ -147,7 +149,7 @@ const LoginPage = () => {
           </p>
         </div>
       </div>
-    </ContainerStyled>
+    </ContainerSc>
   );
 };
 

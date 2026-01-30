@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   background-color: blue;
   height: max-content;
   border-radius: 8px;
@@ -34,10 +34,9 @@ const WrapperStyled = styled.div`
 
 export function HelpMessage({ message }) {
   return (
-    <WrapperStyled>
+    <WrapperSc>
       <div />
       <p>{message}</p>
-    </WrapperStyled>
+    </WrapperSc>
   );
 }
-

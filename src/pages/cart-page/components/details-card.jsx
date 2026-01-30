@@ -3,7 +3,7 @@ import { MuiIcon } from '@ui/mui-icon';
 import styled, { css } from 'styled-components';
 import ValueWarn from './value-warn';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   width: 100%;
   height: 136px;
   margin: auto;
@@ -60,7 +60,7 @@ const DetailsCard = ({ totalAddedValue, scaleWarnnig }) => {
         <CardDescription>Leia os detalhes de sua compra</CardDescription>
       </CardHeader>
       {falta === 0 && totalAddedValue > 0 ? (
-        <WrapperStyled>
+        <WrapperSc>
           <div className="data">
             <p>Compra:</p>
             <p>
@@ -81,7 +81,7 @@ const DetailsCard = ({ totalAddedValue, scaleWarnnig }) => {
               <strong>R$ {totalFormatted}</strong>
             </p>
           </div>
-        </WrapperStyled>
+        </WrapperSc>
       ) : (
         <ValueWarn scaleWarnnig={scaleWarnnig} faltaFormatada={faltaFormatada} />
       )}
@@ -112,4 +112,3 @@ const Separators = () => {
     </>
   );
 };
-

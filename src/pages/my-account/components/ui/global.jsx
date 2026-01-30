@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-export const WrapperStyled = styled.div`
+export const WrapperSc = styled.div`
   width: 100%;
   height: max-content;
   margin: auto;
@@ -17,7 +17,7 @@ export const WrapperStyled = styled.div`
   ${(props) => props.$orders && 'padding-top: 0;'}
 `;
 
-export const CardHeaderStyled = styled.div`
+export const CardHeaderSc = styled.div`
   width: 100%;
   padding-right: 20px;
   box-sizing: border-box;
@@ -43,7 +43,7 @@ export const CardHeaderStyled = styled.div`
   }
 `;
 
-export const CardTitleStyled = styled.header`
+export const CardTitleSc = styled.header`
   height: 56px;
   width: 100%;
   box-sizing: border-box;

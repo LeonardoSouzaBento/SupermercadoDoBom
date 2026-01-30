@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerStyled = styled.section`
+export const ContainerSc = styled.section`
   width: 100%;
   position: relative;
   overflow-x: hidden;
@@ -68,4 +68,3 @@ export const ContainerStyled = styled.section`
     }
   }
 `;
-

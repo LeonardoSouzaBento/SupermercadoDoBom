@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Separator } from '@ui/index';
 
 /* header */
-const CardHeaderStyled = styled.div`
+const CardHeaderSc = styled.div`
   display: flex;
   flex-direction: column;
   ${(props) => props.$styles && props.$styles}
@@ -17,7 +17,7 @@ export const CardHeader = ({
   ...props
 }) => {
   return (
-    <CardHeaderStyled
+    <CardHeaderSc
       data-class="card-header"
       $styles={styles}
       style={{ marginBottom: mb > 0 ? `${mb}${mbMeasurement}` : '' }}
@@ -30,12 +30,12 @@ export const CardHeader = ({
           `}
         />
       )}
-    </CardHeaderStyled>
+    </CardHeaderSc>
   );
 };
 
 /* titulo */
-const TitleStyled = styled.div`
+const TitleSc = styled.div`
   width: max-content;
   height: max-content;
   display: flex;
@@ -49,28 +49,28 @@ const TitleStyled = styled.div`
 
 export const CardTitle = ({ children, styles, ...props }) => {
   return (
-    <TitleStyled $styles={styles} {...props}>
+    <TitleSc $styles={styles} {...props}>
       {children}
-    </TitleStyled>
+    </TitleSc>
   );
 };
 
 /* descrição */
-const DescriptionStyled = styled.div`
+const DescriptionSc = styled.div`
   font-size: var(--text-sm);
   color: var(--muted-foreground);
 `;
 
 export const CardDescription = ({ children, styles, ...props }) => {
   return (
-    <DescriptionStyled $styles={styles} {...props}>
+    <DescriptionSc $styles={styles} {...props}>
       {children}
-    </DescriptionStyled>
+    </DescriptionSc>
   );
 };
 
 /* card */
-const CardStyled = styled.div`
+const CardSc = styled.div`
   width: auto;
   height: auto;
   box-sizing: border-box;
@@ -92,14 +92,14 @@ const CardStyled = styled.div`
 
 export const Card = ({ children, styles, hasHeader = true, ...props }) => {
   return (
-    <CardStyled $styles={styles} $hasHeader={hasHeader} {...props}>
+    <CardSc $styles={styles} $hasHeader={hasHeader} {...props}>
       {children}
-    </CardStyled>
+    </CardSc>
   );
 };
 
 /* conteúdo */
-const ContentStyled = styled.div`
+const ContentSc = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -111,14 +111,14 @@ const ContentStyled = styled.div`
 
 export const CardContent = ({ children, styles, ...props }) => {
   return (
-    <ContentStyled $styles={styles} {...props}>
+    <ContentSc $styles={styles} {...props}>
       {children}
-    </ContentStyled>
+    </ContentSc>
   );
 };
 
 /* footer */
-const FooterStyled = styled.div`
+const FooterSc = styled.div`
   display: flex;
   align-items: center;
   padding: 0 15px;
@@ -130,8 +130,8 @@ const FooterStyled = styled.div`
 
 export const CardFooter = ({ children, styles, ...props }) => {
   return (
-    <FooterStyled $styles={styles} {...props}>
+    <FooterSc $styles={styles} {...props}>
       {children}
-    </FooterStyled>
+    </FooterSc>
   );
 };

@@ -1,4 +1,4 @@
-import { ButtonGroupStyled, ImageWrapperStyled } from '@components/product/index';
+import { ButtonGroupSc, ImageWrapperSc } from '@components/product/index';
 import { CartContext } from '@contexts/CartContext';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
@@ -33,7 +33,7 @@ const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef })
   }
 
   return (
-    <ButtonGroupStyled $display={quantity > 0} $variant={variant}>
+    <ButtonGroupSc $display={quantity > 0} $variant={variant}>
       <div
         onPointerUp={(e) => {
           handlePointerUpButtons(e, 'fewer');
@@ -46,7 +46,7 @@ const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef })
       <div onPointerUp={handlePointerUpButtons}>
         <Icon size="sm" LucideIcon={Plus} />
       </div>
-    </ButtonGroupStyled>
+    </ButtonGroupSc>
   );
 };
 
@@ -67,7 +67,7 @@ const ProductImage = ({ product, quantity, setQuantity, variant }) => {
   }
 
   return (
-    <ImageWrapperStyled $variant={variant} $weightStyles={weightStyles}>
+    <ImageWrapperSc $variant={variant} $weightStyles={weightStyles}>
       <div onPointerUp={handlePointerUpOpen}>
         {product.discount != '' && product.discount != null && (
           <p id="discount">-{product.discount}%</p>
@@ -91,9 +91,8 @@ const ProductImage = ({ product, quantity, setQuantity, variant }) => {
           isDraggingRef={isDraggingRef}
         />
       </div>
-    </ImageWrapperStyled>
+    </ImageWrapperSc>
   );
 };
 
 export default ProductImage;
-

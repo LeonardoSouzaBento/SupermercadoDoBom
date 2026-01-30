@@ -1,3 +1,6 @@
+@import 'material-symbols/rounded.css';
+@import 'material-symbols/outlined.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -25,6 +28,9 @@
   --text-sm-button: 0.937em;
   --text-lg-button: 1em;
   /*CORES*/
+  --light-bg: #fff;
+  --medium-bg: hsl(220, 20%, 98%);
+  --dark-bg: hsl(220, 20%, 96.68%);
   --white-value: 0, 0%, 100%;
   --white-foreground: hsl(var(--white-value));
   --black-value: 0%, 0%, 12%;
@@ -80,7 +86,7 @@
   --dark-border: hsl(0, 0%, 85%);
   --border: hsla(var(--primary-100));
   --card-background: #fff;
-  --card-border: hsla(var(--primary-100), 0.40);
+  --card-border: hsla(var(--primary-100), 0.45);
   --pink: hsl(0, 100%, 94%);
   --background-value: hsl(220, 14%, 91%);
   --background: hsl(210, 12%, 96%);
@@ -136,7 +142,7 @@ body,
 }
 
 body {
-  background: linear-gradient(135deg, var(--white-foreground), var(--background));
+  background: linear-gradient(135deg, var(--light-bg), var(--medium-bg), var(--dark-bg));
   color: var(--black-foreground);
   width: 100%;
   max-width: 1400px;
@@ -179,4 +185,3 @@ h3 {
   cursor: default;
   user-select: none;
 }
-

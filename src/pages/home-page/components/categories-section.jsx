@@ -1,7 +1,7 @@
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { categoriesIcons } from '@data/home';
 import { useScrollX } from '@hooks/useScrollX';
-import { CategoryCardStyled, ContainerStyled } from '@pages/home-page/ui/categories-section/index';
+import { CategoryCardSc, ContainerSc } from '@pages/home-page/ui/categories-section/index';
 import { Icon } from '@ui/icon';
 import { useCallback, useContext, useEffect, useRef } from 'react';
 
@@ -48,7 +48,7 @@ function CategoriesSection({ wasResize }) {
   }
 
   return (
-    <ContainerStyled ref={DivRef}>
+    <ContainerSc ref={DivRef}>
       <div id="header">
         <h3>Explore por categoria</h3>
         <p>Encontre o essencial aqui</p>
@@ -56,7 +56,7 @@ function CategoriesSection({ wasResize }) {
 
       <div ref={categoriesRef}>
         {categoriesIcons.map((cat, index) => (
-          <CategoryCardStyled
+          <CategoryCardSc
             key={cat.id}
             $selected={cat.id === currentCategory}
             ref={index === 0 ? CategoryItemRef : undefined}
@@ -69,12 +69,11 @@ function CategoriesSection({ wasResize }) {
             <div id="wrapper-cat-label">
               <p>{cat.label}</p>
             </div>
-          </CategoryCardStyled>
+          </CategoryCardSc>
         ))}
       </div>
-    </ContainerStyled>
+    </ContainerSc>
   );
 }
 
 export default CategoriesSection;
-

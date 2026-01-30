@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const CategoryCardStyled = styled.div`
+export const CategoryCardSc = styled.div`
   min-width: 120px;
   padding: 16px;
   box-sizing: border-box;
@@ -64,4 +64,3 @@ export const CategoryCardStyled = styled.div`
     margin: 0;
   }
 `;
-

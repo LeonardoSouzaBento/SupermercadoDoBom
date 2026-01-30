@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const AddressWrapperStyled = styled.div`
+export const AddressWrapperSc = styled.div`
   position: relative;
 
   & > div.info-wrapper {

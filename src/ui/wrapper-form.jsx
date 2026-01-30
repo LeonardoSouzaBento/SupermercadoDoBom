@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1ex;
@@ -13,9 +13,8 @@ const WrapperStyled = styled.div`
 
 export const WrapperForm = ({ children, styles, pt = '16px', ...props }) => {
   return (
-    <WrapperStyled $styles={styles} style={{ paddingTop: pt }} {...props}>
+    <WrapperSc $styles={styles} style={{ paddingTop: pt }} {...props}>
       {children}
-    </WrapperStyled>
+    </WrapperSc>
   );
 };
-

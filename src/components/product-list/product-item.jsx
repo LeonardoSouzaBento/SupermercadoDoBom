@@ -1,4 +1,4 @@
-import { WrapperStyled } from '@components/product/index';
+import { WrapperSc } from '@components/product/index';
 import { CartContext } from '@contexts/CartContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { useContext, useEffect, useState } from 'react';
@@ -48,7 +48,7 @@ export default function ProductItem({ product, variant }) {
   }, [cartProducts, product.id]);
 
   return (
-    <WrapperStyled $variant={variant}>
+    <WrapperSc $variant={variant}>
       <InfoWrapper product={product} variant={variant} />
       <ProductImage
         product={product}
@@ -56,7 +56,6 @@ export default function ProductItem({ product, variant }) {
         setQuantity={setQuantity}
         variant={variant}
       />
-    </WrapperStyled>
+    </WrapperSc>
   );
 }
-

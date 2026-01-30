@@ -1,33 +1,33 @@
 import { CheckCircle } from 'lucide-react';
 import {
-  ContainerStyled,
-  HeaderStyled,
-  HeaderInfoStyled,
-  BadgeStyled,
-  TotalsRowStyled,
-  AddressStyled,
-  CardStyled,
-  CardHeaderStyled,
-  CardContentStyled,
-  ItemStyled,
-  ItemImageStyled,
-  ItemDetailsStyled,
-  ItemGridStyled,
-  SubtotalSectionStyled,
-} from '../my-orders';
+  ContainerSc,
+  HeaderSc,
+  HeaderInfoSc,
+  BadgeSc,
+  TotalsRowSc,
+  AddressSc,
+  CardSc,
+  CardHeaderSc,
+  CardContentSc,
+  ItemSc,
+  ItemImageSc,
+  ItemDetailsSc,
+  ItemGridSc,
+  SubtotalSectionSc,
+} from './ui/all';
 
 const OrderDetails = ({ date, totalItems, deliveryAddress, items, subtotal, formatCurrency }) => {
   return (
-    <ContainerStyled>
-      <HeaderStyled>
-        <HeaderInfoStyled>
+    <ContainerSc>
+      <HeaderSc>
+        <HeaderInfoSc>
           <CheckCircle size={20} color="var(--success)" />
           <span>{date}</span>
-        </HeaderInfoStyled>
+        </HeaderInfoSc>
 
-        <BadgeStyled>COMPRA FINALIZADA</BadgeStyled>
+        <BadgeSc>COMPRA FINALIZADA</BadgeSc>
 
-        <TotalsRowStyled>
+        <TotalsRowSc>
           <div>
             <div className="value">R$ {}</div>
             <div className="label">R$</div>
@@ -37,27 +37,27 @@ const OrderDetails = ({ date, totalItems, deliveryAddress, items, subtotal, form
             <div className="value">{totalItems}</div>
             <div className="label">itens</div>
           </div>
-        </TotalsRowStyled>
+        </TotalsRowSc>
 
-        <AddressStyled>
+        <AddressSc>
           <p>Endereço de entrega:</p>
           <p>{deliveryAddress}</p>
-        </AddressStyled>
-      </HeaderStyled>
+        </AddressSc>
+      </HeaderSc>
 
-      <CardStyled>
-        <CardHeaderStyled>
+      <CardSc>
+        <CardHeaderSc>
           <h3>Lista de produtos</h3>
-        </CardHeaderStyled>
-        <CardContentStyled>
+        </CardHeaderSc>
+        <CardContentSc>
           {items.map((item) => (
-            <ItemStyled key={item.id}>
-              <ItemImageStyled>
+            <ItemSc key={item.id}>
+              <ItemImageSc>
                 <img src={item.image} alt={item.name} />
-              </ItemImageStyled>
-              <ItemDetailsStyled>
+              </ItemImageSc>
+              <ItemDetailsSc>
                 <h4>{item.name}</h4>
-                <ItemGridStyled>
+                <ItemGridSc>
                   <div>
                     <div className="label">Qtd.</div>
                     <div className="quantity">{item.quantity}</div>
@@ -70,20 +70,19 @@ const OrderDetails = ({ date, totalItems, deliveryAddress, items, subtotal, form
                     <div className="label">Subtotal</div>
                     <div className="subtotal">{formatCurrency(item.subtotal)}</div>
                   </div>
-                </ItemGridStyled>
-              </ItemDetailsStyled>
-            </ItemStyled>
+                </ItemGridSc>
+              </ItemDetailsSc>
+            </ItemSc>
           ))}
-        </CardContentStyled>
-      </CardStyled>
+        </CardContentSc>
+      </CardSc>
 
-      <SubtotalSectionStyled>
+      <SubtotalSectionSc>
         <span>Subtotal</span>
         <span>{formatCurrency(subtotal)}</span>
-      </SubtotalSectionStyled>
-    </ContainerStyled>
+      </SubtotalSectionSc>
+    </ContainerSc>
   );
 };
 
 export default OrderDetails;
-

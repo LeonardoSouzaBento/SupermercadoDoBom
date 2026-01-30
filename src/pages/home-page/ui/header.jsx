@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderStyled = styled.header`
+export const HeaderSc = styled.header`
   height: auto;
   padding: 24px 18px 20px;
   width: 100%;
@@ -129,4 +129,3 @@ export const HeaderStyled = styled.header`
     }
   }
 `;
-

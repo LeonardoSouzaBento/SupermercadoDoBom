@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderStyled = styled.div`
+export const HeaderSc = styled.div`
   width: 100%;
   margin: auto;
   padding: 16px;
@@ -65,4 +65,3 @@ export const HeaderStyled = styled.div`
     }
   }
 `;
-

@@ -1,40 +1,39 @@
-import React from 'react';
+import { ReturnWrapperSc, ProgressIconSc } from '@pages/my-account/components/ui';
 
 const SavedAddressReturn = ({ savedAddress, opacityReturn }) => {
   return (
     <>
       {savedAddress === 'pending' && (
-        <DivApiReturnStyled $opacityReturn={opacityReturn}>
-          <SpanApiReturnStyled className="material-symbols-outlined" $wait={true}>
+        <ReturnWrapperSc $opacityReturn={opacityReturn}>
+          <ProgressIconSc className="material-symbols-outlined" $wait={true}>
             progress_activity
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
 
           <p style={{ width: '80%', textAlign: 'center' }}>Salvando seu endereço...</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {savedAddress === 'saved' && (
-        <DivApiReturnStyled $opacityReturn={opacityReturn}>
-          <SpanApiReturnStyled className="material-symbols-outlined">check</SpanApiReturnStyled>
+        <ReturnWrapperSc $opacityReturn={opacityReturn}>
+          <ProgressIconSc className="material-symbols-outlined">check</ProgressIconSc>
 
           <p style={{ width: '80%', textAlign: 'center' }}>Endereço salvo!</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {savedAddress === 'error' && (
-        <DivApiReturnStyled $opacityReturn={opacityReturn}>
-          <SpanApiReturnStyled className="material-symbols-outlined" $error={true}>
+        <ReturnWrapperSc $opacityReturn={opacityReturn}>
+          <ProgressIconSc className="material-symbols-outlined" $error={true}>
             exclamation
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
 
           <p style={{ width: '80%', textAlign: 'center' }}>
             <strong>Erro: </strong>não conseguimos pegar sua localização
           </p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
     </>
   );
 };
 
 export default SavedAddressReturn;
-

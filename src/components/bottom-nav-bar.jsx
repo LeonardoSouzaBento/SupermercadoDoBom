@@ -3,7 +3,7 @@ import { bottomNavBarItems } from '@data/bottomNavBarItems';
 import { Button } from '@ui/button';
 import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { NavButton, WrapperStyled } from './bottom-nav-bar/index';
+import { NavButton, WrapperSc } from './bottom-nav-bar/index';
 import { MuiIcon } from '@ui/index';
 import { css } from 'styled-components';
 
@@ -14,7 +14,7 @@ export default function BottomNavBar() {
 
   return (
     <div>
-      <WrapperStyled>
+      <WrapperSc>
         <div id="buttons-wrapper">
           {bottomNavBarItems.map((item, index) => {
             const isActive = item.path === location.pathname;
@@ -47,9 +47,8 @@ export default function BottomNavBar() {
             </Button>
           )}
         </div>
-      </WrapperStyled>
+      </WrapperSc>
       <div style={{ height: '72px', width: '100%', position: 'relative' }} />
     </div>
   );
 }
-

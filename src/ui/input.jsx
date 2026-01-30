@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1cap;
   ${(props) => props.$styles && props.$styles}
 `;
 
-const InputStyled = styled.input`
+const InputSc = styled.input`
   width: 100%;
   padding: 8.08px 12px;
   border-radius: 8px;
@@ -24,7 +24,7 @@ const InputStyled = styled.input`
   }
 `;
 
-const LabelStyled = styled.label`
+const LabelSc = styled.label`
   padding-bottom: 0.7ex;
   &* {
     position: relative;
@@ -33,19 +33,18 @@ const LabelStyled = styled.label`
 
 const WrapperInput = ({ children, styles, ...props }) => {
   return (
-    <WrapperStyled $styles={styles} {...props}>
+    <WrapperSc $styles={styles} {...props}>
       {children}
-    </WrapperStyled>
+    </WrapperSc>
   );
 };
 
 const Label = ({ children, ...props }) => {
-  return <LabelStyled {...props}>{children}</LabelStyled>;
+  return <LabelSc {...props}>{children}</LabelSc>;
 };
 
 const Input = ({ name, type, placeholder, ...props }) => {
-  return <InputStyled name={name} type={type} placeholder={placeholder} {...props} />;
+  return <InputSc name={name} type={type} placeholder={placeholder} {...props} />;
 };
 
 export { Input, WrapperInput, Label };
-

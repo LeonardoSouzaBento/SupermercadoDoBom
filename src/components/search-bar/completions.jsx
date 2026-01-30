@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const CompletionsStyled = styled.div`
+export const CompletionsSc = styled.div`
   width: 100%;
   height: auto;
   padding: 16px;
@@ -84,4 +84,3 @@ export const CompletionsStyled = styled.div`
     }
   }
 `;
-

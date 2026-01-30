@@ -1,32 +1,31 @@
-import { DivApiReturnStyled, SpanApiReturnStyled } from './stylized-tags';
+import { ReturnWrapperSc, ProgressIconSc } from '@pages/my-account/components/ui';
 
 const CepConvertedReturn = ({ cepConvertedState, opacityReturn }) => {
   return (
     <>
       {cepConvertedState === 'pending' && (
-        <DivApiReturnStyled $opacityReturn={opacityReturn}>
-          <SpanApiReturnStyled className="material-symbols-outlined" $wait={true}>
+        <ReturnWrapperSc $opacityReturn={opacityReturn}>
+          <ProgressIconSc className="material-symbols-outlined" $wait={true}>
             progress_activity
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
 
           <p style={{ width: '80%', textAlign: 'center' }}>Convertendo endereço...</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {cepConvertedState === 'error' && (
-        <DivApiReturnStyled $opacityReturn={opacityReturn}>
-          <SpanApiReturnStyled className="material-symbols-outlined" $error={true}>
+        <ReturnWrapperSc $opacityReturn={opacityReturn}>
+          <ProgressIconSc className="material-symbols-outlined" $error={true}>
             exclamation
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
 
           <p style={{ width: '80%', textAlign: 'center' }}>
             <strong>Erro:</strong> ao converter seu CEP!
           </p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
     </>
   );
 };
 
 export default CepConvertedReturn;
-

@@ -1,4 +1,4 @@
-import { HeaderStyled } from '@pages/home-page/ui/header';
+import { HeaderSc } from '@pages/home-page/ui/header';
 import SearchBar from '@components/search-bar';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { Button } from '@ui/button';
@@ -18,7 +18,7 @@ const Header = ({ setViewOptions }) => {
 
   return (
     <div style={{ backgroundColor: 'var(--primary)' }}>
-      <HeaderStyled>
+      <HeaderSc>
         <div id="logo-name">
           <div id="logo">
             <Icon LucideIcon={HeartHandshake} size="34px" strokeValue={2.5} />
@@ -33,10 +33,9 @@ const Header = ({ setViewOptions }) => {
           <Icon LucideIcon={Menu} size="h5" />
           <p>Mais opções</p>
         </Button>
-      </HeaderStyled>
+      </HeaderSc>
     </div>
   );
 };
 
 export default Header;
-

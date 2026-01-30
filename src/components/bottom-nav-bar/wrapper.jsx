@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const WrapperStyled = styled.div`
+export const WrapperSc = styled.div`
   width: 100%;
   background-color: hsla(var(--primary-50), 0.7);
   border-top: 1px solid hsla(var(--primary-50), 0.2);
@@ -41,4 +41,3 @@ export const WrapperStyled = styled.div`
     }
   }
 `;
-

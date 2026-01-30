@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StatusStyled = styled.div`
+export const StatusSc = styled.div`
   width: fit-content;
   box-sizing: border-box;
   display: flex;

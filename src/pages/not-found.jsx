@@ -108,7 +108,7 @@ const CartIcon = styled.svg`
   filter: drop-shadow(0 10px 20px hsla(var(--primary-value), 0.15));
 `;
 
-const StyledLink = styled(Link)`
+const LinkSc = styled(Link)`
   display: inline-block;
   text-decoration: none;
 `;
@@ -178,7 +178,7 @@ const NotFound = () => {
           outro corredor.
         </Description>
 
-        <StyledLink to="/">
+        <LinkSc to="/">
           <Button variant="primary" size="lg">
             <svg
               width="20"
@@ -194,7 +194,7 @@ const NotFound = () => {
             </svg>
             Voltar para Home
           </Button>
-        </StyledLink>
+        </LinkSc>
       </Content>
     </Container>
   );

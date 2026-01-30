@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const AnnouncementStyled = styled.div`
+export const AnnouncementSc = styled.div`
   width: 100%;
   margin: auto;
   display: flex;
@@ -46,4 +46,3 @@ export const AnnouncementStyled = styled.div`
     }
   }
 `;
-

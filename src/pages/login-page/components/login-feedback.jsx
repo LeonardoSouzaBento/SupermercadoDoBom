@@ -1,79 +1,75 @@
-import {
-  DivApiReturnStyled,
-  SpanApiReturnStyled,
-} from '@pages/my-account/components/register-address/stylized-tags';
+import { ReturnWrapperSc, ProgressIconSc } from '@pages/my-account/components/ui';
 
 const LoginReturn = ({ loginState }) => {
   return (
     <>
       {loginState === 'checking' && (
-        <DivApiReturnStyled>
-          <SpanApiReturnStyled className="material-symbols-rounded" $wait={true}>
+        <ReturnWrapperSc>
+          <ProgressIconSc className="material-symbols-rounded" $wait={true}>
             progress_activity
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
           <p>Consultando seu cadastro...</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {loginState === 'pending' && (
-        <DivApiReturnStyled>
-          <SpanApiReturnStyled className="material-symbols-rounded" $wait={true}>
+        <ReturnWrapperSc>
+          <ProgressIconSc className="material-symbols-rounded" $wait={true}>
             progress_activity
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
           <p>Fazendo Login...</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {loginState === 'completed' && (
-        <DivApiReturnStyled>
-          <SpanApiReturnStyled className="material-symbols-outlined" $check={true}>
+        <ReturnWrapperSc>
+          <ProgressIconSc className="material-symbols-outlined" $check={true}>
             check
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
           <p>Sucesso! Usuário logado.</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {loginState === 'error' && (
-        <DivApiReturnStyled>
-          <SpanApiReturnStyled className="material-symbols-rounded" $error={true}>
+        <ReturnWrapperSc>
+          <ProgressIconSc className="material-symbols-rounded" $error={true}>
             exclamation
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
           <p>
             <strong>Erro: </strong> o login falhou, tente novamente ou tente de outro modo.
           </p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {/*Para reset de senha*/}
       {loginState === 'resetPending' && (
-        <DivApiReturnStyled>
-          <SpanApiReturnStyled className="material-symbols-rounded" $wait={true}>
+        <ReturnWrapperSc>
+          <ProgressIconSc className="material-symbols-rounded" $wait={true}>
             progress_activity
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
           <p>Por favor, aguarde...</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {loginState === 'resetSucess' && (
-        <DivApiReturnStyled>
-          <SpanApiReturnStyled className="material-symbols-outlined" $check={true}>
+        <ReturnWrapperSc>
+          <ProgressIconSc className="material-symbols-outlined" $check={true}>
             check
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
           <p>Verifique seu e-mail.</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {loginState === 'resetError' && (
-        <DivApiReturnStyled>
-          <SpanApiReturnStyled className="material-symbols-rounded" $error={true}>
+        <ReturnWrapperSc>
+          <ProgressIconSc className="material-symbols-rounded" $error={true}>
             error
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
           <p>Ocorreu um erro ao enviar o e-mail de recuperação.</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
     </>
   );
 };
 
 export default LoginReturn;
-

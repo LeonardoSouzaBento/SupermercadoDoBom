@@ -2,7 +2,7 @@ import { MuiIcon } from '@ui/index';
 import React from 'react';
 import styled from 'styled-components';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   width: 100%;
   height: max-content;
   display: flex;
@@ -35,17 +35,18 @@ const WrapperStyled = styled.div`
 
 const ValueWarn = ({ scaleWarnnig, faltaFormatada }) => {
   return (
-    <WrapperStyled $scale={scaleWarnnig} id="warn">
+    <WrapperSc $scale={scaleWarnnig} id="warn">
       <div>
         <MuiIcon icon="error" size="h5" margin="3px 0 0 0" />
       </div>
       <div>
         <h6>Aviso</h6>
-        <p>Faltam R$ {faltaFormatada} para o <strong>valor mínimo</strong> de R$ 40,00</p>
+        <p>
+          Faltam R$ {faltaFormatada} para o <strong>valor mínimo</strong> de R$ 40,00
+        </p>
       </div>
-    </WrapperStyled>
+    </WrapperSc>
   );
 };
 
 export default ValueWarn;
-

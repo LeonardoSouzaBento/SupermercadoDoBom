@@ -1,4 +1,4 @@
-import { DivToCoverStyled } from '@components/generic-stylized-tags';
+import { DivToCoverSc } from '@components/generic-tags';
 import { UserDataContext } from '@contexts/UserDataContext';
 import { Button } from '@ui/button';
 import {
@@ -15,7 +15,7 @@ import {
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import { CheckIconStyled, StatusStyled } from '../ui';
+import { CheckIconSc, StatusSc } from './ui';
 import { validatePhoneNumber, formatPhoneNumber } from '@/utils/index';
 
 const phoneTypes = [
@@ -29,7 +29,7 @@ const phoneTypes = [
   },
 ];
 
-export const Contact = () => {
+const Contact = () => {
   const { userContact, setUserContact, isDataComplete, setIsDataComplete } =
     useContext(UserDataContext);
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -122,7 +122,7 @@ export const Contact = () => {
   return (
     <Card>
       {isDataComplete.contact && (
-        <CheckIconStyled className="material-symbols-rounded">check</CheckIconStyled>
+        <CheckIconSc className="material-symbols-rounded">check</CheckIconSc>
       )}
       <CardHeader
         mb={0.75}
@@ -140,14 +140,14 @@ export const Contact = () => {
 
         {/*Estado do número*/}
         {!isDataComplete.contact && (
-          <StatusStyled $contact={true}>
+          <StatusSc $contact={true}>
             <div>
               <span className="material-symbols-rounded">
                 {isDataComplete.contact ? 'check' : 'priority_high'}
               </span>
               <p>{isDataComplete.contact ? 'Número salvo' : 'Sem um número'}</p>
             </div>
-          </StatusStyled>
+          </StatusSc>
         )}
       </CardHeader>
 
@@ -221,7 +221,7 @@ export const Contact = () => {
             </ButtonsWrapper>
             <ButtonsWrapper style={{ marginTop: '16px' }}>
               <Button
-                wFull
+                flex
                 variant="ghost"
                 onClick={() => {
                   setSeeInput(false);
@@ -242,7 +242,7 @@ export const Contact = () => {
         )}
 
         {seeLoginWarn && (
-          <DivToCoverStyled>
+          <DivToCoverSc>
             <p
               $nameUser={true}
               style={{
@@ -253,11 +253,11 @@ export const Contact = () => {
               }}>
               Faça login primeiro!
             </p>
-          </DivToCoverStyled>
+          </DivToCoverSc>
         )}
       </CardContent>
     </Card>
   );
 };
 
-export default Contact;
+export { Contact };

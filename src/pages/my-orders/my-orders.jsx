@@ -1,7 +1,7 @@
 import BottomNavBar from '@components/bottom-nav-bar';
 import styled from 'styled-components';
 
-const DivStyled = styled.div`
+const DivSc = styled.div`
   width: 100%;
   height: calc(100vh - 56px);
   display: flex;
@@ -9,7 +9,7 @@ const DivStyled = styled.div`
   align-items: center;
 `;
 
-const PStyled = styled.p`
+const PSc = styled.p`
   padding: 16px 24px;
   background-color: var(--white-foreground);
   border-radius: 12px;
@@ -20,13 +20,12 @@ const PStyled = styled.p`
 const MyOrders = () => {
   return (
     <>
-      <DivStyled>
-        <PStyled>Essa página ainda não foi feita</PStyled>
-      </DivStyled>
+      <DivSc>
+        <PSc>Essa página ainda não foi feita</PSc>
+      </DivSc>
       <BottomNavBar />
     </>
   );
 };
 
 export default MyOrders;
-

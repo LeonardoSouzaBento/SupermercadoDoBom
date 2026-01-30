@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ContainerStyled = styled.div`
+export const ContainerSc = styled.div`
   width: 100%;
   height: max-content;
   position: relative;

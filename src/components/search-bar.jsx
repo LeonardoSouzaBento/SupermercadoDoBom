@@ -1,4 +1,4 @@
-import { CompletionsStyled, ContainerStyled, HelpMessage } from '@components/search-bar/index';
+import { CompletionsSc, ContainerSc, HelpMessage } from '@components/search-bar/index';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import { allProductsForSearch } from '@data/productList';
 import { Button } from '@ui/button';
@@ -209,7 +209,7 @@ function SearchBar({ copy, onHome }) {
   }, []);
 
   return (
-    <ContainerStyled $copy={copy}>
+    <ContainerSc $copy={copy}>
       <form
         style={{ position: 'relative' }}
         onSubmit={(e) => {
@@ -243,7 +243,7 @@ function SearchBar({ copy, onHome }) {
       </form>
 
       {completions != '' && (
-        <CompletionsStyled $copy={copy}>
+        <CompletionsSc $copy={copy}>
           {completions.map((suggestion, i) => (
             <div
               key={i}
@@ -267,9 +267,9 @@ function SearchBar({ copy, onHome }) {
               <p>{suggestion}...</p>
             </div>
           ))}
-        </CompletionsStyled>
+        </CompletionsSc>
       )}
-    </ContainerStyled>
+    </ContainerSc>
   );
 }
 export default SearchBar;

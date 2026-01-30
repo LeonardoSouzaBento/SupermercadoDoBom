@@ -1,10 +1,10 @@
-import { DivApiReturnStyled, SpanApiReturnStyled } from './stylized-tags';
+import { ReturnWrapperSc, ProgressIconSc } from '@pages/my-account/components/ui';
 
 const GetLocationReturn = ({ getLocationStatus, opacityReturn }) => {
   return (
     <>
       {(getLocationStatus === 'inPermission' || getLocationStatus === 'bloqued') && (
-        <DivApiReturnStyled $opacityReturn={opacityReturn}>
+        <ReturnWrapperSc $opacityReturn={opacityReturn}>
           {getLocationStatus === 'inPermission' ? (
             <p>
               <strong>Permita</strong> pegar a sua localização.
@@ -14,31 +14,30 @@ const GetLocationReturn = ({ getLocationStatus, opacityReturn }) => {
               <strong>Localização bloqueda </strong>. Permita o acesso ou tente de outro modo.
             </p>
           )}
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {getLocationStatus === 'pending' && (
-        <DivApiReturnStyled $opacityReturn={opacityReturn}>
-          <SpanApiReturnStyled className="material-symbols-outlined" $wait={true}>
+        <ReturnWrapperSc $opacityReturn={opacityReturn}>
+          <ProgressIconSc className="material-symbols-outlined" $wait={true}>
             progress_activity
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
           <p>Pegando sua localização</p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
 
       {getLocationStatus === 'error' && (
-        <DivApiReturnStyled $opacityReturn={opacityReturn}>
-          <SpanApiReturnStyled className="material-symbols-outlined" $error={true}>
+        <ReturnWrapperSc $opacityReturn={opacityReturn}>
+          <ProgressIconSc className="material-symbols-outlined" $error={true}>
             exclamation
-          </SpanApiReturnStyled>
+          </ProgressIconSc>
           <p>
             <strong>Erro: </strong>não conseguimos pegar sua localização
           </p>
-        </DivApiReturnStyled>
+        </ReturnWrapperSc>
       )}
     </>
   );
 };
 
 export default GetLocationReturn;
-

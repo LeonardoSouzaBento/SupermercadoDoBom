@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MainWrapperStyled = styled.div`
+export const MainWrapperSc = styled.div`
   width: 100%;
   max-width: 768px;
   min-height: 100%;
@@ -87,4 +87,3 @@ export const MainWrapperStyled = styled.div`
     filter: grayscale(33%);
   }
 `;
-

@@ -7,7 +7,7 @@ import { VisibilityContext } from '@contexts/VisibilityContext';
 import { UserDataContext } from '@contexts/UserDataContext';
 import styled from 'styled-components';
 
-const DivStyled = styled.div`
+const DivSc = styled.div`
   position: relative;
   min-height: 100vh;
   min-width: 100vw;
@@ -33,10 +33,10 @@ const SearchPage = () => {
 
   return (
     <>
-      <DivStyled $opacityState={opacityState}>
+      <DivSc $opacityState={opacityState}>
         <SearchBar copy={true} onHome={false} />
         {canClick && <ProductList variant={'search'} productList={searchProducts} />}
-      </DivStyled>
+      </DivSc>
       {viewProductInFull && <ProductInFull />}
       <BottomNavBar search={true} />
     </>
@@ -44,4 +44,3 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
-

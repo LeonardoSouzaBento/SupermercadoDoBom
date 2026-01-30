@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ListContainerStyled = styled.div`
+export const ListContainerSc = styled.div`
   width: auto;
   height: max-content;
   margin-bottom: 12px;
@@ -74,4 +74,3 @@ export const ListContainerStyled = styled.div`
       }
     `}
 `;
-

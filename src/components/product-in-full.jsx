@@ -1,4 +1,4 @@
-import { ButtonGroup, ContainerStyled, ProductData } from '@components/product-full/index';
+import { ButtonGroup, ContainerSc, ProductData } from '@components/product-full/index';
 import { CartContext } from '@contexts/CartContext';
 import { HomeDivsContext } from '@contexts/HomeDivsContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
@@ -105,7 +105,7 @@ const ProductInFull = () => {
   // const secondHalf = exampleProducts.slice(middleIndex);
 
   return (
-    <ContainerStyled
+    <ContainerSc
       $translate={translateYState}
       style={{
         backgroundColor: seeSpanClose ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0)',
@@ -153,9 +153,8 @@ const ProductInFull = () => {
           <p id="warning">*Essa parte ainda será desenvolvida*</p>
         </div>
       </div>
-    </ContainerStyled>
+    </ContainerSc>
   );
 };
 
 export default ProductInFull;
-

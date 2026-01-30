@@ -4,9 +4,8 @@ import { UserDataContext } from '@contexts/UserDataContext';
 import { VisibilityContext } from '@contexts/VisibilityContext';
 import PageHeader from '@ui/page-header';
 import { useContext, useEffect, useState } from 'react';
-import { Address, Contact, FinishShopping, Profile } from './components';
-import RegisterAddress from './components/register-address';
-import { MainStyled } from './ui/main';
+import { Address, Contact, FinishShopping, GetAddressModal, Profile } from './components';
+import { MainSc } from './components/ui/main';
 
 const MyAccount = () => {
   const { userContact, isDataComplete, userAddress } = useContext(UserDataContext);
@@ -36,7 +35,7 @@ const MyAccount = () => {
     <>
       <PageHeader title="Minha conta" />
 
-      <MainStyled>
+      <MainSc>
         <Profile userContact={userContact} />
         <Contact />
 
@@ -51,13 +50,12 @@ const MyAccount = () => {
           isDataComplete={isDataComplete}
           currentOrder={currentOrder}
         />
-      </MainStyled>
+      </MainSc>
 
-      {seeRegisterAddress && <RegisterAddress setSeeRegisterAddress={setSeeRegisterAddress} />}
+      {seeRegisterAddress && <GetAddressModal setSeeRegisterAddress={setSeeRegisterAddress} />}
       <BottomNavBar />
     </>
   );
 };
 
 export default MyAccount;
-

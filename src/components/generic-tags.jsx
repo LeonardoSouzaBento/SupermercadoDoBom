@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 
-export const H1BaseStyled = styled.h1`
+export const H1BaseSc = styled.h1`
   color: var(--white-foreground);
   font-weight: 700;
   text-align: center;
   user-select: none;
 `;
 
-export const H2BaseStyled = styled.h2`
+export const H2BaseSc = styled.h2`
   color: var(--dark-primary);
   text-align: center;
   user-select: none;
@@ -33,7 +33,7 @@ export const PButtonBase = styled.p`
   color: var(--white-foreground);
 `;
 
-export const DivToCoverStyled = styled(CentralizeDiv)`
+export const DivToCoverSc = styled(CentralizeDiv)`
   width: 100%;
   height: 100%;
   position: absolute;
@@ -43,4 +43,3 @@ export const DivToCoverStyled = styled(CentralizeDiv)`
   background-color: var(--white-foreground);
   border-radius: 12px;
 `;
-

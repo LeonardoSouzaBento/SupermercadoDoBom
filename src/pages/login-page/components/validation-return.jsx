@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const WrapperStyled = styled.div`
+const WrapperSc = styled.div`
   width: 100%;
   box-sizing: border-box;
   background-color: var(--background);
@@ -10,7 +10,7 @@ const WrapperStyled = styled.div`
   border-radius: 9px;
 `;
 
-const RowStyled = styled.div`
+const RowSc = styled.div`
   min-height: 32px;
   width: max-content;
   display: flex;
@@ -49,7 +49,7 @@ const RowStyled = styled.div`
   }
 `;
 
-const ExampleStyled = styled.p`
+const ExampleSc = styled.p`
   background-color: var(--white-foreground);
   padding: 8px;
   font-size: var(--text-sm);
@@ -59,54 +59,53 @@ const ExampleStyled = styled.p`
 
 const PasswordValidationReturn = ({ validacao }) => {
   return (
-    <WrapperStyled>
-      <RowStyled $first>
+    <WrapperSc>
+      <RowSc $first>
         <p>
           <strong>Sua senha deve ter:</strong>
         </p>
-      </RowStyled>
+      </RowSc>
 
-      <RowStyled $check={validacao.tamanhoMinimo}>
+      <RowSc $check={validacao.tamanhoMinimo}>
         <span className="material-symbols-outlined">
           {validacao.tamanhoMinimo ? 'check' : 'exclamation'}
         </span>
         <p>8 digitos:</p>
-      </RowStyled>
+      </RowSc>
 
-      <RowStyled $check={validacao.temMaiuscula}>
+      <RowSc $check={validacao.temMaiuscula}>
         <span className="material-symbols-outlined">
           {validacao.temMaiuscula ? 'check' : 'exclamation'}
         </span>
         <p>1 Maiúsculo(A-Z)</p>
-      </RowStyled>
+      </RowSc>
 
-      <RowStyled $check={validacao.temMinuscula}>
+      <RowSc $check={validacao.temMinuscula}>
         <span className="material-symbols-outlined">
           {validacao.temMinuscula ? 'check' : 'exclamation'}
         </span>
         <p>1 Minúsculo (a-z)</p>
-      </RowStyled>
+      </RowSc>
 
-      <RowStyled $check={validacao.temNumero}>
+      <RowSc $check={validacao.temNumero}>
         <span className="material-symbols-outlined">
           {validacao.temNumero ? 'check' : 'exclamation'}
         </span>
         <p>1 Número (0-9)</p>
-      </RowStyled>
+      </RowSc>
 
-      <RowStyled $check={validacao.temSimbolo}>
+      <RowSc $check={validacao.temSimbolo}>
         <span className="material-symbols-outlined">
           {validacao.temSimbolo ? 'check' : 'exclamation'}
         </span>
-        <RowStyled $last>
+        <RowSc $last>
           <p>1 Símbolo especial</p>
           <p>(!@#$%^&*)</p>
-        </RowStyled>
-      </RowStyled>
-      <ExampleStyled>Exemplo: J@iro450Love</ExampleStyled>
-    </WrapperStyled>
+        </RowSc>
+      </RowSc>
+      <ExampleSc>Exemplo: J@iro450Love</ExampleSc>
+    </WrapperSc>
   );
 };
 
 export default PasswordValidationReturn;
-
