@@ -58,12 +58,12 @@ function HomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (idToken) {
-      console.log('Sim');
-    }
-    // if (!idToken) {
-    //   navigate("/fazer-login");
+    // if (idToken) {
+    //   console.log('Sim');
     // }
+    if (!idToken) {
+      navigate("/fazer-login");
+    }
     //resize para avisar mudanças de largura
     windowWidthInitialRef.current = window.innerWidth;
     function handleResize() {

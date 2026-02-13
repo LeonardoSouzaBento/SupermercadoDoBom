@@ -17,11 +17,17 @@ export const ContainerSc = styled.div`
     width: 100%;
     box-sizing: border-box;
     display: flex;
+    padding-right: 12px;
     justify-content: center;
     flex-direction: column;
     text-align: center;
     margin-bottom: 1.5ex;
-
+    @media screen and (min-width: 576px) {
+      padding-right: 16px;
+    }
+    @media screen and (min-width: 1200px) {
+      padding-right: 0;
+    }
     & > h3,
     p {
       min-width: 100%;

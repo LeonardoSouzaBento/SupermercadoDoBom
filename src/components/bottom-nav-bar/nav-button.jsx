@@ -11,14 +11,6 @@ const WrapperSc = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  & > button {
-    width: auto;
-    gap: -4px;
-    padding-inline: 1.1em;
-  }
-  @media screen and (min-width: 840px) {
-    padding-inline: 12px;
-  }
 `;
 
 const NameButtonSc = styled.p`
