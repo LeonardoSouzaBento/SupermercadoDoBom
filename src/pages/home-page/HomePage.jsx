@@ -2,9 +2,6 @@ import ProductInFull from "@components/product-in-full";
 import { HomeDivsContext } from "@contexts/HomeDivsContext";
 import { UserDataContext } from "@contexts/UserDataContext";
 import { VisibilityContext } from "@contexts/VisibilityContext";
-import { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import {
   AnnouncementSection,
   CategoriesSection,
@@ -12,6 +9,8 @@ import {
   OptionsMenu,
   ProductListHome,
 } from "@pages/home-page/components/index";
+import { useContext, useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 const MainSc = styled.main`
   max-width: 1400px;
@@ -54,15 +53,8 @@ function HomePage() {
   const windowWidthInitialRef = useRef(0);
   const [wasResize, setWasResize] = useState(0);
   const divRef = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    // if (idToken) {
-    //   console.log("Sim");
-    // }
-    if (!idToken) {
-      navigate("/fazer-login");
-    }
     //resize para avisar mudanças de largura
     windowWidthInitialRef.current = window.innerWidth;
     function handleResize() {
