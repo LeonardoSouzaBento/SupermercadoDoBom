@@ -1,20 +1,20 @@
-import { UserDataContext } from '@contexts/UserDataContext';
-import { Button } from '@ui/button';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useContext } from 'react';
-import { css } from 'styled-components';
-import { auth } from '../../../main';
+import { UserDataContext } from "@contexts/UserDataContext";
+import { Button } from "@ui/button";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useContext } from "react";
+import { auth } from "../../../main";
 
 const provider = new GoogleAuthProvider();
 
 const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
-  const { setIdToken, userContact, setUserContact } = useContext(UserDataContext);
+  const { setIdToken, userContact, setUserContact } =
+    useContext(UserDataContext);
 
   async function handleGoogleLogin() {
-    setLoginState('pending');
+    setLoginState("pending");
     try {
       provider.setCustomParameters({
-        prompt: 'select_account',
+        prompt: "select_account",
       });
 
       const result = await signInWithPopup(auth, provider);
@@ -30,39 +30,38 @@ const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
       setIdToken(idToken);
 
       const response = await fetch(
-        'https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-google',
+        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-google",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${idToken}`,
           },
-        },
+        }
       );
 
       if (!response.ok) {
-        setLoginState('Error');
-        throw new Error('Erro no login: ' + response.statusText);
+        setLoginState("Error");
+        throw new Error("Erro no login: " + response.statusText);
       }
 
       setLoginSucess();
       const data = await response.json();
-      console.log('Resposta do backend:', data);
+      console.log("Resposta do backend:", data);
     } catch (error) {
-      setLoginState('error');
+      setLoginState("error");
       console.log(error);
     }
   }
   return (
-    <Button
-      variant="primary"
-      wFull
-      styles={css`
-        margin-bottom: 16px;
-      `}
-      onClick={handleGoogleLogin}>
+    <Button variant="primary" wFull onClick={handleGoogleLogin}>
       {/* Logo Google */}
-      <svg width="20" height="20" viewBox="0 0 24 24" aria-label="Login com Google">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        aria-label="Login com Google"
+      >
         <path
           fill="#4285F4"
           d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57 c2.08-1.92 

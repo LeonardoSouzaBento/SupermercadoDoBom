@@ -1,18 +1,17 @@
-import BottomNavBar from '@components/bottom-nav-bar';
-import ProductInFull from '@components/product-in-full';
-import { HomeDivsContext } from '@contexts/HomeDivsContext';
-import { UserDataContext } from '@contexts/UserDataContext';
-import { VisibilityContext } from '@contexts/VisibilityContext';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import ProductInFull from "@components/product-in-full";
+import { HomeDivsContext } from "@contexts/HomeDivsContext";
+import { UserDataContext } from "@contexts/UserDataContext";
+import { VisibilityContext } from "@contexts/VisibilityContext";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import {
   AnnouncementSection,
   CategoriesSection,
   Header,
   OptionsMenu,
   ProductListHome,
-} from '@pages/home-page/components/index';
+} from "@pages/home-page/components/index";
 
 const MainSc = styled.main`
   max-width: 1400px;
@@ -21,7 +20,7 @@ const MainSc = styled.main`
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     width: 100%;
     height: 24px; //24
     position: absolute;
@@ -59,7 +58,7 @@ function HomePage() {
 
   useEffect(() => {
     // if (idToken) {
-    //   console.log('Sim');
+    //   console.log("Sim");
     // }
     if (!idToken) {
       navigate("/fazer-login");
@@ -80,10 +79,10 @@ function HomePage() {
       }, 300);
     }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       if (resizeDowntime.current) {
         clearTimeout(resizeDowntime.current);
       }
@@ -92,7 +91,9 @@ function HomePage() {
 
   return (
     <div ref={divRef}>
-      {viewOptions && <OptionsMenu setViewOptions={setViewOptions} idToken={idToken} />}
+      {viewOptions && (
+        <OptionsMenu setViewOptions={setViewOptions} idToken={idToken} />
+      )}
 
       <div>
         <Header setViewOptions={setViewOptions} />
@@ -100,12 +101,14 @@ function HomePage() {
           <AnnouncementSection wasResize={wasResize} />
           <ProductFeedDivSc>
             <CategoriesSection wasResize={wasResize} />
-            <ProductListHome categoryKey={currentCategory} wasResize={wasResize} />
+            <ProductListHome
+              categoryKey={currentCategory}
+              wasResize={wasResize}
+            />
           </ProductFeedDivSc>
         </MainSc>
       </div>
       {viewProductInFull && <ProductInFull />}
-      <BottomNavBar />
     </div>
   );
 }

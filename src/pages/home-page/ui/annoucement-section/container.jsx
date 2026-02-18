@@ -5,7 +5,7 @@ export const ContainerSc = styled.section`
   position: relative;
   overflow-x: hidden;
   padding-bottom: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   border-radius: 0 0 20px 20px;
   border-top: 1px solid hsla(var(--primary-50), 0.18);
   @media screen and (min-width: 1201px) {

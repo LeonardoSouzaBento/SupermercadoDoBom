@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const CategoryCardSc = styled.div`
   min-width: 120px;
   padding: 16px;
+  padding-bottom: 14px;
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;

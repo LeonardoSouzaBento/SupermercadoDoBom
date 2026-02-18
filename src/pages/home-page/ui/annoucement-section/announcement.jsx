@@ -11,7 +11,6 @@ export const AnnouncementSc = styled.div`
   box-shadow: var(--shadow-lg);
   padding: 24px;
   padding-top: 12px;
-  margin-bottom: 4px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   &::-webkit-scrollbar {

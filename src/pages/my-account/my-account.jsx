@@ -1,15 +1,22 @@
-import BottomNavBar from '@components/bottom-nav-bar';
-import { CartContext } from '@contexts/CartContext';
-import { UserDataContext } from '@contexts/UserDataContext';
-import { VisibilityContext } from '@contexts/VisibilityContext';
-import PageHeader from '@ui/page-header';
-import { useContext, useEffect, useState } from 'react';
-import { Address, Contact, FinishShopping, GetAddressModal, Profile } from './components';
-import { MainSc } from './components/ui/main';
+import { CartContext } from "@contexts/CartContext";
+import { UserDataContext } from "@contexts/UserDataContext";
+import { VisibilityContext } from "@contexts/VisibilityContext";
+import PageHeader from "@ui/page-header";
+import { useContext, useEffect, useState } from "react";
+import {
+  Address,
+  Contact,
+  FinishShopping,
+  GetAddressModal,
+  Profile,
+} from "./components";
+import { MainSc } from "./components/ui/main";
 
 const MyAccount = () => {
-  const { userContact, isDataComplete, userAddress } = useContext(UserDataContext);
-  const { currentOrder, setCurrentOrder, cartProducts } = useContext(CartContext);
+  const { userContact, isDataComplete, userAddress } =
+    useContext(UserDataContext);
+  const { currentOrder, setCurrentOrder, cartProducts } =
+    useContext(CartContext);
   const { setOnMyAccount } = useContext(VisibilityContext);
   const [seeRegisterAddress, setSeeRegisterAddress] = useState(false);
 
@@ -19,10 +26,10 @@ const MyAccount = () => {
     const voidCart = cartProducts.length === 0;
 
     if (pendingOrderInfo) {
-      setCurrentOrder({ ...currentOrder, status: 'pending' });
+      setCurrentOrder({ ...currentOrder, status: "pending" });
     }
     if (voidCart) {
-      setCurrentOrder({ ...currentOrder, status: '' });
+      setCurrentOrder({ ...currentOrder, status: "" });
     }
     requestAnimationFrame(() => {
       window.scrollTo(0, 0);
@@ -52,8 +59,9 @@ const MyAccount = () => {
         />
       </MainSc>
 
-      {seeRegisterAddress && <GetAddressModal setSeeRegisterAddress={setSeeRegisterAddress} />}
-      <BottomNavBar />
+      {seeRegisterAddress && (
+        <GetAddressModal setSeeRegisterAddress={setSeeRegisterAddress} />
+      )}
     </>
   );
 };

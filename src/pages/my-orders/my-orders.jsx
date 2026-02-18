@@ -1,6 +1,6 @@
-import { flexCenter } from '@/css/baseStyles';
-import BottomNavBar from '@components/bottom-nav-bar';
-import styled from 'styled-components';
+import { flexCenter } from "@/css/baseStyles";
+
+import styled from "styled-components";
 
 const DivSc = styled.div`
   width: 100%;
@@ -22,7 +22,7 @@ const LogoSc = styled.div`
   width: 72px;
   height: 72px;
   ${flexCenter};
-  background-image: linear-gradient(135deg, var(--red-brand), #B50016);
+  background-image: linear-gradient(135deg, var(--red-brand), #b50016);
   border-radius: 12px;
   color: var(--white-foreground);
   font-size: 52px;
@@ -36,10 +36,7 @@ const MyOrders = () => {
       <DivSc>
         <PSc>Essa página ainda não foi feita</PSc>
       </DivSc>
-      <LogoSc>
-        B
-      </LogoSc>
-      <BottomNavBar />
+      <LogoSc>B</LogoSc>
     </>
   );
 };
