@@ -122,7 +122,7 @@ const ProductInFull = () => {
           size="icon-sm"
           variant="secondary"
           onClick={handleClickClose}>
-          <Icon LucideIcon={X} size="xl" />
+          <Icon Icon={X} size="xl" />
         </Button>
 
         <div id="product-full-section">

@@ -21,7 +21,7 @@ const Header = ({ setViewOptions }) => {
       <HeaderSc>
         <div id="logo-name">
           <div id="logo">
-            <Icon LucideIcon={HeartHandshake} size="34px" strokeWidth={2.5} />
+            <Icon Icon={HeartHandshake} size="34px" strokeWidth={2.5} />
           </div>
           <div id="nome">
             <h1>{supermarketName}</h1>
@@ -30,7 +30,7 @@ const Header = ({ setViewOptions }) => {
         </div>
         <SearchBar onHome={true} />
         <Button onPointerDown={handleClick} variant="red" size="icon">
-          <Icon LucideIcon={Menu} size="h5" />
+          <Icon Icon={Menu} size="h5" />
           <p>Mais opções</p>
         </Button>
       </HeaderSc>

@@ -1,8 +1,9 @@
 import { Button } from '@ui/button';
-import { Card, CardHeader, CardTitle, MuiIcon } from '@ui/index';
+import { Card, CardHeader, CardTitle, Icon, MuiIcon } from '@ui/index';
 import { useNavigate } from 'react-router-dom';
 import { StatusSc } from './ui';
 import { css } from 'styled-components';
+import { ShoppingCart } from 'lucide-react';
 
 const FinishShopping = ({ isDataComplete, currentOrder, userContact }) => {
   const enable =
@@ -30,7 +31,7 @@ const FinishShopping = ({ isDataComplete, currentOrder, userContact }) => {
           justify-content: space-between;
         `}>
         <CardTitle>
-          <MuiIcon fill={1} icon="shopping_bag" size="3xl" />
+         <Icon Icon={ShoppingCart} fill='currentColor' strokeWidth={"thin"} size={"2xl"} />
           <h3 style={{ marginBottom: '0px' }}>Minhas compras</h3>
         </CardTitle>
 

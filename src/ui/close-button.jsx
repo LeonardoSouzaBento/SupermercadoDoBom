@@ -21,7 +21,7 @@ const CloseButton = ({ setOpenState, size, variant, styles, ...props }) => {
         setOpenState(false);
       }}
       {...props}>
-      <Icon LucideIcon={X} size={iconSizes[size] || 'lg'} />
+      <Icon Icon={X} size={iconSizes[size] || 'lg'} />
     </Button>
   );
 };

@@ -23,7 +23,7 @@ const ProductCardHeader = ({ setSeeCancelDialog }) => {
         onClick={() => {
           setSeeCancelDialog(true);
         }}>
-        <Icon LucideIcon={Trash2} />
+        <Icon Icon={Trash2} />
       </Button>
     </div>
   );

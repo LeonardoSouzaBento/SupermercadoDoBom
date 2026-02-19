@@ -92,7 +92,7 @@ const ButtonsCard = ({ setCurrentOrder, totalAddedValue, setScaleWarnnig }) => {
           onClick={handleClickContinue}
           wFull>
           {userDataComplete ? 'Finalizar Compra' : 'Continuar'}
-          <Icon LucideIcon={userDataComplete ? Check : ArrowRight} />
+          <Icon Icon={userDataComplete ? Check : ArrowRight} />
         </Button>
         <Button
           wFull
@@ -100,7 +100,7 @@ const ButtonsCard = ({ setCurrentOrder, totalAddedValue, setScaleWarnnig }) => {
           onClick={() => {
             navigate('/buscar-produtos');
           }}>
-          <Icon LucideIcon={Plus} />
+          <Icon Icon={Plus} />
           Adicionar produtos
         </Button>
         {incompleteDataAlert && <DataAlert />}

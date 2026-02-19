@@ -41,13 +41,13 @@ export const ButtonGroup = ({
             onPointerUp={(e) => {
               handlePointerUpButtons(e, 'fewer');
             }}>
-            <Icon LucideIcon={Minus} size="lg" />
+            <Icon Icon={Minus} size="lg" />
           </Button>
 
           <p>{quantity}</p>
 
           <Button size="icon-lg" onPointerUp={handlePointerUpButtons}>
-            <Icon LucideIcon={Plus} size="lg" />
+            <Icon Icon={Plus} size="lg" />
           </Button>
         </>
       )}

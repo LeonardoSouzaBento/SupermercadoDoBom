@@ -1,11 +1,12 @@
 import { CartContext } from '@contexts/CartContext';
 import { bottomNavBarItems } from '@data/bottomNavBarItems';
 import { Button } from '@ui/button';
+import { Icon } from '@ui/index';
+import { ShoppingCart } from 'lucide-react';
 import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { NavButton, WrapperSc } from './bottom-nav-bar/index';
-import { MuiIcon } from '@ui/index';
 import { css } from 'styled-components';
+import { NavButton, WrapperSc } from './bottom-nav-bar/index';
 
 export default function BottomNavBar() {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ export default function BottomNavBar() {
               onClick={() => {
                 navigate('/meu-carrinho');
               }}>
-              <MuiIcon icon="shopping_cart" id="cartIcon" fill={1} size="3xl" weight={400} />
+              <Icon Icon={ShoppingCart} fill='true' />
               R$ {totalValueFormatted}
             </Button>
           )}

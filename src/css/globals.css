@@ -1,5 +1,5 @@
-@import 'material-symbols/rounded.css';
-@import 'material-symbols/outlined.css';
+/* @import "material-symbols/rounded.css";
+@import "material-symbols/outlined.css"; */
 
 * {
   margin: 0;
@@ -8,9 +8,9 @@
 
 :root {
   /*Fontes*/
-  --font-body: 'Open Sans', Arial, Helvetica, sans-serif;
-  --font-button: 'Montserrat', Arial, Helvetica, sans-serif;
-  --font-header: 'Lato', Arial, Helvetica, sans-serif;
+  --font-body: "Open Sans", Arial, Helvetica, sans-serif;
+  --font-button: "Montserrat", Arial, Helvetica, sans-serif;
+  --font-header: "Lato", Arial, Helvetica, sans-serif;
   /* font-sizes */
   --text-xxs: 0.8228em;
   --text-xs: 0.878em;
@@ -35,7 +35,7 @@
   --white-foreground: hsl(var(--white-value));
   --black-value: 0%, 0%, 12%;
   --black-foreground: hsl(0, 0%, 12%);
-
+  --icon-fill: hsl(224, 15%, 80%, 0.6);
   --primary-50: 225, 15%, 95%;
   --primary-100: 223, 14%, 90%;
   --primary-200: 224, 15%, 80%;
@@ -60,7 +60,7 @@
 
   --red-brand-value: 360, 66%, 50%;
   --red-brand: #d42b2b;
-  
+
   --red-brand-hover-value: 355, 78%, 56%;
   --red-brand-hover: hsl(var(--red-brand-hover-value));
 
@@ -142,7 +142,12 @@ body,
 }
 
 body {
-  background: linear-gradient(135deg, var(--light-bg), var(--medium-bg), var(--dark-bg));
+  background: linear-gradient(
+    135deg,
+    var(--light-bg),
+    var(--medium-bg),
+    var(--dark-bg)
+  );
   color: var(--black-foreground);
   width: 100%;
   max-width: 1400px;

@@ -22,7 +22,7 @@ export default function ButtonAdd({ product, setQuantity }) {
 
   return (
     <Button id="button-add" variant="secondary" size="icon-sm" onPointerUp={handlePointerUpAdd}>
-      <Icon size="xl" LucideIcon={Plus} />
+      <Icon size="xl" Icon={Plus} />
     </Button>
   );
 }

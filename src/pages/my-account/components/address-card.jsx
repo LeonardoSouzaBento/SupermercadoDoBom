@@ -1,15 +1,30 @@
-import { DivToCoverSc } from '@components/generic-tags';
-import { Button, Card, CardContent, CardHeader, CardTitle, MuiIcon } from '@ui/index';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { css } from 'styled-components';
-import { AddressWrapperSc, CheckIconSc, StatusSc } from './ui/index';
+import { DivToCoverSc } from "@components/generic-tags";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Icon,
+  MuiIcon,
+} from "@ui/index";
+import { Pencil } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { css } from "styled-components";
+import { AddressWrapperSc, CheckIconSc, StatusSc } from "./ui/index";
+import { GoHomeFill } from "react-icons/go";
 
-const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddress }) => {
+const Address = ({
+  setSeeRegisterAddress,
+  isDataComplete,
+  userContact,
+  userAddress,
+}) => {
   function GetInitialsNameState() {
-    const palavras = userAddress.estado.split(' ');
+    const palavras = userAddress.estado.split(" ");
     const iniciais = palavras.map((palavra) => palavra.charAt(0));
-    const result = iniciais.join('');
+    const result = iniciais.join("");
     return result;
   }
   const initialNameState = GetInitialsNameState();
@@ -20,7 +35,7 @@ const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddre
     setSeeLoginWarn(true);
     setTimeout(() => {
       setSeeLoginWarn(false);
-      navigate('/fazer-login');
+      navigate("/fazer-login");
     }, 3000);
   }
 
@@ -42,17 +57,23 @@ const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddre
           flex-direction: row;
           flex-wrap: wrap;
           justify-content: space-between;
-        `}>
+        `}
+      >
         <CardTitle>
-          <MuiIcon fill={1} icon="location_home" size="4xl" />
+          <Icon Icon={ GoHomeFill } size={"3xl"} filledIcon/>
           <h3>Endereço para entrega</h3>
         </CardTitle>
 
         {!isDataComplete.address ? (
           <StatusSc $address={true}>
             <div>
-              <MuiIcon icon={isDataComplete.address ? 'check' : 'priority_high'} size="xs" />
-              <p>{isDataComplete.address ? 'Endereço salvo!' : 'Sem endereço!'}</p>
+              <MuiIcon
+                icon={isDataComplete.address ? "check" : "priority_high"}
+                size="xs"
+              />
+              <p>
+                {isDataComplete.address ? "Endereço salvo!" : "Sem endereço!"}
+              </p>
             </div>
           </StatusSc>
         ) : (
@@ -65,23 +86,27 @@ const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddre
           <div className="info-wrapper">
             <div className="title first">
               <h6>Rua:</h6>
-              <p>{!userAddress.rua ? 'Não fornecido' : userAddress.rua}</p>
+              <p>{!userAddress.rua ? "Não fornecido" : userAddress.rua}</p>
             </div>
             <div className="title">
               <h6>Número:</h6>
-              <p>{!userAddress.numero ? 'Não fornecido' : userAddress.numero}</p>
+              <p>
+                {!userAddress.numero ? "Não fornecido" : userAddress.numero}
+              </p>
             </div>
             <div className="title">
               <h6>Complemento:</h6>
               <p>
-                {!userAddress.complemento ? 'Não fornecido (opcional)' : userAddress.complemento}
+                {!userAddress.complemento
+                  ? "Não fornecido (opcional)"
+                  : userAddress.complemento}
               </p>
             </div>
             <div className="title">
               <h6>Cidade (UF):</h6>
               <p>
                 {!userAddress.cidade
-                  ? 'Não fornecido'
+                  ? "Não fornecido"
                   : `${userAddress.cidade} (${
                       initialNameState ? initialNameState : userAddress.estado
                     })`}
@@ -97,7 +122,8 @@ const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddre
               position: absolute;
               bottom: 0px;
               right: 0px;
-            `}>
+            `}
+          >
             <MuiIcon icon="edit" size="3xl" weight={600} />
           </Button>
 
@@ -105,11 +131,12 @@ const Address = ({ setSeeRegisterAddress, isDataComplete, userContact, userAddre
             <DivToCoverSc>
               <p
                 style={{
-                  width: '100%',
-                  textAlign: 'center',
-                  color: 'var(--red-brand)',
+                  width: "100%",
+                  textAlign: "center",
+                  color: "var(--red-brand)",
                   fontWeight: 600,
-                }}>
+                }}
+              >
                 Faça login primeiro!
               </p>
             </DivToCoverSc>

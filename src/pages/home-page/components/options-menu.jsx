@@ -2,13 +2,15 @@ import { UserDataContext } from '@contexts/UserDataContext';
 import { ContainerSc } from '@pages/home-page/ui/more-options-menu/container';
 import { Button, Icon, MuiIcon, Separator } from '@ui/index';
 import { getAuth, signOut } from 'firebase/auth';
-import { ClipboardList, User } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react';
+import { MdAccountCircle } from 'react-icons/md';
+import { TbReceiptFilled } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 
-const contents = [
-  { p: 'Minha conta', icon: User, navigateTo: '/minha-conta' },
-  { p: 'Meus pedidos', icon: ClipboardList, navigateTo: '/meus-pedidos' },
+const links = [
+  { p: 'Minha conta', icon: MdAccountCircle , navigateTo: '/minha-conta' },
+  { p: 'Meus pedidos', icon: TbReceiptFilled, navigateTo: '/meus-pedidos' },
 ];
 
 const OptionsMenu = ({ setViewOptions, idToken }) => {
@@ -48,7 +50,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
       return;
     }
     if (p !== 'Sair do site' && canClick) {
-      navigate(contents[index].navigateTo);
+      navigate(links[index].navigateTo);
     } else {
       handleLogout();
     }
@@ -75,11 +77,11 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
         <div id="options-header">
           <h4>Mais Opções</h4>
           <Button onPointerDown={handleClickClose} size="icon-sm">
-            <MuiIcon icon="close" size="3xl" weight={400} />
+            <Icon Icon={X} size="3xl" strokeWidth={"thin"} />
           </Button>
         </div>
         <div id="options-content">
-          {contents.map((content, index) => (
+          {links.map((content, index) => (
             <Button
               key={index}
               wFull
@@ -89,7 +91,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
                 e.stopPropagation();
                 handleOpenContent(e, index, content.p);
               }}>
-              <Icon LucideIcon={content.icon} size="h6" />
+              <Icon Icon={content.icon} size="h5" filledIcon marginValue='0 0 2px 0' />
               {content.p}
             </Button>
           ))}

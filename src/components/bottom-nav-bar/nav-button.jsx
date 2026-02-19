@@ -67,7 +67,7 @@ export const NavButton = ({ item, isActive }) => {
           gap: 2px;
         `}>
         <LinkSc to={item.path}>
-          <Icon LucideIcon={item.lucidIcon} size="h5" color="var(--primary)" />
+          <Icon Icon={item.lucidIcon} size="h5" color="var(--primary)" />
           <NameButtonSc>{item.name}</NameButtonSc>
         </LinkSc>
       </Button>

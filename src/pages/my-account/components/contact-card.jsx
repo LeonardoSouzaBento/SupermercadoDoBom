@@ -1,3 +1,4 @@
+import { formatPhoneNumber, validatePhoneNumber } from '@/utils/index';
 import { DivToCoverSc } from '@components/generic-tags';
 import { UserDataContext } from '@contexts/UserDataContext';
 import { Button } from '@ui/button';
@@ -7,16 +8,17 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  Icon,
   Input,
   InputWrapper,
   Label,
   MuiIcon,
 } from '@ui/index';
+import { Pencil, Phone } from 'lucide-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
 import { CheckIconSc, StatusSc } from './ui';
-import { validatePhoneNumber, formatPhoneNumber } from '@/utils/index';
 
 const phoneTypes = [
   {
@@ -134,7 +136,7 @@ const Contact = () => {
           justify-content: space-between;
         `}>
         <CardTitle>
-          <MuiIcon fill={1} icon="call" size="3xl" />
+          <Icon Icon={Phone} fill='currentColor' strokeWidth={1} />
           <h3>Informações para contato</h3>
         </CardTitle>
 
@@ -166,7 +168,7 @@ const Contact = () => {
               {userContact.phone && <p>{userContact.phone}</p>}
             </div>
             <Button size="icon-sm" variant="secondary" onClick={openPhoneInput}>
-              <MuiIcon icon="edit" size="3xl" />
+              <Icon Icon={Pencil} size={"xl"} />
             </Button>
           </div>
         ) : (
@@ -261,3 +263,4 @@ const Contact = () => {
 };
 
 export { Contact };
+

@@ -237,7 +237,7 @@ function SearchBar({ copy, onHome }) {
           styles={css`
             box-shadow: none !important;
           `}>
-          <Icon size="lg" LucideIcon={Search} />
+          <Icon size="lg" Icon={Search} />
         </Button>
         {tipForRecruiter && viewTipState && <HelpMessage message={textOfTip} />}
       </form>

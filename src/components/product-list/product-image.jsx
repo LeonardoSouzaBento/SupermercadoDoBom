@@ -38,13 +38,13 @@ const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef })
         onPointerUp={(e) => {
           handlePointerUpButtons(e, 'fewer');
         }}>
-        <Icon size="sm" LucideIcon={Minus} />
+        <Icon size="sm" Icon={Minus} />
       </div>
 
       <p>{quantity}</p>
 
       <div onPointerUp={handlePointerUpButtons}>
-        <Icon size="sm" LucideIcon={Plus} />
+        <Icon size="sm" Icon={Plus} />
       </div>
     </ButtonGroupSc>
   );

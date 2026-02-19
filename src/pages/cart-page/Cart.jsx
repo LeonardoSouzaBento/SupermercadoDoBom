@@ -156,7 +156,7 @@ const Cart = () => {
               onClick={() => {
                 setSeeCancelDialog(true);
               }}>
-              <Icon LucideIcon={Trash2} size="h4" strokeWidth={2.4} marginValue="1px 0 0 1px" />
+              <Icon Icon={Trash2} size="h4" strokeWidth={2.4} marginValue="1px 0 0 1px" />
             </Button>
           </div>
 
