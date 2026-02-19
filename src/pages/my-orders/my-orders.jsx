@@ -1,5 +1,3 @@
-import { flexCenter } from "@/css/baseStyles";
-
 import styled from "styled-components";
 
 const DivSc = styled.div`
@@ -18,17 +16,17 @@ const PSc = styled.p`
   box-shadow: var(--shadow-sm);
 `;
 
-const LogoSc = styled.div`
-  width: 72px;
-  height: 72px;
-  ${flexCenter};
-  background-image: linear-gradient(135deg, var(--red-brand), #b50016);
-  border-radius: 12px;
-  color: var(--white-foreground);
-  font-size: 52px;
-  margin-left: 12px;
-  font-weight: 600;
-`;
+// const LogoSc = styled.div`
+//   width: 72px;
+//   height: 72px;
+//   ${flexCenter};
+//   background-image: linear-gradient(135deg, var(--red-brand), #b50016);
+//   border-radius: 12px;
+//   color: var(--white-foreground);
+//   font-size: 52px;
+//   margin-left: 12px;
+//   font-weight: 600;
+// `;
 
 const MyOrders = () => {
   return (
@@ -36,7 +34,7 @@ const MyOrders = () => {
       <DivSc>
         <PSc>Essa página ainda não foi feita</PSc>
       </DivSc>
-      <LogoSc>B</LogoSc>
+      {/* <LogoSc>B</LogoSc> */}
     </>
   );
 };
