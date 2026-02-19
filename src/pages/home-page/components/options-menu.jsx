@@ -1,14 +1,14 @@
-import { ContainerSc } from '@pages/home-page/ui/more-options-menu/container';
 import { UserDataContext } from '@contexts/UserDataContext';
-import { Button, MuiIcon, Separator, ButtonsWrapper } from '@ui/index';
+import { ContainerSc } from '@pages/home-page/ui/more-options-menu/container';
+import { Button, Icon, MuiIcon, Separator } from '@ui/index';
 import { getAuth, signOut } from 'firebase/auth';
+import { ClipboardList, User } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { css } from 'styled-components';
 
 const contents = [
-  { p: 'Minha conta', icon: 'person_edit', navigateTo: '/minha-conta' },
-  { p: 'Meus pedidos', icon: 'local_mall', navigateTo: '/meus-pedidos' },
+  { p: 'Minha conta', icon: User, navigateTo: '/minha-conta' },
+  { p: 'Meus pedidos', icon: ClipboardList, navigateTo: '/meus-pedidos' },
 ];
 
 const OptionsMenu = ({ setViewOptions, idToken }) => {
@@ -89,7 +89,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
                 e.stopPropagation();
                 handleOpenContent(e, index, content.p);
               }}>
-              <MuiIcon icon={content.icon} size="xl" fill={1} />
+              <Icon LucideIcon={content.icon} size="h6" />
               {content.p}
             </Button>
           ))}

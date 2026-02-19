@@ -47,7 +47,7 @@ export const ContainerSc = styled.div`
 
     & > div#options-content {
       height: calc(100% - 56px);
-      padding: 8px;
+      padding: 8px 4px;
       display: flex;
       flex-direction: column;
       align-items: start;

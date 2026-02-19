@@ -64,7 +64,7 @@ function CategoriesSection({ wasResize }) {
               handlePointerUpCat(e, cat.id);
             }}>
             <div id="wrapper-cat-icon">
-              <Icon LucideIcon={cat.icon} size="h5" strokeValue={2.4} />
+              <Icon LucideIcon={cat.icon} size="h5" strokeWidth={2.2} />
             </div>
             <div id="wrapper-cat-label">
               <p>{cat.label}</p>

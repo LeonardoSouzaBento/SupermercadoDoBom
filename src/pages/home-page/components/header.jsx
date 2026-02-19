@@ -21,7 +21,7 @@ const Header = ({ setViewOptions }) => {
       <HeaderSc>
         <div id="logo-name">
           <div id="logo">
-            <Icon LucideIcon={HeartHandshake} size="34px" strokeValue={2.5} />
+            <Icon LucideIcon={HeartHandshake} size="34px" strokeWidth={2.5} />
           </div>
           <div id="nome">
             <h1>{supermarketName}</h1>

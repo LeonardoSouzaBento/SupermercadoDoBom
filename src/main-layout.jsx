@@ -7,11 +7,11 @@ export function MainLayout() {
   const { idToken } = useContext(UserDataContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!idToken) {
-      navigate("/fazer-login");
-    }
-  }, [idToken]);
+  // useEffect(() => {
+  //   if (!idToken) {
+  //     navigate("/fazer-login");
+  //   }
+  // }, [idToken]);
 
   return (
     <div style={{minHeight: "100dvh"}}>

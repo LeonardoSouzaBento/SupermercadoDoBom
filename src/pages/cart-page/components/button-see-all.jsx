@@ -32,7 +32,7 @@ const ButtonSeeAll = ({
   return (
     <Button variant="ghost" size="sm" onClick={handleClickSeeAll} styles={styles}>
       Ver Tudo
-      <Icon LucideIcon={ChevronDown} size="h3" strokeValue={2.4} />
+      <Icon LucideIcon={ChevronDown} size="h3" strokeWidth={2.4} />
     </Button>
   );
 };

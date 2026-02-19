@@ -25,7 +25,7 @@ const iconSizes = {
 };
 
 export const MuiIcon = ({
-  icon,
+  name,
   size,
   fill = 0,
   weight = 600,
@@ -45,7 +45,7 @@ export const MuiIcon = ({
       $styles={styles}
       style={{ margin: margin }}
       {...props}>
-      {icon}
+      {name}
     </SpanSc>
   );
 };

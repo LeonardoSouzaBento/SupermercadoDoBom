@@ -3,12 +3,14 @@ import styled, { css } from 'styled-components';
 export const CategoryCardSc = styled.div`
   min-width: 120px;
   padding: 16px;
-  padding-bottom: 14px;
+  padding-top: 24px;
+  padding-bottom: 12px;
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: flex-end;
+  gap: 12px;
   flex: auto;
   cursor: pointer;
   position: relative;
