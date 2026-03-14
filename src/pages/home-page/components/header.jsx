@@ -27,7 +27,7 @@ const Header = ({ setViewOptions }) => {
             <p>Compre com comodidade, compre online</p>
           </div>
         </div>
-        <SearchBar onHome={true} />
+        <SearchBar onHome={true} copy={false} />
         <Button onPointerDown={handleClick} variant="red" size="icon">
           <Icon Icon={Menu} size="h5" />
           <p>Mais opções</p>

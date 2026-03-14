@@ -2,87 +2,47 @@ import styled, { css } from "styled-components";
 
 export const WrapperSc = styled.div`
   padding: 4px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 52% 48%;
+  grid-template-areas: "image info";
+
   background-color: var(--white-foreground);
   cursor: default;
-  -webkit-user-select: none;
   user-select: none;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
   transition: box-shadow 0.2s ease;
-  flex-direction: row;
+
   height: 180px;
   min-width: 270px;
   max-width: 270px;
 
-  //retrato
+  /* retrato */
   @media screen and (min-width: 385px) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: 54% 46%;
+    grid-template-areas:
+      "image"
+      "info";
+
     min-width: 170px;
     max-width: 170px;
     height: 280px;
   }
 
-  //paisagem
+  /* paisagem */
   @media screen and (min-width: 992px) {
-    flex-direction: row;
+    grid-template-columns: 48% 52%;
+    grid-template-rows: 1fr;
+    grid-template-areas: "info image";
+
     min-width: 275px;
     max-width: 275px;
     height: 177px;
   }
-
   ${(props) =>
-    props.$variant !== "cart" &&
-    css`
-      &:hover {
-        box-shadow: var(--shadow-sm);
-      }
-    `}
-
-  ${(props) =>
-    props.$variant == "cart" &&
-    css`
-      border: 1px solid var(--border);
-      flex-direction: row;
-      height: 180px;
-      min-width: 100%;
-
-      @media screen (min-width: 420px) {
-        flex-direction: column;
-      }
-    `};
-
-  ${(props) =>
-    props.$variant === "announcement" &&
-    css`
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      z-index: 2;
-
-      @media screen and (max-width: 385px) {
-        max-width: none;
-        max-height: none;
-      }
-      @media screen and (min-width: 385px) and (max-width: 992px) {
-        max-width: none;
-        max-height: none;
-        min-height: none;
-        max-height: none;
-      }
-      //paisagem
-      @media screen and (min-width: 993px) {
-        min-width: none;
-        max-width: none;
-        height: 100%;
-      }
-    `}
+    props.$variant === "cart" && "border: 1px solid hsla(var(--border-value), 0.66);"};
 `;
 
 export const InfoWrapperSc = styled.div`
@@ -91,24 +51,18 @@ export const InfoWrapperSc = styled.div`
   justify-content: center;
   box-sizing: border-box;
   padding: 8px;
-  height: 100%;
-  width: 48%;
-  padding: 1.1px;
   padding-right: 0;
+  grid-area: info;
 
   @media screen and (min-width: 385px) {
-    height: 46%;
-    width: 100%;
     order: 2;
     gap: 4px;
   }
-
   //paisagem
   @media screen and (min-width: 993px) {
-    width: 130px;
-    height: 100%;
-    padding-right: 0;
+    order: -1;
   }
+
   ${(props) =>
     props.$variant === "announcement" && "display: none !important;"};
 
@@ -186,26 +140,9 @@ export const InfoWrapperSc = styled.div`
 `;
 
 export const ImageWrapperSc = styled.div`
-  height: 100%;
-  width: 52%;
   box-sizing: border-box;
   overflow: hidden;
-
-  @media screen and (min-width: 385px) and (max-width: 992px) {
-    height: 54%;
-    width: 100%;
-  }
-
-  ${(props) =>
-    props.$variant === "announcement" &&
-    css`
-      width: 100%;
-      height: 100%;
-      @media screen and (min-width: 385px) and (max-width: 992px) {
-        width: 100%;
-        height: 100%;
-      }
-    `}
+  grid-area: image;
 
   & > div:first-child {
     width: 100%;

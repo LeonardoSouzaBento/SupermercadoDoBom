@@ -90,7 +90,7 @@
   --disable-hover: #9299a0ff;
   --dark-border: hsl(0, 0%, 85%);
   --border: hsl(221 6.29% 88%);
-  --border-value: 221 6.29% 88%;
+  --border-value: 221, 6.29%, 88%;
   --card-background: #fff;
   --card-border: hsla(221, 6.29%, 88%, 0.25);
   --pink: hsl(0, 100%, 94%);

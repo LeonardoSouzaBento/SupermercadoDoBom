@@ -28,20 +28,12 @@ export const ListContainerSc = styled.div`
         justify-content: center;
         gap: 12px;
       }
-      @media screen and (min-width: 414px) {
-        width: 414px;
-        margin: auto;
-      }
       @media screen and (min-width: 577px) {
         max-width: 90%;
-        margin: auto;
       }
       @media screen and (min-width: 768px) {
         justify-content: flex-start;
         padding-left: 24px;
-      }
-      @media screen and (min-width: 993px) {
-        max-width: 95%;
       }
     `}
   ${(props) =>
