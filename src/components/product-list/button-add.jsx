@@ -1,12 +1,12 @@
-import { CartContext } from '@contexts/CartContext';
-import { HomeDivsContext } from '@contexts/HomeDivsContext';
+import { useCartContext } from '@/contexts';
+import { HomeDivsContext } from "@/contexts/index";
 import { Button } from '@ui/button';
 import { Icon } from '@ui/icon';
 import { Plus } from 'lucide-react';
 import { useContext } from 'react';
 
 export default function ButtonAdd({ product, setQuantity }) {
-  const { handleQuantityChange } = useContext(CartContext);
+  const { handleQuantityChange } = useCartContext();
   const { isDraggingRef } = useContext(HomeDivsContext);
   function handlePointerUpAdd(e) {
     e.stopPropagation();

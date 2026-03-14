@@ -1,4 +1,4 @@
-import { HomeDivsContext } from "../Contexts/HomeDivsContext";
+import { HomeDivsContext } from "./index";
 import { useState, useRef } from "react";
 import { allProducts } from "@data/productList";
 

@@ -1,6 +1,6 @@
-import { UserDataContext } from '@contexts/UserDataContext';
+import { useUserDataContext } from '@/contexts';
 import { Button, Input, InputWrapper, Label } from '@ui/index';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import CepConvertedReturn from './cep-converted-return';
 
 const AddressForm = ({
@@ -14,7 +14,7 @@ const AddressForm = ({
   const [addressSaved, setAddressSaved] = useState('');
   const [addressComplete, setAddressComplete] = useState(false);
   const { idToken, isDataComplete, setIsDataComplete, setUserAddress } =
-    useContext(UserDataContext);
+    useUserDataContext();
   const [opacityAddressForm, setOpacityAddressForm] = useState(0);
 
   function dismountComponent() {

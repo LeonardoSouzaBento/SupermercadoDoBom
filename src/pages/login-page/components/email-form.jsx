@@ -1,13 +1,16 @@
-import { auth } from '@/main';
-import { UserDataContext } from '@contexts/UserDataContext';
-import { Button } from '@ui/button';
-import { Input, Label, WrapperInput } from '@ui/input';
-import axios from 'axios';
-import { signInWithCustomToken, signInWithEmailAndPassword } from 'firebase/auth';
-import { Eye, EyeOff } from 'lucide-react';
-import { useContext, useEffect, useState } from 'react';
-import { css } from 'styled-components';
-import PasswordValidationReturn from './validation-return';
+import { useUserDataContext } from "@/contexts";
+import { auth } from "@/main";
+import { Button } from "@ui/button";
+import { Input, Label, WrapperInput } from "@ui/input";
+import axios from "axios";
+import {
+  signInWithCustomToken,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { Eye, EyeOff } from "lucide-react";
+import { useEffect, useState } from "react";
+import { css } from "styled-components";
+import PasswordValidationReturn from "./validation-return";
 
 function validatePassword(senha) {
   const requisitos = {
@@ -18,7 +21,7 @@ function validatePassword(senha) {
     temSimbolo: /[!@#$%^&*]/.test(senha),
   };
   const valida = Object.values(requisitos).every(Boolean);
-  const excecao = senha === 'J@iro450Love';
+  const excecao = senha === "J@iro450Love";
 
   return {
     ...requisitos,
@@ -32,12 +35,17 @@ function validateEmail(email) {
   return regex.test(email);
 }
 
-const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRef }) => {
+const EmailForm = ({
+  setLoginType,
+  setLoginSucess,
+  setLoginState,
+  emailWrapperRef,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
-  const { setIdToken, userContact, setUserContact } = useContext(UserDataContext);
+  const { setIdToken, userContact, setUserContact } = useUserDataContext();
   const [emailForm, setEmailForm] = useState({
-    email: '',
-    senha: '',
+    email: "",
+    senha: "",
   });
   const [emailPassed, setEmailPassed] = useState(null);
   const [invalidEmailWarn, setInvalidEmailWarn] = useState(false);
@@ -50,7 +58,8 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
     valida: false,
   });
 
-  const [exceptionalPasswordAlert, setExceptionalPasswordAlert] = useState(false);
+  const [exceptionalPasswordAlert, setExceptionalPasswordAlert] =
+    useState(false);
 
   function showExceptionalPasswordAlert() {
     setExceptionalPasswordAlert(true);
@@ -97,35 +106,35 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
   }
 
   async function handleEmailLogin() {
-    setLoginState('pending');
+    setLoginState("pending");
     setUserContact({
       ...userContact,
       email: emailForm.email,
     });
     try {
       // 1. Tenta login normal
-      setLoginState('checking');
+      setLoginState("checking");
       const userCredential = await signInWithEmailAndPassword(
         auth,
         emailForm.email,
-        emailForm.senha,
+        emailForm.senha
       );
       const idToken = await userCredential.user.getIdToken();
 
       setIdToken(idToken);
       setLoginSucess();
-      console.log('Login bem-sucedido!');
+      console.log("Login bem-sucedido!");
     } catch (error) {
       // 2. Se usuário não existir → chama backend
-      setLoginState('pending');
-      if (error.code === 'auth/user-not-found') {
+      setLoginState("pending");
+      if (error.code === "auth/user-not-found") {
         try {
           const response = await axios.post(
-            'https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-email',
+            "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-email",
             {
               email: emailForm.email,
               senha: emailForm.senha,
-            },
+            }
           );
 
           const { token: customToken } = await response.data; // do backend
@@ -134,17 +143,17 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
 
           setIdToken(idToken);
           setLoginSucess();
-          console.log('Login bem-sucedido!');
+          console.log("Login bem-sucedido!");
         } catch (backendError) {
-          setLoginState('error');
-          console.error('Erro no backend:', backendError);
+          setLoginState("error");
+          console.error("Erro no backend:", backendError);
         }
-      } else if (error.code === 'auth/wrong-password') {
-        setLoginState('error');
-        console.error('Senha incorreta');
+      } else if (error.code === "auth/wrong-password") {
+        setLoginState("error");
+        console.error("Senha incorreta");
       } else {
-        setLoginState('error');
-        console.error('Erro desconhecido:', error);
+        setLoginState("error");
+        console.error("Erro desconhecido:", error);
       }
     }
   }
@@ -155,7 +164,7 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
   }, [emailForm.senha]);
 
   return (
-    <form style={{ paddingTop: '8px' }}>
+    <form style={{ paddingTop: "8px" }}>
       <WrapperInput ref={emailWrapperRef}>
         <Label htmlFor="email">E-mail</Label>
         <Input
@@ -184,12 +193,13 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
               color: var(--primary);
             }
           }
-        `}>
+        `}
+      >
         <Label>Senha</Label>
         <div>
           <Input
             name="senha"
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword ? "text" : "password"}
             placeholder="Digite sua senha"
             onChange={handleTyping}
             required
@@ -208,8 +218,9 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
           margin-bottom: 1.65ex;
         `}
         onClick={() => {
-          setLoginType('resetPassword');
-        }}>
+          setLoginType("resetPassword");
+        }}
+      >
         Esqueci Minha Senha
       </Button>
 
@@ -220,19 +231,21 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
       <Button
         type="submit"
         variant="primary"
-        styles={'margin-bottom: 18px;'}
+        styles={"margin-bottom: 18px;"}
         disabled={!emailPassed || !validacao.valida}
         onClick={(e) => {
           e.preventDefault();
           checkEmailAndPassword();
-        }}>
+        }}
+      >
         Entrar
       </Button>
       <Button
         variant="ghost"
         onClick={() => {
           setLoginType(null);
-        }}>
+        }}
+      >
         Voltar
       </Button>
     </form>
@@ -240,4 +253,3 @@ const EmailForm = ({ setLoginType, setLoginSucess, setLoginState, emailWrapperRe
 };
 
 export default EmailForm;
-

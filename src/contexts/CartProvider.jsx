@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CartContext } from '../Contexts/CartContext';
+import { CartContext } from './index';
 
 /*Schemas*/
 const currentOrderSchema = {

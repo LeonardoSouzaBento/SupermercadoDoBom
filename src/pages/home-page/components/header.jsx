@@ -1,10 +1,9 @@
-import { HeaderSc } from '@pages/home-page/ui/header';
+import { useVisibilityContext } from '@/contexts';
 import SearchBar from '@components/search-bar';
-import { VisibilityContext } from '@contexts/VisibilityContext';
+import { HeaderSc } from '@pages/home-page/ui/header';
 import { Button } from '@ui/button';
 import { Icon } from '@ui/icon';
 import { HeartHandshake, Menu } from 'lucide-react';
-import { useContext } from 'react';
 
 const Header = ({ setViewOptions }) => {
   function handleClick(e) {
@@ -14,7 +13,7 @@ const Header = ({ setViewOptions }) => {
     }
     setViewOptions(true);
   }
-  const { supermarketName } = useContext(VisibilityContext);
+  const { supermarketName } = useVisibilityContext ();
 
   return (
     <div style={{ backgroundColor: 'var(--primary)' }}>

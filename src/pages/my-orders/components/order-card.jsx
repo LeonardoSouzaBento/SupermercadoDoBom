@@ -1,20 +1,20 @@
-import { useContext, useRef, useState } from "react";
+import { useCartContext } from "@/contexts";
+import { useRef, useState } from "react";
+import OrderDetails from "./order-details";
 import {
   CardContainer,
   DateTag,
-  StatusBadge,
-  PriceSection,
-  Price,
-  ItemCount,
-  ItemsList,
   DetailsButton,
+  ItemCount,
   ItemRow,
+  ItemsList,
+  Price,
+  PriceSection,
+  StatusBadge,
 } from "./ui/all";
-import { CartContext } from "@contexts/CartContext";
-import OrderDetails from "./order-details";
 
 const OrderCard = () => {
-  const { totalAddedValue, cartProducts, currentOrder } = useContext(CartContext);
+  const { totalAddedValue, cartProducts, currentOrder } = useCartContext();
   const orderData = {
     orderDate: currentOrder.time,
     status: currentOrder.status,
@@ -89,6 +89,3 @@ const OrderCard = () => {
 };
 
 export default OrderCard;
-
-
-

@@ -1,11 +1,11 @@
-import { UserDataContext } from '@contexts/UserDataContext';
+import { useUserDataContext } from '@/contexts';
 import { Icon } from '@ui/icon';
-import { Button, Card, Separator, ButtonsWrapper } from '@ui/index';
+import { Button, ButtonsWrapper, Card, Separator } from '@ui/index';
 import { ArrowRight, Check, Plus } from 'lucide-react';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import DataAlert from './data-alert';
 import { css } from 'styled-components';
+import DataAlert from './data-alert';
 
 const ButtonsWrapperCss = css`
   display: flex;
@@ -44,7 +44,7 @@ const headerSc = css`
 
 const ButtonsCard = ({ setCurrentOrder, totalAddedValue, setScaleWarnnig }) => {
   const navigate = useNavigate();
-  const { userContact, isDataComplete } = useContext(UserDataContext);
+  const { userContact, isDataComplete } = useUserDataContext()
   const [incompleteDataAlert, setIncompleteDataAlert] = useState(false);
 
   const userDataComplete = isDataComplete.contact && isDataComplete.address && userContact.email;

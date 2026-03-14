@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { VisibilityContext } from "@contexts/VisibilityContext";
+import { VisibilityContext } from "./index";
 
 export const VisibilityProvider = ({ children }) => {
   const supermarketName = "Supermercado Do Bom";

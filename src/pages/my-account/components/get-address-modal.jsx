@@ -1,9 +1,9 @@
-import { UserDataContext } from '@contexts/UserDataContext';
+import { useUserDataContext } from '@/contexts';
 import { Button, Card, CardHeader, CardTitle, CloseButton } from '@ui/index';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { css } from 'styled-components';
-import { AddressForm, CepInput, GetLocationButton } from './get-address-modal/index';
 import { ContainerSc } from './get-address-modal/container';
+import { AddressForm, CepInput, GetLocationButton } from './get-address-modal/index';
 
 const GetAddressModal = ({ setSeeRegisterAddress }) => {
   const [opacityRegAddress, setOpacityRegAddress] = useState(0);
@@ -19,7 +19,7 @@ const GetAddressModal = ({ setSeeRegisterAddress }) => {
     lat: '',
     lng: '',
   });
-  const { idToken } = useContext(UserDataContext);
+  const { idToken } = useUserDataContext();
   //-11.186615346993204, lng: -40.26740712716049
 
   useEffect(() => {
@@ -99,3 +99,4 @@ const GetAddressModal = ({ setSeeRegisterAddress }) => {
 };
 
 export { GetAddressModal };
+

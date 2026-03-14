@@ -1,5 +1,5 @@
 import { useEffect, useContext, useRef, useCallback } from "react";
-import { HomeDivsContext } from "@contexts/HomeDivsContext";
+import { HomeDivsContext } from "@/contexts/index";
 
 export function useScrollX() {
   const {

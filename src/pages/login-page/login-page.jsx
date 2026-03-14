@@ -1,5 +1,4 @@
-import { UserDataContext } from "@contexts/UserDataContext";
-import { VisibilityContext } from "@contexts/VisibilityContext";
+import { useUserDataContext, useVisibilityContext } from "@/contexts";
 import {
   ButtonLoginGoogle,
   EmailForm,
@@ -11,7 +10,7 @@ import { ContainerSc } from "@pages/login-page/ui/index";
 import { Button } from "@ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@ui/index";
 import { HeartHandshake, Mail, User } from "lucide-react";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { css } from "styled-components";
 
@@ -19,8 +18,8 @@ const LoginPage = () => {
   const [loginType, setLoginType] = useState(null);
   const [loginState, setLoginState] = useState("");
   const [hasSuccessMessage, setHasSuccessMessage] = useState(false);
-  const { onMyAccount, supermarketName } = useContext(VisibilityContext);
-  const { setUserDisconnected } = useContext(UserDataContext);
+  const { onMyAccount, supermarketName } = useVisibilityContext ();
+  const { setUserDisconnected } = useUserDataContext();
   const navigate = useNavigate();
   const loginTexts = {
     null: {

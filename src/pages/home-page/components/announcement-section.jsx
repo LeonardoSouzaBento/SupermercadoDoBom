@@ -1,5 +1,5 @@
 import ProductItem from '@components/product-list/product-item';
-import { HomeDivsContext } from '@contexts/HomeDivsContext';
+import { HomeDivsContext } from "@/contexts/index";
 import { announcements } from '@data/announcements';
 import { useScrollX } from '@hooks/useScrollX';
 import { ContainerSc, AnnouncementSc } from '@pages/home-page/ui/annoucement-section/index';

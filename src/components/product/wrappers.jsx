@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const WrapperSc = styled.div`
   padding: 4px;
@@ -18,15 +18,13 @@ export const WrapperSc = styled.div`
   max-width: 270px;
 
   //retrato
-  @media screen and (min-width: 385px) and (max-width: 414px) {
-    gap: 0;
-  }
   @media screen and (min-width: 385px) {
     flex-direction: column;
     min-width: 170px;
     max-width: 170px;
     height: 280px;
   }
+
   //paisagem
   @media screen and (min-width: 992px) {
     flex-direction: row;
@@ -36,7 +34,7 @@ export const WrapperSc = styled.div`
   }
 
   ${(props) =>
-    props.$variant !== 'cart' &&
+    props.$variant !== "cart" &&
     css`
       &:hover {
         box-shadow: var(--shadow-sm);
@@ -44,18 +42,20 @@ export const WrapperSc = styled.div`
     `}
 
   ${(props) =>
-    props.$variant == 'cart' &&
+    props.$variant == "cart" &&
     css`
       border: 1px solid var(--border);
-      @media screen and (max-width: 430px) {
-        flex-direction: row;
-        height: 180px;
-        min-width: 100%;
+      flex-direction: row;
+      height: 180px;
+      min-width: 100%;
+
+      @media screen (min-width: 420px) {
+        flex-direction: column;
       }
     `};
 
   ${(props) =>
-    props.$variant === 'announcement' &&
+    props.$variant === "announcement" &&
     css`
       display: block;
       width: 100%;
@@ -90,30 +90,27 @@ export const InfoWrapperSc = styled.div`
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+  padding: 8px;
+  height: 100%;
+  width: 48%;
+  padding: 1.1px;
+  padding-right: 0;
 
-  //paisagem
-  @media screen and (max-width: 385px) {
-    height: 100%;
-    width: 48%;
-    padding: 1.1px;
-    padding-right: 0;
-  }
-  //retrato
   @media screen and (min-width: 385px) {
-    padding: 8px;
-  }
-  @media screen and (min-width: 385px) and (max-width: 992px) {
     height: 46%;
     width: 100%;
     order: 2;
     gap: 4px;
   }
+
   //paisagem
   @media screen and (min-width: 993px) {
     width: 130px;
+    height: 100%;
     padding-right: 0;
   }
-  ${(props) => props.$variant === 'announcement' && 'display: none !important;'};
+  ${(props) =>
+    props.$variant === "announcement" && "display: none !important;"};
 
   /* wrapper-nome */
   & > div:first-child {
@@ -155,7 +152,7 @@ export const InfoWrapperSc = styled.div`
       color: var(--muted-foreground);
       padding: 0 8.5px;
       border-radius: 999px;
-      ${(props) => props.$exist === false && 'display: none;'}
+      ${(props) => props.$exist === false && "display: none;"}
       @media screen and (min-width: 385px) and (max-width: 992px) {
         display: none;
       }
@@ -200,7 +197,7 @@ export const ImageWrapperSc = styled.div`
   }
 
   ${(props) =>
-    props.$variant === 'announcement' &&
+    props.$variant === "announcement" &&
     css`
       width: 100%;
       height: 100%;
@@ -224,7 +221,7 @@ export const ImageWrapperSc = styled.div`
     }
 
     ${(props) =>
-      props.$variant === 'announcement' &&
+      props.$variant === "announcement" &&
       css`
         @media screen and (min-width: 993px) {
           display: block;
@@ -246,7 +243,7 @@ export const ImageWrapperSc = styled.div`
       }
 
       ${(props) =>
-        props.$variant === 'announcement' &&
+        props.$variant === "announcement" &&
         css`
           object-fit: cover;
           height: 100%;
@@ -284,7 +281,7 @@ export const ImageWrapperSc = styled.div`
       background-color: var(--background);
       border-radius: 999px;
 
-      ${(props) => props.$variant === 'announcement' && 'display: none;'};
+      ${(props) => props.$variant === "announcement" && "display: none;"};
     }
   }
   & button#button-add {
@@ -298,11 +295,11 @@ export const ImageWrapperSc = styled.div`
       bottom: 0;
     }
     ${(props) =>
-      (props.$variant === 'similarList' ||
-        props.$variant === 'announcement' ||
-        props.$variant === 'cart' ||
+      (props.$variant === "similarList" ||
+        props.$variant === "announcement" ||
+        props.$variant === "cart" ||
         props.$displayNone) &&
-      'display: none;'}
+      "display: none;"}
   }
   & #quantity-in-cart {
     width: 32px;

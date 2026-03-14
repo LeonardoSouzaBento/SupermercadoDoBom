@@ -1,8 +1,14 @@
-import { Button } from '@ui/button';
-import { useEffect, useState } from 'react';
-import { BackgroundSc, ModalSc } from '../ui/cancel-dialog';
+import { Button } from "@ui/button";
+import { useEffect, useState } from "react";
+import { BackgroundSc, ModalSc } from "../ui/cancel-dialog";
+import { ButtonsWrapper } from "@ui/buttons-wrapper";
 
-const CancelDialog = ({ seeFeedback, setSeeFeedback, setSeeCancelDialog, setCartProducts }) => {
+const CancelDialog = ({
+  seeFeedback,
+  setSeeFeedback,
+  setSeeCancelDialog,
+  setCartProducts,
+}) => {
   const [opacityDialog, setOpacityDialog] = useState(false);
   useEffect(() => {
     setTimeout(() => {
@@ -17,32 +23,42 @@ const CancelDialog = ({ seeFeedback, setSeeFeedback, setSeeCancelDialog, setCart
     }, 400);
   }
 
+  function handleDropCart() {
+    setSeeFeedback(true);
+    setCartProducts([]);
+    setTimeout(() => {
+      setSeeCancelDialog(false);
+      setSeeFeedback(false);
+    }, 2000);
+  }
+
   return (
     <>
-      <BackgroundSc />
+      <BackgroundSc
+        onClick={() => {
+          setSeeCancelDialog(false);
+          setSeeFeedback(false);
+        }}
+      />
       <ModalSc
         $feedback={seeFeedback}
         style={{
           opacity: opacityDialog ? 1 : 0,
-          transition: 'opacity 0.3s ease',
-        }}>
+          transition: "opacity 0.3s ease",
+        }}
+      >
         <div>
           <div>
-            <h1 style={{ color: seeFeedback ? 'white' : 'var(--dark-primary)' }}>
-              {seeFeedback ? 'Compra Cancelada!' : 'Cancelar a compra?'}
-            </h1>
+            <h4
+              style={{ color: seeFeedback ? "white" : "var(--dark-primary)" }}
+            >
+              {seeFeedback ? "Compra Cancelada!" : "Cancelar a compra?"}
+            </h4>
           </div>
 
           {seeFeedback === false ? (
-            <div id="wrapper-buttons">
-              <Button
-                variant="destructive"
-                onClick={() => {
-                  setSeeFeedback(true);
-                  setTimeout(() => {
-                    setCartProducts([]);
-                  }, 700);
-                }}>
+            <ButtonsWrapper>
+              <Button variant="destructive" onClick={handleDropCart}>
                 Sim, cancelar
               </Button>
 
@@ -50,10 +66,11 @@ const CancelDialog = ({ seeFeedback, setSeeFeedback, setSeeCancelDialog, setCart
                 variant="outline"
                 onClick={() => {
                   handleClickClose();
-                }}>
+                }}
+              >
                 Voltar
               </Button>
-            </div>
+            </ButtonsWrapper>
           ) : (
             <span className="material-symbols-rounded">check</span>
           )}

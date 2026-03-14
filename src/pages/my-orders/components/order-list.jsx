@@ -1,5 +1,3 @@
-const orderList= {};
-
 const OrderList = () => {
   return (
     <div>OrderList</div>

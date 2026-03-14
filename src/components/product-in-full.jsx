@@ -1,11 +1,10 @@
+import { useCartContext, useVisibilityContext } from "@/contexts";
 import {
   ButtonGroup,
   ContainerSc,
   ProductData,
 } from "@components/product-full/index";
-import { CartContext } from "@contexts/CartContext";
-import { HomeDivsContext } from "@contexts/HomeDivsContext";
-import { VisibilityContext } from "@contexts/VisibilityContext";
+import { HomeDivsContext } from "@/contexts/index";
 import { Button } from "@ui/button";
 import { Icon } from "@ui/index";
 import { X } from "lucide-react";
@@ -15,8 +14,8 @@ const ProductInFull = () => {
   const [translateYState, setTranslateYState] = useState("100%");
   const [seeSpanClose, setSeeSpanClose] = useState(false);
   const { dataProductFull, setViewProductInFull } =
-    useContext(VisibilityContext);
-  const { handleQuantityChange } = useContext(CartContext);
+    useVisibilityContext ();
+  const { handleQuantityChange } = useCartContext();
   const { isDraggingRef } = useContext(HomeDivsContext);
   const initialQuant = dataProductFull.quantity;
   const [quantity, setQuantity] = useState(initialQuant);

@@ -1,9 +1,9 @@
-import { UserDataContext } from '@contexts/UserDataContext';
+import { useUserDataContext } from '@/contexts';
 import { ContainerSc } from '@pages/home-page/ui/more-options-menu/container';
 import { Button, Icon, MuiIcon, Separator } from '@ui/index';
 import { getAuth, signOut } from 'firebase/auth';
 import { X } from 'lucide-react';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdAccountCircle } from 'react-icons/md';
 import { TbReceiptFilled } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +17,7 @@ const OptionsMenu = ({ setViewOptions, idToken }) => {
   const [transform, setTransform] = useState('100%');
   const [canClick, setCanClick] = useState(false);
   const navigate = useNavigate();
-  const { setUserDisconnected } = useContext(UserDataContext);
+  const { setUserDisconnected } = useUserDataContext();
 
   function handleClickClose(e) {
     e.stopPropagation();

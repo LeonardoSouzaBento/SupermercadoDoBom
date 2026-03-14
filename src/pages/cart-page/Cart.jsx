@@ -1,21 +1,20 @@
+import { useCartContext, useVisibilityContext } from "@/contexts";
+import ProductInFull from "@components/product-in-full";
+import { ProductList } from "@components/product-list";
 import {
+  ButtonsCard,
   ButtonSeeAll,
   CancelDialog,
   DetailsCard,
   ReceiptCard,
-  ButtonsCard,
-} from '@pages/cart-page/components/index';
-import { MainWrapperSc } from '@pages/cart-page/ui/index';
-import ProductInFull from '@components/product-in-full';
-import { ProductList } from '@components/product-list';
-import { CartContext } from '@contexts/CartContext';
-import { VisibilityContext } from '@contexts/VisibilityContext';
-import { Button, CardHeader, CardTitle, Icon, MuiIcon } from '@ui/index';
-import PageHeader from '@ui/page-header';
-import { Trash2 } from 'lucide-react';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { css } from 'styled-components';
+} from "@pages/cart-page/components/index";
+import { MainWrapperSc } from "@pages/cart-page/ui/index";
+import { Button, CardHeader, CardTitle, Icon, MuiIcon } from "@ui/index";
+import PageHeader from "@ui/page-header";
+import { Trash2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { css } from "styled-components";
 
 //altura - o cabeçalho 'sua compra'
 const heightCartSection = 393; //para comparar
@@ -23,10 +22,11 @@ const heightCartSection = 393; //para comparar
 const Cart = () => {
   const navigate = useNavigate();
   const { totalAddedValue, cartProducts, setCartProducts, setCurrentOrder } =
-    useContext(CartContext);
+    useCartContext();
   const [opacityState, setOpacityState] = useState(0.03); //opacidade do main ao entrar
   const [seeCancelDialog, setSeeCancelDialog] = useState(false);
-  const { seeFeedback, setSeeFeedback, viewProductInFull } = useContext(VisibilityContext);
+  const { seeFeedback, setSeeFeedback, viewProductInFull } =
+    useVisibilityContext ();
   const [scaleWarnnig, setScaleWarnnig] = useState(1);
 
   //estados para botão ver todos
@@ -77,35 +77,38 @@ const Cart = () => {
       resizeDowntime.current = setTimeout(() => {
         let widthOfWindow = window.innerWidth;
         let quantProducts = cartProducts.length;
-        if (widthOfWindow !== currentWindowWidthRef.current && totalAddedValue !== 0) {
+        if (
+          widthOfWindow !== currentWindowWidthRef.current &&
+          totalAddedValue !== 0
+        ) {
           currentWindowWidthRef.current = widthOfWindow;
           checkHiddenProducts();
           const div = CartSectionRef.current;
           if (widthOfWindow >= 769) {
-            const newHeight = '500px';
+            const newHeight = "500px";
             if (div.style.height !== newHeight) {
               div.style.height = newHeight;
             }
           } else {
-            const newHeight = '460px';
+            const newHeight = "460px";
             if (quantProducts >= 3) {
               if (div.style.height !== newHeight) {
                 div.style.height = newHeight;
               }
             } else {
-              div.style.height = 'auto';
+              div.style.height = "auto";
             }
           }
         }
       }, 300);
     }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       // setSeeFeedback(false);
-      document.body.style.overflow = 'auto';
-      window.removeEventListener('resize', handleResize);
+      document.body.style.overflow = "auto";
+      window.removeEventListener("resize", handleResize);
       if (resizeDowntime.current) {
         clearTimeout(resizeDowntime.current);
       }
@@ -114,7 +117,9 @@ const Cart = () => {
 
   //
   const shouldCheckHiddenProducts =
-    totalAddedValue !== 0 && totalAddedValue < initialTotalValue.current && wasClicked === false;
+    totalAddedValue !== 0 &&
+    totalAddedValue < initialTotalValue.current &&
+    wasClicked === false;
 
   useEffect(() => {
     if (shouldCheckHiddenProducts) {
@@ -124,9 +129,9 @@ const Cart = () => {
 
   useEffect(() => {
     if (seeCancelDialog) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }, [seeCancelDialog]);
 
@@ -142,7 +147,8 @@ const Cart = () => {
               separator
               styles={css`
                 padding-left: 20px;
-              `}>
+              `}
+            >
               <CardTitle>
                 <MuiIcon icon="package_2" size="h3" margin="1px 0 0" />
                 <h3>Produtos</h3>
@@ -155,14 +161,24 @@ const Cart = () => {
               size="icon-sm"
               onClick={() => {
                 setSeeCancelDialog(true);
-              }}>
-              <Icon Icon={Trash2} size="h4" strokeWidth={2.4} marginValue="1px 0 0 1px" />
+              }}
+            >
+              <Icon
+                Icon={Trash2}
+                size="h4"
+                strokeWidth={2.4}
+                marginValue="1px 0 0 1px"
+              />
             </Button>
           </div>
 
           {totalAddedValue === 0 && <img src="./void-cart.png" alt="" />}
 
-          <ProductList ref={ProductListRef} variant={'cart'} productList={cartProducts} />
+          <ProductList
+            ref={ProductListRef}
+            variant={"cart"}
+            productList={cartProducts}
+          />
 
           {viewButtonSeeAll && (
             <ButtonSeeAll
@@ -187,7 +203,10 @@ const Cart = () => {
         </div>
 
         <div id="details-and-receipt">
-          <DetailsCard totalAddedValue={totalAddedValue} scaleWarnnig={scaleWarnnig} />
+          <DetailsCard
+            totalAddedValue={totalAddedValue}
+            scaleWarnnig={scaleWarnnig}
+          />
           <ReceiptCard
             totalAddedValue={totalAddedValue}
             setScaleWarnnig={setScaleWarnnig}

@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { Separator } from '@ui/index';
+import styled, { css } from "styled-components";
+import { Separator } from "@ui/index";
 
 /* header */
 const CardHeaderSc = styled.div`
@@ -11,7 +11,7 @@ const CardHeaderSc = styled.div`
 export const CardHeader = ({
   children,
   mb = 2,
-  mbMeasurement = 'ex',
+  mbMeasurement = "ex",
   separator = false,
   styles,
   ...props
@@ -20,8 +20,9 @@ export const CardHeader = ({
     <CardHeaderSc
       data-class="card-header"
       $styles={styles}
-      style={{ marginBottom: mb > 0 ? `${mb}${mbMeasurement}` : '' }}
-      {...props}>
+      style={{ marginBottom: mb > 0 ? `${mb}${mbMeasurement}` : "" }}
+      {...props}
+    >
       {children}
       {separator && (
         <Separator
@@ -80,6 +81,7 @@ const CardSc = styled.div`
   flex-direction: column;
   border-radius: 12px;
   border: 1px solid var(--card-border);
+  border-bottom: 1px solid transparent;
   box-shadow: var(--shadow-md);
   padding: 24px;
   ${(props) =>

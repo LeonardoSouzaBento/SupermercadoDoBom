@@ -1,9 +1,8 @@
-import { useContext, useState, useEffect } from 'react';
-import SearchBar from '@components/search-bar';
+import { useUserDataContext, useVisibilityContext } from '@/contexts';
 import ProductInFull from '@components/product-in-full';
 import { ProductList } from '@components/product-list';
-import { VisibilityContext } from '@contexts/VisibilityContext';
-import { UserDataContext } from '@contexts/UserDataContext';
+import SearchBar from '@components/search-bar';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const DivSc = styled.div`
@@ -19,8 +18,8 @@ const DivSc = styled.div`
 
 const SearchPage = () => {
   const [opacityState, setOpacityState] = useState(0);
-  const { viewProductInFull } = useContext(VisibilityContext);
-  const { searchProducts } = useContext(UserDataContext);
+  const { viewProductInFull } = useVisibilityContext ();
+  const { searchProducts } = useUserDataContext()
   const [canClick, setCanClick] = useState(false);
 
   useEffect(() => {

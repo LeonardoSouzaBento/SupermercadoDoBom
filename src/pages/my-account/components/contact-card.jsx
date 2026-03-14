@@ -1,6 +1,6 @@
+import { useUserDataContext } from '@/contexts';
 import { formatPhoneNumber, validatePhoneNumber } from '@/utils/index';
 import { DivToCoverSc } from '@components/generic-tags';
-import { UserDataContext } from '@contexts/UserDataContext';
 import { Button } from '@ui/button';
 import {
   ButtonsWrapper,
@@ -15,7 +15,7 @@ import {
   MuiIcon,
 } from '@ui/index';
 import { Pencil, Phone } from 'lucide-react';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
 import { CheckIconSc, StatusSc } from './ui';
@@ -33,7 +33,7 @@ const phoneTypes = [
 
 const Contact = () => {
   const { userContact, setUserContact, isDataComplete, setIsDataComplete } =
-    useContext(UserDataContext);
+    useUserDataContext();
   const [phoneNumber, setPhoneNumber] = useState('');
   const [seeInput, setSeeInput] = useState(false);
   const [isValidNumber, setIsValidNumber] = useState(false);

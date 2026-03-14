@@ -1,4 +1,4 @@
-import { HomeDivsContext } from '@contexts/HomeDivsContext';
+import { HomeDivsContext } from "@/contexts/index";
 import { categoriesIcons } from '@data/home';
 import { useScrollX } from '@hooks/useScrollX';
 import { CategoryCardSc, ContainerSc } from '@pages/home-page/ui/categories-section/index';

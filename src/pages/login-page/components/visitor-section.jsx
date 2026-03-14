@@ -1,9 +1,8 @@
-import { UserDataContext } from '@contexts/UserDataContext';
-import { Button } from '@ui/button';
-import { signInWithCustomToken } from 'firebase/auth';
-import { useContext } from 'react';
-import { auth } from '@/main';
-import styled from 'styled-components';
+import { useUserDataContext } from "@/contexts";
+import { auth } from "@/main";
+import { Button } from "@ui/button";
+import { signInWithCustomToken } from "firebase/auth";
+import styled from "styled-components";
 
 const VisitorBoxSc = styled.div`
   text-align: center;
@@ -20,24 +19,24 @@ const VisitorBoxSc = styled.div`
 `;
 
 const VisitorSection = ({ setLoginType, setLoginSucess, setLoginState }) => {
-  const { setIdToken } = useContext(UserDataContext);
+  const { setIdToken } = useUserDataContext();
 
   async function handleAnonymousLogin() {
-    setLoginState('pending');
+    setLoginState("pending");
     try {
       const response = await fetch(
-        'https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-anonymous',
+        "https://us-central1-api-supermercado-do-bom.cloudfunctions.net/api/auth-login-anonymous",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-        },
+        }
       );
 
       if (!response.ok) {
-        setLoginState('error');
-        throw new Error('Erro no login anônimo');
+        setLoginState("error");
+        throw new Error("Erro no login anônimo");
       }
 
       const { token } = await response.json();
@@ -46,9 +45,9 @@ const VisitorSection = ({ setLoginType, setLoginSucess, setLoginState }) => {
 
       setIdToken(idToken);
       setLoginSucess();
-      console.log('Login bem-sucedido!');
+      console.log("Login bem-sucedido!");
     } catch (error) {
-      setLoginState('error');
+      setLoginState("error");
       console.error(error);
     }
   }
@@ -70,7 +69,8 @@ const VisitorSection = ({ setLoginType, setLoginSucess, setLoginState }) => {
         variant="ghost"
         onClick={() => {
           setLoginType(null);
-        }}>
+        }}
+      >
         Voltar
       </Button>
     </>

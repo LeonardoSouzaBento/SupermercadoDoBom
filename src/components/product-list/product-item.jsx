@@ -1,10 +1,9 @@
-import { WrapperSc } from '@components/product/index';
-import { CartContext } from '@contexts/CartContext';
-import { VisibilityContext } from '@contexts/VisibilityContext';
-import { useContext, useEffect, useState } from 'react';
-import InfoWrapper from './info-wrapper';
-import ProductImage from './product-image';
-import { css } from 'styled-components';
+import { useCartContext, useVisibilityContext } from "@/contexts";
+import { WrapperSc } from "@components/product/index";
+import { useEffect, useState } from "react";
+import { css } from "styled-components";
+import InfoWrapper from "./info-wrapper";
+import ProductImage from "./product-image";
 
 export const weightStyles = css`
   font-size: var(--text-xs);
@@ -17,8 +16,8 @@ export const weightStyles = css`
 `;
 
 export default function ProductItem({ product, variant }) {
-  const { totalAddedValue, cartProducts } = useContext(CartContext);
-  const { seeFeedback } = useContext(VisibilityContext);
+  const { totalAddedValue, cartProducts } = useCartContext();
+  const { seeFeedback } = useVisibilityContext ();
   const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {

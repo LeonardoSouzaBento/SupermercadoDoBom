@@ -58,7 +58,6 @@ export const ModalSc = styled.div`
       align-items: center;
       width: 100%;
       height: 56px;
-      margin-bottom: 16px;
       background-color: var(--white-foreground);
       ${(props) => !props.$feedback && 'border-bottom: 1px solid var(--card-border);'}
       ${(props) => props.$feedback && 'background-color: var(--dark-green);'}

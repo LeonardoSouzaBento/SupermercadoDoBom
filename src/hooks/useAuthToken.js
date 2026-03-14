@@ -1,10 +1,10 @@
-import { useEffect, useContext } from "react";
+import { useUserDataContext } from "@/contexts";
 import { onIdTokenChanged } from "firebase/auth";
+import { useEffect } from "react";
 import { auth } from "../main";
-import { UserDataContext } from "@contexts/UserDataContext";
 
 export function useAuthToken() {
-  const { setIdToken } = useContext(UserDataContext);
+  const { setIdToken } = useUserDataContext();
 
   useEffect(() => {
     const unsubscribe = onIdTokenChanged(auth, async (user) => {

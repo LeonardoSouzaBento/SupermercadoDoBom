@@ -1,9 +1,8 @@
-import { CartContext } from '@contexts/CartContext';
+import { useCartContext } from '@/contexts';
 import { bottomNavBarItems } from '@data/bottomNavBarItems';
 import { Button } from '@ui/button';
 import { Icon } from '@ui/index';
 import { ShoppingCart } from 'lucide-react';
-import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
 import { NavButton, WrapperSc } from './bottom-nav-bar/index';
@@ -11,7 +10,7 @@ import { NavButton, WrapperSc } from './bottom-nav-bar/index';
 export default function BottomNavBar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { quantityItens, totalValueFormatted } = useContext(CartContext);
+  const { quantityItens, totalValueFormatted } = useCartContext();
 
   return (
     <div>

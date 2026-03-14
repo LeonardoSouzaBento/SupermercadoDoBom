@@ -1,9 +1,9 @@
 import AppRoutes from "./routes";
 import { BrowserRouter } from "react-router-dom";
-import { HomeDivsProvider } from "@providers/HomeDivsProvider";
-import { VisibilityProvider } from "@providers/VisibilityProvider";
-import { CartProvider } from "@providers/CartProvider";
-import { UserDataProvider } from "@providers/UserDataProvider";
+import { HomeDivsProvider } from "@/contexts/HomeDivsProvider";
+import { VisibilityProvider } from "@/contexts/VisibilityProvider";
+import { CartProvider } from "@/contexts/CartProvider";
+import { UserDataProvider } from "@/contexts/UserDataProvider";
 import { useAuthToken } from "@hooks/useAuthToken";
 
 function AuthWrapper({ children }) {

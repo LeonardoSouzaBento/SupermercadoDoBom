@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef, useContext, useEffect, useCallback } from 'react';
 import { useScrollX } from '@hooks/useScrollX';
-import { HomeDivsContext } from '@contexts/HomeDivsContext';
+import { HomeDivsContext } from "@/contexts/index";
 import ProductItem from '@components/product-list/product-item';
 import { CentralizeDiv } from '@components/generic-tags';
 import styled from 'styled-components';

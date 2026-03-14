@@ -1,16 +1,15 @@
+import { useCartContext, useVisibilityContext } from '@/contexts';
 import { ButtonGroupSc, ImageWrapperSc } from '@components/product/index';
-import { CartContext } from '@contexts/CartContext';
-import { HomeDivsContext } from '@contexts/HomeDivsContext';
-import { VisibilityContext } from '@contexts/VisibilityContext';
+import { HomeDivsContext } from "@/contexts/index";
+import { Button } from '@ui/button';
+import { Icon } from '@ui/icon';
+import { Minus, Plus } from 'lucide-react';
 import { useContext } from 'react';
 import ButtonAdd from './button-add';
-import { Icon } from '@ui/icon';
-import { Plus, Minus } from 'lucide-react';
 import { weightStyles } from './product-item';
-import { Button } from '@ui/button';
 
 const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef }) => {
-  const { handleQuantityChange } = useContext(CartContext);
+  const { handleQuantityChange } = useCartContext();
 
   function changeQuantity(newQty, isIncrement) {
     setQuantity(newQty);
@@ -52,7 +51,7 @@ const ButtonGroup = ({ quantity, setQuantity, variant, product, isDraggingRef })
 
 const ProductImage = ({ product, quantity, setQuantity, variant }) => {
   const { setDataProductFull, viewProductInFull, setViewProductInFull } =
-    useContext(VisibilityContext);
+    useVisibilityContext ();
   const { isDraggingRef } = useContext(HomeDivsContext);
 
   function handlePointerUpOpen(e) {

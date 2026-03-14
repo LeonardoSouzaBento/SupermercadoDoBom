@@ -1,7 +1,6 @@
+import { useUserDataContext, useVisibilityContext } from "@/contexts";
 import ProductInFull from "@components/product-in-full";
-import { HomeDivsContext } from "@contexts/HomeDivsContext";
-import { UserDataContext } from "@contexts/UserDataContext";
-import { VisibilityContext } from "@contexts/VisibilityContext";
+import { HomeDivsContext } from "@/contexts/index";
 import {
   AnnouncementSection,
   CategoriesSection,
@@ -46,8 +45,8 @@ const ProductFeedDivSc = styled.section`
 
 function HomePage() {
   const [viewOptions, setViewOptions] = useState(false);
-  const { viewProductInFull } = useContext(VisibilityContext);
-  const { idToken } = useContext(UserDataContext);
+  const { viewProductInFull } = useVisibilityContext ();
+  const { idToken } = useUserDataContext()
   const { currentCategory } = useContext(HomeDivsContext);
   const resizeDowntime = useRef(null);
   const windowWidthInitialRef = useRef(0);

@@ -1,12 +1,8 @@
-import { UserDataContext } from '@contexts/UserDataContext';
 import { Button } from '@ui/button';
 import { Card, CardHeader } from '@ui/card';
-import { CardContent, CardTitle, Icon, MuiIcon, ButtonsWrapper, WrapperForm } from '@ui/index';
-import { ArrowRight, Check, Plus } from 'lucide-react';
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { ButtonsWrapper, CardContent, CardTitle, MuiIcon, WrapperForm } from '@ui/index';
+import { useState } from 'react';
 import { css } from 'styled-components';
-import DataAlert from './data-alert';
 
 const mainWrapperCss = css`
   display: flex;

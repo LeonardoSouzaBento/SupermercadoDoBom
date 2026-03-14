@@ -1,6 +1,6 @@
-import { useState, useEffect, useContext } from "react";
-import { UserDataContext } from "../Contexts/UserDataContext";
-import { CartContext } from "../Contexts/CartContext";
+import { useEffect, useState } from "react";
+import { useCartContext } from ".";
+import { UserDataContext } from "./index";
 
 /*Schemas*/
 const userAddressSchema = {
@@ -29,11 +29,11 @@ const isDataCompleteSchema = {
 const currentOrderSchema = {
   time: "",
   status: "",
-  cartProducts: []
+  cartProducts: [],
 };
 
 export const UserDataProvider = ({ children }) => {
-  const { setCartProducts, setCurrentOrder } = useContext(CartContext);
+  const { setCartProducts, setCurrentOrder } = useCartContext();
 
   /*Token*/
   const [idToken, setIdToken] = useState(() => {
@@ -90,7 +90,7 @@ export const UserDataProvider = ({ children }) => {
       setUserDisconnected(false);
     }
   }, [userDisconnected]);
-  
+
   return (
     <UserDataContext.Provider
       value={{
@@ -112,6 +112,3 @@ export const UserDataProvider = ({ children }) => {
     </UserDataContext.Provider>
   );
 };
-
-
-

@@ -1,13 +1,12 @@
+import { useUserDataContext, useVisibilityContext } from '@/contexts';
 import { CompletionsSc, ContainerSc, HelpMessage } from '@components/search-bar/index';
-import { VisibilityContext } from '@contexts/VisibilityContext';
 import { allProductsForSearch } from '@data/productList';
 import { Button } from '@ui/button';
 import { Icon } from '@ui/icon';
 import { Search } from 'lucide-react';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
-import { UserDataContext } from '../contexts/Contexts/UserDataContext';
 import {
   animateInputMessage,
   animationOfWrite,
@@ -25,9 +24,9 @@ function SearchBar({ copy, onHome }) {
   const [prevInput, setPrevInput] = useState('');
   const inputRef = useRef(null);
   const [returnedProducts, setReturnedproducts] = useState([]);
-  const { setSearchProducts } = useContext(UserDataContext);
+  const { setSearchProducts } = useUserDataContext();
   const { preventClick, setPreventClick, tipForRecruiter, setTipForRecruiter } =
-    useContext(VisibilityContext);
+    useVisibilityContext ();
 
   //estados para autocompletar
   const [searchInitiated, setSearchInitiated] = useState(false);

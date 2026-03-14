@@ -1,14 +1,12 @@
-import { UserDataContext } from "@contexts/UserDataContext";
+import { useUserDataContext } from "@/contexts";
 import { Button } from "@ui/button";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useContext } from "react";
 import { auth } from "../../../main";
 
 const provider = new GoogleAuthProvider();
 
 const ButtonLoginGoogle = ({ setLoginState, setLoginSucess }) => {
-  const { setIdToken, userContact, setUserContact } =
-    useContext(UserDataContext);
+  const { setIdToken, userContact, setUserContact } = useUserDataContext();
 
   async function handleGoogleLogin() {
     setLoginState("pending");
