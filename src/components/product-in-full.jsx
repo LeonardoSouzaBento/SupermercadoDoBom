@@ -1,25 +1,30 @@
-import { ButtonGroup, ContainerSc, ProductData } from '@components/product-full/index';
-import { CartContext } from '@contexts/CartContext';
-import { HomeDivsContext } from '@contexts/HomeDivsContext';
-import { VisibilityContext } from '@contexts/VisibilityContext';
-import { Button } from '@ui/button';
-import { Icon } from '@ui/index';
-import { X } from 'lucide-react';
-import { useContext, useEffect, useRef, useState } from 'react';
+import {
+  ButtonGroup,
+  ContainerSc,
+  ProductData,
+} from "@components/product-full/index";
+import { CartContext } from "@contexts/CartContext";
+import { HomeDivsContext } from "@contexts/HomeDivsContext";
+import { VisibilityContext } from "@contexts/VisibilityContext";
+import { Button } from "@ui/button";
+import { Icon } from "@ui/index";
+import { X } from "lucide-react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 const ProductInFull = () => {
-  const [translateYState, setTranslateYState] = useState('100%');
+  const [translateYState, setTranslateYState] = useState("100%");
   const [seeSpanClose, setSeeSpanClose] = useState(false);
-  const { dataProductFull, setViewProductInFull } = useContext(VisibilityContext);
+  const { dataProductFull, setViewProductInFull } =
+    useContext(VisibilityContext);
   const { handleQuantityChange } = useContext(CartContext);
   const { isDraggingRef } = useContext(HomeDivsContext);
   const initialQuant = dataProductFull.quantity;
   const [quantity, setQuantity] = useState(initialQuant);
   const isDragging = useRef(false);
   const initialPointerPosition = useRef(null);
-  const rawPrice = dataProductFull.price || '0';
-  const priceNumber = parseFloat(rawPrice.replace(',', '.')) || 0;
-  const subtotal = (priceNumber * quantity).toFixed(2).replace('.', ',');
+  const rawPrice = dataProductFull.price || "0";
+  const priceNumber = parseFloat(rawPrice.replace(",", ".")) || 0;
+  const subtotal = (priceNumber * quantity).toFixed(2).replace(".", ",");
   const MainDivRef = useRef(null);
 
   function handlePointerDownDiv(e) {
@@ -64,7 +69,7 @@ const ProductInFull = () => {
       return;
     }
     if (!isDragging.current) {
-      if (action === 'fewer') {
+      if (action === "fewer") {
         changeQuantity(Math.max(0, quantity - 1), false);
       } else {
         changeQuantity(quantity + 1, true);
@@ -79,23 +84,23 @@ const ProductInFull = () => {
       return;
     }
     setSeeSpanClose(false);
-    setTranslateYState('100%');
+    setTranslateYState("100%");
     setTimeout(() => {
       setViewProductInFull(false);
     }, 300);
   }
 
   useEffect(() => {
-    document.body.style.overflowY = 'hidden';
+    document.body.style.overflowY = "hidden";
     setTimeout(() => {
-      setTranslateYState('0%');
+      setTranslateYState("0%");
     }, 200);
     setTimeout(() => {
       setSeeSpanClose(true);
     }, 550);
 
     return () => {
-      document.body.style.overflowY = 'auto';
+      document.body.style.overflowY = "auto";
       isDraggingRef.current = false;
     };
   }, []);
@@ -108,29 +113,35 @@ const ProductInFull = () => {
     <ContainerSc
       $translate={translateYState}
       style={{
-        backgroundColor: seeSpanClose ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0)',
-        transition: 'background-color 0.3s ease',
+        backgroundColor: seeSpanClose
+          ? "rgba(0, 0, 0, 0.3)"
+          : "rgba(0, 0, 0, 0)",
+        transition: "background-color 0.3s ease",
       }}
-      onPointerUp={handleClickClose}>
+      onPointerUp={handleClickClose}
+    >
       <div
+        className="main-wrapper"
         ref={MainDivRef}
         onPointerUp={(e) => {
           e.stopPropagation();
-        }}>
+        }}
+      >
         <Button
-          className="close-button"
+          className="close-btn"
           size="icon-sm"
           variant="secondary"
-          onClick={handleClickClose}>
+          onClick={handleClickClose}
+        >
           <Icon Icon={X} size="xl" />
         </Button>
 
-        <div id="product-full-section">
+        <div id="prod-section">
           <ProductData dataProductFull={dataProductFull} />
 
-          <div id="subtotal-and-button">
-            <p className='subtotal'>
-              {subtotal == '0,00' ? (
+          <div id="subtotal-and-btn">
+            <p className="subtotal">
+              {subtotal == "0,00" ? (
                 <strong>Subtotal:</strong>
               ) : (
                 <>
@@ -150,7 +161,7 @@ const ProductInFull = () => {
           </div>
         </div>
 
-        <div id="similar-products-section">
+        <div id="similar-section">
           <h3>Produtos Similares</h3>
           <p id="warning">*Essa parte ainda será desenvolvida*</p>
         </div>

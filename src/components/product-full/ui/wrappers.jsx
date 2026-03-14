@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const InfoWrapperSc = styled.div`
+export const ProdInfoSc = styled.div`
   width: calc(100% - 24px);
   margin: 0 auto;
   display: flex;
@@ -43,7 +43,7 @@ const InfoWrapperSc = styled.div`
   }
 `;
 
-const ImageWrapperSc = styled.div`
+export const ProdImageSc = styled.div`
   display: block;
   margin: auto;
   width: 100%;
@@ -53,10 +53,6 @@ const ImageWrapperSc = styled.div`
   margin-bottom: 8px;
   box-sizing: border-box;
   overflow: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   @media screen and (max-width: 375px) {
     height: auto;
   }
@@ -75,14 +71,6 @@ const ImageWrapperSc = styled.div`
     height: 100%;
     height: auto;
     box-sizing: border-box;
-  }
-
-  /* peso e desconto */
-  & div {
-    -webkit-user-select: none; /* Safari, Chrome */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+ */
-    user-select: none; /* Padrão */
   }
 
   & #weight {
@@ -105,27 +93,21 @@ const ImageWrapperSc = styled.div`
   }
 `;
 
-export const ProductData = ({ dataProductFull }) => {
-  return (
-    <>
-      <ImageWrapperSc>
-        <img src={dataProductFull.url} alt="Imagem do Produto" />
-
-        {dataProductFull.weight != '' && dataProductFull.weight != null && (
-          <div id="weight">{dataProductFull.weight}</div>
-        )}
-
-        {dataProductFull.discount != '' && dataProductFull.discount != null && (
-          <div id="discount">-{dataProductFull.discount}%</div>
-        )}
-      </ImageWrapperSc>
-
-      <InfoWrapperSc>
-        <div id="name">
-          <p>{dataProductFull.name}</p>
-          <p id="price">R$ {dataProductFull.price}</p>
-        </div>
-      </InfoWrapperSc>
-    </>
-  );
-};
+export const BtnGroupSc = styled.div`
+  width: 100%;
+  min-width: 200px;
+  height: max-content;
+  display: flex;
+  background-color: ${(props) => props.$bg};
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  & > p {
+    color: hsl(var(--primary-50));
+    font-size: var(--text-lg);
+  }
+  @media screen and (max-width: 350px) {
+    min-width: 180px;
+  }
+`;

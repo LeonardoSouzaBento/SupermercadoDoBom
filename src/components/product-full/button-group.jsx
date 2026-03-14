@@ -52,7 +52,7 @@ export const ButtonGroup = ({
         </>
       )}
       {quantity == 0 && (
-        <Button onPointerUp={handlePointerUpAdd} wFull variant="secondary" size="sm">
+        <Button onPointerUp={handlePointerUpAdd} wFull variant="ghost" size="sm">
           Adicionar
         </Button>
       )}

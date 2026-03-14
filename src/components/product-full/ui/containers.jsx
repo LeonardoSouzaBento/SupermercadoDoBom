@@ -1,0 +1,137 @@
+import styled from "styled-components";
+import { flexCenter } from "@/css/baseStyles";
+
+export const ProdFullSc = styled.div``;
+
+ProdFullSc.Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+`;
+
+ProdFullSc.MainWrapper = styled.div`
+  width: 100%;
+  height: 580px;
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+  border-radius: 12px 12px 0px 0px;
+  transform: translateY(${(props) => props.$translate});
+  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-sm);
+
+  @media screen and (max-width: 577px) {
+    padding-bottom: 52px;
+  }
+
+  @media screen and (min-width: 840px) {
+    display: flex;
+    overflow-y: hidden;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+  & > .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 6;
+    border-radius: 999px;
+  }
+`;
+
+ProdFullSc.ProdSection = styled.div`
+  width: 100%;
+  background-color: var(--white-foreground);
+  box-sizing: border-box;
+  padding-inline: 16px;
+  padding-bottom: 32px;
+  z-index: 2;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > div#subtotal-and-btn {
+    ${flexCenter}
+    max-width: 420px;
+    gap: 16px;
+    margin: auto;
+    box-sizing: border-box;
+
+    & > p.subtotal {
+      height: 44px;
+      width: 100%;
+      max-width: max-content;
+      padding: 0 16px;
+      ${flexCenter}
+      gap: 8px;
+      background-color: var(--background);
+      border-radius: 8px;
+      position: relative;
+      @media screen and (max-width: 420px) {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      & > strong {
+        ${flexCenter}
+        border-radius: 8px;
+        color: var(--muted-foreground);
+        font-size: var(--text-sm);
+        text-transform: uppercase;
+        width: max-content;
+        padding: 0;
+      }
+    }
+  }
+`;
+
+ProdFullSc.SimilarSection = styled.div`
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-135deg, var(--light-bg), var(--background));
+  position: relative;
+  pointer-events: none;
+  touch-action: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > h3 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    width: 100%;
+    text-align: center;
+    color: var(--primary);
+  }
+
+  & #warning {
+    width: calc(100% - 32px);
+    max-width: max-content;
+    color: var(--red-brand-hover);
+    margin: auto;
+    text-align: center;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+  }
+`;

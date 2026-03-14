@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { flexCenter } from '@/css/baseStyles';
+import styled from "styled-components";
+import { flexCenter } from "@/css/baseStyles";
 
 export const ContainerSc = styled.div`
   width: 100vw;
@@ -9,7 +9,7 @@ export const ContainerSc = styled.div`
   left: 0;
   z-index: 4;
 
-  & > div {
+  & div.main-wrapper {
     width: 100%;
     height: 580px;
     box-sizing: border-box;
@@ -24,7 +24,7 @@ export const ContainerSc = styled.div`
     box-shadow: var(--shadow-sm);
 
     @media screen and (max-width: 577px) {
-      padding-bottom: 62px;
+      padding-bottom: 52px;
     }
 
     @media screen and (min-width: 840px) {
@@ -38,7 +38,7 @@ export const ContainerSc = styled.div`
       height: 0;
       visibility: hidden;
     }
-    & > .close-button {
+    & > .close-btn {
       position: absolute;
       top: 12px;
       right: 12px;
@@ -47,7 +47,7 @@ export const ContainerSc = styled.div`
     }
   }
   /* seção do produto clicado */
-  & div#product-full-section {
+  & div#prod-section {
     width: 100%;
     background-color: var(--white-foreground);
     box-sizing: border-box;
@@ -61,7 +61,7 @@ export const ContainerSc = styled.div`
       display: none;
     }
 
-    & > div#subtotal-and-button {
+    & > div#subtotal-and-btn {
       ${flexCenter}
       max-width: 420px;
       gap: 16px;
@@ -96,7 +96,7 @@ export const ContainerSc = styled.div`
     }
   }
   /* seção de produtos similares */
-  & div#similar-products-section {
+  & div#similar-section {
     width: 100%;
     height: 100%;
     background: linear-gradient(-135deg, var(--light-bg), var(--background));
@@ -110,7 +110,7 @@ export const ContainerSc = styled.div`
     }
 
     & > h3 {
-      margin-top: 24px;
+      padding-top: 24px;
       margin-bottom: 16px;
       width: 100%;
       text-align: center;
