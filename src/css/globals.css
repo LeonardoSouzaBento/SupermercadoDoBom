@@ -160,6 +160,7 @@ body {
   margin: auto;
   position: relative;
   font-family: var(--font-body);
+  overscroll-behavior-x: none;
 }
 
 h1,
